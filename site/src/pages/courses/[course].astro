@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Fact from '../../components/Fact.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { COURSES, type CourseSlug } from '../../lib/courses';
+import { SITE } from '../../lib/site';
+
+export function getStaticPaths() {
+  return Object.keys(COURSES).map((course) => ({ params: { course } }));
+}
+const course = Astro.params.course as CourseSlug;
+const c = COURSES[course];
+const universities = (await getCollection('universities'))
+  .map((u) => ({ u, progs: u.data.programmes.filter((p) => p.course === course) }))
+  .filter((x) => x.progs.length > 0)
+  .sort((a, b) => a.u.data.shortName.localeCompare(b.u.data.shortName));
+const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})`;
+---
+<Base title={c.title} description={c.description}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Course</span><h1>{c.title}</h1><p>{c.description}</p></div></div>
+  <Breadcrumbs items={[{ label: 'Courses', href: '/courses/' }, { label: c.name }]} />
+  <section style="padding-top:1rem"><div class="wrap">
+    <p class="prose">{c.intro}</p>
+    <h2>Universities offering {c.name.toLowerCase()}</h2>
+    {universities.length === 0 && <p class="note">No university has yet been verified for this programme. Profiles are added as each is confirmed from official sources.</p>}
+    <div class="grid grid-2">
+      {universities.map(({ u, progs }) => progs.map((p) => (
+        <article class="card">
+          <h3><a href={`/universities/${u.data.slug}/#${p.id}`}>{u.data.shortName}</a></h3>
+          <p style="font-size:.9rem;color:var(--slate);margin:0">{u.data.city}{!u.data.verification.publishable && ' · '}{!u.data.verification.publishable && <span class="badge badge-pending">Verification in progress</span>}</p>
+          <dl style="margin:0">
+            <Fact label="Duration" claim={p.durationYears} format={(v) => `${v} years`} />
+            <Fact label="Language" claim={p.language} />
+            <Fact label="Tuition" claim={p.tuition} format={money} />
+          </dl>
+          <a class="more" href={`/universities/${u.data.slug}/#${p.id}`}>Full programme details →</a>
+        </article>
+      )))}
+    </div>
+    <h2 style="margin-top:2.5rem">What to check before you apply</h2>
+    <ul class="prose">{c.whatToCheck.map((t) => <li>{t}</li>)}</ul>
+    <p class="prose">See the <a href="/admissions/">admissions guide</a> for the application process and the <a href="/tuition-fees/">tuition fees guide</a> for how costs are published and verified.</p>
+    <p class="note">{SITE.disclaimer}</p>
+  </div></section>
+  <CtaBand title={`Apply for ${c.name.toLowerCase()}`} text="Start online and tell us your preferred universities — we will confirm the current requirements with you." />
+</Base>

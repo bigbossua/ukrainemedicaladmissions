@@ -1,0 +1,53 @@
+---
+import { NAV, SITE } from '../lib/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label={`${SITE.name} home`}>
+      <img src="/brand/uma-logo-horizontal-light.svg" alt={SITE.name} width="279" height="64" />
+    </a>
+    <nav aria-label="Main">
+      <button class="burger" type="button" aria-expanded="false" aria-controls="main-menu" data-menu-toggle>
+        <span class="visually-hidden">Menu</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul id="main-menu" data-menu>
+        {NAV.map((item) => (
+          <li><a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href={SITE.ctaHref}>{SITE.cta}</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-sm header-cta" href={SITE.ctaHref}>{SITE.cta}</a>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 1rem; }
+  .brand img { height: 40px; width: auto; display: block; }
+  nav { display: flex; align-items: center; gap: 1rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: none; gap: 1.75rem; align-items: center; }
+  ul a { color: var(--navy-900); text-decoration: none; font-weight: 500; }
+  ul a[aria-current="page"] { color: var(--blue-600); }
+  .menu-cta { display: none; }
+  .burger { display: inline-flex; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 10px; align-items: center; justify-content: center; background: #fff; color: var(--navy-900); cursor: pointer; }
+  @media (max-width: 899px) {
+    ul[data-open] { display: grid; position: absolute; left: 0; right: 0; top: 72px; background: #fff; border-bottom: 1px solid var(--line); padding: 1rem var(--gutter) 1.25rem; gap: .9rem; }
+    ul[data-open] .menu-cta { display: block; }
+    .header-cta { display: none; }
+  }
+  @media (max-width: 480px) { .brand img { height: 34px; } }
+  @media (min-width: 900px) { ul { display: flex; } .burger { display: none; } }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLUListElement>('[data-menu]');
+  btn?.addEventListener('click', () => {
+    const open = menu!.hasAttribute('data-open');
+    if (open) menu!.removeAttribute('data-open'); else menu!.setAttribute('data-open', '');
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+</script>

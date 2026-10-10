@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="Privacy notice" description="How Ukraine Medical Admissions collects, uses, stores and protects personal information from enquiries and applications.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Privacy notice</h1><p>Draft for legal review — effective date to be set before publication.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Privacy' }]} />
+  <section style="padding-top:1rem"><div class="wrap prose">
+    <h2>Who we are</h2>
+    <p>Ukraine Medical Admissions (“we”) operates {SITE.url}. Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. [Legal entity name, registered address and country to be inserted.]</p>
+    <h2>What we collect and why</h2>
+    <ul>
+      <li><strong>Enquiries and application starts:</strong> name, email, country, course and university interests, your message. Used to reply and advise you. Legal basis: your consent and steps taken at your request before any contract.</li>
+      <li><strong>Applications (when the secure dashboard is available):</strong> identity and academic documents you choose to upload. Used solely to prepare and, with your explicit confirmation, submit your application to the university. These are stored outside public web directories, access-controlled and retained only as long as needed.</li>
+      <li><strong>Website analytics:</strong> only aggregated, privacy-respecting measurement; no advertising trackers. [Tool to be confirmed.]</li>
+    </ul>
+    <h2>Sharing</h2>
+    <p>We share your information with a university only when you confirm an official submission. We do not sell personal data and we do not use it for advertising.</p>
+    <h2>Retention</h2>
+    <p>Enquiries: up to 12 months after our last contact. Application records and documents: for the duration of the application process and a limited period afterwards for accountability, then securely deleted. [Exact periods to be confirmed.]</p>
+    <h2>Your rights</h2>
+    <p>You can ask for a copy of your data, correction, deletion, or restriction of processing, and withdraw consent at any time by emailing us. Where UK or EU data-protection law applies, you also have the right to complain to the relevant supervisory authority.</p>
+    <h2>Security</h2>
+    <p>We use encrypted connections (HTTPS), restrict access to personal data to people who need it, keep documents out of public web directories, and keep records of who accessed what.</p>
+  </div></section>
+</Base>

@@ -1,0 +1,13 @@
+---
+import { SITE } from '../lib/site';
+interface Props { title?: string; text?: string; }
+const { title = 'Ready to begin?', text = 'Start your application in minutes. You can save your progress and come back at any time.' } = Astro.props;
+---
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>{title}</h2><p>{text}</p></div>
+      <a class="btn btn-on-dark" href={SITE.ctaHref}>{SITE.cta}</a>
+    </div>
+  </div>
+</section>

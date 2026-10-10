@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="Admission requirements & process" description="How international students apply to medical universities in Ukraine: the four application stages, documents usually requested, and what we do and do not do.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Admissions guide</span><h1>Admission requirements and application process</h1><p>What the process involves, which documents universities typically ask for, and exactly what we do and do not do.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Admissions' }]} />
+  <section style="padding-top:1rem"><div class="wrap prose">
+    <h2>Who sets the requirements</h2>
+    <p>Entry requirements, document lists and deadlines are set by each university and by Ukrainian regulations for international students. They change from year to year. On every university profile we show the published requirement with its source and the date we last checked it; where we have not yet confirmed a requirement it is marked “to be confirmed”.</p>
+
+    <h2 id="stages">The four stages of an application</h2>
+    <ol>
+      <li><strong>Enquiry.</strong> You tell us your course, preferred universities and background. Nothing is sent to any university.</li>
+      <li><strong>Draft application.</strong> You complete our online application and upload documents at your own pace. Still nothing is sent to a university.</li>
+      <li><strong>Application submitted to Ukraine Medical Admissions.</strong> You confirm your application to us. We review it, request anything missing and advise on eligibility.</li>
+      <li><strong>Official submission to the university.</strong> Only once you have confirmed, and only through the university's authorised procedure. We will never tell you an application has reached a university unless that step has actually been completed.</li>
+    </ol>
+
+    <h2 id="documents">Documents universities commonly request</h2>
+    <p>The exact list is confirmed per university and intake. Typical items include:</p>
+    <ul>
+      <li>Passport (valid for the period of study).</li>
+      <li>School-leaving certificate and transcript, with subject grades (often biology and chemistry are required for medicine).</li>
+      <li>For transfer or postgraduate applicants: prior academic transcripts.</li>
+      <li>Medical certificate and, where required, specific test results.</li>
+      <li>Passport-style photographs.</li>
+      <li>Certified translations into Ukrainian where the university requires them.</li>
+      <li>Legalisation or apostille of documents where required for your country.</li>
+    </ul>
+    <p>Do not send original documents to anyone until the university's procedure asks for them.</p>
+
+    <h2>Language of instruction</h2>
+    <p>Some programmes are taught in English and some in Ukrainian; availability for international applicants varies by programme and year. We record the language only from the university's official programme page.</p>
+
+    <h2>Timing</h2>
+    <p>Intake dates and deadlines are published by each university. Because they vary, we show them on the university profile rather than here, each with a check date.</p>
+
+    <h2>What we do not do</h2>
+    <p>We do not guarantee admission, visas, scholarships, recognition of a qualification in any country, or employment. {SITE.disclaimer}</p>
+    <p>Next: read the <a href="/tuition-fees/">tuition fees guide</a>, browse <a href="/universities/">universities</a>, or <a href="/apply/">start your application</a>.</p>
+  </div></section>
+  <CtaBand />
+</Base>

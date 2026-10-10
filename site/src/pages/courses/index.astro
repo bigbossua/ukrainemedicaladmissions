@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { COURSES } from '../../lib/courses';
+---
+<Base title="Courses for international students" description="Medicine, dentistry, nursing and pharmacy programmes at Ukrainian universities for international students — what each involves and who offers them.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Courses</span><h1>Courses for international students</h1><p>Choose a programme to see which universities offer it, in which language, and what has been verified.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Courses' }]} />
+  <section style="padding-top:1rem"><div class="wrap grid grid-2">
+    {Object.entries(COURSES).map(([slug, c]) => (
+      <article class="card"><h2 style="font-size:1.25rem">{c.name}</h2><p>{c.intro.split('. ')[0]}.</p><a class="more" href={`/courses/${slug}/`}>Universities offering {c.name.toLowerCase()} →</a></article>
+    ))}
+  </div></section>
+  <CtaBand />
+</Base>

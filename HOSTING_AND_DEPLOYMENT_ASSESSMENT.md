@@ -81,3 +81,19 @@ Pre-conditions before the first production write:
 - **D5 — Network access for verification.** Add the university domains (`tdmu.edu.ua` first), `hostinger.com`/`docs.hostinger.com`, and `ukrainemedicaladmissions.com` to the cloud environment's allowed domains, or supply official fee/admissions PDFs as uploads. Without one of these, no university facts will be written.
 - **D6 — SEMrush.** Confirm which account/key holds the 50,000 units.
 - **D7 — Brand.** Confirm I may finalise the logo design without a review round, as stated, or whether you want to see two directions first.
+
+---
+
+## 7. Update 2026-10-10 — deployment design now in the repository (PROPOSED, inactive)
+
+| Piece | Where | State |
+|---|---|---|
+| CI: build + `astro check` + link/meta/UI tests + `php -l` on every push touching `site/` | `.github/workflows/ci.yml` | Active on push (runs in GitHub, changes nothing outside the repo) |
+| Production-branch publisher: builds `site/dist` and force-pushes it to a `production` branch, tagging `release-<timestamp>` | `.github/workflows/publish-production-branch.yml` | **Manual trigger only**, requires typing `PUBLISH`; pushes nothing to Hostinger by itself |
+| Hostinger side | hPanel → Advanced → Git → connect `bigbossua/ukrainemedicaladmissions`, branch `production`, deploy dir = confirmed document root (D1) | **Owner action; not done** |
+| Staging | Same, with a `staging` branch and `staging.` subdomain directory (D4) | Not done |
+| Hosting rules | `site/public/.htaccess` (HTTPS + non-www canonical, headers, CSP, caching, private-file blocks) | Untested on Hostinger LiteSpeed — test on staging first |
+| Private data | PHP handler writes to `<document-root-parent>/uma-private/` (override with `UMA_PRIVATE_DIR`); `config.php` there holds notify address / mail toggle; nothing secret in Git | Tested locally with PHP's built-in server |
+| Rollback | Republish previous `release-*` tag via the workflow, or restore the pre-deployment backup | Documented in `SECURITY_AND_RELEASE_CHECKLIST.md` §D |
+
+SSH from this environment remains **not possible** (connection timeout + no client) and was not attempted further. No DNS, hosting or production change has been made.

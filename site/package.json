@@ -1,0 +1,26 @@
+{
+  "name": "ukrainemedicaladmissions-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Ukraine Medical Admissions — public website (Astro, static output)",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:links": "node tests/check-links.mjs",
+    "test:meta": "node tests/check-meta.mjs",
+    "test:ui": "node tests/ui-smoke.mjs",
+    "test": "npm run build && npm run test:links && npm run test:meta && npm run test:ui"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "playwright": "^1.56.1",
+    "typescript": "^5.9.3"
+  }
+}

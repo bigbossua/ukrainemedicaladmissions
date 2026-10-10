@@ -1,0 +1,87 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../lib/site';
+
+const universities = (await getCollection('universities')).sort((a, b) => a.data.shortName.localeCompare(b.data.shortName));
+const cities = [...new Set(universities.map((u) => u.data.city))].sort();
+const courseNames: Record<string, string> = { medicine: 'Medicine', dentistry: 'Dentistry', nursing: 'Nursing', pharmacy: 'Pharmacy', preparatory: 'Preparatory', other: 'Other' };
+---
+<Base title="Medical universities in Ukraine" description="Directory of Ukrainian medical universities for international students: programmes, teaching language, city and verification status with official sources.">
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Directory</span>
+      <h1>Medical universities in Ukraine</h1>
+      <p>Filter by city and course. Each profile shows what has been verified against official sources and what is still being confirmed.</p>
+    </div>
+  </div>
+  <Breadcrumbs items={[{ label: 'Universities' }]} />
+
+  <section style="padding-top:1rem">
+    <div class="wrap">
+      <form class="filters" data-filters aria-label="Filter universities">
+        <label class="field">City
+          <select name="city" data-filter="city"><option value="">All cities</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
+        </label>
+        <label class="field">Course
+          <select name="course" data-filter="course"><option value="">All courses</option>{Object.entries(courseNames).slice(0, 4).map(([k, v]) => <option value={k}>{v}</option>)}</select>
+        </label>
+        <label class="field">Teaching language
+          <select name="language" data-filter="language"><option value="">Any</option><option value="English">English</option><option value="Ukrainian">Ukrainian</option></select>
+        </label>
+      </form>
+      <p class="count" aria-live="polite"><span data-count>{universities.length}</span> {universities.length === 1 ? 'university' : 'universities'} listed</p>
+
+      <div class="grid grid-3" data-list>
+        {universities.map((u) => {
+          const courses = [...new Set(u.data.programmes.map((p) => p.course))];
+          const langs = [...new Set(u.data.programmes.flatMap((p) => p.language.value ?? []))];
+          return (
+            <article class="card" data-city={u.data.city} data-courses={courses.join(' ')} data-languages={langs.join(' ')}>
+              <h2 style="font-size:1.15rem"><a href={`/universities/${u.data.slug}/`}>{u.data.shortName}</a></h2>
+              <p style="font-size:.9rem;color:var(--slate);margin:0">{u.data.city}{u.data.region && `, ${u.data.region}`}</p>
+              <div class="chips">
+                {courses.map((c) => <span>{courseNames[c]}</span>)}
+                {langs.map((l) => <span>{l} {u.data.programmes.some((p) => p.language.status === 'verified') ? '' : '(pending)'}</span>)}
+              </div>
+              {!u.data.verification.publishable && <span class="badge badge-pending">Verification in progress</span>}
+              <a class="more" href={`/universities/${u.data.slug}/`}>View profile →</a>
+            </article>
+          );
+        })}
+      </div>
+      <p class="note" data-empty hidden>No universities match these filters yet. Our directory is expanding as each institution is verified.</p>
+      <p class="note">Only filters supported by verified or reported data are offered. Fee-range and deadline filters will appear once official fee schedules have been confirmed. {SITE.disclaimer}</p>
+    </div>
+  </section>
+  <CtaBand title="Not sure which university?" text="Start an application and tell us your course and country — we will help you shortlist." />
+</Base>
+
+<style>
+  .filters { display: grid; gap: 1rem; margin-bottom: 1rem; }
+  @media (min-width: 700px) { .filters { grid-template-columns: repeat(3, 1fr); } }
+  .count { font-size: .9rem; color: var(--slate); }
+</style>
+
+<script>
+  const selects = document.querySelectorAll<HTMLSelectElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-list] > article');
+  const count = document.querySelector('[data-count]');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  function apply() {
+    const f: Record<string, string> = {};
+    selects.forEach((s) => (f[s.dataset.filter!] = s.value));
+    let n = 0;
+    cards.forEach((c) => {
+      const ok = (!f.city || c.dataset.city === f.city) &&
+        (!f.course || (c.dataset.courses ?? '').split(' ').includes(f.course)) &&
+        (!f.language || (c.dataset.languages ?? '').split(' ').includes(f.language));
+      c.hidden = !ok; if (ok) n++;
+    });
+    if (count) count.textContent = String(n);
+    if (empty) empty.hidden = n > 0;
+  }
+  selects.forEach((s) => s.addEventListener('change', apply));
+</script>

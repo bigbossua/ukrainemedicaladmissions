@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+tests/output/
+.env
+.env.*
+# Never commit applicant data
+private/

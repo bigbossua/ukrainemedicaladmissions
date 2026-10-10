@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="Thank you — we have received your enquiry" description="Your enquiry has been received by Ukraine Medical Admissions." noindex={true}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Received</span><h1>Thank you — we have your enquiry</h1><p>We will reply by email, usually within two working days.</p></div></div>
+  <section><div class="wrap prose">
+    <p><strong>What this means:</strong> your enquiry has been received by Ukraine Medical Admissions. It has <strong>not</strong> been sent to any university, and no application has been submitted on your behalf. Those steps happen later, only with your confirmation.</p>
+    <p>Meanwhile you can read the <a href="/admissions/">admissions guide</a>, compare <a href="/universities/">universities</a> or review <a href="/tuition-fees/">fees</a>.</p>
+    <p>If you did not send this enquiry, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  </div></section>
+</Base>

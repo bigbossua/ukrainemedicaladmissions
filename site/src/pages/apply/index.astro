@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
+import { COURSES } from '../../lib/courses';
+import { SITE } from '../../lib/site';
+
+const universities = (await getCollection('universities')).sort((a, b) => a.data.shortName.localeCompare(b.data.shortName));
+---
+<Base title="Apply online — start your application" description="Start your application to a medical university in Ukraine. Tell us your course and background; nothing is sent to any university until you confirm.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Apply online</span><h1>Start your application</h1><p>Stage 1 of 4: your enquiry. It takes about two minutes, costs nothing, and sends nothing to a university.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Apply' }]} />
+  <section style="padding-top:1rem"><div class="wrap layout">
+    <form class="card" method="post" action="/api/enquiry.php" data-form data-prefill novalidate>
+      <input type="hidden" name="type" value="application-start" />
+      <h2 style="font-size:1.25rem">About your study plans</h2>
+      <label class="field">Course <span class="hint">(required)</span>
+        <select name="course" required>
+          <option value="">Choose a course</option>
+          {Object.entries(COURSES).map(([slug, c]) => <option value={slug}>{c.name}</option>)}
+        </select>
+      </label>
+      <label class="field">Preferred university
+        <select name="university">
+          <option value="">Help me choose</option>
+          {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
+        </select>
+      </label>
+      <label class="field">Intended start year
+        <select name="startYear"><option value="">Not sure yet</option><option>2027</option><option>2028</option></select>
+      </label>
+
+      <h2 style="font-size:1.25rem;margin-top:1rem">About you</h2>
+      <label class="field">Full name <span class="hint">(required)</span><input name="name" type="text" required autocomplete="name" /></label>
+      <label class="field">Email <span class="hint">(required)</span><input name="email" type="email" required autocomplete="email" /></label>
+      <label class="field">Country of your school-leaving certificate <span class="hint">(required)</span><input name="country" type="text" required autocomplete="country-name" /></label>
+      <label class="field">Highest qualification so far<input name="qualification" type="text" placeholder="e.g. A-levels, WAEC, 12th standard" /></label>
+      <label class="field">Anything else we should know?<textarea name="message" rows="4"></textarea></label>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+      <label class="checkbox"><input type="checkbox" name="consent" value="yes" required /> <span>I agree to Ukraine Medical Admissions storing this information to respond to my enquiry, as described in the <a href="/privacy/">privacy notice</a>. I understand this is not an application to a university.</span></label>
+      <button class="btn btn-primary" type="submit">{SITE.cta} →</button>
+      <p class="err" data-form-error hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
+      <p style="font-size:.8rem;color:var(--slate);margin:.75rem 0 0">Do not upload or email passport or certificate scans at this stage. We will ask for documents only through the secure application dashboard once it is available.</p>
+    </form>
+
+    <aside class="side">
+      <div class="card">
+        <h3>What happens next</h3>
+        <ol style="padding-left:1.1rem;margin:0;font-size:.95rem">
+          <li>We confirm receipt by email.</li>
+          <li>We check your course and university choice against current, verified requirements.</li>
+          <li>You receive a personal document checklist and the next steps.</li>
+          <li>Nothing is sent to a university until you confirm.</li>
+        </ol>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h3>The four stages</h3>
+        <p style="font-size:.9rem;margin:0">Enquiry → Draft application → Submitted to our service → Official submission to the university. <a href="/admissions/#stages">Read more</a>.</p>
+      </div>
+    </aside>
+  </div></section>
+</Base>
+<style>
+  .layout { display: grid; gap: 2rem; }
+  @media (min-width: 900px) { .layout { grid-template-columns: 1fr 320px; align-items: start; } }
+  .hp { position: absolute; left: -9999px; }
+</style>
+<script src="../../scripts/form-validate.ts"></script>
+<script>
+  // Prefill from ?course=&university= (links from profile and course pages).
+  const q = new URLSearchParams(location.search);
+  for (const k of ['course', 'university']) {
+    const v = q.get(k); const el = document.querySelector<HTMLSelectElement>(`form[data-prefill] [name="${k}"]`);
+    if (v && el && [...el.options].some((o) => o.value === v)) el.value = v;
+  }
+</script>

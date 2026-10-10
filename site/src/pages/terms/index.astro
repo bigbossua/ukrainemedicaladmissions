@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="Terms of use" description="Terms of use for the Ukraine Medical Admissions website and information service.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Terms of use</h1><p>Draft for legal review — effective date to be set before publication.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Terms' }]} />
+  <section style="padding-top:1rem"><div class="wrap prose">
+    <h2>Information on this site</h2>
+    <p>We check university information against official sources and show the status and date of each check. Universities change their fees, requirements and programmes; always confirm with the university before relying on any fact. We are not responsible for decisions made on the basis of information marked pending or to be confirmed.</p>
+    <h2>No guarantees</h2>
+    <p>We do not guarantee admission, visas, scholarships, recognition of qualifications in any country, or employment. Admission decisions are made solely by universities.</p>
+    <h2>Independence</h2>
+    <p>{SITE.disclaimer}</p>
+    <h2>Our services</h2>
+    <p>Starting an enquiry or application on this site is free. Any paid support service will be described in full — inclusions, exclusions, price, payment timing and refund terms — before you choose it, and separately from any university fee. [Service terms to be added when services are approved.]</p>
+    <h2>Acceptable use</h2>
+    <p>You agree to provide accurate information and not to submit documents that are forged or that you are not entitled to use.</p>
+    <h2>Contact</h2>
+    <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+  </div></section>
+</Base>

@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+
+const sections = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
+const all = sections.flatMap((s) => s.data.items);
+// FAQPage structured data: every Q&A below is visible on the page.
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: all.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+}];
+---
+<Base title="Student FAQ" description="Answers for international applicants: fees to apply, what counts as a submitted application, guarantees, and how our university information is verified." jsonLd={jsonLd}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">FAQ</span><h1>Student questions, answered plainly</h1><p>If your question is not here, contact us or start an application and ask within it.</p></div></div>
+  <Breadcrumbs items={[{ label: 'FAQ' }]} />
+  <section style="padding-top:1rem"><div class="wrap prose">
+    {sections.map((s) => (
+      <>
+        <h2>{s.data.section}</h2>
+        {s.data.items.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </>
+    ))}
+    <p style="margin-top:2rem">Still unsure? See the <a href="/admissions/">admissions guide</a>, the <a href="/tuition-fees/">fees guide</a>, or <a href="/contact/">contact us</a>.</p>
+  </div></section>
+  <CtaBand />
+</Base>

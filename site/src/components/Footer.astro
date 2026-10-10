@@ -1,0 +1,54 @@
+---
+import { SITE } from '../lib/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img src="/brand/uma-logo-horizontal-dark.svg" alt={SITE.name} width="279" height="64" />
+        <p>{SITE.disclaimer}</p>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="/universities/">Universities</a></li>
+          <li><a href="/courses/">Courses</a></li>
+          <li><a href="/tuition-fees/">Tuition &amp; fees</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Apply</h2>
+        <ul>
+          <li><a href="/admissions/">Admission requirements</a></li>
+          <li><a href="/admissions/#documents">Documents checklist</a></li>
+          <li><a href="/apply/">{SITE.cta}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">© {year} {SITE.name}. Information is checked against official sources and dated on each page; always confirm with the university before relying on it.</div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--navy-900); color: #CFDAEC; padding: 3rem 0 2rem; font-size: .9rem; }
+  .cols { display: grid; gap: 2rem; }
+  @media (min-width: 800px) { .cols { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
+  h2 { color: #fff; font-size: 1rem; margin: 0 0 .75rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
+  a { color: #CFDAEC; text-decoration: none; }
+  a:hover { color: #fff; text-decoration: underline; }
+  img { height: 44px; width: auto; margin-bottom: 1rem; }
+  .legal { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.25rem; font-size: .8rem; color: #9FB0CC; }
+</style>

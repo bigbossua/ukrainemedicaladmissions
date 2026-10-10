@@ -1,0 +1,40 @@
+# Publishes the BUILT site (site/dist) to the `production` branch, which Hostinger's
+# Advanced → Git feature can deploy into the domain's document root.
+#
+# SAFETY: manual trigger only (workflow_dispatch). Nothing deploys until
+# (a) the owner runs this workflow, AND (b) Hostinger Git has been connected to the
+# `production` branch by the owner in hPanel. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md.
+name: Publish production branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type PUBLISH to confirm you have completed SECURITY_AND_RELEASE_CHECKLIST.md'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: ${{ github.event.inputs.confirm == 'PUBLISH' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
+      - run: npm ci
+        working-directory: site
+      - run: npm run build && npm run test:links && npm run test:meta
+        working-directory: site
+      - name: Push dist to production branch
+        run: |
+          git config user.name "uma-release-bot"
+          git config user.email "noreply@ukrainemedicaladmissions.com"
+          TAG="release-$(date -u +%Y%m%d-%H%M%S)"
+          git tag "$TAG" && git push origin "$TAG"
+          cd site/dist
+          git init -q && git checkout -q -b production
+          git add -A && git commit -q -m "Build ${GITHUB_SHA::7} ($TAG)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" production

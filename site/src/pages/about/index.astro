@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="About Ukraine Medical Admissions" description="Independent admissions support for international students applying to medical universities in Ukraine, built on verified, dated information.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">About</span><h1>Independent, evidence-based admissions support</h1><p>We exist to make applying to a Ukrainian medical university clear, honest and manageable.</p></div></div>
+  <Breadcrumbs items={[{ label: 'About' }]} />
+  <section style="padding-top:1rem"><div class="wrap prose">
+    <h2>What we do</h2>
+    <p>Ukraine Medical Admissions helps international students understand their options at Ukrainian medical universities and prepare complete, accurate applications. We maintain a directory of universities and programmes in which every fact — fee, deadline, language, requirement — is tied to an official source and a check date.</p>
+    <h2 id="verification">How we verify information</h2>
+    <ol>
+      <li>We record each fact from the university's official website, fee schedule or admissions document, or from a Ukrainian government register, and store the source URL.</li>
+      <li>Each fact is marked <strong>verified</strong> only once it has been checked against that source; otherwise it is shown as <strong>pending</strong> or <strong>to be confirmed</strong>.</li>
+      <li>We date every check and review profiles before each intake. Outdated facts are flagged rather than silently left in place.</li>
+      <li>We do not publish rankings, student numbers, success rates or testimonials we cannot evidence.</li>
+    </ol>
+    <h2>Our independence</h2>
+    <p>{SITE.disclaimer} University fees are paid to the university. Any fee for our own services is explained in full — inclusions, exclusions and refund terms — before you choose it.</p>
+    <h2>Contact</h2>
+    <p>Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or use the <a href="/contact/">contact form</a>.</p>
+  </div></section>
+  <CtaBand />
+</Base>

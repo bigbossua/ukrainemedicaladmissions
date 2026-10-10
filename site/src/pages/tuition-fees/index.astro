@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { SITE, formatDate } from '../../lib/site';
+
+const universities = (await getCollection('universities')).sort((a, b) => a.data.shortName.localeCompare(b.data.shortName));
+const rows = universities.flatMap((u) => u.data.programmes.map((p) => ({ u, p })));
+const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / ${m.per} (${m.academicYear})`;
+---
+<Base title="Tuition fees & study costs in Ukraine" description="How tuition fees at Ukrainian medical universities are published, what other costs to budget for, and the fees we have verified from official sources, with dates.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Tuition fees and study costs</h1><p>We publish a fee only when it comes from the university's official fee schedule, with the academic year, currency and the date we checked it.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Tuition & fees' }]} />
+  <section style="padding-top:1rem"><div class="wrap">
+    <div class="prose">
+      <h2>How fees are published</h2>
+      <p>Each university sets its own tuition fee per programme and academic year, usually in US dollars or euros, payable per year or per semester. Fees can change between intakes. For that reason every fee on this site carries the academic year it applies to and the date it was last verified. Fees from different years or currencies are never combined into a single figure.</p>
+      <h2>Costs beyond tuition</h2>
+      <ul>
+        <li><strong>University charges</strong> — e.g. application or registration fees, invitation-letter processing, medical insurance arranged by the university. Listed per university where published.</li>
+        <li><strong>Accommodation</strong> — university hostels or private rental; prices shown only where a current official source exists.</li>
+        <li><strong>Living costs, visa fees, travel, document translation and legalisation</strong> — vary by person and country; we do not publish estimates we cannot source.</li>
+        <li><strong>Our service fee</strong> — charged by Ukraine Medical Admissions, not the university, and shown separately on the application dashboard once you have applied. No service fee is charged to start an application.</li>
+      </ul>
+      <p>Any “total cost” we show in future will list its components, sources and dates. An estimate is never a guaranteed total.</p>
+    </div>
+
+    <h2 style="margin-top:2rem">Verified tuition fees</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>University</th><th>Programme</th><th>Tuition fee</th><th>Status</th><th>Checked</th></tr></thead>
+        <tbody>
+          {rows.map(({ u, p }) => (
+            <tr>
+              <td><a href={`/universities/${u.data.slug}/#${p.id}`}>{u.data.shortName}</a></td>
+              <td>{p.name}</td>
+              <td>{p.tuition.value && p.tuition.status === 'verified' ? money(p.tuition.value) : <span class="badge badge-pending">To be confirmed</span>}</td>
+              <td>{p.tuition.status === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{p.tuition.status === 'unverified' ? 'Pending' : 'Not yet published'}</span>}</td>
+              <td>{p.tuition.checked ? formatDate(p.tuition.checked) : '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Fees shown as “to be confirmed” have not yet been verified from the university's official schedule and are deliberately withheld. {SITE.disclaimer}</p>
+    <p class="prose">Browse <a href="/universities/">university profiles</a> for full programme details, or read the <a href="/admissions/">admissions guide</a>.</p>
+  </div></section>
+  <CtaBand title="Want the current fee confirmed for your course?" text="Start an application and we will confirm the published fee schedule with you before you commit to anything." />
+</Base>

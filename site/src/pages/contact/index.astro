@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="Contact Ukraine Medical Admissions" description="Contact Ukraine Medical Admissions by email or using the enquiry form. For applications, use Apply Online Now.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Contact</span><h1>Contact us</h1><p>For a general question, use the form below. To apply, use <a style="color:#fff" href="/apply/">{SITE.cta}</a>.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Contact' }]} />
+  <section style="padding-top:1rem"><div class="wrap grid grid-2" style="align-items:start">
+    <div class="prose">
+      <h2>Email</h2>
+      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <p>We reply by email only; we do not handle enquiries through messaging apps.</p>
+      <h2>Before you write</h2>
+      <p>Most questions about fees, requirements and the process are answered in the <a href="/faq/">FAQ</a>, the <a href="/admissions/">admissions guide</a> and the <a href="/tuition-fees/">fees guide</a>.</p>
+    </div>
+    <form class="card" method="post" action="/api/enquiry.php" data-form novalidate>
+      <h2 style="font-size:1.25rem">Send an enquiry</h2>
+      <input type="hidden" name="type" value="enquiry" />
+      <label class="field">Your name<input name="name" type="text" required autocomplete="name" /></label>
+      <label class="field">Email<input name="email" type="email" required autocomplete="email" /></label>
+      <label class="field">Your message<textarea name="message" rows="5" required></textarea></label>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+      <label class="checkbox"><input type="checkbox" name="consent" value="yes" required /> <span>I agree to Ukraine Medical Admissions storing this enquiry and replying by email, as described in the <a href="/privacy/">privacy notice</a>.</span></label>
+      <button class="btn btn-primary" type="submit">Send enquiry</button>
+      <p class="err" data-form-error hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
+    </form>
+  </div></section>
+</Base>
+<style>.hp{position:absolute;left:-9999px}</style>
+<script src="../../scripts/form-validate.ts"></script>

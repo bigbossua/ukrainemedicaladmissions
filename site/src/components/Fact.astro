@@ -1,0 +1,37 @@
+---
+/**
+ * Renders one verified-or-pending claim as a definition row.
+ * Unverified / not-published values are never shown as plain fact.
+ */
+import { formatDate } from '../lib/site';
+interface Props {
+  label: string;
+  claim: { value: unknown; status: string; source: string | null; checked: string | null; note?: string };
+  format?: (v: any) => string;
+}
+const { label, claim, format } = Astro.props;
+const hasValue = claim.value !== null && claim.value !== undefined && !(Array.isArray(claim.value) && claim.value.length === 0);
+const verified = claim.status === 'verified' && hasValue;
+const display = hasValue ? (format ? format(claim.value) : Array.isArray(claim.value) ? claim.value.join(', ') : String(claim.value)) : null;
+---
+<div class="fact">
+  <dt>{label}</dt>
+  <dd>
+    {verified ? (
+      <>
+        {display} <span class="badge badge-verified">Verified</span>
+        <small>Source: {claim.source ? <a href={claim.source} rel="nofollow noopener">official page</a> : 'official document'}{claim.checked && ` · checked ${formatDate(claim.checked)}`}</small>
+      </>
+    ) : hasValue && claim.status === 'unverified' ? (
+      <>
+        <span class="tbc">{display}</span> <span class="badge badge-pending">Verification pending</span>
+        <small>Reported value — not yet confirmed against an official source.</small>
+      </>
+    ) : (
+      <>
+        <span class="badge badge-pending">To be confirmed</span>
+        <small>Not yet published here. We only list this once it is confirmed from an official source.</small>
+      </>
+    )}
+  </dd>
+</div>

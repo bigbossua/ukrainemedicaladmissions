@@ -1,0 +1,29 @@
+name: Site CI
+
+on:
+  push:
+    paths: ['site/**', '.github/workflows/ci.yml']
+  pull_request:
+    paths: ['site/**']
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run: { working-directory: site }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
+      - run: npm ci
+      - run: npx astro check
+      - run: npm run build
+      - run: npm run test:links
+      - run: npm run test:meta
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
+      - run: php -l public/api/enquiry.php
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: ui-screenshots, path: site/tests/output, retention-days: 14 }
