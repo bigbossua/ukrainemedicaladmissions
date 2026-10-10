@@ -20,8 +20,23 @@ Every material SEMrush API request is recorded here. No keys or credentials are 
 | 2026-10-10 | `keyword_research` discovery; `get_report_schema` ×2 (`phrase_this`, `phrase_fullsearch`) | — | Choose reports, check parameters | 0 | OK | unknown |
 | 2026-10-10 | `execute_report phrase_all` | phrase="study medicine in ukraine"; columns database,keyword,volume,cpc,competitive_density,results,keyword_difficulty,intent | Country-demand evidence (Part 9) | **910 metered** (91 lines × 10; estimate was ≈300 — report returns zero-volume databases too) | `research/semrush/2026-10-10-phrase_all-study-medicine-in-ukraine.csv` | unknown (≈49,000 if balance was 50,000) |
 | 2026-10-10 | `execute_report phrase_these` | database=uk; 20 seed phrases; columns + keyword_difficulty, intent | Validate seed keywords (Part 8) | **130 metered** (12 lines with data; 8 seeds had no data) | `research/semrush/2026-10-10-phrase_these-uk-seeds.csv` | unknown (≈48,860) |
+| 2026-10-10 (approved follow-up) | `execute_report phrase_these` | database=in; 8 variants (study medicine in ukraine; mbbs in ukraine; medical universities in ukraine; study in ukraine; ukraine medical university; medicine in ukraine; mbbs in ukraine fees; ukraine mbbs); columns + kd, intent | Country targeting (Part 9) | published 10/line × 8 = **80**; MCP `usage.api_units` field returned 520 | `research/semrush/2026-10-10-phrase_these-in-variants.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_these` | database=ng; same 8 variants | same | published **80**; MCP field 1040 | `…phrase_these-ng-variants.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_these` | database=uk; same 8 variants | same | published **80**; MCP field 1040 | `…phrase_these-uk-variants.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_these` | database=za; same 8 variants | same | published **80**; MCP field 1120 | `…phrase_these-za-variants.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_these` | database=ae; same 8 variants | same | published **80**; MCP field 1120 | `…phrase_these-ae-variants.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_these` | database=pk; same 8 variants | same | published **80**; MCP field 1120 | `…phrase_these-pk-variants.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_fullsearch` | database=in; phrase="ukraine medical"; display_limit=18; sort volume_desc; columns + kd, intent | How Indian applicants phrase searches; cluster discovery (Part 8) | published 20/line × 18 = **360**; MCP field 1200 | `…phrase_fullsearch-in-ukraine-medical.csv` | unknown |
+| 2026-10-10 | `execute_report phrase_fullsearch` | database=uk; same | Same for UK | published **360**; MCP field 1120 | `…phrase_fullsearch-uk-ukraine-medical.csv` | unknown |
 
-**Total units spent (metered by the MCP): 1,040.** Remaining under the 2,000-unit pilot cap: 960. Paid calls paused pending owner review of the first results and confirmation of the balance.
+**Units spent — two readings, to be settled by the owner reading the API Units page:**
+
+| Reading | Pilot (2 calls) | Approved follow-up (8 calls, run in parallel) | Cumulative |
+|---|---|---|---|
+| A — SEMrush published per-line prices | 1,040 | 6 × 80 + 2 × 360 = **1,200** (exactly the approved amount) | **2,240** |
+| B — MCP `metadata.usage.api_units` taken as a per-call cost | 1,040 | 520+1040+1040+1120+1120+1120+1200+1120 = 8,280 | 9,320 |
+
+Reading B is almost certainly wrong: six identical 8-line requests reported six different values, so the field cannot be a per-call price; the values rise toward exactly 1,200 — the published-price total for the batch — which fits a running counter observed at different moments by concurrent calls. Earlier sequential calls (910 for 91 lines; 130 for 12–13 lines) matched the published price list. **Working assumption: Reading A (balance ≈ 50,000 − 2,240 = 47,760 if the owner's screenshot balance was current). This is an assumption until the owner confirms the balance; no further paid call will be made before that confirmation.**
 
 **Lesson recorded:** `phrase_all` bills every regional database (≈90 lines) even when volume is 0 — use `phrase_this`/`phrase_these` with explicit databases for all further country checks (10 units per keyword-database).
 
@@ -51,7 +66,7 @@ Every material SEMrush API request is recorded here. No keys or credentials are 
 
 **Smallest action to resolve:** owner opens https://www.semrush.com/mcp-access while logged in to the account that showed 50,000 units and confirms (a) the API-unit balance and (b) that the MCP connection is linked to that account. No purchase, upgrade or billing change is requested.
 
-## Pilot plan once units exist (≤ 200 units before review)
+## Original pilot plan (superseded by the executed pilot above)
 
 1. `get_report_schema` for `phrase_all` / keyword overview → note per-line cost from the schema.
 2. Keyword overview for the 20 seed phrases (`KEYWORD_URL_MAP.md`) in database `uk` first, then `in`, `ng`, `pk`, `gh`, `ke`, `za`, `bd`, `ae` **only if** the UK run shows the metric set is useful.
