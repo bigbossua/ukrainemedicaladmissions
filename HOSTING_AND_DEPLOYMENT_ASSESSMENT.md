@@ -97,3 +97,32 @@ Pre-conditions before the first production write:
 | Rollback | Republish previous `release-*` tag via the workflow, or restore the pre-deployment backup | Documented in `SECURITY_AND_RELEASE_CHECKLIST.md` §D |
 
 SSH from this environment remains **not possible** (connection timeout + no client) and was not attempted further. No DNS, hosting or production change has been made.
+
+---
+
+## 8. Direction change 2026-10-10 (evening): direct production development — inspection attempt and routes
+
+**Owner's instruction:** work directly on the live site; staging is no longer a prerequisite; the first production write still requires an explicit, itemised approval; no uncontrolled overwrite.
+
+**Re-tested from this environment (all VERIFIED, same session):**
+
+| Target | Result |
+|---|---|
+| `https://ukrainemedicaladmissions.com/` (also `/services`, `/robots.txt`, `/sitemap.xml`, `www.`, `http://`) | 000 — connection refused by the environment's network policy |
+| `hpanel.hostinger.com`, `developers.hostinger.com` | 000 — blocked |
+| SSH/SFTP port on the Hostinger host | TCP connect times out; **no `ssh`/`sftp` client installed** (`curl` has sftp/scp/ftp support, but the TCP path is closed) |
+| Hostinger credentials or API token in the environment | none present |
+| Browser / remote-device tools (to use the owner's logged-in hPanel) | none attached to this session |
+| Official university domains | 000 — blocked |
+
+**Consequence:** the live files, document root, PHP version, routing, forms, redirects and sitemap **cannot be inspected from this container**, and no file on the server can be read or written from it. Three routes make direct production work possible without that:
+
+| Route | What it gives | What the owner does | Network needed here |
+|---|---|---|---|
+| **R1 — Hostinger Git (recommended for writes)** | Hostinger pulls the `production` branch into the directory the owner chooses; every deploy is a Git push from this repo; rollback = republish the previous release tag or a backup | hPanel → Websites → domain → Advanced → Git → connect `bigbossua/ukrainemedicaladmissions`, branch `production`, deploy directory = the real document root | none |
+| **R2 — Backup upload (recommended for inspection)** | The live files themselves: CMS, PHP, `.htaccess`, forms, sitemap, redirects — read here, nothing touched on the server | hPanel → Files → Backups (or File Manager → select the real site directory → Compress) → download the zip → upload it to this session; also a screenshot of hPanel → domain → FTP/Files showing the path, and PHP Configuration | none |
+| **R3 — Allow-list + credentials** | Live HTTP inspection of the domain; SFTP only if non-HTTP egress is enabled, which it currently is not | Environment settings → Network: add `ukrainemedicaladmissions.com`, `www.`, `hpanel.hostinger.com`; for SFTP a credential stored as an environment secret (never pasted in chat) and a network policy that permits the SSH port | yes |
+
+**Semrush as live-site evidence (reachable; costed; awaiting approval):** `resource_organic_unique` for the production domain lists the live pages that currently rank (the pages carrying SEO equity) — published price 10 units per row, `display_limit` 50 ⇒ **≤ 500 units**, almost certainly far fewer because the domain ranks for few terms. `resource_organic` (keyword → URL, position) ⇒ same per-row price, ≤ 500. `list_projects` reveals whether a Site Audit crawl (status codes, redirects, pages) already exists — Semrush documents Projects API calls as not consuming Standard API units, but that is UNVERIFIED here; it will be run only on approval and its metered usage recorded.
+
+**No production write will be made before the owner approves an itemised first-change plan** (document root, live technology, exact files, backup/rollback, URL/indexing/form impact, unresolved risks).
