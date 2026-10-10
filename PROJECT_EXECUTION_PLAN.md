@@ -17,22 +17,28 @@
 | Deployment | PREPARED, NOT ACTIVE — CI workflow + manual production-branch publisher; Hostinger Git connection is an owner action |
 | Production | UNTOUCHED |
 
-## 2. Architecture decision (PROPOSED → implemented in repo pending approval)
+## 2. Architecture: reconciling the brief's "Kirby" with the implemented Astro site (updated 2026-10-10)
 
-**Chosen: Astro (static output) + a small PHP layer for forms, deployed as plain files.**
+**The discrepancy, stated plainly.** The master brief names Kirby as the CMS ("CMS: Kirby — verify current version"; "Inspect the existing Kirby architecture before making technical decisions"). The repository contains no Kirby code and nobody has yet seen the old site's files; the site built so far is Astro (static) + a PHP enquiry handler. The earlier version of this section rejected Kirby because "the licence is a recurring cost" — **that premise was wrong**: Kirby Basic is **€99 per production site, one-time**, with three years of feature upgrades included (getkirby.com/buy, 2026). The decision is therefore re-opened and put to the owner below. No migration or destructive change is made without explicit approval.
 
-| Criterion | Astro (chosen) | Kirby CMS |
-|---|---|---|
-| Hostinger shared PHP hosting | Static HTML/CSS/JS runs anywhere; PHP handler for forms | Native PHP — also fine |
-| Licence / recurring cost | £0 (MIT) | Paid per-site licence (not approved) |
-| Non-technical editing (succession) | Structured JSON content, validated at build; editable on GitHub's web UI; a free git-based CMS (Decap) can be added later | Built-in Panel — best editor UX |
-| Security / maintenance | No server-side CMS attack surface; dependencies pinned, CI-checked | PHP app to patch; Panel login to protect |
-| Structured university data | Zod-validated schema; build fails on bad data | Blueprints/structure fields |
-| SEO / URL stability | Full control of canonical, robots, sitemap, JSON-LD | Full control |
-| Application system | Separate PHP/MySQL module under `/apply/` (Phase 5) — independent of the CMS either way | Same |
-| Version control / rollback | Everything in Git; release = tag; rollback = republish previous tag | Content files in Git too |
+**Evidence base (VERIFIED unless marked):** Kirby 5 requires PHP 8.2–8.4 (8.5 from 5.2.1); Hostinger's current support page says hPanel offers PHP 8.2–8.5 with 8.3 default — *plan-specific availability for this account UNVERIFIED*; Hostinger Git deploys a branch into a directory with no build step (UNVERIFIED whether it leaves untracked directories such as a Kirby `content/` folder untouched); live pages exist on the production domain (`/services`, `/about`, `/document-translation-legalisation`) while the File Manager `public_html` shown was empty, so the old site's files and technology remain uninspected; the Astro build is CI-green on `4d8f250` with link, metadata, Playwright, axe and Lighthouse checks passing.
 
-Why not Kirby: the licence is a recurring cost requiring approval, and the only thing it buys over Astro here is the editor UI, which can be added for free later. Decision reversible: content is plain JSON.
+**Comparison (from an adversarial panel: three advocates, two independent judges — one scoring "the daughter operating alone in five years", one scoring "business risk now" — and a synthesis):**
+
+| Criterion | A — Kirby 5 on Hostinger PHP | B — keep Astro, add free git-CMS later | C — Astro-first with written Kirby trigger |
+|---|---|---|---|
+| Hostinger compatibility & deployment | Needs PHP 8.2+ (unverified on this plan); Panel writes content on the server while Git deploys from the repo — content-sync design unsolved (data-loss failure mode) | Static output needs nothing; only `enquiry.php` needs PHP 8.x; built branch deployed by Hostinger Git | Same as B, with written preconditions (document root, old-site inspection, staging proof) |
+| Content editing & succession | Strongest on paper: first-party Panel, save-time validation of each fee/source/date; blueprints and roles unbuilt | Weakest today: editing is a 100-line nested JSON on GitHub; Decap/Sveltia unbuilt, no trigger | Same tooling as B today, plus a measurable task test for the successor and a defined trigger to move to Kirby |
+| SEO & URL preservation | Full server control, but sitemap/canonical/JSON-LD/noindex logic must be re-implemented and re-tested | Suite already green; 301 map from old URLs undone in every option | Same as B |
+| Secure application system | One PHP runtime, but a second login surface (Panel) on the host that will hold applicant uploads; CSP must be path-scoped for `/panel` | Separate PHP+MySQL module under `/apply/`; public site has no login surface | Same as B; names the `/apply/app/` isolation explicitly |
+| Licensing & cost | €99 one-time (verified); needs owner approval; post-3-year upgrade terms and staging coverage are assumptions | £0 licence; unpriced contractor time for Node toolchain upkeep | £0 until a trigger fires; €99 pre-approved in principle |
+| Portability, maintainability, operation by the daughter | Flat text files on any PHP host, no build step; Panel is a patch-treadmill surface | Content is plain JSON, output plain HTML; but regenerating output depends on GitHub + Actions + Node, which a non-developer cannot repair when it drifts | Same exposure as B, mitigated by a planned conversion path |
+| Work completed / cost & risk of changing | Discards a tested CI-green build; 2–4 unmeasured build days; two unverified hosting facts | Zero switching cost, but silently drops the brief's named CMS | Zero switching cost; deviation recorded with reversal conditions |
+| Judge totals (J1 succession / J2 business-risk) | **7.2 / 6.0** — the only disputed placement (1st / 3rd) | 6.7 / 7.25 | **6.9 / 7.5** — never ranked last |
+
+**Recommendation (PROPOSED):** Option C. Keep the tested Astro build as the staging candidate; record Kirby as the live alternative with a written trigger rather than dropping it; fire the trigger if (a) the real document root reveals a licensed Kirby install with reusable content, or (b) the successor fails a defined editing task test ("update a tuition claim with source and date, add an FAQ, publish") on the free git-based editor once it is prototyped on staging. Both judges agree on the first action regardless of ranking: **a ten-minute check in hPanel → PHP Configuration** (is 8.2–8.4 selectable?) and inspection of the real document root, before any further architectural argument.
+
+**Decision D3 for the owner (requires explicit answer):** *Rebuild on Kirby now* (approve €99 licence; accept 2–4 build days and the discard of the Astro build; blocked outright if PHP 8.2+ is not selectable) — or — *Astro-first with the Kirby trigger* (proceed to staging once the document root is confirmed; give in-principle approval of the €99 licence so a later trigger does not stall). Either way, before any production write: inspect and back up the real document root, confirm the PHP version, build the redirect map.
 
 ## 3. What exists in `site/`
 
@@ -79,4 +85,4 @@ Why not Kirby: the licence is a recurring cost requiring approval, and the only 
 
 ## 7. Decisions still required
 
-D1 document root · D2 approve Hostinger Git deployment · D3 confirm Astro (Kirby rejected on cost) · D4 staging subdomain · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms.
+D1 document root · D2 approve Hostinger Git deployment · D3 Kirby-now vs Astro-first-with-trigger (see §2; the earlier 'rejected on cost' reasoning was wrong — Kirby is €99 one-time) · D4 staging subdomain · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms.

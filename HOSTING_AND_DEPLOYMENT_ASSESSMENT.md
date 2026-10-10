@@ -76,7 +76,7 @@ Pre-conditions before the first production write:
 
 - **D1 — Document root.** In hPanel, open the domain's FTP/File details and confirm the exact path for `ukrainemedicaladmissions.com`. Is it `/public_html` or `/domains/ukrainemedicaladmissions.com/public_html`? Is it empty?
 - **D2 — Deployment method.** Approve Option A (hPanel Git ↔ GitHub App) as primary, Option B as fallback. You perform the one-time GitHub authorisation in hPanel; I never hold a key.
-- **D3 — Technology.** Kirby (paid licence, editor Panel for succession) or Astro (free, no editor UI)? I recommend Kirby if the licence is acceptable.
+- **D3 — Technology.** Re-opened 2026-10-10 with an adversarial panel (see `PROJECT_EXECUTION_PLAN.md` §2): Kirby is €99 **one-time** (not recurring); recommendation is Astro-first with a written Kirby trigger, but the owner must answer D3 explicitly. First action under either answer: hPanel → PHP Configuration (8.2–8.4 selectable?) and inspection of the real document root.
 - **D4 — Staging.** Approve creating a `staging.ukrainemedicaladmissions.com` subdomain in hPanel (DNS change, so owner-performed) with its own directory.
 - **D5 — Network access for verification.** Add the university domains (`tdmu.edu.ua` first), `hostinger.com`/`docs.hostinger.com`, and `ukrainemedicaladmissions.com` to the cloud environment's allowed domains, or supply official fee/admissions PDFs as uploads. Without one of these, no university facts will be written.
 - **D6 — SEMrush.** Confirm which account/key holds the 50,000 units.
