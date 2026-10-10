@@ -25,6 +25,7 @@ jobs:
       - run: npm run test:ui
       - run: npm run test:a11y
       - run: npm run test:perf
+      - run: npm run test:staging
       - run: php -l public/api/enquiry.php
       - uses: actions/upload-artifact@v4
         if: always()

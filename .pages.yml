@@ -1,0 +1,82 @@
+# Pages CMS configuration (Option C, rung 1 — free, git-based editor for non-technical editing).
+# NOTHING is active until the owner installs the Pages CMS GitHub App on this repository (owner decision:
+# it grants a third-party hosted service read/write access to the repo). Until then this file is inert.
+# Alternative free editors with the same model: Decap CMS, Sveltia CMS (both need an OAuth relay).
+media:
+  input: site/public/images
+  output: /images
+
+content:
+  - name: universities
+    label: Universities
+    type: collection
+    path: site/src/content/universities
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      fields: [shortName, city, verification.publishable]
+    fields:
+      - { name: slug, label: Slug (URL), type: string, required: true, pattern: "^[a-z0-9-]+$" }
+      - { name: shortName, label: Short name (as shown on the site), type: string, required: true }
+      - { name: city, label: City, type: string, required: true }
+      - { name: region, label: Region, type: string }
+      - { name: alternativeNames, label: Alternative / former names, type: string, list: true }
+      - { name: overview, label: Overview (our own neutral description — no claims beyond verified fields), type: text }
+      - name: officialName
+        label: Official name (claim)
+        type: object
+        fields: &claim
+          - { name: value, label: Value, type: string }
+          - { name: status, label: Status, type: select, options: { values: [verified, unverified, outdated, not-published] }, default: unverified }
+          - { name: source, label: Official source URL, type: string }
+          - { name: checked, label: Date checked (YYYY-MM-DD), type: date }
+          - { name: note, label: Note, type: text }
+      - { name: status, label: Institutional status (claim), type: object, fields: *claim }
+      - { name: address, label: Address (claim), type: object, fields: *claim }
+      - { name: website, label: Official website (claim), type: object, fields: *claim }
+      - { name: founded, label: Founded (claim), type: object, fields: *claim }
+      - { name: accreditation, label: Accreditation (claim), type: object, fields: *claim }
+      - { name: recognition, label: Recognition (claim; list evidence only), type: object, fields: *claim }
+      - { name: accommodation, label: Accommodation (claim), type: object, fields: *claim }
+      - name: programmes
+        label: Programmes
+        type: object
+        list: true
+        fields:
+          - { name: id, label: Id, type: string, required: true }
+          - { name: name, label: Programme name (as the university names it), type: string, required: true }
+          - { name: course, label: Course category, type: select, options: { values: [medicine, dentistry, nursing, pharmacy, preparatory, other] } }
+          - { name: qualification, label: Qualification title (claim), type: object, fields: *claim }
+          - { name: durationYears, label: Duration in years (claim), type: object, fields: *claim }
+          - { name: language, label: Language(s) (claim), type: object, fields: *claim }
+          - { name: format, label: Format (claim), type: object, fields: *claim }
+          - { name: internationalAdmission, label: Open to international applicants (claim), type: object, fields: *claim }
+          - { name: tuition, label: Tuition fee (claim — value is an object: amount, currency, per, academicYear, schedule), type: object, fields: *claim }
+          - { name: entryRequirements, label: Entry requirements (claim), type: object, fields: *claim }
+          - { name: requiredDocuments, label: Required documents (claim), type: object, fields: *claim }
+          - { name: deadlines, label: Deadlines (claim), type: object, fields: *claim }
+          - { name: intake, label: Intake (claim), type: object, fields: *claim }
+      - name: verification
+        label: Verification
+        type: object
+        fields:
+          - { name: publishable, label: Publishable (index + sitemap) — only after a full review, type: boolean, default: false }
+          - { name: lastReview, label: Last full review, type: date }
+          - { name: reviewer, label: Reviewer, type: string }
+          - { name: openQuestions, label: Open questions, type: string, list: true }
+
+  - name: faqs
+    label: FAQ sections
+    type: collection
+    path: site/src/content/faqs
+    format: json
+    fields:
+      - { name: section, label: Section title, type: string, required: true }
+      - { name: order, label: Order, type: number }
+      - name: items
+        label: Questions
+        type: object
+        list: true
+        fields:
+          - { name: q, label: Question, type: string, required: true }
+          - { name: a, label: Answer, type: text, required: true }

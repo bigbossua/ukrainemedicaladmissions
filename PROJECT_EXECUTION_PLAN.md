@@ -14,7 +14,7 @@
 | Enquiry / application-start (Stage 1) | DONE — `site/public/api/enquiry.php`, tested with synthetic data; stores outside web root |
 | SEMrush research | DONE (pilot + approved follow-up, 2,240 units at published prices; balance to be confirmed by owner). Evidence and per-URL actions in `KEYWORD_URL_MAP.md` §4; raw exports in `research/semrush/`. No further paid calls without approval |
 | University fact verification | BLOCKED — official domains unreachable (network policy). Official sources *identified* by search (tdmu.edu.ua, nmuofficial.com, kmu.edu.ua, MoES portal, EDEBO) and logged snippet-only in `SOURCE_VERIFICATION_REGISTER.md`; 0 claims verified; Ternopil stays noindex |
-| Deployment | PREPARED, NOT ACTIVE — CI workflow + manual production-branch publisher; Hostinger Git connection is an owner action |
+| Deployment | PREPARED, NOT ACTIVE — CI + manual publisher with `staging` (forced noindex, X-Robots-Tag, no sitemap, guard test) and `production` (PUBLISH confirmation + release tag) targets; Hostinger Git connection is an owner action |
 | Legacy site | Live pages exist on the domain (`/services`, `/about`, `/dentistry-admissions-in-ukraine`, `/document-translation-legalisation` — search-evidenced, unfetched); inventory and migration risks in `PAGE_ASSET_REGISTER.md`; earlier-audit claims 0 confirmed / 0 refuted |
 | Production | UNTOUCHED |
 
@@ -39,7 +39,15 @@
 
 **Recommendation (PROPOSED):** Option C. Keep the tested Astro build as the staging candidate; record Kirby as the live alternative with a written trigger rather than dropping it; fire the trigger if (a) the real document root reveals a licensed Kirby install with reusable content, or (b) the successor fails a defined editing task test ("update a tuition claim with source and date, add an FAQ, publish") on the free git-based editor once it is prototyped on staging. Both judges agree on the first action regardless of ranking: **a ten-minute check in hPanel → PHP Configuration** (is 8.2–8.4 selectable?) and inspection of the real document root, before any further architectural argument.
 
-**Decision D3 for the owner (requires explicit answer):** *Rebuild on Kirby now* (approve €99 licence; accept 2–4 build days and the discard of the Astro build; blocked outright if PHP 8.2+ is not selectable) — or — *Astro-first with the Kirby trigger* (proceed to staging once the document root is confirmed; give in-principle approval of the €99 licence so a later trigger does not stall). Either way, before any production write: inspect and back up the real document root, confirm the PHP version, build the redirect map.
+**DECISION D3 — TAKEN BY THE OWNER, 2026-10-10: Option C (Astro-first with a written Kirby trigger).** Recorded consequences:
+- The Astro build remains the production candidate; no Kirby migration; no destructive change.
+- **Kirby trigger (either fires a re-evaluation, not an automatic migration):** (a) inspection of the real document root reveals a licensed Kirby installation with reusable content; or (b) the successor fails the editing task test below on the rung-1 editor after one guided session.
+- **Rung 0 (now):** content edited as JSON on GitHub; build-time validation. **Rung 1 (prepared):** free git-based editor — `.pages.yml` committed for Pages CMS (inert until the owner installs its GitHub App — a separate access decision; Decap/Sveltia are equivalent alternatives needing an OAuth relay). **Rung 2:** Kirby, only on trigger.
+- **Successor task test (rung 1 acceptance):** in one session, unaided: (1) open the Ternopil record, set a tuition claim's value/currency/academic year, paste the official source URL, set the check date and status `verified`; (2) add one FAQ item; (3) save, watch CI go green, and publish to staging via the workflow. Pass = all three without a developer.
+- **Sub-decision still open:** in-principle approval of the €99 Kirby licence so a later trigger does not stall (no purchase now).
+- Preconditions before any production write are unchanged: real document root inspected and backed up; PHP version read in hPanel; redirect map from the legacy inventory.
+
+**Original decision text (for the record):** *Rebuild on Kirby now* (approve €99 licence; accept 2–4 build days and the discard of the Astro build; blocked outright if PHP 8.2+ is not selectable) — or — *Astro-first with the Kirby trigger* (proceed to staging once the document root is confirmed; give in-principle approval of the €99 licence so a later trigger does not stall). Either way, before any production write: inspect and back up the real document root, confirm the PHP version, build the redirect map.
 
 ## 3. What exists in `site/`
 
@@ -79,7 +87,7 @@ CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file ch
 
 ## 6. Next executable tasks (in order)
 
-1. Owner answers D3 (Kirby now vs Astro-first with trigger) and does the ten-minute hPanel check (PHP version; real document root) — the single highest-value next action; then D1/Hostinger Git — **no deployment until explicitly approved**.
+1. ~~D3~~ decided (Option C). Owner does the ten-minute hPanel check (real document root; PHP version) and creates the staging subdomain + password protection — then connects Hostinger Git to the `staging` branch. The repo is ready: `Publish deploy branch` workflow with `target: staging` builds a guaranteed-noindex site. **No production write until the checklist is complete and approved.**
 2. Verify Ternopil claims against official sources once reachable → flip `verification.publishable` → profile enters sitemap automatically.
 3. Add universities one at a time via the same JSON schema and `SOURCE_VERIFICATION_REGISTER.md` process.
 4. SEMrush next wave only on approval with a cost estimate: broad match in ng/pk/ae (≈20/line), named-university phrases incl. Ternopil in `in` (≈10/line), phrase_organic SERP for the India fee terms (≈10/line) — see `KEYWORD_URL_MAP.md` §4.5 limitations.

@@ -37,6 +37,12 @@ Completeness sources (official, identified 2026-10-10 by search; none yet fetche
 - **World Directory of Medical Schools** — `search.wdoms.org` (listing only; never "recognised in country X").
 Cross-check against the Wikipedia research list in the brief (research inventory only).
 
+## 2a. How the data is edited (Option C rungs)
+
+- **Rung 0 (current):** edit the JSON file on GitHub (web editor or local clone); `npm test` / CI validates the schema and fails on errors.
+- **Rung 1 (prepared, inert):** `.pages.yml` at the repository root describes every claim field for Pages CMS, a free git-based editor with a form UI (status dropdown, source URL, check date). It activates only if the owner installs the Pages CMS GitHub App on the repository — an access decision, not a code change. Decap or Sveltia CMS are equivalent alternatives (they need an OAuth relay).
+- **Rung 2 (on trigger only):** Kirby Panel — see `PROJECT_EXECUTION_PLAN.md` §2.
+
 ## 3. Verification procedure (per university, per intake)
 
 1. Open the official website; record the domain in `website.source`.

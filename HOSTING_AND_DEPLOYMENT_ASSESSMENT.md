@@ -76,7 +76,7 @@ Pre-conditions before the first production write:
 
 - **D1 — Document root.** In hPanel, open the domain's FTP/File details and confirm the exact path for `ukrainemedicaladmissions.com`. Is it `/public_html` or `/domains/ukrainemedicaladmissions.com/public_html`? Is it empty?
 - **D2 — Deployment method.** Approve Option A (hPanel Git ↔ GitHub App) as primary, Option B as fallback. You perform the one-time GitHub authorisation in hPanel; I never hold a key.
-- **D3 — Technology.** Re-opened 2026-10-10 with an adversarial panel (see `PROJECT_EXECUTION_PLAN.md` §2): Kirby is €99 **one-time** (not recurring); recommendation is Astro-first with a written Kirby trigger, but the owner must answer D3 explicitly. First action under either answer: hPanel → PHP Configuration (8.2–8.4 selectable?) and inspection of the real document root.
+- **D3 — Technology. DECIDED 2026-10-10: Option C (Astro-first, Kirby on written trigger) — see `PROJECT_EXECUTION_PLAN.md` §2.** Earlier note: re-opened 2026-10-10 with an adversarial panel (see `PROJECT_EXECUTION_PLAN.md` §2): Kirby is €99 **one-time** (not recurring); recommendation is Astro-first with a written Kirby trigger, but the owner must answer D3 explicitly. First action under either answer: hPanel → PHP Configuration (8.2–8.4 selectable?) and inspection of the real document root.
 - **D4 — Staging.** Approve creating a `staging.ukrainemedicaladmissions.com` subdomain in hPanel (DNS change, so owner-performed) with its own directory.
 - **D5 — Network access for verification.** Add the university domains (`tdmu.edu.ua` first), `hostinger.com`/`docs.hostinger.com`, and `ukrainemedicaladmissions.com` to the cloud environment's allowed domains, or supply official fee/admissions PDFs as uploads. Without one of these, no university facts will be written.
 - **D6 — SEMrush.** Confirm which account/key holds the 50,000 units.
@@ -89,9 +89,9 @@ Pre-conditions before the first production write:
 | Piece | Where | State |
 |---|---|---|
 | CI: build + `astro check` + link/meta/UI tests + `php -l` on every push touching `site/` | `.github/workflows/ci.yml` | Active on push (runs in GitHub, changes nothing outside the repo) |
-| Production-branch publisher: builds `site/dist` and force-pushes it to a `production` branch, tagging `release-<timestamp>` | `.github/workflows/publish-production-branch.yml` | **Manual trigger only**, requires typing `PUBLISH`; pushes nothing to Hostinger by itself |
+| Deploy-branch publisher: `target: staging` builds with `STAGING=1` (every page noindex, robots disallow all, no sitemap, `X-Robots-Tag` header) → branch `staging`; `target: production` → branch `production` with `PUBLISH` confirmation and a `release-<timestamp>` tag | `.github/workflows/publish-production-branch.yml` | **Manual trigger only**; pushes nothing to Hostinger by itself |
 | Hostinger side | hPanel → Advanced → Git → connect `bigbossua/ukrainemedicaladmissions`, branch `production`, deploy dir = confirmed document root (D1) | **Owner action; not done** |
-| Staging | Same, with a `staging` branch and `staging.` subdomain directory (D4) | Not done |
+| Staging | Owner: create `staging.ukrainemedicaladmissions.com` + directory in hPanel, enable hPanel password protection on it, connect Hostinger Git to branch `staging` (D4). Repo side ready. | Owner action pending |
 | Hosting rules | `site/public/.htaccess` (HTTPS + non-www canonical, headers, CSP, caching, private-file blocks) | Untested on Hostinger LiteSpeed — test on staging first |
 | Private data | PHP handler writes to `<document-root-parent>/uma-private/` (override with `UMA_PRIVATE_DIR`); `config.php` there holds notify address / mail toggle; nothing secret in Git | Tested locally with PHP's built-in server |
 | Rollback | Republish previous `release-*` tag via the workflow, or restore the pre-deployment backup | Documented in `SECURITY_AND_RELEASE_CHECKLIST.md` §D |

@@ -1,40 +1,69 @@
-# Publishes the BUILT site (site/dist) to the `production` branch, which Hostinger's
-# Advanced → Git feature can deploy into the domain's document root.
+# Publishes the BUILT site (site/dist) to a deploy branch that Hostinger's
+# Advanced → Git feature can deploy into a directory:
+#   target: staging    → branch `staging`    (STAGING=1 build: every page noindex, robots disallow all, no sitemap,
+#                        X-Robots-Tag header appended to .htaccess). Intended for a password-protected
+#                        staging subdomain the owner creates in hPanel.
+#   target: production → branch `production` (normal build; requires typing PUBLISH; tags a release).
 #
-# SAFETY: manual trigger only (workflow_dispatch). Nothing deploys until
-# (a) the owner runs this workflow, AND (b) Hostinger Git has been connected to the
-# `production` branch by the owner in hPanel. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md.
-name: Publish production branch
+# SAFETY: manual trigger only. Nothing deploys until the owner has connected Hostinger Git to the
+# chosen branch and directory. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md and SECURITY_AND_RELEASE_CHECKLIST.md.
+name: Publish deploy branch
 
 on:
   workflow_dispatch:
     inputs:
-      confirm:
-        description: 'Type PUBLISH to confirm you have completed SECURITY_AND_RELEASE_CHECKLIST.md'
+      target:
+        description: 'Deploy target'
+        type: choice
+        options: [staging, production]
+        default: staging
         required: true
+      confirm:
+        description: 'For production only: type PUBLISH to confirm SECURITY_AND_RELEASE_CHECKLIST.md is complete'
+        required: false
+        default: ''
 
 permissions:
   contents: write
 
 jobs:
   publish:
-    if: ${{ github.event.inputs.confirm == 'PUBLISH' }}
+    if: ${{ github.event.inputs.target == 'staging' || github.event.inputs.confirm == 'PUBLISH' }}
     runs-on: ubuntu-latest
+    env:
+      TARGET: ${{ github.event.inputs.target }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
       - run: npm ci
         working-directory: site
-      - run: npm run build && npm run test:links && npm run test:meta
+      - name: Build
         working-directory: site
-      - name: Push dist to production branch
         run: |
-          git config user.name "uma-release-bot"
-          git config user.email "noreply@ukrainemedicaladmissions.com"
-          TAG="release-$(date -u +%Y%m%d-%H%M%S)"
-          git tag "$TAG" && git push origin "$TAG"
-          cd site/dist
-          git init -q && git checkout -q -b production
-          git add -A && git commit -q -m "Build ${GITHUB_SHA::7} ($TAG)"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" production
+          if [ "$TARGET" = "staging" ]; then
+            STAGING=1 npm run build
+            printf '\n# STAGING: never index\nHeader always set X-Robots-Tag "noindex, nofollow"\n' >> dist/.htaccess
+          else
+            npm run build && npm run test:links && npm run test:meta
+          fi
+      - name: Staging guard (every page noindex, robots disallow, no sitemap)
+        if: ${{ env.TARGET == 'staging' }}
+        working-directory: site
+        run: |
+          rm -rf dist-staging && cp -r dist dist-staging && node tests/staging-guard.mjs
+      - name: Push built site to deploy branch
+        working-directory: site/dist
+        run: |
+          git config --global user.name "uma-release-bot"
+          git config --global user.email "noreply@ukrainemedicaladmissions.com"
+          if [ "$TARGET" = "production" ]; then
+            TAG="release-$(date -u +%Y%m%d-%H%M%S)"
+            git -C "$GITHUB_WORKSPACE" tag "$TAG" && git -C "$GITHUB_WORKSPACE" push origin "$TAG"
+            MSG="Build ${GITHUB_SHA::7} ($TAG)"
+          else
+            MSG="Staging build ${GITHUB_SHA::7} (noindex)"
+          fi
+          git init -q && git checkout -q -b "$TARGET"
+          git add -A && git commit -q -m "$MSG"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" "$TARGET"

@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /apply/thank-you/
-
-Sitemap: https://ukrainemedicaladmissions.com/sitemap-index.xml
