@@ -1,5 +1,5 @@
 /** True when built with STAGING=1 (publish workflow `target: staging`). Forces noindex everywhere. */
-export const STAGING = process.env.STAGING === '1';
+export const STAGING = /^(1|true|yes)$/i.test((process.env.STAGING ?? '').trim());
 
 export const SITE = {
   name: 'Ukraine Medical Admissions',

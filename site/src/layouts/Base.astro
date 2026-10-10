@@ -27,13 +27,13 @@ const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.na
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonical} />
+  {!STAGING && <link rel="canonical" href={canonical} />}
   {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonical} />
+  {!STAGING && <meta property="og:url" content={canonical} />}
   <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0B1F3F" />
@@ -45,7 +45,7 @@ const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.na
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/fonts.css" />
-  {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  {!STAGING && jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

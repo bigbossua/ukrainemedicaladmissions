@@ -19,7 +19,7 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   // Staging builds (STAGING=1) emit no sitemap at all; every page is noindex and robots.txt disallows everything.
-  integrations: process.env.STAGING === '1' ? [] : [
+  integrations: /^(1|true|yes)$/i.test((process.env.STAGING ?? '').trim()) ? [] : [
     sitemap({
       // Private / transactional pages never enter the sitemap.
       filter: (page) =>

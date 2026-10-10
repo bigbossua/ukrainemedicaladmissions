@@ -14,7 +14,7 @@
     "test:ui": "node tests/ui-smoke.mjs",
     "test:a11y": "node tests/a11y.mjs",
     "test:perf": "node tests/perf.mjs",
-    "build:staging": "STAGING=1 astro build --outDir dist-staging",
+    "build:staging": "STAGING=1 astro build --outDir dist-staging && node scripts/staging-postbuild.mjs",
     "test:staging": "npm run build:staging && node tests/staging-guard.mjs",
     "test": "npm run build && npm run test:links && npm run test:meta && npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:staging"
   },

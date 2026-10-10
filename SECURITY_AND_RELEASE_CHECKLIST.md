@@ -8,7 +8,8 @@ Complete every box before the **first** production write and before each later r
 - [ ] **A2 Backup** of that directory downloaded and dated (or dated evidence that it is empty); any database linked to the domain exported. Stored off-server, not in Git.
 - [ ] **A3 Old URLs** inventoried (sitemap/Search Console export) and a redirect map prepared (backlog N1) so existing equity is preserved.
 - [ ] **A4 Hostinger Git** connected to the `production` branch with the deploy directory = A1; auto-deploy understood; rollback = republish previous release tag.
-- [ ] **A5 Staging** subdomain created, deployed from `staging` branch, protected by HTTP auth and `X-Robots-Tag: noindex`; confirmed absent from search engines.
+- [ ] **A5 Staging** subdomain created in hPanel, **password-protected (hPanel → Password Protect Directories)**, connected to the `staging` branch; the staging build itself is noindex everywhere (no canonical/og:url/JSON-LD, no sitemap, robots allows crawling so the noindex is seen, `X-Robots-Tag` in `.htaccess`) — verified by `npm run test:staging`; confirmed absent from search engines after a week.
+- [ ] **A5a Repository private** (or exposure accepted in writing) before the first staging publish — a public `staging` branch is browsable on GitHub (D8).
 - [ ] **A6 `.htaccess` verified on staging**: HTTPS + non-www redirects, 404 page, security headers, `.json` blocked but `site.webmanifest` served, PHP handler reachable by POST only.
 - [ ] **A7 Email**: `mail()` from the handler delivers to the business inbox from staging; SPF/DKIM set for the sending address.
 - [ ] **A8 Private storage**: `uma-private/` exists beside the document root, mode 0700, owned by the hosting user; a test record lands there and is not web-accessible (direct URL returns 403/404).

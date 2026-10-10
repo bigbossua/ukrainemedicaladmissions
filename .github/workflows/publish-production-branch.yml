@@ -1,12 +1,14 @@
-# Publishes the BUILT site (site/dist) to a deploy branch that Hostinger's
-# Advanced → Git feature can deploy into a directory:
-#   target: staging    → branch `staging`    (STAGING=1 build: every page noindex, robots disallow all, no sitemap,
-#                        X-Robots-Tag header appended to .htaccess). Intended for a password-protected
-#                        staging subdomain the owner creates in hPanel.
-#   target: production → branch `production` (normal build; requires typing PUBLISH; tags a release).
+# Publishes a BUILT site to a deploy branch that Hostinger's Advanced → Git feature can deploy
+# into a directory:
+#   target: staging    → branch `staging`    — STAGING build: every page noindex, no canonical/og:url/JSON-LD,
+#                        robots.txt lists no sitemap (crawling allowed so the noindex is seen), no sitemap
+#                        files, X-Robots-Tag header in .htaccess. For a password-protected staging subdomain.
+#   target: production → branch `production` — full test suite must pass; requires typing PUBLISH; tags a release.
 #
-# SAFETY: manual trigger only. Nothing deploys until the owner has connected Hostinger Git to the
-# chosen branch and directory. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md and SECURITY_AND_RELEASE_CHECKLIST.md.
+# SAFETY: manual trigger only; the target is validated and anything other than the two names fails the job,
+# so no other branch (e.g. main) can ever be the push target. Nothing deploys until the owner has connected
+# Hostinger Git to the chosen branch and directory. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md and
+# SECURITY_AND_RELEASE_CHECKLIST.md.
 name: Publish deploy branch
 
 on:
@@ -28,42 +30,57 @@ permissions:
 
 jobs:
   publish:
-    if: ${{ github.event.inputs.target == 'staging' || github.event.inputs.confirm == 'PUBLISH' }}
     runs-on: ubuntu-latest
     env:
       TARGET: ${{ github.event.inputs.target }}
+      CONFIRM: ${{ github.event.inputs.confirm }}
     steps:
+      - name: Validate target and confirmation
+        run: |
+          case "$TARGET" in
+            staging) echo "target=staging" ;;
+            production)
+              if [ "$CONFIRM" != "PUBLISH" ]; then echo "production requires confirm=PUBLISH"; exit 1; fi
+              echo "target=production" ;;
+            *) echo "invalid target: '$TARGET'"; exit 1 ;;
+          esac
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
       - run: npm ci
         working-directory: site
-      - name: Build
-        working-directory: site
-        run: |
-          if [ "$TARGET" = "staging" ]; then
-            STAGING=1 npm run build
-            printf '\n# STAGING: never index\nHeader always set X-Robots-Tag "noindex, nofollow"\n' >> dist/.htaccess
-          else
-            npm run build && npm run test:links && npm run test:meta
-          fi
-      - name: Staging guard (every page noindex, robots disallow, no sitemap)
+      - name: Build and test (staging)
         if: ${{ env.TARGET == 'staging' }}
         working-directory: site
         run: |
-          rm -rf dist-staging && cp -r dist dist-staging && node tests/staging-guard.mjs
+          npm run build:staging
+          node tests/staging-guard.mjs
+          echo "OUT=site/dist-staging" >> "$GITHUB_ENV"
+      - name: Build and test (production — full suite)
+        if: ${{ env.TARGET == 'production' }}
+        working-directory: site
+        run: |
+          npx astro check
+          npm run build
+          npm run test:links && npm run test:meta
+          npx playwright install --with-deps chromium
+          npm run test:ui && npm run test:a11y && npm run test:perf
+          php -l public/api/enquiry.php
+          echo "OUT=site/dist" >> "$GITHUB_ENV"
       - name: Push built site to deploy branch
-        working-directory: site/dist
         run: |
           git config --global user.name "uma-release-bot"
           git config --global user.email "noreply@ukrainemedicaladmissions.com"
           if [ "$TARGET" = "production" ]; then
             TAG="release-$(date -u +%Y%m%d-%H%M%S)"
-            git -C "$GITHUB_WORKSPACE" tag "$TAG" && git -C "$GITHUB_WORKSPACE" push origin "$TAG"
+            git tag "$TAG" && git push origin "$TAG"
             MSG="Build ${GITHUB_SHA::7} ($TAG)"
-          else
+          elif [ "$TARGET" = "staging" ]; then
             MSG="Staging build ${GITHUB_SHA::7} (noindex)"
+          else
+            echo "unreachable: invalid target"; exit 1
           fi
+          cd "$OUT"
           git init -q && git checkout -q -b "$TARGET"
           git add -A && git commit -q -m "$MSG"
           git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" "$TARGET"
