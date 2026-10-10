@@ -9,12 +9,12 @@ const universities = (await getCollection('universities')).sort((a, b) => a.data
 const cities = [...new Set(universities.map((u) => u.data.city))].sort();
 const courseNames: Record<string, string> = { medicine: 'Medicine', dentistry: 'Dentistry', nursing: 'Nursing', pharmacy: 'Pharmacy', preparatory: 'Preparatory', other: 'Other' };
 ---
-<Base title="Medical universities in Ukraine" description="Directory of Ukrainian medical universities for international students: programmes, teaching language, city and verification status with official sources.">
+<Base title="Medical universities in Ukraine: full list of medical colleges" description="Directory of Ukrainian medical universities (medical colleges) for international students: programmes, language, city and verification status." suffix={false}>
   <div class="page-head">
     <div class="wrap">
       <span class="eyebrow">Directory</span>
       <h1>Medical universities in Ukraine</h1>
-      <p>Filter by city and course. Each profile shows what has been verified against official sources and what is still being confirmed.</p>
+      <p>Filter by city and course. Each profile shows what has been verified against official sources and what is still being confirmed. Applicants from India often call these institutions medical colleges; in the UK they are usually called medical schools — this directory covers the same institutions under their official names.</p>
     </div>
   </div>
   <Breadcrumbs items={[{ label: 'Universities' }]} />
@@ -53,6 +53,9 @@ const courseNames: Record<string, string> = { medicine: 'Medicine', dentistry: '
         })}
       </div>
       <p class="note" data-empty hidden>No universities match these filters yet. Our directory is expanding as each institution is verified.</p>
+
+      <h2 style="margin-top:2.5rem">Which is the best medical university in Ukraine?</h2>
+      <p class="prose">There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. Compare institutions on facts you can verify on each profile: whether your programme is open to applicants from your country this intake, the language of instruction, the qualification title awarded, the published tuition fee with its academic year and payment schedule, other mandatory charges, and the entry requirements and documents. Where a fact has not yet been confirmed from an official source, the profile says so instead of guessing. The <a href="/tuition-fees/">medical college fees in Ukraine</a> guide explains how costs are published, and the <a href="/admissions/">admissions guide</a> covers the process.</p>
       <p class="note">Only filters supported by verified or reported data are offered. Fee-range and deadline filters will appear once official fee schedules have been confirmed. {SITE.disclaimer}</p>
     </div>
   </section>

@@ -4,7 +4,7 @@ Status key: **REPORTED** = from the brief / earlier audit, not re-checked; **CON
 
 ## Issues from the earlier audit of the old site
 
-The old site's files were **not found** in the `public_html` shown in the owner's File Manager (empty) and the live domain is unreachable from this environment, so none of these can be confirmed or refuted. If the new site replaces the old one entirely, items 1–8 become SUPERSEDED — but only after the real document root is confirmed and backed up (D1).
+The old site's files were **not found** in the `public_html` shown in the owner's File Manager (empty), yet **live pages exist on the domain** (search index: `/services`, `/about`, `/dentistry-admissions-in-ukraine`, `/document-translation-legalisation`) — so the old site is served from a directory other than the one screenshotted, or from another host. The domain, the Wayback Machine and all .ua sites are DNS-blocked from this environment, so status codes and redirects were not observed. A six-angle search sweep (2026-10-10) found **0 of the 8 earlier-audit claims confirmed, 0 refuted, 5 with no evidence, 1 (forms) partial** — they stay REPORTED. Resolution needs the owner's sitemap/Search Console export or network allow-listing (D5). Full inventory: `PAGE_ASSET_REGISTER.md` → "Legacy URL inventory".
 
 | # | Issue | Status | Evidence / notes | Resolution in the new site |
 |---|---|---|---|---|
@@ -23,7 +23,7 @@ The old site's files were **not found** in the `public_html` shown in the owner'
 
 | # | Item | Priority | Notes |
 |---|---|---|---|
-| N1 | Redirect map from old URLs | High | Needs old sitemap / Search Console export. |
+| N1 | Redirect map from old URLs | High | Four legacy URLs evidenced by search (see `PAGE_ASSET_REGISTER.md`); proposed 301 targets recorded; **status/redirect behaviour unverified**; full list needs sitemap / Search Console export. |
 | N2 | Self-host fonts; drop Google Fonts from CSP | **DONE 2026-10-10** | Inter + Inter Tight variable woff2 (latin, latin-ext), 276 KB total, `font-src 'self'`; see `site/FONTS.md`. |
 | N3 | Verify `.htaccess` behaviour on Hostinger (LiteSpeed): redirects, headers, 404 page, `.json` block vs `site.webmanifest` | High | Staging test. |
 | N4 | `mail()` deliverability on Hostinger (SPF/DKIM for `no-reply@`) | High | Test on staging with a test inbox. |
@@ -32,3 +32,6 @@ The old site's files were **not found** in the `public_html` shown in the owner'
 | N9 | Manual keyboard + screen-reader pass (NVDA/VoiceOver) on staging | Medium | Automated axe cannot cover focus order semantics fully. |
 | N7 | Lighthouse performance budget in CI | Low | After fonts are self-hosted. |
 | N8 | Decap CMS (free) for non-technical editing of `src/content` | Later | Succession requirement. |
+| N10 | Legacy brand and claims reconciliation | High | Old site brands itself "Study Medicine in Ukraine", advertises WhatsApp, and states founder/team/"established 2015" (all snippet-only). Owner to confirm which facts are true and carry over; WhatsApp never carries over. |
+| N11 | Complaints policy and referral-marketing disclosure pages | Medium | Present on the legacy site's footer (snippet); write for the new site before launch (legal review with privacy/terms). |
+| N12 | Verify the official e-invitation route (`apply.studyinukraine.gov.ua`, per kmu.edu.ua snippet) before Stage 2 application design | High | Blocked from this environment; owner or allow-listing. |

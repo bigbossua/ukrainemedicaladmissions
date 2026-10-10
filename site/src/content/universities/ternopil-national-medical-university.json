@@ -13,7 +13,7 @@
   "city": "Ternopil",
   "region": "Ternopil Oblast",
   "address": { "value": "1 Maidan Voli, Ternopil, 46001, Ukraine", "status": "unverified", "source": null, "checked": null, "note": "From the project brief; confirm on the official contacts page." },
-  "website": { "value": "https://www.tdmu.edu.ua/", "status": "unverified", "source": null, "checked": null, "note": "Domain to be confirmed; the university may also use tnmu.edu.ua. Unreachable from the build environment on 2026-10-10." },
+  "website": { "value": "https://www.tdmu.edu.ua/", "status": "unverified", "source": null, "checked": null, "note": "Search results on 2026-10-10 show the university's own pages on tdmu.edu.ua (incl. /int/ international section); tnmu.edu.ua and tsmu.te.ua are unconfirmed. No page could be fetched from the build environment (network policy), so this stays unverified." },
   "internationalOffice": { "value": {}, "status": "not-published", "source": null, "checked": null, "note": "Record only the contact details published on the official international-students page." },
   "founded": { "value": 1957, "status": "unverified", "source": null, "checked": null, "note": "Widely reported founding year as Ternopil State Medical Institute; confirm on the official history page." },
   "overview": "A state medical university in the city of Ternopil, western Ukraine. This profile is the pilot for our verification process: each fact below shows whether it has been checked against an official source and when. Fields awaiting verification are marked and are not presented as current facts.",

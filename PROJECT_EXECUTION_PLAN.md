@@ -1,6 +1,6 @@
 # PROJECT_EXECUTION_PLAN.md — Ukraine Medical Admissions
 
-**Status date:** 2026-10-10 · **Branch:** `claude/new-session-ppgh22` · **`main`:** untouched (`d9a4542`)
+**Status date:** 2026-10-10 (evening) · **Branch:** `claude/new-session-ppgh22` · **`main`:** untouched (`d9a4542`)
 **Labels:** VERIFIED (observed, evidence named) · UNVERIFIED (reported, not checked) · PROPOSED (needs owner approval)
 
 ## 1. Status summary
@@ -12,9 +12,10 @@
 | Website scaffold | DONE — `site/`, Astro static site, 18 pages, all tests passing locally (see §4) |
 | University data model | DONE — schema in `site/src/content.config.ts`; Ternopil pilot record, every claim marked unverified / not-published |
 | Enquiry / application-start (Stage 1) | DONE — `site/public/api/enquiry.php`, tested with synthetic data; stores outside web root |
-| SEMrush research | BLOCKED — account reports 0 API units on every toolkit (5 calls total, see ledger). No keyword data exists; all seeds are unvalidated |
-| University fact verification | BLOCKED — official university domains unreachable from this environment (network policy) |
+| SEMrush research | DONE (pilot + approved follow-up, 2,240 units at published prices; balance to be confirmed by owner). Evidence and per-URL actions in `KEYWORD_URL_MAP.md` §4; raw exports in `research/semrush/`. No further paid calls without approval |
+| University fact verification | BLOCKED — official domains unreachable (network policy). Official sources *identified* by search (tdmu.edu.ua, nmuofficial.com, kmu.edu.ua, MoES portal, EDEBO) and logged snippet-only in `SOURCE_VERIFICATION_REGISTER.md`; 0 claims verified; Ternopil stays noindex |
 | Deployment | PREPARED, NOT ACTIVE — CI workflow + manual production-branch publisher; Hostinger Git connection is an owner action |
+| Legacy site | Live pages exist on the domain (`/services`, `/about`, `/dentistry-admissions-in-ukraine`, `/document-translation-legalisation` — search-evidenced, unfetched); inventory and migration risks in `PAGE_ASSET_REGISTER.md`; earlier-audit claims 0 confirmed / 0 refuted |
 | Production | UNTOUCHED |
 
 ## 2. Architecture: reconciling the brief's "Kirby" with the implemented Astro site (updated 2026-10-10)
@@ -62,6 +63,10 @@
 | `php -l enquiry.php` | no syntax errors |
 | Not tested (cannot be, here) | real email delivery via `mail()`, behaviour under Hostinger's LiteSpeed `.htaccess`, live HTTPS/HSTS, production document root |
 
+## 4a. CI coverage note
+
+CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file changes. Runs #1 (`6bff593`), #2 (`ebb671f`) and #3 (`4d8f250`) passed. Documentation-only commits (`920d4f3`, `3266e7e`, `0c51279`, `570c317`, `9122282`, `097930d`) did not trigger CI and are not covered by those runs; the next commit touching `site/` triggers run #4.
+
 ## 5. Blockers and the smallest action to clear each
 
 | Blocker | Smallest action (owner) |
@@ -74,10 +79,10 @@
 
 ## 6. Next executable tasks (in order)
 
-1. Owner clears D1 (document root) and connects Hostinger Git to `production` — **no deployment until explicitly approved**.
+1. Owner answers D3 (Kirby now vs Astro-first with trigger) and does the ten-minute hPanel check (PHP version; real document root) — the single highest-value next action; then D1/Hostinger Git — **no deployment until explicitly approved**.
 2. Verify Ternopil claims against official sources once reachable → flip `verification.publishable` → profile enters sitemap automatically.
 3. Add universities one at a time via the same JSON schema and `SOURCE_VERIFICATION_REGISTER.md` process.
-4. SEMrush pilot (≤ 200 units) once units exist, per `KEYWORD_URL_MAP.md` §3.
+4. SEMrush next wave only on approval with a cost estimate: broad match in ng/pk/ae (≈20/line), named-university phrases incl. Ternopil in `in` (≈10/line), phrase_organic SERP for the India fee terms (≈10/line) — see `KEYWORD_URL_MAP.md` §4.5 limitations.
 5. Application system Stage 2 (accounts, save-and-resume, uploads) per `APPLICATION_SYSTEM_SPEC.md` — only after security review.
 6. Service tiers: evidence gathering per `SERVICE_TIERS_SPEC.md`; no publication without approval.
 7. ~~Self-host fonts and tighten CSP~~ — done 2026-10-10.

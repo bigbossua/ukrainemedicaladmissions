@@ -9,14 +9,16 @@ const universities = (await getCollection('universities')).sort((a, b) => a.data
 const rows = universities.flatMap((u) => u.data.programmes.map((p) => ({ u, p })));
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / ${m.per} (${m.academicYear})`;
 ---
-<Base title="Tuition fees & study costs in Ukraine" description="How tuition fees at Ukrainian medical universities are published, what other costs to budget for, and the fees we have verified from official sources, with dates.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Tuition fees and study costs</h1><p>We publish a fee only when it comes from the university's official fee schedule, with the academic year, currency and the date we checked it.</p></div></div>
+<Base title="Medical college fees in Ukraine: tuition & cost of study" description="How Ukrainian medical universities publish tuition fees, what the cost of medical education includes, and the fees verified from official sources, with dates." suffix={false}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Medical university fees in Ukraine</h1><p>We publish a fee only when it comes from the university's official fee schedule, with the academic year, currency and the date we checked it.</p></div></div>
   <Breadcrumbs items={[{ label: 'Tuition & fees' }]} />
   <section style="padding-top:1rem"><div class="wrap">
     <div class="prose">
       <h2>How fees are published</h2>
       <p>Each university sets its own tuition fee per programme and academic year, usually in US dollars or euros, payable per year or per semester. Fees can change between intakes. For that reason every fee on this site carries the academic year it applies to and the date it was last verified. Fees from different years or currencies are never combined into a single figure.</p>
-      <h2>Costs beyond tuition</h2>
+      <h2>MBBS fees in Ukraine</h2>
+      <p>Many applicants search for “MBBS fees in Ukraine”. Ukrainian universities do not award an MBBS; the equivalent programme is <a href="/courses/medicine/">Medicine</a>, usually six years, and each university publishes its own fee for it. The table below lists the medicine fee per university as soon as it has been verified from the official schedule.</p>
+      <h2>Cost of medical education in Ukraine: what a total includes</h2>
       <ul>
         <li><strong>University charges</strong> — e.g. application or registration fees, invitation-letter processing, medical insurance arranged by the university. Listed per university where published.</li>
         <li><strong>Accommodation</strong> — university hostels or private rental; prices shown only where a current official source exists.</li>
@@ -24,9 +26,11 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / $
         <li><strong>Our service fee</strong> — charged by Ukraine Medical Admissions, not the university, and shown separately on the application dashboard once you have applied. No service fee is charged to start an application.</li>
       </ul>
       <p>Any “total cost” we show in future will list its components, sources and dates. An estimate is never a guaranteed total.</p>
+      <h2 id="indian-students">Fees for Indian students</h2>
+      <p>We are often asked whether Ukrainian universities charge Indian students a different fee. We will state that only from each university's official fee schedule: if a schedule prices by nationality, the profile will say so with the currency, academic year, payment schedule and source. Recognition of a Ukrainian medical degree in India is governed by the National Medical Commission's current regulations for foreign medical graduates — check the NMC's own published rules before you apply; we do not advise on them.</p>
     </div>
 
-    <h2 style="margin-top:2rem">Verified tuition fees</h2>
+    <h2 style="margin-top:2rem" id="by-university">Medical college fees in Ukraine, by university</h2>
     <div class="table-wrap">
       <table>
         <thead><tr><th>University</th><th>Programme</th><th>Tuition fee</th><th>Status</th><th>Checked</th></tr></thead>

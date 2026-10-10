@@ -30,7 +30,12 @@ An institution is listed only when all of the following are evidenced:
 4. Its current official name is confirmed; merged or renamed predecessors are recorded as `alternativeNames`, not as separate entries.
 5. Relocated institutions (occupied-territory origins) are listed under their current operating city with `status = relocated`.
 
-Completeness source: the Ministry of Education / EDEBO register of licensed HEIs, cross-checked against the Wikipedia research list in the brief (research inventory only).
+Completeness sources (official, identified 2026-10-10 by search; none yet fetched from this environment):
+- **MoES "Study in Ukraine" university directory** — `universities.studyinukraine.gov.ua/en/minedu/university/<id>/` (contacts, invitation procedure per institution).
+- **EDEBO** — `info.edbo.gov.ua` (Unified State Electronic Database on Education: licences, programmes; Ukrainian only).
+- **NAQA accreditation register** — `naqa.gov.ua`.
+- **World Directory of Medical Schools** — `search.wdoms.org` (listing only; never "recognised in country X").
+Cross-check against the Wikipedia research list in the brief (research inventory only).
 
 ## 3. Verification procedure (per university, per intake)
 
@@ -51,7 +56,18 @@ Completeness source: the Ministry of Education / EDEBO register of licensed HEIs
 
 Access attempt 2026-10-10: `www.tdmu.edu.ua` — DNS resolution failed from the build environment (network policy). No claim could be verified. Nothing has been invented to fill the gap.
 
-## 5. Research inventory (NOT a confirmed list; from the brief)
+## 5. Verification priority (SEMrush named-university evidence, 2026-10-10)
+
+| Priority | Institution | Measured demand | Official domain (search-evidenced, unfetched) |
+|---|---|---|---|
+| 1 | Vinnytsia National Pirogov Memorial Medical University | in: "pirogov medical university ukraine" 390/mo (kd 23); uk 40 | to be identified |
+| 2 | Bogomolets National Medical University (Kyiv) | in: 320/mo (kd 28, navigational); uk: 70 + "national medical university in kiev ukraine" 70 | `nmuofficial.com` (snippet: foreign applications 19 Jul–31 Oct 2026) |
+| 3 | Bukovinian State Medical University (Chernivtsi) | uk: 20/mo | to be identified |
+| 4 | Ternopil National Medical University (brief's pilot) | uk: 0/mo for admission and fees phrases; **not measured in in** | `tdmu.edu.ua` (official per search results) |
+
+Ternopil remains the *template* pilot (its record exists and the page renders correctly as noindex) but has no measured search demand; the three institutions above should be verified before it unless the owner directs otherwise.
+
+## 6. Research inventory (NOT a confirmed list; from the brief)
 
 Bogomolets NMU · Bukovinian SMU · Danylo Halytsky Lviv NMU · Dnipro SMU · Donetsk NMU (relocated) · International European University · Ivano-Frankivsk NMU · Kharkiv NMU · Kharkiv International Medical University · Kyiv Medical University · Luhansk SMU (relocated) · Odesa NMU · Odesa International Medical University · Poltava SMU · Ternopil NMU (pilot) · Uzhhorod NU (medical faculty) · Vinnytsia NMU · Zaporizhzhia SMPU · Sumy SU (medical institute) · Petro Mohyla Black Sea NU · Cherkasy NU · V. N. Karazin Kharkiv NU (medical school) · Taras Shevchenko NU of Kyiv · Dnipro Medical Institute of Conventional and Alternative Medicine. Postgraduate academies (Shupyk, KhMAPE, ZMAPE) are out of scope for undergraduate admissions unless a relevant programme is evidenced.
 
