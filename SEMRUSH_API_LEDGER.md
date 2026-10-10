@@ -4,7 +4,7 @@ Every material SEMrush API request is recorded here. No keys or credentials are 
 
 **Budget rule (brief):** initial research cap 2,000 Standard API units; preserve ≥48,000 unless the owner approves otherwise. Treated as a ceiling only if the allowance is authorised *and available*.
 **Last observed balance (owner screenshot, date unknown):** 50,000 Standard API units.
-**Balance observed via the MCP integration:** 0 usable units (all calls below).
+**Balance observed via the MCP integration:** 0 usable units until the owner re-authorised the connector on 2026-10-10 (toast "Connected to Semrush"); after that, calls succeed. The MCP reports units *metered per call* (`metadata.usage.api_units`) but never the remaining balance — owner to confirm balance on the API Units page.
 
 ## Request log
 
@@ -16,8 +16,14 @@ Every material SEMrush API request is recorded here. No keys or credentials are 
 | 2026-10-10 (later session) | `keyword_research` (discovery) | none | Single re-check after time elapsed | 0 | `no_api_units` (trace e398e801…) | 0 |
 | 2026-10-10 (later session) | `projects` (discovery) | none | Different endpoint family — test whether project tools have a separate allowance | 0 | `no_api_units` (trace a3ce5143…) | 0 |
 | 2026-10-10 (investigation) | `get_report_schema(phrase_all)` | report=phrase_all | Cheapest possible Standard-API call to get the precise error on a specific report | 0 | `no_api_units` (trace fb632a09…) | 0 |
+| 2026-10-10 **after reconnect** | `get_report_schema(phrase_all)` | report=phrase_all | Confirm access | 0 | **Schema returned — access working** | unknown |
+| 2026-10-10 | `keyword_research` discovery; `get_report_schema` ×2 (`phrase_this`, `phrase_fullsearch`) | — | Choose reports, check parameters | 0 | OK | unknown |
+| 2026-10-10 | `execute_report phrase_all` | phrase="study medicine in ukraine"; columns database,keyword,volume,cpc,competitive_density,results,keyword_difficulty,intent | Country-demand evidence (Part 9) | **910 metered** (91 lines × 10; estimate was ≈300 — report returns zero-volume databases too) | `research/semrush/2026-10-10-phrase_all-study-medicine-in-ukraine.csv` | unknown (≈49,000 if balance was 50,000) |
+| 2026-10-10 | `execute_report phrase_these` | database=uk; 20 seed phrases; columns + keyword_difficulty, intent | Validate seed keywords (Part 8) | **130 metered** (12 lines with data; 8 seeds had no data) | `research/semrush/2026-10-10-phrase_these-uk-seeds.csv` | unknown (≈48,860) |
 
-**Total units spent:** 0. **No keyword research has been performed.** No keyword, volume, difficulty, competitor or country metric exists in this project yet.
+**Total units spent (metered by the MCP): 1,040.** Remaining under the 2,000-unit pilot cap: 960. Paid calls paused pending owner review of the first results and confirmation of the balance.
+
+**Lesson recorded:** `phrase_all` bills every regional database (≈90 lines) even when volume is 0 — use `phrase_this`/`phrase_these` with explicit databases for all further country checks (10 units per keyword-database).
 
 ## Connector investigation (2026-10-10, after owner's screenshot showing 50,000 units)
 
