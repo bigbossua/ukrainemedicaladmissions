@@ -24,10 +24,11 @@ The old site's files were **not found** in the `public_html` shown in the owner'
 | # | Item | Priority | Notes |
 |---|---|---|---|
 | N1 | Redirect map from old URLs | High | Needs old sitemap / Search Console export. |
-| N2 | Self-host fonts; drop Google Fonts from CSP | Medium | Performance + no third-party request. |
+| N2 | Self-host fonts; drop Google Fonts from CSP | **DONE 2026-10-10** | Inter + Inter Tight variable woff2 (latin, latin-ext), 276 KB total, `font-src 'self'`; see `site/FONTS.md`. |
 | N3 | Verify `.htaccess` behaviour on Hostinger (LiteSpeed): redirects, headers, 404 page, `.json` block vs `site.webmanifest` | High | Staging test. |
 | N4 | `mail()` deliverability on Hostinger (SPF/DKIM for `no-reply@`) | High | Test on staging with a test inbox. |
 | N5 | Image pipeline: Astro `<Image>` with WebP/AVIF, attribution record per image | Medium | No images yet beyond logos; see `brand/BRAND_GUIDELINES.md` §6. |
-| N6 | Accessibility audit with axe (automated) + keyboard pass | Medium | Add `@axe-core/playwright` to `test:ui`. |
+| N6 | Accessibility audit with axe (automated) | **DONE 2026-10-10** | `npm run test:a11y` (WCAG 2.1 A/AA + best-practice, 18 pages × 2 widths, mobile menu open) in CI. First run found 2 real defects, both fixed: inner-page eyebrow blue-on-navy; mobile-menu CTA text navy-on-blue (scoped-CSS specificity). Manual keyboard/screen-reader pass still outstanding (N9). |
+| N9 | Manual keyboard + screen-reader pass (NVDA/VoiceOver) on staging | Medium | Automated axe cannot cover focus order semantics fully. |
 | N7 | Lighthouse performance budget in CI | Low | After fonts are self-hosted. |
 | N8 | Decap CMS (free) for non-technical editing of `src/content` | Later | Succession requirement. |

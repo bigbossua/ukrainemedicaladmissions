@@ -51,6 +51,7 @@ Why not Kirby: the licence is a recurring cost requiring approval, and the only 
 | `test:links` | 0 broken of 27 |
 | `test:meta` | 0 problems (after title/description trims) |
 | `test:ui` | 18 pages × 3 widths, 0 failures |
+| `test:a11y` (axe, added 2026-10-10) | 18 pages × 2 widths, 0 violations after fixing 2 real contrast defects |
 | PHP handler (php -S, synthetic data) | valid → 303 to thank-you + JSON record **outside** web root; missing consent → 422; honeypot → silent 303; GET → 405 |
 | `php -l enquiry.php` | no syntax errors |
 | Not tested (cannot be, here) | real email delivery via `mail()`, behaviour under Hostinger's LiteSpeed `.htaccess`, live HTTPS/HSTS, production document root |
@@ -73,7 +74,7 @@ Why not Kirby: the licence is a recurring cost requiring approval, and the only 
 4. SEMrush pilot (≤ 200 units) once units exist, per `KEYWORD_URL_MAP.md` §3.
 5. Application system Stage 2 (accounts, save-and-resume, uploads) per `APPLICATION_SYSTEM_SPEC.md` — only after security review.
 6. Service tiers: evidence gathering per `SERVICE_TIERS_SPEC.md`; no publication without approval.
-7. Self-host Inter/Inter Tight fonts (performance + privacy) and tighten CSP accordingly.
+7. ~~Self-host fonts and tighten CSP~~ — done 2026-10-10.
 8. Search Console: owner adds the property and grants access; baseline before any growth claims.
 
 ## 7. Decisions still required

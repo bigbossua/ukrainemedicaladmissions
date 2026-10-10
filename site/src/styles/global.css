@@ -48,7 +48,7 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 
 .eyebrow { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-600); margin-bottom: .75rem; }
 .eyebrow::before { content: ""; display: inline-block; width: 18px; height: 4px; border-radius: 2px; background: var(--yellow-400); margin-right: .5rem; vertical-align: middle; }
-.on-dark .eyebrow { color: var(--yellow-400); }
+.on-dark .eyebrow, .hero .eyebrow, .page-head .eyebrow { color: var(--yellow-400); }
 
 /* Cards & grids */
 .grid { display: grid; gap: 1.25rem; }
