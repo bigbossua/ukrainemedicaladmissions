@@ -98,4 +98,4 @@ CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file ch
 
 ## 7. Decisions still required
 
-D1 document root · D2 approve Hostinger Git deployment · D3 Kirby-now vs Astro-first-with-trigger (see §2; the earlier 'rejected on cost' reasoning was wrong — Kirby is €99 one-time) · D4 staging subdomain · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms.
+~~D3~~ **decided 2026-10-10: Option C** (§2) · **D8 repository visibility** — the repo is public and GitHub blob pages are indexable, so a `staging` deploy branch and the unverified Ternopil JSON are readable there regardless of the staging site's noindex: make the repository private before the first staging publish, or accept the exposure in writing · D1 document root · D2 approve Hostinger Git deployment · D4 staging subdomain (password-protected) · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms.
