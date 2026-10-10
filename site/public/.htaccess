@@ -9,6 +9,12 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://ukrainemedicaladmissions.com%{REQUEST_URI} [L,R=301]
 
+# Never serve a Git checkout or its metadata if the deploy tool leaves one in the document root
+RewriteRule (^|/)\.git(/|$) - [F,L]
+
+# No directory listings (every page directory has an index.html; this covers _astro/, fonts/, brand/, api/)
+Options -Indexes
+
 # Legacy URLs (search-evidenced on the old site, 2026-10-10). Extend from the live backup before deploy.
 # /services and /about are KEPT as pages; Apache's DirectorySlash already 301s /services -> /services/.
 # Anchored RedirectMatch (not prefix Redirect) so /courses/dentistry/ etc. can never loop.

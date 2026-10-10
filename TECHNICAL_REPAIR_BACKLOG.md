@@ -37,3 +37,4 @@ The old site's files were **not found** in the `public_html` shown in the owner'
 | N12 | Verify the official e-invitation route (`apply.studyinukraine.gov.ua`, per kmu.edu.ua snippet) before Stage 2 application design | High | Blocked from this environment; owner or allow-listing. |
 | N13 | `security.txt` (RFC 9116) at `/.well-known/security.txt` — Expires 2027-09-30; `check-meta` fails when it is within 30 days of expiry or more than a year ahead | DONE 2026-10-10 | Renew the date at the release before expiry. |
 | N14 | BreadcrumbList JSON-LD on every page with breadcrumbs (omitted in staging builds); `check-meta` now parses every JSON-LD block | DONE 2026-10-10 | — |
+| N15 | `.htaccess`: deny any `.git` path (403) and `Options -Indexes`; if Hostinger rejects `Options` in `.htaccess` (500 on every page) remove that line and republish | DONE 2026-10-10 (rule), verify at first deploy | Post-deploy check in `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §12.2 step 4. |

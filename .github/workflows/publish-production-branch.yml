@@ -62,25 +62,41 @@ jobs:
         run: |
           npx astro check
           npm run build
-          npm run test:links && npm run test:meta
+          npm run test:links && npm run test:meta && npm run test:redirects
           npx playwright install --with-deps chromium
-          npm run test:ui && npm run test:a11y && npm run test:perf
+          npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:release
           php -l public/api/enquiry.php
           echo "OUT=site/dist" >> "$GITHUB_ENV"
-      - name: Push built site to deploy branch
+      - name: Commit the built site onto the deploy branch (fast-forward, never force)
+        env:
+          PUSH_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         run: |
           git config --global user.name "uma-release-bot"
           git config --global user.email "noreply@ukrainemedicaladmissions.com"
           if [ "$TARGET" = "production" ]; then
-            TAG="release-$(date -u +%Y%m%d-%H%M%S)"
-            git tag "$TAG" && git push origin "$TAG"
-            MSG="Build ${GITHUB_SHA::7} ($TAG)"
+            TAG="release-$(date -u +%Y%m%d-%H%M%S)"; MSG="Build ${GITHUB_SHA::7} ($TAG)"
           elif [ "$TARGET" = "staging" ]; then
-            MSG="Staging build ${GITHUB_SHA::7} (noindex)"
+            TAG=""; MSG="Staging build ${GITHUB_SHA::7} (noindex)"
           else
             echo "unreachable: invalid target"; exit 1
           fi
-          cd "$OUT"
-          git init -q && git checkout -q -b "$TARGET"
-          git add -A && git commit -q -m "$MSG"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" "$TARGET"
+          # The deploy branch holds ONLY the build output (no source, no project documents). Each publish adds
+          # one commit on top of the branch's current head, so Hostinger's pull is always a fast-forward and
+          # history is never rewritten. The tree is written from $OUT with a throw-away index.
+          PARENT=""
+          if git fetch -q origin "refs/heads/$TARGET:refs/remotes/origin/$TARGET" 2>/dev/null; then
+            PARENT=$(git rev-parse "refs/remotes/origin/$TARGET")
+          fi
+          export GIT_INDEX_FILE="$RUNNER_TEMP/deploy-index"
+          rm -f "$GIT_INDEX_FILE"
+          git --work-tree="$OUT" add -A -f .
+          TREE=$(git write-tree)
+          if [ -n "$PARENT" ] && [ "$(git rev-parse "$PARENT^{tree}")" = "$TREE" ]; then
+            echo "deploy branch already carries this exact build"; COMMIT="$PARENT"
+          else
+            COMMIT=$(git commit-tree "$TREE" ${PARENT:+-p "$PARENT"} -m "$MSG")
+          fi
+          git push "$PUSH_URL" "$COMMIT:refs/heads/$TARGET"
+          if [ -n "$TAG" ]; then git tag "$TAG" "$GITHUB_SHA" && git push "$PUSH_URL" "refs/tags/$TAG"; fi
+          echo "deploy branch $TARGET -> commit $COMMIT (tree $TREE, $(git ls-tree -r "$TREE" | wc -l) files)"
+          git ls-tree --name-only "$TREE"
