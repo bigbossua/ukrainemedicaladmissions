@@ -2,7 +2,7 @@
   "name": "ukrainemedicaladmissions-site",
   "private": true,
   "version": "0.1.0",
-  "description": "Ukraine Medical Admissions — public website (Astro, static output)",
+  "description": "Ukraine Medical Admissions \u2014 public website (Astro, static output)",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -11,12 +11,16 @@
     "check": "astro check",
     "test:links": "node tests/check-links.mjs",
     "test:meta": "node tests/check-meta.mjs",
+    "test:redirects": "node tests/check-redirects.mjs",
     "test:ui": "node tests/ui-smoke.mjs",
     "test:a11y": "node tests/a11y.mjs",
     "test:perf": "node tests/perf.mjs",
+    "test:release": "node tests/compare-backup.test.mjs",
     "build:staging": "STAGING=1 astro build --outDir dist-staging && node scripts/staging-postbuild.mjs",
     "test:staging": "npm run build:staging && node tests/staging-guard.mjs",
-    "test": "npm run build && npm run test:links && npm run test:meta && npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:staging"
+    "manifest": "node scripts/release-manifest.mjs",
+    "compare:backup": "node scripts/compare-live-backup.mjs",
+    "test": "npm run build && npm run test:links && npm run test:meta && npm run test:redirects && npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:release && npm run test:staging"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",

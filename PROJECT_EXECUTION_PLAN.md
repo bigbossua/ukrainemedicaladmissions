@@ -73,7 +73,7 @@
 
 ## 4a. CI coverage note
 
-CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file changes. Runs #1 (`6bff593`), #2 (`ebb671f`) and #3 (`4d8f250`) passed. Documentation-only commits (`920d4f3`, `3266e7e`, `0c51279`, `570c317`, `9122282`, `097930d`) did not trigger CI and are not covered by those runs; the next commit touching `site/` triggers run #4.
+CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file changes. Runs #1 (`6bff593`), #2 (`ebb671f`), #3 (`4d8f250`), #6 (`6041b9c`) and #7 (`731c598`) passed (#4 not re-read); #5 (`8fa19f1`) failed on a Lighthouse runner-noise miss that #6 fixed. Documentation-only commits (`920d4f3`, `3266e7e`, `0c51279`, `570c317`, `9122282`, `097930d`, `1af9b81`, `48c1f37`, `6e3c36c`) did not trigger CI. Since 2026-10-10 the suite also runs the redirect-safety test, the first-write tooling self-test, JSON-LD validation and the `security.txt` expiry check.
 
 ## 5. Blockers and the smallest action to clear each
 

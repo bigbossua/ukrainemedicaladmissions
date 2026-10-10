@@ -23,9 +23,9 @@ The old site's files were **not found** in the `public_html` shown in the owner'
 
 | # | Item | Priority | Notes |
 |---|---|---|---|
-| N1 | Redirect map from old URLs | High | Four legacy URLs evidenced by search (see `PAGE_ASSET_REGISTER.md`); proposed 301 targets recorded; **status/redirect behaviour unverified**; full list needs sitemap / Search Console export. |
+| N1 | Redirect map from old URLs | High — tooling DONE 2026-10-10, data pending | Four legacy URLs evidenced by search (see `PAGE_ASSET_REGISTER.md`); two 301 rules in `.htaccess`, proven loop-free by `npm run test:redirects`; the full map is generated from the live backup by `npm run compare:backup -- <dir>` (proposed lines, reviewed before use). Needs E2 (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §9.1). |
 | N2 | Self-host fonts; drop Google Fonts from CSP | **DONE 2026-10-10** | Inter + Inter Tight variable woff2 (latin, latin-ext), 276 KB total, `font-src 'self'`; see `site/FONTS.md`. |
-| N3 | Verify `.htaccess` behaviour on Hostinger (LiteSpeed): redirects, headers, 404 page, `.json` block vs `site.webmanifest` | High | Staging test. |
+| N3 | Verify `.htaccess` behaviour on Hostinger (LiteSpeed): redirects, headers, 404 page, `.json` block vs `site.webmanifest` | High | Rule logic is tested offline (`test:redirects`); server behaviour is checked immediately after the first approved deploy (checklist A6), staging being optional. |
 | N4 | `mail()` deliverability on Hostinger (SPF/DKIM for `no-reply@`) | High | Test on staging with a test inbox. |
 | N5 | Image pipeline: Astro `<Image>` with WebP/AVIF, attribution record per image | Medium | No images yet beyond logos; see `brand/BRAND_GUIDELINES.md` §6. |
 | N6 | Accessibility audit with axe (automated) | **DONE 2026-10-10** | `npm run test:a11y` (WCAG 2.1 A/AA + best-practice, 18 pages × 2 widths, mobile menu open) in CI. First run found 2 real defects, both fixed: inner-page eyebrow blue-on-navy; mobile-menu CTA text navy-on-blue (scoped-CSS specificity). Manual keyboard/screen-reader pass still outstanding (N9). |
@@ -35,3 +35,5 @@ The old site's files were **not found** in the `public_html` shown in the owner'
 | N10 | Legacy brand and claims reconciliation | High | Old site brands itself "Study Medicine in Ukraine", advertises WhatsApp, and states founder/team/"established 2015" (all snippet-only). Owner to confirm which facts are true and carry over; WhatsApp never carries over. |
 | N11 | Complaints policy and referral-marketing disclosure pages | Medium | Present on the legacy site's footer (snippet); write for the new site before launch (legal review with privacy/terms). |
 | N12 | Verify the official e-invitation route (`apply.studyinukraine.gov.ua`, per kmu.edu.ua snippet) before Stage 2 application design | High | Blocked from this environment; owner or allow-listing. |
+| N13 | `security.txt` (RFC 9116) at `/.well-known/security.txt` — Expires 2027-09-30; `check-meta` fails when it is within 30 days of expiry or more than a year ahead | DONE 2026-10-10 | Renew the date at the release before expiry. |
+| N14 | BreadcrumbList JSON-LD on every page with breadcrumbs (omitted in staging builds); `check-meta` now parses every JSON-LD block | DONE 2026-10-10 | — |

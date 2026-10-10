@@ -29,9 +29,23 @@ for (const f of pages) {
   if (h1s !== 1) warn(f, `H1 COUNT ${h1s}`);
   if (titles.has(title)) warn(f, `DUPLICATE TITLE with ${titles.get(title)}`); else titles.set(title, rel);
   if (descs.has(desc)) warn(f, `DUPLICATE DESCRIPTION with ${descs.get(desc)}`); else descs.set(desc, rel);
+  for (const m of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try { const o = JSON.parse(m[1]); if (!o['@type']) warn(f, 'JSON-LD WITHOUT @type'); } catch { warn(f, 'INVALID JSON-LD'); }
+  }
   const inSitemap = sitemap.includes(`<loc>${SITE}${rel}</loc>`);
   if (robots.includes('noindex') && inSitemap) warn(f, 'NOINDEX PAGE IN SITEMAP');
   if (!robots.includes('noindex') && rel !== '404' && !inSitemap) warn(f, 'INDEXABLE PAGE MISSING FROM SITEMAP');
 }
+// RFC 9116 security.txt: present, and its Expires date is in the future but no more than a year ahead.
+const secPath = join(DIST, '.well-known', 'security.txt');
+try {
+  const sec = readFileSync(secPath, 'utf8');
+  const exp = Date.parse(sec.match(/^Expires:\s*(\S+)/m)?.[1] ?? '');
+  const days = (exp - Date.now()) / 86400000;
+  if (!/^Contact:\s*mailto:/m.test(sec)) warn(secPath, 'SECURITY.TXT WITHOUT mailto CONTACT');
+  if (Number.isNaN(exp) || days < 0) warn(secPath, 'SECURITY.TXT EXPIRED OR UNPARSABLE');
+  else if (days > 366) warn(secPath, 'SECURITY.TXT EXPIRES MORE THAN A YEAR AHEAD');
+  else if (days < 30) warn(secPath, `SECURITY.TXT EXPIRES IN ${Math.floor(days)} DAYS — renew`);
+} catch { warn(secPath, 'MISSING .well-known/security.txt'); }
 console.log(`check-meta: ${pages.length} pages, ${problems} problems`);
 process.exit(problems ? 1 : 0);

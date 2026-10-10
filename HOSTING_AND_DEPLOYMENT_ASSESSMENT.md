@@ -161,38 +161,65 @@ With E1–E5 in hand I fill §9 fields 1, 2 and 4, finish the redirect map from 
 
 ## 10. File Manager evidence 2026-10-10 (late evening) — domain mapping still UNCONFIRMED
 
-**Observed by the owner in hPanel File Manager (reported, trusted as an observation):**
+**Observed by the owner in hPanel File Manager (reported; trusted as an observation):**
 
 | Observation | Label |
 |---|---|
-| The account home directory contains a `public_html` directory and a file named `DO_NOT_UPLOAD_HERE`. No `domains/` directory was reported. | OBSERVED (owner) |
+| The directory shown as the account home contains a `public_html` directory and a file named `DO_NOT_UPLOAD_HERE`. No `domains/` directory was reported. | OBSERVED (owner) |
 | `public_html` is empty. | OBSERVED (owner) — matches the earlier screenshot (§1) |
 | `public_html` is the document root of `ukrainemedicaladmissions.com` | **UNCONFIRMED — not assumed** (owner's instruction) |
 
-**What the observation is consistent with (each labelled):**
+**What Hostinger's own documentation says (search-snippet evidence gathered 2026-10-10; direct fetches of hostinger.com are blocked here, so each line is labelled):**
 
-| Reading | Basis | Status |
+| Claim | Basis | Label |
 |---|---|---|
-| The home directory is `/home/u…/`; Hostinger places `DO_NOT_UPLOAD_HERE` there because files in the home directory are not web-served; the website's files belong in `public_html` (primary domain) or `domains/<domain>/public_html` (additional domains). | Hostinger support article cited in §1; marker-file meaning from Hostinger documentation as remembered | UNVERIFIED on this account |
-| No `domains/` directory listed ⇒ this plan serves one website, and `public_html` is that website's root. hPanel already shows `ukrainemedicaladmissions.com` as the website on this plan (§1, SSH Access screenshot). The nine SSH keys named for other projects (§1) prove only that keys were added, not that other websites are hosted on this plan — that earlier "same account hosts other sites" line is downgraded to UNVERIFIED. | Owner's listing + §1 screenshots | UNVERIFIED (depends on the listing being complete; hidden entries are possible) |
-| If `public_html` is the root **and** the search index still lists live pages (`/services`, `/about`, …), then either (a) the domain's DNS points at another server where the old site still runs, or (b) the old site was removed from here and the search index is stale, or (c) the old site is a Hostinger Website Builder site, which keeps no files in `public_html` (less likely: the website entry shows an SSH Access menu, which builder sites do not have — approximate UI claim). | Reasoning from §1 + legacy inventory in `PAGE_ASSET_REGISTER.md` | UNVERIFIED — exactly the point the next check settles |
-| DNS evidence from this container | Attempted 2026-10-10 17:47 UTC: no system resolver for the domain (`getent`/Python: name not known), `dig` absent, DNS-over-HTTPS to Google and Cloudflare refused by the proxy (403). | VERIFIED — not obtainable from here |
+| A website's root is in one of two forms: `/home/uNNNNNNNN/domains/<domain>/public_html` or `/home/uNNNNNNNN/public_html`. Which form an account uses is not stated in the docs; it must be read from hPanel. | Hostinger support 1583494 ("It will be in either one of the two following formats…") | SNIPPET-BACKED |
+| The documented place to read the exact directory serving a website is hPanel → Websites → the site's Dashboard → **FTP Accounts** → the root path shown in the "Create New FTP account" section (also on the Plan Details page). | Hostinger support 1583494 | SNIPPET-BACKED |
+| The File Manager has two entry modes: opened from a website's dashboard it starts **inside that website's folder** (`public_html` + the `DO_NOT_UPLOAD_HERE` marker beside it); opened account-wide it shows the `domains` folder and system directories. **A view showing only `public_html` + `DO_NOT_UPLOAD_HERE` is therefore a website-scoped folder and does not by itself say which domain it serves, nor whether other websites exist.** | docs.hostinger.com File Manager page; community reports on the marker file | SNIPPET-BACKED (marker semantics: community, not official) |
+| A Hostinger Website Builder site is **not** served from `public_html` at all; the File Manager is unavailable for builder sites. An empty `public_html` is fully consistent with a live builder site. Leaving the builder means deleting the builder website and adding an "Empty PHP/HTML" website — destructive by design, and builder export is a ZIP whose format is not documented as plain HTML. | Hostinger support 4548688, 6639802, 8412815 | SNIPPET-BACKED |
+| In Websites, each entry shows a platform icon (WordPress / Website Builder / other) and builder sites carry an **Edit Website** button; a domain not pointing at Hostinger shows a **Domain not connected** / **Temporary domain** notice with a Check guide button. | Hostinger support ?p=821, 1863967 | SNIPPET-BACKED (labels approximate) |
+| Hostinger Git deployment: root directory defaults to `public_html`, any directory can be chosen, deployed files **overwrite** existing files at the same paths; whether files absent from the repository are deleted is **not documented** — assume they remain. File Manager deletions are permanent by default. | Hostinger support 1583302, 4548688 | SNIPPET-BACKED / UNVERIFIED (deletion behaviour) |
+| Whether the top-level `public_html` is a link to the main domain's folder | no Hostinger source found | UNVERIFIED |
 
-**Why this matters for the first write:** the plan in §9 writes the Astro build into the document root via Hostinger Git. If DNS does not point at this server, that write changes nothing visitors see and the real production target is elsewhere; if DNS does point here and the root is empty, the write overwrites nothing and the "legacy URLs" are already dead, so the redirect map protects only residual index entries and inbound links.
+**Consequences for the reading of the observation.** My earlier inference in this section that "no `domains/` directory ⇒ one website on the plan" is withdrawn: the view the owner described is what a website-scoped File Manager shows for *any* website. The observation is consistent with all of these, which lead to different first-write plans:
+
+| Hypothesis | What it would mean | How the single check (§10.1) resolves it |
+|---|---|---|
+| H1 — the folder is this domain's root and the site was never deployed here (or was removed); the indexed legacy pages are stale or served elsewhere | Writing here overwrites nothing; redirects protect only old links | FTP Accounts path = the browsed folder; no builder icon; domain connected |
+| H2 — the live site is a Hostinger Website Builder site | `public_html` is unused; replacing it with the Astro build requires deleting the builder website — an irreversible step that needs a prior builder export and **separate approval**; not a routine deploy | Websites entry shows the builder icon / Edit Website button |
+| H3 — the domain's DNS points at another host; this plan is not production | A write here changes nothing visitors see; the production target is the other host or a DNS move (separate approval) | "Domain not connected" / "Temporary domain" notice on the entry; `nslookup` from the owner's computer differs from the hPanel server IP |
+| H4 — the folder browsed belongs to a different website on the account | This domain's root is elsewhere (`domains/ukrainemedicaladmissions.com/public_html`) and may hold the legacy files | FTP Accounts path differs from the browsed folder |
+
+**DNS evidence from this container:** attempted 2026-10-10 17:47 UTC — no system resolver for the domain (`getent`/Python: name not known), `dig` absent, DNS-over-HTTPS to Google and Cloudflare refused by the proxy (403). VERIFIED: not obtainable from here.
 
 ### 10.1 The single remaining hosting check
 
-**Does `ukrainemedicaladmissions.com` resolve to this Hostinger server?** One question, two free read-only readings that answer it together:
+**hPanel → Websites → the entry for `ukrainemedicaladmissions.com` → Dashboard → FTP Accounts.** One read-only visit; screenshot three things on the way:
 
-1. **hPanel → Websites → `ukrainemedicaladmissions.com` → Dashboard.** Screenshot the top of the dashboard where hPanel states whether the domain is pointing to Hostinger (a warning banner appears when it is not — UI wording approximate), and the hosting details panel that shows the **server IP address** (also under Hosting → Manage → Details, label approximate).
-2. **On the owner's own computer:** run `nslookup ukrainemedicaladmissions.com` (Windows) or `dig +short ukrainemedicaladmissions.com` (macOS/Linux) and screenshot the result.
+1. The website **entry** itself in the Websites list: its platform icon, whether it has an **Edit Website** button (builder) and whether a **Domain not connected** or **Temporary domain** notice is shown.
+2. In the Dashboard sidebar, **FTP Accounts** → the absolute directory path printed in the "Create New FTP account" section (expected form `/home/uNNNNNNNN/domains/ukrainemedicaladmissions.com/public_html` or `/home/uNNNNNNNN/public_html`). This is Hostinger's own statement of which directory serves the domain.
+3. Optional corroboration, from the owner's own computer: `nslookup ukrainemedicaladmissions.com` (Windows) or `dig +short ukrainemedicaladmissions.com` (macOS/Linux), compared with the server IP shown in hPanel's hosting details.
 
-Reading the result:
-
-| Result | Meaning | Effect on §9 |
+| Result | Reading | Effect on §9 |
 |---|---|---|
-| The resolved IP **equals** the hPanel server IP and hPanel shows the domain pointing to Hostinger | This plan is production. With no `domains/` directory, `public_html` is the root (then CONFIRMED by hPanel → Files → FTP Accounts, whose directory line prints the absolute path — take that screenshot too). The live site is therefore empty/removed and the indexed legacy pages are stale. | Field 1 = that path; field 2 = "no live files"; E2 backup becomes a formality (empty root); redirects protect only old links; first write overwrites nothing. |
-| The resolved IP **differs** (another host, or a proxy/CDN) | Production is served elsewhere; this plan is not the live target. | §9 pauses. The next decision is the owner's: move DNS to this server (a DNS change — separate approval, after the build is deployed here and verified on the server's temporary/preview URL) or deploy to the other host instead. Nothing on either host is touched until then. |
-| Nothing resolves (domain expired/parked) | No live site; visitors already get nothing. | First write cannot damage anything; DNS/registration must be fixed by the owner first. |
+| No builder icon, no "not connected" notice, FTP path = the folder browsed (empty) | H1. This plan is production and its root is empty. | Field 1 = that path; field 2 = "no live files"; E2 is a one-line statement; first write overwrites nothing; redirects protect old links and index entries. |
+| Builder icon / Edit Website button | H2. The live site is a builder site. | §9 pauses. A decision gate is added: export the builder site, then delete it and create an "Empty PHP/HTML" website — only with separate explicit approval. |
+| "Domain not connected" / "Temporary domain", or `nslookup` IP ≠ hPanel server IP | H3. Production is elsewhere. | §9 pauses. Owner decides: deploy here and move DNS later (DNS change = separate approval) or deploy to the other host. |
+| FTP path ≠ the folder browsed | H4. The real root is elsewhere on this account. | Owner opens File Manager from this website's dashboard, repeats E1/E2 for that folder; the comparison tooling in §11 then produces the redirect map and collision list. |
 
-Until this check is done, nothing is deployed, deleted or modified on the server, nothing is purchased, and the branch continues to carry only repository work.
+Until this check is done, nothing is deployed, deleted or modified on the server, nothing is purchased, and the branch carries only repository work.
+
+---
+
+## 11. Network-independent first-write tooling (on the branch; nothing runs against the server)
+
+Built 2026-10-10 so that the moment E1/E2 arrive the first-write plan can be completed from evidence rather than assumptions. All commands run from `site/` after `npm run build`; none touches the network or the server.
+
+| Tool | Command | What it produces | Feeds |
+|---|---|---|---|
+| Release manifest | `npm run manifest` | `tests/output/release-manifest.json`: every file a deploy would write, bytes, SHA-256, and a release fingerprint (SHA-256 over all path+hash lines); a top-level table on the console | §9 field 3 (exact files that will change); the fingerprint is recorded next to the backup hash before and after the first write |
+| Live-backup comparison | `unzip -q backup.zip -d <dir>` then `npm run compare:backup -- <dir>` | `tests/output/live-backup-report.md`: document-root candidates; technology markers (presence only — WordPress, Kirby incl. licence-file presence, Composer, PHP, static); the legacy `.htaccess` redirect/rewrite lines; sitemap URLs; the legacy URL inventory with titles; coverage of every legacy URL as KEPT / REDIRECTED / UNCOVERED; **proposed** `RedirectMatch` lines for uncovered URLs (never applied); collisions (live files the build overwrites, with sizes); untouched live files (stay reachable); counts of pages with messaging-app or `tel:` contacts; sensitive files flagged and never read | §9 fields 2, 3, 5, 6; backlog N1 (redirect map), N10 (legacy contact channels); checklist A2/A3 |
+| Redirect safety test | `npm run test:redirects` | Fails the build if `.htaccess` carries a prefix `Redirect`, an unanchored `RedirectMatch`, a target without a built page, a redirect chain or loop, a page that is both built and redirected, a missing host-scoped canonical rule, or a 404 document that does not exist | Checklist A6/B; runs in CI |
+| Tooling self-test | `npm run test:release` | Runs the manifest over `dist/` and the comparator over a synthetic fixture (`tests/fixtures/legacy-backup/`, clearly marked synthetic) and asserts every classification, the proposed-line format, sensitive-file flagging, collision listing and that no fixture body text leaks into the report | CI (`npm test`) |
+
+The comparator reads only directory listings, `.html`/`.php` text, `.htaccess` rules and sitemap URLs. It never opens `.sql`, `.env`, archives, keys or `wp-config.php`; it reports their presence so they are excluded from any deploy.

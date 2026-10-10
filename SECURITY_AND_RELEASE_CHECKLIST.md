@@ -4,9 +4,9 @@ Complete every box before the **first** production write and before each later r
 
 ## A. Before the first production deployment (one-time)
 
-- [ ] **A1 Document root confirmed** for `ukrainemedicaladmissions.com` in hPanel (exact path recorded in `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`). Not assumed from File Manager.
-- [ ] **A2 Backup** of that directory downloaded and dated (or dated evidence that it is empty); any database linked to the domain exported. Stored off-server, not in Git.
-- [ ] **A3 Old URLs** inventoried (sitemap/Search Console export) and a redirect map prepared (backlog N1) so existing equity is preserved.
+- [ ] **A1 Document root confirmed** for `ukrainemedicaladmissions.com` in hPanel — the FTP Accounts path plus the website entry's platform/connection status (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §10.1); exact path recorded there. Not assumed from File Manager (owner's 2026-10-10 view: empty `public_html`, mapping unconfirmed).
+- [ ] **A2 Backup** of that directory downloaded and dated (or dated evidence that it is empty); any database linked to the domain exported. Stored off-server, not in Git. SHA-256 of the archive and the release-manifest fingerprint (`npm run manifest`) recorded in the assessment §9.
+- [ ] **A3 Old URLs** inventoried from the backup with `npm run compare:backup -- <dir>` (plus sitemap/Search Console export if available); every legacy URL KEPT or REDIRECTED, no UNCOVERED row left unreviewed; the resulting rules pass `npm run test:redirects` (backlog N1).
 - [ ] **A4 Hostinger Git** connected to the `production` branch with the deploy directory = A1; auto-deploy understood; rollback = republish previous release tag.
 - [ ] **A5 (OPTIONAL — owner waived mandatory staging, 2026-10-10)** Staging subdomain created in hPanel, **password-protected (hPanel → Password Protect Directories)**, connected to the `staging` branch; the staging build itself is noindex everywhere (no canonical/og:url/JSON-LD, no sitemap, robots allows crawling so the noindex is seen, `X-Robots-Tag` in `.htaccess`) — verified by `npm run test:staging`; confirmed absent from search engines after a week.
 - [ ] **A5a Repository private** (free; recommended) before any deploy branch is published — public branches are browsable and indexable on GitHub (D8).
@@ -20,7 +20,8 @@ Complete every box before the **first** production write and before each later r
 
 ## B. Every release
 
-- [ ] CI green on the commit (build, astro check, links, meta, UI smoke, php -l).
+- [ ] CI green on the commit (build, astro check, links, meta incl. JSON-LD and `security.txt` expiry, redirect safety, UI smoke, axe, Lighthouse, tooling self-test, staging guard, php -l).
+- [ ] `npm run manifest` fingerprint recorded for the release; `.well-known/security.txt` Expires still in the future.
 - [ ] Screenshots from CI reviewed at mobile/tablet/desktop for the changed pages.
 - [ ] No new page without a `PAGE_ASSET_REGISTER.md` row; no university flipped to `publishable` without `SOURCE_VERIFICATION_REGISTER.md` entries.
 - [ ] Sitemap diff reviewed: no private or unverified URL added.

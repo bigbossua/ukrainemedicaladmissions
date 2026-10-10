@@ -1,7 +1,19 @@
 ---
+import { SITE, STAGING } from '../lib/site';
 interface Props { items: { label: string; href?: string }[] }
 const { items } = Astro.props;
 const trail = [{ label: 'Home', href: '/' }, ...items];
+// BreadcrumbList structured data (omitted in staging builds, like all JSON-LD). The last item carries no URL.
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: trail.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href && i < trail.length - 1 ? { item: new URL(c.href, SITE.url).href } : {}),
+  })),
+};
 ---
 <nav class="crumbs wrap" aria-label="Breadcrumb">
   <ol>
@@ -10,3 +22,4 @@ const trail = [{ label: 'Home', href: '/' }, ...items];
     ))}
   </ol>
 </nav>
+{!STAGING && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SYNTHETIC FIXTURE - not the real site -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://www.example-legacy.test/</loc></url>
+<url><loc>https://www.example-legacy.test/services/</loc></url>
+<url><loc>https://www.example-legacy.test/about</loc></url>
+<url><loc>https://www.example-legacy.test/dentistry-admissions-in-ukraine/</loc></url>
+<url><loc>https://www.example-legacy.test/careers/</loc></url>
+</urlset>

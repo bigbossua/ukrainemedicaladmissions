@@ -1,0 +1,4 @@
+# SYNTHETIC FIXTURE - not the real site
+RewriteEngine On
+RewriteRule ^old-page$ /services [R=301,L]
+Redirect 301 /about /about-us
