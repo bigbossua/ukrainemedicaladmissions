@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { SITE } from '../../lib/site';
+---
+<Base title="Independence and referral disclosure" description="How Ukraine Medical Admissions is paid, its relationship to universities, and its policy on referrals, advertising and rankings.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Independence and referral disclosure</h1><p>Draft for legal review — effective date to be set before publication.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Disclosure' }]} />
+  <section style="padding-top:1rem"><div class="wrap prose">
+    <h2>Our relationship with universities</h2>
+    <p>{SITE.disclaimer} We do not hold, and do not claim, any official partnership or agent status with any university unless a written agreement exists and is stated on the relevant university profile with its date.</p>
+    <h2>How we are paid</h2>
+    <p>We are paid only by applicants who choose one of our paid support services, under terms shown in full before purchase. If we ever receive a referral fee, commission or other payment from a university or third party in connection with an applicant, we will state so here and on the relevant page before the applicant decides. [No such arrangement exists at the date of this draft.]</p>
+    <h2>Rankings and recommendations</h2>
+    <p>We do not publish rankings or call any institution "the best". Comparisons on this site use facts verified from official sources, each shown with its source and check date. No university pays for placement, ordering or wording on this site.</p>
+    <h2>Advertising</h2>
+    <p>We do not run paid advertising for this site and do not sell advertising space. We do not use messaging-app marketing.</p>
+    <h2>Contact</h2>
+    <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+  </div></section>
+</Base>

@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { SITE } from '../../lib/site';
+// This URL exists on the legacy site (/services) and is the only one search engines currently index for the
+// domain, so it is kept rather than redirected. Describes what the service does — no prices, no guarantees.
+---
+<Base title="Our services" description="What we do for applicants to Ukrainian medical universities: verified information, application preparation, document guidance and status tracking.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Services</span><h1>Admissions support, step by step</h1><p>Independent help with choosing a university, preparing a complete application and understanding each stage — built on verified, dated information.</p></div></div>
+  <Breadcrumbs items={[{ label: 'Services' }]} />
+  <section style="padding-top:1rem"><div class="wrap">
+    <div class="grid grid-3">
+      <div class="card"><div class="ico" aria-hidden="true">1</div><h2 style="font-size:1.15rem">University and course selection</h2><p>We help you compare programmes on facts you can check on each profile: whether your course is open to applicants from your country this intake, language of instruction, qualification title, published fees and entry requirements.</p><a class="more" href="/universities/">Browse the directory →</a></div>
+      <div class="card"><div class="ico" aria-hidden="true">2</div><h2 style="font-size:1.15rem">Application preparation and document review</h2><p>A personal checklist of the documents the university asks for, administrative review of what you upload, and plain advice on translations, notarisation and legalisation where a university requires them.</p><a class="more" href="/admissions/#documents">Document guidance →</a></div>
+      <div class="card"><div class="ico" aria-hidden="true">3</div><h2 style="font-size:1.15rem">Application status and next steps</h2><p>Clear status updates from your enquiry to the university's official decision, and an explanation of what happens at each stage — including the invitation letter and visa steps that the university and authorities control.</p><a class="more" href="/admissions/#stages">The four stages →</a></div>
+    </div>
+
+    <div class="prose" style="margin-top:2.5rem">
+      <h2>How it works</h2>
+      <ol>
+        <li><strong>Start online</strong> — tell us your course, preferred universities and background. Free, non-binding, nothing is sent to a university.</li>
+        <li><strong>We confirm the current requirements</strong> for your choices from the universities' official pages and send you a document checklist.</li>
+        <li><strong>You prepare and upload</strong> your documents through the secure application dashboard when it is available; we review and advise.</li>
+        <li><strong>You confirm</strong> — only then is an application submitted through the university's authorised procedure.</li>
+      </ol>
+      <h2>What we charge</h2>
+      <p>Starting an application is free. Where we offer paid support services, every option is described in full — inclusions, exclusions, price, when payment is due and the refund terms — before you choose it, and always separately from university fees, which are paid to the university. Paid options are shown only after your application has been received and reviewed.</p>
+      <h2>What we never promise</h2>
+      <p>Admission, a visa, recognition of a qualification in any country, scholarships or employment. Admission decisions are made solely by the university; visa decisions by the relevant authorities. {SITE.disclaimer}</p>
+      <p>Questions first? See the <a href="/faq/">FAQ</a> or <a href="/contact/">contact us</a>.</p>
+    </div>
+  </div></section>
+  <CtaBand />
+</Base>
