@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ukraine Medical Admissions — homepage design direction</title>
+<meta name="robots" content="noindex">
+<!--
+  DESIGN DIRECTION ONLY. Static, self-contained, no build step.
+  All university names, fees and figures below are PLACEHOLDERS marked [TBC]
+  and must be replaced by verified data before any publication.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap">
+<style>
+  :root{
+    --navy-900:#0B1F3F; --navy-700:#15325F; --navy-800:#0F2A52;
+    --blue-600:#1A5FC8; --blue-500:#2F7BE5; --blue-100:#DCE8FA; --blue-50:#EEF4FC;
+    --yellow-400:#F2C230; --yellow-600:#B98A05;
+    --ink:#111827; --slate:#4B5563; --line:#E3E8EF; --mist:#F5F7FA; --white:#fff;
+    --radius:14px; --radius-sm:10px; --gutter:clamp(16px,4vw,40px); --max:1200px;
+    --font-body:"Inter",system-ui,sans-serif; --font-display:"Inter Tight","Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--font-display);color:var(--navy-900);letter-spacing:-.02em;line-height:1.1;margin:0 0 .5em}
+  h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700} h2{font-size:clamp(1.5rem,3vw,2.125rem);font-weight:700} h3{font-size:1.125rem;font-weight:600}
+  p{margin:0 0 1em} a{color:var(--blue-600)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;border-radius:999px;padding:.9rem 1.5rem;text-decoration:none;font-size:1rem;border:2px solid transparent;transition:.15s}
+  .btn-primary{background:var(--blue-600);color:#fff}.btn-primary:hover{background:var(--navy-700)}
+  .btn-secondary{background:transparent;color:var(--navy-900);border-color:var(--navy-900)}.btn-secondary:hover{background:var(--blue-50)}
+  .btn-on-dark{background:#fff;color:var(--navy-900)}.btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-600);margin-bottom:.75rem}
+  .eyebrow::before{content:"";display:inline-block;width:18px;height:4px;border-radius:2px;background:var(--yellow-400);margin-right:.5rem;vertical-align:middle}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+  .nav img{height:40px;width:auto}
+  .nav ul{display:none;list-style:none;margin:0;padding:0;gap:1.75rem}
+  .nav ul a{color:var(--navy-900);text-decoration:none;font-weight:500}
+  .nav .btn{padding:.65rem 1.1rem;font-size:.95rem;white-space:nowrap}
+  @media(max-width:480px){.nav .btn{padding:.55rem .85rem;font-size:.85rem}.nav img{height:34px}}
+  .burger{display:inline-flex;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;align-items:center;justify-content:center;background:#fff}
+  @media(min-width:900px){.nav ul{display:flex}.burger{display:none}}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--navy-900) 0%,var(--navy-800) 60%,#123A72 100%);color:#fff;padding:clamp(3rem,8vw,6rem) 0}
+  .hero h1{color:#fff}.hero p{color:#CFDAEC;font-size:1.125rem;max-width:40ch}
+  .hero-grid{display:grid;gap:2.5rem;align-items:center}
+  @media(min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr}}
+  .hero .eyebrow{color:var(--yellow-400)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+  .trust{display:flex;flex-wrap:wrap;gap:1.25rem 2rem;margin-top:2rem;font-size:.9rem;color:#CFDAEC}
+  .trust b{color:#fff;display:block;font-size:1.1rem;font-family:var(--font-display)}
+  .hero-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:1.5rem;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .hero-card h3{margin-bottom:1rem}
+  .field{display:grid;gap:.35rem;margin-bottom:.9rem;font-size:.9rem;font-weight:500;color:var(--slate)}
+  .field span{display:block;border:1px solid var(--line);border-radius:var(--radius-sm);padding:.75rem .9rem;color:var(--ink);font-weight:400;background:var(--mist)}
+  .hero-card .btn{width:100%;justify-content:center}
+  .hero-card small{display:block;margin-top:.75rem;color:var(--slate);font-size:.8rem}
+
+  /* Sections */
+  section{padding:clamp(3rem,7vw,5.5rem) 0}
+  .alt{background:var(--mist)}
+  .grid{display:grid;gap:1.25rem}
+  @media(min-width:700px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:.5rem}
+  .card .ico{width:44px;height:44px;border-radius:12px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue-600);font-weight:700;font-family:var(--font-display)}
+  .card a.more{margin-top:auto;font-weight:600;text-decoration:none}
+  .uni{display:flex;flex-direction:column;gap:.75rem}
+  .uni .photo{aspect-ratio:16/9;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--blue-100),var(--blue-50));display:grid;place-items:center;color:var(--slate);font-size:.8rem}
+  .uni .meta{display:flex;flex-wrap:wrap;gap:.4rem;font-size:.78rem}
+  .uni .meta span{background:var(--mist);border-radius:999px;padding:.25rem .6rem;color:var(--slate)}
+  .tbc{color:var(--navy-900);background:#FBEFC4;border-radius:4px;padding:0 .3em;font-weight:600}
+  .steps{counter-reset:s}
+  .step{position:relative;padding-left:3.25rem}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:2.25rem;height:2.25rem;border-radius:50%;background:var(--navy-900);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:700}
+  .step h3{margin-bottom:.25rem}
+  .cta-band{background:var(--navy-900);color:#fff;border-radius:var(--radius);padding:clamp(2rem,5vw,3.5rem);display:grid;gap:1.5rem;align-items:center}
+  @media(min-width:800px){.cta-band{grid-template-columns:1fr auto}}
+  .cta-band h2{color:#fff;margin:0}.cta-band p{color:#CFDAEC;margin:.5rem 0 0}
+  .note{font-size:.85rem;color:var(--slate);border-left:3px solid var(--yellow-400);padding-left:.9rem}
+
+  footer{background:var(--navy-900);color:#CFDAEC;padding:3rem 0 2rem;font-size:.9rem}
+  footer .cols{display:grid;gap:2rem}
+  @media(min-width:800px){footer .cols{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+  footer h4{color:#fff;margin:0 0 .75rem;font-family:var(--font-display)}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.4rem}
+  footer a{color:#CFDAEC;text-decoration:none}
+  footer img{height:44px;margin-bottom:1rem}
+  .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.25rem;font-size:.8rem;color:#9FB0CC}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" aria-label="Ukraine Medical Admissions home"><img src="../logo/uma-logo-horizontal-light.svg" alt="Ukraine Medical Admissions"></a>
+    <ul>
+      <li><a href="#">Universities</a></li><li><a href="#">Courses</a></li><li><a href="#">Admissions</a></li>
+      <li><a href="#">Tuition &amp; fees</a></li><li><a href="#">FAQ</a></li><li><a href="#">About</a></li>
+    </ul>
+    <div style="display:flex;gap:.5rem;align-items:center">
+      <a class="btn btn-primary" href="#apply">Apply Online Now</a>
+      <button class="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">International medical admissions</span>
+      <h1>Study medicine in Ukraine with a clear, verified path.</h1>
+      <p>Compare accredited Ukrainian medical universities, understand real entry requirements and published tuition fees, and apply online with step-by-step support.</p>
+      <div class="cta-row">
+        <a class="btn btn-on-dark" href="#apply">Apply Online Now</a>
+        <a class="btn btn-ghost" href="#">Browse universities</a>
+      </div>
+      <div class="trust">
+        <div><b>[TBC]</b> verified universities</div>
+        <div><b>Medicine · Dentistry · Nursing · Pharmacy</b> programmes</div>
+        <div><b>Sourced &amp; dated</b> fee information</div>
+      </div>
+    </div>
+    <aside class="hero-card" id="apply" aria-label="Start your application">
+      <h3>Start your application</h3>
+      <label class="field">Course<span>Medicine (MD) — 6 years</span></label>
+      <label class="field">University<span>Choose a university or “help me choose”</span></label>
+      <label class="field">Country of your school-leaving certificate<span>Select</span></label>
+      <a class="btn btn-primary" href="#">Apply Online Now →</a>
+      <small>Save and resume anytime. No fee to start. We never share your documents without consent.</small>
+    </aside>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Why students use us</span>
+    <h2>Independent guidance, verified information.</h2>
+    <div class="grid grid-3">
+      <div class="card"><div class="ico">✓</div><h3>Verified university data</h3><p>Every fee, deadline and programme is checked against official university sources and dated.</p><a class="more" href="#">How we verify →</a></div>
+      <div class="card"><div class="ico">⇄</div><h3>Compare side by side</h3><p>Tuition, language of instruction, duration and entry requirements in one view.</p><a class="more" href="#">Compare universities →</a></div>
+      <div class="card"><div class="ico">◎</div><h3>One application journey</h3><p>Save-and-resume forms, a document checklist and status tracking from enquiry to offer.</p><a class="more" href="#">See the process →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Universities</span>
+    <h2>Featured medical universities</h2>
+    <p class="note">Placeholder cards. Names, fees and programme availability shown here are <span class="tbc">[TBC]</span> until verified against official sources.</p>
+    <div class="grid grid-3" style="margin-top:1.5rem">
+      <div class="card uni"><div class="photo">Verified campus image [TBC]</div><h3>Ternopil National Medical University</h3><div class="meta"><span>Ternopil</span><span>English-taught [TBC]</span><span>Fees from [TBC]</span></div><a class="more" href="#">View profile →</a></div>
+      <div class="card uni"><div class="photo">Verified campus image [TBC]</div><h3>University name [TBC]</h3><div class="meta"><span>City [TBC]</span><span>Language [TBC]</span><span>Fees [TBC]</span></div><a class="more" href="#">View profile →</a></div>
+      <div class="card uni"><div class="photo">Verified campus image [TBC]</div><h3>University name [TBC]</h3><div class="meta"><span>City [TBC]</span><span>Language [TBC]</span><span>Fees [TBC]</span></div><a class="more" href="#">View profile →</a></div>
+    </div>
+    <p style="margin-top:1.5rem"><a class="btn btn-secondary" href="#">All universities &amp; filters</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid grid-2" style="align-items:start">
+    <div>
+      <span class="eyebrow">Courses</span>
+      <h2>Programmes for international students</h2>
+      <p>Only programmes with verified current availability are listed. Degree titles follow the awarding university’s own terminology.</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card"><h3>Medicine</h3><p>Duration, language and fees <span class="tbc">[TBC]</span></p><a class="more" href="#">Explore →</a></div>
+      <div class="card"><h3>Dentistry</h3><p><span class="tbc">[TBC]</span></p><a class="more" href="#">Explore →</a></div>
+      <div class="card"><h3>Nursing</h3><p><span class="tbc">[TBC]</span></p><a class="more" href="#">Explore →</a></div>
+      <div class="card"><h3>Pharmacy</h3><p><span class="tbc">[TBC]</span></p><a class="more" href="#">Explore →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>From enquiry to enrolment, step by step</h2>
+    <div class="grid grid-4 steps" style="margin-top:1.5rem">
+      <div class="step"><h3>Choose</h3><p>Pick a course and shortlist universities with verified data.</p></div>
+      <div class="step"><h3>Apply online</h3><p>Complete the application form; save and resume anytime.</p></div>
+      <div class="step"><h3>Documents</h3><p>Upload securely against a clear checklist; we review and advise.</p></div>
+      <div class="step"><h3>Track</h3><p>Follow every status change until the university’s official decision.</p></div>
+    </div>
+    <p class="note" style="margin-top:1.5rem">We support your application. Admission decisions are made solely by the university; we do not guarantee admission, visas or recognition.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Ready to begin?</h2><p>Start your application in minutes. You can save and come back at any time.</p></div>
+      <a class="btn btn-on-dark" href="#apply">Apply Online Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><img src="../logo/uma-logo-horizontal-dark.svg" alt="Ukraine Medical Admissions"><p>Independent admissions support for international students applying to medical universities in Ukraine. Not affiliated with or endorsed by any university or government body.</p><p><a href="mailto:info@ukrainemedicaladmissions.com">info@ukrainemedicaladmissions.com</a></p></div>
+      <div><h4>Explore</h4><ul><li><a href="#">Universities</a></li><li><a href="#">Courses</a></li><li><a href="#">Tuition &amp; fees</a></li><li><a href="#">Compare</a></li></ul></div>
+      <div><h4>Apply</h4><ul><li><a href="#">Admission requirements</a></li><li><a href="#">Documents checklist</a></li><li><a href="#">FAQ</a></li><li><a href="#">Apply Online Now</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+    </div>
+    <div class="legal">© Ukraine Medical Admissions. Information is verified against official sources and dated on each page; always confirm with the university before relying on it.</div>
+  </div>
+</footer>
+</body>
+</html>
