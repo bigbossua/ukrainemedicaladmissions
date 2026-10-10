@@ -17,7 +17,7 @@ No production system was changed. No credentials were requested, received or rec
 | `studymedicineuknigeria` project | VERIFIED — not referenced | Not in this repo, not in this session. Nothing from it is used. |
 | Hostinger account holds this site | VERIFIED (screenshot) | hPanel → Websites → `ukrainemedicaladmissions.com` → Advanced → SSH Access; SSH status ACTIVE. |
 | Hosting type / plan | UNVERIFIED | hPanel (not cPanel) shared hosting with PHP Configuration, Databases, Cron Jobs, Cache Manager and a Git menu — consistent with a Hostinger Web/Business plan. Exact plan and PHP version not yet read. |
-| Same account hosts other sites | VERIFIED (screenshot) | Nine SSH keys named for unrelated projects (StudyUKToday, EastAfricaMinerals, haringey, houseremovalslewisham, kenyaflowermerchant, quietmindsleep, SMUKN-GitHub-Actions, ugandagoldreport…). **Any file operation on this account must be scoped to this domain's directory only.** |
+| Same account hosts other sites | UNVERIFIED (downgraded 2026-10-10, §10) | Nine SSH keys named for unrelated projects (StudyUKToday, EastAfricaMinerals, haringey, houseremovalslewisham, kenyaflowermerchant, quietmindsleep, SMUKN-GitHub-Actions, ugandagoldreport…) prove keys were added, not that other websites live on this plan; the owner's home-directory listing shows no `domains/` directory. **Any file operation on this account is still scoped to this domain's directory only.** |
 | `public_html` shown in File Manager is empty | VERIFIED (screenshot) | `srv1376-files.hstgr.io/…/files/public_html/` → "It feels lonely here…". |
 | `public_html` is this domain's document root | **UNVERIFIED — do not assume** | Hostinger uses `/home/<user>/public_html` for the primary domain and `/home/<user>/domains/<domain>/public_html` for additional domains ([Hostinger support](https://www.hostinger.com/support/1583494-what-is-the-path-to-your-website-s-root-home-directory-and-how-to-change-it-in-hostinger/)). With nine other projects on the account, this domain is likely an *additional* domain, so the empty folder shown may be a different site's root (or the primary root). See Decision D1. |
 | Old website files (the ~55-URL Kirby site from earlier audits) | UNVERIFIED — location unknown | Not in the empty folder shown. Either under `domains/ukrainemedicaladmissions.com/public_html`, already removed, or never on this account. |
@@ -136,7 +136,7 @@ Owner decision 2026-10-10: direct production, no mandatory staging, nothing purc
 
 | Item | Status |
 |---|---|
-| 1. Verified production document root | **UNVERIFIED** — needs hPanel → domain → Files/FTP path (screenshot) or the backup zip's top-level layout |
+| 1. Verified production document root | **UNVERIFIED** — owner's File Manager shows an empty `public_html` and no `domains/` directory (§10), which points to `public_html` but is **not assumed**; settled by the single check in §10.1 plus the FTP Accounts directory line |
 | 2. Current live technology and deployment method | **UNVERIFIED** — needs the backup zip (brief says Kirby; search snippets show a consultancy site with a WhatsApp option, Ternopil address, policy footer) |
 | 3. Exact files/directories that will change | The confirmed root will receive the Astro build output: `index.html`, `404.html`, `robots.txt`, `sitemap-index.xml`, `sitemap-0.xml`, `site.webmanifest`, favicons, `og-default.png`, `.htaccess`, and directories `_astro/`, `fonts/`, `brand/`, `api/` (PHP handler), `universities/`, `courses/`, `admissions/`, `tuition-fees/`, `faq/`, `about/`, `services/`, `contact/`, `apply/`, `privacy/`, `terms/`, `complaints-policy/`, `disclosure/`. **Existing files are not deleted by Hostinger Git deploys; conflicting paths are overwritten.** Any legacy file not overwritten stays reachable until explicitly retired in a later approved step. A sibling directory `uma-private/` is created outside the root by the handler on first enquiry. |
 | 4. Backup and rollback | Before the write: hPanel → Files → Backups → generate + download a dated full backup of the root (and any database); owner stores it off-server; its SHA-256 recorded here. Rollback: hPanel → Backups → restore files (and DB) from that backup; or republish the previous `release-*` tag via the publish workflow; `api/enquiry.php` can be renamed to disable the form independently. |
@@ -147,8 +147,8 @@ Owner decision 2026-10-10: direct production, no mandatory staging, nothing purc
 
 | # | Missing fact | Evidence that settles it | What I derive from it |
 |---|---|---|---|
-| E1 | **Which directory serves `ukrainemedicaladmissions.com`** | Screenshot of hPanel → Websites → *ukrainemedicaladmissions.com* → **Files / FTP accounts** (shows "Directory: /home/u…/…/public_html") — or the backup zip's top-level folder name | Field 1 of the plan; the Hostinger Git deploy directory; whether the empty `public_html` seen earlier belongs to another site |
-| E2 | **Live technology and files** | hPanel → Files → **Backups → Files backup → download** (or File Manager → that directory → Compress → download) and upload the zip to this session | Field 2 (CMS/framework, PHP use, forms, redirects, `.htaccess`, sitemap, every URL) → complete redirect map (A3), confirmation that nothing valuable is lost, exact list of files that will be overwritten |
+| E1 | **Whether this server is production, and which directory serves `ukrainemedicaladmissions.com`** | **The single check in §10.1**: hPanel website dashboard (domain-pointing status + server IP) and `nslookup`/`dig` from the owner's computer; then hPanel → Websites → *ukrainemedicaladmissions.com* → **Files / FTP accounts** (directory line) | Field 1 of the plan; the Hostinger Git deploy directory; whether a write here changes the live site at all |
+| E2 | **Live technology and files** | hPanel → Files → **Backups → Files backup → download** (or File Manager → that directory → Compress → download) and upload the zip to this session. If §10.1 shows production is on another host, the backup comes from that host instead. If the confirmed root is empty, E2 is a one-line statement to that effect. | Field 2 (CMS/framework, PHP use, forms, redirects, `.htaccess`, sitemap, every URL) → complete redirect map (A3), confirmation that nothing valuable is lost, exact list of files that will be overwritten — to be produced by `site/scripts/compare-live-backup.mjs` (in development on this branch) |
 | E3 | **PHP version on the plan** | Screenshot of hPanel → Advanced → **PHP Configuration** | Risk (e) — the enquiry handler needs PHP ≥ 8.1 |
 | E4 | **Any database tied to the domain** | Screenshot of hPanel → **Databases** | Whether a DB export belongs in the backup (A2) |
 | E5 | **Backup taken and stored** | The dated backup zip name + its SHA-256 (I compute it from the upload) kept off-server by the owner | Field 4 — rollback artefact; without it no first write |
@@ -156,3 +156,43 @@ Owner decision 2026-10-10: direct production, no mandatory staging, nothing purc
 | E7 | **Repository private (D8)** | GitHub → Settings → Danger zone → Change visibility → Private (free) | Closes GitHub-side exposure before any deploy branch exists |
 
 With E1–E5 in hand I fill §9 fields 1, 2 and 4, finish the redirect map from the real URL list, and present the itemised plan for approval. E6–E7 are needed before the approved write, not before the plan.
+
+---
+
+## 10. File Manager evidence 2026-10-10 (late evening) — domain mapping still UNCONFIRMED
+
+**Observed by the owner in hPanel File Manager (reported, trusted as an observation):**
+
+| Observation | Label |
+|---|---|
+| The account home directory contains a `public_html` directory and a file named `DO_NOT_UPLOAD_HERE`. No `domains/` directory was reported. | OBSERVED (owner) |
+| `public_html` is empty. | OBSERVED (owner) — matches the earlier screenshot (§1) |
+| `public_html` is the document root of `ukrainemedicaladmissions.com` | **UNCONFIRMED — not assumed** (owner's instruction) |
+
+**What the observation is consistent with (each labelled):**
+
+| Reading | Basis | Status |
+|---|---|---|
+| The home directory is `/home/u…/`; Hostinger places `DO_NOT_UPLOAD_HERE` there because files in the home directory are not web-served; the website's files belong in `public_html` (primary domain) or `domains/<domain>/public_html` (additional domains). | Hostinger support article cited in §1; marker-file meaning from Hostinger documentation as remembered | UNVERIFIED on this account |
+| No `domains/` directory listed ⇒ this plan serves one website, and `public_html` is that website's root. hPanel already shows `ukrainemedicaladmissions.com` as the website on this plan (§1, SSH Access screenshot). The nine SSH keys named for other projects (§1) prove only that keys were added, not that other websites are hosted on this plan — that earlier "same account hosts other sites" line is downgraded to UNVERIFIED. | Owner's listing + §1 screenshots | UNVERIFIED (depends on the listing being complete; hidden entries are possible) |
+| If `public_html` is the root **and** the search index still lists live pages (`/services`, `/about`, …), then either (a) the domain's DNS points at another server where the old site still runs, or (b) the old site was removed from here and the search index is stale, or (c) the old site is a Hostinger Website Builder site, which keeps no files in `public_html` (less likely: the website entry shows an SSH Access menu, which builder sites do not have — approximate UI claim). | Reasoning from §1 + legacy inventory in `PAGE_ASSET_REGISTER.md` | UNVERIFIED — exactly the point the next check settles |
+| DNS evidence from this container | Attempted 2026-10-10 17:47 UTC: no system resolver for the domain (`getent`/Python: name not known), `dig` absent, DNS-over-HTTPS to Google and Cloudflare refused by the proxy (403). | VERIFIED — not obtainable from here |
+
+**Why this matters for the first write:** the plan in §9 writes the Astro build into the document root via Hostinger Git. If DNS does not point at this server, that write changes nothing visitors see and the real production target is elsewhere; if DNS does point here and the root is empty, the write overwrites nothing and the "legacy URLs" are already dead, so the redirect map protects only residual index entries and inbound links.
+
+### 10.1 The single remaining hosting check
+
+**Does `ukrainemedicaladmissions.com` resolve to this Hostinger server?** One question, two free read-only readings that answer it together:
+
+1. **hPanel → Websites → `ukrainemedicaladmissions.com` → Dashboard.** Screenshot the top of the dashboard where hPanel states whether the domain is pointing to Hostinger (a warning banner appears when it is not — UI wording approximate), and the hosting details panel that shows the **server IP address** (also under Hosting → Manage → Details, label approximate).
+2. **On the owner's own computer:** run `nslookup ukrainemedicaladmissions.com` (Windows) or `dig +short ukrainemedicaladmissions.com` (macOS/Linux) and screenshot the result.
+
+Reading the result:
+
+| Result | Meaning | Effect on §9 |
+|---|---|---|
+| The resolved IP **equals** the hPanel server IP and hPanel shows the domain pointing to Hostinger | This plan is production. With no `domains/` directory, `public_html` is the root (then CONFIRMED by hPanel → Files → FTP Accounts, whose directory line prints the absolute path — take that screenshot too). The live site is therefore empty/removed and the indexed legacy pages are stale. | Field 1 = that path; field 2 = "no live files"; E2 backup becomes a formality (empty root); redirects protect only old links; first write overwrites nothing. |
+| The resolved IP **differs** (another host, or a proxy/CDN) | Production is served elsewhere; this plan is not the live target. | §9 pauses. The next decision is the owner's: move DNS to this server (a DNS change — separate approval, after the build is deployed here and verified on the server's temporary/preview URL) or deploy to the other host instead. Nothing on either host is touched until then. |
+| Nothing resolves (domain expired/parked) | No live site; visitors already get nothing. | First write cannot damage anything; DNS/registration must be fixed by the owner first. |
+
+Until this check is done, nothing is deployed, deleted or modified on the server, nothing is purchased, and the branch continues to carry only repository work.

@@ -8,7 +8,7 @@
 | Area | State |
 |---|---|
 | Brand identity | DONE — `brand/` (commit `ea1f6a9`) |
-| Hosting assessment | DONE — `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`; document root still UNVERIFIED (owner action D1) |
+| Hosting assessment | DONE — `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`; document root still UNVERIFIED — owner's File Manager shows an empty `public_html` and no `domains/` (§10); the single remaining check is whether the domain's DNS points at this server (§10.1, owner action D1) |
 | Website scaffold | DONE — `site/`, Astro static site, 18 pages, all tests passing locally (see §4) |
 | University data model | DONE — schema in `site/src/content.config.ts`; Ternopil pilot record, every claim marked unverified / not-published |
 | Enquiry / application-start (Stage 1) | DONE — `site/public/api/enquiry.php`, tested with synthetic data; stores outside web root |
@@ -98,4 +98,4 @@ CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file ch
 
 ## 7. Decisions still required
 
-~~D3~~ **decided: Astro-first, no purchases** (§2) · **D8 repository visibility — RECOMMENDED: make the repository private now (free).** Checked consequences: GitHub Actions keep running on private repos (2,000 free minutes/month; a CI run takes ≈2–3 min); Hostinger Git supports private repositories via its GitHub App; the prepared Pages CMS config works with private repos; nothing in the project depends on public visibility. This closes the exposure of deploy branches and the unverified Ternopil JSON on GitHub blob pages · D1 document root · D2 approve Hostinger Git deployment · ~~D4 staging subdomain~~ optional, no longer required · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms.
+~~D3~~ **decided: Astro-first, no purchases** (§2) · **D8 repository visibility — RECOMMENDED: make the repository private now (free).** Checked consequences: GitHub Actions keep running on private repos (2,000 free minutes/month; a CI run takes ≈2–3 min); Hostinger Git supports private repositories via its GitHub App; the prepared Pages CMS config works with private repos; nothing in the project depends on public visibility. This closes the exposure of deploy branches and the unverified Ternopil JSON on GitHub blob pages · D1 document root / production target (single check: `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §10.1) · D2 approve Hostinger Git deployment · ~~D4 staging subdomain~~ optional, no longer required · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms.
