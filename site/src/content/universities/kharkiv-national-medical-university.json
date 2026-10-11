@@ -18,7 +18,7 @@
     "status": "not-published",
     "source": null,
     "checked": null,
-    "note": "GATED — operating conditions. Kharkiv is a front-line region, and no status is recorded until a dated official statement for the current academic year (2026–27) says where and how the university teaches. Leads only: the official site was still publishing in 2026 (news item \"Special edition № 29, 2026\", dated 04.08.2026); a September 2025 press interview (THIRD-PARTY, gwaramedia.com) reports that only nine international students applied in 2025, that about 120 foreign students remained, and that the university was considering a campus in other regions or outside Ukraine; the official statements on teaching format found in snippets date from 2022 (remote synchronous start). None of this shows normal operation."
+    "note": "GATED — operating conditions. Kharkiv is a front-line region, and no status is recorded until a dated official statement for the current academic year (2026–27) says where and how the university teaches. Leads only: the official site was still publishing in 2026 (news item \"Special edition № 29, 2026\", dated 04.08.2026); a September 2025 press interview (THIRD-PARTY, gwaramedia.com) reports that only nine international students applied in 2025, that only 120 foreign students remained (against 5,000 in 2021), and that the university was considering a campus in other regions or outside Ukraine; the official statements on teaching format found in snippets date from 2022 (remote synchronous start). None of this shows normal operation."
   },
   "statusStatement": {
     "value": null,
@@ -57,7 +57,7 @@
     "status": "unverified",
     "source": null,
     "checked": null,
-    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Contacts for international applicants: Educational and Scientific Institute for Foreign Citizens (ESIFC)\"; the page lists named contacts and telephone numbers that were not captured. An older e-mail address on a legacy domain appears in a snippet and is not recorded. Record e-mail and telephone only as printed on the official page."
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Contacts for international applicants: Educational and Scientific Institute for Foreign Citizens (ESIFC)\"; the contact details on that page are not in the snippets. An older e-mail address on a legacy domain appears in a snippet and is not recorded. Record e-mail and telephone only as printed on the official page."
   },
   "founded": {
     "value": null,
@@ -119,14 +119,14 @@
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: VI Faculty: \"length of schooling majoring in Medicine – 6 years\"; 2022 catalogue: \"six-year training term\"."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: VI Faculty: \"length of schooling majoring in Medicine – 6 years\"; 2022 catalogue: \"six-year training term\". The VI Faculty page is undated and the 2022 catalogue has been replaced by the 2024 version, whose snippet gives 360 ECTS but no duration: confirm the current duration on the official page."
       },
       "durationText": {
         "value": "6 years",
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: VI Faculty: \"length of schooling majoring in Medicine – 6 years\"."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: VI Faculty: \"length of schooling majoring in Medicine – 6 years\". The VI Faculty page is undated and the 2022 catalogue has been replaced by the 2024 version, whose snippet gives 360 ECTS but no duration: confirm the current duration on the official page."
       },
       "language": {
         "value": [
@@ -888,6 +888,12 @@
       "label": "Dentistry programme 2024/25 (PDF)",
       "url": "https://knmu.edu.ua/wp-content/uploads/2026/04/epp_st24_25.pdf",
       "purpose": "Level, professional qualification, language; changes in force from 1 September 2025",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Dentistry master's programme 2024 — compulsory components (3rd year)",
+      "url": "https://knmu.edu.ua/en/sompulsory-components-br-op-dentistry-master-2024-br-3rd-year/",
+      "purpose": "Source of the level lead (\"Dentistry Master's programme\"); programme version",
       "snippetDate": "2026-10-11"
     },
     {

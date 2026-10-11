@@ -37,14 +37,15 @@
 | 10 | [Medicine (master) 2022 — programme catalogue](https://knmu.edu.ua/en/program-catalog/medicine-master-2022/) | Earlier version: languages, duration (comparison only) |  |  |
 | 11 | [Medicine programme 2024/25 (PDF)](https://knmu.edu.ua/wp-content/uploads/2026/02/psp_med24_25.pdf) | Languages, award title, duration |  |  |
 | 12 | [Dentistry programme 2024/25 (PDF)](https://knmu.edu.ua/wp-content/uploads/2026/04/epp_st24_25.pdf) | Level, professional qualification, language; changes in force from 1 September 2025 |  |  |
-| 13 | [Nursing (bachelor's) 2021 — programme catalogue](https://knmu.edu.ua/en/program-catalog/nursing-bachelor-2021/) | Level, ECTS, languages; whether a current version exists |  |  |
-| 14 | [Nursing (bachelor's) 2021 — English programme PDF](https://knmu.edu.ua/wp-content/uploads/2023/05/epp_n21eng.pdf) | Level, specialty, languages, graduating department |  |  |
-| 15 | [Nursing master's programme 2024 (PDF)](https://knmu.edu.ua/wp-content/uploads/2024/08/opp_ms24.pdf) | Level, award name, languages ("certain topics" in English) |  |  |
-| 16 | [Public Health master's programme 2022 (PDF)](https://knmu.edu.ua/wp-content/uploads/2022/07/op_gr_zdor2022.pdf) | Level, ECTS, duration, language, NAQA certificate No. 1363 (valid until 01.07.2026) |  |  |
-| 17 | [Public Health accreditation information 2021 (PDF)](https://knmu.edu.ua/wp-content/uploads/2021/07/vidomosti_gr-zdor_akred.pdf) | Specialty code, level and accreditation details for Public Health *(2021 — check for a later accreditation)* |  |  |
-| 18 | [Public Health master's programme 2024 (PDF)](https://knmu.edu.ua/wp-content/uploads/2024/07/op_gr_zdor2024.pdf) | Current version: language, accreditation |  |  |
-| 19 | [Department of Public Health and Healthcare Management](https://knmu.edu.ua/en/departments/department-of-public-health-and-healthcare-management/) | Levels and specialties taught |  |  |
-| 20 | [IV Medical Faculty](https://knmu.edu.ua/en/faculty/iv-medychnyj-fakultet/) | Physical Therapy, Occupational Therapy and Public Health: level and language |  |  |
+| 13 | [Dentistry master's programme 2024 — compulsory components (3rd year)](https://knmu.edu.ua/en/sompulsory-components-br-op-dentistry-master-2024-br-3rd-year/) | Source of the level lead ("Dentistry Master's programme"); programme version |  |  |
+| 14 | [Nursing (bachelor's) 2021 — programme catalogue](https://knmu.edu.ua/en/program-catalog/nursing-bachelor-2021/) | Level, ECTS, languages; whether a current version exists |  |  |
+| 15 | [Nursing (bachelor's) 2021 — English programme PDF](https://knmu.edu.ua/wp-content/uploads/2023/05/epp_n21eng.pdf) | Level, specialty, languages, graduating department |  |  |
+| 16 | [Nursing master's programme 2024 (PDF)](https://knmu.edu.ua/wp-content/uploads/2024/08/opp_ms24.pdf) | Level, award name, languages ("certain topics" in English) |  |  |
+| 17 | [Public Health master's programme 2022 (PDF)](https://knmu.edu.ua/wp-content/uploads/2022/07/op_gr_zdor2022.pdf) | Level, ECTS, duration, language, NAQA certificate No. 1363 (valid until 01.07.2026) |  |  |
+| 18 | [Public Health accreditation information 2021 (PDF)](https://knmu.edu.ua/wp-content/uploads/2021/07/vidomosti_gr-zdor_akred.pdf) | Specialty code, level and accreditation details for Public Health *(2021 — check for a later accreditation)* |  |  |
+| 19 | [Public Health master's programme 2024 (PDF)](https://knmu.edu.ua/wp-content/uploads/2024/07/op_gr_zdor2024.pdf) | Current version: language, accreditation |  |  |
+| 20 | [Department of Public Health and Healthcare Management](https://knmu.edu.ua/en/departments/department-of-public-health-and-healthcare-management/) | Levels and specialties taught |  |  |
+| 21 | [IV Medical Faculty](https://knmu.edu.ua/en/faculty/iv-medychnyj-fakultet/) | Physical Therapy, Occupational Therapy and Public Health: level and language |  |  |
 
 ## B. Record-level claims
 

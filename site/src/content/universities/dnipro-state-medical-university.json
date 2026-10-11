@@ -6,7 +6,7 @@
     "status": "unverified",
     "source": null,
     "checked": null,
-    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the admissions portal for foreigners (study.dmu.edu.ua) uses \"Dnipro State Medical University (DSMU)\"; the Ukrainian name «Дніпровський державний медичний університет» (ДДМУ) appears on the state admissions portal (THIRD-PARTY). Former name Dnipropetrovsk Medical Academy according to Wikipedia (THIRD-PARTY). Confirm on the official site."
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the admissions portal for foreigners (study.dmu.edu.ua) uses \"Dnipro State Medical University (DSMU)\"; the Ukrainian name «Дніпровський державний медичний університет» (ДДМУ) appears on the admissions aggregator vstup.osvita.ua (THIRD-PARTY; it republishes national admissions data). Former name Dnipropetrovsk Medical Academy according to Wikipedia (THIRD-PARTY). Confirm on the official site."
   },
   "shortName": "Dnipro State Medical University",
   "alternativeNames": [
@@ -19,7 +19,7 @@
     "status": "not-published",
     "source": null,
     "checked": null,
-    "note": "Not recorded: no university-wide official statement on teaching format or location for 2025–26 or 2026–27 was found, and Dnipro is a front-line region, so operating conditions are checked first. Leads only: one department page on an official subdomain says that from 1 September 2025 the department taught in a blended mode (offline and online); another department page said teaching from 02.09.2024 would be online; university notices from March 2022 say online teaching continued for foreign citizens; the 2025 national admissions listing (THIRD-PARTY) shows full-time places. None of this is a university-wide statement."
+    "note": "Not recorded: no university-wide official statement on teaching format or location for 2025–26 or 2026–27 was found, and Dnipro is a front-line region, so operating conditions are checked first. Leads only: one department page on an official subdomain says that from 1 September 2025 the department taught in a blended mode (offline and online); another department page said teaching from 02.09.2024 would be online; university notices from March 2022 say online teaching continued for foreign citizens; the 2025 admissions listing on vstup.osvita.ua (THIRD-PARTY aggregator) shows full-time places. None of this is a university-wide statement."
   },
   "statusStatement": {
     "value": null,
@@ -74,14 +74,14 @@
     "status": "not-published",
     "source": null,
     "checked": null,
-    "note": "Record accreditation only with the official certificate or the NAQA register as the source. (A government portal and a directory describe \"4th-level accreditation\", an older national classification — not recorded.)"
+    "note": "Record accreditation only with the official certificate or the NAQA register as the source. (Lead from a re-check search on 2026-10-11, summary only: the Ministry \"Study in Ukraine\" programmes page, https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22, is said to describe the university as an institution of the 4th accreditation level — an older national classification; not recorded.)"
   },
   "recognition": {
     "value": null,
     "status": "not-published",
     "source": null,
     "checked": null,
-    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country. Agency sites claim WHO and NMC recognition — promotional, never recorded."
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country. Agency sites (THIRD-PARTY, e.g. mbbsadmissionabroad.in; re-check search 2026-10-11) claim WHO and NMC approval — promotional, not evidence, never recorded."
   },
   "accommodation": {
     "value": null,
@@ -514,7 +514,7 @@
         "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "Ambiguous leads, none recorded: the 2025 state admissions listing (THIRD-PARTY) shows a bachelor's on the basis of complete secondary education with the specialisation «Фізична терапія»; an education guide (THIRD-PARTY) lists 227 among master's-level entries."
+        "note": "Ambiguous leads, none recorded: the 2025 admissions listing on vstup.osvita.ua (THIRD-PARTY aggregator) shows a bachelor's on the basis of complete secondary education with the specialisation «Фізична терапія»; an education guide (THIRD-PARTY) lists 227 among master's-level entries."
       },
       "specialtyCode": {
         "value": "227",
