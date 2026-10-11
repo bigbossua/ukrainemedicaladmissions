@@ -73,7 +73,7 @@ Cross-check only, never a source: [Ministry portal: fees (university 82)](https:
 | `level` | unverified | LEAD: master | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Level as the university classifies it (master's / single-cycle master's / bachelor) |  |  |  |
 | `specialtyCode` | unverified | LEAD: 222 | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Specialty code(s) exactly as printed (e.g. "222", "I2") |  |  |  |
 | `qualification` | not-published | — (no lead) | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Exact award title as printed (never MBBS unless printed) |  |  |  |
-| `durationText` | unverified | LEAD: 5 years and 10 months | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Duration exactly as printed (e.g. "5 years 10 months", "12 semesters") |  |  |  |
+| `durationText` | not-published | — (no lead) | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Duration exactly as printed (e.g. "5 years 10 months", "12 semesters") |  |  |  |
 | `durationYears` | not-published | — (no lead) | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Whole years only if the page states years |  |  |  |
 | `language` | unverified | LEAD: English, Ukrainian | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Languages of instruction offered to foreign applicants for this programme |  |  |  |
 | `format` | not-published | — (no lead) | [International Faculty](https://en.pdmu.edu.ua/info/foreign-students) | Teaching format only from the dated statement (row statusStatement) |  |  |  |
@@ -133,29 +133,31 @@ Cross-check only, never a source: [Ministry portal: fees (university 82)](https:
    Closure (fill): 
 2. Admission rules for foreign applicants for the 2026 intake: programmes open to foreigners, entrance tests (an undated PDF names the language of instruction and biology for bachelor's enrolment), invitation procedure.  
    Closure (fill): 
-3. Official postal address (the lead is the International Faculty address) and current International Faculty contacts.  
+3. Official name in English and Ukrainian, founding year and canonical website (the www.pdmu.edu.ua lead rests partly on Wikipedia, a third-party source).  
    Closure (fill): 
-4. Exact award titles for Medicine and Dentistry (older page: "Doctor of Medicine"), and durations as printed (Medicine: "5 years and 10 months" in the programme document against "over six years" in the fee PDF).  
+4. Official postal address (the lead is the International Faculty address) and current International Faculty contacts.  
    Closure (fill): 
-5. FEES CONFLICT: the official fee PDF is undated and its English-medium figures conflict with the Ministry portal; find the dated official fee schedule for 2026/27 (amount, currency, per-period, payment schedule) and record which source is current.  
+5. Exact award titles for Medicine and Dentistry (older page: "Doctor of Medicine"), and durations as printed (Medicine: "5 years and 10 months" in a programme document whose URL was not recorded, against "over six years" in the fee PDF; no Medicine duration is recorded).  
    Closure (fill): 
-6. Application windows and intake dates for foreign applicants (only 2024 domestic deadlines found; third-party 2026 claims not recorded).  
+6. FEES CONFLICT: the official fee PDF is undated and its English-medium figures conflict with the Ministry portal; find the dated official fee schedule for 2026/27 (amount, currency, per-period, payment schedule) and record which source is current.  
    Closure (fill): 
-7. Required documents for foreign applicants (none in snippets).  
+7. Application windows and intake dates for foreign applicants (only 2024 domestic deadlines found; third-party 2026 claims not recorded).  
    Closure (fill): 
-8. Dentistry accreditation: the certificate was said to be valid until 01.07.2026 — current status from the NAQA register.  
+8. Required documents for foreign applicants (none in snippets).  
    Closure (fill): 
-9. Nursing (223.02 Paramedic bachelor): whether foreign applicants are admitted, in which language, and the exact award; resolve the Ministry-portal English-medium line against an official page.  
+9. Dentistry accreditation: the certificate was said to be valid until 01.07.2026 — current status from the NAQA register.  
    Closure (fill): 
-10. Pharmacy: whether any programme is open to foreign applicants, with level and language (leads: third-party part-time master's 2024; college junior bachelor 2022).  
+10. Nursing (223.02 Paramedic bachelor): whether foreign applicants are admitted, in which language, and the exact award; resolve the Ministry-portal English-medium line against an official page.  
    Closure (fill): 
-11. Public Health master's and Physical therapy bachelor: eligibility of international applicants, language, accreditation.  
+11. Pharmacy: whether any programme is open to foreign applicants, with level and language (leads: third-party part-time master's 2024; college junior bachelor 2022).  
    Closure (fill): 
-12. Preparatory centre: language of instruction for the science subjects (the official page says "Ukrainian or Russian languages"), English track, certificate, progression wording verbatim, start date, fee with year.  
+12. Public Health master's and Physical therapy bachelor: eligibility of international applicants, language, accreditation.  
    Closure (fill): 
-13. Accommodation availability and published prices with year.  
+13. Preparatory centre: language of instruction for the science subjects (the official page says "Ukrainian or Russian languages"), English track, certificate, progression wording verbatim, start date, fee with year.  
    Closure (fill): 
-14. Evidence-backed recognition statements only.  
+14. Accommodation availability and published prices with year.  
+   Closure (fill): 
+15. Evidence-backed recognition statements only.  
    Closure (fill): 
 
 ## G. Session log (fill)

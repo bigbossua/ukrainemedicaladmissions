@@ -163,7 +163,7 @@
         "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are domestic contract prices in UAH and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
+        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are contract prices in UAH that appear to apply to domestic applicants, and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
       },
       "otherMandatoryCosts": [],
       "entryRequirements": {
@@ -194,7 +194,6 @@
         {
           "id": "passport-copy",
           "name": "Copy of international passport",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -203,7 +202,6 @@
         {
           "id": "school-certificate",
           "name": "Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -212,7 +210,6 @@
         {
           "id": "consent",
           "name": "Consent to personal data collection and processing",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -309,7 +306,7 @@
         "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are domestic contract prices in UAH and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
+        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are contract prices in UAH that appear to apply to domestic applicants, and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
       },
       "otherMandatoryCosts": [],
       "entryRequirements": {
@@ -340,7 +337,6 @@
         {
           "id": "passport-copy",
           "name": "Copy of international passport",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -349,7 +345,6 @@
         {
           "id": "school-certificate",
           "name": "Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -358,7 +353,6 @@
         {
           "id": "consent",
           "name": "Consent to personal data collection and processing",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -455,7 +449,7 @@
         "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are domestic contract prices in UAH and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
+        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are contract prices in UAH that appear to apply to domestic applicants, and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
       },
       "otherMandatoryCosts": [],
       "entryRequirements": {
@@ -486,7 +480,6 @@
         {
           "id": "passport-copy",
           "name": "Copy of international passport",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -495,7 +488,6 @@
         {
           "id": "school-certificate",
           "name": "Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -504,7 +496,6 @@
         {
           "id": "consent",
           "name": "Consent to personal data collection and processing",
-          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
           "status": "unverified",
           "source": null,
           "checked": null,
@@ -814,7 +805,7 @@
         "checked": null,
         "note": "Lead (official page, undated): the course is for \"Foreign citizens who are not strong enough in Ukrainian language\". Record the official eligibility wording verbatim."
       },
-      "note": "Official-domain snippet confirms the course exists; duration, start date, fee and progression wording beyond that come from the Ministry portal (undated) and are not recorded as values."
+      "note": "Official-domain snippet confirms the course exists and gives its one-year length and subjects; the start date, fee, final exams and progression wording come from the Ministry portal (undated) and are not recorded as values."
     }
   ],
   "researchReferences": [
@@ -906,9 +897,10 @@
     "openQuestions": [
       "Dated official statement for 2026–27 on operation and teaching format (only an undated letter, apparently 2022, and third-party news were found); no status is recorded until then.",
       "Admission rules for foreign applicants for the 2026 intake: specialties open to foreigners, entrance tests, quota routes (the latest rules found are for 2023).",
+      "Official name as printed on the homepage, founding year and canonical website (the homepage did not appear in any result; new.meduniv.lviv.ua is taken from the URLs of official documents).",
       "Official postal address and current Faculty of Foreign Students contacts (the only e-mail lead, kept in the internationalOffice note, comes from a 2023-cycle document).",
       "Exact award titles, levels and durations for Medicine, Dentistry and Pharmacy (no duration or award title in any snippet).",
-      "Official tuition fees for foreign applicants with the academic year and payment schedule (only a 2021/22 table — out of date; third-party news figures are domestic and not recorded).",
+      "Official tuition fees for foreign applicants with the academic year and payment schedule (only a 2021/22 table — out of date; third-party news figures are in UAH, apparently for domestic applicants, and not recorded).",
       "Application windows and intake dates for the current cycle (2023–24 windows are out of date; an undated official page gives a different window — conflicting leads).",
       "Entrance tests for the current cycle: subjects, format, pass marks (2023 rules: English language and Chemistry).",
       "Required documents as currently published (the \"Invitation to Study\" list comes from a 2023-cycle PDF).",

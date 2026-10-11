@@ -6,14 +6,14 @@
     "status": "unverified",
     "source": null,
     "checked": null,
-    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English homepage): \"founded in 1921, Poltava State Medical University (prior to 01 May 2021 - Ukrainian Medical Stomatological Academy)\"; Ukrainian «Полтавський державний медичний університет» (ПДМУ). Confirm the full official name, in English and Ukrainian, on the official homepage."
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English homepage): \"founded in 1921, Poltava State Medical University (prior to 01 May 2021 - Ukrainian Medical Stomatological Academy)\"; The Ukrainian abbreviation ПДМУ comes from the discovery register; the full Ukrainian name did not appear in any snippet and is not recorded. Confirm the full official name, in English and Ukrainian, on the official homepage."
   },
   "shortName": "Poltava State Medical University",
   "alternativeNames": [
     "PSMU",
     "PDMU",
     "ПДМУ",
-    "Ukrainian Medical Stomatological Academy"
+    "Ukrainian Medical Stomatological Academy (former name)"
   ],
   "status": {
     "value": "operating",
@@ -102,7 +102,7 @@
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (university programme document; its URL was not captured in the sweep): \"Master's degree, single issue, 360 ECTS credits, duration of study 5 years and 10 months\". \"Single issue\" may mean single-cycle; whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Leads: a search summary of the undated fee PDF on en.pdmu.edu.ua groups Medicine with Dentistry as English-medium Master's study; a further snippet, attributed to a university programme document whose URL the sweep did not record, reads \"Master's degree, single issue, 360 ECTS credits, duration of study 5 years and 10 months\". Whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
       },
       "specialtyCode": {
         "value": "222",
@@ -123,14 +123,14 @@
         "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "Not recorded: the programme document gives \"5 years and 10 months\", and the undated fee PDF describes the whole-course fee as \"over six years\". Record whole years only if the official programme page states them."
+        "note": "Not recorded: a snippet attributed to a programme document (URL not recorded) gives \"5 years and 10 months\", and the undated fee PDF describes the whole-course fee as \"over six years\". Record whole years only if the official programme page states them."
       },
       "durationText": {
-        "value": "5 years and 10 months",
-        "status": "unverified",
+        "value": null,
+        "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (university programme document; its URL was not captured in the sweep): \"duration of study 5 years and 10 months\"."
+        "note": "Not recorded: the only lead is a snippet attributed to a university programme document whose URL the sweep did not record (\"duration of study 5 years and 10 months\"), so it cannot be traced to an official page; the undated fee PDF describes the whole-course fee as \"over six years\". Record the duration exactly as the university prints it on the official programme page."
       },
       "language": {
         "value": [
@@ -970,8 +970,9 @@
     "openQuestions": [
       "Dated official statement for 2026–27 on teaching format, including whether international students are taught in Poltava or online (2023–24 statements describe distance or online study; 2025 news shows on-site simulation training).",
       "Admission rules for foreign applicants for the 2026 intake: programmes open to foreigners, entrance tests (an undated PDF names the language of instruction and biology for bachelor's enrolment), invitation procedure.",
+      "Official name in English and Ukrainian, founding year and canonical website (the www.pdmu.edu.ua lead rests partly on Wikipedia, a third-party source).",
       "Official postal address (the lead is the International Faculty address) and current International Faculty contacts.",
-      "Exact award titles for Medicine and Dentistry (older page: \"Doctor of Medicine\"), and durations as printed (Medicine: \"5 years and 10 months\" in the programme document against \"over six years\" in the fee PDF).",
+      "Exact award titles for Medicine and Dentistry (older page: \"Doctor of Medicine\"), and durations as printed (Medicine: \"5 years and 10 months\" in a programme document whose URL was not recorded, against \"over six years\" in the fee PDF; no Medicine duration is recorded).",
       "FEES CONFLICT: the official fee PDF is undated and its English-medium figures conflict with the Ministry portal; find the dated official fee schedule for 2026/27 (amount, currency, per-period, payment schedule) and record which source is current.",
       "Application windows and intake dates for foreign applicants (only 2024 domestic deadlines found; third-party 2026 claims not recorded).",
       "Required documents for foreign applicants (none in snippets).",

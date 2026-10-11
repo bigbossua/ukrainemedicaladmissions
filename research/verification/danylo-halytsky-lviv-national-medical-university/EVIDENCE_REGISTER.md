@@ -72,9 +72,9 @@ Cross-check only, never a source: [Ministry portal: preparatory department (univ
 | `deadlines` | not-published | — (no lead) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Application window dates with the year as printed; a committee working period is recorded as exactly that |  |  |  |
 | `intake` | not-published | — (no lead) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Start of studies as printed |  |  |  |
 | `requirements[entrance-tests]` | unverified | LEAD: Foreigners entering the first year compete on the results of entrance tests: English language (first subject, coefficient 0.50) and Chemistry (second subject, coefficient 0.50). | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Entrance requirement wording verbatim (exam; subject English language; Chemistry; format —); intake year |  |  |  |
-| `documents[passport-copy]` | unverified | LEAD: Copy of international passport (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
-| `documents[school-certificate]` | unverified | LEAD: Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
-| `documents[consent]` | unverified | LEAD: Consent to personal data collection and processing (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[passport-copy]` | unverified | LEAD: Copy of international passport | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[school-certificate]` | unverified | LEAD: Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[consent]` | unverified | LEAD: Consent to personal data collection and processing | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
 
 ## C. Programme `dentistry` — Dentistry (`programmes[].id = "dentistry"`, field dentistry)
 
@@ -93,9 +93,9 @@ Cross-check only, never a source: [Ministry portal: preparatory department (univ
 | `deadlines` | not-published | — (no lead) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Application window dates with the year as printed; a committee working period is recorded as exactly that |  |  |  |
 | `intake` | not-published | — (no lead) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Start of studies as printed |  |  |  |
 | `requirements[entrance-tests]` | unverified | LEAD: Foreigners entering the first year compete on the results of entrance tests: English language (first subject, coefficient 0.50) and Chemistry (second subject, coefficient 0.50). | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Entrance requirement wording verbatim (exam; subject English language; Chemistry; format —); intake year |  |  |  |
-| `documents[passport-copy]` | unverified | LEAD: Copy of international passport (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
-| `documents[school-certificate]` | unverified | LEAD: Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
-| `documents[consent]` | unverified | LEAD: Consent to personal data collection and processing (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[passport-copy]` | unverified | LEAD: Copy of international passport | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[school-certificate]` | unverified | LEAD: Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[consent]` | unverified | LEAD: Consent to personal data collection and processing | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
 
 ## C. Programme `pharmacy` — Pharmacy, Industrial Pharmacy (`programmes[].id = "pharmacy"`, field pharmacy)
 
@@ -114,9 +114,9 @@ Cross-check only, never a source: [Ministry portal: preparatory department (univ
 | `deadlines` | not-published | — (no lead) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Application window dates with the year as printed; a committee working period is recorded as exactly that |  |  |  |
 | `intake` | not-published | — (no lead) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Start of studies as printed |  |  |  |
 | `requirements[entrance-tests]` | unverified | LEAD: Foreigners entering the first year compete on the results of entrance tests: English language (first subject, coefficient 0.50) and Chemistry (second subject, coefficient 0.50). | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Entrance requirement wording verbatim (exam; subject English language; Chemistry; format —); intake year |  |  |  |
-| `documents[passport-copy]` | unverified | LEAD: Copy of international passport (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
-| `documents[school-certificate]` | unverified | LEAD: Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
-| `documents[consent]` | unverified | LEAD: Consent to personal data collection and processing (Requested for the official "Invitation to Study" issued by the Faculty of Foreign Students) | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[passport-copy]` | unverified | LEAD: Copy of international passport | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[school-certificate]` | unverified | LEAD: Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+| `documents[consent]` | unverified | LEAD: Consent to personal data collection and processing | [English site: foreign students (teaching languages, preparatory course)](https://new.meduniv.lviv.ua/en/?p=818) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
 
 ## D. Preparatory route `preparatory-course` — Preparatory course for foreign citizens
 
@@ -147,29 +147,31 @@ Cross-check only, never a source: [Ministry portal: preparatory department (univ
    Closure (fill): 
 2. Admission rules for foreign applicants for the 2026 intake: specialties open to foreigners, entrance tests, quota routes (the latest rules found are for 2023).  
    Closure (fill): 
-3. Official postal address and current Faculty of Foreign Students contacts (the only e-mail lead, kept in the internationalOffice note, comes from a 2023-cycle document).  
+3. Official name as printed on the homepage, founding year and canonical website (the homepage did not appear in any result; new.meduniv.lviv.ua is taken from the URLs of official documents).  
    Closure (fill): 
-4. Exact award titles, levels and durations for Medicine, Dentistry and Pharmacy (no duration or award title in any snippet).  
+4. Official postal address and current Faculty of Foreign Students contacts (the only e-mail lead, kept in the internationalOffice note, comes from a 2023-cycle document).  
    Closure (fill): 
-5. Official tuition fees for foreign applicants with the academic year and payment schedule (only a 2021/22 table — out of date; third-party news figures are domestic and not recorded).  
+5. Exact award titles, levels and durations for Medicine, Dentistry and Pharmacy (no duration or award title in any snippet).  
    Closure (fill): 
-6. Application windows and intake dates for the current cycle (2023–24 windows are out of date; an undated official page gives a different window — conflicting leads).  
+6. Official tuition fees for foreign applicants with the academic year and payment schedule (only a 2021/22 table — out of date; third-party news figures are in UAH, apparently for domestic applicants, and not recorded).  
    Closure (fill): 
-7. Entrance tests for the current cycle: subjects, format, pass marks (2023 rules: English language and Chemistry).  
+7. Application windows and intake dates for the current cycle (2023–24 windows are out of date; an undated official page gives a different window — conflicting leads).  
    Closure (fill): 
-8. Required documents as currently published (the "Invitation to Study" list comes from a 2023-cycle PDF).  
+8. Entrance tests for the current cycle: subjects, format, pass marks (2023 rules: English language and Chemistry).  
    Closure (fill): 
-9. Preparatory course: language of instruction for the science subjects, English track, certificate, progression wording verbatim, start date and fee with year (the Ministry-portal figures are undated).  
+9. Required documents as currently published (the "Invitation to Study" list comes from a 2023-cycle PDF).  
    Closure (fill): 
-10. Nursing (junior bachelor at the Medical College) and Physical Therapy: level, language and whether international applicants are admitted.  
+10. Preparatory course: language of instruction for the science subjects, English track, certificate, progression wording verbatim, start date and fee with year (the Ministry-portal figures are undated).  
    Closure (fill): 
-11. Whether any other programme (e.g. public health, or the further domestic specialties named in 2026 news) is open to foreign applicants.  
+11. Nursing (junior bachelor at the Medical College) and Physical Therapy: level, language and whether international applicants are admitted.  
    Closure (fill): 
-12. Accreditation of each programme from the NAQA register or the certificate.  
+12. Whether any other programme (e.g. public health, or the further domestic specialties named in 2026 news) is open to foreign applicants.  
    Closure (fill): 
-13. Accommodation availability and published prices with year.  
+13. Accreditation of each programme from the NAQA register or the certificate.  
    Closure (fill): 
-14. Evidence-backed recognition statements only.  
+14. Accommodation availability and published prices with year.  
+   Closure (fill): 
+15. Evidence-backed recognition statements only.  
    Closure (fill): 
 
 ## G. Session log (fill)
