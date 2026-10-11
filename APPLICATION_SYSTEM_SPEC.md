@@ -200,3 +200,19 @@ Magic-link sign-in (e-mail) plus optional password at Stage 2; profile autosaves
 ### 12.5 What is not built in this phase
 
 No accounts, no uploads, no database, no reviewer interface. The Stage-1 stepped form (§12.1) is the only candidate-facing build proposed for the next implementation cycle, and it only reaches production through an approved release.
+
+---
+
+## 13. Specification review 2026-10-11 (against the owner's five requirements) — gaps found and fixes adopted
+
+| Requirement | Where covered | Gap found in review | Fix adopted (specification only) |
+|---|---|---|---|
+| Save and resume | §8.4, §12.4 | No statement of what "progress" means when a candidate changes field or university mid-way | Add: changing field/level/university re-runs the readiness comparison and re-derives the checklist; completed items stay; items no longer required move to `not requested` with a visible note; nothing is deleted |
+| Academic subjects and grades | §8.2, §12.1 step 2 | Grading scale captured as free text could prevent any later comparison; no handling of predicted vs achieved | Add fields `scale_type` (percentage · letter · points · GPA · other) + `scale_max`; `result_status ∈ {achieved, predicted, pending}`; comparison runs only when a verified requirement object states a scale-compatible minimum; otherwise the result is `unknown` with the explanation "no verified minimum" or "scale not comparable" |
+| Missing documents | §8.3, §12.3 | Document requirements came only from `type=document` objects; the sweep shows universities also require translation/legalisation conditionally and photographs in specific formats | Add `condition` expressions evaluated against the profile (certificate language, awarding country) and a `format_note` quoted from the official page; show the reason a conditional item appears |
+| Legitimate preparatory routes | §8.2 (one sentence), §9 `preparatory_routes` table | The sweep shows preparatory departments differ in language (Ukrainian-only vs Bukovinian's English track), duration, certificate name and progression wording; the earlier spec treated them as one type | `preparatory_routes` gains `language_of_instruction`, `english_track (bool)`, `duration_text`, `certificate_name`, `progression_text` (verbatim official wording), `applies_to_english_degree_track (bool, e.g. Ternopil: no)`, `fee_text + year`, `source_url`, `checked`; the readiness page shows a route only when `status=verified` and only with its own progression wording; never "guarantees entry" |
+| University-specific requirements | §8.2 requirement objects, §9 | No link from a requirement object to the intake year; no handling of entrance exams named by universities (e.g. oral exams in biology/chemistry/physics/English at Bogomolets; minimum pass 6/12 at Zaporizhzhia — both snippet leads) | Requirement objects gain `intake_year` and `exam_format_text` (verbatim), and the readiness result for `type=exam` is always `pending_evidence` until the university's result exists; objects for a past intake become `outdated` automatically |
+
+Also adopted: the profile's **field and level choice drives the directory filter** (§UNIVERSITY_DATA_REGISTER §10) so that a candidate choosing public health or rehabilitation sees only universities with a verified programme in that family — and sees an honest "no verified English-language programme is known to us" message when none exists, rather than being funnelled to medicine.
+
+Status: specification complete for Stage 1 (stepped form) and the data model; **nothing implemented; no real documents collected; go-live gates in §11 unchanged.**

@@ -99,3 +99,16 @@ axe (0 serious/critical), Lighthouse mobile performance ≥ 90 with the new LCP 
 | Profile — Odesa, Poltava | no building photograph surfaced (Odesa: logo SVG only, CC BY-SA 4.0 — trademark restrictions; not usable as imagery) | — | — | — | open Commons categories when reachable |
 
 **Before any of these is used:** open the page; record exact licence tag, author string, upload date, modifications; keep a screenshot of the licence; for Commons files check personality-rights and freedom-of-panorama templates; CC BY-SA requires attribution and share-alike on the image (acceptable for a photograph displayed with its credit). Pexels items need no attribution but we will still credit the photographer. Nothing generated is proposed for institution profiles.
+
+## 9. Licensing requirements by source (2026-10-11) and the generated-imagery policy
+
+| Source | Licence (as published by the source; to be re-read on the asset page at download time) | Our obligations | Suitable for |
+|---|---|---|---|
+| Pexels | Pexels License: free for commercial use, no attribution required, no selling unaltered copies, no implying endorsement by depicted people/brands | credit the photographer anyway in §8's record; avoid images where identifiable people could be read as endorsing a university; keep the download record | V1, V5, V10 generic settings |
+| Unsplash (free items only) | Unsplash License: free for commercial use, no permission needed, attribution appreciated; **Unsplash+ items are paid and excluded** | check `isAccessibleForFree`/licence label per photo; credit photographer | as above |
+| Pixabay | Pixabay Content License: free commercial use with restrictions on standalone sale and on identifiable people/trademarks | per-item check | as above |
+| Wikimedia Commons | per file — typically CC BY-SA 3.0/4.0 (attribution + share-alike), sometimes CC BY or public domain; freedom-of-panorama and personality-rights templates may apply | reproduce the credit line and licence link next to the image; share-alike applies to the image, not the site; confirm the depicted building is the institution claimed | university profile pages only (named institutions) |
+| Own SVG illustrations | ours | none | V2, V6, V7, V11 |
+| Generated imagery (if the owner has a tool) | the tool's commercial-use terms (to be read) | caption/alt "Illustrative image"; never a named institution, never presented as students or facilities of any university; no logos, flags or recognisable landmarks | V1/V5 fallbacks only |
+
+Rule restated: no image is published without a row in §8 holding its source URL, licence text, author, download date and modifications; no image may imply a named institution unless it is that institution's own, correctly identified, licensed photograph on its own profile page.

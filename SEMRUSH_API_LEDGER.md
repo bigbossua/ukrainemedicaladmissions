@@ -133,7 +133,7 @@ Pre-flight satisfied: balance 47,890 confirmed by the owner; price confirmed by 
 | 8 | R2 · in · 12 universities × 2 + 6 cities | 30 → 21 | 210 | **210** | |
 | 9 | R2 · uk | 30 → 24 | 240 | **240** | |
 | 10 | R2 · ng | 30 → 14 | 140 | **140** | |
-| | **Total this phase** | 234 requested → 85 returned | | **850** | cap 2,340 — 1,490 unused; R3–R5 not run |
+| | **Total this phase** | 235 requested (234 + probe) → 85 returned | | **850** | cap 2,340 — 1,490 unused; R3–R5 not run |
 
 **Expected balance after this phase: 47,890 − 850 = 47,040** — to be confirmed by the owner's next reading of the API Units page; any difference is recorded here.
 

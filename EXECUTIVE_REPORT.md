@@ -1,3 +1,69 @@
+# DECISION REPORT — research audit complete, 2026-10-11 (latest; supersedes the addenda below where they differ)
+
+## A. SEMrush batch reconciliation (VERIFIED)
+
+| Item | Figure | Source |
+|---|---|---|
+| Calls made 2026-10-11 | 10 (1 probe + 6 R1 + 3 R2) | `SEMRUSH_API_LEDGER.md` "R1 + R2 executed" |
+| Raw exports | 10 files, 85 returned lines, each file's lines × 10 = the recorded cost of its call (all ten match) | `research/semrush/2026-10-11-*.csv`; programmatic check + independent audit agent (≈400 values, 0 errors) |
+| Units used this phase | **850** of the 2,340 cap; R3–R5 not run | ledger |
+| Consumption before this phase | **2,110** (50,000 − owner's 47,890), replacing the ledger's earlier 2,240; the 130 overstatement sat in the published-price estimate of the 2026-10-10 parallel batch (actual 1,070; per-call split unrecoverable) | ledger reconciliation entry |
+| **Cumulative** | **2,960** | |
+| **Expected remaining** | **47,040** — to be confirmed on the owner's next API Units reading | |
+| Audit corrections applied | wording only: UK "every other name 20" → ten names 20, Vinnytsia 0; nursing intent "informational" → not computed; §4.1 "45 databases incl. lk" → 44, lk not returned; ledger "234 requested" → 235 incl. probe; stale §9/§10 headers and §6 status cells marked superseded | this commit |
+
+## B. Evidence classes — what is measured, what is a lead, what is assumed
+
+- **Measured (SEMrush estimates, exact phrase unless stated):** everything in `KEYWORD_URL_MAP.md` §4, §6, §6.1, §7 Demand/Difficulty/Intent columns and §12 column "Demand (M)". These are third-party estimates of monthly searches; no Search Console actuals exist yet.
+- **Official-source evidence (opened and read):** **none.** Official `.ua` university pages and registries remain unreachable from this environment.
+- **Preliminary findings (search-snippet leads with URL + quote):** everything in `UNIVERSITY_DATA_REGISTER.md` §6–§8, `PROGRAMME_SUPPLY_REGISTER.md`, `research/universities/*.json` and the image candidates in `VISUAL_AUDIT_AND_IMAGE_REGISTER.md` §8. No lead may be published.
+- **Assumptions / analyst judgement:** the expansion order (demand × verifiability × operating conditions), the money-page decisions, the tier labels, the readiness-service design, the revenue options. Each is marked as such where it appears.
+- **Verified project facts:** repository state, CI results, the production branch contents and fingerprint, the ledger arithmetic.
+
+## C. Official verification — status and exact blocker
+
+Nothing could be verified: `curl` to `bsmu.edu.ua`, `onmedu.edu.ua`, `tdmu.edu.ua`, `vnmu.edu.ua`, `nmuofficial.com`, `universities.studyinukraine.gov.ua`, `info.edbo.gov.ua`, `search.wdoms.org` and the production host all fail at the environment's proxy (network policy). **Required access (free, owner, environment → Edit → Network access → Allowed domains):** `ukrainemedicaladmissions.com`, `www.ukrainemedicaladmissions.com`, `bsmu.edu.ua`, `vstup.bsmu.edu.ua`, `vnmu.edu.ua`, `foreign.vnmu.edu.ua`, `onmedu.edu.ua`, `nmuofficial.com`, `ifnmu.edu.ua`, `uzhnu.edu.ua`, `tdmu.edu.ua`, `knmu.edu.ua`, `mphu.edu.ua`, `int.mphu.edu.ua`, `new.meduniv.lviv.ua`, `pdmu.edu.ua`, `en.pdmu.edu.ua`, `dmu.edu.ua`, `universities.studyinukraine.gov.ua`, `studyinukraine.gov.ua`, `info.edbo.gov.ua`, `search.wdoms.org`. Alternative: the owner supplies the official pages/PDFs listed per university in `UNIVERSITY_DATA_REGISTER.md` §6 ("Official pages to open"). **Missing evidence per university, in every case:** a dated current-year statement of teaching format and location; the current admission rules for foreigners; the current fee schedule; intake dates; exact award titles; eligibility and language for nursing, public health and rehabilitation programmes.
+
+## D. Country comparison and keyword-to-URL decisions (updated with R1 + R2)
+
+India is the only market with measured applicant demand at scale: twelve university names at 20–480/mo (Bukovinian 480, Odessa 390, Kharkiv 390, Bogomolets 320, Ivano-Frankivsk 210, Uzhhorod 140, Ternopil 110, Zaporizhzhia 90, Vinnytsia 50 + Pirogov 390, Lviv 50, Poltava 20, Dnipro 20), the fees cluster (260–720, kd 7–18), "mbbs in ukraine" 260 and small long-tail (dentistry 30, eligibility 30, for Indian students 20, validity 20). UK is second (Bogomolets 90, other names 20, nursing 20, public health 10). Nigeria shows named-university interest for the first time (eight names at 10–30). Pakistan, South Africa, UAE: zero on every programme term; names not measured.
+
+**Pages to improve (existing):** `/tuition-fees/` (first — verified figures), `/universities/` (comparison framework, more verified institutions), `/courses/medicine/` (verified titles), `/admissions/` (eligibility/readiness + preparatory routes), `/faq/` (regulator-sourced recognition answer), `/courses/dentistry/` (verified programmes).
+**Proposed money pages — consider (approve for planning after verification):** seven university profiles in the order Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil (template exists). **Conditional:** Kharkiv (operating-conditions check). **Defer:** Zaporizhzhia, Lviv, Poltava, Dnipro profiles; preparatory resource page; country page; public health; rehabilitation; nursing content investment. **Reject:** city pages, standalone MBBS page, separate comparison page, sport.
+
+## E. Programme-family assessment (all eight families) — `KEYWORD_URL_MAP.md` §12
+
+Medicine and the university names carry the measured demand; dentistry is small but measured in India; pharmacy, nursing, public health, rehabilitation, physical training and preparatory/foundation have **no measured English-language demand in any of six databases** (nursing uk 20 and public health uk 10 excepted) while official supply exists for all of them in Ukrainian. Decision: they live inside the candidate-profile service as selectable fields assessed against verified requirements, not as acquisition pages.
+
+## F. Candidate-profile specification — reviewed (`APPLICATION_SYSTEM_SPEC.md` §8, §12, §13)
+
+Save-and-resume, subjects/grades with scale and result status, conditional document requirements, verified preparatory-route objects (language, English track, certificate, verbatim progression wording), intake-year-bound university requirements and exam formats are now specified; nothing is implemented; no real documents are collected; the eight go-live gates stand.
+
+## G. Visual and image register — updated (`VISUAL_AUDIT_AND_IMAGE_REGISTER.md` §7–§9)
+
+Twenty-plus free candidates identified (Pexels generic settings; Wikimedia Commons building photographs for named institutions), each needing its licence line read on the page before download; licensing obligations per source recorded; generated imagery allowed only as labelled illustrative fallbacks, never as a university's facilities or students. No image downloaded (sources blocked here; no purchase).
+
+## H. Research gaps (ranked by impact)
+
+1. Official verification of any claim (network access or owner-supplied documents) — blocks every profile and the fees page.
+2. Current-year operating conditions per university (none has a dated 2025–26 statement in snippets) — blocks publication even after fee/programme verification.
+3. SERP/competitor evidence (R3–R5, not authorised) — would tell us who ranks for the twelve names and the fees cluster.
+4. Search Console actuals — none exists; property status unknown.
+5. Legal entity details (D7) for the policy pages.
+6. Live verification of the deployed site — one allow-list entry away.
+
+## I. Ranked next actions
+
+1. **Owner:** add the allowed domains in C (free, minutes). 2. **Me, on access:** run `npm run verify:live`; verify Bukovinian, Vinnytsia and Odesa end-to-end (procedure §3 of the university register) and publish nothing until each passes. 3. **Me, now, no approval needed (repository only):** build the multi-programme profile pipeline — schema extension, comparison table, profile layout, seven unpublishable record shells — so verified facts can go live without further engineering. 4. **Me, repository only:** stepped Stage-1 profile form. 5. **Owner:** confirm the API Units balance (expect 47,040); decide D7 and D9. 6. **Later, approval:** R3–R5 (≈4,100 units at assumed prices) once profiles exist to rank.
+
+## J. Recommended single highest-value next implementation step
+
+**Build the verified-university-profile pipeline in the repository: extend the content schema (field, level, requirement objects, preparatory route), redesign the profile and directory comparison layout (V3/V4), and create the seven approved profile records as unpublishable shells pre-filled with the official source URLs to check — no deployment.**
+
+Why this and not something else: the only acquisition demand measured at scale is for named universities (twelve names, 20–480/mo in India, plus UK and Nigeria interest), and every one of those pages is currently absent or noindex; the sole blocker to publishing them is official verification, which is an owner-side access decision. Doing the engineering now means that the day access exists, each profile needs data entry and review, not development. It also makes the fees page (the lowest-difficulty cluster) publishable from the same verified records, and it serves the readiness service, whose requirement objects live in the same schema. The stepped Stage-1 form is the next step after it. The step is reversible, local, and touches nothing on production; the deployment that eventually publishes verified profiles will be a separate approval.
+
+---
+
 # EXECUTIVE_REPORT.md — Ukraine Medical Admissions, 2026-10-11
 
 Labels used throughout: **VERIFIED** (observed, evidence named) · **OWNER-REPORTED** · **LEAD** (search snippet with URL, unverified) · **HYPOTHESIS** · **DECISION** · **DONE** / **NOT DONE** · **NEEDS APPROVAL**.
