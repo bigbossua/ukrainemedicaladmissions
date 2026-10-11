@@ -18,7 +18,8 @@ const steps = [
   { icon: 'review', name: 'Under review', desc: 'Our reviewer checks it' },
 ] as const;
 const outcomes = [
-  { icon: 'accepted', name: 'Accepted for processing', desc: 'Complete and legible for our own review', tone: 'ok' },
+  // APPLICATION_SYSTEM_SPEC §8.3 / §12.3: the caveat is shown beside this state, not only in nearby prose.
+  { icon: 'accepted', name: 'Accepted for processing', desc: 'Complete and legible for our own review. Not confirmation of authenticity or of acceptance by the university', tone: 'ok' },
   { icon: 'clarify', name: 'Clarification requested', desc: 'We say what is needed; you upload again', tone: 'ask' },
 ] as const;
 ---
