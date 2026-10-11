@@ -15,7 +15,7 @@ const rows = records.map((u) => {
   const programmes = progs.length ? progs.map((p: any) => `${p.name}`).join(', ') : null;
   const languages = (() => { const ls = new Set<string>(); for (const p of u.programmes) for (const l of verifiedOnly(p.language) ?? []) ls.add(l); return ls.size ? [...ls].join(', ') : null; })();
   const reqs = u.programmes.reduce((n: number, p: any) => n + viewItems(p.requirements, { preview: PREVIEW }).filter((r: any) => r.state === 'verified').length, 0);
-  const prep = u.preparatoryRoutes.length ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) !== null) ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) === true) ? 'Yes, incl. English track' : 'Yes (Ukrainian-language)') : null) : 'None listed';
+  const prep = u.preparatoryRoutes.length ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) !== null) ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) === true) ? 'Yes, incl. English track' : 'Yes (Ukrainian-language)') : null) : typeof u.routesWithheld === 'number' && u.routesWithheld > 0 ? null : 'None listed'; // withheld routes are awaiting verification, not absent
   const fees = u.programmes.map((p: any) => ({ p, t: verifiedOnly(p.tuition) })).filter((x: any) => x.t);
   const tuition = fees.length ? fees.map((x: any) => `${x.p.name}: ${x.t.amount.toLocaleString('en-GB')} ${x.t.currency}/${x.t.per} (${x.t.academicYear})`).join('; ') : null;
   const windows = u.programmes.map((p: any) => verifiedOnly(p.deadlines)).filter(Boolean).flat();

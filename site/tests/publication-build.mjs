@@ -153,7 +153,11 @@ try {
       check(attr(dir, 'fixture-alpha-medical-university', 'data-prep') === 'yes', '(b) directory alpha: preparatory route with a verified claim not flagged');
       check(attr(dir, 'fixture-beta-medical-university', 'data-languages') === 'English Ukrainian', `(b) directory beta data-languages = ${attr(dir, 'fixture-beta-medical-university', 'data-languages')}`);
       check(attr(dir, 'fixture-beta-medical-university', 'data-fields') === 'medicine pharmacy', `(b) directory beta data-fields = ${attr(dir, 'fixture-beta-medical-university', 'data-fields')}`);
-      check(attr(dir, 'fixture-beta-medical-university', 'data-prep') === 'no', '(b) directory beta: preparatory flag set without a route');
+      // Beta's only preparatory route is withheld: neither "yes" nor "no" (the "no route recorded" filter must not claim it).
+      check(attr(dir, 'fixture-beta-medical-university', 'data-prep') === 'tbc', `(b) directory beta data-prep = ${attr(dir, 'fixture-beta-medical-university', 'data-prep')}, expected tbc (route withheld)`);
+      const betaRow = (/<th scope="row"[^>]*><a href="\/universities\/fixture-beta-medical-university\/"[\s\S]*?<\/tr>/.exec(dir) ?? [''])[0];
+      check(betaRow && !betaRow.includes('None listed'), '(b) directory comparison: a withheld route is shown as "None listed"');
+      check(/Preparatory route<\/dt>\s*<dd[^>]*>\s*<span class="muted"[^>]*>To be confirmed</.test(beta) && !beta.includes('None recorded'), '(b) beta profile: a withheld preparatory route is not shown as "To be confirmed"');
       check(dir.includes('7,123 USD/year'), '(b) directory comparison table: verified tuition missing');
       check(!/<select name="level"[\s\S]*?value="bachelor"[\s\S]*?<\/select>/.test(dir), '(b) directory level filter offers an unverified level');
       check(!new RegExp(`<select name="intake"[\\s\\S]*?value="${academicYear(NOW, -1).replace('/', '\\/')}"`).test(dir.split('</form>')[0]), '(b) directory intake filter offers an unverified intake');

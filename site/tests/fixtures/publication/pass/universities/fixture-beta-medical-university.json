@@ -317,5 +317,73 @@
     "lastReview": "@today-20",
     "reviewer": "CANARY-REVIEWER-BETA",
     "openQuestions": []
-  }
+  },
+  "preparatoryRoutes": [
+    {
+      "id": "beta-prep",
+      "name": "CANARY-BETA-ROUTE-WITHHELD",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": "CANARY-BETA-ROUTE-DURATION",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-BETA-ROUTE"
+      },
+      "subjects": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "note": "CANARY-NOTE-BETA-ROUTE-ITSELF"
+    }
+  ]
 }

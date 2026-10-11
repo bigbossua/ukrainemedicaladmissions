@@ -39,6 +39,8 @@ const anyLangVerified = d.programmes.some((p: any) => verifiedState(p.language))
 const anyLevelVerified = d.programmes.some((p: any) => verifiedState(p.level));
 // FAQs have no publication policy yet: they render only on drafts in PREVIEW builds (projections carry none).
 const faqs: any[] = PREVIEW && draft && Array.isArray(d.faqs) ? d.faqs : [];
+// A projection counts the routes the policy withheld: never present those as "none recorded".
+const routesWithheld = typeof d.routesWithheld === 'number' && d.routesWithheld > 0;
 const fieldOrder = Object.keys(FIELDS);
 const programmes = [...d.programmes].sort((a: any, b: any) => fieldOrder.indexOf(a.field) - fieldOrder.indexOf(b.field));
 const applyHref = `/apply/?university=${d.slug}`;
@@ -55,7 +57,7 @@ const applyHref = `/apply/?university=${d.slug}`;
           <div><dt>Programme families</dt><dd>{fields.length ? fields.map((f) => <span class="pill">{(FIELDS as any)[f].label}</span>) : <span class="muted">None recorded</span>}</dd></div>
           <div><dt>Qualification levels</dt><dd>{levels.length ? levels.map((l) => <span class="pill">{(LEVELS as any)[l]}</span>) : <span class="muted">Not yet recorded</span>}{levels.length > 0 && !anyLevelVerified && <small class="pend">pending verification</small>}</dd></div>
           <div><dt>Languages of instruction</dt><dd>{langs.length ? langs.map((l) => <span class="pill">{l}</span>) : <span class="muted">Not yet recorded</span>}{langs.length > 0 && !anyLangVerified && <small class="pend">pending verification</small>}</dd></div>
-          <div><dt>Preparatory route</dt><dd>{d.preparatoryRoutes.length ? <a href="#preparatory">{d.preparatoryRoutes.length === 1 ? 'Yes — see below' : `${d.preparatoryRoutes.length} routes — see below`}</a> : <span class="muted">None recorded</span>}</dd></div>
+          <div><dt>Preparatory route</dt><dd>{d.preparatoryRoutes.length ? <a href="#preparatory">{d.preparatoryRoutes.length === 1 ? 'Yes — see below' : `${d.preparatoryRoutes.length} routes — see below`}</a> : <span class="muted">{routesWithheld ? 'To be confirmed' : 'None recorded'}</span>}</dd></div>
         </dl>
       </section>
 
