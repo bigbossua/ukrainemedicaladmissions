@@ -80,6 +80,8 @@ Seven real records exist, all **unpublished draft shells** built from the 2026-1
 
 Synthetic sample: `site/src/content/samples/example-medical-university.json` (`synthetic: true`, never publishable, sources on `example.invalid`) demonstrates the layouts with verified-looking values; it renders only at `/preview/example-medical-university/` in a preview build and is kept out of the real directory by `test:gate`.
 
+Route to publication, per record, with page checklists: `DIRECTORY_VERIFICATION_PLAN.md` (2026-10-11; recommends verifying Vinnytsia → Odesa → Bukovinian first, with Ivano-Frankivsk as substitute — a proposal; §9's order stands until the owner decides).
+
 Access status: official `.ua` domains and the Ministry portal remain unreachable from the build environment (network policy), so no claim could be verified in this phase; nothing has been invented to fill a gap. The expansion order (Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil) follows §9.
 
 ## 5. Verification priority (SEMrush named-university evidence, updated 2026-10-11 with R2)
