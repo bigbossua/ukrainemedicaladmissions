@@ -67,3 +67,22 @@ SEMrush R1 (1,440), R2 (900) — minimum 2,340 units; R3 (1,440); R4 ≈1,200 an
 5. Analytics tool and CSP change; GSC property ownership.
 6. Legal entity details (D7) for privacy/terms/complaints; D9 default branch.
 7. Stage 2 go-live with real documents — only after the eight gates in `APPLICATION_SYSTEM_SPEC.md` §11.
+
+
+---
+
+# Addendum — decision report for the research and verification phase, 2026-10-11 (evening)
+
+**Verified this phase:** Semrush's published price for the approved reports (10 API units per line, developer documentation snippet). **Not verified:** the account balance (unreadable from this environment) — therefore **R1/R2 were not executed; 0 units spent; cumulative 2,240.** Unblock: the owner reads the API Units page and states the balance; execution then follows the probe-first plan in `SEMRUSH_API_LEDGER.md`.
+
+**University and programme research:** the sweep is complete for all 12 target universities and the three programme topics, at snippet level with every claim quoted and linked (raw data in `research/universities/`). Official pages remain unreachable (network policy, D5), so **0 claims are verified for publication**; the registers are a verification queue with an explicit order. New facts worth the owner's attention, all unverified: Zaporizhzhia's official pages say foreign students are taught offline in Berehove (Zakarpattia) since 2023; Dnipro has no official-domain English programme snippet at all; Uzhhorod offers the broadest health-sciences supply (nursing, public health, rehabilitation, all Ukrainian-language) in a western region; Bogomolets lists no public-health programme for foreigners in 2026; the specialty codes changed in 2024 (229→I9, 227 renamed, 017→A7).
+
+**SEO decisions:** unchanged; §10 of `KEYWORD_URL_MAP.md` records why each defer/improve decision stands. No new page.
+
+**Images:** 20+ free candidates identified from Pexels and Wikimedia Commons with the exact licence check still to do on each page; one Unsplash+ paid item rejected; institution photographs restricted to their own profile pages.
+
+**Live verification:** still blocked; domains and steps unchanged (`BASELINE_REPORT.md` §9): allow `ukrainemedicaladmissions.com` and `www.ukrainemedicaladmissions.com`, then `npm run verify:live`.
+
+**Candidate profile:** stepped Stage-1 form, readiness worked example and missing-document workflow specified (`APPLICATION_SYSTEM_SPEC.md` §12); nothing implemented; no document collection.
+
+**Blockers, in order of impact:** (1) network allow-list for the production hosts and the official university/registry domains — free, minutes, unlocks live checks and the first real verifications; (2) the SEMrush balance reading — unlocks R1/R2; (3) legal entity details (D7).

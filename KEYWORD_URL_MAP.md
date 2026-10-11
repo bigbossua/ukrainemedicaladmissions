@@ -203,3 +203,15 @@ Prices: `phrase_these` 10 units/line and `phrase_fullsearch` 20 units/line are t
 | **Full** | R1–R5 | | | **≈6,480 (R4/R5 prices assumed)** | Adds SERP realism and competitor gaps |
 
 Metered usage will be recorded per call in `SEMRUSH_API_LEDGER.md`; raw CSVs saved under `research/semrush/`; no page is created from this data without passing through §7.
+
+## 10. Review 2026-10-11 (evening) — no new SEMrush data; supply evidence re-read against the registers
+
+- **Country comparison (§6) and master register (§7): unchanged.** R1/R2 were authorised conditionally but not executed (balance unverifiable from this environment — `SEMRUSH_API_LEDGER.md`); no demand figure in this file changed. Units spent today: 0.
+- **Page opportunities reconsidered against the new supply evidence (`PROGRAMME_SUPPLY_REGISTER.md`):**
+  - #10 nursing → **improve `/courses/nursing/` stands**, strengthened: official-domain English-track leads at Kharkiv and Ternopil, Ukrainian-language bachelors at Uzhhorod, Bukovinian, Vinnytsia, Odesa, Poltava, Ivano-Frankivsk. Still no new page; still nothing publishable until verified.
+  - #12 public health → **defer stands**: eleven programmes found, all Ukrainian-taught in official snippets; Bogomolets explicitly excludes it from its 2026 foreign-citizen intake; no "MPH" award anywhere.
+  - #13 physiotherapy → **defer stands**: supply is broad but Ukrainian-language; the only English claim is a private institution's marketing page; recognition route undocumented.
+  - #14 sport → **reject stands** (no medical-university supply; specialist universities only).
+  - #15 preparatory → **improve `/admissions/` stands and is now well-founded**: official preparatory departments at 12 of 12 universities, with differing certificates and progression wording that must be quoted per university; only one English-track course (Bukovinian). A dedicated page still waits for R1 demand data.
+  - #6 named universities → the expansion order in `UNIVERSITY_DATA_REGISTER.md` §9 gains Uzhhorod (7), Zaporizhzhia (8), Dnipro (9); no new URL until verification.
+- **No new SEO page is proposed.**

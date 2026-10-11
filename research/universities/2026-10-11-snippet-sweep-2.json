@@ -1,0 +1,1554 @@
+{
+ "generated": "2026-10-11",
+ "method": "WebSearch snippets only (second sweep; search caps); official pages not opened; every claim carries URL + quote; nothing filled from memory",
+ "status": "LEADS — UNVERIFIED; not for publication",
+ "agents": [
+  {
+   "label": "uni:Zaporizhzhia State Medical and",
+   "result": {
+    "official_name": "Zaporizhzhia State Medical and Pharmaceutical University (ZSMPhU; formerly Zaporizhzhia State Medical University, ZSMU)",
+    "city": "Zaporizhzhia (foreign-student offline teaching reported in Berehove, Zakarpattia region)",
+    "official_website": {
+     "url": "https://mphu.edu.ua (international section: https://int.mphu.edu.ua)",
+     "basis": "https://int.mphu.edu.ua/p_259.html and https://int.mphu.edu.ua/p_257.html — snippet excerpt: \"the only official ZSMPhU Web-site is mphu.edu.ua (zsmu.edu.ua)\"; \"The university does not bear any responsibility for the information, represented in the name of ZSMPhU by any other Web-site.\" (undated snippet; page title of p_259 reads \"Tuition fee 2025-2026\"). Note: a site:zsmu.edu.ua search returned no pages from that domain; journal subdomain pharmed.zsmu.edu.ua still exists."
+    },
+    "operating_status": {
+     "claim": "University reports offline (in-person) teaching of foreign students continuing in Berehove (Zakarpattia, western Ukraine) since an agreement in 2023, with classrooms in the Berehove Medical College building; Zaporizhzhia campus shelters fitted for classes during air raids. No official 2025-2026 statement on format/location was found in snippets; the Berehove page is undated.",
+     "basis": "https://int.mphu.edu.ua/p_1848.html (title: \"Off-line teaching of foreign students is continuing in a safe area\") — snippet excerpt: university \"reached an agreement with Zakarpattia regional authorities to host foreign students in Berehove, which it calls one of the safest areas near the western border, as early as 2023\"; \"Classrooms are housed in the Berehove Medical College building\"; \"Classes in various disciplines can now be held there even during an air raid\" [undated]. Supporting: https://int.mphu.edu.ua/p_1847_10.html (title: \"News about studying in Berehove\") — excerpt: \"a pediatrics practical for third-year international students from India and Morocco and a preparatory department for future students\" [undated]; https://int.mphu.edu.ua/p_1886.html (title: \"Studies in Berehove: Practical Skills and Preparation for the Unified State Qualification Exam (USQE)\") [undated, no snippet text]. Distance-format search for 2025-2026 returned no ZSMPhU snippet: no snippet found."
+    },
+    "international_admissions": {
+     "claim": "Foreigners are admitted on a self-paying (contract) basis or within state quotas; enrollment is run by the university in two intake windows (enrollment by March 1 and by November 1); admission exams minimum passing mark 6 of 12; foreign students historically enter via International Faculty No.1 (pre-university) then International Faculty No.2.",
+     "basis": "https://int.mphu.edu.ua/p_1276.html (title: \"Requirements for admission of foreigners and stateless persons to ZSMPhU in 2025-2026\") — snippet excerpts: \"foreigners may pay for their own education or study on state-funded places\"; \"Enrollment of foreign students for studying at the expense of natural and/or legal persons is carried out by Zaporizhzhia State Medical and Pharmaceutical University\"; \"no later than November 1 and March 1, accordingly, for obtaining Master's degree\"; \"the minimum passing mark for admission exams is 6 out of 12\"; table dates shown as 2024 (\"first round ends February 28, 2024, with enrollment by March 1, 2024\"). Faculty structure: https://www.topuniversities.com/node/950279 (aggregator, undated) — \"Foreign students start with pre-university study at International Faculty No.1 and then continue at International Faculty No. 2\". Official-domain contact/office page: no snippet found."
+    },
+    "programmes": [
+     {
+      "category": "medicine",
+      "title_as_found": "Medicine (Master's level; for foreigners)",
+      "level": "Master (single-cycle), 5 years 10 months",
+      "language": "English-medium listed on MoES portal and university fee page; 2025-2026 admissions table row seen in snippet shows Ukrainian medium with 50 non-budget places",
+      "basis": "https://int.mphu.edu.ua/p_1276.html — excerpts: \"master's-level Medicine (for foreigners) track with 50 non-budget places\"; \"Medicine / accredited Full-time education: Ukrainian medium of instruction\"; \"English-medium Medicine is listed at 5 years 10 months\" (2025-2026). https://int.mphu.edu.ua/p_257.html — \"Period of study is 5 years and 10 months\" [undated]. https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Medicine (1-3 years) 4500.00 usd, Medicine (4-6 years) 5000.00 usd\" [English medium; undated].",
+      "official_domain_basis": true,
+      "confidence": "high"
+     },
+     {
+      "category": "dentistry",
+      "title_as_found": "Dentistry",
+      "level": "Master (single-cycle), 4 years 10 months per admissions page snippet",
+      "language": "English-medium fee listed on MoES portal; admissions table snippet \"doesn't show a separate English-medium Dentistry row\"",
+      "basis": "https://int.mphu.edu.ua/p_1276.html — excerpt: \"Dentistry and Pharmacy are listed at 4 years 10 months\" (2025-2026). https://int.mphu.edu.ua/p_257.html — \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology\" [undated]. https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Dentistry at $4,500 for years 1-2 and $4,850 for years 3-5\" [undated].",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "pharmacy",
+      "title_as_found": "Pharmacy",
+      "level": "Master (single-cycle), 4 years 10 months",
+      "language": "English-medium fee listed on MoES portal",
+      "basis": "https://int.mphu.edu.ua/p_257.html — \"Period of study is 4 years and 10 months for Pharmacy\" [undated]. https://int.mphu.edu.ua/p_1276.html — \"Dentistry and Pharmacy are listed at 4 years 10 months\" (2025-2026). https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Pharmacy at $4,300\" [undated].",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "other",
+      "title_as_found": "Pediatrics; Perfume-Cosmetic Technology",
+      "level": "Pediatrics 5 years 10 months; Perfume-Cosmetic Technology 4 years 10 months (per Training Fields page)",
+      "language": "not stated in snippet",
+      "basis": "https://int.mphu.edu.ua/p_257.html — \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology. Medicine and Pediatrics run 5 years and 10 months, while the others run 4 years and 10 months\" [undated].",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "nursing",
+      "title_as_found": "\"Nursing (Cosmetology)\" (aggregator wording only; exact award not found)",
+      "level": "not stated — do not assume BSN/MSN",
+      "language": "not stated",
+      "basis": "https://www.topuniversities.com/node/950279 (aggregator, undated) — \"Nursing (Cosmetology)\". Official-domain nursing programme for foreigners: no snippet found (admissions table snippet \"does not show a bachelor's Nursing row\").",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "public_health",
+      "title_as_found": "no snippet found",
+      "level": "no snippet found",
+      "language": "no snippet found",
+      "basis": "Two searches (English with specialty 229; Ukrainian \"громадське здоров'я 229 ЗДМФУ\") returned no ZSMPhU result: no snippet found.",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "physical_therapy_rehabilitation",
+      "title_as_found": "\"227 Therapy and Rehabilitation\" (aggregator listing under Third Medical Faculty)",
+      "level": "not stated",
+      "language": "not stated",
+      "basis": "https://abitly.org/en/universities/zdmfu-6716/faculties/third-medical-faculty-501/specialities (aggregator, undated) — \"227 Therapy and Rehabilitation\" under the Third Medical Faculty. Official-domain confirmation: no snippet found.",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "physical_education_sport",
+      "title_as_found": "no snippet found",
+      "level": "no snippet found",
+      "language": "no snippet found",
+      "basis": "No search returned a ZSMPhU physical education/sport programme: no snippet found.",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "preparatory",
+      "title_as_found": "Preparatory Faculty for foreign citizens / Preparatory Course (also reported operating in Berehove)",
+      "level": "Pre-university; MoES portal prices it per \"one year of study\"",
+      "language": "Ukrainian (\"From the 2017-2018 academic year, studies at the ZSMU Preparatory Faculty are conducted in Ukrainian\")",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/105/preparatory-department — \"has run since 1973\"; \"From the 2017-2018 academic year, studies at the ZSMU Preparatory Faculty are conducted in Ukrainian\" [undated]. https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Preparatory Course 1400.00 usd\" for \"one year of study under Ukrainian medium of instruction\" [undated]. https://int.mphu.edu.ua/p_1847_10.html — Berehove has \"a preparatory department for future students\" [undated]. Subjects/duration for the foreign track: no snippet found (the 8-/3-month Biology, Chemistry, Ukrainian courses at https://int.mphu.edu.ua/p_1547.html are domestic-entrant courses).",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     }
+    ],
+    "preparatory_department": {
+     "claim": "Preparatory faculty for foreign citizens exists (since 1973), taught in Ukrainian since 2017-2018; MoES portal lists a one-year Preparatory Course at 1,400 USD (Ukrainian medium); a preparatory department is also reported in Berehove. Duration and subject list for the foreign track not confirmed by snippet.",
+     "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/105/preparatory-department — \"From the 2017-2018 academic year, studies at the ZSMU Preparatory Faculty are conducted in Ukrainian\" [undated]; https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Preparatory Course 1400.00 usd\" [undated]; https://int.mphu.edu.ua/p_1847_10.html — \"a preparatory department for future students\" [undated]; https://int.mphu.edu.ua/p_1547.html — \"eight- and three-month preparatory courses in Biology, Chemistry, Ukrainian Language and Literature for entrants on a contract basis\"; \"eight-month preparatory courses are held from October to May, and the three-month courses run from February to April\" [undated; domestic Pre-University Training Center, not confirmed as the foreign track]."
+    },
+    "fees_deadlines_snippets": [
+     {
+      "claim": "Tuition 2025-2026, English medium, per year: Medicine 4,500 USD (years 1-3), 5,000 USD (years 4-6); Dentistry 4,500 USD (years 1-2), 4,850 USD (years 3-5); Pharmacy 4,300 USD",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Medicine (1-3 years) 4500.00 usd, Medicine (4-6 years) 5000.00 usd\"; \"Dentistry at $4,500 for years 1-2 and $4,850 for years 3-5\"; \"Pharmacy at $4,300\" [portal page undated]. Corroborated by https://int.mphu.edu.ua/p_259.html (title \"Tuition fee 2025-2026\") — \"lists the same figures\"."
+     },
+     {
+      "claim": "Preparatory Course 1,400 USD per year (Ukrainian medium)",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost — \"Preparatory Course 1400.00 usd\" [undated]"
+     },
+     {
+      "claim": "Two intake windows for self-paying foreigners: enrollment by March 1 (documents early Jan to late Feb) and by November 1 (documents mid-July to end Oct); Master's admission \"no later than November 1 and March 1\"",
+      "basis": "https://int.mphu.edu.ua/p_1276.html (2025-2026 page) — \"no later than November 1 and March 1, accordingly, for obtaining Master's degree\"; table dates shown as 2024: \"first round ends February 28, 2024, with enrollment by March 1, 2024\" — 2025/2026 calendar dates not confirmed"
+     },
+     {
+      "claim": "Minimum passing mark for admission exams 6 of 12; 50 non-budget places for foreigner Medicine master's (Ukrainian medium)",
+      "basis": "https://int.mphu.edu.ua/p_1276.html — \"the minimum passing mark for admission exams is 6 out of 12\"; \"50 non-budget places for the foreigner Medicine master's-level program, taught in Ukrainian with a 5-year, 10-month course of study\" (2025-2026)"
+     },
+     {
+      "claim": "Aggregator total: US$28,500 for 2025-2026 English-medium Medicine (non-official)",
+      "basis": "https://globalscholarships.com/cheap-schools-mbbs-in-ukraine/ — \"US$28,500 total for the 2025–2026 English-medium Medicine program\" (aggregator; low confidence)"
+     }
+    ],
+    "official_pages_to_verify": [
+     "https://mphu.edu.ua (homepage; confirm official-site notice and any 2025-2026 format/location statements)",
+     "https://int.mphu.edu.ua/p_1276.html (Requirements for admission of foreigners 2025-2026: full programme/language table, intake dates, document list)",
+     "https://int.mphu.edu.ua/p_259.html (Tuition fee 2025-2026)",
+     "https://int.mphu.edu.ua/p_257.html (Training Fields: specialty-duration pairing, languages)",
+     "https://int.mphu.edu.ua/p_1848.html (Off-line teaching of foreign students in Berehove; check date)",
+     "https://int.mphu.edu.ua/p_1847_10.html (News about studying in Berehove; preparatory department)",
+     "https://int.mphu.edu.ua/p_1886.html (Studies in Berehove / USQE preparation)",
+     "https://int.mphu.edu.ua/p_1547.html (Medical and Pharmaceutical Education Department / preparatory courses)",
+     "https://universities.studyinukraine.gov.ua/en/minedu/university/105 (MoES profile)",
+     "https://universities.studyinukraine.gov.ua/en/minedu/university/105/cost (MoES fee table)",
+     "https://universities.studyinukraine.gov.ua/en/minedu/university/105/preparatory-department (MoES preparatory page)"
+    ],
+    "gaps": [
+     "WebSearch returned synthesized summaries with embedded quoted fragments rather than raw snippets; all 'excerpts' above are those fragments and must be re-checked against the live pages.",
+     "No official 2025-2026 statement on teaching format (online/offline) or relocation found; Berehove pages are undated.",
+     "Exact 2025-2026 intake calendar dates not confirmed (table seen shows 2024 dates).",
+     "Official-domain evidence for English-medium Dentistry row in the 2025-2026 admissions table not seen.",
+     "Nursing: no official snippet; exact award (bachelor/master) unknown; only aggregator 'Nursing (Cosmetology)'.",
+     "Public Health (229/I9), Physical Education/Sport: no snippet found at all.",
+     "Physical therapy/rehabilitation (227/I7): aggregator listing only, no official page.",
+     "Preparatory department for foreigners: duration, subject list and English-track availability not confirmed; Berehove preparatory details not in snippets.",
+     "International office contact/address and application route (e.g., apply.studyinukraine.gov.ua requirement) for ZSMPhU not found in snippets.",
+     "Status of legacy domain zsmu.edu.ua (redirect or abandoned) not confirmed."
+    ],
+    "searches_used": 18
+   }
+  },
+  {
+   "label": "uni:Dnipro State Medical Universit",
+   "result": {
+    "official_name": "Dnipro State Medical University (DSMU; Ukrainian: Дніпровський державний медичний університет, ДДМУ; formerly Dnipropetrovsk Medical Academy / Dnipropetrovsk State Medical Academy of the Ministry of Health of Ukraine; renamed 16 March 2021 per Wikipedia snippet — third-party)",
+    "city": "Dnipro",
+    "official_website": {
+     "url": "https://dmu.edu.ua (English international portal: https://infoen.dmu.edu.ua ; admissions portal for foreigners: https://study.dmu.edu.ua ; preparatory department: https://pv.dmu.edu.ua/english)",
+     "basis": "https://infoen.dmu.edu.ua/dsmu-and-faculty — snippet: 'this website (subdomain) is the only officially registered on the domain' and gives 'https://dmu.edu.ua as the main domain'; Dean's Office of the International Faculty listed at 'int@dmu.edu.ua, at 9 Vladimir Vernadsky Str., Dnipro, zip code 49044' (undated). Also https://osvita.ua/vnz/guide/202/ — snippet: 'https://vstup.osvita.ua/r5/210/ is its admissions link' (aggregator)."
+    },
+    "operating_status": {
+     "claim": "No university-wide official statement on 2025–2026 teaching format or relocation was found in snippets. Only department-level and older notices exist: one DSMU department page states blended (offline+online) teaching from 1 September 2025; an oncology department page states online teaching from 02.09.2024; university-level notices from March 2022 state online teaching for foreign citizens. The university is still listed in the 2025 and 2026 national admissions campaign (vstup.osvita.ua) with full-time (денна) form. No relocation outside Dnipro is indicated in any snippet. Status for 2025–2026 at university level: UNVERIFIED — must be opened on dmu.edu.ua.",
+     "basis": "https://302.dmu.edu.ua/english/mixed-learning — snippet: 'From September 1, 2025, the department began teaching students of all courses and specialties according to the approved class schedules and calendar-thematic plans for disciplines in a blended mode (offline and online learning)' (dated 2025, department-level, official subdomain). https://416.dmu.edu.ua/home/english — snippet: 'the start of the autumn semester begins on 02.09.2024 training will take place online on the Moodle platform' (dated 2024, department-level). https://dmu.edu.ua/novini/march-14-2022/ and https://dmu.edu.ua/?p=2425 — snippet: 'continues the online educational process for foreign citizens of all forms of training' (dated March 2022). https://vstup.osvita.ua/y2025/r5/210/1552337/ — snippet: 'Дніпровський державний медичний університет; Тип пропозиції: Фіксована i Форма навчання: Денна' (2025 admissions listing, aggregator). https://www.dundee.ac.uk/stories/dundee-welcomes-ukrainian-medical-students — snippet: 'teaching at Dnipro State Medical University has been severely impacted since the invasion' (undated, third-party)."
+    },
+    "international_admissions": {
+     "claim": "Foreign citizens apply via the International Relations Department for an official 'Invitation to Study'; documents (passport copy, high school diploma with transcripts, signed personal-data consent) are forwarded to the Ukrainian State Centre of International Education, which assigns a registration number to the Invitation. Enrolment requires signing a study contract and paying tuition and hostel fees; first-year students pay the whole year in full, from second year by semester. Academic year starts 1 September. An International Faculty with a Dean's Office exists (int@dmu.edu.ua). Whether DSMU uses the 2025/2026 unified interdepartmental system for foreigners was NOT confirmed in snippets (snippets found only for other universities). Snippets undated.",
+     "basis": "https://study.dmu.edu.ua/admission-s/admission-process — snippet: 'Foreign citizens aiming to study at the Dnipro State Medical University (DSMU) can apply to International Relations Department for official \"Invitation to Study\"' ... 'Foreign citizens can be enrolled to DSMU after signing the Contract for study and paying tuition and hostel fees.' ... 'Academic year starts on the 1st September.' (undated, official). https://dmu.edu.ua/en/admission-process — snippet: 'first year students have to pay tuition and hostel fees for the whole year in full. Starting from the second year students can pay these fees by semesters' (undated, official). https://infoen.dmu.edu.ua/dsmu-and-faculty — snippet: 'Dean's Office of the International Faculty of the Dnipro State Medical University at int@dmu.edu.ua' (undated, official). https://dmu.edu.ua/ua/activity/international-activity — snippet: 'organizing admission and training of international students at the preparatory department since 1990' and 'in 1994 the Department of international relations was established' (undated, official). https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22 — snippet: 'since 1997 the teaching of foreign students in English has been launched and is rapidly developing' (undated, government portal)."
+    },
+    "programmes": [
+     {
+      "category": "medicine",
+      "title_as_found": "222 Медицина (Medicine) — Master's (магістр) level; English-medium exact title for foreigners not found on official domain; aggregators call it 'General Medicine' / 'MBBS' / 'M.D.'",
+      "level": "Master (магістр), single-cycle; duration 6 years per aggregators only",
+      "language": "Ukrainian confirmed (national admissions); English teaching for foreign students asserted by government portal studyinukraine.gov.ua (undated) and aggregators; no official-domain snippet naming English-medium Medicine",
+      "basis": "https://osvita.ua/vnz/guide/202/ — snippet: lists master's-level programs '222 - медицина, 221 - стоматологія, 226 - фармація, промислова фармація, 227 - фізична терапія, ерготерапія' (aggregator, undated). https://vstup.osvita.ua/y2025/r5/210/1552337/ — snippet: '80072 грн на рік' first-year full-time contract (Ukrainian citizens, 2025). https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22 — snippet: 'since 1997 the teaching of foreign students in English has been launched'. https://matchtocollege.com/blog/mbbs-abroad-dnipro-state-medical-university-guide — snippet: 'duration of six years and leads to the M.D. degree' (agency, undated).",
+      "official_domain_basis": false,
+      "confidence": "medium"
+     },
+     {
+      "category": "dentistry",
+      "title_as_found": "221 Стоматологія (Dentistry) — Master's level",
+      "level": "Master (магістр); duration '5 years' per agency snippet only",
+      "language": "Ukrainian confirmed; English for foreigners only per agency snippets",
+      "basis": "https://osvita.ua/vnz/guide/202/ — snippet: '221 - стоматологія' (aggregator, undated). https://matchtocollege.com/blog/mbbs-abroad-dnipro-state-medical-university-guide — snippet: 'dentistry course as five years' (agency, undated). https://mbbsadmissionabroad.in/dnipro-state-medical-university-ukraine — snippet: 'medical degree programs like general medicine, dentistry and pharmacy' (agency).",
+      "official_domain_basis": false,
+      "confidence": "medium"
+     },
+     {
+      "category": "pharmacy",
+      "title_as_found": "226 Фармація, промислова фармація (Pharmacy, Industrial Pharmacy) — Master's level",
+      "level": "Master (магістр); 'five academic years' per agency snippet only",
+      "language": "Ukrainian confirmed; English for foreigners only per agency snippets",
+      "basis": "https://osvita.ua/vnz/guide/202/ — snippet: '226 - фармація, промислова фармація' (aggregator, undated). https://matchtocollege.com/blog/mbbs-abroad-dnipro-state-medical-university-guide — snippet: 'pharmacy as five academic years' (agency, undated).",
+      "official_domain_basis": false,
+      "confidence": "medium"
+     },
+     {
+      "category": "nursing",
+      "title_as_found": "no snippet found (no DSMU nursing bachelor/master award found; only a 'Фаховий молодший бакалавр' at the separate Dnipro Basic Professional Medical College, vstup.osvita.ua/y2022/r5/604/, which is not DSMU)",
+      "level": "unknown",
+      "language": "unknown",
+      "basis": "no snippet found. Search summary explicitly: 'I found no source for a Nursing bachelor's program at DMU'. Note: the 'Specialist of Public Health' / nursing training snippet in results belongs to dnu.dp.ua (Oles Honchar Dnipro National University), a different institution, and must not be attributed to DSMU.",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "public_health",
+      "title_as_found": "no snippet found (229 Громадське здоров'я not present in DSMU listings found; the only 'Public Health' qualification snippet was from dnu.dp.ua — different university)",
+      "level": "unknown",
+      "language": "unknown",
+      "basis": "no snippet found. https://osvita.ua/vnz/guide/202/ excerpt lists 222/221/226/227 only; search summary: 'Your query's 229 Громадське здоров'я and 223 Медсестринство don't appear in that excerpt'.",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "physical_therapy_rehabilitation",
+      "title_as_found": "227 Фізична терапія, ерготерапія (Physical Therapy, Occupational Therapy); Bachelor on basis of complete secondary education with specialisation 'Фізична терапія'",
+      "level": "Bachelor (бакалавр) per vstup.osvita.ua 2025; osvita.ua guide lists 227 among master's-level entries (level ambiguity — verify)",
+      "language": "Ukrainian; no snippet on English-medium or international availability",
+      "basis": "https://vstup.osvita.ua/y2025/r5/210/ — snippet (2025): bachelor's 'на основі повної загальної середньої освіти зі спеціалізацією «Фізична терапія» в ДДМУ', '206 зарахованих на бюджет і 67 на контракт'. https://osvita.ua/vnz/guide/202/ — snippet: '227 - фізична терапія, ерготерапія' (aggregator, undated). https://vstup.osvita.ua/y2017/r5/210/ — program 'Фізична терапія, ерготерапія' under former name (2017).",
+      "official_domain_basis": false,
+      "confidence": "medium"
+     },
+     {
+      "category": "physical_education_sport",
+      "title_as_found": "no snippet found",
+      "level": "unknown",
+      "language": "unknown",
+      "basis": "no snippet found",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "preparatory",
+      "title_as_found": "Preparatory Department for Foreign Citizens (pv.dmu.edu.ua) / 'pre study language course' – 'premedical course' (study.dmu.edu.ua)",
+      "level": "Pre-university preparatory course; ~1 academic year (1 Sept–30 June per department page; 1 Oct–30 June per study portal — conflict)",
+      "language": "Ukrainian language (semester 1 Ukrainian only; semester 2 adds physics, chemistry, biology)",
+      "basis": "https://pv.dmu.edu.ua/english — snippet: 'training lasts from September 1 to June 30'; 'first semester is Ukrainian only, and the second adds physics, chemistry, and biology' (undated, official). https://study.dmu.edu.ua/pre-study-language-course — snippet: 'premedical course academic year begins on October 1 and lasts till June 30'; 'listeners study only the Ukrainian language in the 1st semester'; 'founded in 1990'; 'main goal is the language training and studying of general education disciplines before entering the medical academy'; documents 'translated into Ukrainian language with official attestation of translation' (undated, official).",
+      "official_domain_basis": true,
+      "confidence": "high"
+     }
+    ],
+    "preparatory_department": {
+     "claim": "DSMU operates a Preparatory Department for Foreign Citizens (since 1990). Duration ~1 academic year ending 30 June; start date conflicts between official pages (1 September vs 1 October). Semester 1: Ukrainian language only; semester 2: Ukrainian plus physics, chemistry, biology. Aimed at foreign citizens and stateless persons. Required documents include passport copy, previous education records, medical certificate, translated into Ukrainian with attested translation. No fee snippet found.",
+     "basis": "https://pv.dmu.edu.ua/english — snippet: 'training lasts from September 1 to June 30'; 'first semester is Ukrainian only, and the second adds physics, chemistry, and biology' (undated). https://study.dmu.edu.ua/pre-study-language-course — snippet: 'premedical course academic year begins on October 1 and lasts till June 30'; 'listeners study only the Ukrainian language in the 1st semester'; 'founded in 1990' (undated). https://dmu.edu.ua/ua/activity/international-activity — snippet: 'admission and training of international students at the preparatory department since 1990' (undated)."
+    },
+    "fees_deadlines_snippets": [
+     {
+      "claim": "Payment terms (official, undated): first-year foreign students pay tuition and hostel for the full year; later years by semester; academic year starts 1 September.",
+      "basis": "https://dmu.edu.ua/en/admission-process — 'first year students have to pay tuition and hostel fees for the whole year in full. Starting from the second year students can pay these fees by semesters'; https://study.dmu.edu.ua/admission-s/admission-process — 'Academic year starts on the 1st September.'"
+     },
+     {
+      "claim": "Domestic contract tuition, Medicine (Master), first year full-time, 2025 cycle: 80,072 UAH/year (NOT an international/English-medium fee).",
+      "basis": "https://vstup.osvita.ua/y2025/r5/210/1552337/ — '80072 грн на рік' (2025, aggregator of EDEBO data)"
+     },
+     {
+      "claim": "Domestic contract tuition, Medical Psychology (Master), 2026/27: 76,561 UAH/year (not international).",
+      "basis": "https://osvita.ua/consultations/vartist-navchannya/90634/ — 'Дніпровський державний медичний університет м. Дніпро 76561 грн на рік' (2026/27, aggregator)"
+     },
+     {
+      "claim": "Domestic 2026 campaign: application window 19 July – 1 August; 249 contract places (page may mix cycles; verify).",
+      "basis": "https://www.education.ua/universities/54/ — 'подача заяв: 19 липня — 1 серпня' and 'контракт — 249 places' (2026 cycle, aggregator; search summary flagged uncertainty)"
+     },
+     {
+      "claim": "International medicine tuition per AGENCY sources only (conflicting, unverified): ~$4,210/yr; $5,010 total incl. hostel; range 4,000–5,500 USD/yr; hostel ~$800/yr; uniRank 2,500–4,999 US$/yr band.",
+      "basis": "https://matchtocollege.com/blog/mbbs-abroad-dnipro-state-medical-university-guide and https://www.mbbsadmissionabroad.in/dnipro-state-medical-university-ukraine — 'about $4,210 a year', '$5,010 as total fees including hostel', '4,000 USD – 5,500 USD per year'; https://www.unirank.org/ua/uni/dnipro-state-medical-university/ — '2,500-4,999 US$ a year' (all undated, non-official, low confidence)"
+     },
+     {
+      "claim": "No official DSMU fee schedule, invitation deadline, or intake-date for international students 2025–2026 found in any snippet.",
+      "basis": "no snippet found"
+     }
+    ],
+    "official_pages_to_verify": [
+     "https://dmu.edu.ua",
+     "https://dmu.edu.ua/en/admission-process",
+     "https://study.dmu.edu.ua/",
+     "https://study.dmu.edu.ua/admission-s/admission-process",
+     "https://study.dmu.edu.ua/pre-study-language-course",
+     "https://pv.dmu.edu.ua/english",
+     "https://infoen.dmu.edu.ua/",
+     "https://infoen.dmu.edu.ua/dsmu-and-faculty",
+     "https://infoen.dmu.edu.ua/graduates/general-information",
+     "https://dmu.edu.ua/ua/activity/international-activity",
+     "https://302.dmu.edu.ua/english/mixed-learning",
+     "https://416.dmu.edu.ua/home/english",
+     "https://dmu.edu.ua/novini/ (news section — look for 2025/2026 orders on educational-process format)",
+     "https://vstup.osvita.ua/y2025/r5/210/",
+     "https://vstup.osvita.ua/y2026/r5/210/",
+     "https://universities.studyinukraine.gov.ua (DSMU entry — Ukrainian State Centre for International Education)"
+    ],
+    "gaps": [
+     "No university-wide official statement on 2025–2026 teaching format/location; only one department page (blended from 1 Sept 2025) and 2022/2024 notices.",
+     "No official-domain snippet naming English-medium Medicine/Dentistry/Pharmacy programmes or their exact titles/durations for international students; durations (6/5/5 years) come from agencies only.",
+     "No official international tuition fee schedule, invitation/application deadline or intake dates for 2025–2026.",
+     "Nursing: no DSMU bachelor/master award found; do not list BSN/MSN.",
+     "Public Health (229): no snippet; the 'Specialist of Public Health' snippet belongs to dnu.dp.ua (different university) and was excluded.",
+     "Physical education/sport: no snippet.",
+     "Physical Therapy (227): level ambiguity (bachelor per vstup 2025 vs master-level listing on osvita.ua); no evidence of availability to international students or English medium.",
+     "Preparatory department: start-date conflict (1 Sept vs 1 Oct) between two official pages; no fee found.",
+     "Not confirmed whether DSMU uses the 2025/2026 unified interdepartmental information system for foreign enrolment.",
+     "International student numbers conflict across third-party sources (700 / 1,500 / 1,700 / 2,000+) — none official.",
+     "site: operator was ignored by the search engine, limiting official-domain coverage."
+    ],
+    "searches_used": 18
+   }
+  },
+  {
+   "label": "uni:Uzhhorod National University,",
+   "result": {
+    "official_name": "State University \"Uzhhorod National University\" (UzhNU) — Medical Faculty No. 2 (foreign students), Faculty of Medicine, Faculty of Dentistry, Faculty of Health and Physical Education",
+    "city": "Uzhhorod",
+    "official_website": {
+     "url": "https://www.uzhnu.edu.ua/ (foreign-applicant section: https://www.uzhnu.edu.ua/en/cat/abiturient-foreign/about)",
+     "basis": "https://www.uzhnu.edu.ua/en/cat/abiturient-foreign/specs — snippet: 'For foreign students' page on uzhnu.edu.ua; 'the international students department lists the email dep-istudents@uzhnu.edu.ua and the phone number +380 (3122) 64-31-56' (undated page; search result also references 'admission rules for 2026')."
+    },
+    "operating_status": {
+     "claim": "Operating in Uzhhorod (Transcarpathia, western Ukraine; not a front-line region). No official 2025–2026 study-format or safety notice for foreign students found in snippets. An internal UzhNU order sets the first-semester 2025/2026 exam session in a mixed format: 'Формат проведення сесії – змішаний (очно-дистанційний)'. A March 2026 university news item says the university 'continues to integrate into the European educational space despite the challenges of wartime'. A June 2026 news item reports diplomas awarded to international graduates of the English-medium Medical Doctor programme. No relocation reported.",
+     "basis": "https://uzhnu.edu.ua/en/infocentre/get/43800 — 'Формат проведення сесії – змішаний (очно-дистанційний)' (2025/2026 first-semester order; year shown in snippet). https://www.uzhnu.edu.ua/en/news/Erasmus-20252026-New-Opportunities-for-Academic-Mobility.htm — 'continues to integrate into the European educational space despite the challenges of wartime' (dated March 2026 by search summary). https://www.uzhnu.edu.ua/en/news/Uzhhorod-National-University-Holds-Graduation-Cerem.htm — 'diplomas were awarded to international graduates who completed their studies in the English-medium Medical Doctor programme' (June 2026 per search summary). Safety item https://uzhnu.edu.ua/en/news/Foreign-Students-in-Uzhhorod-National-University-Safety-and-Quali.htm is from 2022 (stale)."
+    },
+    "international_admissions": {
+     "claim": "Route: Selection Committee for Foreign Nationals and Stateless Persons (unit of the Admissions Committee) and the International Students Department (dep-istudents@uzhnu.edu.ua, +380 (3122) 64-31-56). 2026 rules per official page: fee-paying foreigners admitted in two stages — 'the first stage – until 30 April; the second stage – ... but no later than 01 November'; remote admission possible with 'an electronic invitation and legalized educational documents'; 'Remote entrance exams are conducted in an online format with mandatory video recording'; applicants without Ukrainian residence 'must register in the Unified Admission Information System for the Admission of International Applicants'. Medical Faculty No. 2 accepts to '222 Medicine at both master's and PhD levels, with English as the language of instruction, regardless of citizenship' (2024–2025 cycle notice). Entrance-exam subjects for medicine only found in a 2019 interview: 'chemistry, biology and English' (stale).",
+     "basis": "https://www.uzhnu.edu.ua/en/cat/abiturient-foreign/specs — 'Admission of foreign nationals at the expense of individuals and/or legal entities may be conducted twice a year: the first stage – until 30 April; the second stage – within the timeframes specified in Sections IV–VI of the Admission Rules, but no later than 01 November' (2026 rules per snippet); 'Remote entrance exams are conducted in an online format with mandatory video recording (including screen recording)'. https://uzhnu.edu.ua/en/cat/abiturient-foreign/about — 'The Selection Committee for Foreign Nationals and Stateless Persons, a unit of the Admissions Committee'. https://uzhnu.edu.ua/en/news/Medical-Faculty-No-2-modern-education-for-future-professionals.htm — accepts 'specialty 222 Medicine at both master's and PhD levels, with English as the language of instruction, regardless of citizenship' (2024–2025). 2019 interview: https://uzhnu.edu.ua/en/news/students-from-30-countries-at-the-Faculty-of-Medicine-2-of-UzhNU.htm — 'entrance examinations in chemistry, biology and English'."
+    },
+    "programmes": [
+     {
+      "category": "medicine",
+      "title_as_found": "222 Medicine / 'Medicine' (Medical Doctor), Medical Faculty No. 2",
+      "level": "Master (second level); PhD also offered",
+      "language": "English (syllabi list Ukrainian/English)",
+      "basis": "https://uzhnu.edu.ua/en/news/Medical-Faculty-No-2-modern-education-for-future-professionals.htm — 'Medical Faculty No. 2 is a unique department of Uzhhorod National University, established in 2016 to train foreign students in the field of medicine. Teaching is conducted in English, and students come from almost 30 countries around the world'; accepts 'specialty 222 Medicine at both master's and PhD levels, with English as the language of instruction' (2024–2025). https://www.uzhnu.edu.ua/en/news/Uzhhorod-National-University-Holds-Graduation-Cerem.htm — 'English-medium Medical Doctor programme' (June 2026). Duration: 2019 article 'the medicine programme lasts six years' (stale).",
+      "official_domain_basis": true,
+      "confidence": "high"
+     },
+     {
+      "category": "dentistry",
+      "title_as_found": "221 Dentistry — 'Dental practitioner' programme (Medical Faculty No. 2 syllabi); separate Faculty of Dentistry",
+      "level": "Master (second level)",
+      "language": "Ukrainian/English (syllabus); English delivery for foreigners not confirmed by admissions page",
+      "basis": "https://www.uzhnu.edu.ua/en/infocentre/get/97982 (2024/2025 syllabus) — 'educational level as second (Master), subject area 22 \"Health,\" specialty 221 \"Dentistry,\" with the language of instruction as Ukrainian/English'. https://uzhnu.edu.ua/en/cat/faculty-fstomat/about — Faculty of Dentistry 'trains dentists over five years'; 'license to admit 200 students (government order - 15 students), including 50 - for representatives of other countries' (undated). Agency: https://www.medlinkstudents.com/universities/uzhhorod-national-university/ lists 'Medicine, Dentistry' for 2026/2027 intake.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "pharmacy",
+      "title_as_found": "Фармація (Pharmacy), master's educational-professional programme, Medical Faculty (Ukrainian-track)",
+      "level": "Master",
+      "language": "Not confirmed for English/foreigners; Ukrainian track per vstup.osvita.ua",
+      "basis": "https://vstup.osvita.ua/y2025/r8/207/1557305/ — 'Факультет: Медичний факультет. Зарахування: на 1 курс Вартість навчання за рік (контракт): 47200 грн' (2025, aggregator of official data). https://naqa.gov.ua/wp-content/uploads/2026/02/Додаток-7-до-протоколу-№-3-94-від-17.02.2026.pdf — accreditation register lists 'Медицина', 'Стоматологія', 'Фармація' for UzhNU (2026). No official snippet found for an English-taught pharmacy programme for foreigners.",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "nursing",
+      "title_as_found": "Медсестринство (Nursing) — bachelor programme, field 'Охорона здоров'я'",
+      "level": "Bachelor (not 'BSN' wording)",
+      "language": "no snippet found (Ukrainian presumed, unverified)",
+      "basis": "https://www.uzhnu.edu.ua/uk/infocentre/get/25379 — 'Загальна вища освіта галузі знань «Охорона здоров'я», спеціальності «Медсестринство»'; keywords 'бакалавр, медична сестра'; 'реалізується в очній та заочній формах навчання' (undated). No MSN/master's nursing found. Not confirmed as open to foreigners.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "public_health",
+      "title_as_found": "229 Громадське здоров'я (Public Health) — master's educational programme, Faculty of Health and Physical Education",
+      "level": "Master (no 'MPH' wording found)",
+      "language": "no snippet found (Ukrainian presumed, unverified)",
+      "basis": "https://www.uzhnu.edu.ua/uk/infocentre/get/17746 (or linked Google Doc) — 'Освітня програма другого (магістерського) рівня вищої освіти розроблена відповідно до стандарту вищої освіти за спеціальністю 229 Громадське здоров'я, затвердженого наказом Міністерства освіти і науки України від 12.12.2018 р.'; 'Метою програми підготовки магістрів за спеціальністю «Громадське здоров'я» є підготовка фахівців в даній сфері до самостійної практичної та наукової діяльності' (undated). Not confirmed as open to foreigners.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "physical_therapy_rehabilitation",
+      "title_as_found": "Physical therapy and rehabilitation / 'Physical Rehabilitation' — Faculty of Health and Physical Education (Department of Health Studies)",
+      "level": "Specialist and Master per department page (undated)",
+      "language": "no snippet found",
+      "basis": "https://uzhnu.edu.ua/en/cat/health-kaf_health — 'teaches specialists and masters at the speciality \"Physical Rehabilitation\"' (undated). https://www.uzhnu.edu.ua/en/news/The-memorandum-with-the-regional-council-provides-UzhNU-students-.htm (2024) — 'the first group of 6 students majoring in physical therapy and rehabilitation from the Faculty of Health and Physical Education of UzhNU'. Not confirmed as open to foreigners.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "category": "physical_education_sport",
+      "title_as_found": "Physical Culture and Sports (aggregator listing); faculty formerly 'Faculty of Physical Training and Sports', reorganized 2013",
+      "level": "no snippet found",
+      "language": "no snippet found",
+      "basis": "https://uzhnu.edu.ua/en/cat/health-kaf_health — 'Faculty of Physical Training and Sports was reorganized into the Human Health Faculty in March 2013'. Aggregator https://www.uni2study.com/universities/ukraine/uzhhorod-national-university lists 'Therapy and Rehabilitation, Physical Culture and Sports' (unofficial, undated).",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "category": "preparatory",
+      "title_as_found": "Preparatory department for studying Ukrainian — Centre of Pre-University Preparation and Foreign Citizens Assistance",
+      "level": "Non-degree preparatory",
+      "language": "Ukrainian (as subject); duration and subject list: no snippet found",
+      "basis": "https://uzhnu.edu.ua/en/cat/pdodp-preuniversity — centre 'lists a preparatory department for studying Ukrainian among the centre's offerings'; 'chief of the centre is Mitza Vladyslav Volodymyrovych, associate professor' (undated). No duration, subjects, fees or language-of-instruction details found.",
+      "official_domain_basis": true,
+      "confidence": "low"
+     }
+    ],
+    "preparatory_department": {
+     "claim": "UzhNU has a 'Centre of Pre-University Preparation and Foreign Citizens Assistance' which lists a preparatory department for studying Ukrainian. Duration, subjects (e.g., biology/chemistry), medium of instruction and fees: no snippet found.",
+     "basis": "https://uzhnu.edu.ua/en/cat/pdodp-preuniversity — 'The Centre of Pre-University Preparation and Foreign Citizens Assistance ... lists a preparatory department for studying Ukrainian among the centre's offerings, alongside ZNO exam preparation courses' (undated). Related regulation (undated): https://www.uzhnu.edu.ua/uk/infocentre/get/10117 — international office regulation covering 'contracts for training foreign students and paid additional educational services for foreigners'."
+    },
+    "fees_deadlines_snippets": [
+     {
+      "claim": "Official 2026 intake windows for fee-paying foreigners: 'the first stage – until 30 April; the second stage – ... but no later than 01 November'",
+      "basis": "https://www.uzhnu.edu.ua/en/cat/abiturient-foreign/specs — 'Admission of foreign nationals at the expense of individuals and/or legal entities may be conducted twice a year: the first stage – until 30 April; the second stage – within the timeframes specified in Sections IV–VI of the Admission Rules, but no later than 01 November' (2026 rules, official domain)."
+     },
+     {
+      "claim": "Official English-programme fee list exists but content not retrieved: 2022 notice points to 'uzhnu.edu.ua/en/cat/abiturient-foreign/courses_in_english' listing English-language programs and tuition fees",
+      "basis": "https://uzhnu.edu.ua/en/news/Preliminary-admission-for-study-programs-in-English-starts-at-Uzh.htm — notice 'links to a page listing English-language programs and tuition fees' (2022; fee figures not in snippet)."
+     },
+     {
+      "claim": "Agency fee (low confidence, non-official): 'Tuition fees per year are around €3,380 for medicine and €3,115 for dentistry' (2026/2027 intake)",
+      "basis": "https://www.medlinkstudents.com/universities/uzhhorod-national-university/ — 'Tuition fees per year are around €3,380 for medicine and €3,115 for dentistry' (agency; labelled 2026/2027 intake)."
+     },
+     {
+      "claim": "Agency fee (low confidence, non-official, likely stale): MBBS '$ 3,800' per year, 'Total Fees $ 22,800'",
+      "basis": "https://mbbscouncil.com/listing/uzhhorod-national-university/ — 'V – Year $ 3,800 ... VI – Year $ 3,800 ... Total Fees $ 22,800 Rs 16,80,000' (undated aggregator)."
+     },
+     {
+      "claim": "Pharmacy (Ukrainian track) contract price 2025: '47200 грн' per year",
+      "basis": "https://vstup.osvita.ua/y2025/r8/207/1557305/ — 'Вартість навчання за рік (контракт): 47200 грн' (2025; aggregator of official admissions data; not an international fee)."
+     },
+     {
+      "claim": "Stale: 2019 article says foreign medicine application window 'ran until November 15' and exams in 'chemistry, biology and English'",
+      "basis": "https://uzhnu.edu.ua/en/news/students-from-30-countries-at-the-Faculty-of-Medicine-2-of-UzhNU.htm — 'entrance examinations in chemistry, biology and English' (2019)."
+     },
+     {
+      "claim": "Older 'For foreign students' snippet references 2023 rules: 'admission procedure is valid until December 31 2023' (superseded)",
+      "basis": "https://uzhnu.edu.ua/en/cat/abiturient-foreign/specs — 'the admission procedure is valid until December 31 2023' (2023 version of page)."
+     }
+    ],
+    "official_pages_to_verify": [
+     "https://www.uzhnu.edu.ua/en/cat/abiturient-foreign/specs",
+     "https://uzhnu.edu.ua/en/cat/abiturient-foreign/about",
+     "https://uzhnu.edu.ua/en/cat/abiturient-foreign/courses_in_english",
+     "https://www.uzhnu.edu.ua/en/cat/foreign-acc_activation",
+     "https://uzhnu.edu.ua/en/news/Medical-Faculty-No-2-modern-education-for-future-professionals.htm",
+     "https://uzhnu.edu.ua/en/cat/faculty-medical/about",
+     "https://uzhnu.edu.ua/en/cat/faculty-fstomat/about",
+     "https://uzhnu.edu.ua/en/cat/health-kaf_health",
+     "https://uzhnu.edu.ua/en/cat/pdodp-preuniversity",
+     "https://www.uzhnu.edu.ua/en/infocentre/get/97982",
+     "https://www.uzhnu.edu.ua/uk/infocentre/get/25379",
+     "https://www.uzhnu.edu.ua/uk/infocentre/get/17746",
+     "https://uzhnu.edu.ua/en/infocentre/get/43800",
+     "https://www.uzhnu.edu.ua/en/news/List-of-specialities-specializations-educational-programmes.htm",
+     "https://www.uzhnu.edu.ua/en/news/Uzhhorod-National-University-Holds-Graduation-Cerem.htm",
+     "https://vstup.osvita.ua/y2025/r8/207/1557305/"
+    ],
+    "gaps": [
+     "No official snippet giving current (2025–2026) tuition fees for any English-taught programme; only agency figures (conflicting) and a 2022 pointer to the official courses_in_english page.",
+     "No official 2025–2026 statement on teaching format for foreign students or on safety; only a mixed-format exam-session order for semester 1 2025/2026 and general wartime-operation news (2026). No relocation indicated.",
+     "Current entrance-exam subjects for medicine not confirmed (2019 snippet only: chemistry, biology, English). Agency claims 'no entrance exam' conflict with official remote-exam rules.",
+     "Dentistry for foreigners: official admissions page confirming English-medium dentistry intake not found; evidence is a Ukrainian/English syllabus and a Faculty of Dentistry page reserving 50 places for foreigners (undated).",
+     "Pharmacy: no evidence of an English-taught or foreigner-oriented programme; only Ukrainian-track master's with 2025 contract price.",
+     "Nursing: bachelor programme exists (Ukrainian source); language, foreigner eligibility, fees and any master's (MSN) not found. Do not describe as BSN/MSN.",
+     "Public Health 229 master's exists (official programme document); no MPH wording, language or foreigner eligibility found.",
+     "Physical therapy/rehabilitation and physical culture/sport: degree levels current to 2025–2026 and foreigner eligibility not confirmed.",
+     "Preparatory department: duration, subjects, medium and fees not found.",
+     "Official diploma/recognition statements, rankings: no snippet found (not claimed)."
+    ],
+    "searches_used": 18
+   }
+  },
+  {
+   "label": "topic:public-health",
+   "result": {
+    "findings": [
+     {
+      "university": "National University of Kyiv-Mohyla Academy (NaUKMA), Faculty of Health Care, Social Work and Psychology / School of Public Health",
+      "title_as_found": "І9. Громадське здоров'я (освітньо-наукова магістерська програма)",
+      "level": "Master (educational-research)",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found (for this programme; a separate English-taught MA 'Management in Health Care' is advertised to international students)",
+      "duration_or_structure": "Ступінь навчання: Магістр. На базі: Бакалавр. Освітня програма: Громадське здоров'я. Тип програми магістра: Освітньо-наукова. Форма навчання: Денна (vstup.ukma.edu.ua, undated card; vstup.osvita.ua records for 2024 and 2025)",
+      "fee_or_deadline": "Тип пропозиції: Небюджетна (2025 record, vstup.osvita.ua y2025) — amount not shown; deadline: no snippet found",
+      "basis": "https://vstup.ukma.edu.ua/education-program-info?ep-id=160 — 'І9. Громадське здоров'я'; https://vstup.osvita.ua/y2025/r27/79/1579950/ — 'Тип пропозиції: Небюджетна. Форма навчання: Денна. Зарахування: на 1 курс'; https://www.ukma.edu.ua/dmdocuments/OP_public_health_project_07.01.2024.pdf — 'спеціальність 229 «Громадське здоров'я»' (2024 project document); https://ukma.edu.ua/index.php/2019-04-24-11-09-54/doc_view/3582-... — NAQA expert-group report: 'Освітньо-наукова програма (далі – ОНП) \"Громадське здоров'я\" рівня – магістр Національного університету «Києво-Могилянська академія»' (undated snippet; decision outcome not in snippet). No official snippet uses the title 'MPH'/'Master of Public Health'; only a personal LinkedIn post (https://ua.linkedin.com/in/annakachan) refers to 'MPH from the Kyiv-Mohyla School of Public Health'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "National University of Kyiv-Mohyla Academy (NaUKMA), School of Public Health",
+      "title_as_found": "MA Management in Health Care (Health Care Management master program) — related, not Public Health specialty",
+      "level": "Master",
+      "language": "English — '2-year full-time Master level program with English language of instruction'",
+      "international_applicants": "Page is addressed to international students: 'MA Management in Health Care for international students'; applicants directed to the International Office",
+      "duration_or_structure": "2-year full-time (ukma.edu.ua news page, undated snippet)",
+      "fee_or_deadline": "no snippet found (page says fees/deadlines via International Office)",
+      "basis": "https://www.ukma.edu.ua/eng/index.php/news/836-ma-management-in-health-care-for-international-students — '2-year full-time Master level program with English language of instruction'; https://dfc.ukma.edu.ua/coming-to-naukma/international-students/health-care-management-master-program; https://sph.ukma.edu.ua/eng — 'NaUKMA has become a member of Association of Schools of Public Health in the European Region (ASPHER)'",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Sumy State University (SumDU), Medical Institute, Department of Public Health",
+      "title_as_found": "229 'Public Health' — master's; also bachelor's 'Громадське здоров'я'",
+      "level": "Bachelor and Master",
+      "language": "Institute-level statement: 'The academic process at the Institute is held in Ukrainian and English'; bachelor brochure (int.sumdu.edu.ua bachelor.pdf) lists Ukrainian for the bachelor Public Health programme; master's 229 language: no snippet found",
+      "international_applicants": "Institute-level only: 'hosts students from more than 50 countries of the world' (study.sumdu.edu.ua, undated); programme-specific eligibility: no snippet found",
+      "duration_or_structure": "Master's: self-assessment report 2023 describes 'Public Health' as second-cycle (master's), full-time duration 1 year 8 months (pubhealth.med.sumdu.edu.ua master-vidomosti-samoocinuvannya-2023.pdf, 2023)",
+      "fee_or_deadline": "no snippet found (academic-programs-and-tuition-fees page surfaced but no PH figure in snippet)",
+      "basis": "https://study.sumdu.edu.ua/en/study/institutes-and-faculties/med.html — 'The academic process at the Institute is held in Ukrainian and English'; '229 Public Health' listed among master's specialties; https://pubhealth.med.sumdu.edu.ua/wp-content/uploads/2024/05/master-vidomosti-samoocinuvannya-2023.pdf (2023); https://pubhealth.med.sumdu.edu.ua/en/the-acceptance-of-documents-for-the-masters-degree-in-the-specialty-229-public-health/ (2022 notice); https://pubhealth.med.sumdu.edu.ua/en/discussion-of-educational-programs-in/ — 'discussion of educational programs in the specialty of Public Health at the bachelor's and master's levels of Sumy State University' (2024); https://pubhealth.med.sumdu.edu.ua/wp-content/uploads/2024/05/master-ekspertnuu-vusnovok-GER-2023.pdf (NAQA expert-group conclusion, 2023; decision outcome not in snippet)",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "V. N. Karazin Kharkiv National University",
+      "title_as_found": "no snippet found (only Department of Hygiene and Social Medicine staff pages surfaced)",
+      "level": "no snippet found",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://medicine.karazin.ua/en/kafedra-gigieni-ta-sotsialnoi-meditsini/... — staff pages list 'social medicine, organization of health care, preventive nutrition'; two searches returned no karazin.ua page for a 229/I9 programme",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "university": "Uzhhorod National University (UzhNU), Faculty of Health and Physical Education",
+      "title_as_found": "Освітньо-наукова програма «Громадське здоров'я», спеціальність 229, магістр (ID ЄДЕБО 32385)",
+      "level": "Master (educational-research)",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "'120 кредитів ЄКТС', 'диплом магістра'; based on 'стандарту вищої освіти за спеціальністю 229 Громадське здоров'я, затвердженого наказом Міністерства освіти і науки України від 12.12.2018 р. № 1383'; versions 2021 and 2024 in repository",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://www.uzhnu.edu.ua/uk/infocentre/get/47402 — 'Галузь знань 22 Охорона здоров'я, Спеціальність 229 Громадське здоров'я, Рівень вищої освіти Магістр, Вид освітньої програми Освітньо-наукова ... ID в ЄДЕБО 32385'; https://dspace.uzhnu.edu.ua/jspui/bitstream/lib/76244/1/08201522_onp_229maggromzd2021%20%281%29.pdf (2021 version); https://dspace.uzhnu.edu.ua/jspui/bitstream/lib/76236/1/10%20%281%29.pdf (2024 version); NAQA expert report excerpt: 'Він є публічним документом та буде оприлюднений на сайтах Національного агентства і закладу вищої освіти.'",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Danylo Halytsky Lviv National Medical University (LNMU)",
+      "title_as_found": "no snippet found",
+      "level": "no snippet found",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "Two searches returned no meduniv.lviv.ua page for a 229/I9 programme; only indirect: https://www.oa.edu.ua/en/departments/humanities/public_health — Ostroh page lists LNMU among national credit-mobility partners for Public Health students ('Students of Public Health have the opportunity to participate in national credit mobility on the basis of agreements')",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "university": "I. Horbachevsky Ternopil National Medical University (TNMU)",
+      "title_as_found": "Master's programme in Public Health (ASPHER listing title: 'Master of Public Health')",
+      "level": "Master",
+      "language": "ASPHER listing: language Ukrainian (aspher.org, undated); English route: no snippet found",
+      "international_applicants": "TNMU news (2025): 'fourth state certification of graduates included 28 theses submitted by full-time and part-time students, along with 4 theses from international students' — indicates international students have graduated; formal eligibility statement: no snippet found",
+      "duration_or_structure": "First master's cohort graduated June 2021 (tdmu.edu.ua blog 2021/06/18); 'In September 2025, seven students were admitted to the master's program in Public Health'; July 2026: licensed master's capacity 'doubled from 75 to 150 places' (tdmu.edu.ua blog 2026/07/15)",
+      "fee_or_deadline": "ASPHER: cost 'NA'; TNMU int. tuition page (https://www.tdmu.edu.ua/int/payment-info/) snippet gives English-taught master's range 'about $3,500–$4,700 in the first year, depending on the program' for 2025/2026 — not specific to Public Health",
+      "basis": "https://www.aspher.org/community/institutions/ternopil-national-medical-university/educational-offer/standalone-programmes/master-of-public-health/ — 'Master of Public Health', taught in Ukrainian, cost NA; https://www.tdmu.edu.ua/en/?p=168106 — 'State Certification of Graduates of the Public Health Program' (2025); https://www.tdmu.edu.ua/en/blog/2021/06/18/u-tnmu-vidbuvsya-pershyj-vypusk-magistriv-za-spetsialnistyu-gromadske-zdorov-ya/; https://www.tdmu.edu.ua/en/blog/2026/07/15/tnmu-zbilshuye-nabir-na-magistraturu-do-150-miscz/",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Kharkiv National Medical University (KhNMU), Department of Public Health and Healthcare Management",
+      "title_as_found": "Освітньо-професійна програма «Громадське здоров'я», спеціальність 229, магістр; ASPHER listing 'Master in Public Health (2024)'",
+      "level": "Master (educational-professional)",
+      "language": "ASPHER listing: Ukrainian (undated); English: no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "'120 кредитів ЄКТС, термін навчання 2 роки'; accreditation 'Сертифікат № 1363 від 18.04.2021р. Строк дії до -01.07.2026р.' (op_gr_zdor2022.pdf); 2024 programme version op_gr_zdor2024.pdf still cites 'Галузь - 22 «Охорона здоров'я»' and 229",
+      "fee_or_deadline": "ASPHER: cost NA; no other snippet found",
+      "basis": "https://knmu.edu.ua/wp-content/uploads/2022/07/op_gr_zdor2022.pdf — 'Сертифікат № 1363 від 18.04.2021р. Строк дії до -01.07.2026р.'; https://knmu.edu.ua/wp-content/uploads/2024/07/op_gr_zdor2024.pdf (2024); https://knmu.edu.ua/wp-content/uploads/2021/07/vidomosti_gr-zdor_akred.pdf — 'Спеціальність 229 Громадське здоров`я ... Рівень вищої освіти Магістр' (2021); https://knmu.edu.ua/en/departments/department-of-public-health-and-healthcare-management/ — 'the second (master's) level of higher education in the specialties: \"Medicine\", \"Dentistry\", \"Pediatrics\", \"Public Health\"'; https://www.aspher.org/community/institutions/kharkiv-national-medical-university/educational-offer/standalone-programmes/master-in-public-health-2024/; https://www.eqar.eu/qa-results/search/by-report/report/?id=64944 'Public health (scientific and pedagogical direction)' and ?id=64945 'Public health (profile direction)' (EQAR records, institution attribution not confirmed in snippet)",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "National University of Ostroh Academy, Department of Public Health and Physical Education",
+      "title_as_found": "Bachelor and Master 'Public Health' (Освітня програма 51309 Громадське здоров`я, магістр, освітньо-професійна); ASPHER listing 'Master in Public Health'",
+      "level": "Bachelor and Master",
+      "language": "ASPHER: Ukrainian (undated)",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "NAQA accreditation expert visit 'Дати візиту до ЗВО 20.03.2023 р. – 22.03.2023 р.' (zvit_health_mag.pdf, 2023); outcome not in snippet",
+      "fee_or_deadline": "ASPHER: cost NA",
+      "basis": "https://www.oa.edu.ua/doc/access/akredutatsiya/2023/zvit_health_mag.pdf — 'Освітня програма 51309 Громадське здоров`я, рівень вищої освіти Магістр, Спеціальність 229 Громадське здоров`я'; https://www.oa.edu.ua/en/departments/humanities/public_health; https://www.aspher.org/community/institutions/ostroh-academy-national-university/educational-offer/standalone-programmes/master-in-public-health/ — 'Organization of state sanitary and epidemiological supervision'",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Dnipro State Medical University",
+      "title_as_found": "229 Public Health (aggregator listing only)",
+      "level": "no snippet found (level not shown)",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://abitly.org/en/universities/ddmu-210/faculties/dniprovsk-state-medical-university-1173/specialities — aggregator lists '229 Public Health' among specialties (undated); no official dmu.edu.ua snippet found",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "university": "Zaporizhzhia State Medical and Pharmaceutical University",
+      "title_as_found": "no snippet found (aggregator excerpt lists 221, 222, 224, 226, 227, 228 only)",
+      "level": "no snippet found",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://abitly.org/en/universities/zaporizhzhia-state-medical-and-pharmaceutical-university-6716/structure — 229 absent from excerpt (absence of evidence only)",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "university": "Bogomolets National Medical University (Kyiv)",
+      "title_as_found": "Public Health NOT listed among 2026 master's specialties open to foreign citizens",
+      "level": "n/a",
+      "language": "'studies are conducted in Ukrainian or English' (for listed specialties)",
+      "international_applicants": "2026 page: 'Enrolment of foreign citizens to obtain Master's Degree is carried out in the following specialities: I1 «Dentistry» ... I2 «Medicine» ... I8 «Pharmacy, іndustrial рharmacy»' — Public Health absent",
+      "duration_or_structure": "n/a",
+      "fee_or_deadline": "Foreign first-year applications 'from July 19, 2026 till October 31, 2026' (nmuofficial.com, 2026)",
+      "basis": "https://nmuofficial.com/en/?p=73670 — 'Admission of foreign citizens' (2026)",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Other universities with 229/I9 programme documents surfaced (not fully researched)",
+      "title_as_found": "Vinnytsia NMU (VNMU): 'ОПП І9 Громадське здоров'я' master 2025/2026 projects and bachelor 2025 project; Poltava State Medical University (PDMU): OPP Public Health project; Shupyk NUOZU: 'OPP_I9_2025-proj'; NUBiP: 'opp_bakalavr_229_gz_2024' and 'I9 Громадське здоров'я (Нутриціологія здорового харчування)'; National University of Physical Education and Sport (uni-sport.edu.ua): bachelor 229 and 'ОПП І9 ГРОМАДСЬКЕ ЗДОРОВ'Я' 2026; Oles Honchar Dnipro National University (dnu.dp.ua): bachelor 229 programme 2020/21",
+      "level": "Bachelor and/or Master (per document titles)",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "Bachelor programmes: 'диплом бакалавра, одиночний, 240 кредитів ЄКТС ... 3 роки 10 місяців (денна форма навчання)'; 'Кваліфікація: бакалавр громадського здоров'я'",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://www.vnmu.edu.ua/downloads/other/OPP_I9_grom-zd_2025(proekt).pdf — 'спеціальності І9 Громадське здоров'я галузі знань І Охорона здоров'я та соціальне забезпечення'; https://www.vnmu.edu.ua/downloads/other/OPP_grom-zd_2025(1bakal)_proekt.pdf; https://pdmu.edu.ua/n-process/department-npr/two-level/opp/public-health/proiekt-osvitnoyi-programi-department-npr-opp-public-health-pvte; https://www.nuozu.edu.ua/zagruzka3/OPP_I9_2025-proj.pdf; https://nubip.edu.ua/sites/default/files/u284/opp_bakalavr_229_gz_2024.pdf; https://uni-sport.edu.ua/sites/default/files/opp_229_gromadske_zdorovya_nova_redakciya_13.05.2020_2.pdf; https://www.dnu.dp.ua/docs/osvitni_programy/nabir_20_21_b/17_09_21/b_2020_2021_229.pdf",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     }
+    ],
+    "terminology_notes": [
+     {
+      "note": "Ukrainian award titles follow the national standard: bachelor qualification 'бакалавр громадського здоров'я' (240 ECTS); master programmes award 'диплом магістра' in specialty 229/I9 'Громадське здоров'я'. No official Ukrainian university snippet found that titles the award 'MPH' or 'Master of Public Health'; the English rendering 'Master of/in Public Health' appears only in ASPHER directory listings (TNMU, KhNMU, Ostroh) and a personal LinkedIn post about Kyiv-Mohyla.",
+      "basis": "https://nubip.edu.ua/sites/default/files/u284/opp_bakalavr_229_gz_2024.pdf — 'Кваліфікація: бакалавр громадського здоров'я'; https://www.aspher.org/.../ternopil-national-medical-university/.../master-of-public-health/; https://ua.linkedin.com/in/annakachan"
+     },
+     {
+      "note": "Two programme types exist at master level: 'освітньо-професійна' (educational-professional, e.g. KhNMU, Ostroh) and 'освітньо-наукова' (educational-research/scientific, e.g. NaUKMA, UzhNU). EQAR records mirror this as 'Public health (profile direction)' and 'Public health (scientific and pedagogical direction)'.",
+      "basis": "https://knmu.edu.ua/wp-content/uploads/2021/07/zvit_gr-zd_akred.pdf — 'Вид освітньої програми Освітньо-професійна'; https://www.uzhnu.edu.ua/uk/infocentre/get/47402 — 'Вид освітньої програми Освітньо-наукова'; https://www.eqar.eu/qa-results/search/by-report/report/?id=64944 and ?id=64945"
+     },
+     {
+      "note": "Specialty code changed from 229 (field 22 'Охорона здоров'я') to I9 (field I 'Охорона здоров'я та соціальне забезпечення'); universities use both codes in 2024–2026 documents. Kyiv-Mohyla's 'Health Care Management' master is a different specialty (management), not Public Health, despite being run by the School of Public Health.",
+      "basis": "https://www.education.ua/news/2025/01/20/hromadske-zdorovia-use-pro-spetsialnist-i9-229/ — 'у попередній класифікації вона мала код 229' (2025); https://www.ukma.edu.ua/eng/index.php/news/836-ma-management-in-health-care-for-international-students"
+     }
+    ],
+    "regulatory_notes": [
+     {
+      "claim": "Master-level standard for 229 'Громадське здоров'я' approved by MES order No. 1383 of 12.12.2018; a draft new standard for I9 master level was published for public discussion by MES in June 2026 (order number blank = draft status).",
+      "basis": "https://dspace.uzhnu.edu.ua/jspui/bitstream/lib/76244/1/08201522_onp_229maggromzd2021%20%281%29.pdf — 'затвердженого наказом Міністерства освіти і науки України від 12.12.2018 р. № 1383'; https://mon.gov.ua/static-objects/mon/sites/1/gromadske-obgovorennya/2026/06/11/i9-magistr.docx (2026 draft)"
+     },
+     {
+      "claim": "Bachelor-level standard for 229 approved by MES order No. 1000 of 04.08.2020, in force from 2020/2021 academic year.",
+      "basis": "https://osvita.ua/legislation/Vishya_osvita/75876/ — 'Наказ МОН № 1000 від 04.08.2020' ... 'вводиться в дію з 2020/2021 навчального року'"
+     },
+     {
+      "claim": "Cabinet of Ministers Resolution No. 1021 of 30 August 2024 changed the field and code: field 'Охорона здоров'я та соціальне забезпечення' (code І), specialty 'Громадське здоров'я' (code І9). Transition rules not found in snippets.",
+      "basis": "https://pubhealth.med.sumdu.edu.ua/wp-content/uploads/2025/09/Протокол-ЕРР-№1-від-21.10.2024-ДЗВПлан-роботи.pdf — 'галузь знань змінено на \"Охорона здоров'я та соціальне забезпечення\" (шифр І); спеціальність змінено на \"Громадське здоров'я\" (код І9)' (2024)"
+     },
+     {
+      "claim": "Accreditation is by NAQA (Національне агентство із забезпечення якості вищої освіти); expert-group reports found for KhNMU (visit 17–19 Feb 2021; certificate No. 1363 of 18.04.2021 valid to 01.07.2026), Ostroh (visit 20–22 March 2023), Sumy (2023 conclusion), NaUKMA and UzhNU (dates not in snippet). No NAQA decision/certificate text itself was retrieved; outcomes for Ostroh, Sumy, NaUKMA, UzhNU are not confirmed by snippet.",
+      "basis": "https://knmu.edu.ua/wp-content/uploads/2022/07/op_gr_zdor2022.pdf — 'Сертифікат № 1363 від 18.04.2021р. Строк дії до -01.07.2026р.'; https://www.oa.edu.ua/doc/access/akredutatsiya/2023/zvit_health_mag.pdf — 'Дати візиту до ЗВО 20.03.2023 р. – 22.03.2023 р.'; https://pubhealth.med.sumdu.edu.ua/wp-content/uploads/2024/05/master-ekspertnuu-vusnovok-GER-2023.pdf"
+     },
+     {
+      "claim": "ASPHER directory lists standalone master's programmes for Ternopil NMU ('Master of Public Health', Ukrainian, cost NA), Kharkiv NMU ('Master in Public Health (2024)', Ukrainian, cost NA) and Ostroh Academy ('Master in Public Health', Ukrainian, cost NA). NaUKMA states on its own site it is an ASPHER member; Lesya Ukrainka Volyn NU describes cooperation with ASPHER (membership not stated). No ASPHER listing surfaced for Sumy, Uzhhorod or Lviv (absence unconfirmed).",
+      "basis": "https://www.aspher.org/community/institutions/ternopil-national-medical-university/educational-offer/standalone-programmes/master-of-public-health/; https://www.aspher.org/community/institutions/kharkiv-national-medical-university/educational-offer/standalone-programmes/master-in-public-health-2024/; https://www.aspher.org/community/institutions/ostroh-academy-national-university/educational-offer/standalone-programmes/master-in-public-health/; https://sph.ukma.edu.ua/eng — 'NaUKMA has become a member of Association of Schools of Public Health in the European Region (ASPHER)'; https://ra.vnu.edu.ua/en/cooperation-of-lesya-ukrainka-volyn-national-university-with-the-association-of-schools-of-public-health-in-the-european-region-aspher/"
+     },
+     {
+      "claim": "ASPHER statement of 1 March 2022 condemned the invasion and prioritised 'hosting scholars and students at risk in ASPHER member schools'.",
+      "basis": "https://ssph-journal.org/articles/10.3389/phrs.2022.1604880 — 'strongly condemning this military action'; 'hosting scholars and students at risk in ASPHER member schools'"
+     }
+    ],
+    "gaps": [
+     "No official snippet found for any Ukrainian Public Health (229/I9) programme taught in English or explicitly open to international applicants; ASPHER lists TNMU, KhNMU and Ostroh programmes as Ukrainian-taught. Only indirect evidence: TNMU 2025 certification included 4 international-student theses; SumDU Medical Institute states teaching in Ukrainian and English at institute level.",
+     "No programme-specific tuition fee or application deadline found for any Public Health programme; TNMU general int. master's fee range ($3,500–$4,700, 2025/26) is not PH-specific. Bogomolets NMU 2026 foreign intake excludes Public Health.",
+     "Karazin Kharkiv NU: no programme page found (two searches). Lviv NMU: no meduniv.lviv.ua page found (two searches). Zaporizhzhia SMPhU: no evidence of 229/I9. Dnipro SMU: aggregator-only listing.",
+     "No official university snippet uses 'MPH'/'Master of Public Health' as an award title; Kyiv-Mohyla's MPH-like programme is titled 'Громадське здоров'я' (I9, освітньо-наукова) and no English programme page surfaced.",
+     "NAQA accreditation decisions/certificates not retrieved (only expert-group reports hosted by universities); KhNMU certificate expires 01.07.2026 — current status after that date unknown. UzhNU, Sumy, NaUKMA, Ostroh accreditation outcomes unconfirmed.",
+     "Transition rules from code 229 to I9 (CMU Resolution 1021/2024) not found; new I9 master standard is a June 2026 MES draft only.",
+     "Bachelor-level Public Health offerings confirmed by documents only at SumDU, NUBiP, Uni-Sport, Dnipro NU, VNMU (projects), Ostroh; duration/ECTS quoted from generic programme documents, not per-university admissions pages.",
+     "Search cap (18) reached; ASPHER full member directory for Ukraine and EDEBO registry could not be queried directly from this environment."
+    ],
+    "searches_used": 18
+   }
+  },
+  {
+   "label": "topic:rehabilitation",
+   "result": {
+    "findings": [
+     {
+      "university": "Ivan Boberskyi Lviv State University of Physical Culture (LDUFK)",
+      "title_as_found": "227 Therapy and Rehabilitation (Physical Therapy) — bachelor; listed as \"Physical Therapy, Ergotherapy\"",
+      "level": "Bachelor",
+      "language": "Ukrainian; snippet: \"in certain cases (upon students' requests), teaching in English is possible\"",
+      "international_applicants": "University has an \"International students\" section (ldufk.edu.ua/?p=1077) but no snippet states eligibility/quotas for foreigners on this programme",
+      "duration_or_structure": "\"240 ECTS credits\"; \"3 years 10 months\" from complete general secondary education",
+      "fee_or_deadline": "2025-2026 fee table: \"41,000 UAH\" per year full-time bachelor; master's \"61,500 UAH\"; PhD \"116,160 UAH\"; \"Tuition fees are paid before the start of each subsequent academic year\". Table does not state these are foreigner rates. MES portal (university 123) shows older figure \"35,000 UAH per year\" (undated). No deadline snippet.",
+      "basis": "https://www.ldufk.edu.ua/en/programs/bachelors-degree/227-therapy-and-rehabilitation-physical-therapy/ — \"240 ECTS credits\", \"3 years 10 months\", \"in certain cases (upon students' requests), teaching in English is possible\"; https://www.ldufk.edu.ua/?p=26668 — \"Tuition fees for the academic year 2025-2026\", \"41,000 UAH\"; https://universities.studyinukraine.gov.ua/en/minedu/university/123/cost — \"35,000 UAH per year\" (undated)",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Ivan Boberskyi Lviv State University of Physical Culture (LDUFK)",
+      "title_as_found": "227 Therapy and Rehabilitation (Physical Therapy) — master's; listed as \"Physical Therapy, Occupational Therapy\"",
+      "level": "Master",
+      "language": "\"taught in Ukrainian, according to its listing\"",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "2025-2026: \"Master's (full-time): 61,500 UAH. No part-time option.\"",
+      "basis": "https://www.ldufk.edu.ua/en/programs/masters-degree/227-therapy-and-rehabilitation-physical-therapy/ — master's programme \"Physical Therapy, Occupational Therapy\"; https://www.ldufk.edu.ua/?p=26668 — \"61,500 UAH\"",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Ivan Boberskyi Lviv State University of Physical Culture (LDUFK)",
+      "title_as_found": "017 / A7 Physical Culture and Sports — bachelor",
+      "level": "Bachelor",
+      "language": "no snippet found",
+      "international_applicants": "\"Its international students page lists 017 among the bachelor's programs\" (ldufk.edu.ua/en/admission/)",
+      "duration_or_structure": "A7 note: \"вступ на А7 відбувається тільки за освітньою програмою «Фізична культура і спорт»\" (placat-2025.pdf)",
+      "fee_or_deadline": "2025-2026: \"41,000 UAH per year full-time and 26,950 UAH part-time\"; MES portal (undated): \"35,000 UAH for full-time bachelor's study and 26,000 UAH for extramural\"",
+      "basis": "https://www.ldufk.edu.ua/?p=26668 — \"017 Physical Culture and Sports bachelor's at 41,000 UAH per year full-time and 26,950 UAH part-time\"; https://www.ldufk.edu.ua/en/admission/ — lists 017 among bachelor's programmes; https://www.ldufk.edu.ua/wp-content/uploads/2025/04/placat-2025.pdf — \"вступ на А7 відбувається тільки за освітньою програмою «Фізична культура і спорт»\"",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "National University of Ukraine on Physical Education and Sport (NUUPES / НУФВСУ), Kyiv",
+      "title_as_found": "227 Physical therapy, occupational therapy — bachelor",
+      "level": "Bachelor",
+      "language": "MES portal: university offers \"language options (Ukrainian and English) and a preparatory department\"; university page: preparatory department for foreigners \"teaches in Ukrainian\". No snippet states the 227 programme itself is English-medium.",
+      "international_applicants": "Admission Rules snippet: \"Foreigners are enrolled based on an interview\"; \"language proficiency sufficient for studying, confirmed by the Selection Committee\"; documents listed (application form, education certificates, transcript, birth certificate copy, medical certificate, passport copy, medical insurance). vstup.osvita.ua (2022-2025 record): \"Тип пропозиції: Відкрита (в т.ч. для іноземців)\"",
+      "duration_or_structure": "\"Speciality: 227 Physical therapy, occupational therapy\", \"term of study of 3 years 10 months\"",
+      "fee_or_deadline": "Conditions of Study page (2020-2021, outdated): \"59900 UAH per year for physical therapy\"; preparatory department \"(term of study - 1 year) at 40000 UAH\"; \"fees for foreigners are set each academic year and approved by the Academic Council\". MES portal (undated): 227 at \"60,500 UAH per year\" (shorter programme). vstup.osvita.ua contract (Ukrainian applicants, junior-specialist base): \"38 900 грн\". No deadline snippet.",
+      "basis": "https://www.uni-sport.edu.ua/content?start=355 — Admission Rules: \"Foreigners are enrolled based on an interview\"; https://uni-sport.edu.ua/content?start=475 — \"Speciality: 227 Physical therapy, occupational therapy\", \"3 years 10 months\"; https://uni-sport.edu.ua/content/conditions-of-study — \"59900 UAH\", \"2020-2021\"; https://universities.studyinukraine.gov.ua/en/minedu/university/172/ — \"Ukrainian and English\"; https://vstup.osvita.ua/y2022/r27/180/977681/ — \"Відкрита (в т.ч. для іноземців)\"",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "National University of Ukraine on Physical Education and Sport (NUUPES), Kyiv",
+      "title_as_found": "017 Physical Culture and Sport (bachelor); 017 master's entries; 2025 bachelor OPP \"Кіберспорт\" under A7 line",
+      "level": "Bachelor and Master (master's entries shown in fee list)",
+      "language": "no snippet found for the 017 programme specifically",
+      "international_applicants": "Same Admission Rules as above (interview, language proficiency); no 017-specific snippet",
+      "duration_or_structure": "\"4-year term\" (postgraduate/full-time structure snippet, undated)",
+      "fee_or_deadline": "2020-2021 only: \"full-time bachelor's cost 50,600 UAH per year and the extramural form 29,100 UAH per year\" — outdated",
+      "basis": "https://uni-sport.edu.ua/content/conditions-of-study — \"50,600 UAH per year\", \"2020-2021\"; https://uni-sport.edu.ua/images/2025/osvita/OPP_bakalavr_Kibersport_2025.pdf — 2025 bachelor OPP listed under A7 search",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Uzhhorod National University (UzhNU)",
+      "title_as_found": "227 Фізична терапія, ерготерапія (БАКАЛАВР); qualification \"Бакалавр фізичної терапії, ерготерапії\"",
+      "level": "Bachelor",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found (only mention of guest lectures by foreign specialists \"зі Швейцарії та США\")",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://www.uzhnu.edu.ua/uk/infocentre/39887 — \"227 Фізична терапія, ерготерапія (БАКАЛАВР)\"; https://www.uzhnu.edu.ua/en/infocentre/get/16087 — \"ОСВІТНЬО-ПРОФЕСІЙНА ПРОГРАМА\", \"Бакалавр фізичної терапії, ерготерапії\"",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Oles Honchar Dnipro National University (DNU)",
+      "title_as_found": "227 Терапія та реабілітація, ОП \"Фізична терапія, ерготерапія\" (b_227_TR_FTE_opp_2024); ЄДЕБО ID 25045",
+      "level": "Bachelor",
+      "language": "no snippet found",
+      "international_applicants": "\"умови вступу визначаються правилами прийому університету\" — no foreigner-specific snippet",
+      "duration_or_structure": "Programme references \"Стандарт вищої освіти зі спеціальності 227 «Терапія та реабілітація» ... затверджений наказом ... від 29.10.2024 р. №1541\"",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://www.dnu.dp.ua/docs/osvitni_programy/2022/b_227_TR_FTE_opp__2024.pdf — \"Стандарт вищої освіти зі спеціальності 227 «Терапія та реабілітація» галузі знань 22 «Охорона здоров'я» для першого (бакалаврського) рівня ... наказом ... від 29.10.2024 р. №1541\"; https://www.dnu.dp.ua/docs/osvitni_programy/vidomosti/2026/2026_vidomosti_b_227.pdf — self-assessment 2026, ЄДЕБО 25045",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Zaporizhzhia Polytechnic National University (zp.edu.ua) — NOT the medical university",
+      "title_as_found": "\"Physical Rehabilitation\" programme (bachelor and master pages under /programs/bachelor/i7/ and /programs/master/i7/); Department \"Physical therapy and occupational therapy\"",
+      "level": "Bachelor and Master",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://zp.edu.ua/en/programs/bachelor/i7/ and https://zp.edu.ua/en/programs/master/i7/ — \"Physical Rehabilitation\" program pages; https://zp.edu.ua/en/department/department-physical-therapy-and-occupational-therapy — department title",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Zaporizhzhia State Medical and Pharmaceutical University (ZSMPhU)",
+      "title_as_found": "\"Therapy and Rehabilitation (specialization 'Physical Therapy')\" (aggregator wording); edurank: bachelor's with \"Physical Therapy\"",
+      "level": "Bachelor (per aggregator; level not confirmed on official domain)",
+      "language": "Aggregator: \"offers programmes in English and Ukrainian\" (not programme-specific)",
+      "international_applicants": "Aggregator: \"international students can study Therapy and Rehabilitation (specialization \"Physical Therapy\")\"",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://www.topuniversities.com/node/950279 — \"international students can study Therapy and Rehabilitation (specialization \\\"Physical Therapy\\\")\"; https://edurank.org/uni/zaporizhia-state-medical-university/ — bachelor's with \"Physical Therapy\" listed; https://mphu.edu.ua/upload/razdel/240828_ro_24.pdf — annual review (2024): \"166 вітчизняних здобувачів та 61 іноземний здобувач\" on 227 (official PDF; attribution to mphu by snippet)",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "university": "Kharkiv National Medical University (KhNMU)",
+      "title_as_found": "227 Physical therapy, Ergotherapy (Bachelor degree)",
+      "level": "Bachelor",
+      "language": "Ukrainian-medium for international students (listed under \"Ukrainian-medium international students section\"); English-medium list on that page covers only medicine and dentistry master's",
+      "international_applicants": "Listed on MES international-student cost table (official state portal)",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "\"4300.00 usd per year\" (undated portal page)",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/110/cost — \"227 Physical therapy, Ergotherapy (Bachelor degree) at 4300.00 usd per year\"",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Drohobych Ivan Franko State Pedagogical University (DSPU)",
+      "title_as_found": "227 bachelor, specialization \"227.2 Occupational Therapy\"; master's \"Фізична терапія\" (second master's level)",
+      "level": "Bachelor and Master",
+      "language": "no snippet found (listing \"does not mention English-language teaching\")",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "opp_et_bak_240_2023 (240 credits per filename; not quoted)",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://dspu.edu.ua/en/facult-of-human-health-and-natural-sciences/department-of-physical-therapy-ergotherapy-and-health/ — \"227.2 Occupational Therapy\"; https://dspu.edu.ua/wp-content/uploads/2020/10/fizychna-terapiya-drugogo-magisterskogo-rivnya-vyshhoyi-osvity.pdf — master's programme",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Igor Sikorsky Kyiv Polytechnic Institute (KPI)",
+      "title_as_found": "227 Фізична терапія — master's (227-Mp); 2026 master's OPP under code I7 (i7_oppm_ft_2026)",
+      "level": "Master",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "\"диплом магістра, одиничний, 90 кредитів, термін навчання 1 рік 4 місяці\"",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://osvita.kpi.ua/files/downloads/227-Mp-Фізична терапія.pdf — \"90 кредитів, термін навчання 1 рік 4 місяці\"; https://osvita.kpi.ua/sites/default/files/oop/i7_oppm_ft_2026.pdf — 2026 master's OPP (code I7)",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Khmelnytskyi National University",
+      "title_as_found": "227 (227.01 Фізична терапія) — qualification \"бакалавр терапії та реабілітації\", professional qualification \"асистент фізичного терапевта\" (2025); A7 Фізична культура і спорт bachelor and master OPP 2025",
+      "level": "Bachelor (227); Bachelor and Master (A7)",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://khmnu.edu.ua/wp-content/op/b/227-fte-2025.pdf — \"бакалавр терапії та реабілітації\", \"асистент фізичного терапевта\"; https://khmnu.edu.ua/wp-content/op/b/a7-fks-2025.pdf and https://khmnu.edu.ua/wp-content/op/m/a7-fks-2025.pdf — \"А7 Фізична культура і спорт\"",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Sumy National Agrarian University (SNAU)",
+      "title_as_found": "227 Терапія та реабілітація, ОП \"Терапія та реабілітація\" (bachelor, 2023)",
+      "level": "Bachelor",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "\"240 кредитів ЄКТС\"",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://snau.edu.ua/wp-content/uploads/2023/05/227-Фізична-терапія-ерготерапія-ОП-Терапія-та-реабілітація-Бакалавр.pdf — \"ГАЛУЗЬ ЗНАНЬ 22 Охорона здоров'я; СПЕЦІАЛЬНІСТЬ 227 Терапія та реабілітація\", 240 ECTS (2023)",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Sumy State University (SumDU)",
+      "title_as_found": "\"Physical Therapy\" study programme (international site)",
+      "level": "not stated in snippet",
+      "language": "no snippet found (\"doesn't say whether the bachelor's is offered in English\")",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://int.sumdu.edu.ua/en/international/1784 — describes a \"Physical Therapy\" study program and Erasmus+ rehabilitation projects",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Ukrainian Catholic University (UCU)",
+      "title_as_found": "New bachelor's programme \"Physical Therapy\" (presented Aug 2026); earlier master's in physical and occupational therapy (2016 report)",
+      "level": "Bachelor (new, 2026); Master (2016 report)",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found",
+      "duration_or_structure": "2016: \"master programs lasting two years\"",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://hromada.us/en/articles/2026/08/17/enrollment-is-open-for-the-new-bachelors-program-in-physical-therapy-at-ucu — \"Presentation of the New Bachelor's Program 'Physical Therapy'\" (2026, non-official); https://uacrisis.org/en/44770-uku-2 — \"master programs lasting two years\" (2016, non-official)",
+      "official_domain_basis": false,
+      "confidence": "low"
+     },
+     {
+      "university": "International European University (IEU), Ukraine — Malta Campus page",
+      "title_as_found": "Bachelor of Physiotherapy; Masters Degree in Physiotherapy",
+      "level": "Bachelor and Master",
+      "language": "\"English as the medium of instruction\"",
+      "international_applicants": "no snippet found (page targets international audience; not quoted)",
+      "duration_or_structure": "\"3-5 years of full-time studying for a Bachelor of Physiotherapy\"; \"2-3 years of full-time studying for a Masters Degree in Physiotherapy\"",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://maltacampus.ieu.edu.ua/about-the-physiotherapy-course — \"English\" medium, \"3-5 years of full-time studying for a Bachelor of Physiotherapy\", \"2-3 years ... Masters Degree in Physiotherapy\" (undated; private university, campus page — treat as self-description)",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Ukrainian Humanitarian Institute (UGI)",
+      "title_as_found": "\"Rehabilitation and Massage\" programme (not a 227 degree)",
+      "level": "not stated (2-year programme)",
+      "language": "\"open to foreigners who speak Russian or Ukrainian\"",
+      "international_applicants": "\"open to foreigners\"",
+      "duration_or_structure": "\"term is 2 years\"",
+      "fee_or_deadline": "cost page exists for 2026-2027 (\"Updated on May 1, 2026\") — no figure in snippet",
+      "basis": "https://ugi.edu.ua/en/wp-json/wp/v2/pages/64966 — \"open to foreigners who speak Russian or Ukrainian\", \"2 years\"; https://ugi.edu.ua/en/abiturients/cost-of-education/ — \"For the 2026–2027 Academic Year (Updated on May 1, 2026)\"",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Mariupol State University (mu.edu.ua)",
+      "title_as_found": "017 Physical Culture and Sports — bachelor",
+      "level": "Bachelor",
+      "language": "no snippet found",
+      "international_applicants": "no snippet found (\"does not clearly say whether these rates apply to foreigners\")",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "\"33,400 UAH per year full-time and 25,900 UAH part-time\" (undated)",
+      "basis": "https://mu.edu.ua/en/educational-programs/physical-culture-and-sports — \"33 400 ₴/year for full-time education\"",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Other 227 contract fees (Ukrainian applicants, vstup.osvita.ua 2023 records; not foreigner rates)",
+      "title_as_found": "Фізична терапія / Фізична терапія, ерготерапія",
+      "level": "Bachelor",
+      "language": "no snippet found",
+      "international_applicants": "not applicable (records marked non-budget contract for domestic applicants)",
+      "duration_or_structure": "NUFP/DPS order: \"3 года 10 месяцев\" (Ukrainian citizens)",
+      "fee_or_deadline": "National University of Pharmacy \"26 800 грн\"; Rivne State Humanitarian University \"27 200 грн\"; Stepan Demianchuk IEHU \"26 500 грн\"; NUFP 2025/2026 \"31 500 грн\"",
+      "basis": "https://vstup.osvita.ua/y2023/r21/201/1258581/ and related vstup.osvita.ua 2023 records — \"стоимость за год по контракту\" figures as quoted; https://nuph.edu.ua/wp-content/uploads/2018/11/130.pdf (2018 upload) — aggregator-derived, domestic only",
+      "official_domain_basis": false,
+      "confidence": "low"
+     }
+    ],
+    "terminology_notes": [
+     {
+      "note": "Specialty 227 was renamed from «Фізична терапія, ерготерапія» to «Терапія та реабілітація» (field 22 «Охорона здоров'я»); the new bachelor standard is MES order No. 1541 of 29.10.2024 and the master standard is MES order No. 1549 of 30.10.2024. Universities keep «Фізична терапія, ерготерапія» / «Фізична реабілітація» as programme (OPP) names under the renamed specialty.",
+      "basis": "https://www.dnu.dp.ua/docs/osvitni_programy/2022/b_227_TR_FTE_opp__2024.pdf — \"227 «Терапія та реабілітація» ... наказом ... від 29.10.2024 р. №1541\"; https://osvita.kpi.ua/sites/default/files/oop/i7_oppm_ft_2026.pdf — \"Specialty 227 'Therapy and Rehabilitation,' ... Order ... No. 1549 dated October 30, 2024\""
+     },
+     {
+      "note": "Sub-specialisations appear as 227.01 «Фізична терапія» (new numbering) and 227.2 «Occupational Therapy» (older numbering). The bachelor educational qualification is «бакалавр терапії та реабілітації» with professional qualification «асистент фізичного терапевта» (physical therapist assistant) — i.e., the bachelor award is not itself 'physical therapist'.",
+      "basis": "https://khmnu.edu.ua/wp-content/op/b/227-fte-2025.pdf — \"227.01 «Фізична терапія»\", \"бакалавр терапії та реабілітації\", \"асистент фізичного терапевта\"; https://dspu.edu.ua/en/facult-of-human-health-and-natural-sciences/department-of-physical-therapy-ergotherapy-and-health/ — \"227.2 Occupational Therapy\""
+     },
+     {
+      "note": "English renderings vary: 'Physical Therapy, Ergotherapy' (bachelor pages), 'Physical Therapy, Occupational Therapy' (master pages), 'Therapy and Rehabilitation (Physical Therapy)'. 'Physiotherapy' is used mainly by private/aggregator sources (IEU Malta Campus).",
+      "basis": "https://www.ldufk.edu.ua/en/programs/bachelors-degree/227-therapy-and-rehabilitation-physical-therapy/ — \"Physical Therapy, Ergotherapy\"; https://www.ldufk.edu.ua/en/programs/masters-degree/227-therapy-and-rehabilitation-physical-therapy/ — \"Physical Therapy, Occupational Therapy\""
+     },
+     {
+      "note": "Sport specialty 017 «Фізична культура і спорт» was recoded A7 within field A «Освіта» by Cabinet Resolution No. 1021 of 30.08.2024; 2025 OPPs use «А7 Фізична культура і спорт». KPI's 2026 master OPP for physical therapy uses code 'I7', suggesting 227 also received a letter code — not confirmed by any snippet.",
+      "basis": "https://www.education.ua/news/2025/12/04/fizychna-kultura-i-sport-use-pro-spetsialnist-a7/ — \"A7 «Фізична культура і спорт» належить до галузі знань A «Освіта». Раніше вона мала код 017\" (Dec 2025); https://nubip.edu.ua/sites/default/files/u373/a7_opp_fks_magistr_2025.pdf — \"постанови ... від 30.08.2024 р. № 1021\"; https://osvita.kpi.ua/sites/default/files/oop/i7_oppm_ft_2026.pdf — filename code i7"
+     },
+     {
+      "note": "Clinical rehabilitation (227, field 22 Health Care, universities incl. medical and physical-culture universities) is distinct from sport science (017/A7, field A Education). Zaporizhzhia Polytechnic (zp.edu.ua) 'Physical Rehabilitation' pages must not be confused with Zaporizhzhia State Medical and Pharmaceutical University.",
+      "basis": "https://zp.edu.ua/en/programs/bachelor/i7/ — Zaporizhzhia Polytechnic 'Physical Rehabilitation'; https://www.topuniversities.com/node/950279 — ZSMPhU 'Therapy and Rehabilitation'"
+     }
+    ],
+    "regulatory_notes": [
+     {
+      "claim": "World Physiotherapy lists the Ukrainian Association of Physical Therapy as a member (since 2011, Europe region); profile states \"Фізичний терапевт\" is a professional title protected by law; data \"correct as at 30 June 2024\"; 121 physiotherapist members reported.",
+      "basis": "https://world.physio/membership/ukraine — \"Data correct as at 30 June 2024\"; \"Фізичний терапевт\" listed as protected title; membership since 2011"
+     },
+     {
+      "claim": "A professional standard 'Physical therapist' was approved by the Ukrainian Association of Physical Therapy by order No. 01/24-PS of 27.11.2024 (developer approval, not a state licensing act per snippet).",
+      "basis": "https://osvita.kpi.ua/sites/default/files/oop/i7_oppm_ft_2026.pdf — \"professional standard 'Physical therapist' was approved by the developer, the Public Organization 'Ukrainian Association of Physical Therapy', by order ... No. 01/24-PS dated 11/27/2024\""
+     },
+     {
+      "claim": "Master's graduates in physical therapy sit the Unified State Qualification Exam (USQE/ЄДКІ).",
+      "basis": "https://en.erasmusplus.tdmu.edu.ua/information-spreading/формування-стратегії-іспиту-для-фізичних-терапевтів — \"carried out in the form of the Unified State Qualification Exam (USQE) for masters in the specialty\""
+     },
+     {
+      "claim": "The Law 'On Rehabilitation in the Field of Health Care' establishes the multidisciplinary rehabilitation team and telerehabilitation. The law number 1053-IX was NOT confirmed by any snippet.",
+      "basis": "https://kfr.pnu.edu.ua/wp-content/uploads/sites/98/2023/03/sfera-profesijnoi-diialnosti-fizychnoho-terapevta.pdf — Law \"On Rehabilitation in the Field of Health Care\" sets out \"multidisciplinary rehabilitation team\" and \"telerehabilitation\" (no number in snippet)"
+     },
+     {
+      "claim": "MES published a news item on training rehabilitation specialists in line with international practice (content not in snippet).",
+      "basis": "https://mon.gov.ua/news/pidgotovka-fakhivtsiv-iz-reabilitatsii-vidpovidno-do-mizhnarodnoi-praktiki — title only; no snippet found for body text"
+     },
+     {
+      "claim": "No snippet found describing a Ministry of Health (МОЗ) register of physical therapists, licensing procedure, or foreign-graduate recognition route.",
+      "basis": "no snippet found"
+     }
+    ],
+    "gaps": [
+     "No official-domain snippet confirms a fully English-medium 227 (physical therapy/ergotherapy) bachelor or master at any Ukrainian state university; LDUFK says English is possible only 'in certain cases (upon students' requests)'. The only English-medium claim is the private IEU Malta Campus self-description (undated, no fee).",
+     "No official snippet confirms English-medium 017/A7 (physical culture and sport) programmes for foreigners.",
+     "Foreigner-specific tuition for 227/A7 found only for KhNMU (4300 USD/yr, Ukrainian-medium, undated) and NUUPES (2020-2021, outdated). LDUFK 2025-2026 UAH figures are not labelled as foreigner rates.",
+     "Zaporizhzhia State Medical and Pharmaceutical University: no official-domain snippet for 227 level, language, fee or intake; only aggregators (topuniversities, edurank, uni2study).",
+     "Uzhhorod NU and Dnipro NU 227: programme existence confirmed on official domains, but no language, foreigner eligibility, fee or duration snippets.",
+     "Sumy State University, Ternopil NMU, Bogomolets NMU: no snippet confirming 227 bachelor for international students or language.",
+     "Deadlines/intake dates: no snippet found for any programme.",
+     "Text of MES orders No. 1541 and No. 1549 (2024) and Cabinet Resolution No. 1021 not retrieved; letter code for 227 under the new list (possibly 'I7') unconfirmed.",
+     "Ministry of Health registration/licensing of physical therapists and recognition of foreign-earned qualifications: no snippet found.",
+     "Occupational/ergotherapy-specific programmes (227.2) beyond Drohobych: not surfaced.",
+     "Search cap (18) reached; site-restricted searches for znu.edu.ua returned only a dspace PDF without usable snippet."
+    ],
+    "searches_used": 18
+   }
+  },
+  {
+   "label": "topic:preparatory",
+   "result": {
+    "findings": [
+     {
+      "university": "Ivan Horbachevsky Ternopil National Medical University (TNMU/TDMU)",
+      "title_as_found": "Preparatory Department for foreigners and stateless persons",
+      "level": "Preparatory (pre-university)",
+      "language": "Ukrainian (or Russian) as language learned; snippet: 'provides Ukrainian or Russian language courses, as well as chemistry, informatics, mathematics, physics and biology upgrading courses' (Careers360, aggregator). Official junior.tdmu.edu.ua snippet: 'students learning Ukrainian (Russian) language, biology, chemistry, physics, mathematics and computer science'. Separate official snippet: the preparatory program 'is not for the students applying for programs/courses in the English language' (undated).",
+      "international_applicants": "Yes - department is 'for foreigners and stateless persons' (official title); undated.",
+      "duration_or_structure": "'Duration of training is 1 academic year (10 months)'; 'Classes start in October and groups have 12 people'; focus 'medico-biological direction'. Completion: graduates 'receive a state certificate, which entitles to continue their studies for medico-biological direction at any university of Ukraine' (official, undated). Licence: 'licensed by the Ministry of Education and Science of Ukraine No 527878 of 30 June, 2015'.",
+      "fee_or_deadline": "no snippet found (fee). Start: October (undated).",
+      "basis": "https://junior.tdmu.edu.ua/english - 'Duration of training is 1 academic year (10 months)'; 'receive a state certificate, which entitles to continue their studies for medico-biological direction at any university of Ukraine'. Also https://universities.studyinukraine.gov.ua/en/minedu/university/68/preparatory-department - 'licensed by the Ministry of Education and Science of Ukraine No 527878 of 30 June, 2015'. English-track exclusion: https://repository.tdmu.edu.ua/handle/123456789/20315?show=full search context / tdmu.edu.ua - 'It is not for the students applying for programs/courses in the English language'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Kharkiv National Medical University (KhNMU)",
+      "title_as_found": "The Preparatory Department (Education and Research Institute for Training of International Citizens)",
+      "level": "Preparatory (pre-university)",
+      "language": "Ukrainian-medium progression: certificate 'gives the right to enroll in the 1st year for Ukrainian-language education without additional entrance examinations'. Subjects: 'Ukrainian language, biology, chemistry, physics, mathematics, computer science, and country studies'. A legacy page 'describes Russian-medium instruction, which may be out of date'.",
+      "international_applicants": "Yes - 'prepares foreigners to enter higher education'; admissions rules: 'foreigners for whom the Admissions Committee has established the need for language training for basic education undergo such training at the preparatory department (faculty) for foreign citizens' (undated).",
+      "duration_or_structure": "'The training is designed for 1 academic year (10 months) and takes place in accordance with the approved programs and curricula. Training profile - medical and biological.' 'each study group has no more than 13 students'. Progression: 'Students who pass the final tests and exams receive a certificate of completion, which gives the right to enroll in the 1st year for Ukrainian-language education without additional entrance examinations' (official, undated). Intake: 'Applications are accepted during the year for studying in an internship and at the preparatory department (faculty)'.",
+      "fee_or_deadline": "no snippet found (fee). Applications 'accepted during the year' (undated).",
+      "basis": "https://knmu.edu.ua/en/navchalno-naukovyj-instytut-z-pidgotovky-inozemnyh-gromadyan-hnmu/pidgotovche-viddilennya/ - 'The training is designed for 1 academic year (10 months)'; 'receive a certificate of completion, which gives the right to enroll in the 1st year for Ukrainian-language education without additional entrance examinations'. https://knmu.edu.ua/en/pravyla-pryjomu-ta-informacziya-dlya-inozemcziv/ - 'Applications are accepted during the year for studying in an internship and at the preparatory department (faculty)'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Bukovinian State Medical University (BSMU), Chernivtsi",
+      "title_as_found": "Preparatory Course / Preparatory Department",
+      "level": "Preparatory (pre-university)",
+      "language": "Ukrainian plus English for English-track students: subjects 'the Ukrainian language, biology, physics, chemistry, mathematics, country studies, and computer fundamentals'; students heading to English-medium programmes 'learn main curriculum subjects also in English'. FAQ: 'B1 (B2) Level in English is the most widely accepted level at the University for non-English speaking natives'; applicants below that 'may apply to the Preparatory courses of English'.",
+      "international_applicants": "Yes - tuition page titled 'Tuition Fees - Foreign Students' lists an 'English-language preparatory department' (2023-2024).",
+      "duration_or_structure": "'Studying at the Preparatory Department lasts for 10 months and covers mastering natural sciences'; 'period of training of 40 weeks (2 semesters)'; FAQ: 'the preparatory course starts on the 1st of October'. Progression conditions: no snippet found.",
+      "fee_or_deadline": "'$1500 per year' for the English-language preparatory department (2023-2024 tuition page; same figure on 2018-2019 table). Start 1 October (undated FAQ).",
+      "basis": "https://www.bsmu.edu.ua/en/admission/preparatory-course/ - 'Studying at the Preparatory Department lasts for 10 months and covers mastering natural sciences'; 'learn main curriculum subjects also in English'. https://www.bsmu.edu.ua/en/admission/tuition-fees/ - 2023-2024: English-language preparatory department '$1500 per year'. https://www.bsmu.edu.ua/en/faq/ - 'the preparatory course starts on the 1st of October'; 'B1 (B2) Level in English is the most widely accepted level'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Zaporizhzhia State Medical and Pharmaceutical University (ZSMPhU)",
+      "title_as_found": "International (preparatory) Faculty No. 1 / Preparatory Faculty for foreign citizens",
+      "level": "Preparatory (pre-university)",
+      "language": "Ukrainian per portal: 'from the 2017-2018 academic year, studies at the ZSMU Preparatory Faculty are conducted in Ukrainian' (studyinukraine portal, undated). University site elsewhere states 'foreign students have been taught in English since 2002' (refers to degree teaching, not clearly preparatory). Berehove campus preparatory dept: 'Future students can study the Ukrainian language and other essential subjects needed for admission to their chosen specialties'.",
+      "international_applicants": "Yes - 2026-2027 rules: 'foreigners who apply to the International (preparatory) Faculty No. 1 of the ZSMPhU are enrolled without entrance examinations' (2026-2027).",
+      "duration_or_structure": "Structure: 'premedical education is provided at the International Faculty No.1 and then foreign students continue studies at the International Faculty No. 2'. Progression: 'foreign citizens are enrolled in the University for first year of studying on the results of entrance examinations' (2026-2027) - i.e. preparatory completion does not bypass entrance exams. History: 'first preparatory faculty in Ukraine with a medical and biological focus', founded 1973; 'more than 6,000 foreign citizens from 110 countries'.",
+      "fee_or_deadline": "'preparatory department at 1400 USD per year' (Tuition fee 2026-2027 page). Deadline: no snippet found.",
+      "basis": "https://int.mphu.edu.ua/p_1276.html (Requirements for admission of foreigners and stateless persons to ZSMPhU in 2026-2027) - 'foreigners who apply to the International (preparatory) Faculty No. 1 of the ZSMPhU are enrolled without entrance examinations'; 'foreign citizens are enrolled in the University for first year of studying on the results of entrance examinations'. https://int.mphu.edu.ua/p_259.html (Tuition fee 2026-2027) - preparatory department '1400 USD per year'. https://universities.studyinukraine.gov.ua/en/minedu/university/105/preparatory-department - 'from the 2017-2018 academic year, studies at the ZSMU Preparatory Faculty are conducted in Ukrainian'. https://int.mphu.edu.ua/p_1886.html - Berehove: 'Future students can study the Ukrainian language and other essential subjects needed for admission to their chosen specialties'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Dnipro State Medical University (DSMU)",
+      "title_as_found": "Preparatory Department for Foreign Citizens / pre study language course",
+      "level": "Preparatory (pre-university)",
+      "language": "Ukrainian in first semester: 'lists Ukrainian in the first semester, with physics, chemistry, and biology added in the second' (pv.dmu.edu.ua, undated). English-medium preparatory: no snippet found.",
+      "international_applicants": "Yes - page title 'Preparatory Department for Foreign Citizens' (undated).",
+      "duration_or_structure": "study.dmu.edu.ua: 'the premedical course academic year begins on October 1 and lasts till June 30'; pv.dmu.edu.ua: 'training from September 1 to June 30' (two official pages give differing start dates). Certificate/progression: no snippet found.",
+      "fee_or_deadline": "no snippet found (official fee). uniRank aggregator gives only a university-wide estimate '2,500-4,999 US$', not preparatory-specific - not usable.",
+      "basis": "https://study.dmu.edu.ua/pre-study-language-course - 'the premedical course academic year begins on October 1 and lasts till June 30'. https://pv.dmu.edu.ua/english - 'training from September 1 to June 30', 'Ukrainian in the first semester, with physics, chemistry, and biology added in the second'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Danylo Halytsky Lviv National Medical University (LNMU)",
+      "title_as_found": "Preparatory course for foreign citizens (one year)",
+      "level": "Preparatory (pre-university)",
+      "language": "Ukrainian: 'Foreign citizens, who are not strong enough in Ukrainian can enter a one year Preparatory course, which includes an intensive language program' (portal listing, undated). University page: 'the Ukrainian-language course is part of the admission process'.",
+      "international_applicants": "Yes - 'Foreign citizens ... can enter a one year Preparatory course'; university: 'admission for foreigners runs from August 15 to November 15' (undated).",
+      "duration_or_structure": "One year; 'course starts October 1'; subjects: intensive language plus 'basic biology, chemistry and physics'. Progression: 'Graduate students of these courses can be enrolled for the first year studies to Danylo Halytsky Lviv National Medical University. After passing exams (Ukrainian Language, Biology, Chemistry and Physics)' - i.e. enrolment is conditional on passing exams, not automatic.",
+      "fee_or_deadline": "Portal lists preparatory 'Fees ($US per one Year) - 1 700' (undated, studyinukraine portal page for LNMU). Admission window for foreigners 'from August 15 to November 15' (university page, undated).",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/131/preparatory-department - 'Foreign citizens, who are not strong enough in Ukrainian can enter a one year Preparatory course, which includes an intensive language program'; 'Graduate students of these courses can be enrolled for the first year studies ... After passing exams (Ukrainian Language, Biology, Chemistry and Physics)'; 'Fees ($US per one Year) - 1 700'. https://new.meduniv.lviv.ua/en/?p=818 - 'admission for foreigners runs from August 15 to November 15'; 'in 2020/2021, 97% of foreign students study in English language'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Bogomolets National Medical University (BNMU), Kyiv",
+      "title_as_found": "Preparatory department (Faculty for Training of Foreign Citizens) - 'Admission of foreign citizens'",
+      "level": "Preparatory (pre-university)",
+      "language": "no snippet found",
+      "international_applicants": "Yes - page 'Admission of foreign citizens' states preparatory admission window (2026).",
+      "duration_or_structure": "no snippet found (duration/certificate). Intake: 'Admission to Preparatory department will last from July 19, 2026 till October 31, 2026'.",
+      "fee_or_deadline": "Intake window 'from July 19, 2026 till October 31, 2026' (2026). Fee: no snippet found.",
+      "basis": "https://nmuofficial.com/en/?p=73670 - 'Admission to Preparatory department will last from July 19, 2026 till October 31, 2026'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Ivano-Frankivsk National Medical University (IFNMU)",
+      "title_as_found": "Foreign citizens' training department (preparatory department, medical-biological profile)",
+      "level": "Preparatory (pre-university)",
+      "language": "no snippet found",
+      "international_applicants": "Yes - 'The university has trained foreign citizens since 1992, and a preparatory department with a licensed number of 300 people was opened in 2003, where training was provided with two profiles: medical-biological and engineering' (official, undated).",
+      "duration_or_structure": "'Foreign citizens at the university undergo three stages of studying: pre-university training (language and fundamental disciplines), pre-graduate education in major special...' (snippet truncated). Duration/certificate: no snippet found. NOTE: the 10-month 'from October 01 till July 31' / 'minimum 7 months' snippet belongs to Ivano-Frankivsk National Technical University of Oil and Gas (portal id 16), not IFNMU.",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://ifnmu.edu.ua/uk/strukturni-pidrozdili-2/fakultety/foreign-citizens-training-department - 'a preparatory department with a licensed number of 300 people was opened in 2003, where training was provided with two profiles: medical-biological and engineering'; 'three stages of studying: pre-university training (language and fundamental disciplines)'.",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Uzhhorod National University (UzhNU)",
+      "title_as_found": "Educational-scientific institute of postgraduate education and pre-university training (Навчально-науковий інститут післядипломної освіти та доуніверситетської підготовки); Medical faculty No. 2 (for foreign students)",
+      "level": "Pre-university (foreigner-specific preparatory programme not confirmed)",
+      "language": "no snippet found",
+      "international_applicants": "Medical faculty for foreign students: 'training at the Medical faculty No2 started according to the schedule, from September 1 this year' (2016 news). Foreigner-specific preparatory department: no snippet found.",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://uzhnu.edu.ua/en/news/Vasyl-Kaliy-It-is-important-not-only-to-teach-foreign-students.htm (2016) - 'training at the Medical faculty No2 started according to the schedule, from September 1 this year'. https://www.education.ua/universities/184/ (aggregator) lists 'Навчально-науковий інститут післядипломної освіти та доуніверситетської підготовки'.",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "National Pirogov Memorial Medical University, Vinnytsia (VNMU)",
+      "title_as_found": "Preparatory Department for foreign students of Vinnytsya National Pirogov Memorial Medical University",
+      "level": "Preparatory (pre-university)",
+      "language": "no snippet found",
+      "international_applicants": "Yes - page titled 'Preparatory Department for foreign students' exists on foreign.vnmu.edu.ua (undated); content not captured in snippet.",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://foreign.vnmu.edu.ua/?p=1556 - 'Preparatory Department for foreign students of Vinnytsya National Pirogov Memorial Medical University' (title only). https://www.vnmu.edu.ua/downloads/other/specific features_studies_2025.PDF - 2025 foreigner rules 'rely on Cabinet Resolution No. 729 of September 12, 2018'.",
+      "official_domain_basis": true,
+      "confidence": "low"
+     },
+     {
+      "university": "Poltava State Medical University (PSMU)",
+      "title_as_found": "Admission rules for foreign citizens (entrance tests)",
+      "level": "Degree entry (Bachelor/Master) - relevant to progression requirements",
+      "language": "'entrance tests in the language of instruction and biology'",
+      "international_applicants": "Yes - 'foreign citizens admitted based on the results of entrance tests in the language of instruction and biology are enrolled'; 'Its Nursing program uses a professional test instead'; 'all categories of foreign citizens are enrolled by enrollment orders' (undated PDF).",
+      "duration_or_structure": "Entrance tests: language of instruction + biology (Nursing: professional test).",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://en.pdmu.edu.ua/storage/admission/docs/HPwAtLfjejlRvyD6k8vZGbyBFJWEgxMYxYdq5qZf.pdf - 'foreign citizens admitted based on the results of entrance tests in the language of instruction and biology are enrolled for the Bachelor's degree'.",
+      "official_domain_basis": true,
+      "confidence": "medium"
+     },
+     {
+      "university": "Kyiv Medical University (KMU, private) - not Kharkiv",
+      "title_as_found": "Preparatory department",
+      "level": "Preparatory (pre-university)",
+      "language": "no snippet found",
+      "international_applicants": "Yes - 'enrolls international citizens and stateless persons with legalized documents to prepare for admission to KMU faculties or other higher education institutions of Ukraine' (undated).",
+      "duration_or_structure": "no snippet found",
+      "fee_or_deadline": "no snippet found",
+      "basis": "https://kmu.edu.ua/?p=9395 - 'enrolls international citizens and stateless persons with legalized documents to prepare for admission to KMU faculties or other higher education institutions of Ukraine'.",
+      "official_domain_basis": true,
+      "confidence": "low"
+     }
+    ],
+    "terminology_notes": [
+     {
+      "note": "'Preparatory department' (підготовче відділення), 'preparatory faculty' (підготовчий факультет), 'International (preparatory) Faculty No. 1' (ZSMPhU), 'pre study language course' / 'premedical course' (DSMU) and 'Preparatory Course' (BSMU) all denote the same pre-university year for foreigners; universities use the terms interchangeably.",
+      "basis": "https://int.mphu.edu.ua/p_1276.html - 'International (preparatory) Faculty No. 1'; https://study.dmu.edu.ua/pre-study-language-course - 'the premedical course academic year begins on October 1'; https://www.bsmu.edu.ua/en/admission/preparatory-course/ - 'Studying at the Preparatory Department lasts for 10 months'."
+     },
+     {
+      "note": "Completion document is called a 'state certificate' (TNMU) or 'certificate of completion' (KhNMU). What it confers differs by university: TNMU says it 'entitles to continue their studies for medico-biological direction at any university of Ukraine'; KhNMU says it 'gives the right to enroll in the 1st year for Ukrainian-language education without additional entrance examinations'; LNMU and ZSMPhU condition first-year enrolment on passing entrance exams. None of the snippets says the certificate guarantees admission.",
+      "basis": "https://junior.tdmu.edu.ua/english; https://knmu.edu.ua/en/navchalno-naukovyj-instytut-z-pidgotovky-inozemnyh-gromadyan-hnmu/pidgotovche-viddilennya/; https://universities.studyinukraine.gov.ua/en/minedu/university/131/preparatory-department - 'After passing exams (Ukrainian Language, Biology, Chemistry and Physics)'; https://int.mphu.edu.ua/p_1276.html - 'enrolled in the University for first year of studying on the results of entrance examinations'."
+     },
+     {
+      "note": "'Medico-biological' / 'medical and biological' profile is the standard Ukrainian term for the pre-medical preparatory track (vs engineering/economic tracks). Core subjects: Ukrainian language, biology, chemistry, physics, mathematics, computer science/informatics, country studies.",
+      "basis": "https://knmu.edu.ua/en/navchalno-naukovyj-instytut-z-pidgotovky-inozemnyh-gromadyan-hnmu/pidgotovche-viddilennya/ - 'Training profile - medical and biological'; https://junior.tdmu.edu.ua/english - 'Ukrainian (Russian) language, biology, chemistry, physics, mathematics and computer science'."
+     },
+     {
+      "note": "'Nostrification' = recognition of foreign education documents by the Ministry of Education and Science of Ukraine; term used on portal university pages.",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/60/documents/ (and sibling /documents/ pages) - 'foreign documents on education must be recognized (undergo nostrification procedure) in the Ministry of Education and Sciences of Ukraine during the first semester of study'."
+     },
+     {
+      "note": "The 'Unified Interdepartmental Information System' (Єдина міжвідомча інформаційна система) is the official electronic applicant-account / invitation system referenced by universities; the studyinukraine.gov.ua portal is 'managed by the Ukrainian State Center for International Education'. The specific subdomain apply.studyinukraine.gov.ua was not confirmed in any snippet.",
+      "basis": "https://studyinukraine.gov.ua/invitation-for-study/ and https://studyinukraine.gov.ua/?p=209 - 'The account is registered in the Unified Interdepartmental Informational System of Ukraine'; 'official Ukrainian Government website for international students, managed by the Ukrainian State Center for International Education'."
+     }
+    ],
+    "regulatory_notes": [
+     {
+      "claim": "Foreign applicants must first create a digital applicant account in the Unified Interdepartmental Informational System before applying to a Ukrainian university; up to 20 applications may be submitted; an application fee of 3100 UAH is paid once (undated portal pages; 3100 UAH also quoted as 'approximately 74 USD' on a university page - currency of date unknown).",
+      "basis": "https://studyinukraine.gov.ua/invitation-for-study/ and https://studyinukraine.gov.ua/?p=209 - 'applicants must create a digital applicant account before applying to study at a university in Ukraine'; 'you can submit up to 20 applications'; 'the application fee is 3100 UAH and is paid once'. https://universities.studyinukraine.gov.ua/en/minedu/university/87/how-to-get-invitation - 'The number of applications for an electronic invitation must not exceed 20'."
+     },
+     {
+      "claim": "The digital study invitation is an official electronic document signed online by the educational institution, valid for 6 months (one university page says 180 days), needed for the student visa and entry; its details are shared automatically with Ukrainian embassies and the State Border Guard Service. Universities state the Unified System is the exclusive/only route to an invitation.",
+      "basis": "https://studyinukraine.gov.ua/invitation-for-study/ - 'official electronic document that is officially signed online by an authorized representative of the educational institution'; 'It is valid for 6 months'; 'automatically shared through the national system with Ukrainian embassies and the State Border Guard Service'. https://www.donnu.edu.ua/en/how-to-get-an-invitation-letter/ - 'the issuance of invitation letters for study and the admission process are carried out exclusively through the Unified Interdepartmental Information System'; https://knu.ua/pdfs/inter-stud/instructions-for-documents/How-to-obtain-invitation-letters-en.pdf - 'the only way to obtain a study invitation in Ukraine'; 'valid for 180 days from the date of its issuance'."
+     },
+     {
+      "claim": "Documents typically required for the invitation application: passport scan (often with notarised Ukrainian translation), previous education certificate/diploma plus transcript (legalisation/apostille where applicable), photo (one university: min 600x800 px, max 1 MB), proof of legal residence if different from nationality, signed personal-data consent form. Lists vary by university.",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/166/how-to-get-invitation ('Documents required for Invitation to study in Ukraine'); https://universities.studyinukraine.gov.ua/en/minedu/university/87/how-to-get-invitation - 'notarised Ukrainian translation'; 'consent of the processing applicant's personal data'; https://universities.studyinukraine.gov.ua/en/minedu/university/87/preparatory-department/ - 'citizens of the countries participating in the Hague Convention should stamp the Apostille on their documents'."
+     },
+     {
+      "claim": "Legal basis cited by universities for admitting foreigners: MES Order No. 1541 of 1 November 2013 (admission of foreigners and stateless persons), MES Order No. 504 of 5 May 2015 (recognition of foreign education documents), Cabinet Resolution No. 729 of 12 September 2018 (cited in VNMU 2025 rules). Foreign education documents must undergo recognition (nostrification) by the Ministry, usually during the first semester / before the second semester; the foreigner pays for it; failure can lead to expulsion.",
+      "basis": "https://cie.karazin.ua/en/documents - 'Order No. 1541 of November 1, 2013'; 'Order No. 504 of May 5, 2015'; 'must pass the procedure of recognition and establishment of equivalence'. https://www.vnmu.edu.ua/downloads/other/specific features_studies_2025.PDF - 'Cabinet Resolution No. 729 of September 12, 2018'. https://universities.studyinukraine.gov.ua/en/minedu/university/60/documents/ - 'undergo nostrification procedure ... during the first semester of study'; 'payment for the recognition and procedure is made by the customer-foreigner'; 'In the absence of confirmation of the authenticity and / or equivalence of a foreign educational document, the owner will be expelled by the university'."
+     },
+     {
+      "claim": "Minimum school qualification: portal university pages require 'complete secondary, secondary special or higher education' for Bachelor entry plus language knowledge judged sufficient by the admissions committee; one academy requires documents 'obtained not earlier than 10 years before the date of admission'. No official snippet was found stating a rule on missing science subjects (e.g. no chemistry) for foreign medical applicants; Poltava SMU's entrance test is 'language of instruction and biology'. Chemistry requirement: no snippet found.",
+      "basis": "https://universities.studyinukraine.gov.ua/en/minedu/university/133/documents/ - 'the presence of complete secondary, secondary special or higher education, plus knowledge of the language of instruction at a sufficient level, as judged by the admissions committee'; 'obtained not earlier than 10 years before the date of admission'. https://en.pdmu.edu.ua/storage/admission/docs/HPwAtLfjejlRvyD6k8vZGbyBFJWEgxMYxYdq5qZf.pdf - 'entrance tests in the language of instruction and biology'."
+     },
+     {
+      "claim": "KhNMU admission rules: the decision that a foreigner needs preparatory (language) training is made by the Admissions Committee; preparatory applications accepted year-round on the basis of entrance exams and a signed agreement.",
+      "basis": "https://knmu.edu.ua/en/pravyla-pryjomu-ta-informacziya-dlya-inozemcziv/ - 'foreigners for whom the Admissions Committee has established the need for language training for basic education undergo such training at the preparatory department (faculty) for foreign citizens'; 'Applications are accepted during the year for studying in an internship and at the preparatory department (faculty)'."
+     }
+    ],
+    "gaps": [
+     "apply.studyinukraine.gov.ua: no snippet found mentioning this exact subdomain; official statements were found only on studyinukraine.gov.ua and universities.studyinukraine.gov.ua. Verify the live application URL directly.",
+     "No official snippet found for preparatory fees at TNMU, KhNMU, DSMU, BNMU, IFNMU, VNMU, UzhNU. Only fee snippets: BSMU $1500/yr (2023-2024), ZSMPhU 1400 USD/yr (2026-2027), LNMU US$1,700 (portal, undated).",
+     "Uzhhorod National University: no snippet confirming a foreigner-specific preparatory/pre-medical course; only a general pre-university-training institute and the 2016 Medical Faculty No. 2 news.",
+     "Dnipro SMU: two official pages give conflicting start dates (1 October vs 1 September); no certificate/progression snippet; no fee.",
+     "Bogomolets NMU: only the 2026 intake window (19 July - 31 October 2026) captured; duration, language, fee, certificate not found.",
+     "IFNMU: no duration/certificate/fee snippet; the 10-month/7-month snippet attributed in results belongs to IFNTUOG (oil and gas university), not IFNMU.",
+     "VNMU: preparatory page exists (foreign.vnmu.edu.ua/?p=1556) but no content captured.",
+     "English-medium preparatory course: only BSMU shows an 'English-language preparatory department' with subjects 'also in English'; TNMU explicitly excludes English-track applicants; ZSMPhU preparatory is in Ukrainian per portal. Whether any other medical university teaches the full preparatory year in English: no snippet found.",
+     "Official MES statement on minimum school qualifications specific to medicine or on applicants missing biology/chemistry/physics: no snippet found; only university-level rules found.",
+     "Invitation application fee 3100 UAH and 6-month validity: snippets are undated; currency and current amount unverified.",
+     "ZSMPhU 2025-2026 requirements page (p_1276) now shows 2026-2027 content; 2025-2026 text not captured.",
+     "Odesa, Sumy, Kyiv (BNMU details), Lviv (official university preparatory page) not covered within the 18-search cap."
+    ],
+    "searches_used": 18
+   }
+  },
+  {
+   "label": "images:cc-candidates",
+   "result": {
+    "candidates": [
+     {
+      "register_row": "V1 home hero",
+      "subject": "Students studying together in a library (group, no identifiable institution)",
+      "page_url": "https://www.pexels.com/photo/students-studying-together-in-a-library-9572700/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text itself not in snippet (Pexels licence to be confirmed on page)",
+      "author_as_shown": "no snippet found (search summary attributes one of the library-group photos to Tima Miroshnichenko, but not tied to this specific ID)",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/students-studying-together-in-a-library-9572700/ — snippet: 'Students Studying Together in a Library · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V1 home hero (alternate)",
+      "subject": "A group of students sitting in a library and studying",
+      "page_url": "https://www.pexels.com/photo/a-group-of-students-sitting-in-a-library-and-studying-16420457/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/a-group-of-students-sitting-in-a-library-and-studying-16420457/ — snippet: 'A Group of Students Sitting in a Library and Studying · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V1 home hero (alternate)",
+      "subject": "Group of students studying in the library",
+      "page_url": "https://www.pexels.com/photo/a-group-of-students-studying-in-the-library-6684506/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/a-group-of-students-studying-in-the-library-6684506/ — snippet: 'A Group of Students Studying in the Library · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V1 home hero (REJECT)",
+      "subject": "Unsplash 'Happy young university students studying together' — Unsplash+ paid licence",
+      "page_url": "https://unsplash.com/photos/happy-young-university-students-studying-together-group-of-multiracial-people-in-college-JGdKrxbg9eY",
+      "licence_as_shown": "Unsplash+ License (not free) — snippet: 'isAccessibleForFree: false and is under the Unsplash+ License'",
+      "author_as_shown": "Getty Images (per search summary)",
+      "depicts_named_institution": false,
+      "basis": "https://unsplash.com/photos/happy-young-university-students-studying-together-group-of-multiracial-people-in-college-JGdKrxbg9eY — snippet: 'listed as isAccessibleForFree: false and is under the Unsplash+ License, so it isn't a free download'. Undated. Excluded: paid.",
+      "confidence": "high"
+     },
+     {
+      "register_row": "V5 course head — Medicine / anatomy",
+      "subject": "Anatomical skeleton model in educational setting",
+      "page_url": "https://www.pexels.com/photo/anatomical-skeleton-model-in-educational-setting-28442518/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/anatomical-skeleton-model-in-educational-setting-28442518/ — snippet: 'Anatomical Skeleton Model in Educational Setting · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Medicine / anatomy (alternate)",
+      "subject": "Human skeleton model (classroom close-up)",
+      "page_url": "https://www.pexels.com/photo/human-skeleton-model-5428151/",
+      "licence_as_shown": "Search summary: 'The Pexels page metadata for the Tima Miroshnichenko skeleton photo lists a Creative Commons public-domain license' (metadata only; confirm on page)",
+      "author_as_shown": "Tima Miroshnichenko (per search summary)",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/human-skeleton-model-5428151/ — snippet: 'Human Skeleton Model · Free Stock Photo'; summary: 'a Tima Miroshnichenko close-up'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Dentistry",
+      "subject": "Jaw models with teeth and dental tools (dental education)",
+      "page_url": "https://www.pexels.com/photo/jaw-models-with-teeth-6627715/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/jaw-models-with-teeth-6627715/ — snippet: 'Jaw Models with Teeth · Free Stock Photo'; summary: 'a dental jaw model with dental tools on a blue cloth for dental education and practice'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Dentistry (alternate)",
+      "subject": "Person holding a teeth model and a dental scaler",
+      "page_url": "https://www.pexels.com/photo/a-person-holding-a-teeth-model-and-a-dental-scaler-4269698/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/a-person-holding-a-teeth-model-and-a-dental-scaler-4269698/ — snippet: 'A Person Holding a Teeth Model and a Dental Scaler · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Dentistry (alternate)",
+      "subject": "Close-up of dental implant model",
+      "page_url": "https://www.pexels.com/photo/close-up-shot-of-dental-implant-model-6502305/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/close-up-shot-of-dental-implant-model-6502305/ — snippet: 'Close-Up Shot of Dental Implant Model · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Dentistry (pool)",
+      "subject": "Pixabay dental model search pool",
+      "page_url": "https://pixabay.com/images/search/dental%20model/",
+      "licence_as_shown": "Snippet: '20,000+ Free Dental Model & Dentist Images - Pixabay' (Pixabay Content License applies per item; not shown)",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://pixabay.com/images/search/dental%20model/ — snippet: '20,000+ Free Dental Model & Dentist Images - Pixabay'. Undated. Search page, not a single image.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "V5 course head — Pharmacy / laboratory",
+      "subject": "Several laboratory glasses (glassware)",
+      "page_url": "https://www.pexels.com/photo/several-laboratory-glasses-1366944/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/several-laboratory-glasses-1366944/ — snippet: 'Several Laboratory Glasses · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Pharmacy / laboratory (alternate)",
+      "subject": "Laboratory equipment on table (Erlenmeyer flask and beaker)",
+      "page_url": "https://www.pexels.com/photo/laboratory-equipment-on-table-8539752/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "Kindel Media (per search summary: 'a lab setup by Kindel Media with an Erlenmeyer flask and beaker')",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/laboratory-equipment-on-table-8539752/ — snippet: 'Laboratory Equipment on Table · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Pharmacy / laboratory (alternate)",
+      "subject": "Colored liquid on laboratory glassware",
+      "page_url": "https://www.pexels.com/photo/colored-liquid-on-laboratory-glassware-8442647/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/colored-liquid-on-laboratory-glassware-8442647/ — snippet: 'Colored Liquid on Laboratory Glassware · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Pharmacy / laboratory (pool)",
+      "subject": "Unsplash laboratory glassware search pool",
+      "page_url": "https://unsplash.com/s/photos/laboratory-glassware",
+      "licence_as_shown": "Search page; per-photo licence not shown (Unsplash mixes free and Unsplash+ items)",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://unsplash.com/s/photos/laboratory-glassware — snippet: 'Laboratory Glassware Pictures'. Undated. Search page, not a single image.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "V5 course head — Nursing / clinical skills",
+      "subject": "Medical training simulation with mannequin and student (classroom)",
+      "page_url": "https://www.pexels.com/photo/medical-training-simulation-with-mannequin-and-student-35645532/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "Sahil Singh (per search summary)",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/medical-training-simulation-with-mannequin-and-student-35645532/ — snippet: 'Medical Training Simulation with Mannequin and Student · Free Stock Photo'; summary: 'A medical student practices with a simulation mannequin in a classroom setup'. Undated. Face may be visible — check before use.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Nursing / clinical skills (alternate)",
+      "subject": "Person performing CPR training on manikin in classroom",
+      "page_url": "https://www.pexels.com/photo/person-performing-cpr-training-on-manikin-34912731/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "NOAM K LNA (per search summary)",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/person-performing-cpr-training-on-manikin-34912731/ — snippet: 'Person Performing CPR Training on Manikin · Free Stock Photo'; summary: 'practicing CPR on a training manikin in a classroom setting'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V5 course head — Nursing / clinical skills (alternate, hands only)",
+      "subject": "Hands of person doing CPR on training dummy",
+      "page_url": "https://www.pexels.com/photo/hands-of-person-doing-cpr-on-training-dummy-11655091/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/hands-of-person-doing-cpr-on-training-dummy-11655091/ — snippet: 'Hands of Person Doing CPR on Training Dummy · Free Stock Photo'. Undated. No face — preferred for 'no identifiable patients' rule.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V10 about — advising / student support",
+      "subject": "Professor talking to her student",
+      "page_url": "https://www.pexels.com/photo/a-professor-talking-to-her-student-5306434/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/a-professor-talking-to-her-student-5306434/ — snippet: 'A Professor Talking to Her Student · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V10 about — advising / student support (alternate)",
+      "subject": "Professor and student at a desk with computer and book",
+      "page_url": "https://www.pexels.com/photo/a-professor-and-a-student-sitting-at-a-desk-with-a-computer-and-a-book-9159066/",
+      "licence_as_shown": "Page title shows '· Free Stock Photo'; licence text not in snippet",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://www.pexels.com/photo/a-professor-and-a-student-sitting-at-a-desk-with-a-computer-and-a-book-9159066/ — snippet: 'A Professor and a Student Sitting at a Desk with a Computer and a Book · Free Stock Photo'. Undated.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "V10 about — advising (pool)",
+      "subject": "Unsplash 'mentor' search pool",
+      "page_url": "https://unsplash.com/s/photos/mentor",
+      "licence_as_shown": "Search summary: 'Its listings state that the images are free for commercial use, with no attribution required' — applies to free items only; per-photo check required",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": false,
+      "basis": "https://unsplash.com/s/photos/mentor — snippet: '500+ Mentor Pictures'. Undated. Search page, not a single image.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Bogomolets NMU (Kyiv)",
+      "subject": "Main entrance photo 'Нацмедуниверситет Богомольца главный вход.jpg' listed in Commons category",
+      "page_url": "https://commons.wikimedia.org/wiki/Category:Bogomolets_National_Medical_University_of_Kyiv",
+      "licence_as_shown": "no snippet found (file page not returned; licence must be read on the File: page)",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/Category:Bogomolets_National_Medical_University_of_Kyiv — snippet: 'Нацмедуниверситет Богомольца главный вход.jpg 4,158 × 2,772; 4.77 MB'. Undated.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Pirogov NMU (Vinnytsia)",
+      "subject": "Main building, 56 Pirogova St: 'Вінниця, Медуніверситет (Головний корпус), вул. Пирогова 56.jpg'",
+      "page_url": "https://commons.wikimedia.org/wiki/File:%D0%92%D1%96%D0%BD%D0%BD%D0%B8%D1%86%D1%8F,_%D0%9C%D0%B5%D0%B4%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_(%D0%93%D0%BE%D0%BB%D0%BE%D0%B2%D0%BD%D0%B8%D0%B9_%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81),_%D0%B2%D1%83%D0%BB._%D0%9F%D0%B8%D1%80%D0%BE%D0%B3%D0%BE%D0%B2%D0%B0_56.jpg",
+      "licence_as_shown": "no snippet found (licence not in snippet; Wiki Loves Monuments uploads are normally CC BY-SA but must be confirmed on file page)",
+      "author_as_shown": "Prymasal",
+      "depicts_named_institution": true,
+      "basis": "File page URL above — snippet: 'has the English label National Pirogov Memorial Medical University. It is dated 25 October 2015, and its listed author is Prymasal'; 'cultural heritage monument, number 05-101-0209'. Dated 2015.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "Institution — Pirogov NMU (Vinnytsia) (alternate, recent)",
+      "subject": "'Вінниця, вул. Пирогова, 56. Медичний університет.jpg' (July 2024)",
+      "page_url": "https://commons.wikimedia.org/wiki/File:%D0%92%D1%96%D0%BD%D0%BD%D0%B8%D1%86%D1%8F,_%D0%B2%D1%83%D0%BB._%D0%9F%D0%B8%D1%80%D0%BE%D0%B3%D0%BE%D0%B2%D0%B0,_56._%D0%9C%D0%B5%D0%B4%D0%B8%D1%87%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82.jpg",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "Shev.vl.vas",
+      "depicts_named_institution": true,
+      "basis": "File page URL above — snippet: 'was taken in July 2024 and is credited to Shev.vl.vas. Its page also links it to the Wiki Loves Monuments 2025 campaign'. Dated 2024.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "Institution — Pirogov NMU (Vinnytsia) (alternate, older)",
+      "subject": "'Vinnytsia National Medical University-2.jpg' main building",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Vinnytsia_National_Medical_University-2.jpg",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/File:Vinnytsia_National_Medical_University-2.jpg — snippet: 'described as the main building of the Vinnytsia National Medical University (Pirogov University), 56 Street Pirogova. It was uploaded on 17 January 2011'. Dated 2011.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Bukovinian SMU (Chernivtsi)",
+      "subject": "'Буковинський державний медичний університет.Jpg' main building, Teatralna Sq. 2",
+      "page_url": "https://commons.wikimedia.org/wiki/File:%D0%91%D1%83%D0%BA%D0%BE%D0%B2%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D0%B8%D0%B9_%D0%BC%D0%B5%D0%B4%D0%B8%D1%87%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82.Jpg",
+      "licence_as_shown": "no snippet found (transferred from Ukrainian Wikipedia; licence must be confirmed on file page)",
+      "author_as_shown": "Edward_Tur",
+      "depicts_named_institution": true,
+      "basis": "File page URL above — snippet: 'It is 2,749 × 2,095 pixels, 2.57 MB, dated 2010, by the author Edward_Tur. It was transferred from Ukrainian Wikipedia in October 2015'. Dated 2010.",
+      "confidence": "medium"
+     },
+     {
+      "register_row": "Institution — Bukovinian SMU (Chernivtsi) (alternate)",
+      "subject": "'Cernauti - Universitatea de medicina.JPG' (small, 2009)",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Cernauti_-_Universitatea_de_medicina.JPG",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "Gabriel Todica",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/File:Cernauti_-_Universitatea_de_medicina.JPG — snippet: 'is a 2009 photo by Gabriel Todica, filed under 2 Teatralna Square. It is small (1,015 × 681)'. Dated 2009. Low resolution.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Ternopil NMU",
+      "subject": "Administrative building 'Тернопіль, Адмінкорпус медичного університету (мур.), майдан Волі 1.jpg'",
+      "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A2%D0%B5%D1%80%D0%BD%D0%BE%D0%BF%D1%96%D0%BB%D1%8C,_%D0%90%D0%B4%D0%BC%D1%96%D0%BD%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81_%D0%BC%D0%B5%D0%B4%D0%B8%D1%87%D0%BD%D0%BE%D0%B3%D0%BE_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82%D1%83_(%D0%BC%D1%83%D1%80.),_%D0%BC%D0%B0%D0%B9%D0%B4%D0%B0%D0%BD_%D0%92%D0%BE%D0%BB%D1%96_1.jpg",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "File page URL above — snippet: 'listed under the university's administrative building at Maidan Volі 1. It is tagged as a photo of a monument in Ukraine, number: 61-101-0022'. Undated. Related category: https://commons.wikimedia.org/wiki/Category:Ternopil_National_Medical_University",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Ternopil NMU (alternate, morphology building)",
+      "subject": "Morphology building files under Category:12 Ruska Street, Ternopil ('Морфологічний корпус медичного університету.jpg')",
+      "page_url": "https://commons.wikimedia.org/wiki/Category:12_Ruska_Street,_Ternopil",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/Category:12_Ruska_Street,_Ternopil — snippet: 'lists Museum of Anatomy of Ternopil National Medical University and several photos of the morphology building, including Морфологічний корпус медичного університету.jpg'. Undated.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Lviv NMU (Danylo Halytsky)",
+      "subject": "Teaching buildings at 52 Pekarska St ('Навчальні корпуси медуніверситету (3).JPG' and others)",
+      "page_url": "https://commons.wikimedia.org/wiki/Category:52_Pekarska_Street,_Lviv",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/Category:52_Pekarska_Street,_Lviv — snippet: 'The category lists 31 files, including a series titled \"Навчальні корпуси медуніверситету\" ... \"Навчальні корпуси медуніверситету (3).JPG\" at 4,000 × 1,808 pixels'. Undated. CAUTION: snippet also says 'The category is tied to Stepan Gzhytskyi National University of Veterinary Medicine and Biotechnologies Lviv, which is a different institution' — identity of the depicted building must be confirmed before use. University category: https://commons.wikimedia.org/wiki/Category:Danylo_Halytsky_Lviv_National_Medical_University",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Ivano-Frankivsk NMU",
+      "subject": "'Ivano-Frankivsk National Medical University.jpg' (2,816 × 2,112) in Category:2 Halytska Street",
+      "page_url": "https://commons.wikimedia.org/wiki/Category:2_Halytska_Street,_Ivano-Frankivsk",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/Category:2_Halytska_Street,_Ivano-Frankivsk — snippet: 'Ivano-Frankivsk National Medical University.jpg 2,816 × 2,112; 1 MB'. Undated. Also: https://commons.wikimedia.org/wiki/Category:17_Nezalezhnosti_Street,_Ivano-Frankivsk — 'a historicist building from 1873 that houses the university'.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Odesa NMU",
+      "subject": "No building photograph found; only logo SVG located",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Odessa_national_medical_university_logo.svg",
+      "licence_as_shown": "CC BY-SA 4.0 (logo only) — snippet: 'uploaded by Dmytro Kazanzhy under CC BY-SA 4.0'",
+      "author_as_shown": "Dmytro Kazanzhy",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/File:Odessa_national_medical_university_logo.svg — snippet: 'an SVG logo ... uploaded by Dmytro Kazanzhy under CC BY-SA 4.0. It isn't a photo of the building'. Category exists per https://commons.wikimedia.org/wiki/Category:Universities_and_colleges_in_Odesa snippet: 'Odesa Medical University category ... (9 C, 3 F)'. Logo is trademark-sensitive; not a building image. Building photo: no snippet found. Note the 'Main Building of Odesa national university' results are a different institution.",
+      "confidence": "low"
+     },
+     {
+      "register_row": "Institution — Poltava SMU",
+      "subject": "No file located; Commons subcategory exists under Buildings in Poltava",
+      "page_url": "https://commons.wikimedia.org/wiki/Category:Buildings_in_Poltava",
+      "licence_as_shown": "no snippet found",
+      "author_as_shown": "no snippet found",
+      "depicts_named_institution": true,
+      "basis": "https://commons.wikimedia.org/wiki/Category:Buildings_in_Poltava — snippet: 'lists subcategories including Poltava State Medical University, shown with 4 C, 5 F'. Undated. Individual filenames not returned.",
+      "confidence": "low"
+     }
+    ],
+    "notes": [
+     "Search cap: 18 WebSearch calls used (14 initial + 4 follow-ups). No pages were opened; all data is from result snippets/summaries only.",
+     "Licence caveat (stock): no snippet showed the actual licence text for any Pexels photo; only the page title suffix '· Free Stock Photo' was visible. The Pexels licence (free for commercial use, no attribution required, no resale as-is, no implied endorsement) must be confirmed on each photo page before use. One Pexels item's metadata was described in a search summary as 'Creative Commons public-domain' — treat as unconfirmed.",
+     "Licence caveat (Unsplash): Unsplash search pages mix free (Unsplash License) and paid Unsplash+ items. The one single-photo Unsplash result found (JGdKrxbg9eY) is Unsplash+ / 'isAccessibleForFree: false' and is excluded. Any Unsplash pick must be checked for the Unsplash+ badge.",
+     "Licence caveat (Pixabay): only search-pool pages surfaced; Pixabay Content License applies per item and must be checked individually.",
+     "Licence caveat (Wikimedia Commons): no file-page snippet exposed a licence for any building photograph. Most Commons photographs, especially Wiki Loves Monuments uploads (Vinnytsia 2015 and 2024 files), are CC BY-SA 3.0/4.0, which requires attribution (author + licence + link) AND share-alike: any derivative (crop, overlay, edited composite) must be released under the same licence. CC BY-SA on a hero banner with text overlay would make the banner itself CC BY-SA. Confirm each file's Licensing section before publication.",
+     "Only the Odesa NMU logo SVG had a licence in-snippet (CC BY-SA 4.0, Dmytro Kazanzhy); it is a logo, not a building photo, and institutional logos carry trademark restrictions independent of copyright — do not use as a building image.",
+     "Named-institution images (depicts_named_institution=true) are restricted to that institution's own profile page with attribution, per the register rule; none may be used as generic hero/course imagery.",
+     "Lviv NMU: the 52 Pekarska Street category snippet states the category is tied to the Stepan Gzhytskyi veterinary university; the depicted 'медуніверситет' buildings need identity confirmation before being labelled as Danylo Halytsky LNMU.",
+     "Odesa NMU and Poltava SMU: no building photographs were surfaced in snippets. Follow-up when a browser is available: open https://commons.wikimedia.org/wiki/Category:Odesa_Medical_University (3 files per snippet) and the 'Poltava State Medical University' subcategory (5 files per snippet) and record file name, author, licence.",
+     "Bogomolets NMU: file 'Нацмедуниверситет Богомольца главный вход.jpg' exists per category listing, but a direct file-page search returned no licence/author. Also note the search summary says the category 'is located on Beresteiskyi Avenue, Kyiv / Taras Shevchenko Boulevard' — confirm which campus building the entrance photo shows.",
+     "Ternopil NMU: no file explicitly titled as the main building was found; the administrative building (Maidan Voli 1) and morphology building (12 Ruska St) files are the candidates.",
+     "Rule compliance: generated visuals, if used instead of these, must be labelled as illustrative and not presented as real university facilities or students. Several Pexels candidates (CPR instructor, mannequin-with-student, professor/student) include people; prefer hands-only or back-of-head framing to avoid identifiable persons, and never caption them as university staff/students of a named institution.",
+     "Pending verification steps when network access is available: for each chosen file open its page and record (a) exact licence tag, (b) author/uploader string as displayed, (c) upload date, (d) any 'personality rights' or FoP templates; store a screenshot or text excerpt in the visual register."
+    ],
+    "searches_used": 18
+   }
+  }
+ ]
+}

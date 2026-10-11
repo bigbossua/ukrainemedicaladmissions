@@ -78,3 +78,24 @@ axe (0 serious/critical), Lighthouse mobile performance ≥ 90 with the new LCP 
 | University profiles | Only a Wikimedia Commons photograph of that institution's own main building, licence and author recorded, used solely on that institution's profile with attribution | any other institution's building; interiors implying facilities we have not verified | "Main building of <official name>, <city>" |
 
 **Licence record format (one row per asset, kept in this file §8 once assets exist):** file name · subject · source page URL · licence (exact text) · author · date downloaded · modifications (crop, colour grade) · pages used on · depicts named institution (yes/no).
+
+## 8. Candidate images identified 2026-10-11 (search-snippet metadata only; no file opened or downloaded; licences to be confirmed on the page before use)
+
+| Row | Candidate (page) | Shown as | Author as shown | Named institution? | Status |
+|---|---|---|---|---|---|
+| V1 | Pexels 9572700 "Students Studying Together in a Library" · alternates 16420457, 6684506 | "Free Stock Photo" (Pexels licence expected: free commercial use, no attribution required) | not in snippet | no | candidate — confirm licence line and author on the page |
+| V1 (rejected) | Unsplash JGdKrxbg9eY "Happy young university students…" | **Unsplash+ (paid)**, `isAccessibleForFree: false` | Getty Images | no | **rejected — not free** |
+| V5 medicine | Pexels 28442518 "Anatomical Skeleton Model in Educational Setting" · 5428151 "Human Skeleton Model" (Tima Miroshnichenko) | Free Stock Photo | partly shown | no | candidate |
+| V5 dentistry | Pexels 6627715 "Jaw Models with Teeth" · 4269698 "Teeth Model and Dental Scaler" · 6502305 "Dental Implant Model" | Free Stock Photo | not in snippet | no | candidate |
+| V5 pharmacy | Pexels 1366944 "Several Laboratory Glasses" · 8539752 "Laboratory Equipment on Table" (Kindel Media) · 8442647 "Colored Liquid on Laboratory Glassware" | Free Stock Photo | partly shown | no | candidate |
+| V5 nursing | Pexels 35645532 "Medical Training Simulation with Mannequin and Student" (Sahil Singh) · 34912731 "Person Performing CPR Training on Manikin" (NOAM K LNA) · 11655091 "Hands … CPR on Training Dummy" | Free Stock Photo | shown | no | candidate — people depicted: prefer the hands-only frame or check model-release wording |
+| V10 about | Pexels 5306434 "A Professor Talking to Her Student" · 9159066 "Professor and Student at a Desk" | Free Stock Photo | not in snippet | no | candidate |
+| Profile — Vinnytsia | Commons "Вінниця, вул. Пирогова, 56. Медичний університет.jpg" (July 2024, Shev.vl.vas) · "Вінниця, Медуніверситет (Головний корпус)" (2015, Prymasal) · "Vinnytsia National Medical University-2.jpg" | licence not in snippet (Wiki Loves Monuments uploads are usually CC BY-SA 3.0/4.0 — share-alike + attribution) | shown | **yes** — profile page only | candidate |
+| Profile — Bogomolets | Commons category "Bogomolets National Medical University of Kyiv": "Нацмедуниверситет Богомольца главный вход.jpg" | not in snippet | not in snippet | yes | candidate — open file page |
+| Profile — Bukovinian | Commons "Буковинський державний медичний університет.Jpg" (2010, Edward_Tur; 2,749 × 2,095) · "Cernauti - Universitatea de medicina.JPG" (2009, Gabriel Todica) | not in snippet | shown | yes | candidate |
+| Profile — Ternopil | Commons "Тернопіль, Адмінкорпус медичного університету" (Maidan Voli 1) · morphology building files under Category:12 Ruska Street, Ternopil | not in snippet | not in snippet | yes | candidate — confirm which building is the main one |
+| Profile — Ivano-Frankivsk | Commons "Ivano-Frankivsk National Medical University.jpg" (Category:2 Halytska Street) | not in snippet | not in snippet | yes | candidate |
+| Profile — Lviv | Commons Category:52 Pekarska Street, Lviv — **the category snippet ties the address to the veterinary university; identity must be confirmed** | — | — | uncertain | hold |
+| Profile — Odesa, Poltava | no building photograph surfaced (Odesa: logo SVG only, CC BY-SA 4.0 — trademark restrictions; not usable as imagery) | — | — | — | open Commons categories when reachable |
+
+**Before any of these is used:** open the page; record exact licence tag, author string, upload date, modifications; keep a screenshot of the licence; for Commons files check personality-rights and freedom-of-panorama templates; CC BY-SA requires attribution and share-alike on the image (acceptable for a photograph displayed with its credit). Pexels items need no attribution but we will still credit the photographer. Nothing generated is proposed for institution profiles.
