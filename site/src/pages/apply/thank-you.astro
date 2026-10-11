@@ -2,11 +2,20 @@
 import Base from '../../layouts/Base.astro';
 import { SITE } from '../../lib/site';
 ---
-<Base title="Thank you — we have received your enquiry" description="Your enquiry has been received by Ukraine Medical Admissions." noindex={true}>
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Received</span><h1>Thank you — we have your enquiry</h1><p>We will reply by email, usually within two working days.</p></div></div>
+<Base title="Thank you, we have received your details" description="Your candidate profile or enquiry has been received by Ukraine Medical Admissions. Nothing has been sent to any university." noindex={true}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Received</span><h1>Thank you, we have your details</h1><p>Your candidate profile or enquiry has reached Ukraine Medical Admissions. We will reply by email.</p></div></div>
   <section><div class="wrap prose">
-    <p><strong>What this means:</strong> your enquiry has been received by Ukraine Medical Admissions. It has <strong>not</strong> been sent to any university, and no application has been submitted on your behalf. Those steps happen later, only with your confirmation.</p>
-    <p>Meanwhile you can read the <a href="/admissions/">admissions guide</a>, compare <a href="/universities/">universities</a> or review <a href="/tuition-fees/">fees</a>.</p>
-    <p>If you did not send this enquiry, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    <h2>What this means</h2>
+    <p>Your details have been received by Ukraine Medical Admissions only. They have <strong>not</strong> been sent to any university, and no application has been made on your behalf. No documents were uploaded.</p>
+    <h2>What happens next</h2>
+    <ol>
+      <li>We read what you sent us.</li>
+      <li>We reply by email with answers to your questions and the next steps we suggest.</li>
+      <li>If you named a university, we compare what you told us with the requirements that university publishes. Where we have not yet verified those requirements from its official pages, we say so plainly.</li>
+      <li>Nothing is sent to a university unless you confirm it, and then only through the university's own procedure.</li>
+    </ol>
+    <p>Please do not email scans of your passport or certificates. We will ask for documents only through a secure application dashboard, once one is available.</p>
+    <p>Meanwhile you can read the <a href="/admissions/">admissions guide</a>, see the <a href="/universities/">universities directory</a> or read about <a href="/tuition-fees/">fees</a>.</p>
+    <p>If you did not send this, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
   </div></section>
 </Base>

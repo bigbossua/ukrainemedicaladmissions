@@ -3,78 +3,410 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
 import { isVisible, byShortName } from '../../lib/records';
-import { COURSES } from '../../lib/courses';
-import { SITE } from '../../lib/site';
+import { FIELDS, LEVELS } from '../../lib/fields';
+import { SITE, PREVIEW } from '../../lib/site';
+
+// Stage-1 candidate profile (APPLICATION_SYSTEM_SPEC.md §8.1, §12.1, §13). One form, five fieldsets.
+// Without JavaScript every fieldset is visible and the form posts as one page; scripts/apply-steps.ts turns it
+// into one step at a time. Field names and values are mirrored by the allow-lists in public/api/enquiry.php.
 
 // Publication gate: unpublished records are not offered as options (lib/records.ts).
 const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
+
+const STEPS = ['Your plan', 'Your education', 'Your documents', 'About you', 'Review and send'];
+const fieldOptions = [...Object.entries(FIELDS).map(([value, f]) => ({ value, label: f.label })), { value: 'undecided', label: 'Not decided yet' }];
+const levelOptions = [
+  { value: 'bachelor', label: LEVELS.bachelor },
+  { value: 'master', label: LEVELS.master },
+  { value: 'integrated_master', label: LEVELS.integrated_master },
+  { value: 'preparatory', label: LEVELS.preparatory },
+  { value: 'unsure', label: 'Not sure yet' },
+];
+const universityChoices = [
+  { name: 'university', label: 'First choice' },
+  { name: 'university2', label: 'Second choice' },
+  { name: 'university3', label: 'Third choice' },
+];
+const thisYear = new Date().getFullYear();
+const intakeYears = [thisYear, thisYear + 1, thisYear + 2].map(String);
+const eduLevels = [
+  { value: 'secondary', label: 'Secondary school (high school)' },
+  { value: 'foundation', label: 'Foundation or preparatory course' },
+  { value: 'diploma', label: 'College diploma' },
+  { value: 'bachelor', label: "Bachelor's degree" },
+  { value: 'master', label: "Master's degree" },
+  { value: 'other', label: 'Other' },
+];
+const scaleTypes = [
+  { value: 'percentage', label: 'Percentage (for example out of 100)' },
+  { value: 'letter', label: 'Letter grades (for example A to F)' },
+  { value: 'points', label: 'Points or numbers (for example out of 20)' },
+  { value: 'gpa', label: 'Grade point average (GPA)' },
+  { value: 'other', label: 'Other, or not sure' },
+];
+const resultStates = [
+  { value: 'achieved', label: 'Achieved' },
+  { value: 'predicted', label: 'Predicted' },
+  { value: 'pending', label: 'Waiting for result' },
+  { value: 'not_studied', label: 'Not studied' },
+];
+const subjectSuggestions = ['Biology', 'Chemistry', 'Physics', 'Mathematics', 'English', 'Other'];
+const SUBJECT_ROWS = 6;
+const documents = [
+  { key: 'certificate', label: 'Secondary-school (school-leaving) certificate' },
+  { key: 'transcript', label: 'Transcript or mark sheet' },
+  { key: 'passport', label: 'Passport' },
+  { key: 'photographs', label: 'Passport-style photographs' },
+  { key: 'birth_certificate', label: 'Birth certificate' },
+  { key: 'medical_certificate', label: 'Medical certificate' },
+  { key: 'translations', label: 'Translations of your documents' },
+  { key: 'legalisation', label: 'Legalisation or apostille' },
+  { key: 'language_certificate', label: 'Language certificate (for example English)' },
+  { key: 'other', label: 'Other document' },
+];
+const documentStates = [
+  { value: 'have', label: 'I have it' },
+  { value: 'need', label: 'I still need it' },
+  { value: 'not_sure', label: 'Not sure' },
+];
+const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
 ---
-<Base title="Apply online — start your application" description="Start your application to a medical university in Ukraine. Tell us your course and background; nothing is sent to any university until you confirm.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Apply online</span><h1>Start your application</h1><p>Stage 1 of 4: your enquiry. It takes about two minutes, costs nothing, and sends nothing to a university.</p></div></div>
+<Base title="Apply online — start your application" description="Start your application to a medical university in Ukraine with a free candidate profile: your plans, education and documents. Nothing is sent to any university.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Apply online</span><h1>Start your application</h1><p>Stage 1 of 4: your candidate profile. There are five short steps. You need to give your field of study, name and email, and agree to the privacy notice. Everything else is optional. It is free, and nothing is sent to any university.</p></div></div>
   <Breadcrumbs items={[{ label: 'Apply' }]} />
-  <section style="padding-top:1rem"><div class="wrap layout">
-    <form class="card" method="post" action="/api/enquiry.php" data-form data-prefill novalidate>
+  <section class="apply-section"><div class="wrap layout">
+    <form class="card apply-form" method="post" action="/api/enquiry.php" data-form data-prefill data-steps novalidate>
       <input type="hidden" name="type" value="application-start" />
-      <h2 style="font-size:1.25rem">About your study plans</h2>
-      <label class="field">Course <span class="hint">(required)</span>
-        <select name="course" required>
-          <option value="">Choose a course</option>
-          {Object.entries(COURSES).map(([slug, c]) => <option value={slug}>{c.name}</option>)}
-        </select>
-      </label>
-      <label class="field">Preferred university
-        <select name="university">
-          <option value="">Help me choose</option>
-          {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
-          <option value="unlisted">A university not listed here</option>
-        </select>
-      </label>
-      <label class="field">Intended start year
-        <select name="startYear"><option value="">Not sure yet</option><option>2027</option><option>2028</option></select>
-      </label>
+      <input type="hidden" name="ts" value="" />
 
-      <h2 style="font-size:1.25rem;margin-top:1rem">About you</h2>
-      <label class="field">Full name <span class="hint">(required)</span><input name="name" type="text" required autocomplete="name" /></label>
-      <label class="field">Email <span class="hint">(required)</span><input name="email" type="email" required autocomplete="email" /></label>
-      <label class="field">Country of your school-leaving certificate <span class="hint">(required)</span><input name="country" type="text" required autocomplete="country-name" /></label>
-      <label class="field">Highest qualification so far<input name="qualification" type="text" placeholder="e.g. A-levels, WAEC, 12th standard" /></label>
-      <label class="field">Anything else we should know?<textarea name="message" rows="4"></textarea></label>
-      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="error-summary" data-error-summary role="alert" aria-labelledby="error-summary-title" tabindex="-1" hidden>
+        <h2 id="error-summary-title">Please check these answers</h2>
+        <ul data-error-list></ul>
+      </div>
 
-      <label class="checkbox"><input type="checkbox" name="consent" value="yes" required /> <span>I agree to Ukraine Medical Admissions storing this information to respond to my enquiry, as described in the <a href="/privacy/">privacy notice</a>. I understand this is not an application to a university.</span></label>
-      <button class="btn btn-primary" type="submit">{SITE.cta} →</button>
-      <p class="err" data-form-error hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
-      <p style="font-size:.8rem;color:var(--slate);margin:.75rem 0 0">Do not upload or email passport or certificate scans at this stage. We will ask for documents only through the secure application dashboard once it is available.</p>
+      <ol class="progress" data-progress aria-label="Steps in this form">
+        {STEPS.map((s, i) => <li data-progress-item><span class="num" aria-hidden="true">{i + 1}</span><span class="name">{s}</span></li>)}
+      </ol>
+
+      <!-- Step 1: plan -->
+      <fieldset class="apply-step" id="step-1" data-step data-title={STEPS[0]}>
+        <legend><h2 id="step-1-title" tabindex="-1"><span class="step-count">{stepCount(0)}</span> {STEPS[0]}</h2></legend>
+        <p class="intro">Tell us what you would like to study. Only the field of study is required. Choose “Not decided yet” if you are unsure.</p>
+        <div class="field">
+          <label for="f-course">Field of study <span class="hint">(required)</span></label>
+          <span class="err" id="f-course-error" hidden></span>
+          <select id="f-course" name="course" required data-msg-required="Choose a field of study, or “Not decided yet”" data-review="Field of study">
+            <option value="">Choose a field of study</option>
+            {fieldOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-level">Level of study <span class="hint">(optional)</span></label>
+          <select id="f-level" name="level" data-review="Level of study">
+            <option value="">Choose a level</option>
+            {levelOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+          </select>
+        </div>
+        <fieldset class="group">
+          <legend>Preferred universities <span class="hint">(optional, up to three)</span></legend>
+          <p class="hint" id="universities-hint">
+            {PREVIEW ? 'Preview build: unverified draft records are listed here for local review only.' : 'Only universities whose profile we have verified are listed.'}{universities.length === 0 && ' None has completed verification yet, so for now choose “A university not listed here” and type its name below.'}
+          </p>
+          <div class="uni-grid">
+            {universityChoices.map((c) => (
+              <div class="field">
+                <label for={`f-${c.name}`}>{c.label}</label>
+                <select id={`f-${c.name}`} name={c.name} aria-describedby="universities-hint" data-review={`University, ${c.label.toLowerCase()}`}>
+                  <option value="">Not decided yet</option>
+                  {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
+                  <option value="unlisted">A university not listed here</option>
+                </select>
+              </div>
+            ))}
+          </div>
+          <div class="field">
+            <label for="f-university-other">Name of a university not listed here <span class="hint">(optional)</span></label>
+            <input id="f-university-other" name="university_other" type="text" maxlength="200" autocomplete="off" data-review="University not listed" />
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="f-intake">When would you like to start? <span class="hint">(optional)</span></label>
+          <select id="f-intake" name="intake" data-review="Preferred start">
+            <option value="">Not sure yet</option>
+            {intakeYears.map((y) => <option value={y}>{y}</option>)}
+            <option value="later">Later than {intakeYears[intakeYears.length - 1]}</option>
+          </select>
+        </div>
+        <div class="step-nav" data-step-nav hidden>
+          <button type="button" class="btn btn-primary" data-next>Continue</button>
+        </div>
+      </fieldset>
+
+      <!-- Step 2: education -->
+      <fieldset class="apply-step" id="step-2" data-step data-title={STEPS[1]}>
+        <legend><h2 id="step-2-title" tabindex="-1"><span class="step-count">{stepCount(1)}</span> {STEPS[1]}</h2></legend>
+        <p class="intro">Nothing on this step is required. Enter grades exactly as they appear on your results. We never convert them to another scale.</p>
+        <div class="field">
+          <label for="f-edu-level">Highest level of education, completed or in progress</label>
+          <select id="f-edu-level" name="edu_level" data-review="Highest level of education">
+            <option value="">Choose a level</option>
+            {eduLevels.map((o) => <option value={o.value}>{o.label}</option>)}
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-qualification">Name of your school-leaving qualification</label>
+          <span class="hint" id="f-qualification-hint">For example A-levels, WAEC, CBSE Class 12 or the International Baccalaureate.</span>
+          <input id="f-qualification" name="qualification" type="text" maxlength="200" aria-describedby="f-qualification-hint" data-review="Qualification" />
+        </div>
+        <div class="field">
+          <label for="f-country">Country that awards it</label>
+          <input id="f-country" name="country" type="text" maxlength="100" data-review="Awarding country" />
+        </div>
+        <div class="field">
+          <label for="f-qual-year">Year of the qualification</label>
+          <span class="hint" id="f-qual-year-hint">Four digits, for example 2025.</span>
+          <span class="err" id="f-qual-year-error" hidden></span>
+          <input id="f-qual-year" class="short" name="qual_year" type="text" inputmode="numeric" maxlength="4" pattern="(19|20)[0-9]{2}" aria-describedby="f-qual-year-hint" data-msg-format="Enter the year of your qualification as four digits, for example 2025" data-review="Year" />
+        </div>
+        <fieldset class="group" data-review="Results">
+          <legend>Do you have the results yet?</legend>
+          <div class="choices">
+            <label class="radio"><input type="radio" name="qual_status" value="achieved" /> Yes, I have them</label>
+            <label class="radio"><input type="radio" name="qual_status" value="expected" /> Not yet: still studying or waiting</label>
+          </div>
+        </fieldset>
+        <div class="grid-2">
+          <div class="field">
+            <label for="f-scale-type">How is it graded?</label>
+            <select id="f-scale-type" name="scale_type" data-review="Grading scale">
+              <option value="">Choose a scale</option>
+              {scaleTypes.map((o) => <option value={o.value}>{o.label}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-scale-max">Highest possible grade</label>
+            <span class="hint" id="f-scale-max-hint">For example 100, A*, 20 or 4.0.</span>
+            <input id="f-scale-max" name="scale_max" type="text" maxlength="20" aria-describedby="f-scale-max-hint" data-review="Highest possible grade" />
+          </div>
+        </div>
+        <fieldset class="group">
+          <legend>Subjects and grades</legend>
+          <p class="hint" id="subjects-hint">Suggestions include Biology, Chemistry, Physics, Mathematics and English. None is required. Leave rows you do not need empty.</p>
+          <datalist id="subject-suggestions">{subjectSuggestions.map((s) => <option value={s} />)}</datalist>
+          {Array.from({ length: SUBJECT_ROWS }, (_, i) => (
+            <fieldset class="subject-row" data-review-kind="subject">
+              <legend class="visually-hidden">Subject {i + 1}</legend>
+              <div class="row-grid">
+                <div class="field">
+                  <label for={`f-subject-${i}-name`}>Subject {i + 1}</label>
+                  <input id={`f-subject-${i}-name`} name={`subjects[${i}][name]`} type="text" maxlength="80" list="subject-suggestions" autocomplete="off" aria-describedby="subjects-hint" data-part="name" />
+                </div>
+                <div class="field">
+                  <label for={`f-subject-${i}-grade`}>Grade<span class="visually-hidden">, subject {i + 1}</span></label>
+                  <input id={`f-subject-${i}-grade`} name={`subjects[${i}][grade]`} type="text" maxlength="40" autocomplete="off" data-part="grade" />
+                </div>
+                <div class="field">
+                  <label for={`f-subject-${i}-status`}>Result<span class="visually-hidden">, subject {i + 1}</span></label>
+                  <select id={`f-subject-${i}-status`} name={`subjects[${i}][status]`} data-part="status">
+                    <option value="">Choose</option>
+                    {resultStates.map((o) => <option value={o.value}>{o.label}</option>)}
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+          ))}
+        </fieldset>
+        <div class="field">
+          <label for="f-outstanding">Results or examinations still outstanding</label>
+          <span class="hint" id="f-outstanding-hint">For example, examinations you have not sat yet, or results you are waiting for.</span>
+          <textarea id="f-outstanding" name="outstanding" rows="3" maxlength="2000" aria-describedby="f-outstanding-hint" data-review="Still outstanding"></textarea>
+        </div>
+        <div class="step-nav" data-step-nav hidden>
+          <button type="button" class="btn btn-primary" data-next>Continue</button>
+          <button type="button" class="btn btn-secondary" data-back>Back</button>
+        </div>
+      </fieldset>
+
+      <!-- Step 3: documents (self-declared only; no upload) -->
+      <fieldset class="apply-step" id="step-3" data-step data-title={STEPS[2]}>
+        <legend><h2 id="step-3-title" tabindex="-1"><span class="step-count">{stepCount(2)}</span> {STEPS[2]}</h2></legend>
+        <p class="intro">Tell us which documents you already have and which you still need. Nothing on this step is required.</p>
+        <p class="note">No file is uploaded at this stage. You are only telling us where you are. Please do not email scans of your passport or certificates.</p>
+        {documents.map((d) => (
+          <fieldset class="doc" data-review={d.label}>
+            <legend>{d.label}</legend>
+            <div class="choices">
+              {documentStates.map((s) => (
+                <label class="radio"><input type="radio" name={`documents[${d.key}]`} value={s.value} /> {s.label}</label>
+              ))}
+            </div>
+          </fieldset>
+        ))}
+        <div class="field doc-note">
+          <label for="f-documents-note">If you chose “Other document”, which one?</label>
+          <input id="f-documents-note" name="documents_note" type="text" maxlength="200" data-review="Other document" />
+        </div>
+        <div class="step-nav" data-step-nav hidden>
+          <button type="button" class="btn btn-primary" data-next>Continue</button>
+          <button type="button" class="btn btn-secondary" data-back>Back</button>
+        </div>
+      </fieldset>
+
+      <!-- Step 4: about you -->
+      <fieldset class="apply-step" id="step-4" data-step data-title={STEPS[3]}>
+        <legend><h2 id="step-4-title" tabindex="-1"><span class="step-count">{stepCount(3)}</span> {STEPS[3]}</h2></legend>
+        <p class="intro">We use these details only to reply to you about your profile.</p>
+        <div class="field">
+          <label for="f-name">Full name <span class="hint">(required)</span></label>
+          <span class="err" id="f-name-error" hidden></span>
+          <input id="f-name" name="name" type="text" required maxlength="120" autocomplete="name" data-msg-required="Enter your full name" data-review="Name" />
+        </div>
+        <div class="field">
+          <label for="f-email">Email <span class="hint">(required)</span></label>
+          <span class="err" id="f-email-error" hidden></span>
+          <input id="f-email" name="email" type="email" required maxlength="200" autocomplete="email" spellcheck="false" data-msg-required="Enter your email address" data-msg-format="Enter a complete email address, including the @ sign" data-review="Email" />
+        </div>
+        <div class="field">
+          <label for="f-residence">Country where you live now</label>
+          <input id="f-residence" name="residence" type="text" maxlength="100" autocomplete="country-name" data-review="Country of residence" />
+        </div>
+        <div class="field">
+          <label for="f-nationality">Nationality <span class="hint">(optional)</span></label>
+          <input id="f-nationality" name="nationality" type="text" maxlength="100" data-review="Nationality" />
+        </div>
+        <div class="field">
+          <label for="f-language">Preferred language for our emails</label>
+          <span class="hint" id="f-language-hint">If another language is easier for you than English, tell us which. We will say if we cannot reply in it.</span>
+          <input id="f-language" name="language" type="text" maxlength="60" aria-describedby="f-language-hint" data-review="Preferred language" />
+        </div>
+        <div class="field">
+          <label for="f-message">Your questions <span class="hint">(optional)</span></label>
+          <textarea id="f-message" name="message" rows="4" maxlength="4000" data-review="Your questions"></textarea>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+        <div class="consent">
+          <span class="err" id="f-consent-error" hidden></span>
+          <label class="checkbox"><input id="f-consent" type="checkbox" name="consent" value="yes" required data-msg-required="Tick the box to agree to the privacy notice" data-review="Agreed to the privacy notice" /> <span>I agree to Ukraine Medical Admissions storing this information to respond to my enquiry, as described in the <a href="/privacy/">privacy notice</a>. I understand this is not an application to a university.</span></label>
+        </div>
+        <div class="step-nav" data-step-nav hidden>
+          <button type="button" class="btn btn-primary" data-next>Continue</button>
+          <button type="button" class="btn btn-secondary" data-back>Back</button>
+        </div>
+      </fieldset>
+
+      <!-- Step 5: review and send -->
+      <fieldset class="apply-step" id="step-5" data-step data-title={STEPS[4]}>
+        <legend><h2 id="step-5-title" tabindex="-1"><span class="step-count">{stepCount(4)}</span> {STEPS[4]}</h2></legend>
+        <div class="review" data-review-summary hidden></div>
+        <p data-nojs>Check your answers above. When you are ready, send them to us.</p>
+        <p class="intro">Sending creates your candidate profile with us. It is not an application to a university, and nothing is sent to any university.</p>
+        <div class="step-nav">
+          <button type="submit" class="btn btn-primary" data-submit>{SITE.cta} <span aria-hidden="true">→</span></button>
+          <button type="button" class="btn btn-secondary" data-back data-step-nav hidden>Back</button>
+        </div>
+        <p class="fineprint">Do not upload or email passport or certificate scans at this stage. We will ask for documents only through a secure application dashboard, once one is available.</p>
+      </fieldset>
     </form>
 
     <aside class="side">
       <div class="card">
-        <h3>What happens next</h3>
-        <ol style="padding-left:1.1rem;margin:0;font-size:.95rem">
-          <li>We confirm receipt by email.</li>
-          <li>We check your course and university choice against current, verified requirements.</li>
-          <li>You receive a personal document checklist and the next steps.</li>
-          <li>Nothing is sent to a university until you confirm.</li>
+        <h2 class="side-title">What happens next</h2>
+        <ol class="side-list">
+          <li>We read your profile and reply by email.</li>
+          <li>If you have named a university, we compare what you told us with the requirements that university publishes. Where we have not yet verified those requirements from its official pages, we tell you so plainly.</li>
+          <li>Nothing is sent to a university unless you confirm it, and then only through the university's own procedure.</li>
         </ol>
       </div>
-      <div class="card" style="margin-top:1rem">
-        <h3>The four stages</h3>
-        <p style="font-size:.9rem;margin:0">Enquiry → Draft application → Submitted to our service → Official submission to the university. <a href="/admissions/#stages">Read more</a>.</p>
+      <div class="card side-card">
+        <h2 class="side-title">The four stages</h2>
+        <p>Enquiry → Draft application → Submitted to our service → Official submission to the university. This form is stage 1. The later stages are not available online yet. <a href="/admissions/#stages">Read about the four stages</a>.</p>
       </div>
     </aside>
   </div></section>
 </Base>
 <style>
+  .apply-section { padding-top: 1rem; }
   .layout { display: grid; gap: 2rem; }
-  @media (min-width: 900px) { .layout { grid-template-columns: 1fr 320px; align-items: start; } }
+  @media (min-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; } }
   .hp { position: absolute; left: -9999px; }
+
+  /* Anything toggled with the hidden attribute stays hidden, whatever its display rule. */
+  .apply-form :global([hidden]) { display: none !important; }
+  /* Keep scrolled-to and focused elements clear of the 72px sticky header. */
+  .apply-form, .apply-form :global(:is(input, select, textarea, h2, [data-error-summary])) { scroll-margin-top: 6rem; }
+
+  .apply-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .apply-form legend { padding: 0; max-width: 100%; }
+  /* Floated step legends sit inside the fieldset box, so the separator line in the no-JavaScript layout is drawn above them. */
+  .apply-step > legend { float: left; width: 100%; }
+  .apply-step > legend + * { clear: both; }
+  .apply-step h2 { font-size: 1.35rem; margin: 0 0 .75rem; }
+  .apply-step h2:focus { outline: none; }
+  .apply-step h2:focus-visible { outline: var(--focus); outline-offset: 4px; }
+  .step-count { display: block; font-family: var(--font-body); font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--blue-600); margin-bottom: .25rem; }
+  .apply-form:not(.is-stepped) .apply-step + .apply-step { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .intro { font-size: .95rem; color: var(--slate); }
+  .hint { font-weight: 400; font-size: .8rem; color: var(--slate); }
+  p.hint { margin: 0 0 .75rem; }
+  .apply-form .short { max-width: 9rem; }
+
+  .apply-form .group { margin: 0 0 1rem; }
+  .group > legend { font-size: .9rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
+  .group > .field:last-child { margin-bottom: 0; }
+  .uni-grid, .grid-2 { display: grid; gap: 0 1rem; }
+  @media (min-width: 640px) { .uni-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .apply-form .subject-row { padding-top: .75rem; border-top: 1px solid var(--line); }
+  .subject-row .field { margin-bottom: .75rem; }
+  .row-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 .75rem; }
+  .row-grid > .field:first-child { grid-column: 1 / -1; }
+  @media (min-width: 640px) { .row-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.4fr); } .row-grid > .field:first-child { grid-column: auto; } }
+
+  .choices { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .radio { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.5rem; padding: .4rem .85rem; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: .9rem; color: var(--ink); cursor: pointer; }
+  .radio:has(input:checked) { border-color: var(--blue-600); background: var(--blue-50); }
+  .radio input { margin: 0; width: 1.1rem; height: 1.1rem; accent-color: var(--blue-600); flex: none; }
+  .apply-form .doc { padding: .85rem 0; border-bottom: 1px solid var(--line); }
+  /* Floated legend: sits inside the fieldset's padding box, so the spacing above and below it is predictable. */
+  .doc > legend { float: left; width: 100%; font-size: .95rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; }
+  .doc .choices { clear: both; }
+  .doc-note { margin-top: 1rem; }
+
+  .consent .err { display: block; color: #B91C1C; font-size: .8rem; font-weight: 500; margin-bottom: .35rem; }
+  .checkbox.error { box-shadow: -3px 0 0 #B91C1C; padding-left: .5rem; }
+
+  .error-summary { border: 3px solid #B91C1C; border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1.25rem; background: #fff; }
+  .error-summary:focus { outline: var(--focus); outline-offset: 2px; }
+  .error-summary h2 { font-size: 1.1rem; margin: 0 0 .5rem; }
+  .error-summary ul { margin: 0; padding-left: 1.1rem; }
+  .error-summary :global(a) { color: #B91C1C; font-weight: 600; }
+
+  .progress { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .25rem; }
+  .progress li { display: grid; justify-items: center; align-content: start; gap: .3rem; text-align: center; font-size: .75rem; line-height: 1.25; color: var(--slate); position: relative; }
+  /* Narrow screens: numbers only (the step heading names the current step); names stay available to screen readers. */
+  @media (max-width: 519px) { .progress .name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
+  .progress .num { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-weight: 700; background: #fff; }
+  .progress li[aria-current="step"] { color: var(--navy-900); font-weight: 700; }
+  .progress li[aria-current="step"] .num { background: var(--navy-900); border-color: var(--navy-900); color: #fff; }
+  .progress li.done .num { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+
+  .step-nav { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: 1.5rem; }
+  .fineprint { font-size: .8rem; color: var(--slate); margin: 1rem 0 0; }
+
+  .review :global(.review-block) { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .review :global(.review-head) { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; margin-bottom: .5rem; }
+  .review :global(h3) { margin: 0; font-size: 1rem; }
+  .review :global(.review-edit) { font-weight: 600; font-size: .9rem; }
+  .review :global(dl) { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 1rem; font-size: .9rem; }
+  @media (min-width: 640px) { .review :global(dl) { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); } }
+  .review :global(dt) { color: var(--slate); font-weight: 500; }
+  .review :global(dd) { margin: 0 0 .5rem; overflow-wrap: anywhere; white-space: pre-line; }
+  .review :global(.review-empty) { font-size: .9rem; color: var(--slate); margin: 0; }
+
+  .side-title { font-size: 1.125rem; margin: 0 0 .5rem; }
+  .side-list { padding-left: 1.1rem; margin: 0; font-size: .95rem; }
+  .side-list li { margin-bottom: .4rem; }
+  .side-card { margin-top: 1rem; }
+  .side-card p { font-size: .9rem; margin: 0; }
 </style>
-<script src="../../scripts/form-validate.ts"></script>
-<script>
-  // Prefill from ?course=&university= (links from profile and course pages).
-  const q = new URLSearchParams(location.search);
-  for (const k of ['course', 'university']) {
-    const v = q.get(k); const el = document.querySelector<HTMLSelectElement>(`form[data-prefill] [name="${k}"]`);
-    if (v && el && [...el.options].some((o) => o.value === v)) el.value = v;
-  }
-</script>
+<script src="../../scripts/apply-steps.ts"></script>
