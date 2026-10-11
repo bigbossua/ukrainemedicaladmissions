@@ -1,0 +1,125 @@
+---
+/**
+ * The four application stages (APPLICATION_SYSTEM_SPEC.md §1) as a responsive diagram.
+ * Real HTML text in an ordered list, so screen readers and translation tools read it as content;
+ * the tiles, numbers and connectors are decorative. Horizontal when its container is wide,
+ * vertical (stepper) when narrow — a container query, so it adapts to a page column as well as the viewport.
+ *
+ * Status is stated honestly: only the enquiry stage is open today; stages 2–4 are planned.
+ * Drawn in-repo 2026-10-11; register row in VISUAL_AUDIT_AND_IMAGE_REGISTER.md §11.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  /** Longer per-stage wording (admissions guide). Default: short wording (home page). */
+  detail?: boolean;
+  /** Accessible name of the list. */
+  label?: string;
+}
+const { detail = false, label = 'The four stages of an application' } = Astro.props;
+
+const stages = [
+  {
+    icon: 'enquiry',
+    title: 'Enquiry',
+    open: true,
+    short: 'Tell us your course, preferred universities and background in a short online form. Nothing is sent to any university.',
+    long: 'You tell us your course, preferred universities and background through the Apply Online form, and we reply by e-mail. Nothing is sent to any university.',
+  },
+  {
+    icon: 'draft',
+    title: 'Draft application',
+    open: false,
+    short: 'You complete the full application and add documents at your own pace. This stage is not open yet.',
+    long: 'You complete the full application and add your documents at your own pace. This stage is not open yet: online drafts, saving your progress and secure uploads are planned. Nothing is sent to a university.',
+  },
+  {
+    icon: 'submitted',
+    title: 'Submitted to Ukraine Medical Admissions',
+    open: false,
+    short: 'You confirm your application to us. We review it and ask for anything missing.',
+    long: 'You confirm your application to us. We review it and ask for anything missing. Still nothing is sent to a university.',
+  },
+  {
+    icon: 'official',
+    title: 'Official submission to the university',
+    open: false,
+    short: 'Only once you confirm, and only through the university’s authorised procedure.',
+    long: 'Only once you have confirmed, and only through the university’s authorised procedure. We will never tell you an application has reached a university unless that step has actually been completed.',
+  },
+] as const;
+---
+<div class="journey">
+  <ol class="list" aria-label={label}>
+    {stages.map((s, i) => (
+      <li class:list={['stage', { open: s.open }]}>
+        <span class="tile" aria-hidden="true">
+          <Icon name={s.icon} size={28} />
+          <span class="n">{i + 1}</span>
+        </span>
+        <div class="body">
+          <p class="kicker">Stage {i + 1}</p>
+          <h3>{s.title}</h3>
+          <p class="text">{detail ? s.long : s.short}</p>
+          <p class="status"><span class:list={['tag', { now: s.open }]}>{s.open ? 'Open now' : 'Planned'}</span></p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .journey { container-type: inline-size; margin: 1.5rem 0 0; }
+  .list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .stage { position: relative; display: grid; grid-template-columns: 3.5rem 1fr; align-content: start; column-gap: 1rem; padding: 0 0 1.75rem; margin: 0; }
+  .stage:last-child { padding-bottom: 0; }
+
+  /* Connector: vertical dashed line with a chevron, from one tile to the next. */
+  .stage:not(:last-child)::before {
+    content: ""; position: absolute; left: calc(1.75rem - 1px); top: calc(3.5rem + 6px); bottom: 6px;
+    border-left: 2px dashed var(--blue-500); opacity: .55;
+  }
+  .stage:not(:last-child)::after {
+    content: ""; position: absolute; left: calc(1.75rem - 5px); bottom: 6px; width: 8px; height: 8px;
+    border-right: 2px solid var(--blue-500); border-bottom: 2px solid var(--blue-500); transform: rotate(45deg); opacity: .8;
+  }
+
+  .tile {
+    position: relative; width: 3.5rem; height: 3.5rem; border-radius: 14px; display: grid; place-items: center;
+    background: var(--white); border: 1.5px solid var(--blue-100); color: var(--blue-600);
+    box-shadow: 0 1px 2px rgba(11, 31, 63, .06);
+  }
+  .open .tile { background: var(--blue-600); border-color: var(--blue-600); color: var(--white); box-shadow: 0 8px 20px rgba(26, 95, 200, .25); }
+  .tile :global(svg) { width: 28px; height: 28px; }
+  .n {
+    position: absolute; top: -.5rem; right: -.5rem; width: 1.4rem; height: 1.4rem; border-radius: 50%;
+    background: var(--navy-900); color: var(--white); font: 700 .75rem/1.4rem var(--font-display); text-align: center;
+    box-shadow: 0 0 0 2px var(--white);
+  }
+
+  .body { min-width: 0; padding-top: .1rem; }
+  .kicker { margin: 0 0 .15rem; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); }
+  h3 { margin: 0 0 .35rem; font-size: 1.075rem; }
+  .text { margin: 0 0 .6rem; font-size: .95rem; color: var(--ink); }
+  .status { margin: 0; }
+  .tag {
+    display: inline-block; font-size: .75rem; font-weight: 600; border-radius: 999px; padding: .15rem .6rem;
+    background: var(--white); color: var(--slate); border: 1px solid var(--line);
+  }
+  .tag.now { background: #E3F4EA; color: #14532D; border-color: #BFE3CC; }
+
+  /* Wide container: four columns with horizontal connectors. */
+  @container (min-width: 760px) {
+    .list { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 2rem; }
+    .stage { grid-template-columns: 1fr; padding: 0; }
+    .stage:not(:last-child)::before {
+      left: calc(3.5rem + .9rem); right: -1.3rem; top: calc(1.75rem - 1px); bottom: auto;
+      border-left: 0; border-top: 2px dashed var(--blue-500);
+    }
+    .stage:not(:last-child)::after {
+      left: auto; right: -1.3rem; top: calc(1.75rem - 5px); bottom: auto;
+      border-bottom: 0; border-top: 2px solid var(--blue-500); transform: rotate(45deg);
+    }
+    .body { margin-top: 1rem; padding-top: 0; }
+  }
+</style>

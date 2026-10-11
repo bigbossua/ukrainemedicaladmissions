@@ -1,18 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/illustrations/Icon.astro';
+import HeroIllustration from '../components/illustrations/HeroIllustration.astro';
+import ApplicationJourney from '../components/illustrations/ApplicationJourney.astro';
 import { getCollection } from 'astro:content';
 import { isVisible, byShortName } from '../lib/records';
 import { SITE } from '../lib/site';
+import { COURSES, type CourseSlug } from '../lib/courses';
 
 // Publication gate: unpublished records never appear on the home page (lib/records.ts).
 const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
-const courses = [
-  { slug: 'medicine', name: 'Medicine', blurb: 'Six-year programmes leading to a medical degree.' },
-  { slug: 'dentistry', name: 'Dentistry', blurb: 'Five-year dental programmes.' },
-  { slug: 'nursing', name: 'Nursing', blurb: 'Bachelor-level nursing routes.' },
-  { slug: 'pharmacy', name: 'Pharmacy', blurb: 'Pharmacy degrees for international students.' },
-];
+// Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact.
+const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary }));
 const jsonLd = [{
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -41,50 +41,57 @@ const jsonLd = [{
         </div>
         <div class="trust">
           <div><b>Every fact dated</b> and marked verified or pending</div>
-          <div><b>Medicine · Dentistry · Pharmacy · Nursing</b> — listed only once verified</div>
-          <div><b>One application journey</b> from enquiry to decision</div>
+          <div><b>Medicine · Dentistry · Pharmacy · Nursing</b> listed only once verified</div>
+          <div><b>Four clear stages</b> from enquiry to official submission</div>
         </div>
       </div>
-      <aside class="hero-card" aria-labelledby="start-title">
-        <h2 id="start-title">Start your application</h2>
-        <form action="/apply/" method="get">
-          <label class="field">Course
-            <select name="course">
-              <option value="">Choose a course</option>
-              {courses.map((c) => <option value={c.slug}>{c.name}</option>)}
-            </select>
-          </label>
-          <label class="field">University
-            <select name="university">
-              <option value="">Help me choose</option>
-              {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
-              <option value="unlisted">A university not listed here</option>
-            </select>
-          </label>
-          <button class="btn btn-primary" type="submit">{SITE.cta} →</button>
-          <small>Save and resume anytime. No fee to start. We never share your documents without consent.</small>
-        </form>
-      </aside>
+      <div class="hero-visual">
+        <div class="hero-art" aria-hidden="true"><HeroIllustration /></div>
+        <aside class="hero-card" aria-labelledby="start-title">
+          <h2 id="start-title">Start your application</h2>
+          <form action="/apply/" method="get">
+            <label class="field">Course
+              <select name="course">
+                <option value="">Choose a course</option>
+                {courses.map((c) => <option value={c.slug}>{c.name}</option>)}
+              </select>
+            </label>
+            <label class="field">University
+              <select name="university">
+                <option value="">Help me choose</option>
+                {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
+                <option value="unlisted">A university not listed here</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">{SITE.cta} →</button>
+            <small>No fee to start. Nothing is sent to a university until you confirm. Please do not send document scans at this stage.</small>
+          </form>
+        </aside>
+      </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <span class="eyebrow">Why students use us</span>
-      <h2>Independent guidance, verified information.</h2>
+      <div class="section-head">
+        <span class="eyebrow">Why students use us</span>
+        <h2>Independent guidance, verified information.</h2>
+      </div>
       <div class="grid grid-3">
-        <div class="card"><div class="ico" aria-hidden="true">✓</div><h3>Verified university data</h3><p>Every fee, deadline and programme is checked against official university sources, dated, and marked if it is still awaiting confirmation.</p><a class="more" href="/about/#verification">How we verify →</a></div>
-        <div class="card"><div class="ico" aria-hidden="true">⇄</div><h3>Compare side by side</h3><p>Tuition, language of instruction, duration and entry requirements in one directory.</p><a class="more" href="/universities/">Compare universities →</a></div>
-        <div class="card"><div class="ico" aria-hidden="true">◎</div><h3>One application journey</h3><p>A clear document checklist and status updates from your first enquiry to the university's decision.</p><a class="more" href="/admissions/">See the process →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="dated" /></div><h3>Official sources, dated</h3><p>We publish a fee, deadline or programme detail only after checking it against the university's official source, and we show the date we checked it. Anything not yet checked is marked as awaiting confirmation.</p><a class="more" href="/about/#verification">How we verify →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="compare" /></div><h3>Compare side by side</h3><p>As profiles pass verification, their programmes, languages, entry requirements, tuition and application windows appear side by side in one comparison table.</p><a class="more" href="/universities/">Compare universities →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="journey" /></div><h3>One application journey</h3><p>Four clear stages, from your first enquiry to official submission through the university's own procedure. A document checklist and status updates are planned.</p><a class="more" href="/admissions/#stages">See the process →</a></div>
       </div>
     </div>
   </section>
 
   <section class="alt">
     <div class="wrap">
-      <span class="eyebrow">Universities</span>
-      <h2>Medical universities in Ukraine</h2>
-      <p class="prose">Our directory grows one verified profile at a time. A profile is published only once every fact on it has been checked against official sources.</p>
+      <div class="section-head">
+        <span class="eyebrow">Universities</span>
+        <h2>Medical universities in Ukraine</h2>
+        <p>Our directory grows one verified profile at a time. A profile is published only once every fact on it has been checked against official sources.</p>
+      </div>
       {universities.length === 0 && <p class="note">No university profile has completed verification yet. The first profiles are being verified now; each will appear here, dated, as soon as it passes.</p>}
       <div class="grid grid-3">
         {universities.map((u) => (
@@ -99,36 +106,51 @@ const jsonLd = [{
           </article>
         ))}
       </div>
-      <p style="margin-top:1.5rem"><a class="btn btn-secondary" href="/universities/">All universities</a></p>
+      <p class="after-grid"><a class="btn btn-secondary" href="/universities/">All universities</a></p>
     </div>
   </section>
 
   <section>
-    <div class="wrap grid grid-2" style="align-items:start">
-      <div>
+    <div class="wrap grid grid-2 courses-split">
+      <div class="section-head">
         <span class="eyebrow">Courses</span>
         <h2>Programmes for international students</h2>
-        <p>Programme details are listed only where availability has been confirmed with the university. Degree titles follow each university's own terminology.</p>
+        <p>Programme details are listed only where availability has been confirmed from the university's official pages. Duration, entry requirements and degree titles are specific to each programme and follow each university's own terminology.</p>
       </div>
       <div class="grid grid-2">
-        {courses.map((c) => <div class="card"><h3>{c.name}</h3><p>{c.blurb}</p><a class="more" href={`/courses/${c.slug}/`}>Explore →</a></div>)}
+        {courses.map((c) => <div class="card card-link"><div class="ico"><Icon name={c.slug} /></div><h3>{c.name}</h3><p>{c.blurb}</p><a class="more" href={`/courses/${c.slug}/`}>Explore {c.name.toLowerCase()} →</a></div>)}
       </div>
     </div>
   </section>
 
   <section class="alt">
     <div class="wrap">
-      <span class="eyebrow">How it works</span>
-      <h2>From enquiry to enrolment, step by step</h2>
-      <div class="grid grid-4 steps" style="margin-top:1.5rem">
-        <div class="step"><h3>Choose</h3><p>Pick a course and shortlist universities using verified data.</p></div>
-        <div class="step"><h3>Apply online</h3><p>Complete the application form; save and resume at any time.</p></div>
-        <div class="step"><h3>Documents</h3><p>Upload securely against a clear checklist; we review and advise.</p></div>
-        <div class="step"><h3>Track</h3><p>Follow every status change until the university's official decision.</p></div>
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>From enquiry to official submission</h2>
+        <p>Today you start with a short online enquiry. The later stages are planned and are shown here so you know exactly what each one will mean.</p>
       </div>
-      <p class="note">We support your application. {SITE.disclaimer} We do not guarantee admission, visas or recognition.</p>
+      <ApplicationJourney />
+      <p class="note journey-note">We support your application. {SITE.disclaimer} We do not guarantee admission, visas or recognition.</p>
     </div>
   </section>
 
   <CtaBand />
 </Base>
+
+<style>
+  /* Hero illustration sits behind the start card on wide screens only (from 1080 px, where enough of it shows
+     around the card); the card stays the focus and phones/tablets stay uncluttered. */
+  .hero-visual { position: relative; }
+  .hero-visual .hero-card { position: relative; z-index: 1; }
+  .hero-art { display: none; }
+  @media (min-width: 1080px) {
+    .hero-art { display: block; position: absolute; z-index: 0; inset: -110px -40px -130px -60px; pointer-events: none; }
+  }
+  .after-grid { margin: 1.5rem 0 0; }
+  /* Stack the intro above the course cards until there is room for both side by side. */
+  .courses-split { align-items: start; grid-template-columns: 1fr; }
+  @media (min-width: 1000px) { .courses-split { grid-template-columns: 1fr 1.35fr; gap: 2.5rem; } }
+  .courses-split > .section-head { margin-bottom: 0; }
+  .journey-note { margin-top: 2rem; }
+</style>

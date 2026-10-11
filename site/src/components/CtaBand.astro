@@ -1,13 +1,28 @@
 ---
 import { SITE } from '../lib/site';
 interface Props { title?: string; text?: string; }
-const { title = 'Ready to begin?', text = 'Start your application in minutes. You can save your progress and come back at any time.' } = Astro.props;
+// Default text must stay true today: Stage 1 is a short enquiry form (no accounts, no save-and-resume, no uploads).
+const { title = 'Ready to begin?', text = 'Start with a short online enquiry. It costs nothing, and nothing is sent to a university until you confirm.' } = Astro.props;
 ---
-<section>
+<section class="cta-section">
   <div class="wrap">
     <div class="cta-band">
       <div><h2>{title}</h2><p>{text}</p></div>
       <a class="btn btn-on-dark" href={SITE.ctaHref}>{SITE.cta}</a>
+      <svg class="cta-art" viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+        <circle cx="220" cy="0" r="70" fill="none" stroke="#DCE8FA" stroke-opacity=".22" stroke-width="1.5" />
+        <circle cx="220" cy="0" r="120" fill="none" stroke="#DCE8FA" stroke-opacity=".14" stroke-width="1.5" />
+        <circle cx="220" cy="0" r="170" fill="none" stroke="#2F7BE5" stroke-opacity=".5" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.5 10" />
+        <circle cx="107.2" cy="41" r="5" fill="#F2C230" />
+      </svg>
     </div>
   </div>
 </section>
+
+<style>
+  /* Decorative ring motif (own SVG, drawn in-repo 2026-10-11; VISUAL_AUDIT_AND_IMAGE_REGISTER.md §11). */
+  .cta-band { position: relative; overflow: hidden; background: radial-gradient(ellipse 50% 90% at 100% 0%, rgba(47, 123, 229, .22), transparent 70%), var(--navy-900); }
+  .cta-band > div, .cta-band > .btn { position: relative; z-index: 1; }
+  .cta-art { position: absolute; right: 0; top: 0; width: 220px; height: 220px; max-width: none; pointer-events: none; }
+  @media (max-width: 799px) { .cta-art { width: 130px; height: 130px; opacity: .6; } }
+</style>

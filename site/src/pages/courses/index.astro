@@ -2,15 +2,33 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { COURSES } from '../../lib/courses';
+import Icon from '../../components/illustrations/Icon.astro';
+import { COURSES, type CourseSlug } from '../../lib/courses';
+
+const courses = Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][];
 ---
 <Base title="Courses for international students" description="Medicine, dentistry, nursing and pharmacy programmes at Ukrainian universities for international students — what each involves and who offers them.">
   <div class="page-head"><div class="wrap"><span class="eyebrow">Courses</span><h1>Courses for international students</h1><p>Choose a programme to see which universities offer it, in which language, and what has been verified.</p></div></div>
   <Breadcrumbs items={[{ label: 'Courses' }]} />
-  <section style="padding-top:1rem"><div class="wrap grid grid-2">
-    {Object.entries(COURSES).map(([slug, c]) => (
-      <article class="card"><h2 style="font-size:1.25rem">{c.name}</h2><p>{c.intro.split('. ')[0]}.</p><a class="more" href={`/courses/${slug}/`}>Universities offering {c.name.toLowerCase()} →</a></article>
-    ))}
+  <section class="courses"><div class="wrap">
+    <div class="grid grid-2">
+      {courses.map(([slug, c]) => (
+        <article class="card card-link course-card">
+          <div class="ico"><Icon name={slug} /></div>
+          <h2>{c.name}</h2>
+          <p>{c.summary}</p>
+          <a class="more" href={`/courses/${slug}/`}>Universities offering {c.name.toLowerCase()} →</a>
+        </article>
+      ))}
+    </div>
+    <p class="note">Duration, entry requirements and qualification titles are specific to each programme. We show them on a university's profile only once they have been read from its official pages.</p>
   </div></section>
   <CtaBand />
 </Base>
+
+<style>
+  .courses { padding-top: 1rem; }
+  .course-card h2 { font-size: 1.25rem; margin: .5rem 0 0; }
+  .course-card p { margin: 0 0 .75rem; }
+  .note { margin-top: 2rem; }
+</style>
