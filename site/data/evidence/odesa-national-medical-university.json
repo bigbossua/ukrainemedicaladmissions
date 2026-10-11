@@ -1,0 +1,9 @@
+{
+  "slug": "odesa-national-medical-university",
+  "access": {
+    "status": "blocked",
+    "checked": "2026-10-11",
+    "note": "Tried on 2026-10-11 (18:18 UTC) from the build environment with curl through its proxy (one HTTPS request to the root address of each host). University hosts named in this record's research references: onmedu.edu.ua. Government, register and archive hosts: mon.gov.ua, studyinukraine.gov.ua, universities.studyinukraine.gov.ua, naqa.gov.ua, web.archive.org, wdoms.org, search.wdoms.org. Every host was refused at the environment's proxy under its network policy (curl: \"CONNECT tunnel failed, response 403\"; HTTP code 000), while a control request to api.github.com through the same proxy returned HTTP 200. No official page or PDF was opened and no claim was checked. Earlier attempts are logged in SOURCE_VERIFICATION_REGISTER.md."
+  },
+  "entries": []
+}
