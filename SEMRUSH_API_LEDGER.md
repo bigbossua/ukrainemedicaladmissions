@@ -154,3 +154,4 @@ Pre-flight satisfied: balance 47,890 confirmed by the owner; price confirmed by 
 
 The 130-unit discrepancy found earlier (published-price estimate 1,200 vs derived actual 1,070 for the 2026-10-10 follow-up batch) stays resolved as recorded above. R3–R5 remain unauthorised and unexecuted.
 
+**Standing rule (owner, 2026-10-11):** no metered call without (1) the owner's current balance reading reconciled here, (2) a research purpose logged in `KEYWORD_URL_MAP.md` §14 naming the decision it informs, (3) the owner's approval of the batch and its cap, and (4) a check that existing exports do not already answer the question. Every call: report, database, keyword set, lines returned, counter reading, units, CSV path.
