@@ -1,0 +1,800 @@
+{
+  "slug": "dnipro-state-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Dnipro State Medical University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the admissions portal for foreigners (study.dmu.edu.ua) uses \"Dnipro State Medical University (DSMU)\"; the Ukrainian name «Дніпровський державний медичний університет» (ДДМУ) appears on the admissions aggregator vstup.osvita.ua (THIRD-PARTY; it republishes national admissions data). Former name Dnipropetrovsk Medical Academy according to Wikipedia (THIRD-PARTY). Confirm on the official site."
+  },
+  "shortName": "Dnipro State Medical University",
+  "alternativeNames": [
+    "DSMU",
+    "ДДМУ",
+    "Dnipropetrovsk Medical Academy (former name)"
+  ],
+  "status": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Not recorded: no university-wide official statement on teaching format or location for 2025–26 or 2026–27 was found, and Dnipro is a front-line region, so operating conditions are checked first. Leads only: one department page on an official subdomain says that from 1 September 2025 the department taught in a blended mode (offline and online); another department page said teaching from 02.09.2024 would be online; university notices from March 2022 say online teaching continued for foreign citizens; the 2025 admissions listing on vstup.osvita.ua (THIRD-PARTY aggregator) shows full-time places. None of this is a university-wide statement."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No university-wide current-year statement found. A department-level notice (blended teaching from 1 September 2025) is not a university statement. Quote the current official statement verbatim with its date; until then the profile must say nothing about normal operation."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated university-wide official statement for the current academic year; department-level notices are not enough."
+  },
+  "city": "Dnipro",
+  "region": "Dnipropetrovsk Oblast",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Not recorded. Snippet (official international portal, undated): the International Faculty dean's office is at \"9 Vladimir Vernadsky Str., Dnipro, zip code 49044\"; whether this is the university's postal address is not stated. Record the address from the official contacts page."
+  },
+  "website": {
+    "value": "https://dmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the international portal says \"this website (subdomain) is the only officially registered on the domain\" and gives https://dmu.edu.ua as the main domain; related official subdomains: infoen.dmu.edu.ua (international), study.dmu.edu.ua (admissions for foreigners), pv.dmu.edu.ua (preparatory department). No page could be opened from the build environment (network policy)."
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "int@dmu.edu.ua",
+      "url": "https://infoen.dmu.edu.ua/dsmu-and-faculty"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Dean's Office of the International Faculty of the Dnipro State Medical University at int@dmu.edu.ua\" (undated). The admissions page names the International Relations Department as the office that issues the Invitation to Study; its own contact details were not in the snippets."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year only from the official history page."
+  },
+  "overview": "A medical university in Dnipro, east-central Ukraine, with an International Faculty and a preparatory department for foreign citizens. No official page found so far names the degree programmes open to foreign applicants or their language of instruction, so only the preparatory course is listed as a programme and the degree programmes are held back; Dnipro is a front-line region, so operating conditions are checked first. Draft record built from search-snippet leads on 2026-10-11; every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or the NAQA register as the source. (Lead from a re-check search on 2026-10-11, summary only: the Ministry \"Study in Ukraine\" programmes page, https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22, is said to describe the university as an institution of the 4th accreditation level — an older national classification; not recorded.)"
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country. Agency sites (THIRD-PARTY, e.g. mbbsadmissionabroad.in; re-check search 2026-10-11) claim WHO and NMC approval — promotional, not evidence, never recorded."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year). Snippet (official payment terms, undated): first-year foreign students pay tuition and hostel fees for the whole year in full, and from the second year by semester."
+  },
+  "programmes": [
+    {
+      "id": "preparatory",
+      "name": "Preparatory Department for Foreign Citizens (pre-study language course)",
+      "field": "preparatory",
+      "level": {
+        "value": "preparatory",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: pv.dmu.edu.ua \"Preparatory Department for Foreign Citizens\"; study.dmu.edu.ua \"pre study language course\" / \"premedical course\", whose main goal is \"the language training and studying of general education disciplines before entering the medical academy\" (undated)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No specialty code applies to a preparatory course unless the university prints one."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No award title applies unless the university prints one; the completion document is recorded on the preparatory-route entry once read."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; see durationText."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Conflicting official pages (\"from September 1 to June 30\" and \"begins on October 1 and lasts till June 30\"); not recorded until the current page has been read."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Only the Ukrainian language is studied in the first semester; the language in which physics, chemistry and biology are taught in the second semester is not stated."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the official preparatory-department page is titled \"Preparatory Department for Foreign Citizens\" and the admissions portal for foreigners describes the pre-study language course (both undated). This is the only programme on the official domain with a lead of admission for foreign applicants; the degree programmes stay in deferredProgrammes[] until an official page names them. The same department is described in preparatoryRoutes[]."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee snippet found for the preparatory course."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No application deadline found; the start date conflicts between official pages (1 September and 1 October). Record dates only from the official page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "medicine",
+      "name": "Medicine («Медицина»)",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "specialtyCode": {
+        "value": "222",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Six years is asserted by agencies only; not recorded."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded. English-medium teaching for foreigners is asserted only by agencies (THIRD-PARTY) and, in general terms, by the Ministry \"Study in Ukraine\" portal (\"since 1997 the teaching of foreign students in English has been launched\", undated, not programme-specific). National admissions listings cover the Ukrainian-medium domestic programme. No official-domain snippet states the language for foreign applicants."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official page found that names this programme as open to foreign applicants. The official admissions page for foreigners describes the Invitation to Study route but, in the snippet, names no programme; agencies assert English-medium teaching (not evidence)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry («Стоматологія»)",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "specialtyCode": {
+        "value": "221",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Five years is asserted by agencies only; not recorded."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded. English-medium teaching for foreigners is asserted only by agencies (THIRD-PARTY) and, in general terms, by the Ministry \"Study in Ukraine\" portal (\"since 1997 the teaching of foreign students in English has been launched\", undated, not programme-specific). National admissions listings cover the Ukrainian-medium domestic programme. No official-domain snippet states the language for foreign applicants."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official page found that names this programme as open to foreign applicants. The official admissions page for foreigners describes the Invitation to Study route but, in the snippet, names no programme; agencies assert English-medium teaching (not evidence)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy, industrial pharmacy («Фармація, промислова фармація»)",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "specialtyCode": {
+        "value": "226",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Five years is asserted by agencies only; not recorded."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded. English-medium teaching for foreigners is asserted only by agencies (THIRD-PARTY) and, in general terms, by the Ministry \"Study in Ukraine\" portal (\"since 1997 the teaching of foreign students in English has been launched\", undated, not programme-specific). National admissions listings cover the Ukrainian-medium domestic programme. No official-domain snippet states the language for foreign applicants."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official page found that names this programme as open to foreign applicants. The official admissions page for foreigners describes the Invitation to Study route but, in the snippet, names no programme; agencies assert English-medium teaching (not evidence)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical therapy, occupational therapy («Фізична терапія, ерготерапія»)",
+      "field": "physical_therapy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Ambiguous leads, none recorded: the 2025 admissions listing on vstup.osvita.ua (THIRD-PARTY aggregator) shows a bachelor's on the basis of complete secondary education with the specialisation «Фізична терапія»; an education guide (THIRD-PARTY) lists 227 among master's-level entries."
+      },
+      "specialtyCode": {
+        "value": "227",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: an education-guide listing (osvita.ua) names master's-level programmes 222 Medicine, 221 Dentistry, 226 Pharmacy and 227 Physical therapy, occupational therapy. No official-domain programme page found."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration in whole years is not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated for foreign applicants; domestic listings only."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet shows availability to international applicants."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "preparatory-department",
+      "name": "Preparatory Department for Foreign Citizens",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Snippets: in the first semester only the Ukrainian language is studied; physics, chemistry and biology are added in the second. The language in which those subjects are taught is not stated."
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet states an English-language preparatory track."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Conflicting official pages: \"training lasts from September 1 to June 30\" (pv.dmu.edu.ua) and \"the premedical course academic year begins on October 1 and lasts till June 30\" (study.dmu.edu.ua). No value is recorded until the current page has been read."
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian language",
+          "Physics",
+          "Chemistry",
+          "Biology"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"first semester is Ukrainian only, and the second adds physics, chemistry, and biology\" (undated)."
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No progression wording found. Snippet: the course's main goal is \"the language training and studying of general education disciplines before entering the medical academy\" (undated; uses the former \"academy\" name). Quote the current official wording verbatim after reading the page."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated."
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Conflicting official pages (1 September and 1 October); not recorded."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee snippet found."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the official eligibility wording verbatim. Snippets: the department serves foreign citizens and stateless persons; documents (passport copy, previous education records, medical certificate) must be translated into Ukrainian with an attested translation."
+      },
+      "note": "Training of foreign citizens at the preparatory department since 1990 (official leads, undated)."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Admission process (admissions portal for foreigners)",
+      "url": "https://study.dmu.edu.ua/admission-s/admission-process",
+      "purpose": "Invitation to Study route, documents, enrolment, start of the academic year; look for a programme list and languages",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "Admissions portal for foreigners",
+      "url": "https://study.dmu.edu.ua/",
+      "purpose": "Programmes open to foreign applicants, languages, fees, deadlines (none in snippets)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Admission process (main site)",
+      "url": "https://dmu.edu.ua/en/admission-process",
+      "purpose": "Payment terms for tuition and hostel; admission route",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "Pre-study language course",
+      "url": "https://study.dmu.edu.ua/pre-study-language-course",
+      "purpose": "Preparatory course: dates, subjects, documents, progression wording",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Preparatory Department for Foreign Citizens",
+      "url": "https://pv.dmu.edu.ua/english",
+      "purpose": "Preparatory department: dates (conflict with the admissions portal), subjects, certificate, fee",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "International portal",
+      "url": "https://infoen.dmu.edu.ua/",
+      "purpose": "International Faculty: programmes taught to foreign students and their language",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "DSMU and the International Faculty",
+      "url": "https://infoen.dmu.edu.ua/dsmu-and-faculty",
+      "purpose": "Official-domain statement; dean's office contacts and address",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Graduates: general information",
+      "url": "https://infoen.dmu.edu.ua/graduates/general-information",
+      "purpose": "May state programmes and awards for international graduates (not in any snippet)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "International activity",
+      "url": "https://dmu.edu.ua/ua/activity/international-activity",
+      "purpose": "History and organisation of foreign-student training",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "University news",
+      "url": "https://dmu.edu.ua/novini/",
+      "purpose": "Operating conditions: look for a 2025–26 or 2026–27 university-wide order or notice on the format of the educational process",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Department notice: blended learning from 1 September 2025",
+      "url": "https://302.dmu.edu.ua/english/mixed-learning",
+      "purpose": "Department-level format notice (context for the operating-conditions question only)",
+      "snippetDate": "2026-10-11",
+      "note": "Department level, not university-wide"
+    },
+    {
+      "label": "Department notice: online teaching from 02.09.2024",
+      "url": "https://416.dmu.edu.ua/home/english",
+      "purpose": "Earlier department-level format notice (context only)",
+      "snippetDate": "2026-10-11",
+      "note": "2024 — out of date"
+    },
+    {
+      "label": "Online teaching for foreign citizens (news, March 2022)",
+      "url": "https://dmu.edu.ua/novini/march-14-2022/",
+      "purpose": "Earlier wartime notice (context only)",
+      "snippetDate": "2026-10-11",
+      "note": "2022 — out of date"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "OPERATING CONDITIONS (check first): a university-wide, dated official statement for 2026–27 on teaching format and location (only department-level notices from 2024 and 2025 and university notices from 2022 were found).",
+      "Which degree programmes are open to foreign applicants, and in which language: no official page found names an English-medium programme; only agencies assert English-medium Medicine, Dentistry and Pharmacy. No degree programme may move to programmes[] until an official page states it.",
+      "Level, specialty code, duration and exact award title for each programme, from the official pages.",
+      "Official tuition fees for foreign applicants with the academic year (only domestic contract prices and agency figures found).",
+      "Application deadlines and intake dates for foreign applicants (none found; the academic year is said to start on 1 September).",
+      "Entry requirements and entrance examinations for foreign applicants (none in the snippets).",
+      "Required documents as currently published (snippet: passport copy, school diploma with transcripts, signed personal-data consent).",
+      "Whether the university uses the Unified Interdepartmental Information System for foreign applicants (not confirmed).",
+      "Official postal address and International Relations Department contacts.",
+      "Preparatory department: start date (1 September or 1 October), duration, language of instruction for the science subjects, certificate, progression wording verbatim, fee with year.",
+      "Physical therapy (227): level (bachelor's or master's) and whether foreign applicants are admitted; nursing and public health: whether offered at all (a third-party directory lists 229 Public Health).",
+      "Accommodation availability and published prices.",
+      "Evidence-backed recognition statements only (agency claims of WHO or NMC recognition are not evidence)."
+    ]
+  }
+}
