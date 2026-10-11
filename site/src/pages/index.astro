@@ -90,9 +90,9 @@ const jsonLd = [{
       <div class="section-head">
         <span class="eyebrow">Universities</span>
         <h2>Medical universities in Ukraine</h2>
-        <p>Our directory grows one verified profile at a time. A profile is published only once every fact on it has been checked against official sources.</p>
+        <p>Our directory grows one verified profile at a time. A profile is published only after its official name, website, address, operating status and the programmes open to international applicants have been checked on the university's own website; <a href="/about/#verification">see how we verify</a>.</p>
       </div>
-      {universities.length === 0 && <p class="note">No university profile has completed verification yet. The first profiles are being verified now; each will appear here, dated, as soon as it passes.</p>}
+      {universities.length === 0 && <p class="note">No university profile has completed verification yet. The first profiles are queued for verification against official sources; each will appear here, dated, as soon as it passes.</p>}
       <div class="grid grid-3">
         {universities.map((u) => (
           <article class="card">

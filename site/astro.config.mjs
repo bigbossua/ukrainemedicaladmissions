@@ -19,6 +19,10 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
+  // The production CSP (public/.htaccess) is script-src 'self': Astro must never inline a processed <script> as an
+  // inline module, or the browser blocks it (mobile menu, directory filters, apply form). assetsInlineLimit 0 makes
+  // every processed script an external /_astro/*.js file; tests/check-meta.mjs fails on any inline script.
+  vite: { build: { assetsInlineLimit: 0 } },
   // Staging (STAGING=1) and preview (PREVIEW_UNPUBLISHED=1) builds emit no sitemap at all; every page is noindex.
   integrations: /^(1|true|yes)$/i.test((process.env.STAGING ?? '').trim()) || /^(1|true|yes)$/i.test((process.env.PREVIEW_UNPUBLISHED ?? '').trim()) ? [] : [
     sitemap({

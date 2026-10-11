@@ -22,6 +22,9 @@ for (const f of pages) {
   const rel = f.replace(DIST, '').replace(/index\.html$/, '').replace(/404\.html$/, '404');
   const is404 = f.endsWith('404.html');
   if (!title) warn(f, 'NO TITLE');
+  // CSP script-src 'self': any executable inline <script> (no src) is blocked in production.
+  for (const m of h.matchAll(/<script\b([^>]*)>/g)) if (!/\bsrc=/.test(m[1]) && !/type="application\/ld\+json"/.test(m[1])) warn(f, 'INLINE SCRIPT (blocked by the CSP)');
+  if (/\son[a-z]+="/i.test(h.replace(/<script[\s\S]*?<\/script>/g, ''))) warn(f, 'INLINE EVENT HANDLER (blocked by the CSP)');
   if (title.length > 70) warn(f, `LONG TITLE (${title.length})`);
   if (!desc) warn(f, 'NO DESCRIPTION'); else if (!is404 && (desc.length > 165 || desc.length < 50)) warn(f, `DESC LENGTH ${desc.length}`);
   if (!canon) warn(f, 'NO CANONICAL'); else if (!is404 && canon !== SITE + rel) warn(f, `CANONICAL MISMATCH ${canon}`);

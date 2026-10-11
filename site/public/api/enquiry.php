@@ -214,7 +214,9 @@ $record = [
     'consentText' => $type === 'application-start'
         ? 'Stored to respond to the enquiry, as described in the privacy notice; not an application to a university.'
         : 'Stored to reply by email, as described in the privacy notice.',
-    'ip_hash'     => hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . date('Y-m')), // pseudonymised, rotates monthly
+    // Keyed hash (HMAC) so the IP cannot be recovered by hashing every IPv4 address; rotates monthly. Without a
+    // secret 'ip_hash_key' in the private config.php nothing about the IP is stored.
+    'ip_hash'     => !empty($config['ip_hash_key']) ? hash_hmac('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . date('Y-m'), (string)$config['ip_hash_key']) : null,
 ];
 if ($profile !== null) $record['profile'] = $profile;
 

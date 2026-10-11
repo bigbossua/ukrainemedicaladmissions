@@ -273,7 +273,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
           if ((await p3.$$eval('fieldset[data-step]', (fs) => fs.filter((f) => !f.hidden).length)) !== 1) fail('apply under CSP: stepped form did not start');
           await p3.click('#step-1 [data-next]');
           if (await p3.$eval('#step-2', (f) => f.hidden)) fail('apply under CSP: Continue did not work');
-          if (blocked.length) console.log(`NOTE apply under the production CSP: ${blocked.length} inline script(s) blocked on the page (the apply form's own scripts are external and ran)`);
+          if (blocked.length) fail(`apply under the production CSP: ${blocked.length} inline script(s) blocked on the page`);
           await cspCtx.close();
         }
       }

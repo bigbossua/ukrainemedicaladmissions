@@ -14,8 +14,8 @@ Complete every box before the **first** production write and before each later r
 - [ ] **A7 Email**: `mail()` from the handler delivers to the business inbox from staging; SPF/DKIM set for the sending address.
 - [ ] **A8 Private storage**: `uma-private/` exists beside the document root, mode 0700, owned by the hosting user; a test record lands there and is not web-accessible (direct URL returns 403/404).
 - [ ] **A9 Secrets**: none in Git (`git grep -i -E 'password|secret|api[_-]?key'` clean); `config.php` lives only in `uma-private/`.
-- [ ] **A10 Legal**: privacy notice and terms reviewed; entity details inserted (D7); cookie/analytics statement matches what is actually installed.
-- [ ] **A11 Search Console** property verified for the non-www HTTPS host; baseline exported.
+- [ ] **A10 Legal**: privacy notice and terms reviewed; entity details inserted (D7); cookie/analytics statement matches what is actually installed (since 2026-10-11 the notice says no analytics is installed; options and the CSP change each needs: `ANALYTICS_AND_SEARCH_CONSOLE.md` §B).
+- [ ] **A11 Search Console** property verified for the non-www HTTPS host; baseline exported (steps and what to export: `ANALYTICS_AND_SEARCH_CONSOLE.md` §A).
 - [ ] **A12 Owner approval** recorded (date, scope of change).
 
 ## B. Every release
@@ -28,6 +28,8 @@ Complete every box before the **first** production write and before each later r
 - [ ] Release tag created by the publish workflow; previous tag noted for rollback.
 - [ ] Post-deploy live checks: home 200, `/sitemap-index.xml` 200, `/robots.txt` 200, `/api/enquiry.php` GET → 405, `/apply/thank-you/` has noindex, www → non-www 301, HTTP → HTTPS 301, a synthetic enquiry arrives by email and in `uma-private/`.
 - [ ] Rollback rehearsed at least once on staging.
+- [ ] `uma-private/config.php` on the host holds `ip_hash_key` (random, at least 32 bytes, never in Git); without it the enquiry handler stores no IP data (backlog N21).
+- [ ] Mobile menu, directory filters and the stepped `/apply/` form work on the live site with the production CSP (backlog N20); a synthetic candidate profile arrives in the business mailbox (backlog N4).
 
 ## C. Application system (Stage 2+) — additional gates (refreshed 2026-10-11)
 

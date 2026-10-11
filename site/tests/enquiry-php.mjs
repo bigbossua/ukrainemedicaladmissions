@@ -25,7 +25,7 @@ const freePort = () => new Promise((res, rej) => {
 });
 
 const store = mkdtempSync(join(tmpdir(), 'uma-enquiry-test-'));
-writeFileSync(join(store, 'config.php'), "<?php return ['send_mail' => false];\n");
+writeFileSync(join(store, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key'];\n");
 const port = await freePort();
 const php = spawn('php', ['-d', 'display_errors=1', '-d', 'error_reporting=-1', '-S', `127.0.0.1:${port}`, '-t', PUBLIC], {
   env: { ...process.env, UMA_PRIVATE_DIR: store }, stdio: ['ignore', 'ignore', 'pipe'],
@@ -120,7 +120,8 @@ const minimum = (extra = []) => [['type', 'application-start'], ['course', 'medi
   check(p.documents_note === 'School reference letter', 'profile.documents_note stored');
   check(JSON.stringify(p.contact) === JSON.stringify({ name: 'Synthetic Candidate', email: EMAIL, residence: 'Example-land', nationality: 'Exampleish', language: 'English', questions: 'A synthetic question.' }), 'profile.contact matches the post', JSON.stringify(p.contact));
   check(rec.consent === true && typeof rec.consentText === 'string', 'record: consent recorded');
-  check(/^[0-9a-f]{64}$/.test(rec.ip_hash ?? ''), 'record: IP stored only as a hash');
+  check(/^[0-9a-f]{64}$/.test(rec.ip_hash ?? ''), 'record: IP stored only as a keyed hash');
+  check(!/127\.0\.0\.1/.test(JSON.stringify(rec)), 'record: raw IP not stored');
   check(!('ts' in rec) && !('website' in rec) && !('ts' in p), 'record: bot-check fields not stored');
 }
 

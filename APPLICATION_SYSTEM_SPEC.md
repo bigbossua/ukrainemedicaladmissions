@@ -15,8 +15,10 @@ Status copy shown to applicants is generated from the state machine; free-text c
 
 ## 2. Stage 1 — implemented (`site/public/api/enquiry.php`, `/apply/`, `/contact/`)
 
+*Updated 2026-10-11 (branch `claude/university-profile-pipeline`, not deployed):* `/apply/` is now the five-step candidate-profile form of §12.1 (progressive enhancement; one page without JavaScript), and records are `version: 2` with a nested `profile` object (intent, education with subjects/grades/scale/result status, documents have/need/not sure, contact). Required: field of study, name, e-mail, consent. Anti-abuse adds an optional timing field (`ts`, bot only when present and under 3 s). The IP is stored only as an HMAC with a private `ip_hash_key` from `uma-private/config.php`, and not at all without that key. Tests: `site/tests/enquiry-php.mjs` (PHP built-in server, temp storage, `npm run test:php`). The original Stage-1 description follows.
+
 - Forms: application-start (course, university, start year, name, email, certificate country, qualification, message, consent) and enquiry (name, email, message, consent). Client-side accessible validation; server-side validation authoritative.
-- Anti-abuse: honeypot field; method check (405); input length caps; email validation; IP stored only as a monthly-rotating SHA-256 hash.
+- Anti-abuse: honeypot field; method check (405); input length caps; email validation; IP stored only as a monthly-rotating keyed hash (HMAC-SHA256 with a private key since 2026-10-11; a plain SHA-256 of an IPv4 address could be reversed).
 - Storage: JSON record per submission in `<document-root-parent>/uma-private/enquiries/` (configurable via `UMA_PRIVATE_DIR`), directory mode 0700. **Never inside the web root; never in Git** (`private/` ignored).
 - Notification: plain-text email to the business address (no documents, no card data). Deliverability **untested** on Hostinger (backlog N4).
 - Applicants are told explicitly not to send passport/certificate scans at this stage.
@@ -199,7 +201,7 @@ Magic-link sign-in (e-mail) plus optional password at Stage 2; profile autosaves
 
 ### 12.5 What is not built in this phase
 
-No accounts, no uploads, no database, no reviewer interface. The Stage-1 stepped form (§12.1) is the only candidate-facing build proposed for the next implementation cycle, and it only reaches production through an approved release.
+No accounts, no uploads, no database, no reviewer interface. **Built 2026-10-11 on the working branch (not deployed):** the Stage-1 stepped form (§12.1, see §2) and the readiness and document-checklist logic of §8.2/§8.3/§12.2/§12.3 as a pure module (`site/src/lib/readiness.mjs`, `npm run test:readiness`), demonstrated only on synthetic data at `/preview/readiness/` in the preview build. Wording note on §12.2: because uploads do not exist, the logic tells a candidate to keep their English certificate ready rather than "Upload your English certificate…"; the §12.2 sentence is produced only when uploads open. Both reach production only through an approved release.
 
 ---
 
@@ -215,7 +217,7 @@ No accounts, no uploads, no database, no reviewer interface. The Stage-1 stepped
 
 Also adopted: the profile's **field and level choice drives the directory filter** (§UNIVERSITY_DATA_REGISTER §10) so that a candidate choosing public health or rehabilitation sees only universities with a verified programme in that family — and sees an honest "no verified English-language programme is known to us" message when none exists, rather than being funnelled to medicine.
 
-Status: specification complete for Stage 1 (stepped form) and the data model; **nothing implemented; no real documents collected; go-live gates in §11 unchanged.**
+Status: specification complete for Stage 1 (stepped form) and the data model. *Update 2026-10-11:* the Stage-1 stepped form and the readiness logic are implemented on the working branch (§2, §12.5), not deployed; **no account, upload or real document handling exists; go-live gates in §11 unchanged.**
 
 ---
 

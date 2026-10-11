@@ -19,6 +19,7 @@ jobs:
       - run: npm ci
       - run: npx astro check
       - run: npm run test:records
+      - run: npm run test:readiness
       - run: npm run build
       - run: npm run test:links
       - run: npm run test:meta
@@ -32,6 +33,7 @@ jobs:
       - run: npm run test:gate
       - run: npm run test:preview
       - run: php -l public/api/enquiry.php
+      - run: node tests/enquiry-php.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: ui-screenshots, path: site/tests/output, retention-days: 14 }
