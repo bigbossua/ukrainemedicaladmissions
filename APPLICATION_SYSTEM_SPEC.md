@@ -15,7 +15,7 @@ Status copy shown to applicants is generated from the state machine; free-text c
 
 ## 2. Stage 1 — implemented (`site/public/api/enquiry.php`, `/apply/`, `/contact/`)
 
-*Updated 2026-10-11 (branch `claude/university-profile-pipeline`, not deployed):* `/apply/` is now the five-step candidate-profile form of §12.1 (progressive enhancement; one page without JavaScript), and records are `version: 2` with a nested `profile` object (intent, education with subjects/grades/scale/result status, documents have/need/not sure, contact). Required: field of study, name, e-mail, consent. Anti-abuse adds an optional timing field (`ts`, bot only when present and under 3 s). The IP is stored only as an HMAC with a private `ip_hash_key` from `uma-private/config.php`, and not at all without that key. Tests: `site/tests/enquiry-php.mjs` (PHP built-in server, temp storage, `npm run test:php`). The original Stage-1 description follows.
+*Updated 2026-10-11 (branch `claude/university-profile-pipeline`, not deployed):* `/apply/` is now the five-step candidate-profile form of §12.1 (progressive enhancement; one page without JavaScript), and records are `version: 2` with a nested `profile` object (intent, education with subjects/grades/scale/result status, documents have/need/not sure, contact). Required: field of study, name, e-mail, consent. Anti-abuse adds an optional timing field (`ts`, bot only when present and under 3 s). The IP is stored only as an HMAC with a private `ip_hash_key` from `uma-private/config.php`, and not at all without that key. Tests: `site/tests/enquiry-php.mjs` (PHP built-in server, temp storage, `npm run test:php`). **Deviations from §12.1:** no e-mail verification link, no consent version stored (N22e), the submit button reads Apply Online Now (not "Create my profile"). **Input is stored as typed** once the orchestrator's follow-up commit after `4136658` removes `strip_tags()` from `enquiry.php`: free text is then only trimmed, length-capped and stripped of control characters (single-line fields also collapse repeated spaces), and allow-listed fields drop unknown values. At `4136658` itself `strip_tags()` still cut values such as "<50" (a grade) or "<80" (in a question). The original Stage-1 description follows.
 
 - Forms: application-start (course, university, start year, name, email, certificate country, qualification, message, consent) and enquiry (name, email, message, consent). Client-side accessible validation; server-side validation authoritative.
 - Anti-abuse: honeypot field; method check (405); input length caps; email validation; IP stored only as a monthly-rotating keyed hash (HMAC-SHA256 with a private key since 2026-10-11; a plain SHA-256 of an IPv4 address could be reversed).
@@ -71,7 +71,7 @@ Nothing in Stage 2+ is built; Stage 1 (enquiry/application-start, no documents) 
 
 ---
 
-## 8. Candidate-profile and application-readiness service (added 2026-10-11; PROPOSED, nothing built)
+## 8. Candidate-profile and application-readiness service (added 2026-10-11; PROPOSED, nothing built) — §8.2/§8.3 logic and §12.1 form built on the branch (see §12.5)
 
 **Principle:** a prospective student is never turned away for lacking documents or grades. The service separates a **candidate profile** (free, saveable, incomplete by design) from a **completed application** (state 3+ in §1). Nothing in this section may label a candidate "eligible" or "ineligible"; the system records *what is known*, *what the verified programme requirement says*, and *what evidence is still needed*.
 
@@ -154,7 +154,7 @@ New tables: `programmes` (id, university_slug, title_official, qualification, le
 
 ---
 
-## 12. Candidate-profile design detail (added 2026-10-11; planning only — nothing implemented, no document collection)
+## 12. Candidate-profile design detail (added 2026-10-11; planning only — nothing implemented, no document collection) — §8.2/§8.3 logic and §12.1 form built on the branch (see §12.5)
 
 ### 12.1 Stage-1 stepped form (replaces the single `/apply/` form; still e-mail + JSON backed until Stage 2)
 
@@ -294,7 +294,7 @@ None of these has been checked on the plan. Each stays UNVERIFIED until the owne
 │   ├── bin/                          CLI: migrate, import-stage1, import-requirements, staff-create, retention, backup, purge
 │   └── vendor/                       pinned, installed in CI
 └── uma-private/                      PRIVATE data, mode 0700 (created by the Stage-1 handler by design)
-    ├── config.php                    optional Stage 1 overrides (notify address, mail switch)
+    ├── config.php                    optional Stage 1 overrides (notify address, mail switch) and ip_hash_key (HMAC key for the IP hash)
     ├── enquiries/                    Stage 1 JSON records
     └── stage2/
         ├── config.php                mode 0600: DB and SMTP credentials, sodium master key, HMAC key, maintenance switch (503)
@@ -939,7 +939,7 @@ Periods come from §3 and the draft privacy notice (`site/src/pages/privacy/inde
 **Sources.** Files in `uma-private/enquiries/*.json`, one per submission.
 
 - **Version 1** (VERIFIED-IN-REPO: `site/public/api/enquiry.php` at `50376e3`): no `version` key. Keys `id` (16 hex characters), `type` (`enquiry` or `application-start`), `stage` (always `enquiry`), `received`, `name`, `email`, `country` (the form labels it "Country of your school-leaving certificate"), `course` (a course slug: `medicine`, `dentistry`, `nursing` or `pharmacy` from `site/src/lib/courses.ts`), `university` (a directory slug or `unlisted`), `startYear`, `qualification`, `message`, `consent`, `consentText`, `ip_hash`.
-- **Version 2**: `"version": 2` plus a nested `profile` object produced by the Stage-1 stepped form. The field names and enumerations below were checked in review on 2026-10-11 against the handler committed on branch `wip/apply` at `6a35310` (not merged into this branch; `site/public/api/enquiry.php` here is still version 1). They must be re-checked against the merged handler before the importer is written.
+- **Version 2**: `"version": 2` plus a nested `profile` object produced by the Stage-1 stepped form. Version 2 is the merged handler at `4136658` (`site/public/api/enquiry.php`). The field names and enumerations below were first checked against `6a35310` on `wip/apply` and **re-checked on 2026-10-11 against `site/public/api/enquiry.php` at `4136658`**: record keys `id`, `version`, `type`, `stage`, `received`, `name`, `email`, `course`, `university`, `message`, `consent`, `consentText`, `ip_hash` and `profile`; the `profile` keys in the mapping table below (`intent`, `education` with `subjects[]` rows of `name`, `grade`, `result_status`, `documents[]` of `type`, `state`, `documents_note`, `contact`); and the handler's allow-lists (`FIELD_KEYS`, `LEVEL_KEYS`, `EDU_LEVELS`, `QUAL_STATUSES`, `SCALE_TYPES`, `RESULT_STATES`, `DOCUMENT_TYPES`, `DOCUMENT_STATES`), which match the §14.8 ENUMs. A v2 record has no top-level `country`, `startYear` or `qualification` (those values live under `profile`); the handler still accepts a posted `startYear` as a fallback for `intake`.
 
 **Rules.**
 
