@@ -51,6 +51,12 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per
     </div>
     <h2 style="margin-top:2.5rem">What to check before you apply</h2>
     <ul class="prose">{c.whatToCheck.map((t) => <li>{t}</li>)}</ul>
+    <div class="card" style="margin:1.5rem 0">
+      <h3>Not sure whether you qualify yet?</h3>
+      <p style="margin:0 0 .75rem">Start a free candidate profile with the subjects and grades you have so far. Once a programme's published requirements have been verified, we compare them with your record and show what is met, what is missing and which documents you still need — it is not an admission decision, and you can finish later.</p>
+      <a class="btn btn-primary btn-sm" href={`/apply/?course=${course}`}>{SITE.cta}</a>
+    </div>
+    <p class="note">Apply only through the university's official procedure. Some websites use a university's name in their address without being the university; every profile here links the official domain and names look-alike sites where we have found them.</p>
     <p class="prose">See the <a href="/admissions/">admissions guide</a> for the application process and the <a href="/tuition-fees/">tuition fees guide</a> for how costs are published and verified.</p>
     <p class="note">{SITE.disclaimer}</p>
   </div></section>
