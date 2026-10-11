@@ -1,0 +1,59 @@
+---
+/**
+ * Readiness results, one row per requirement object, in the university's order (APPLICATION_SYSTEM_SPEC §8.2, §12.2).
+ * Never totals the rows into a score or a verdict. The fixed disclaimer sits directly above the table.
+ */
+import ResultBadge from './ResultBadge.astro';
+import { DISCLAIMER } from '../../lib/readiness.mjs';
+import type { Assessment } from '../../lib/readiness.mjs';
+import { REQUIREMENT_TYPES } from '../../lib/fields';
+import { formatDate } from '../../lib/site';
+interface Props { results: Assessment[]; label: string; caption: string; showDisclaimer?: boolean }
+const { results, label, caption, showDisclaimer = true } = Astro.props;
+const TYPE_TEXT: Record<string, string> = REQUIREMENT_TYPES;
+---
+{showDisclaimer && <p class="disclaimer" data-disclaimer><strong>{DISCLAIMER}</strong></p>}
+{results.length === 0 ? <p class="note">This programme has no requirement objects yet, so there is nothing to compare.</p> : (
+  <div class="table-wrap" role="region" aria-label={label} tabindex="0">
+    <table class="rt">
+      <caption>{caption}</caption>
+      <thead><tr><th scope="col">Requirement</th><th scope="col">What you told us</th><th scope="col">Result</th><th scope="col">What this means</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+        {results.map((r) => (
+          <tr data-readiness-row data-result={r.result}>
+            <th scope="row">
+              <span class="type">{TYPE_TEXT[r.type] ?? r.type}{r.subject && ` · ${r.subject}`}</span>
+              <span class="summary">{r.summary}</span>
+              {r.verified ? <span class="badge badge-verified">Verified requirement</span> : <span class="badge badge-pending">Not verified</span>}
+              {r.intakeYear && <small class="intake">Intake {r.intakeYear}{r.intakeMismatch && ' (not your intake)'}</small>}
+            </th>
+            <td>{r.candidateData}</td>
+            <td><ResultBadge result={r.result} /></td>
+            <td>{r.wording}</td>
+            <td>
+              {r.verified && r.source ? (
+                <>
+                  <a href={r.source} rel="nofollow noopener">Official page<span class="visually-hidden"> for: {r.summary}</span></a>
+                  {r.checked && <small>Checked {formatDate(r.checked)}</small>}
+                </>
+              ) : <span class="muted">Not verified yet</span>}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+<style>
+  .disclaimer { margin: 0 0 1rem; padding: .9rem 1.1rem; border-left: 4px solid var(--blue-600); background: var(--blue-50); border-radius: 8px; color: var(--navy-900); max-width: 80ch; }
+  /* position: relative keeps the visually-hidden link text inside the scroll region (it is absolutely positioned). */
+  .table-wrap { position: relative; }
+  .rt { min-width: 760px; }
+  .rt caption { text-align: left; font-size: .9rem; color: var(--slate); padding-bottom: .6rem; }
+  .rt th[scope="row"] { font-weight: 400; color: var(--ink); background: transparent; min-width: 200px; }
+  .type { display: block; font-size: .8rem; font-weight: 600; color: var(--navy-900); }
+  .summary { display: block; margin: .2rem 0 .35rem; }
+  .intake { display: block; color: var(--slate); font-size: .78rem; margin-top: .3rem; }
+  .rt td small { display: block; color: var(--slate); font-size: .78rem; margin-top: .2rem; }
+  .muted { color: var(--slate); font-size: .9rem; }
+</style>

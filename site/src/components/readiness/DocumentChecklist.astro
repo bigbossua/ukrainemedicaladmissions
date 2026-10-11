@@ -1,0 +1,39 @@
+---
+/**
+ * Programme-specific document checklist (APPLICATION_SYSTEM_SPEC §8.3, §12.2, §13): one item per document object,
+ * with its condition and format note quoted, the candidate's own answer, and a Stage-1 state. Nothing is uploaded.
+ */
+import ResultBadge from './ResultBadge.astro';
+import type { ChecklistItem } from '../../lib/readiness.mjs';
+import { formatDate } from '../../lib/site';
+interface Props { items: ChecklistItem[] }
+const { items } = Astro.props;
+---
+{items.length === 0 ? <p class="note">This programme has no document objects yet, so there is no checklist.</p> : (
+  <ul class="dl" aria-label="Document checklist">
+    {items.map((d) => (
+      <li class="item" data-checklist-item data-state={d.state}>
+        <div class="head">
+          <span class="name">{d.name}</span>
+          <ResultBadge state={d.state} />
+          {d.verified ? <span class="badge badge-verified">Verified requirement</span> : <span class="badge badge-pending">Not yet verified</span>}
+        </div>
+        {d.condition && <p class="meta"><span class="k">Condition (university wording):</span>{' '}{d.condition}</p>}
+        {d.formatNote && <p class="meta"><span class="k">Format (university wording):</span>{' '}{d.formatNote}</p>}
+        <p class="meta"><span class="k">What you told us:</span>{' '}{d.declared}</p>
+        <p class="wording">{d.wording}</p>
+        <small>{d.verified && d.source ? <>Source: <a href={d.source} rel="nofollow noopener">official page<span class="visually-hidden"> for: {d.name}</span></a>{d.checked && ` · checked ${formatDate(d.checked)}`}</> : 'Not yet confirmed against an official source.'}</small>
+      </li>
+    ))}
+  </ul>
+)}
+<style>
+  .dl { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+  .item { border: 1px solid var(--line); border-radius: 10px; padding: .8rem 1rem; background: #fff; }
+  .head { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+  .name { font-weight: 600; color: var(--navy-900); margin-right: .25rem; }
+  .meta { margin: .35rem 0 0; font-size: .9rem; color: var(--slate); }
+  .k { font-weight: 600; }
+  .wording { margin: .45rem 0 .2rem; }
+  small { display: block; color: var(--slate); font-size: .78rem; }
+</style>

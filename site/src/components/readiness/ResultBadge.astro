@@ -1,0 +1,23 @@
+---
+/**
+ * One readiness result as a text badge (the word carries the meaning; colour only supports it).
+ * Reuses the global badge classes; "not met" and "unknown" get component-scoped variants.
+ */
+import { RESULT_LABELS, CHECKLIST_LABELS } from '../../lib/readiness.mjs';
+interface Props { result?: string; state?: string }
+const { result, state } = Astro.props;
+const key = result ?? state ?? 'unknown';
+const label = result ? (RESULT_LABELS as Record<string, string>)[result] ?? result : (CHECKLIST_LABELS as Record<string, string>)[key] ?? key;
+const cls = {
+  met: 'badge-verified', available: 'badge-verified',
+  pending_evidence: 'badge-pending', outstanding: 'badge-pending',
+  not_met: 'rb-not-met',
+  unknown: 'rb-unknown', not_needed: 'rb-unknown',
+}[key] ?? 'rb-unknown';
+---
+<span class={`badge rb ${cls}`} data-result={key}>{label}</span>
+<style>
+  .rb { white-space: nowrap; }
+  .rb-not-met { background: #FDE8E8; color: #7F1D1D; }
+  .rb-unknown { background: #EEF1F5; color: #374151; box-shadow: inset 0 0 0 1px #9AA3AF; }
+</style>
