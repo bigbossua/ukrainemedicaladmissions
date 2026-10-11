@@ -23,7 +23,7 @@ Labels: **VERIFIED** (observed in this session, evidence named) · **OWNER-REPOR
 
 | Type | Present | Notes |
 |---|---|---|
-| University profiles | 1 — Ternopil NMU, **noindex**, 0 of 51 claims verified | Record holds only `unverified`/`not-published` claims; measured search demand for Ternopil phrases is 0 (uk) and unmeasured (in) |
+| University profiles | 1 — Ternopil NMU, **noindex**, 0 of 51 claims verified | Record holds only `unverified`/`not-published` claims; measured search demand: uk admission/fees phrasings 0 (2026-10-10); official name 110/mo in India, 20 uk, 20 ng (R2, 2026-10-11) |
 | Course pages | 4 — medicine (482 words), dentistry (326), nursing (354), pharmacy (328) + `/courses/` index | Each links to the directory; no university-specific programme facts because none are verified |
 | Admissions | `/admissions/` (535 words): four-stage process, generic document list, no-guarantee statements | No university-specific requirements (none verified) |
 | Fees | `/tuition-fees/` (626 words): structure and vocabulary only, **no figures** | Cannot rank for the fees cluster until at least one fee schedule is verified |

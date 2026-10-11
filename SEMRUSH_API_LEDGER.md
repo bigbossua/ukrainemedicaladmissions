@@ -100,3 +100,43 @@ Reading B is almost certainly wrong: six identical 8-line requests reported six 
 1. Probe: one `phrase_these` call, 1 keyword × 1 database (`in`, "mbbs in ukraine", a known-data row) — expected ≈10 units; its `metadata.usage.api_units` is read as the actual per-line price (sequential call, so the counter equals the call).
 2. If the probe meters > 15 units/line, stop and report; otherwise run R1 as six sequential `phrase_these` calls (one per database, 24 keywords each) and R2 as three sequential calls (`in`, `uk`, `ng`; 30 keywords each), recording the counter after every call; hard stop if cumulative metered usage for the batch reaches 2,340.
 3. Save every CSV under `research/semrush/2026-10-11-*.csv`, validate (header, row count, duplicates), update `KEYWORD_URL_MAP.md` §6–§7 and this ledger with metered usage per call.
+
+## 2026-10-11 — Balance reconciliation (owner's API Units page: 47,890 remaining)
+
+| Item | Value | Label |
+|---|---|---|
+| Owner's current balance | **47,890** Standard API units (screenshot of Subscription info → API units, 2026-10-11) | VERIFIED (owner) |
+| Starting allowance | 50,000 (owner's earlier screenshot) | VERIFIED (owner) |
+| **Actual units consumed to date** | **50,000 − 47,890 = 2,110** | VERIFIED |
+| Ledger's running total before this entry | 2,240 (Reading A: observed 910 + observed 130 + *published-price estimate* 1,200 for the eight parallel follow-up calls) | superseded |
+| Discrepancy | **130 units over-stated** | explained below |
+
+**Where the 130 comes from.** Two calls were *observed* (910 for `phrase_all`; 130 for the uk-seeds `phrase_these`) and the eight follow-up calls were *estimated* at published prices (1,200) because their `metadata.usage.api_units` readings (520 → 1,200) had been identified as a running counter rather than per-call costs. The only arithmetic consistent with the verified balance is: the counter in that session was cumulative **including the earlier uk-seeds call (130)** that ran in the same connector session, so the counter's final value 1,200 = 130 (uk seeds) + **1,070 (the eight follow-up calls together)**; with `phrase_all` (910) having run in a separate session: 910 + 130 + 1,070 = **2,110** — exactly the verified figure. The per-call split of the 1,070 cannot be recovered after the fact (zero-volume lines may not have been billed; `phrase_fullsearch` may have billed fewer lines than 20/line); the batch total is what the balance proves.
+
+**Corrections applied:** cumulative consumption is now **2,110 (VERIFIED)**; the eight follow-up calls are re-stated as **1,070 in total (derived from the verified balance), not 1,200**; the "running counter" conclusion stands, refined to *cumulative within a connector session*. From this entry on, each call's cost is recorded as the **counter delta within the session** and the session total is reconciled against the owner's next balance reading.
+
+**Position before the approved research:** 47,890 available; approved spend ≤ 2,340 (R1 + R2) plus a 10-unit probe; the brief's 48,000 preservation floor was already crossed before this phase and the owner has explicitly approved the spend; expected balance after the phase ≈ 45,540 if the full cap is used.
+
+## 2026-10-11 — R1 + R2 executed (approved; cap 2,340) — **850 units used**
+
+Pre-flight satisfied: balance 47,890 confirmed by the owner; price confirmed by the probe below. All calls `phrase_these`, columns `keyword,volume,cpc,competitive_density,results,keyword_difficulty,intent,trend`. Raw CSVs: `research/semrush/2026-10-11-*.csv`.
+
+| # | Call | Requested → returned lines | `metadata.usage.api_units` reading | Cost recorded | Notes |
+|---|---|---|---|---|---|
+| 1 | probe · in · "mbbs in ukraine" | 1 → 1 | 10 | **10** | sequential; confirms 10 units per returned line and the earlier 260/kd 18 figure |
+| 2 | R1 · in · 24 programme terms | 24 → 6 | 60 | **60** | sequential; 18 keywords with no data were **not billed** |
+| 3 | R1 · uk | 24 → 6 | 60 | **60** | sequential (reading equals this call's cost, not a cumulative total) |
+| 4 | R1 · ng | 24 → 2 | 20 | **20** | |
+| 5 | R1 · pk | 24 → 4 | 40 | **40** | |
+| 6 | R1 · za | 24 → 3 | 30 | **30** | |
+| 7 | R1 · ae | 24 → 4 | 40 | **40** | |
+| 8 | R2 · in · 12 universities × 2 + 6 cities | 30 → 21 | 210 | **210** | |
+| 9 | R2 · uk | 30 → 24 | 240 | **240** | |
+| 10 | R2 · ng | 30 → 14 | 140 | **140** | |
+| | **Total this phase** | 234 requested → 85 returned | | **850** | cap 2,340 — 1,490 unused; R3–R5 not run |
+
+**Expected balance after this phase: 47,890 − 850 = 47,040** — to be confirmed by the owner's next reading of the API Units page; any difference is recorded here.
+
+**Counter semantics — corrected observation.** On every sequential call today the `usage.api_units` reading equalled that call's own cost (10 × returned lines) and did **not** accumulate across calls (readings 10, 60, 60, 20, 40, 30, 40, 210, 240, 140). The 2026-10-10 parallel-batch readings (520 … 1,200 for 8- and 18-line requests) therefore remain anomalous — most plausibly the field reported an in-flight aggregate while eight requests ran concurrently — and the per-call attribution for that batch is unrecoverable; the verified total (2,110 before today) governs, as recorded in the reconciliation above. Rule from now on: **run metered calls sequentially and read the counter after each.**
+
+**Cumulative consumption: 2,110 (verified) + 850 (this phase) = 2,960 units; balance expected 47,040.**

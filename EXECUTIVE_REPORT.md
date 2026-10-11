@@ -5,7 +5,7 @@ Labels used throughout: **VERIFIED** (observed, evidence named) · **OWNER-REPOR
 ## 1. Current verified state of the website
 
 - Production branch `production` = `b2ca3d6` (build of `4d4e605`, tag `release-20261011-005330`, 45 files, fingerprint `5ff6e7e7…c033d4`) — VERIFIED from GitHub. Hostinger deployment into `public_html/` — OWNER-REPORTED; **the live host is not reachable from this environment** (network policy), so no live check has run. The read-only check is ready (`npm run verify:live`) and documented with expected results in `BASELINE_REPORT.md` §9.
-- 18 indexable pages in the sitemap, 3 noindex; canonicals, robots, JSON-LD and the two legacy 301s correct in the published tree (VERIFIED offline). One university record (Ternopil), noindex, 0 verified claims. No country or city pages (deliberate). Fees page has no figures (deliberate).
+- 18 indexable pages in the sitemap, 3 noindex; canonicals, robots, JSON-LD and the two legacy 301s correct in the published tree (VERIFIED offline). One university record (Ternopil), noindex, 0 verified claims; its official name draws 110/mo in India (R2, 2026-10-11), correcting the earlier "0 demand" reading that was UK-only. No country or city pages (deliberate). Fees page has no figures (deliberate).
 - Forms: Stage 1 only; behaviour verified in code and with synthetic data locally; **live behaviour and e-mail delivery UNVERIFIED**. No accounts, profiles, uploads, tracking or admin exist.
 - Local quality gates: axe 0 violations, Lighthouse 99–100, 3-width smoke, 0 broken links, security headers and exposed-file rules in `.htaccess` (all LOCAL ONLY). CI run #9 passed on the deployed content; later commits are docs and tooling.
 - Analytics: none installed; Search Console: unknown to this session. No first-party data exists.
@@ -86,3 +86,23 @@ SEMrush R1 (1,440), R2 (900) — minimum 2,340 units; R3 (1,440); R4 ≈1,200 an
 **Candidate profile:** stepped Stage-1 form, readiness worked example and missing-document workflow specified (`APPLICATION_SYSTEM_SPEC.md` §12); nothing implemented; no document collection.
 
 **Blockers, in order of impact:** (1) network allow-list for the production hosts and the official university/registry domains — free, minutes, unlocks live checks and the first real verifications; (2) the SEMrush balance reading — unlocks R1/R2; (3) legal entity details (D7).
+
+
+---
+
+# Addendum — approved SEMrush research executed, 2026-10-11 (night)
+
+**Reconciliation:** owner's balance 47,890 → actual consumption before this phase **2,110**, not the ledger's 2,240; the 130-unit overstatement sat in the published-price *estimate* for the eight parallel 2026-10-10 calls (actual 1,070 in total; per-call split unrecoverable). Ledger corrected; verified figures now govern.
+
+**Probe:** `phrase_these`, 1 keyword → 10 units; every subsequent sequential call read exactly 10 × returned lines; unreturned keywords are not billed.
+
+**Spend:** R1 250 + R2 590 + probe 10 = **850 units** (cap 2,340; R3–R5 not run). Cumulative 2,960; expected balance **47,040** (owner to confirm). Ten raw exports in `research/semrush/2026-10-11-*.csv`.
+
+**How the findings change the money-page priorities**
+- University profiles are the main acquisition opportunity and there are twelve measured names, not two: Bukovinian 480 (mixed informational + transactional), Odessa 390 (kd 16), Kharkiv 390 (kd 34), Bogomolets 320 (uk 90), Ivano-Frankivsk 210, Uzhhorod 140, Ternopil 110 (kd 16), Zaporizhzhia 90, Vinnytsia 50 (+ Pirogov 390), Lviv 50, Poltava 20, Dnipro 20 — all India unless stated. Seven profiles are approved for planning in the order Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv is held behind an operating-conditions check; Zaporizhzhia, Lviv, Poltava and Dnipro deferred. Every profile still requires official verification before it can be indexed.
+- Ternopil's "no demand" reading is corrected: 110/mo in India at the lowest difficulty; the template profile is worth indexing once verified.
+- Nigeria shows its first measured named-university interest (eight names at 10–30/mo) → secondary English market; no country pages.
+- Programme pages are demoted: nursing (uk 20, in 0, BSN/MSN not returned) drops to P3; public health (uk 10) stays deferred; physiotherapy, sport, preparatory/foundation, requirements/documents phrasings, "english medium" and "mbbs in ukraine 2026" were not returned in any of six databases — defers and rejects confirmed; preparatory routes remain a section of `/admissions/` for student value.
+- Small Tier-1 confirmations ("study dentistry" 30, "mbbs eligibility" 30, "for indian students" 20, "is ukraine mbbs valid in india" 20) support improving existing pages, not new URLs. Fee phrasing per university (10–30) confirms fees live on profiles and `/tuition-fees/`. City pages rejected with evidence.
+
+**Unchanged:** no new SEO page; `/tuition-fees/` stays the first content priority and cannot rank without verified figures; no SERP or competitor evidence exists (R3–R5 not run); nothing deployed, nothing purchased, no production change.

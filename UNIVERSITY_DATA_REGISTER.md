@@ -62,16 +62,24 @@ Cross-check against the Wikipedia research list in the brief (research inventory
 
 Access attempt 2026-10-10: `www.tdmu.edu.ua` — DNS resolution failed from the build environment (network policy). No claim could be verified. Nothing has been invented to fill the gap.
 
-## 5. Verification priority (SEMrush named-university evidence, 2026-10-10)
+## 5. Verification priority (SEMrush named-university evidence, updated 2026-10-11 with R2)
 
-| Priority | Institution | Measured demand | Official domain (search-evidenced, unfetched) |
-|---|---|---|---|
-| 1 | Vinnytsia National Pirogov Memorial Medical University | in: "pirogov medical university ukraine" 390/mo (kd 23); uk 40 | to be identified |
-| 2 | Bogomolets National Medical University (Kyiv) | in: 320/mo (kd 28, navigational); uk: 70 + "national medical university in kiev ukraine" 70 | `nmuofficial.com` (snippet: foreign applications 19 Jul–31 Oct 2026) |
-| 3 | Bukovinian State Medical University (Chernivtsi) | uk: 20/mo | to be identified |
-| 4 | Ternopil National Medical University (brief's pilot) | uk: 0/mo for admission and fees phrases; **not measured in in** | `tdmu.edu.ua` (official per search results) |
+| Priority | Institution | Measured demand (exact official name; `phrase_these` 2026-10-11 unless stated) | kd · intent (in) | Official domain (snippet-evidenced, unfetched) |
+|---|---|---|---|---|
+| 1 | Bukovinian State Medical University (Chernivtsi) | **in 480** (fees 20) · uk 20 · ng 30 | 30 · informational + transactional | `bsmu.edu.ua` |
+| 2 | National Pirogov Memorial Medical University, Vinnytsia | in 50 + "pirogov medical university ukraine" **390** (2026-10-10) · uk 40 (pirogov) / 0 (official name) | pirogov row 23 | `vnmu.edu.ua`, `foreign.vnmu.edu.ua` |
+| 3 | Odesa National Medical University | **in 390** (fees 20) · uk 20 · ng 20 | 16 · informational | `onmedu.edu.ua` |
+| 4 | Bogomolets National Medical University (Kyiv) | in 320 (fees 30) · **uk 90** (+70+70 broad 2026-10-10) · ng 20 (fees 30) | 25 · navigational | `nmuofficial.com` |
+| 5 | Ivano-Frankivsk National Medical University | in 210 (fees 30) · uk 20 · ng 20 | 29 · navigational | `ifnmu.edu.ua` |
+| 6 | Uzhhorod National University | in 140 (fees 10) · uk 20 · ng 20 | 30 · navigational | `uzhnu.edu.ua` |
+| 7 | I. Horbachevsky Ternopil National Medical University (template record) | **in 110** (fees 10) · uk 20 · ng 20 — *corrects the 2026-10-10 "0 demand" (UK admission/fees phrasings only)* | 16 · navigational | `tdmu.edu.ua` |
+| 8 (gated) | Kharkiv National Medical University | in 390 (fees 20) · uk 20 (fees 10) · ng 10 (fees 20) | 34 · navigational | `knmu.edu.ua` — operating-conditions check before any work |
+| 9 (gated) | Zaporizhzhia State Medical and Pharmaceutical University | in 90 · uk 20 | not computed | `mphu.edu.ua` — teaching location (Berehove) check first |
+| 10 | Danylo Halytsky Lviv National Medical University | in 50 (fees 20) · uk 20 · ng 30 | not computed | `new.meduniv.lviv.ua` |
+| 11 | Poltava State Medical University | in 20 (fees 10) · uk 20 | not computed | `pdmu.edu.ua` |
+| 12 | Dnipro State Medical University | in 20 · uk 20 | not computed | `dmu.edu.ua` |
 
-Ternopil remains the *template* pilot (its record exists and the page renders correctly as noindex) but has no measured search demand; the three institutions above should be verified before it unless the owner directs otherwise. **2026-10-11:** the snippet sweep (§6–§9, raw data in `research/universities/`) found Ternopil's official international pages carry a 2025/26 fee table, deadlines and an English-track nursing line — the richest leads of the sweep — so it moves to third in the expansion order on verification merit (§9).
+Ternopil remains the *template* pilot (its record exists and renders correctly as noindex). Its India demand (110/mo, kd 16) and the richest official leads of the sweep make it worth indexing once verified, in seventh place by demand. **2026-10-11:** the snippet sweep (§6–§9, raw data in `research/universities/`) found Ternopil's official international pages carry a 2025/26 fee table, deadlines and an English-track nursing line.
 
 ## 6. Research inventory (NOT a confirmed list; from the brief)
 
@@ -124,19 +132,20 @@ Reading (12 universities): English-medium **medicine, dentistry and pharmacy for
 
 ## 9. Recommended expansion order and the deferred / excluded list
 
-**Order (evidence = measured search demand + strength of official leads + verification effort):**
+**Order (revised 2026-10-11 with R2 demand; evidence = measured search demand × strength of official leads × operating conditions):**
 
-| Order | University | Why now | What must be true before the profile is indexable |
+| Order | University | Why | What must be true before the profile is indexable |
 |---|---|---|---|
-| 1 | Vinnytsia (Pirogov) | Largest named-university demand (in 390, uk 40); official 2026/27 fee PDF and admission PDFs exist to verify against | §3 procedure complete for Medicine, Dentistry, Pharmacy; teaching-format notice for the current year |
-| 2 | Bogomolets (Kyiv) | Second demand (in 320, uk 140 across two namings); 2026 intake window official | as above + an official fee page (none in snippets) |
-| 3 | Ternopil | Richest official leads incl. 2025/26 fee table, deadlines and English-track nursing; the template record already exists; **no measured demand** — indexed on verification merit, measured later via GSC and R2 | as above; nursing award title and English availability confirmed or the nursing line left unpublished |
-| 4 | Bukovinian (Chernivtsi) | uk 20; preparatory course with English core subjects — relevant to the readiness service | as above; official degree fees (none in snippets) |
-| 5 | Ivano-Frankivsk, Odesa, Lviv, Poltava | Strong supply, no measured demand yet (R2 decides order among them); Lviv's and Poltava's official fee documents are out of date or conflicting | as above; current-year documents |
-| 6 | Kharkiv | Official English-medium nursing lead, but the operating-conditions check comes first (front-line region; nine international admissions in 2025 per press) | dated official statement on format and location for the current year; fees |
-| 7 | Uzhhorod | Western region; official English "Medical Doctor" programme for foreigners; official nursing, public-health and rehabilitation programmes (Ukrainian) — the broadest health-sciences supply found; 2026 intake stages official; no fee page captured | official English fee page read; eligibility/language of nursing, PH, rehab for foreigners |
-| 8 | Zaporizhzhia | Official pages state offline teaching of foreigners in Berehove (undated); Ministry-portal fees; two intake windows | **dated** current-year statement of where and how foreigners are taught; then the standard set |
-| 9 | Dnipro | Front-line region; weakest official evidence (no official English programme snippet, no fees, no deadlines) | official statement of format/location and the programme list for foreigners before any further work |
+| 1 | Bukovinian (Chernivtsi) | Largest measured demand (in 480, intent incl. transactional; uk 20; ng 30); official preparatory course incl. English track; FAQ and faculty pages found | §3 procedure complete for Medicine, Dentistry, Pharmacy; official degree fees (none in snippets); teaching-format notice for the current year |
+| 2 | Vinnytsia (Pirogov) | pirogov 390 + name 50; official 2026/27 fee PDF and admission PDFs exist | as above |
+| 3 | Odesa | in 390 at the lowest difficulty (16); official 2026 fee page and intake window | as above |
+| 4 | Bogomolets (Kyiv) | in 320, uk 90, ng 20 + fees 30; 2026 intake window official; no official fee page in snippets | as above + fee page |
+| 5 | Ivano-Frankivsk | in 210; richest official documentation (2025 fee table, 2026 rules) | current-year documents |
+| 6 | Uzhhorod | in 140; broadest health-sciences supply; western region; 2026 intake stages official; no fee page captured | official English fee page; eligibility/language of nursing, PH, rehab |
+| 7 | Ternopil | in 110 at kd 16; template record exists; 2025/26 fee table, deadlines, English-track nursing lead | nursing award and English availability confirmed or left unpublished; current format statement |
+| 8 (gated) | Kharkiv | in 390 but kd 34; front-line region; nine international admissions in 2025 per press | **dated** official statement on format and location for the current year, then the standard set |
+| 9 (gated) | Zaporizhzhia | in 90; official pages say foreigners are taught in Berehove (undated) | dated official statement of where and how foreigners are taught |
+| 10–12 | Lviv (50), Poltava (20), Dnipro (20) | Small demand; Lviv and Poltava fee documents out of date or conflicting; Dnipro has no official English-programme snippet | later pass |
 | — | Rest of the §6 inventory (Sumy SU, Karazin, Kyiv Medical University, private institutions, relocated Donetsk/Luhansk) | Not yet researched; relocated institutions require a dated official notice | later pass |
 
 **Deferred or excluded until verification exists (cannot be published):**
