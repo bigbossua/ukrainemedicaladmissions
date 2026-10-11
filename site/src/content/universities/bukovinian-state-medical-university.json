@@ -102,11 +102,11 @@
         "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Master's in Medicine\" (Medical Faculty No. 3 trains foreign students in General Medicine); entry on complete general secondary education."
       },
       "specialtyCode": {
-        "value": "222",
-        "status": "unverified",
+        "value": null,
+        "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "note": "Record the specialty code only as printed on the official programme page. No code appeared in the 2026-10-11 snippets for this programme; the national code was NOT in the lead and is deliberately not recorded."
       },
       "qualification": {
         "value": null,
@@ -732,7 +732,7 @@
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Academic year: November-August\"; \"Admission deadline: all year around\"."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Academic year: November-August\"; \"Admission deadline: all year around\". A second official-domain snippet (FAQ, second sweep) says the preparatory course starts on 1 October — the two leads conflict; read the live page."
       },
       "fee": {
         "value": null,
@@ -769,6 +769,13 @@
       "url": "https://www.bsmu.edu.ua/en/admission/preparatory-course",
       "purpose": "Duration, subjects, English-track statement, certificate wording, fee with year",
       "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Tuition fees — foreign students",
+      "url": "https://www.bsmu.edu.ua/en/admission/tuition-fees/",
+      "purpose": "Official fee page: read the academic year it states (snippet showed 2023–2024 content), amounts, currency, per-period and schedule",
+      "snippetDate": "2026-10-11",
+      "note": "Surfaced in the second sweep (topic: preparatory); figures NOT recorded"
     },
     {
       "label": "Medical Faculty No. 3",

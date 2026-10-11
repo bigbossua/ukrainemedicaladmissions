@@ -632,7 +632,7 @@
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "note": "Search-snippet lead (THIRD-PARTY source — ASPHER listing, 2026-10-11) — NOT verified and not an official statement; confirm on the official programme page."
       },
       "format": {
         "value": null,
@@ -796,13 +796,11 @@
       "id": "preparatory-department",
       "name": "Preparatory Department for foreigners and stateless persons",
       "languageOfInstruction": {
-        "value": [
-          "Ukrainian"
-        ],
-        "status": "unverified",
+        "value": null,
+        "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: Ukrainian (Russian) language taught as a subject."
+        "note": "Snippets say Ukrainian is taught as a subject; the language of instruction for the other subjects was not in any snippet. Read it from the official page."
       },
       "englishTrack": {
         "value": false,
