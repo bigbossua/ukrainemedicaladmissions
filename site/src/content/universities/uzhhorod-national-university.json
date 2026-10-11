@@ -98,11 +98,11 @@
       "name": "Medicine (Medical Doctor programme, Medical Faculty No. 2)",
       "field": "medicine",
       "level": {
-        "value": "integrated_master",
+        "value": "master",
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: faculty news (2024–25): accepts \"specialty 222 Medicine at both master's and PhD levels, with English as the language of instruction, regardless of citizenship\"."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: faculty news (2024–25): accepts \"specialty 222 Medicine at both master's and PhD levels, with English as the language of instruction, regardless of citizenship\". Recorded as \"master\" because the snippet says master's level; whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
       },
       "specialtyCode": {
         "value": "222",

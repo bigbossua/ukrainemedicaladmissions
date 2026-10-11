@@ -97,11 +97,11 @@
       "name": "Medicine (General Medicine)",
       "field": "medicine",
       "level": {
-        "value": "integrated_master",
+        "value": "master",
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"master's programmes in 221 Dentistry, 222 Medicine, and 226 Pharmacy\" (2023 rules); foreign-faculty page: \"Medicine runs 12 semesters\"."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"master's programmes in 221 Dentistry, 222 Medicine, and 226 Pharmacy\" (2023 rules); foreign-faculty page: \"Medicine runs 12 semesters\". Recorded as \"master\" because the snippet says master's level; whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
       },
       "specialtyCode": {
         "value": "222",

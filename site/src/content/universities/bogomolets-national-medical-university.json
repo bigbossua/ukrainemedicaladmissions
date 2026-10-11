@@ -223,11 +223,11 @@
         "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: Master's Degree, 5 years (2026 page); accreditation page: \"full-time (daytime) form of education only\"."
       },
       "specialtyCode": {
-        "value": "221 (I1)",
+        "value": "I1",
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Only the admission code I1 appeared in the snippet; the national specialty number was not in the lead and is not recorded."
       },
       "qualification": {
         "value": null,
@@ -341,11 +341,11 @@
         "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: Master's Degree, 5 years (2026 page)."
       },
       "specialtyCode": {
-        "value": "226 (I8)",
+        "value": "I8",
         "status": "unverified",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Only the admission code I8 appeared in the snippet; the national specialty number was not in the lead and is not recorded."
       },
       "qualification": {
         "value": null,

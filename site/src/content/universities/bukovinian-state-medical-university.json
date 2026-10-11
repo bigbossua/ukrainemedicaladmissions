@@ -572,11 +572,11 @@
         "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: official programme document (2025): first (bachelor) level; award «Бакалавр терапії та реабілітації», professional qualification «Асистент фізичного терапевта»."
       },
       "specialtyCode": {
-        "value": "227",
-        "status": "unverified",
+        "value": null,
+        "status": "not-published",
         "source": null,
         "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "note": "Record the specialty code only as printed on the official programme page. The 2026-10-11 snippet names the specialty «Терапія та реабілітація» without a code; the national code was NOT in the lead and is deliberately not recorded."
       },
       "qualification": {
         "value": null,
