@@ -141,9 +141,14 @@ try {
           for (const [k, v] of Object.entries(exp)) check(org[k] === v, `(b) ${slug}: JSON-LD ${k} is ${JSON.stringify(org[k])}, expected the verified value`);
         }
         const crumbs = parsed.find((o) => o['@type'] === 'BreadcrumbList');
-        check(crumbs && crumbs.itemListElement.map((i) => i.name).join(' > ') === `Home > Universities > ${slug === 'fixture-alpha-medical-university' ? 'Fixture Alpha Medical University' : 'Fixture Beta Medical University'}`, `(b) ${slug}: breadcrumb JSON-LD unexpected`);
+        check(crumbs && crumbs.itemListElement.map((i) => i.name).join(' > ') === `Home > Universities > ${slug === 'fixture-alpha-medical-university' ? 'Fixture Alpha Medical University' : 'Fixture Beta Medical University </script><script>alert(1)</script>'}`, `(b) ${slug}: breadcrumb JSON-LD unexpected`);
       }
       check(ldBlocks(beta).some((b) => b.includes('\\u003c/script\\u003e')), '(b) beta: JSON-LD does not carry the escaped attack string');
+      // Breakout risk 2 (Breadcrumbs.astro): the university's short name is the last breadcrumb label. The BreadcrumbList block
+      // must carry it escaped, parse back to the exact string, and no raw closing tag may appear inside any JSON-LD block.
+      const crumbBlock = ldBlocks(beta).find((b) => b.includes('BreadcrumbList'));
+      check(crumbBlock && crumbBlock.includes('\\u003c/script\\u003e\\u003cscript\\u003ealert(1)'), '(b) beta: BreadcrumbList JSON-LD does not carry the short-name attack string escaped');
+      check(!/<\/script><script>/i.test(beta) && !/<script>alert\(1\)/i.test(beta), '(b) beta: a raw script breakout appears in the profile HTML');
       // Directory: filters and chips only from shown values.
       const dir = page(OUT.pass, 'universities');
       check(attr(dir, 'fixture-alpha-medical-university', 'data-levels') === 'integrated_master', `(b) directory alpha data-levels = ${attr(dir, 'fixture-alpha-medical-university', 'data-levels')}`);

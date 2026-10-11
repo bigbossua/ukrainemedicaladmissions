@@ -68,7 +68,7 @@ Cross-check against the Wikipedia research list in the brief (research inventory
 
 ## 4. Record status (2026-10-11, branch `claude/university-profile-pipeline`)
 
-Seven real records exist, all **unpublished draft shells** built from the 2026-10-11 search-snippet sweep (`research/universities/*.json`). Every claim in them is `unverified` (with a provenance note) or `not-published`; **no claim is verified** and no fee, deadline or intake date is recorded as a value. None produces a page in a production build. Programmes without an official-domain lead of international admission were moved to `deferredProgrammes[]` on 2026-10-11 (owner decision 2). Verification of Vinnytsia, Odesa and Bukovinian is approved; the official domains remain unreachable from the build environment, so the evidence registers in `research/verification/` are the work-list for the allow-list or capture route.
+Twelve real records exist (seven from the first sweep; five research drafts added on 2026-10-11 — Kharkiv, Zaporizhzhia, Dnipro, Lviv, Poltava — at the owner's request to add more universities), all **unpublished draft shells** built from the 2026-10-11 search-snippet sweep (`research/universities/*.json`). Every claim in them is `unverified` (with a provenance note) or `not-published`; **no claim is verified** and no fee, deadline or intake date is recorded as a value. None produces a page in a production build. Programmes without an official-domain lead of international admission were moved to `deferredProgrammes[]` on 2026-10-11 (owner decision 2). Verification of Vinnytsia, Odesa and Bukovinian is approved; the official domains remain unreachable from the build environment, so the evidence registers in `research/verification/` are the work-list for the allow-list or capture route.
 
 | Slug | Official name (claimed, unverified) | Publishable | Verified claims | Programmes with an international-admission lead (families) + deferred | Requirement / document objects (all unverified) | Preparatory routes | Research references | Open questions |
 |---|---|---|---|---|---|---|---|---|
@@ -79,6 +79,11 @@ Seven real records exist, all **unpublished draft shells** built from the 2026-1
 | `ivano-frankivsk-national-medical-university` | Ivano-Frankivsk National Medical University | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 4 deferred | 2 / 0 | 1 | 22 | 12 |
 | `uzhhorod-national-university` | State University "Uzhhorod National University" | **No** (draft shell) | 0 | 1 (medicine) + 6 deferred | 2 / 2 | 1 | 16 | 12 |
 | `ternopil-national-medical-university` | I. Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 3 deferred | 0 / 9 | 1 | 8 | 11 |
+| `kharkiv-national-medical-university` | Kharkiv National Medical University | **No** (research draft) | 0 | 1 (medicine) + 5 deferred | 1 / 0 | 1 | 21 | 14 |
+| `zaporizhzhia-state-medical-and-pharmaceutical-university` | Zaporizhzhia State Medical and Pharmaceutical University | **No** (research draft) | 0 | 5 (medicine, dentistry, pharmacy, other, other) + 1 deferred | 1 / 0 | 1 | 12 | 14 |
+| `dnipro-state-medical-university` | Dnipro State Medical University | **No** (research draft) | 0 | 0 + 4 deferred | 0 / 0 | 1 | 13 | 14 |
+| `danylo-halytsky-lviv-national-medical-university` | Danylo Halytsky Lviv National Medical University | **No** (research draft) | 0 | 3 (medicine, dentistry, pharmacy) + 2 deferred | 3 / 9 | 1 | 12 | 15 |
+| `poltava-state-medical-university` | Poltava State Medical University | **No** (research draft) | 0 | 2 (medicine, dentistry) + 4 deferred | 1 / 0 | 1 | 22 | 15 |
 
 Synthetic sample: `site/src/content/samples/example-medical-university.json` (`synthetic: true`, never publishable, sources on `example.invalid`) demonstrates the layouts with verified-looking values; it renders only at `/preview/example-medical-university/` in a preview build and is kept out of the real directory by `test:gate`.
 

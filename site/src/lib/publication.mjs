@@ -212,10 +212,12 @@ const DOCUMENT_PATH = /^programmes\.[^.]+\.documents\.[^.]+$/;
 /** @param {string} path */ export const isMoneyPath = (path) => MONEY_PATH.some((r) => r.test(path));
 /**
  * Source tiers that may support a claim at `path` (see the evidence interface): recognition only tier 4 (the destination
- * country's recognition authority); every other claim, accreditation included, tiers 1-3. Tier 5 supports nothing.
+ * country's recognition authority); fees and other mandatory costs (tuition, otherMandatoryCosts, preparatory fee) only tiers
+ * 1-2, the university's own pages or fee schedule (UNIVERSITY_EVIDENCE_STANDARD.md §7); every other claim, accreditation
+ * included, tiers 1-3. Tier 5 supports nothing.
  * @param {string} path @returns {number[]}
  */
-export const allowedTiers = (path) => (path === 'recognition' ? [4] : [1, 2, 3]);
+export const allowedTiers = (path) => (path === 'recognition' ? [4] : isMoneyPath(path) ? [1, 2] : [1, 2, 3]);
 
 /**
  * The public content of a requirement or document item: the value an evidence entry for it must carry.

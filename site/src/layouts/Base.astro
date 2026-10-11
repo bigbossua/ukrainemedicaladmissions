@@ -23,6 +23,12 @@ const noindex = noindexProp || STAGING || draft;
 const bare = STAGING || draft; // omit every signal that could point a crawler at this URL
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.name}`;
+// Attribute text (meta description, og:title, og:description): Astro escapes & and " there, which is enough for a quoted
+// attribute, but a raw "<script>" would still alarm scanners and naive parsers. Angle brackets never occur in real titles or
+// descriptions, so they are removed from attribute text (defence in depth; the <title> element itself is escaped by Astro).
+const attrText = (s: string) => s.replace(/[<>]/g, '');
+const metaTitle = attrText(fullTitle);
+const metaDescription = attrText(description);
 ---
 <!doctype html>
 <html lang="en">
@@ -30,13 +36,13 @@ const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.na
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={metaDescription} />
   {!bare && <link rel="canonical" href={canonical} />}
   {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE.name} />
-  <meta property="og:title" content={fullTitle} />
-  <meta property="og:description" content={description} />
+  <meta property="og:title" content={metaTitle} />
+  <meta property="og:description" content={metaDescription} />
   {!bare && <meta property="og:url" content={canonical} />}
   <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
   <meta name="twitter:card" content="summary_large_image" />

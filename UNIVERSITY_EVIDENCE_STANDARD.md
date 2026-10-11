@@ -4,6 +4,8 @@
 
 **Position today (checked in this environment on 2026-10-11).** No university claim is verified. Every official host tried from the build environment was refused at the environment's proxy under its network policy (curl: "CONNECT tunnel failed, response 403"; HTTP code 000), and so were the Ministry portals, the NAQA site, the web archive and the World Directory of Medical Schools (§11.4 and `SOURCE_VERIFICATION_REGISTER.md`). The seven evidence files in `site/data/evidence/` therefore hold **no entries**, only an access block saying so. No university-specific fact may appear in a production page until this standard has been met for it.
 
+**Access limitations are not evidence (POLICY).** A refused connection, timeout or gateway denial from the build environment is a fact about the environment, not about the university. It is recorded only in the evidence file's `access` block; it never creates an evidence entry, never changes a claim's status or value, and never supports "not published" or "not-applicable". The complete list of refused hosts is in `DIRECTORY_VERIFICATION_PLAN.md` §10.1a.
+
 **How to read this document.** Every rule carries one of two labels:
 
 - **POLICY** — binding now. It comes from the owner's rules, the owner's decisions of 2026-10-11 (`DIRECTORY_VERIFICATION_PLAN.md` §8) or the existing record tests (`site/tests/records-evidence.mjs`).

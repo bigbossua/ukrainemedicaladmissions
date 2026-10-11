@@ -65,7 +65,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
         }
       }
       // Combination that cannot match: a city plus a field that city does not offer (if any such pair exists).
-      const cards = await page.$$eval('[data-list] > article', (a) => a.map((el) => ({ city: el.dataset.city, fields: (el.dataset.fields ?? '').split(' ') })));
+      const cards = await page.$$eval('[data-list] > article', (a) => a.map((el) => ({ city: el.dataset.city, fields: (el.dataset.fields ?? '').split(' ').filter(Boolean) })));
       const allFields = [...new Set(cards.flatMap((c) => c.fields))];
       outer: for (const c of cards) for (const f of allFields) if (!cards.some((x) => x.city === c.city && x.fields.includes(f))) {
         await page.selectOption('[data-filter="city"]', c.city); await page.selectOption('[data-filter="field"]', f);

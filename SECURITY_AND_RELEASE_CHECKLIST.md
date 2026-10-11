@@ -21,7 +21,8 @@ Complete every box before the **first** production write and before each later r
 
 ## B. Every release
 
-- [ ] CI green on the commit (record evidence rules, readiness logic, build, astro check, links, meta incl. JSON-LD and `security.txt` expiry, redirect safety, UI smoke, axe, Lighthouse, tooling self-test, staging guard, publication gate, preview UI, php -l, PHP handler tests (enquiry-php)).
+- [ ] CI green on the commit (record evidence rules, readiness logic, build, astro check, links, meta incl. JSON-LD and `security.txt` expiry, redirect safety, UI smoke, axe, Lighthouse, tooling self-test, staging guard, publication gate, preview UI, php -l, PHP handler tests (enquiry-php), publication policy and fixture builds (`test:publication`), publication report (`report:publication`)).
+- [ ] `npm run report:publication` shows the intended records as published and every other record as not published; no record is flagged publishable without its evidence file and an owner sign-off.
 - [ ] `npm run manifest` fingerprint recorded for the release; `.well-known/security.txt` Expires still in the future.
 - [ ] Screenshots from CI reviewed at mobile/tablet/desktop for the changed pages.
 - [ ] No new page without a `PAGE_ASSET_REGISTER.md` row; no university flipped to `publishable` without `SOURCE_VERIFICATION_REGISTER.md` entries.

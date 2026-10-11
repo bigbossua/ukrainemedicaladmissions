@@ -68,7 +68,7 @@
     "checked": null,
     "note": "Record the founding year only from the official history page."
   },
-  "overview": "A medical university in Dnipro, east-central Ukraine, with an International Faculty and a preparatory department for foreign citizens. No official page found so far names the degree programmes open to foreign applicants or their language of instruction, so only the preparatory course is listed as a programme and the degree programmes are held back; Dnipro is a front-line region, so operating conditions are checked first. Draft record built from search-snippet leads on 2026-10-11; every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. A medical university in Dnipro, east-central Ukraine, with an International Faculty and a preparatory department for foreign citizens. No official page found so far names the degree programmes open to foreign applicants or their language of instruction, so only the preparatory course is listed as a programme and the degree programmes are held back; Dnipro is a front-line region, so operating conditions are checked first. Draft record built from search-snippet leads on 2026-10-11; every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
   "accreditation": {
     "value": null,
     "status": "not-published",
@@ -90,111 +90,7 @@
     "checked": null,
     "note": "Record only published hostel details (availability, price, year). Snippet (official payment terms, undated): first-year foreign students pay tuition and hostel fees for the whole year in full, and from the second year by semester."
   },
-  "programmes": [
-    {
-      "id": "preparatory",
-      "name": "Preparatory Department for Foreign Citizens (pre-study language course)",
-      "field": "preparatory",
-      "level": {
-        "value": "preparatory",
-        "status": "unverified",
-        "source": null,
-        "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: pv.dmu.edu.ua \"Preparatory Department for Foreign Citizens\"; study.dmu.edu.ua \"pre study language course\" / \"premedical course\", whose main goal is \"the language training and studying of general education disciplines before entering the medical academy\" (undated)."
-      },
-      "specialtyCode": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "No specialty code applies to a preparatory course unless the university prints one."
-      },
-      "qualification": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "No award title applies unless the university prints one; the completion document is recorded on the preparatory-route entry once read."
-      },
-      "durationYears": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "Not recorded; see durationText."
-      },
-      "durationText": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "Conflicting official pages (\"from September 1 to June 30\" and \"begins on October 1 and lasts till June 30\"); not recorded until the current page has been read."
-      },
-      "language": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "Only the Ukrainian language is studied in the first semester; the language in which physics, chemistry and biology are taught in the second semester is not stated."
-      },
-      "format": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "Teaching format for the current year must come from a dated official statement."
-      },
-      "internationalAdmission": {
-        "value": true,
-        "status": "unverified",
-        "source": null,
-        "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the official preparatory-department page is titled \"Preparatory Department for Foreign Citizens\" and the admissions portal for foreigners describes the pre-study language course (both undated). This is the only programme on the official domain with a lead of admission for foreign applicants; the degree programmes stay in deferredProgrammes[] until an official page names them. The same department is described in preparatoryRoutes[]."
-      },
-      "intakeYear": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
-      },
-      "tuition": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "No official fee snippet found for the preparatory course."
-      },
-      "otherMandatoryCosts": [],
-      "entryRequirements": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
-      },
-      "requirements": [],
-      "requiredDocuments": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
-      },
-      "documents": [],
-      "deadlines": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null,
-        "note": "No application deadline found; the start date conflicts between official pages (1 September and 1 October). Record dates only from the official page."
-      },
-      "intake": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
-      }
-    }
-  ],
+  "programmes": [],
   "deferredProgrammes": [
     {
       "id": "medicine",
@@ -794,7 +690,8 @@
       "Preparatory department: start date (1 September or 1 October), duration, language of instruction for the science subjects, certificate, progression wording verbatim, fee with year.",
       "Physical therapy (227): level (bachelor's or master's) and whether foreign applicants are admitted; nursing and public health: whether offered at all (a third-party directory lists 229 Public Health).",
       "Accommodation availability and published prices.",
-      "Evidence-backed recognition statements only (agency claims of WHO or NMC recognition are not evidence)."
+      "Evidence-backed recognition statements only (agency claims of WHO or NMC recognition are not evidence).",
+      "Programmes: no programme on the official domain has a lead of admission for international applicants yet, so programmes[] is empty; the Preparatory Department for Foreign Citizens is recorded once, under preparatoryRoutes[] (2026-10-11 integration: the duplicate programme entry was removed)."
     ]
   }
 }

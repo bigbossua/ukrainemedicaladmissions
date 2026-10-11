@@ -20,6 +20,10 @@ jobs:
       - run: npx astro check
       - run: npm run test:records
       - run: npm run test:readiness
+      - name: Publication gate (twelve adversarial scenarios, JSON-LD breakout regressions, fixture production builds)
+        run: npm run test:publication
+      - name: Publication report (fails if a flagged record fails the policy)
+        run: npm run report:publication
       - run: npm run build
       - run: npm run test:links
       - run: npm run test:meta

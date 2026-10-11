@@ -6,7 +6,7 @@
     "source": "https://beta.fixture.example/about",
     "checked": "@today-3"
   },
-  "shortName": "Fixture Beta Medical University",
+  "shortName": "Fixture Beta Medical University </script><script>alert(1)</script>",
   "status": {
     "value": "relocated",
     "status": "verified",

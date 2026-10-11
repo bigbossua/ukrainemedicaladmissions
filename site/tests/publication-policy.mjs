@@ -18,7 +18,7 @@ import { z } from 'astro/zod';
 import { record, programme } from '../src/content/schema.mjs';
 import { parseEvidence, loadEvidence, evidenceFile } from '../src/lib/evidence.mjs';
 import {
-  FIELD_POLICY, policyCoverage, assertPolicyCoverage, evaluateClaim, toPublicRecord, evaluatePublication, publicationDecision,
+  FIELD_POLICY, policyCoverage, assertPolicyCoverage, evaluateClaim, allowedTiers, toPublicRecord, evaluatePublication, publicationDecision,
   publicationBuildError, viewClaim, viewItems, serializeJsonLd, profileJsonLd, currentAcademicYear, listClaims, PUBLIC_REASONS,
 } from '../src/lib/publication.mjs';
 import { readFixture, FIXTURE_ROOT, academicYear } from './fixtures/publication/materialise.mjs';
@@ -137,6 +137,9 @@ section('evaluateClaim');
   for (const tier of [1, 2, 3]) hidden(C('recognition', V(recog, `${H}/recognition`), ev('recognition', recog, { sourceTier: tier, sourceUrl: `${H}/recognition` })), 'under-review', 'tier-not-allowed', `(6) recognition backed by a tier-${tier} source (the university's own page)`);
   hidden(C('recognition', V(recog, 'https://www.unit.example/recognition'), ev('recognition', recog, { sourceTier: 4, sourceUrl: 'https://www.unit.example/recognition' }), { officialHosts: ['unit.example'] }), 'under-review', 'recognition-from-university', '(6) "tier 4" recognition evidence hosted on the university website');
   check(C('recognition', V(recog, 'https://regulator.example/list'), ev('recognition', recog, { sourceTier: 4, sourceUrl: 'https://regulator.example/list' }), { officialHosts: ['unit.example'] }).show, 'recognition from a tier-4 authority is shown');
+  // Fees: tiers 1-2 only (the university's own pages or fee schedule); a government page never supports a fee (standard §7).
+  hidden(C('programmes.medicine.tuition', V(money(5000), 'https://portal.unit-test.gov.ua/fees'), ev('programmes.medicine.tuition', money(5000), { academicYear: AY, sourceTier: 3, sourceUrl: 'https://portal.unit-test.gov.ua/fees' })), 'under-review', 'tier-not-allowed', 'fee backed only by a tier-3 government page');
+  check(JSON.stringify(allowedTiers('programmes.medicine.tuition')) === '[1,2]' && JSON.stringify(allowedTiers('preparatoryRoutes.p.fee')) === '[1,2]' && JSON.stringify(allowedTiers('programmes.m.otherMandatoryCosts.0')) === '[1,2]', 'fee paths allow tiers 1-2 only');
   // (3) conflicting tuition amounts
   const t = money(5000);
   hidden(C('programmes.medicine.tuition', V(t), [entry('programmes.medicine.tuition', t, { academicYear: AY }), entry('programmes.medicine.tuition', money(5100), { n: 2, academicYear: AY })]), 'withheld-conflict', 'conflict', '(3) two verified entries with different amounts');

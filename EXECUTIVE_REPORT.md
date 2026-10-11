@@ -368,3 +368,56 @@ No deployment: `origin/production` is unchanged at `b2ca3d6` (release of 2026-10
 ### N.8 Recommended next task
 
 Verify the first university profile from official sources, starting with its fee schedule, then complete the three-profile set in the owner's order (Vinnytsia → Odesa → Bukovinian). Reason: every proven organic cluster (fees, named universities, directory) and the only legitimate revenue line (the document-readiness review) depend on verified official data, and none exists. Preconditions: the owner opens access (Route A, minutes) or supplies captures (Route B); N23 is fixed in the same change so a published profile shows only verified facts; release only on separate approval.
+
+## O. Publication gate, evidence store and research drafts — handover (2026-10-11; branch `claude/university-profile-pipeline`; nothing deployed)
+
+### O.1 Baseline before this work (Phase 1)
+
+| Item | State | How established |
+|---|---|---|
+| Working branch | `claude/university-profile-pipeline` at `4b93a11`, equal to its remote | git |
+| Production | `origin/production` at `b2ca3d6` (2026-10-11 00:53 UTC), unchanged; it still lists the unverified Ternopil card on `/universities/` and serves a noindex Ternopil page | `git show origin/production:…` |
+| CI on `4b93a11` | success | GitHub Actions |
+| Working locally | full chain; the stepped form, menu, directory filters and contact form under the production headers (32 of 32 end-to-end checks) | local runs |
+| Verified against a real external service | nothing: mail delivery, live headers and every official source are untested | network policy refuses the hosts |
+| Designed, not built | Stage 2 accounts and uploads (`APPLICATION_SYSTEM_SPEC.md` §14) | documents |
+
+### O.2 What changed
+
+- **Fail-closed publication system** (backlog N23 fixed). `site/src/lib/publication.mjs` decides every public value field by field: the record claim must be verified and backed by a matching evidence entry (`site/data/evidence/<slug>.json`) that is verified, quoted, dated, exactly equal, from an allowed tier on the official host (fees tiers 1–2; recognition tier 4 only), not contradicted, not past review and not for an ended academic year. The `publishable` flag can only narrow; a flagged record that fails stops the production build. Every schema field is classified public, editorial or internal, and an unclassified field fails tests and builds. JSON-LD is written through an escaper in both `Base.astro` and `Breadcrumbs.astro`; meta attribute text cannot carry angle brackets.
+- **Evidence store and standard.** `UNIVERSITY_EVIDENCE_STANDARD.md` (statuses, source hierarchy, conflict and expiry rules, the reviewer's procedure, 17 owner decisions); one evidence file per record, each with zero entries and an access block; the register generator shows evidence and access per claim.
+- **Access record.** `DIRECTORY_VERIFICATION_PLAN.md` §10.1a lists all 32 hosts refused on 2026-10-11 (plus each research draft's own hosts) and states that a gateway denial is an access limitation, never evidence; §10.2–§10.4 list the exact official pages and PDFs needed for Vinnytsia, Odesa and Bukovinian, claim group by claim group.
+- **Research drafts.** Kharkiv, Zaporizhzhia, Dnipro, Lviv and Poltava added as unpublished research-draft records with evidence registers; every value is an unverified lead with a dated note; no fee, deadline or intake value; gating questions first.
+
+### O.3 Acceptance criteria (verified on the final tree)
+
+| Criterion | Result |
+|---|---|
+| 1 Twelve records unpublished everywhere | Production build: 0 of 57 files mention any record's slug, names or hosts; sitemap has no profile URL; only `.htaccess` carries the Ternopil 302 rule. Live production still shows the old Ternopil card until an approved release. |
+| 2 Each field validated against its own evidence | Yes: per-claim evaluation; the flag only narrows (`test:publication`, 729 unit checks). |
+| 3 No leak of notes or unapproved fields | Fixture production builds scan every output file for canaries, with positive controls; field-policy coverage test; mutation-proved. |
+| 4 Twelve scenarios in CI, both breakout regressions | `npm run test:publication` and `npm run report:publication` are CI steps; build-level and static tests cover `Base.astro` and `Breadcrumbs.astro`, each proved by removing the escaper. |
+| 5 Blocked hosts and pages documented | §10.1a–§10.4; access blocks only, no evidence entries. |
+| 6 No inferred claims in the five drafts | Audit: 0 money values, 0 deadline values, 0 verified claims, 0 values without a lead note; two adversarial record audits. |
+| 7 Full suite and CI on the final commit | Local full chain passed; CI result recorded in the chat handover. |
+| 8 Push only to the review branch | Yes; the session branch is no longer updated. |
+
+### O.4 Directory (Phase 4 audit; the owner's Phase 4 brief arrived truncated)
+
+Exists: `/universities/` with six filters (city, programme family, level, language, preparatory route, intake), reset, live count, an honest empty state, verified-only comparison table, how-to, no-ranking and look-alike guidance; profiles, filters, chips, data attributes and JSON-LD built only from shown values. Incomplete: everything that needs verified data (production lists 0 universities). Not built: search, sorting, a pick-and-compare selection, saved shortlists.
+
+### O.5 Open items
+
+N4 mail delivery unverified; A10/D7 legal pages are drafts (release blocker); N22 minor defects; N24 residual gate decisions; 17 owner decisions in the evidence standard; live CSP and headers unverified.
+
+### O.6 SEMrush
+
+0 units spent. Cumulative 6,230 line-based (max-reading 6,340; conservative 6,810); expected balance 43,770 (43,660; 43,190); headroom under the 5,000 cap 880 / 770 / 300. ESTIMATE until the owner's API Units reading.
+
+### O.7 Owner actions
+
+1. Allow the hosts in `DIRECTORY_VERIFICATION_PLAN.md` §10.1a in the environment's Network access settings, or supply captures (Route B). Nothing can be verified until then.
+2. Send a current SEMrush API Units reading.
+3. Decide N24 (a)–(c) and the evidence standard's §13 items before the first profile is published.
+4. Insert the legal entity and retention periods (A10/D7) before any release.
+5. Approve a release when ready: only a release removes the unverified Ternopil card from the live site.

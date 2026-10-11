@@ -86,7 +86,7 @@ Per record (the strongest items, LEAD → candidate for verification):
 | 9 | Verifier | Continuation, one at a time: Ivano-Frankivsk → Bogomolets → Ternopil (re-verify the template record and replace its brief-sourced values) → Uzhhorod | Same gates; each release approved separately |
 | 10 | Verifier + owner | Register lookups for every published record (EDEBO / Ministry portal, NAQA, WDOMS) | §2 criteria 1 and 4 evidenced |
 | 11 | Owner | Install the Pages CMS GitHub App (Rung 1; `.pages.yml` prepared) so the daughter edits status / source / checked through a form; diary the per-intake re-check and the `outdated` flip | One practice edit by the daughter passes CI |
-| 12 | Verifier | Gated and deferred candidates stay as §9 lists them (Kharkiv, Zaporizhzhia need dated statements; Lviv, Poltava, Dnipro later); no new record file until §2 is evidenced from opened pages | §2 before any new shell |
+| 12 | Verifier | Gated and deferred candidates stay as §9 lists them (Kharkiv, Zaporizhzhia need dated statements; Lviv, Poltava, Dnipro later); no new record file until §2 is evidenced from opened pages. *Update 2026-10-11 (owner: "add more unis"): research-draft record files now exist for Kharkiv, Zaporizhzhia, Dnipro, Lviv and Poltava; they are leads only, unpublished, and their gating questions (dated operating statements; Berehove teaching location; English-medium teaching at Dnipro never asserted) are the first open questions in each record.* | §2 before any new shell |
 
 Nothing above needs a paid tool, SEMrush units, a purchase or an account.
 
@@ -359,6 +359,49 @@ Method: `curl -sS -o /dev/null --max-time 20 -w '%{http_code}' https://HOST/` th
 | `vstup.osvita.ua` | Third-party portal cited by three records (a lead, never a source) | refused — same |
 
 Control: `https://api.github.com/` through the same proxy returned HTTP 200, so the proxy was working and the refusals are specific to these hosts. The proxy's status log records each one as "gateway answered 403 to CONNECT (policy denial or upstream failure)". A re-run by the reviewer at 19:17 UTC gave the same result for all 21 hosts, and 200 for the control. The result is recorded in each record's `access` block and in `SOURCE_VERIFICATION_REGISTER.md`. No page or PDF was opened; no claim was checked.
+
+### 10.1a Complete host list tried on 2026-10-11 at 18:44 UTC (MEASURED; 32 hosts, all refused)
+
+Every host referenced by the twelve records' `researchReferences` and claim sources, plus the government, regulator, directory and archive hosts a verifier needs. One HTTPS request per host with `curl` through the environment's proxy; the proxy's status log recorded each refusal as "gateway answered 403 to CONNECT (policy denial or upstream failure)". A control request to `api.github.com` succeeded in the same session.
+
+| Host | Purpose | Result |
+|---|---|---|
+| `apply.studyinukraine.gov.ua` | Ministry invitation route | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `archive.org` | Internet Archive | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `en.naqa.gov.ua` | NAQA (English) | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `en.wikipedia.org` | Wikipedia (never evidence) | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `foreign.vnmu.edu.ua` | Vinnytsia | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `info.edbo.gov.ua` | EDEBO register | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `junior.tdmu.edu.ua` | Ternopil | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `mon.gov.ua` | Ministry of Education and Science | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `naqa.gov.ua` | Accreditation agency (NAQA) | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `new.vnmu.edu.ua` | Vinnytsia | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `nmc.org.in` | India National Medical Commission | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `nmuofficial.com` | Bogomolets | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `onmedu.edu.ua` | Odesa | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `search.wdoms.org` | World Directory of Medical Schools | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `studyinukraine.gov.ua` | Ministry “Study in Ukraine” | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `ukrainemedicaladmissions.com` | Production site (live checks) | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `universities.studyinukraine.gov.ua` | Ministry university directory | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `uzhnu.edu.ua` | Uzhhorod | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `vnmu.edu.ua` | Vinnytsia | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `vstup.bsmu.edu.ua` | Bukovinian | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `vstup.edbo.gov.ua` | EDEBO admissions | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `vstup.osvita.ua` | Third-party admissions portal (lead only) | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `wdoms.org` | World Directory of Medical Schools | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `web.archive.org` | Internet Archive | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.bsmu.edu.ua` | Bukovinian | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.ifnmu.edu.ua` | Ivano-Frankivsk | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.nmc.org.in` | India National Medical Commission | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.tdmu.edu.ua` | Ternopil | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.ukrainemedicaladmissions.com` | Production site (live checks) | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.uzhnu.edu.ua` | Uzhhorod | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.vnmu.edu.ua` | Vinnytsia | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+| `www.wdoms.org` | World Directory of Medical Schools | refused (HTTP 000; proxy: gateway 403 to CONNECT) |
+
+The five draft records added on 2026-10-11 have their own university hosts, tried by the record work packages at 18:50 and 19:11–19:17 UTC and recorded in each evidence file's `access` block: `knmu.edu.ua` (Kharkiv); `mphu.edu.ua`, `int.mphu.edu.ua` (Zaporizhzhia); `dmu.edu.ua`, `study.dmu.edu.ua`, `infoen.dmu.edu.ua`, `pv.dmu.edu.ua`, `302.dmu.edu.ua`, `416.dmu.edu.ua` (Dnipro); `new.meduniv.lviv.ua`, `meduniv.lviv.ua`, `www.meduniv.lviv.ua` (Lviv); `pdmu.edu.ua`, `www.pdmu.edu.ua`, `en.pdmu.edu.ua`, `vstup.pdmu.edu.ua`, `college.pdmu.edu.ua` (Poltava). All were refused the same way.
+
+**A gateway denial is an access limitation of this build environment, not evidence about any university.** It says nothing about whether a host, page, programme or fee exists. It is recorded only in each evidence file's `access` block, never as an evidence entry and never as a claim status, and it changes no record value. To lift it, the owner adds these hosts under Allowed domains in the environment's Network access settings (cloud environment menu in the session title bar, then Edit), or supplies page captures (Route B, §3).
 
 ### 10.2 Vinnytsia National Pirogov Memorial Medical University — exact evidence needed
 
