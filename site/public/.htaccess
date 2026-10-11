@@ -25,6 +25,9 @@ RedirectMatch 301 ^/document-translation-legalisation/?$ /admissions/
 # unpublished the URL is redirected TEMPORARILY (302) to the directory so it never 404s. tests/publication-gate.mjs
 # requires this rule while the record is unpublished and REJECTS it once the record is publishable (then the page returns).
 RedirectMatch 302 ^/universities/ternopil-national-medical-university/?$ /universities/
+# Private form storage must never be served, even if a staging document root is nested so that uma-private/ falls
+# inside a public directory (APPLICATION_SYSTEM_SPEC §14.3).
+RedirectMatch 404 ^/uma-private(/.*)?$
 
 # Astro "directory" output: /page/ -> /page/index.html (default DirectoryIndex)
 DirectoryIndex index.html index.php
@@ -46,7 +49,7 @@ ErrorDocument 404 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  Header set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
 </IfModule>
 
 # Caching for hashed assets

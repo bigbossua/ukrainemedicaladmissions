@@ -24,7 +24,7 @@ const languages = languagesOf(allProgrammes);
 const intakes = intakesOf(allProgrammes);
 const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
 ---
-<Base title="Medical universities in Ukraine: full list of medical colleges" description="Directory of Ukrainian medical universities (medical colleges) for international students: profiles listed only once verified, compared but never ranked." suffix={false}>
+<Base title="Medical universities in Ukraine: list of medical colleges" description="Directory of Ukrainian medical universities (medical colleges) for international students: profiles listed only once verified, compared but never ranked." suffix={false}>
   {PREVIEW && drafts > 0 && <DraftBanner kind="unpublished" text={`Preview build: this directory includes ${drafts} draft ${drafts === 1 ? 'record' : 'records'} that ${drafts === 1 ? 'is' : 'are'} not on the public site. Values marked “pending” are research leads, not verified facts.`} />}
   <div class="page-head">
     <div class="wrap">
@@ -69,7 +69,7 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
         </label>
         <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Reset filters</button></p>
       </form>
-      <p class="count" aria-live="polite"><span data-count>{universities.length}</span> {universities.length === 1 ? 'university' : 'universities'} listed. Level, language and intake filters use reported values; a profile marks each as verified or pending.</p>
+      <p class="count" aria-live="polite"><span data-count>{universities.length}</span> <span data-noun>{universities.length === 1 ? 'university' : 'universities'}</span> listed. Level, language and intake filters use reported values; a profile marks each as verified or pending.</p>
 
       <div class="grid grid-3" data-list>
         {records.map((d) => <UniversityCard u={d} draft={!d.verification.publishable} />)}
@@ -152,6 +152,7 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
   const selects = document.querySelectorAll<HTMLSelectElement>('[data-filter]');
   const cards = document.querySelectorAll<HTMLElement>('[data-list] > article');
   const count = document.querySelector('[data-count]');
+  const noun = document.querySelector('[data-noun]');
   const empty = document.querySelector<HTMLElement>('[data-empty]');
   function apply() {
     let n = 0;
@@ -166,6 +167,7 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
       c.hidden = !ok; if (ok) n++;
     });
     if (count) count.textContent = String(n);
+    if (noun) noun.textContent = n === 1 ? 'university' : 'universities';
     if (empty) empty.hidden = n > 0;
   }
   selects.forEach((s) => s.addEventListener('change', apply));

@@ -13,7 +13,7 @@ export const SITE = {
   url: 'https://ukrainemedicaladmissions.com',
   email: 'info@ukrainemedicaladmissions.com',
   description:
-    'Independent admissions support for international students applying to medical universities in Ukraine: verified information on programmes, requirements and fees.',
+    'Independent admissions support for international students applying to medical universities in Ukraine. We publish a fact only after checking an official source.',
   cta: 'Apply Online Now',
   ctaHref: '/apply/',
   // Mandatory wherever a university is named (brand guideline §6).

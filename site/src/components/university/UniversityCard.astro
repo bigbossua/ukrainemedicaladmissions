@@ -32,6 +32,7 @@ const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 
 </article>
 <style>
   .ucard { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+  .ucard[hidden] { display: none; } /* the directory filter sets [hidden]; display:flex above would otherwise keep the card visible */
   .tile { display: flex; align-items: flex-end; justify-content: space-between; aspect-ratio: 16 / 7; padding: .9rem 1rem; color: #fff; text-decoration: none; background: linear-gradient(135deg, hsl(calc(214 + var(--h)) 70% 42%), var(--navy-800)); font-family: var(--font-display); }
   .tile span:first-child { font-size: 1.6rem; font-weight: 700; letter-spacing: .02em; }
   .tile .city { font-size: .8rem; opacity: .85; }

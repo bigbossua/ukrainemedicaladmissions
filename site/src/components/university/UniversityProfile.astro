@@ -91,7 +91,7 @@ const applyHref = `/apply/?university=${d.slug}`;
       )}
 
       <h2 style="margin-top:2.5rem">Sources and verification</h2>
-      <p class="prose">Facts on this page are checked against the university's official website and, where relevant, Ukrainian government registers. Each row shows its status and check date.
+      <p class="prose">Facts on this page are checked against the university's official website and, where relevant, Ukrainian government registers. Each row shows its status; verified rows also show the source and check date.
         {d.verification.lastReview ? ` Last full review: ${formatDate(d.verification.lastReview)}.` : ' A full review has not yet been completed.'}</p>
       {publishable && d.verification.openQuestions.length > 0 && (
         <details><summary>Open verification questions ({d.verification.openQuestions.length})</summary><ul>{d.verification.openQuestions.map((q: string) => <li>{q}</li>)}</ul></details>

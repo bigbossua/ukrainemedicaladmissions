@@ -2,9 +2,9 @@
   "section": "Our information",
   "order": 2,
   "items": [
-    { "q": "Where do your fees and requirements come from?", "a": "Only from the university's official website, published fee schedules and admissions documents, or Ukrainian government sources. Each fact shows its status (verified or pending) and the date we last checked it." },
-    { "q": "Why are some facts marked “to be confirmed”?", "a": "Because we have not yet verified them from an official source. We would rather show a gap than an invented or outdated figure. If you need that fact now, start an application and we will confirm it with you." },
+    { "q": "Where do your fees and requirements come from?", "a": "Only from the university's official website, published fee schedules and admissions documents, or Ukrainian government sources. A fact is shown as verified, with its source and check date, only after we have read it there; anything not yet checked is marked pending or to be confirmed." },
+    { "q": "Why are some facts marked “to be confirmed”?", "a": "Because we have not yet verified them from an official source. We would rather show a gap than an invented or outdated figure. If you need that fact now, ask us in the Apply Online form and we will tell you whether we have been able to check it." },
     { "q": "Are fees in different currencies or years comparable?", "a": "Not directly. We always show the academic year and currency, and we never merge different years or programme types into one figure." },
-    { "q": "Do you use real photos of each university?", "a": "On a university profile we use images from the university's official sources where we are allowed to. Generic stock photography is never presented as a specific campus, and every image is credited with its source and licence." }
+    { "q": "Do you use real photos of each university?", "a": "Not yet: university profiles do not show photographs. If we add them, we will use only images the university allows, credited with source and licence, and never present generic stock photography as a specific campus." }
   ]
 }

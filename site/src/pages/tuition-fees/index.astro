@@ -11,13 +11,13 @@ const universities = (await getCollection('universities')).filter(isVisible).sor
 const rows = universities.flatMap((u) => u.data.programmes.map((p) => ({ u, p })));
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / ${m.per} (${m.academicYear})`;
 ---
-<Base title="Medical college fees in Ukraine: tuition & cost of study" description="How Ukrainian medical universities publish tuition fees, what the cost of medical education includes, and the fees verified from official sources, with dates." suffix={false}>
+<Base title="Medical college fees in Ukraine: tuition & cost of study" description="How Ukrainian medical universities publish tuition fees, what the cost of medical education includes, and how we verify a fee before listing it." suffix={false}>
   <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Medical university fees in Ukraine</h1><p>We publish a fee only when it comes from the university's official fee schedule, with the academic year, currency and the date we checked it.</p></div></div>
   <Breadcrumbs items={[{ label: 'Tuition & fees' }]} />
   <section style="padding-top:1rem"><div class="wrap">
     <div class="prose">
       <h2>How fees are published</h2>
-      <p>Each university sets its own tuition fee per programme and academic year, usually in US dollars or euros, payable per year or per semester. Fees can change between intakes. For that reason every fee on this site carries the academic year it applies to and the date it was last verified. Fees from different years or currencies are never combined into a single figure.</p>
+      <p>Each university sets its own tuition fee per programme and academic year, with its own currency and payment basis. Fees can change between intakes. For that reason every fee on this site will carry the academic year it applies to and the date it was verified. Fees from different years or currencies are never combined into a single figure.</p>
       <h2>MBBS fees in Ukraine</h2>
       <p>Many applicants search for “MBBS fees in Ukraine”. Ukrainian universities do not award an MBBS; the equivalent programme is <a href="/courses/medicine/">Medicine</a>, and each university publishes its own duration and fee for it. The table below lists the medicine fee per university as soon as it has been verified from the official schedule.</p>
       <h2>Cost of medical education in Ukraine: what a total includes</h2>
@@ -32,9 +32,9 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / $
       <p>Official schedules are usually published as a table or a signed order on the university's own website, often in its international-students section. Before you compare two universities, check that each figure has the same five properties:</p>
       <ol>
         <li><strong>The academic year</strong> it applies to (for example 2026/27). A table from an earlier year is not the current fee.</li>
-        <li><strong>The currency</strong> and the payment basis. Many universities quote US dollars or euros but collect payment in hryvnia at the National Bank of Ukraine rate on the day of payment.</li>
+        <li><strong>The currency</strong> and the payment basis: which currency the fee is quoted in, which currency it is collected in, and at what exchange rate and on which day.</li>
         <li><strong>The period</strong>: per year, per semester or for the whole programme, and whether the amount changes between years of study.</li>
-        <li><strong>The track</strong>: English-taught and Ukrainian-taught streams of the same programme are often priced differently.</li>
+        <li><strong>The track</strong>: whether the fee is for the English-taught or the Ukrainian-taught stream, because a university may price them differently.</li>
         <li><strong>What is excluded</strong>: medical examination and insurance on arrival, invitation-letter or registration charges, hostel, and the fee for any preparatory course are usually separate lines or separate documents.</li>
       </ol>
       <p>Every fee we publish will carry those five properties and a link to the official page, with the date we read it. Where a university's current schedule has not yet been read, the row below says “To be confirmed” rather than showing an estimate from a third-party website.</p>
@@ -67,7 +67,7 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / $
     </div>
     <p class="note">Fees shown as “to be confirmed” have not yet been verified from the university's official schedule and are deliberately withheld. The first universities' official schedules are queued for verification; each row will show its source and date as soon as it passes. {SITE.disclaimer}</p>
     <p class="prose">Not sure whether you meet the entry requirements or which documents you still need? <a href="/admissions/#readiness">See how the readiness check works</a>, then <a href="/apply/">start your candidate profile</a>. It is free and nothing is sent to a university.</p>
-    <p class="prose">Browse <a href="/universities/">university profiles</a> for full programme details, or read the <a href="/admissions/">admissions guide</a>.</p>
+    <p class="prose">University profiles in the <a href="/universities/">directory</a> will show full programme details once verified. Meanwhile read the <a href="/admissions/">admissions guide</a>.</p>
   </div></section>
-  <CtaBand title="Want the current fee confirmed for your course?" text="Start an application and we will confirm the published fee schedule with you before you commit to anything." />
+  <CtaBand title="Questions about cost?" text="Start your free candidate profile and ask us. We will tell you what we have been able to check, and nothing is sent to a university." />
 </Base>

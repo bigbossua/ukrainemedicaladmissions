@@ -17,13 +17,13 @@ import { SITE } from '../../lib/site';
     <form class="card" method="post" action="/api/enquiry.php" data-form novalidate>
       <h2 style="font-size:1.25rem">Send an enquiry</h2>
       <input type="hidden" name="type" value="enquiry" />
-      <label class="field">Your name<input name="name" type="text" required autocomplete="name" /></label>
-      <label class="field">Email<input name="email" type="email" required autocomplete="email" /></label>
-      <label class="field">Your message<textarea name="message" rows="5" required></textarea></label>
+      <label class="field">Your name<input name="name" type="text" required maxlength="120" autocomplete="name" /></label>
+      <label class="field">Email<input name="email" type="email" required maxlength="200" autocomplete="email" /></label>
+      <label class="field">Your message<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
       <label class="checkbox"><input type="checkbox" name="consent" value="yes" required /> <span>I agree to Ukraine Medical Admissions storing this enquiry and replying by email, as described in the <a href="/privacy/">privacy notice</a>.</span></label>
       <button class="btn btn-primary" type="submit">Send enquiry</button>
-      <p class="err" data-form-error hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
+      <p class="err" data-form-error role="alert" hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
     </form>
   </div></section>
 </Base>

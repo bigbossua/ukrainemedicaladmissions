@@ -47,7 +47,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
     if (name === 'desktop' && path === '/universities/') {
       const total = await page.$$eval('[data-list] > article', (a) => a.length);
       const expect = async (label) => {
-        const shown = await page.$$eval('[data-list] > article', (a) => a.filter((el) => !el.hidden).length);
+        const shown = await page.$$eval('[data-list] > article', (a) => a.filter((el) => el.offsetParent !== null).length); // actually visible, not just [hidden] unset
         const count = Number(await page.textContent('[data-count]'));
         if (shown !== count) fail(`directory ${label}: count ${count} ≠ visible cards ${shown}`);
         const emptyHidden = await page.$eval('[data-empty]', (el) => el.hidden);

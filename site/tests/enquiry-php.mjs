@@ -197,10 +197,22 @@ accepted(await post(minimum([['ts', '']]), 'ts empty'), 'ts empty (no script) is
   check(!/[\r\n\t]/.test(rec.name ?? '') && rec.name === 'Synthetic Bcc: victim@example.invalid Candidate', 'name stored without CR/LF/tab', JSON.stringify(rec.name));
   check(p.contact?.name === rec.name, 'profile.contact.name sanitised the same way');
   check(p.contact?.residence === 'Example land', 'U+2028 removed from a single-line field', JSON.stringify(p.contact?.residence));
-  check(p.education?.qualification === 'Certificate', 'tags and NUL removed', JSON.stringify(p.education?.qualification));
+  check(p.education?.qualification === '<b>Certificate</b>', 'NUL removed; text otherwise stored as typed (JSON storage, plain-text mail: no tag stripping)', JSON.stringify(p.education?.qualification));
   check(p.education?.subjects?.[0]?.name === 'Bio logy' && p.education?.subjects?.[0]?.grade === 'A', 'subject cells are single-line', JSON.stringify(p.education?.subjects));
   check(rec.message === 'Line one\nLine two', 'multi-line message keeps line breaks, drops other control characters', JSON.stringify(rec.message));
   check(p.intent?.university_other?.length === 200, 'university_other capped at 200 characters', String(p.intent?.university_other?.length));
+}
+// 7b. Values containing "<" are data, not markup: a grade such as "<50" must survive (verification finding, 2026-10-11)
+{
+  const rec = accepted(await post([
+    ['type', 'application-start'], ['course', 'medicine'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['consent', 'yes'],
+    ['subjects[0][name]', 'Chemistry'], ['subjects[0][grade]', '<50'], ['subjects[0][status]', 'achieved'],
+    ['outstanding', 'Physics 3<4 results pending'], ['message', 'My chemistry score was <80 and biology >90, is that enough?'],
+  ], 'less-than values'), 'less-than values');
+  const p = rec.profile ?? {};
+  check(p.education?.subjects?.[0]?.grade === '<50', 'grade "<50" stored unchanged', JSON.stringify(p.education?.subjects));
+  check(p.education?.outstanding === 'Physics 3<4 results pending', 'outstanding "3<4" stored unchanged', JSON.stringify(p.education?.outstanding));
+  check(rec.message === 'My chemistry score was <80 and biology >90, is that enough?', 'message with "<" stored unchanged', JSON.stringify(rec.message));
 }
 {
   const rec = accepted(await post(minimum().map(([k, v]) => [k, k === 'name' ? 'N'.repeat(500) : v]), 'long name'), 'long name');

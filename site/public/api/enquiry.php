@@ -6,7 +6,8 @@
  *   - enquiry            the contact page (name, email, message, consent)
  *   - application-start  the stepped candidate-profile form at /apply/ (plan, education, documents, contact)
  *
- * - Every field is whitelisted, length-capped and sanitised; enumerations are checked against allow-lists and an
+ * - Every field is whitelisted and length-capped; free text is stored as typed (no tag stripping: storage is JSON and
+ *   the mail is text/plain); enumerations are checked against allow-lists and an
  *   unknown value is dropped (stored as an empty string), never stored as typed.
  * - Single-line fields have control characters (CR, LF, tab, NUL ...) removed, so nothing can break a mail header.
  * - Bot checks: honeypot field "website"; optional timing field "ts" (milliseconds the page was open, set by the
@@ -17,10 +18,11 @@
  * - Responses: 405 for anything but POST; 422 when a required field is missing; 303 to /apply/thank-you/ otherwise.
  *
  * Configuration: an optional <storage>/config.php (outside the web root) may return an array overriding
- * notify_to, from and send_mail. The storage directory defaults to a sibling of the document root and can be set
+ * notify_to, from and send_mail, and setting ip_hash_key (a random secret; without it no IP data is stored). The storage directory defaults to a sibling of the document root and can be set
  * with the UMA_PRIVATE_DIR environment variable. No secrets live in this file.
  */
 declare(strict_types=1);
+ini_set('display_errors', '0'); // never reveal server paths in a response; failures go to error_log
 
 header('X-Robots-Tag: noindex, nofollow');
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
@@ -61,7 +63,7 @@ function raw(mixed $v): string
 /** Single-line text: tags and every control character (CR, LF, tab, NUL, C1, U+2028/9) removed, spaces collapsed. */
 function line(mixed $v, int $max = 200): string
 {
-    $s = strip_tags(raw($v));
+    $s = raw($v); // stored as typed ("<50" is a grade, not markup): storage is JSON, mail is text/plain; escape only when rendered as HTML
     $s = (string)preg_replace('/[\p{Cc}\x{2028}\x{2029}]+/u', ' ', $s);
     $s = (string)preg_replace('/ {2,}/', ' ', $s);
     return mb_substr(trim($s), 0, $max);
@@ -69,7 +71,7 @@ function line(mixed $v, int $max = 200): string
 /** Multi-line text: line breaks kept (normalised to \n), every other control character removed. */
 function text(mixed $v, int $max = 4000): string
 {
-    $s = str_replace(["\r\n", "\r"], "\n", strip_tags(raw($v)));
+    $s = str_replace(["\r\n", "\r"], "\n", raw($v)); // stored as typed; see line()
     $s = (string)preg_replace('/[^\P{Cc}\n]+|[\x{2028}\x{2029}]+/u', ' ', $s);
     return mb_substr(trim($s), 0, $max);
 }
@@ -267,7 +269,7 @@ if (!empty($config['send_mail'])) {
     $lines[] = '';
     $lines[] = 'Record: ' . $record['id'] . ' (stage: enquiry; nothing has been sent to any university)';
     $subject = '=?UTF-8?B?' . base64_encode('[UMA] New ' . $type . ' from ' . $name) . '?=';
-    $headers = 'From: ' . line((string)$config['from'], 200) . "\r\nReply-To: $email\r\nContent-Type: text/plain; charset=utf-8";
+    $headers = 'From: ' . line((string)$config['from'], 200) . "\r\nReply-To: $email\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: 8bit";
     @mail(line((string)$config['notify_to'], 200), $subject, implode("\n", $lines), $headers);
 }
 

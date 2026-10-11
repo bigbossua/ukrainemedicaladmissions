@@ -41,7 +41,7 @@ for (const d of D.redirectmatch) {
   if (!pattern.startsWith('^') || !pattern.endsWith('$')) fail(`line ${d.n}: pattern not anchored with ^ and $: ${pattern}`);
   const re = safeRe(pattern);
   if (!re) fail(`line ${d.n}: pattern is not a valid regular expression: ${pattern}`);
-  const gone = status === 'gone' || status === '410';
+  const gone = status === 'gone' || status === '410' || status === '404'; // no target: the URL is refused
   if (!gone) {
     if (!target) fail(`line ${d.n}: missing target`);
     else if (!/^\/\S*\/$/.test(target)) fail(`line ${d.n}: target must be site-relative, start with "/" and end with "/": ${target}`);
