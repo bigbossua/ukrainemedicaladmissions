@@ -4,6 +4,8 @@
 // Fails on any leak. Run after `npm run build` and `npm run build:preview`.
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { DISCLAIMER } from '../src/lib/readiness.mjs';
+import { SYNTHETIC_MARKERS } from '../src/lib/synthetic-candidate.mjs';
 
 const DIST = resolve('dist'), PREV = resolve('dist-preview');
 const SITE = 'https://ukrainemedicaladmissions.com';
@@ -74,6 +76,15 @@ ok();
 // A production page must never carry the draft banner.
 for (const { p, h } of prodHtml) if (h.includes('data-draft-banner')) fail(`${p}: draft banner in production build`);
 ok();
+// The readiness demo (synthetic candidate + synthetic university) is preview-only: no page, no link, no candidate data.
+if (existsSync(join(DIST, 'preview', 'readiness'))) fail('production build contains /preview/readiness/'); ok();
+if (sitemap.includes('/preview/')) fail('production sitemap lists a /preview/ URL'); ok();
+for (const { p, h } of prodHtml) {
+  for (const m of SYNTHETIC_MARKERS) if (h.includes(m)) fail(`${p}: production page contains synthetic-candidate string "${m}"`);
+  if (h.includes('/preview/readiness')) fail(`${p}: production page links to the readiness demo`);
+  if (h.includes('data-readiness-row') || h.includes('data-checklist-item')) fail(`${p}: production page renders readiness demo markup`);
+  ok();
+}
 
 // ---------------------------------------------------------------- preview
 if (!existsSync(PREV)) { console.log('dist-preview/ missing — run npm run build:preview first'); process.exit(1); }
@@ -98,7 +109,21 @@ function checkDraftPage(path, label, mustContain = []) {
 }
 for (const r of unpublished) checkDraftPage(`universities/${r.slug}`, r.slug, ['Draft record — not published', 'Verification queue', r.shortName]);
 for (const s of samples) checkDraftPage(`preview/${s.slug}`, s.slug, ['Synthetic sample record', 'allow-verified']);
-checkDraftPage('preview', 'preview index', ['Drafts and samples', 'allow-verified']);
+checkDraftPage('preview', 'preview index', ['Drafts and samples', 'allow-verified', '/preview/readiness/']);
+// Readiness demo: banner says both the candidate and the university are invented; disclaimer present; synthetic only.
+checkDraftPage('preview/readiness', 'readiness demo', ['allow-verified', 'Synthetic demonstration', 'Both the candidate and the university on this page are invented', DISCLAIMER, 'data-disclaimer', 'data-readiness-row', 'data-checklist-item', 'How this will work for real candidates']);
+{
+  const file = join(PREV, 'preview', 'readiness', 'index.html');
+  const h = existsSync(file) ? readFileSync(file, 'utf8') : '';
+  const sample = samples.find((x) => x.slug === 'example-medical-university');
+  const reqCount = sample ? sample.programmes.find((p) => p.id === 'medicine').requirements.length : -1;
+  const rows = (h.match(/data-readiness-row/g) ?? []).length;
+  if (rows !== reqCount) fail(`preview /preview/readiness/: ${rows} readiness rows, sample has ${reqCount} requirements`);
+  if (/\b(in)?eligible\b|\bverdict\b|\bscore\b/i.test(h.replace(/<[^>]+>/g, ' '))) fail('preview /preview/readiness/: page text mentions eligibility, a verdict or a score');
+  for (const r of real) if (h.includes(`/universities/${r.slug}/`) || (r.officialName.value && h.includes(r.officialName.value))) fail(`preview /preview/readiness/: real record ${r.slug} used in the synthetic demo`);
+  if (!h.includes('Example-land')) fail('preview /preview/readiness/: synthetic candidate summary not rendered');
+  ok();
+}
 // Directory in preview lists every draft and carries the preview banner.
 const prevDir = readFileSync(join(PREV, 'universities', 'index.html'), 'utf8');
 for (const r of unpublished) if (!prevDir.includes(`/universities/${r.slug}/`)) fail(`preview /universities/: draft ${r.slug} not listed`);

@@ -1,0 +1,72 @@
+---
+/** Summary of the (synthetic) candidate's self-declared profile: intent, education, subjects and documents. */
+import { FIELDS, LEVELS } from '../../lib/fields';
+import { DOCUMENT_TYPES } from '../../lib/readiness.mjs';
+import type { Candidate } from '../../lib/readiness.mjs';
+interface Props { candidate: Candidate; programmeName: string; universityName: string; universityHref: string }
+const { candidate: c, programmeName, universityName, universityHref } = Astro.props;
+const notGiven = 'Not given';
+const field = c.intent.field ? (FIELDS as Record<string, { label: string }>)[c.intent.field]?.label ?? c.intent.field : notGiven;
+const level = c.intent.level ? (LEVELS as Record<string, string>)[c.intent.level] ?? c.intent.level : notGiven;
+const STATE_TEXT: Record<string, string> = { have: 'Have', need: 'Need', not_sure: 'Not sure' };
+const SCALE_TEXT: Record<string, string> = { percentage: 'Percentage', letter: 'Letter', points: 'Points', GPA: 'GPA', other: 'Other' };
+const RESULT_STATUS_TEXT: Record<string, string> = { achieved: 'Achieved', predicted: 'Predicted', pending: 'Pending' };
+const DOC_TEXT: Record<string, string> = DOCUMENT_TYPES;
+---
+<section class="cand" aria-labelledby="cand-h">
+  <h2 id="cand-h">The synthetic candidate</h2>
+  <p class="lead">What this invented candidate would tell us in the planned profile form (not built yet). Grades are shown exactly as entered and are never converted.</p>
+  <div class="cand-grid">
+    <dl class="facts">
+      <div><dt>Field of study</dt><dd>{field}</dd></div>
+      <div><dt>Level</dt><dd>{level}</dd></div>
+      <div><dt>Intended intake</dt><dd>{c.intent.intake ?? 'Not sure'}</dd></div>
+      <div><dt>School-leaving qualification</dt><dd>{c.education.qualification ?? notGiven}</dd></div>
+      <div><dt>Awarding country</dt><dd>{c.education.awardingCountry ?? notGiven}</dd></div>
+      <div><dt>Language of the certificate</dt><dd>{c.education.certificateLanguage ?? notGiven}</dd></div>
+      <div><dt>Programme compared</dt><dd>{programmeName} at <a href={universityHref}>{universityName}</a></dd></div>
+    </dl>
+    <div>
+      <h3>Subjects</h3>
+      <div class="table-wrap" role="region" aria-label="Subjects the synthetic candidate entered" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Subject</th><th scope="col">Grade as entered</th><th scope="col">Scale</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            {c.subjects.map((s) => (
+              <tr>
+                <th scope="row">{s.name}</th>
+                {s.studied === false ? (
+                  <td colspan="3">Not studied</td>
+                ) : (
+                  <>
+                    <td>{s.grade ?? 'No grade given'}</td>
+                    <td>{s.scaleType ? SCALE_TEXT[s.scaleType] ?? s.scaleType : 'Not given'}{s.scaleMax != null && ` (out of ${s.scaleMax})`}</td>
+                    <td>{s.resultStatus ? RESULT_STATUS_TEXT[s.resultStatus] ?? s.resultStatus : 'Not given'}</td>
+                  </>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h3>Documents (self-declared)</h3>
+      <ul class="declared">
+        {c.documents.map((d) => <li><span>{DOC_TEXT[d.type] ?? d.type}</span> <strong>{STATE_TEXT[d.state] ?? d.state}</strong></li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+<style>
+  .cand { margin-bottom: 2.5rem; }
+  .lead { color: var(--slate); max-width: 72ch; }
+  .cand-grid { display: grid; gap: 1.5rem; }
+  @media (min-width: 900px) { .cand-grid { grid-template-columns: 1fr 1.2fr; align-items: start; } }
+  .facts { margin: 0; display: grid; gap: 0; }
+  .facts > div { display: grid; grid-template-columns: minmax(120px, 1fr) 1.4fr; gap: .25rem 1rem; padding: .6rem 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+  .facts dt { color: var(--slate); font-weight: 500; }
+  .facts dd { margin: 0; overflow-wrap: anywhere; }
+  h3 { margin-top: 0; }
+  .table-wrap + h3 { margin-top: 1.25rem; }
+  .declared { list-style: none; padding: 0; margin: 0; display: grid; gap: .35rem; }
+  .declared li { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+</style>

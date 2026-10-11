@@ -87,6 +87,14 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       const jumps = await page.$$eval('nav.jump a', (a) => a.map((x) => x.getAttribute('href')));
       for (const j of jumps) if (!(await page.$(`${j.replace(/([^a-zA-Z0-9_#-])/g, '\\$1')}`))) fail(`${path} jump link ${j} has no target`);
     }
+    // Readiness demo: the fixed disclaimer is visible, every row has a worded result badge, nothing is totalled.
+    if (path === '/preview/readiness/') {
+      if (!(await page.isVisible('[data-disclaimer]'))) fail(`${name} ${path} disclaimer not visible`);
+      const badges = await page.$$eval('[data-readiness-row] [data-result]', (b) => b.map((x) => x.textContent.trim()));
+      const rows = await page.$$eval('[data-readiness-row]', (r) => r.length);
+      if (!rows || badges.length !== rows || badges.some((t) => !['Met', 'Not met', 'Unknown', 'Pending evidence'].includes(t))) fail(`${name} ${path} readiness badges: ${JSON.stringify(badges)}`);
+      if (/\b(in)?eligible\b|\bscore\b|\bverdict\b/i.test(await page.innerText('main'))) fail(`${name} ${path} mentions eligibility, a score or a verdict`);
+    }
     // Accessibility (mobile + desktop)
     if (name !== 'tablet') {
       if (name === 'mobile') await page.click('[data-menu-toggle]').catch(() => {});

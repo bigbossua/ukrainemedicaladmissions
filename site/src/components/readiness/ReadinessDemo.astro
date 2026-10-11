@@ -1,0 +1,73 @@
+---
+/**
+ * Body of /preview/readiness/ (PREVIEW builds only): the APPLICATION_SYSTEM_SPEC §12.2 worked example, run by
+ * src/lib/readiness.mjs with the SYNTHETIC candidate against the SYNTHETIC sample record. Nothing here is real.
+ */
+import Breadcrumbs from '../Breadcrumbs.astro';
+import CandidateSummary from './CandidateSummary.astro';
+import ReadinessTable from './ReadinessTable.astro';
+import DocumentChecklist from './DocumentChecklist.astro';
+import PreparatorySuggestion from './PreparatorySuggestion.astro';
+import ResultBadge from './ResultBadge.astro';
+import StageTwoNote from './StageTwoNote.astro';
+import { assessReadiness, documentChecklist, preparatorySuggestion, RESULT_LABELS } from '../../lib/readiness.mjs';
+import { SYNTHETIC_CANDIDATE, SYNTHETIC_VARIANT_NO_CHEMISTRY } from '../../lib/synthetic-candidate.mjs';
+interface Props { record: any; programmeId?: string; /** Real records that have completed verification (published). */ publishedCount: number }
+const { record, programmeId = 'medicine', publishedCount } = Astro.props;
+const programme = record.programmes.find((p: any) => p.id === programmeId) ?? record.programmes[0];
+const results = assessReadiness(SYNTHETIC_CANDIDATE, programme);
+const checklist = documentChecklist(SYNTHETIC_CANDIDATE, programme);
+const suggestion = preparatorySuggestion(results, record);
+const variantResults = assessReadiness(SYNTHETIC_VARIANT_NO_CHEMISTRY, programme);
+const variantNotMet = variantResults.filter((r) => r.result === 'not_met');
+const variantSuggestion = preparatorySuggestion(variantResults, record);
+const universityHref = `/preview/${record.slug}/`;
+const resultKeys = Object.keys(RESULT_LABELS) as (keyof typeof RESULT_LABELS)[];
+---
+<div class="page-head"><div class="wrap"><span class="eyebrow">Internal preview</span><h1>Readiness check: worked example</h1><p>How a candidate's own answers are compared with one programme's published requirements. The candidate and the university are both invented.</p></div></div>
+<Breadcrumbs items={[{ label: 'Preview', href: '/preview/' }, { label: 'Readiness check demo' }]} draft />
+<section style="padding-top:1rem"><div class="wrap">
+  <CandidateSummary candidate={SYNTHETIC_CANDIDATE} programmeName={programme.name} universityName={record.shortName} universityHref={universityHref} />
+
+  <section class="block" aria-labelledby="results-h">
+    <h2 id="results-h">Readiness against the published requirements</h2>
+    <p class="prose">Each requirement the university publishes for this programme gets one of four results. Only requirements we have verified can be met or not met; anything we have not verified stays unknown.</p>
+    <ul class="legend" aria-label="What the results mean">
+      {resultKeys.map((k) => (
+        <li><ResultBadge result={k} /> {{
+          met: 'the verified requirement matches what you told us.',
+          not_met: 'the verified requirement does not match what you told us.',
+          unknown: 'the requirement is not verified yet, or we need more detail from you.',
+          pending_evidence: 'we need a document or a result that is not available yet.',
+        }[k]}</li>
+      ))}
+    </ul>
+    <ReadinessTable results={results} label="Readiness results for the synthetic candidate" caption={`${programme.name}, ${record.shortName}. One row per published requirement, in the university's order. The rows are not added up.`} />
+  </section>
+
+  <section class="block" aria-labelledby="docs-h">
+    <h2 id="docs-h">Document checklist</h2>
+    <p class="prose">Built from the documents the university lists for this programme. A conditional item shows its condition and stays unknown until your answers settle it. Uploads are not open: “you have it” means only that you told us so.</p>
+    <DocumentChecklist items={checklist} />
+  </section>
+
+  <section class="block" aria-labelledby="prep-h">
+    <h2 id="prep-h">Preparatory route</h2>
+    <PreparatorySuggestion suggestion={suggestion} emptyText="Nothing is suggested for this candidate. A preparatory route is shown only when a requirement is not met and the university's route has been verified." />
+    <h3 class="variant-h">Second synthetic scenario: Chemistry not studied</h3>
+    <p class="prose">The same invented candidate, except that they tell us they have not studied Chemistry. This shows when a route appears.</p>
+    {variantNotMet.length > 0 && (
+      <ul class="changed" aria-label="Results that change in the second scenario">
+        {variantNotMet.map((r) => <li><ResultBadge result={r.result} /> {r.wording}</li>)}
+      </ul>
+    )}
+    <PreparatorySuggestion suggestion={variantSuggestion} level={4} because="Shown because a verified requirement is not met in this scenario." emptyText="Nothing is suggested: no verified preparatory route exists for this university." />
+  </section>
+
+  <StageTwoNote publishedCount={publishedCount} />
+</div></section>
+<style>
+  .block { padding: 0; margin-top: 2.5rem; }
+  .legend, .changed { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .4rem; font-size: .95rem; }
+  .variant-h { margin-top: 2rem; }
+</style>
