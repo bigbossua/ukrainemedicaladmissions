@@ -273,7 +273,7 @@ export const CODE_WORDS = Object.freeze({
   'tier-not-allowed': 'its evidence is not from an allowed kind of source (recognition needs tier 4, the recognition authority of the destination country; everything else tier 1, 2 or 3)',
   'recognition-from-university': "its recognition evidence is on the university's own website",
   'source-mismatch': "the record's source link is not the address of its verified evidence entry",
-  conflict: 'the record or the evidence marks it conflicting',
+  conflict: 'the record or an evidence entry marks it conflicting, or verified evidence entries disagree with each other',
   'value-mismatch': 'a verified evidence entry has a different value from the record',
   'stale-review': 'its evidence has no next-review date, or that date has passed',
   'past-academic-year': 'the fee is for an academic year that has ended (or the year is not written like 2026/27)',
@@ -300,10 +300,12 @@ export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), 
   if (!claim || typeof claim !== 'object' || !('value' in claim)) return withheld('to-be-confirmed', 'missing');
   const value = pickValue(path, claim.value);
   const entries = (Array.isArray(evidenceEntries) ? evidenceEntries : []).filter((e) => e && e.claimPath === path);
-  // Conflicts first: they withhold the claim whatever the record says.
-  if (claim.status === 'conflicting' || entries.some((e) => e.status === 'conflicting')) return withheld('withheld-conflict', 'conflict');
-  if (entries.some((e) => e.status === 'verified' && !deepEqual(pickValue(path, e.value), value))) return withheld('withheld-conflict', 'value-mismatch');
+  // Conflicts first: a conflicting entry, or verified entries that disagree with each other, withhold the claim
+  // whatever the record says.
+  const verifiedValues = entries.filter((e) => e.status === 'verified').map((e) => pickValue(path, e.value));
+  if (claim.status === 'conflicting' || entries.some((e) => e.status === 'conflicting') || verifiedValues.some((v) => !deepEqual(v, verifiedValues[0]))) return withheld('withheld-conflict', 'conflict');
   if (claim.status !== 'verified') return withheld(claim.status === 'outdated' || claim.status === 'partially-verified' ? 'under-review' : 'to-be-confirmed', 'not-verified');
+  if (verifiedValues.some((v) => !deepEqual(v, value))) return withheld('withheld-conflict', 'value-mismatch');
   if (value === undefined && hasValue(claim.value)) return withheld('under-review', 'no-public-form');
   if (!hasValue(value)) return withheld('to-be-confirmed', 'empty');
   if (!isHttpsUrl(claim.source)) return withheld('under-review', 'source-not-https');
