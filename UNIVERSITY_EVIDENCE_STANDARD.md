@@ -154,7 +154,7 @@ When the reviewer reads the right page and it does not state the fact, that is a
 
 Prefer the lowest tier number available.
 
-**Ministry portal, EDEBO and NAQA pages.** They are tier 3 here, because the brief's tier 3 is "Ukrainian government or competent regulator". They are acceptable only for the claim types §7 allows at tier 3, and never for fees or recognition. `DIRECTORY_VERIFICATION_PLAN.md` §6.3, §6.5 and §6.6 were generated before this standard. They still call these pages "cross-check only (not official sources)". This standard replaces that wording; the owner is asked to confirm it (§13 item 17).
+**Ministry portal, EDEBO and NAQA pages** (tier 3 POLICY, from the brief; replacing the older wording TO CONFIRM). They are tier 3 here, because the brief's tier 3 is "Ukrainian government or competent regulator". They are acceptable only for the claim types §7 allows at tier 3, and never for fees or recognition. `DIRECTORY_VERIFICATION_PLAN.md` §6.3, §6.5 and §6.6 were generated before this standard. They still call these pages "cross-check only (not official sources)". This standard replaces that wording; the owner is asked to confirm it (§13 item 17).
 
 **Never evidence:** third-party directories, admissions agents, blogs, social media, forums, search snippets, AI summaries, encyclopaedias, and fee figures on any site other than the university's own.
 
@@ -290,7 +290,7 @@ From this environment, `curl` through the environment's proxy to the root addres
 14. The wording of the "check with your own regulator" statement next to any recognition claim (§9).
 15. Entry numbering (`n` never reused) (§3.1).
 16. The acceptable tiers for every claim type except recognition, accreditation and fees (§7 rows labelled "tiers TO CONFIRM").
-17. That Ministry-portal ("Study in Ukraine"), EDEBO and NAQA pages count as tier 3 under this standard, replacing the older "cross-check only (not official sources)" wording in `DIRECTORY_VERIFICATION_PLAN.md` §6.3, §6.5 and §6.6 (§6).
+17. That treating Ministry-portal ("Study in Ukraine"), EDEBO and NAQA pages as tier 3, as the brief's tier list does, replaces the older "cross-check only (not official sources)" wording in `DIRECTORY_VERIFICATION_PLAN.md` §6.3, §6.5 and §6.6 (§6).
 
 ## 14. Change log
 
