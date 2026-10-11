@@ -1,0 +1,923 @@
+{
+  "slug": "danylo-halytsky-lviv-national-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Danylo Halytsky Lviv National Medical University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the official admission PDFs for foreign applicants use \"Danylo Halytsky Lviv National Medical University (LNMU)\"; Ukrainian «Львівський національний медичний університет імені Данила Галицького» (ЛНМУ). Confirm the full official name, in English and Ukrainian, on the official homepage."
+  },
+  "shortName": "Danylo Halytsky Lviv National Medical University",
+  "alternativeNames": [
+    "LNMU",
+    "ЛНМУ",
+    "Львівський національний медичний університет імені Данила Галицького"
+  ],
+  "status": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No official-domain statement on the university's operation in 2025–26 or 2026–27 was found (searched again 2026-10-11), so no status is recorded. Leads only: third-party news (zaxid.net, 2025 and 2026) reports that the university approved tuition prices for 2025–26 and for 2026 entrants; an undated official letter to foreign students (apparently 2022) says the university was working normally. No relocation lead found. Record a status only from a dated current-year official statement or order."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "The only official wording found is an undated letter to foreign students (apparently 2022): the university had been advised by the Ministry to start the 2022–23 year in person where shelters were available, and there were difficulties for the arrival of foreign students. Out of date. Quote the current official statement verbatim with its date."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year (2025–26 or 2026–27). None found in snippets."
+  },
+  "city": "Lviv",
+  "region": "Lviv Oblast",
+  "address": {
+    "value": "69 Pekarska St., Lviv",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the street address appears in the snippets of the 2023-cycle admission PDFs for foreign applicants (which of the two documents was not recorded). Record the postal address exactly as printed on the official contacts page."
+  },
+  "website": {
+    "value": "https://new.meduniv.lviv.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: every official document found (Faculty of Foreign Students PDFs, English pages ?p=818 and ?p=902) is hosted on new.meduniv.lviv.ua; the homepage itself did not appear in the results. Confirm the canonical domain on the official site."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Lead (official domain, 2026-10-11 snippet of the admission information PDF, 2023 cycle): Faculty of Foreign Students e-mail dep_foreign_students@meduniv.lviv.ua. Not recorded as a value because the document is from the 2023 cycle and may be out of date. Record e-mail, telephone and page URL only as printed on the current official page."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year only from the official history page."
+  },
+  "overview": "A medical university in Lviv, western Ukraine, whose foreign applicants are handled by a Faculty of Foreign Students. Draft record built from search-snippet leads on 2026-10-11: the official admission documents found are for the 2023 cycle and the only official fee table found is for 2021/22, so both are out of date and nothing from them is recorded as a value. Every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or the NAQA register as the source. (The 2023 admission rules call 221, 222 and 226 \"accredited specialties\" — a lead, not evidence.)"
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year). An official PDF on payment for study, hostel and additional services exists but is labelled 2021/2022 (out of date); nothing from it is recorded."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): applications are received \"for obtaining the Master's degree of Medical and Pharmaceutical directions\". Whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page. 2023 document — may be out of date."
+      },
+      "specialtyCode": {
+        "value": "222",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"Foreign candidates may be admitted to the LNMU at the following accredited specialties: 221 Dentistry, 222 Medicine, 226 Pharmacy, Industrial Pharmacy (full-time)\"."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No award title in the snippets (only the specialty name and \"Master's degree\"). Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=818, undated; the same page cites 2020/2021 figures): \"Teaching of Medicine, Dentistry and pharmacy for foreign students is carried out in two languages – Ukrainian and English\". Confirm for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"Foreign candidates may be admitted to the LNMU at the following accredited specialties: 221 Dentistry, 222 Medicine, 226 Pharmacy, Industrial Pharmacy (full-time)\". 2023 document — confirm against the current rules for foreigners."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The latest official admission rules for foreigners found are the 2023 rules (2023–24 cycle); no 2025 or 2026 rules surfaced (searched again 2026-10-11). Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are domestic contract prices in UAH and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-tests",
+          "type": "exam",
+          "summary": "Foreigners entering the first year compete on the results of entrance tests: English language (first subject, coefficient 0.50) and Chemistry (second subject, coefficient 0.50).",
+          "subject": "English language; Chemistry",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"for English language (first subject) – 0.50; for Chemistry (second subject) – 0.50\". The sweep read the first subject as the language of instruction (English or Ukrainian). 2023 document — confirm subjects, format and pass marks against the current rules."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport-copy",
+          "name": "Copy of international passport",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        },
+        {
+          "id": "school-certificate",
+          "name": "Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        },
+        {
+          "id": "consent",
+          "name": "Consent to personal data collection and processing",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No current application window found. The latest official windows found are for the 2023–24 cycle (two intakes, autumn and spring) — out of date; an undated official English page (?p=818) gives a different, single admission window, so the two leads conflict. No date is recorded; record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): applications are received \"for obtaining the Master's degree of Medical and Pharmaceutical directions\". Whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page. 2023 document — may be out of date."
+      },
+      "specialtyCode": {
+        "value": "221",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"Foreign candidates may be admitted to the LNMU at the following accredited specialties: 221 Dentistry, 222 Medicine, 226 Pharmacy, Industrial Pharmacy (full-time)\"."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No award title in the snippets (only the specialty name and \"Master's degree\"). Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=818, undated; the same page cites 2020/2021 figures): \"Teaching of Medicine, Dentistry and pharmacy for foreign students is carried out in two languages – Ukrainian and English\". Confirm for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"Foreign candidates may be admitted to the LNMU at the following accredited specialties: 221 Dentistry, 222 Medicine, 226 Pharmacy, Industrial Pharmacy (full-time)\". 2023 document — confirm against the current rules for foreigners."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The latest official admission rules for foreigners found are the 2023 rules (2023–24 cycle); no 2025 or 2026 rules surfaced (searched again 2026-10-11). Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are domestic contract prices in UAH and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-tests",
+          "type": "exam",
+          "summary": "Foreigners entering the first year compete on the results of entrance tests: English language (first subject, coefficient 0.50) and Chemistry (second subject, coefficient 0.50).",
+          "subject": "English language; Chemistry",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"for English language (first subject) – 0.50; for Chemistry (second subject) – 0.50\". The sweep read the first subject as the language of instruction (English or Ukrainian). 2023 document — confirm subjects, format and pass marks against the current rules."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport-copy",
+          "name": "Copy of international passport",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        },
+        {
+          "id": "school-certificate",
+          "name": "Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        },
+        {
+          "id": "consent",
+          "name": "Consent to personal data collection and processing",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No current application window found. The latest official windows found are for the 2023–24 cycle (two intakes, autumn and spring) — out of date; an undated official English page (?p=818) gives a different, single admission window, so the two leads conflict. No date is recorded; record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy, Industrial Pharmacy",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): applications are received \"for obtaining the Master's degree of Medical and Pharmaceutical directions\". Whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page. 2023 document — may be out of date."
+      },
+      "specialtyCode": {
+        "value": "226",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"Foreign candidates may be admitted to the LNMU at the following accredited specialties: 221 Dentistry, 222 Medicine, 226 Pharmacy, Industrial Pharmacy (full-time)\"."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No award title in the snippets (only the specialty name and \"Master's degree\"). Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=818, undated; the same page cites 2020/2021 figures): \"Teaching of Medicine, Dentistry and pharmacy for foreign students is carried out in two languages – Ukrainian and English\". Confirm for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"Foreign candidates may be admitted to the LNMU at the following accredited specialties: 221 Dentistry, 222 Medicine, 226 Pharmacy, Industrial Pharmacy (full-time)\". 2023 document — confirm against the current rules for foreigners."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The latest official admission rules for foreigners found are the 2023 rules (2023–24 cycle); no 2025 or 2026 rules surfaced (searched again 2026-10-11). Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The only official fee table found (the Faculty of Foreign Students PDF on payment for study, hostel and additional services) is labelled 2021/2022 — out of date; its figures are NOT recorded. Tuition figures for 2025–26 and for 2026 entrants appear only in third-party news (zaxid.net), are domestic contract prices in UAH and are not recorded. Publish a fee only after reading a current official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-tests",
+          "type": "exam",
+          "summary": "Foreigners entering the first year compete on the results of entrance tests: English language (first subject, coefficient 0.50) and Chemistry (second subject, coefficient 0.50).",
+          "subject": "English language; Chemistry",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2023 Rules of Admission for foreigners): \"for English language (first subject) – 0.50; for Chemistry (second subject) – 0.50\". The sweep read the first subject as the language of instruction (English or Ukrainian). 2023 document — confirm subjects, format and pass marks against the current rules."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport-copy",
+          "name": "Copy of international passport",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        },
+        {
+          "id": "school-certificate",
+          "name": "Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        },
+        {
+          "id": "consent",
+          "name": "Consent to personal data collection and processing",
+          "condition": "Requested for the official \"Invitation to Study\" issued by the Faculty of Foreign Students",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (admission information PDF, 2023 cycle): \"In order to get 'Invitation to Study' candidate have to present: Copy of international passport, Copy of the High School Certificate (Complete Secondary Education Certificate) with Transcripts, Consent to personal data collection and processing\". Confirm against the current document list."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No current application window found. The latest official windows found are for the 2023–24 cycle (two intakes, autumn and spring) — out of date; an undated official English page (?p=818) gives a different, single admission window, so the two leads conflict. No date is recorded; record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-college",
+      "name": "Nursing (specialty 223), professional junior bachelor — LNMU Medical College",
+      "field": "nursing",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=902, undated): the Medical College \"trains professional junior bachelors in the specialty 223 'Nursing'\". No bachelor's or master's nursing programme found. Never \"BSN\"."
+      },
+      "specialtyCode": {
+        "value": "223",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=902, undated): \"specialty 223 'Nursing'\"."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not listed among the specialties open to foreign candidates in the 2023 admission rules (221, 222, 226 only); no snippet shows availability to international applicants."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical Therapy",
+      "field": "physical_therapy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded. A search summary attributed a \"Bachelor degree: Physical Therapy\" listing to the official site, but no source URL could be confirmed; third-party news (zaxid.net, 2026) lists physical therapy among the domestic programmes priced for 2026 entrants. Read the level from the official programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No specialty code in any snippet."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not listed among the specialties open to foreign candidates in the 2023 admission rules; no snippet shows availability to international applicants."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "preparatory-course",
+      "name": "Preparatory course for foreign citizens",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The course centres on an intensive Ukrainian-language programme; the language in which chemistry, biology and physics are taught is not stated in any official snippet (a non-official blog says the course is taught only in Ukrainian)."
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet states an English-language preparatory track."
+      },
+      "durationText": {
+        "value": "one year",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=818, undated): \"Foreign citizens who are not strong enough in Ukrainian language can enter a one-year Preparatory course, which includes an intense language program, as well as some basic training in Chemistry, Biology and Physics\"."
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian language",
+          "Chemistry",
+          "Biology",
+          "Physics"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English page ?p=818, undated): \"an intense language program, as well as some basic training in Chemistry, Biology and Physics\"; the Ministry portal (undated) names final exams in Ukrainian Language, Biology, Chemistry and Physics."
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Certificate name not stated in any snippet."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (Ministry of Education \"Study in Ukraine\" portal, a government source, 2026-10-11) — NOT verified; read the official page before publishing. Undated portal wording: \"Graduate students of these courses can be enrolled for the first year studies to Danylo Halytsky Lviv National Medical University. After passing exams (Ukrainian Language, Biology, Chemistry and Physics)\" — i.e. conditional on exams. Not recorded; quote the university's own wording verbatim after reading the official page."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated. The official page says the course is for applicants \"not strong enough in Ukrainian language\"; whether English-track applicants use it is not stated."
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The Ministry portal (undated) gives an autumn start date; not recorded. Record the start date only from the official page, with the year."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The Ministry portal (undated) lists a preparatory-course fee; the figure is NOT recorded. Record a fee only from the official fee page, with the academic year."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Lead (official page, undated): the course is for \"Foreign citizens who are not strong enough in Ukrainian language\". Record the official eligibility wording verbatim."
+      },
+      "note": "Official-domain snippet confirms the course exists; duration, start date, fee and progression wording beyond that come from the Ministry portal (undated) and are not recorded as values."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "English site: foreign students (teaching languages, preparatory course)",
+      "url": "https://new.meduniv.lviv.ua/en/?p=818",
+      "purpose": "Languages of instruction for foreign students, preparatory course, admission window",
+      "snippetDate": "2026-10-11",
+      "note": "Undated; cites 2020/2021 figures — treat as potentially out of date"
+    },
+    {
+      "label": "Admission information for foreign applicants (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_foreign_students/3.%20ADMISSION/INFORMATION%20FOR%20APPLICANTS/2.%20Admission%20Information.pdf",
+      "purpose": "\"Invitation to Study\" procedure, document list, Faculty of Foreign Students contacts",
+      "snippetDate": "2026-10-11",
+      "note": "2023 cycle — may be out of date"
+    },
+    {
+      "label": "Rules of Admission 2023 (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_foreign_students/3.%20ADMISSION/INFORMATION%20FOR%20APPLICANTS/4.%20Rules%20of%20Admission%202023.pdf",
+      "purpose": "Specialties open to foreigners, entrance tests, application windows, quota routes",
+      "snippetDate": "2026-10-11",
+      "note": "2023 rules — out of date; look for the 2026 rules"
+    },
+    {
+      "label": "\"Dear Applicant\" letter (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_foreign_students/3.%20ADMISSION/INFORMATION%20FOR%20APPLICANTS/%21Dear%20Applicant.pdf",
+      "purpose": "Applicant guidance (content not in snippets)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Payment for study, hostel and additional services (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_foreign_students/3.%20ADMISSION/Payment%20for%20study%2C%20hostel%20and%20additional%20services.pdf",
+      "purpose": "Fee table structure, hostel and additional costs — read before any fee is recorded",
+      "snippetDate": "2026-10-11",
+      "note": "Labelled 2021/2022 — out of date; figures not recorded"
+    },
+    {
+      "label": "Information letter to foreign students (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_foreign_students/%21ANNOUNCEMENTS/%21Inf_letter.pdf",
+      "purpose": "Statement on operation and teaching format",
+      "snippetDate": "2026-10-11",
+      "note": "Undated, apparently 2022 — out of date"
+    },
+    {
+      "label": "Algorithm for Polish citizens (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_foreign_students/3.%20ADMISSION/ALGORITHMS%20FOR%20POLISH%20CITIZENS/Algorithm%20for%20Polish%20Citizens.pdf",
+      "purpose": "Admission route for Polish citizens (quota places)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Homepage",
+      "url": "https://new.meduniv.lviv.ua/",
+      "purpose": "Official name, contacts, current notices on teaching format",
+      "snippetDate": "2026-10-11",
+      "note": "Homepage did not appear in search results; the domain hosts every official document found"
+    },
+    {
+      "label": "English homepage",
+      "url": "https://new.meduniv.lviv.ua/en/",
+      "purpose": "Official English name, international section",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "English site: Medical College",
+      "url": "https://new.meduniv.lviv.ua/en/?p=902",
+      "purpose": "Nursing (223) professional junior bachelor at the Medical College",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Regulation on the organisation of the educational process (PDF)",
+      "url": "https://new.meduniv.lviv.ua/uploads/repository/dep/dep_medical_1/14._%D0%9F%D0%9E%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%9D%D0%AF/01.%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F%20%D0%BF%D1%80%D0%BE%20%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D1%96%D0%B7%D0%B0%D1%86%D1%96%D1%8E%20%D0%BE%D1%81%D0%B2%D1%96%D1%82%D0%BD%D1%8C%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%83%20%D1%83%20%D0%9B%D0%9D%D0%9C%D0%A3.pdf",
+      "purpose": "How teaching is organised (Ukrainian); context for the teaching-format statement",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Ministry portal: preparatory department (university 131)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/131/preparatory-department",
+      "purpose": "Cross-check only (government portal): preparatory-course start, final exams, progression wording",
+      "snippetDate": "2026-10-11",
+      "note": "Undated; fee and start date not recorded"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "Dated official statement for 2026–27 on operation and teaching format (only an undated letter, apparently 2022, and third-party news were found); no status is recorded until then.",
+      "Admission rules for foreign applicants for the 2026 intake: specialties open to foreigners, entrance tests, quota routes (the latest rules found are for 2023).",
+      "Official postal address and current Faculty of Foreign Students contacts (the only e-mail lead, kept in the internationalOffice note, comes from a 2023-cycle document).",
+      "Exact award titles, levels and durations for Medicine, Dentistry and Pharmacy (no duration or award title in any snippet).",
+      "Official tuition fees for foreign applicants with the academic year and payment schedule (only a 2021/22 table — out of date; third-party news figures are domestic and not recorded).",
+      "Application windows and intake dates for the current cycle (2023–24 windows are out of date; an undated official page gives a different window — conflicting leads).",
+      "Entrance tests for the current cycle: subjects, format, pass marks (2023 rules: English language and Chemistry).",
+      "Required documents as currently published (the \"Invitation to Study\" list comes from a 2023-cycle PDF).",
+      "Preparatory course: language of instruction for the science subjects, English track, certificate, progression wording verbatim, start date and fee with year (the Ministry-portal figures are undated).",
+      "Nursing (junior bachelor at the Medical College) and Physical Therapy: level, language and whether international applicants are admitted.",
+      "Whether any other programme (e.g. public health, or the further domestic specialties named in 2026 news) is open to foreign applicants.",
+      "Accreditation of each programme from the NAQA register or the certificate.",
+      "Accommodation availability and published prices with year.",
+      "Evidence-backed recognition statements only."
+    ]
+  }
+}

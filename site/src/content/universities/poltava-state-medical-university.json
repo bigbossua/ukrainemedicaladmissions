@@ -1,0 +1,987 @@
+{
+  "slug": "poltava-state-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Poltava State Medical University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English homepage): \"founded in 1921, Poltava State Medical University (prior to 01 May 2021 - Ukrainian Medical Stomatological Academy)\"; Ukrainian «Полтавський державний медичний університет» (ПДМУ). Confirm the full official name, in English and Ukrainian, on the official homepage."
+  },
+  "shortName": "Poltava State Medical University",
+  "alternativeNames": [
+    "PSMU",
+    "PDMU",
+    "ПДМУ",
+    "Ukrainian Medical Stomatological Academy"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English news, 2025): \"intensive hands-on emergency care trainings at its Simulation Center throughout September and October 2025\"; no relocation lead found (address in Poltava). Older official items say the 2023 academic year began \"in a distance-synchronous format\" and, in 2024, that \"most foreign students are currently outside Ukraine and studying online\". No statement for 2026–27 found."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found. The official wording found dates from 2023 (distance-synchronous start; international students studying Ukrainian online) and 2024 (most foreign students outside Ukraine and studying online) — out of date. Quote the current official statement verbatim with its date."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year. The 2023–24 snippets describe distance or online study for international students; no 2025–26 or 2026–27 statement found."
+  },
+  "city": "Poltava",
+  "region": "Poltava Oblast",
+  "address": {
+    "value": "36011, Poltava, 23 Shevchenka Street",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (International Faculty page, undated): \"36011, Poltava, 23 Shevchenka Street\". Confirm on the official contacts page that this is the university's postal address and not only the faculty's."
+  },
+  "website": {
+    "value": "https://www.pdmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: official pages on pdmu.edu.ua and www.pdmu.edu.ua, English site en.pdmu.edu.ua; Wikipedia (THIRD-PARTY) also lists www.pdmu.edu.ua. Confirm the canonical domain on the official site."
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "international@pdmu.edu.ua",
+      "phone": "(0532) 697092",
+      "url": "https://en.pdmu.edu.ua/info/foreign-students"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (International Faculty page, undated): the faculty \"handles training for foreign students\" and was \"renamed the International Faculty on November 1, 2020\"; e-mail international@pdmu.edu.ua, telephone (0532) 697092. Record contacts only as printed on the current official page."
+  },
+  "founded": {
+    "value": 1921,
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (English homepage): \"founded in 1921\". Confirm on the official history page."
+  },
+  "overview": "A medical university in Poltava, Ukraine, whose foreign students are handled by an International Faculty. Draft record built from search-snippet leads on 2026-10-11: the only official fee document found is undated and its figures conflict with the Ministry of Education's \"Study in Ukraine\" portal, so no fee is recorded. Every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or the NAQA register as the source. (Programme-level lead: an undated official Dentistry programme PDF says the Dentistry accreditation certificate \"is valid until 01.07.2026\" — the current status must be checked.)"
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year). None found in snippets."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (university programme document; its URL was not captured in the sweep): \"Master's degree, single issue, 360 ECTS credits, duration of study 5 years and 10 months\". \"Single issue\" may mean single-cycle; whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
+      },
+      "specialtyCode": {
+        "value": "222",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (undated fee PDF): Medicine \"(code 222)\" listed under English-language study for foreign students."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "An older official page says graduates receive \"Doctor of Medicine\"; not recorded. Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded: the programme document gives \"5 years and 10 months\", and the undated fee PDF describes the whole-course fee as \"over six years\". Record whole years only if the official programme page states them."
+      },
+      "durationText": {
+        "value": "5 years and 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (university programme document; its URL was not captured in the sweep): \"duration of study 5 years and 10 months\"."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (undated fee PDF): the table covers \"English and Ukrainian language study for foreign students\" and lists Medicine under English-language study; older official page: \"Starting from 2004, the training in specialties 'Medicine' and 'Dentistry' has been carried out in English\". Confirm that both tracks are open to foreign applicants for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the undated fee PDF lists Medicine (code 222) under English-language study for foreign students; an older official page says \"foreigners who would like to learn the course of 'Medicine' in English admit to the International faculty\". Undated — confirm against the current admission rules for foreigners."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No dated admission rules for foreign applicants found (official notices found cover only the 2024 domestic intake). Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "CONFLICT — nothing recorded. The official fee PDF on en.pdmu.edu.ua is undated, and its English-medium Medicine figures differ from the per-year figures on the Ministry of Education's \"Study in Ukraine\" portal (also undated). Neither figure is recorded. Publish a fee only after reading a dated official fee schedule (amount, currency, academic year, payment schedule), and record whether the portal figure is superseded or still conflicts."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No application deadline for foreign applicants found. Official notices give only 2024 domestic deadlines (out of date); a third-party site claims an open 2026 intake. No date is recorded; record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found (a third-party site claims February and September intakes; not recorded)."
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (Dentistry programme information PDF on en.pdmu.edu.ua, undated): \"master's degree, single issue, 300 ECTS credits, duration of study: 4 years 10 months\". Whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
+      },
+      "specialtyCode": {
+        "value": "221",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (undated fee PDF): Dentistry \"(code 221)\" listed under English-language study for foreign students."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded: the snippet gives \"4 years 10 months\". Record whole years only if the official programme page states them."
+      },
+      "durationText": {
+        "value": "4 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (Dentistry programme information PDF, undated): \"duration of study: 4 years 10 months\"."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (undated fee PDF): the table covers \"English and Ukrainian language study for foreign students\" and lists Dentistry under English-language study; older official page: \"Starting from 2004, the training in specialties 'Medicine' and 'Dentistry' has been carried out in English\". Confirm that both tracks are open to foreign applicants for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the undated fee PDF lists Dentistry (code 221) under English-language study for foreign students; the undated Dentistry programme information PDF says that for foreigners and stateless persons enrolment is based on the results of entrance exams. Confirm against the current admission rules for foreigners."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No dated admission rules for foreign applicants found (official notices found cover only the 2024 domestic intake). Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "CONFLICT — nothing recorded. The official fee PDF on en.pdmu.edu.ua is undated, and its English-medium Dentistry figures differ from the per-year figures on the Ministry of Education's \"Study in Ukraine\" portal (also undated). Neither figure is recorded. Publish a fee only after reading a dated official fee schedule (amount, currency, academic year, payment schedule), and record whether the portal figure is superseded or still conflicts."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-exams",
+          "type": "exam",
+          "summary": "Foreigners and stateless persons are enrolled on the results of entrance examinations, under the general terms of the university's admission rules.",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (Dentistry programme information PDF, undated; a search summary rather than a quotation). Subjects, format and pass marks are not in the snippet. A separate undated admission PDF names entrance tests \"in the language of instruction and biology\" for enrolment to the Bachelor's degree; whether that applies to this programme must be read."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No application deadline for foreign applicants found. Official notices give only 2024 domestic deadlines (out of date); a third-party site claims an open 2026 intake. No date is recorded; record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-paramedic",
+      "name": "Nursing (specialty 223), programme subject area 223.02 Emergency Medicine (Paramedic)",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (academic and professional programme \"Paramedic\", 2024): \"first (Bachelor's) level of higher education, Speciality 223 Nursing, Field of Study 22 Health, Programme Subject Area 223.02 Emergency Medicine\". No master's nursing programme found."
+      },
+      "specialtyCode": {
+        "value": "223",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2024 \"Paramedic\" programme): \"Speciality 223 Nursing\", programme subject area 223.02 Emergency Medicine."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Lead (2024 programme): educational qualification \"Bachelor of Nursing\", professional qualification \"Paramedic\"; not recorded. Confirm on the official programme page or diploma supplement. Never \"BSN\"."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Leads only: the Ministry of Education's \"Study in Ukraine\" portal (undated) lists separate Ukrainian-medium and English-medium fee lines for \"223 Nursing (Paramedicine) (Bachelor's degree)\"; a search summary says the undated official fee PDF also lists Nursing under English study. Not confirmed on an official page."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No quoted official statement that foreign applicants are admitted to this programme for the current intake. Leads: the Ministry portal fee lines (undated); a search summary of the undated official fee PDF (\"also lists Nursing under English study\"); a summary of an undated official admission PDF saying the nursing programme uses a professional test instead of the entrance tests. Read the official pages before moving it to programmes[]."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded. The Ministry portal (undated) lists nursing fee lines; they are not recorded. Publish a fee only after reading a dated official fee schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health («Громадське здоров'я»), specialty 229",
+      "field": "public_health",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (educational-professional programme, Poltava 2025): second (master's) level, \"awarding the qualification of master of public health\". No \"MPH\" label recorded."
+      },
+      "specialtyCode": {
+        "value": "229",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (2025 programme): specialty 229 «Громадське здоров'я»."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Lead (2025 programme): \"master of public health\"; not recorded. Confirm the exact award title. Never \"MPH\" unless the university prints it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The programme document is in Ukrainian; the language of instruction and any English-medium delivery are not stated in the snippets."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet shows availability to international applicants; not named in the foreign-student fee leads."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical therapy, ergotherapy («Фізична терапія, ерготерапія»), specialty 227",
+      "field": "physical_therapy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (programme review PDF, undated): \"review of the bachelor's program 'Фізична терапія, ерготерапія' for specialty 227\"."
+      },
+      "specialtyCode": {
+        "value": "227",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (programme review PDF, undated): \"for specialty 227\"."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated on the official domain (a third-party portal lists a domestic Ukrainian-language contract programme for 2024)."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet shows availability to international applicants; not named in the foreign-student fee leads."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy (specialty 226)",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded: the leads point to different programmes. A third-party admissions portal (2024) lists a Ukrainian-language part-time master's (\"Фармація (за спеціалізаціями)\"); an official PDF on the college sub-site (2022) is a junior-bachelor Pharmacy programme of the university's professional college; a 2024 official notice mentions fee-paying \"bachelor's and master's programs in medicine and pharmacy\" (domestic intake). Read the official programme list."
+      },
+      "specialtyCode": {
+        "value": "226",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (college sub-site programme PDF, 2022): specialty 226 Pharmacy; the third-party 2024 listing uses the same code."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No English-medium lead; the third-party listing is Ukrainian-language."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet shows availability to international applicants; the foreign-student fee leads name Medicine, Dentistry and Nursing, not Pharmacy."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "foreign-citizens-training-centre",
+      "name": "Educational and Research Center for Foreign Citizens Training",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated. The official page (undated) says students study \"Ukrainian or Russian languages\" (the Russian option may be out of date); the language in which the science subjects are taught is not stated."
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet states an English-language preparatory track."
+      },
+      "durationText": {
+        "value": "1 year",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (Ministry of Education \"Study in Ukraine\" portal, a government source, 2026-10-11) — NOT verified; read the official page before publishing. Undated portal wording: \"Foreign citizens arriving for full-time study (1 year)\". Not yet seen on the university's own page."
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian language",
+          "Scientific style of speech",
+          "Biology",
+          "Chemistry",
+          "Physics",
+          "Mathematics",
+          "Basics of Computer Science",
+          "Local History"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet (centre page, undated): \"students study Ukrainian or Russian languages, scientific style of speech, Biology, Chemistry, Physics, Mathematics, Basics of Computer Science, linguistics course of 'Local History'\"; the Ministry portal (undated) lists \"Ukrainian language for Academic Purpose\" in place of the scientific style of speech and no Russian. Record the current list as printed."
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Certificate name not stated in any snippet."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No progression wording found. Quote the official wording verbatim after reading the page."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated."
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No start date found."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee snippet found. Record a fee only from the official fee page, with the academic year."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Lead (centre page, undated): the centre \"trains foreign students who plan to receive professional education at the PSMU\". Record the official eligibility wording verbatim."
+      },
+      "note": "Began in 1997 as a preparatory department for foreign citizens and was renamed in December 2018 (official history page, undated). Contact e-mail in snippet: pidgotovche@pdmu.edu.ua."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "International Faculty",
+      "url": "https://en.pdmu.edu.ua/info/foreign-students",
+      "purpose": "International office contacts, address, faculty role for foreign students",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "English homepage",
+      "url": "https://en.pdmu.edu.ua/",
+      "purpose": "Official name, former name, founding year",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Homepage",
+      "url": "https://www.pdmu.edu.ua/",
+      "purpose": "Canonical domain, contacts, current notices on teaching format",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "About the International Faculty (history)",
+      "url": "https://en.pdmu.edu.ua/info/foreign-students/istoriya-fakultetu-pidgotovki-inozemnih-studentiv",
+      "purpose": "Faculty history and renaming",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Fees for foreign students (PDF)",
+      "url": "https://en.pdmu.edu.ua/storage/admission/docs/UgLqRTwTxabc2LfS3edZoQ4amKrA9mlrsnT1ErvG.pdf",
+      "purpose": "Programmes and languages for foreign students; fee table — read before any fee is recorded",
+      "snippetDate": "2026-10-11",
+      "note": "Undated; its figures conflict with the Ministry portal — find the academic year before recording anything"
+    },
+    {
+      "label": "Dentistry programme information (PDF)",
+      "url": "https://en.pdmu.edu.ua/storage/basic_pages/docs/HWJOCCE9ksoCCf1Ft0cFBq3RKUTfjAMppJx4sJSH.pdf",
+      "purpose": "Level, ECTS, duration, accreditation validity, enrolment of foreigners",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "Programme document (PDF)",
+      "url": "https://en.pdmu.edu.ua/storage/basic_pages/docs/kUIDRuZxUBnAL1VAnTW0sEXWH5SLJG149DvNgENW.pdf",
+      "purpose": "Content not captured in snippets — open and identify (listed by the sweep among pages to verify)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Admission information for foreign citizens (PDF)",
+      "url": "https://en.pdmu.edu.ua/storage/admission/docs/HPwAtLfjejlRvyD6k8vZGbyBFJWEgxMYxYdq5qZf.pdf",
+      "purpose": "Entrance tests, nursing professional test, enrolment orders",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "Admissions site",
+      "url": "https://vstup.pdmu.edu.ua/",
+      "purpose": "Current admission rules, deadlines, programme list",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Educational and Research Center for Foreign Citizens Training",
+      "url": "https://en.pdmu.edu.ua/education/nncpig",
+      "purpose": "Preparatory subjects, language, eligibility, contacts",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "Centre history",
+      "url": "https://en.pdmu.edu.ua/education/nncpig/istoriya-navchalno-naukovogo-centru",
+      "purpose": "Origin (1997) and renaming (2018)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "English news",
+      "url": "https://en.pdmu.edu.ua/news",
+      "purpose": "Current notices on teaching format and on-site activity",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "News: international students study Ukrainian online",
+      "url": "https://en.pdmu.edu.ua/news/priorities-of-the-educational-process-international-students-study-the-ukrainian-language-online",
+      "purpose": "Teaching format for international students",
+      "snippetDate": "2026-10-11",
+      "note": "2023 — out of date"
+    },
+    {
+      "label": "Notice to entrants",
+      "url": "https://www.pdmu.edu.ua/news/do-uvagi-vstupnikiv-to-the-attention-of-the-entrants-news-cvyr",
+      "purpose": "Admission notices",
+      "snippetDate": "2026-10-11",
+      "note": "2024 domestic intake — out of date; dates not recorded"
+    },
+    {
+      "label": "Older International Faculty page",
+      "url": "https://pdmu.edu.ua/magazines/old/facultethome/fakultetinostran/fakultetinozem_en.html",
+      "purpose": "English-medium Medicine and Dentistry for foreigners (history)",
+      "snippetDate": "2026-10-11",
+      "note": "Older page — historical context only"
+    },
+    {
+      "label": "Nursing \"Paramedic\" programme 2024",
+      "url": "https://pdmu.edu.ua/n-process/department-npr/one-level/opp/paramedic/academic-and-professional-program-paramedic-2024",
+      "purpose": "Level, specialty, award title of the nursing (paramedic) bachelor",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Public Health master's programme (project page)",
+      "url": "https://pdmu.edu.ua/n-process/department-npr/two-level/opp/public-health/proiekt-osvitnoyi-programi-department-npr-opp-public-health-pvte",
+      "purpose": "Programme status, language",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Public Health master's programme 2025 (PDF)",
+      "url": "https://pdmu.edu.ua/storage/department-npr-opp-public-health/files/R9mLqNuWSjyGFbQd7axcb05b0YtGG0QtGMI3wXyQ.pdf",
+      "purpose": "Level, award title, ECTS, duration",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Physical therapy bachelor programme review (PDF)",
+      "url": "https://pdmu.edu.ua/storage/department-npr-opp-fizterapiya/files/3jAR9q4135it5dVWtJ22KwtrqDdC9Z3c63fl30gy.pdf",
+      "purpose": "Level and specialty of the physical therapy programme",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "College Pharmacy programme (PDF)",
+      "url": "https://college.pdmu.edu.ua/storage/education/docs/43ZF4aOuZ6Lm6mlhglWjLPIuHg1F5rimLAVVaMig.pdf",
+      "purpose": "Pharmacy junior-bachelor programme at the university's college",
+      "snippetDate": "2026-10-11",
+      "note": "2022; found by a separate search on 2026-10-11"
+    },
+    {
+      "label": "Ministry portal: fees (university 82)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/82/cost",
+      "purpose": "Cross-check only (government portal): fee lines that conflict with the university's undated PDF",
+      "snippetDate": "2026-10-11",
+      "note": "Undated; no figure recorded"
+    },
+    {
+      "label": "Ministry portal: preparatory department (university 82)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/82/preparatory-department",
+      "purpose": "Cross-check only (government portal): preparatory duration and subjects",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "Dated official statement for 2026–27 on teaching format, including whether international students are taught in Poltava or online (2023–24 statements describe distance or online study; 2025 news shows on-site simulation training).",
+      "Admission rules for foreign applicants for the 2026 intake: programmes open to foreigners, entrance tests (an undated PDF names the language of instruction and biology for bachelor's enrolment), invitation procedure.",
+      "Official postal address (the lead is the International Faculty address) and current International Faculty contacts.",
+      "Exact award titles for Medicine and Dentistry (older page: \"Doctor of Medicine\"), and durations as printed (Medicine: \"5 years and 10 months\" in the programme document against \"over six years\" in the fee PDF).",
+      "FEES CONFLICT: the official fee PDF is undated and its English-medium figures conflict with the Ministry portal; find the dated official fee schedule for 2026/27 (amount, currency, per-period, payment schedule) and record which source is current.",
+      "Application windows and intake dates for foreign applicants (only 2024 domestic deadlines found; third-party 2026 claims not recorded).",
+      "Required documents for foreign applicants (none in snippets).",
+      "Dentistry accreditation: the certificate was said to be valid until 01.07.2026 — current status from the NAQA register.",
+      "Nursing (223.02 Paramedic bachelor): whether foreign applicants are admitted, in which language, and the exact award; resolve the Ministry-portal English-medium line against an official page.",
+      "Pharmacy: whether any programme is open to foreign applicants, with level and language (leads: third-party part-time master's 2024; college junior bachelor 2022).",
+      "Public Health master's and Physical therapy bachelor: eligibility of international applicants, language, accreditation.",
+      "Preparatory centre: language of instruction for the science subjects (the official page says \"Ukrainian or Russian languages\"), English track, certificate, progression wording verbatim, start date, fee with year.",
+      "Accommodation availability and published prices with year.",
+      "Evidence-backed recognition statements only."
+    ]
+  }
+}
