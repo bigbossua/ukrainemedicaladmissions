@@ -27,6 +27,7 @@ for (const f of pages) {
   if (!canon) warn(f, 'NO CANONICAL'); else if (!is404 && canon !== SITE + rel) warn(f, `CANONICAL MISMATCH ${canon}`);
   if (!robots) warn(f, 'NO ROBOTS META');
   if (h1s !== 1) warn(f, `H1 COUNT ${h1s}`);
+  for (const img of h.match(/<img\b[^>]*>/g) ?? []) { if (!/\balt="/.test(img)) warn(f, `IMG WITHOUT ALT ${img.slice(0, 80)}`); if (!/\bwidth="/.test(img) || !/\bheight="/.test(img)) warn(f, `IMG WITHOUT DIMENSIONS ${img.slice(0, 80)}`); }
   if (titles.has(title)) warn(f, `DUPLICATE TITLE with ${titles.get(title)}`); else titles.set(title, rel);
   if (descs.has(desc)) warn(f, `DUPLICATE DESCRIPTION with ${descs.get(desc)}`); else descs.set(desc, rel);
   for (const m of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {

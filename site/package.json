@@ -20,6 +20,7 @@
     "test:staging": "npm run build:staging && node tests/staging-guard.mjs",
     "manifest": "node scripts/release-manifest.mjs",
     "compare:backup": "node scripts/compare-live-backup.mjs",
+    "verify:live": "node scripts/verify-live.mjs",
     "test": "npm run build && npm run test:links && npm run test:meta && npm run test:redirects && npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:release && npm run test:staging"
   },
   "dependencies": {

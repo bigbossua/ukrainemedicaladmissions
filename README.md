@@ -9,7 +9,7 @@ Independent admissions-support business and website for international students a
 | `site/tests/` | Checks run by `npm test` and CI: links, metadata (incl. JSON-LD validity and `security.txt` expiry), redirect safety, UI smoke, accessibility, Lighthouse budgets, tooling self-test, staging guard. |
 | `site/src/content/universities/` | **Single source of truth** for university and programme data. Every fact carries a verification status, source URL and check date. |
 | `brand/` | Logo, favicon, brand guidelines, homepage design direction. |
-| `*.md` at root | Project records (plan, hosting, SEMrush ledger, registers, specs, checklists). Start with `PROJECT_EXECUTION_PLAN.md`. |
+| `*.md` at root | Project records. Start with `PROJECT_EXECUTION_PLAN.md` (decisions, Phase E proposal), then `BASELINE_REPORT.md` (verified current state), `KEYWORD_URL_MAP.md` (SEMrush evidence, country comparison, master keyword-to-URL register, money-page register, costed research request), `UNIVERSITY_DATA_REGISTER.md` and `PROGRAMME_SUPPLY_REGISTER.md` (what may be presented and what is unverified), `APPLICATION_SYSTEM_SPEC.md` (candidate-profile and readiness service), `SERVICE_TIERS_SPEC.md` (revenue options), `VISUAL_AUDIT_AND_IMAGE_REGISTER.md`, `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`, `SECURITY_AND_RELEASE_CHECKLIST.md`, `SEMRUSH_API_LEDGER.md`, `SOURCE_VERIFICATION_REGISTER.md`, `TECHNICAL_REPAIR_BACKLOG.md`. |
 | `.github/workflows/` | CI (build + tests on every push) and the manual production-branch publisher. |
 
 Rules that never change: no invented university facts; no WhatsApp CTAs; the primary CTA is **Apply Online Now**; nothing reaches production without the release checklist and the owner's approval.

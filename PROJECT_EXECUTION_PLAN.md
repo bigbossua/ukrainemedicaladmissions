@@ -8,6 +8,7 @@
 | Area | State |
 |---|---|
 | Brand identity | DONE — `brand/` (commit `ea1f6a9`) |
+| Baseline report (Phase A) | DONE 2026-10-11 — `BASELINE_REPORT.md` (live checks blocked by network policy; production branch verified from GitHub) |
 | Hosting assessment | DONE — `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`; document root still UNVERIFIED — owner's File Manager shows an empty `public_html` and no `domains/` (§10); the single remaining check is whether the domain's DNS points at this server (§10.1, owner action D1) |
 | Website scaffold | DONE — `site/`, Astro static site, 18 pages, all tests passing locally (see §4) |
 | University data model | DONE — schema in `site/src/content.config.ts`; Ternopil pilot record, every claim marked unverified / not-published |
@@ -99,3 +100,49 @@ CI (`.github/workflows/ci.yml`) runs only when `site/**` or the workflow file ch
 ## 7. Decisions still required
 
 ~~D3~~ **decided: Astro-first, no purchases** (§2) · **D8 repository visibility — RECOMMENDED: make the repository private now (free).** Checked consequences: GitHub Actions keep running on private repos (2,000 free minutes/month; a CI run takes ≈2–3 min); Hostinger Git supports private repositories via its GitHub App; the prepared Pages CMS config works with private repos; nothing in the project depends on public visibility. This closes the exposure of deploy branches and the unverified Ternopil JSON on GitHub blob pages · D1 document root / production target (single check: `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §10.1) · D2 approve the first deployment — `production` branch published 2026-10-11 (`b2ca3d6`, tag `release-20261011-005330`, fingerprint `5ff6e7e7…c033d4`); remaining: prerequisite §12.1 and the owner's hPanel steps 3–4 (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §12.2) · ~~D4 staging subdomain~~ optional, no longer required · D5 network access or official PDFs · D6 SEMrush account/key · D7 legal entity details for privacy/terms · **D9 default branch**: the `workflow_dispatch` button and the Actions tab only list workflows present on `main`; `main` still holds only the brief. Options: fast-forward merge the working branch into `main` once the first deployment is verified (no force, nothing overwritten), or keep publishing by `publish-production-*` tags. Owner's call.
+
+---
+
+## 8. Phase E — implementation proposal (2026-10-11; nothing here is started without the gates named)
+
+Evidence base: `BASELINE_REPORT.md`, `KEYWORD_URL_MAP.md` §6–§9, `PROGRAMME_SUPPLY_REGISTER.md`, `UNIVERSITY_DATA_REGISTER.md` §6–§10, `APPLICATION_SYSTEM_SPEC.md` §8–§11, `SERVICE_TIERS_SPEC.md`, `VISUAL_AUDIT_AND_IMAGE_REGISTER.md`.
+
+### 8.1 Prioritised backlog
+
+| P | Item | Depends on | Safe locally? | Needs owner approval for |
+|---|---|---|---|---|
+| **P0** | Live verification run (`npm run verify:live`) and the authorised end-to-end enquiry/e-mail test | network allow-list for the two production hosts (free) | yes (read-only) | nothing beyond the allow-list; fixes found are proposed, not deployed |
+| **P0** | Official-source verification access: allow-list `tdmu.edu.ua`, `nmuofficial.com`, `vnmu.edu.ua`, `bsmu.edu.ua`, `universities.studyinukraine.gov.ua`, `info.edbo.gov.ua` and the other domains in `UNIVERSITY_DATA_REGISTER.md` §6 (or the owner supplies official PDFs) | D5 | yes | nothing (free) |
+| **P0** | SEMrush research R1 + R2 (2,340 units) — the minimum to decide programme and university expansion | approval of §KEYWORD_URL_MAP §9 | n/a | **units spend** |
+| **P1** | Verify and publish the first three university profiles (Vinnytsia, Bogomolets, Bukovinian) and at least one fee schedule; flip `publishable` only when complete | P0 access | yes (content + build + CI) | the deploy that publishes them |
+| **P1** | `/admissions/` readiness section and `/tuition-fees/` verified figures; `/courses/medicine/` qualification titles | P1 verification | yes | deploy |
+| **P1** | Visual layer 1–2 (hero photograph, process illustrations, course photographs) per `VISUAL_AUDIT_AND_IMAGE_REGISTER.md` V1, V2, V5, V6, V7 | image sourcing route (owner-downloaded Unsplash or allow-list) | yes | deploy; image source decision |
+| **P1** | Stepped Stage-1 profile form (`/apply/`) with have/need checklist — still e-mail/JSON backed, no accounts yet | design V8 | yes | deploy |
+| **P2** | Stage 2 application platform (accounts, save-and-resume, documents, reviewer queue) in PHP 8 + MySQL on the plan, synthetic data only | E3/E4 hPanel facts; §APPLICATION_SYSTEM_SPEC §11 gates | yes (local + CI with PHP) | go-live with real documents; database creation on the host |
+| **P2** | `/courses/nursing/` parity; preparatory-routes section; public-health/rehab decisions | R1 results + supply verification | yes | deploy; any new page passes §KEYWORD_URL_MAP §7 first |
+| **P2** | GSC property + sitemap submission; decision on a privacy-reviewed analytics tool (CSP change needed) | owner's Google account | n/a | analytics choice |
+| **P3** | R3–R5 SEMrush (SERPs, competitors) and the quarterly review loop | approval | n/a | units spend |
+| **P3** | Decap/Pages CMS activation for non-technical editing; D9 default-branch decision | owner | yes | GitHub App install; merge to `main` |
+
+### 8.2 Dependencies and critical path
+
+Network allow-list (free, owner, minutes) → live verification + official verification → first publishable profiles + fee figures → the fees and directory pages can rank → named-university profiles. In parallel: SEMrush R1/R2 (approval) → programme and country decisions; Stage-1 stepped form (no dependency) → Stage 2 platform (hPanel facts).
+
+### 8.3 Risks
+
+| Risk | Likelihood | Impact | Mitigation |
+|---|---|---|---|
+| Live site differs from the build (PHP not executing, headers missing, redirect behaviour) | unknown until P0 | high | `verify:live` before any further release; fixes via the publish workflow |
+| Demand genuinely too small in English-language markets (wartime collapse visible in exports) | medium | high (business case) | Measure broad match in Tier-3 markets (R3) and GSC actuals before content spend; keep the service lean |
+| Official information unavailable or changing (operating status, relocations) | medium | high (trust) | One claim, one source, one date; `outdated` status; re-check per intake; never publish unverified |
+| Recognition/licensing questions answered loosely | medium | high (legal/trust) | Only primary regulator documents; FAQ wording reviewed |
+| Document handling before security gates | low (gated) | severe | §APPLICATION_SYSTEM_SPEC §11 sign-off required |
+| Scope creep into page count | medium | medium | §KEYWORD_URL_MAP §7 is the only route to a new URL |
+
+### 8.4 Test plan
+
+Every release: `npm test` (build, links, meta incl. JSON-LD and alt text, redirects, UI smoke 3 widths, axe, Lighthouse budgets, tooling self-test, staging guard) → publish workflow → Hostinger deploy → `npm run verify:live` → report. Stage 2: automated state-machine, access-control (cross-account 403), upload-validation and CSRF tests with synthetic fixtures; restore rehearsal. Content: schema validation fails the build on malformed claims; the meta test fails if an unpublishable profile leaks into the sitemap.
+
+### 8.5 Approval boundaries (exact)
+
+Approval is required for: any SEMrush spend (R1–R5); any production deployment (each release); any new indexable page (after §KEYWORD_URL_MAP §7); analytics tooling choice (CSP change, privacy notice); Stage 2 go-live with real documents; database creation on the host; the image-sourcing route if it involves any account or purchase; merging to `main` (D9); legal entity details (D7); any change to DNS or hosting configuration. Everything else in §8.1 marked "safe locally" proceeds on the branch and is reported.
