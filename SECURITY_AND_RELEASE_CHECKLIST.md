@@ -4,6 +4,7 @@ Complete every box before the **first** production write and before each later r
 
 ## A. Before the first production deployment (one-time)
 
+- [ ] **A0 BLOCKER — draft legal pages and live forms** (added 2026-10-11): the legal pages (privacy, terms, disclosure, complaints policy) carry "Draft for legal review" banners and bracketed placeholders and are in the production build and sitemap; the forms collect personal data under the draft privacy notice. Complete D7 and the legal review, or keep the forms disabled, before any deployment (with A10, C11.1).
 - [ ] **A1 Document root confirmed** for `ukrainemedicaladmissions.com` in hPanel — the FTP Accounts path plus the website entry's platform/connection status (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §10.1); exact path recorded there. Not assumed from File Manager (owner's 2026-10-10 view: empty `public_html`, mapping unconfirmed).
 - [ ] **A2 Backup** of that directory downloaded and dated (or dated evidence that it is empty); any database linked to the domain exported. Stored off-server, not in Git. SHA-256 of the archive and the release-manifest fingerprint (`npm run manifest`) recorded in the assessment §9.
 - [ ] **A3 Old URLs** inventoried from the backup with `npm run compare:backup -- <dir>` (plus sitemap/Search Console export if available); every legacy URL KEPT or REDIRECTED, no UNCOVERED row left unreviewed; the resulting rules pass `npm run test:redirects` (backlog N1).
@@ -13,14 +14,14 @@ Complete every box before the **first** production write and before each later r
 - [ ] **A6 `.htaccess` verified (on staging if used, otherwise immediately after the first production deploy)**: HTTPS + non-www redirects, 404 page, security headers, `.json` blocked but `site.webmanifest` served, PHP handler reachable by POST only.
 - [ ] **A7 Email**: `mail()` from the handler delivers to the business inbox from staging; SPF/DKIM set for the sending address.
 - [ ] **A8 Private storage**: `uma-private/` exists beside the document root, mode 0700, owned by the hosting user; a test record lands there and is not web-accessible (direct URL returns 403/404).
-- [ ] **A9 Secrets**: none in Git (`git grep -i -E 'password|secret|api[_-]?key'` clean); `config.php` lives only in `uma-private/`.
+- [ ] **A9 Secrets**: `git grep -i -E 'password|secret|api[_-]?key'` run and its matches reviewed: no credential values committed (prose matches listed in the release record); `config.php` lives only in `uma-private/`.
 - [ ] **A10 Legal**: privacy notice and terms reviewed; entity details inserted (D7); cookie/analytics statement matches what is actually installed (since 2026-10-11 the notice says no analytics is installed; options and the CSP change each needs: `ANALYTICS_AND_SEARCH_CONSOLE.md` §B).
 - [ ] **A11 Search Console** property verified for the non-www HTTPS host; baseline exported (steps and what to export: `ANALYTICS_AND_SEARCH_CONSOLE.md` §A).
 - [ ] **A12 Owner approval** recorded (date, scope of change).
 
 ## B. Every release
 
-- [ ] CI green on the commit (build, astro check, links, meta incl. JSON-LD and `security.txt` expiry, redirect safety, UI smoke, axe, Lighthouse, tooling self-test, staging guard, php -l).
+- [ ] CI green on the commit (record evidence rules, readiness logic, build, astro check, links, meta incl. JSON-LD and `security.txt` expiry, redirect safety, UI smoke, axe, Lighthouse, tooling self-test, staging guard, publication gate, preview UI, php -l, PHP handler tests (enquiry-php)).
 - [ ] `npm run manifest` fingerprint recorded for the release; `.well-known/security.txt` Expires still in the future.
 - [ ] Screenshots from CI reviewed at mobile/tablet/desktop for the changed pages.
 - [ ] No new page without a `PAGE_ASSET_REGISTER.md` row; no university flipped to `publishable` without `SOURCE_VERIFICATION_REGISTER.md` entries.
@@ -54,7 +55,7 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 
 **C3 Configuration and secrets** §14.3
 - [ ] C3.1 `uma-app/` and `uma-private/stage2/` sit outside the web root; `stage2/config.php` is mode 0600; the data directories are 0700.
-- [ ] C3.2 No secret in Git (`git grep -i -E 'password|secret|api[_-]?key'` clean, as A9); keys generated on the server or by the owner, never in chat or e-mail.
+- [ ] C3.2 No secret in Git (`git grep -i -E 'password|secret|api[_-]?key'` matches reviewed as in A9: no credential values); keys generated on the server or by the owner, never in chat or e-mail.
 - [ ] C3.3 `display_errors` off and `log_errors` on, shown by T-LOG-2 on the host.
 - [ ] C3.4 The only Stage-2 PHP file in the web root is `apply/app/index.php`; any other `.php` under `apply/app/` is denied.
 
@@ -100,7 +101,7 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 - [ ] C11.3 T-CONS-1 and T-CONS-2 pass; consent texts loaded into `consent_texts` with their hashes.
 
 **C12 Migration and indexing** §14.14 · §14.15
-- [ ] C12.1 T-MIG-1 to T-MIG-4 pass on synthetic fixtures; the v2 field names re-checked against the merged Stage-1 handler.
+- [ ] C12.1 T-MIG-1 to T-MIG-4 pass on synthetic fixtures; the v2 field names re-checked against the merged Stage-1 handler. *(Field-name re-check done 2026-10-11 against `enquiry.php` at `4136658`, `APPLICATION_SYSTEM_SPEC.md` §14.14; the box stays unticked until T-MIG passes.)*
 - [ ] C12.2 The owner has decided whether Stage-1 enquirers may be invited to claim a profile.
 - [ ] C12.3 T-IDX-1 and T-IDX-2 pass (no app URL in the sitemap; private paths unreachable on the host).
 

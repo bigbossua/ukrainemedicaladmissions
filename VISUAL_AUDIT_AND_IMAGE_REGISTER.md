@@ -177,11 +177,13 @@ Icon grid: 24 × 24, 1.75 px round stroke, `currentColor`, so each icon takes it
 | `/admissions/#stages` | Stage 2 "complete our online application and upload documents at your own pace"; stage 3 "advise on eligibility" | S2 (detailed): stage 2 not open yet, drafts, saving and uploads planned; stage 3 "We review it and ask for anything missing" (spec §1 wording) | Uploads and online drafts do not exist; the readiness rules forbid eligibility verdicts |
 | `/admissions/#readiness` | Present tense ("When you start a candidate profile… the check shows…") | Heading "…How the readiness check will work", a note that profiles and the check are planned, future tense throughout | Not built (spec §8 is PROPOSED) |
 | `/admissions/#preparatory` | "usually a year of Ukrainian (sometimes English) language and science subjects, ending in a certificate" | "Some Ukrainian universities publish a preparatory (foundation) course… Each university sets its own duration, subjects, language of instruction and fee…" | Unverified generalised duration removed |
-| `/admissions/#checklist` | "How your document checklist works"; note "At this stage we only ask which documents you already have and which you still need" | "…will work", S3 labelled as planned; note: no scans by e-mail, use the message box of the Apply Online form | The Stage 1 form has no have/need document field |
+| `/admissions/#checklist` | "How your document checklist works"; note "At this stage we only ask which documents you already have and which you still need" | "…will work", S3 labelled as planned; note: no scans by e-mail, use the message box of the Apply Online form | The Stage 1 form has no have/need document field. *Superseded at integration (4136658), 2026-10-11: the stepped form records have/need/not sure per document and the admissions note says so.* |
 
 Unchanged by design: every H1, page title and meta description (none states something false). The home hero paragraph was left as the 2026-10-11 strategic review set it.
 
 ### 11.3 Checks run (VERIFIED-IN-REPO, local runs on 2026-10-11 in `/home/user/wt/visual/site`)
+
+*Measured on `wip/visual` before integration. At the integration commit `4136658` the commit message reports, for example, `preview-ui` 11 pages × 3 widths and `a11y` 20 pages × 2 widths + 14 `/apply/` step states, 0 violations.*
 
 - **C1** `node tests/a11y.mjs`: 20 pages × 2 widths, 0 blocking, 0 minor violations. `node tests/preview-ui.mjs`: 10 pages × 3 widths, 0 failures, 0 blocking a11y violations.
 - **C2** `node tests/ui-smoke.mjs`: 20 pages × 390/820/1440 px, 0 failures (includes the horizontal-overflow check).

@@ -1,6 +1,6 @@
 # PROJECT_EXECUTION_PLAN.md — Ukraine Medical Admissions
 
-**Status date:** 2026-10-10 (evening) · **Branch:** `claude/new-session-ppgh22` · **`main`:** untouched (`d9a4542`)
+**Status date:** 2026-10-10 (evening; branch line and §1 updated 2026-10-11) · **Branches:** work happens on `claude/university-profile-pipeline`; the session branch `claude/new-session-ppgh22` is kept at the same commit · **`main`:** untouched (`d9a4542`)
 **Labels:** VERIFIED (observed, evidence named) · UNVERIFIED (reported, not checked) · PROPOSED (needs owner approval)
 
 ## 1. Status summary
@@ -10,11 +10,11 @@
 | Brand identity | DONE — `brand/` (commit `ea1f6a9`) |
 | Baseline report (Phase A) | DONE 2026-10-11 — `BASELINE_REPORT.md` (live checks blocked by network policy; production branch verified from GitHub) |
 | Hosting assessment | DONE — `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`; document root still UNVERIFIED — owner's File Manager shows an empty `public_html` and no `domains/` (§10); the single remaining check is whether the domain's DNS points at this server (§10.1, owner action D1) |
-| Website scaffold | DONE — `site/`, Astro static site, 18 pages, all tests passing locally (see §4) |
-| University data model | DONE — schema in `site/src/content.config.ts`; Ternopil pilot record, every claim marked unverified / not-published |
+| Website scaffold | DONE — `site/`, Astro static site, 20 pages built, 18 in the sitemap (at `4136658`), all tests passing locally (see §4) |
+| University data model | DONE — schema in `site/src/content.config.ts`; Ternopil pilot record (seven draft records since 2026-10-11, §8.6), every claim marked unverified / not-published |
 | Enquiry / application-start (Stage 1) | DONE — `site/public/api/enquiry.php`, tested with synthetic data; stores outside web root |
-| SEMrush research | DONE — pilot + follow-up 2026-10-10 (2,110 verified via the owner's balance) and approved R1 + R2 2026-10-11 (850); cumulative 2,960; expected balance 47,040 (owner to confirm). Evidence and per-URL actions in `KEYWORD_URL_MAP.md` §4; raw exports in `research/semrush/`. No further paid calls without approval |
-| University fact verification | BLOCKED — official domains unreachable (network policy). Official sources *identified* by search (tdmu.edu.ua, nmuofficial.com, kmu.edu.ua, MoES portal, EDEBO) and logged snippet-only in `SOURCE_VERIFICATION_REGISTER.md`; 0 claims verified; Ternopil stays noindex |
+| SEMrush research | DONE — pilot + follow-up 2026-10-10 (2,110 verified via the owner's balance), approved R1 + R2 2026-10-11 (850) and research programme 3 2026-10-11 (3,270 line-based, under the owner's working cap of 5,000 incl. the 850); cumulative 6,230 line-based (max-reading estimate 6,340; conservative bound 6,810); expected balance 43,770 (43,660; conservative 43,190) — ESTIMATE until the owner's next API Units reading (`SEMRUSH_API_LEDGER.md`). Evidence and per-URL actions in `KEYWORD_URL_MAP.md` §4, §13, §16–§18; raw exports in `research/semrush/`. No further metered call before the owner's reading is reconciled and a new batch is approved |
+| University fact verification | BLOCKED — official domains unreachable (network policy). Official sources *identified* by search (tdmu.edu.ua, nmuofficial.com, kmu.edu.ua, MoES portal, EDEBO) and logged snippet-only in `SOURCE_VERIFICATION_REGISTER.md`; 0 claims verified; Ternopil has no page in branch builds (temporary 302 to `/universities/`), while the deployed release still serves it noindex |
 | Deployment | PREPARED, NOT ACTIVE — CI + manual publisher with `staging` (forced noindex, X-Robots-Tag, no sitemap, guard test) and `production` (PUBLISH confirmation + release tag) targets; Hostinger Git connection is an owner action |
 | Legacy site | Live pages exist on the domain (`/services`, `/about`, `/dentistry-admissions-in-ukraine`, `/document-translation-legalisation` — search-evidenced, unfetched); inventory and migration risks in `PAGE_ASSET_REGISTER.md`; earlier-audit claims 0 confirmed / 0 refuted |
 | Production | UNTOUCHED |
@@ -117,11 +117,11 @@ Evidence base: `BASELINE_REPORT.md`, `KEYWORD_URL_MAP.md` §6–§9, `PROGRAMME_
 | **P1** | Verify and publish the first university profiles in the revised order (Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv gated) and at least one fee schedule; flip `publishable` only when complete. **Pipeline built locally 2026-10-11 (§8.6): seven draft shells, profile/directory/comparison layouts, preview build, gate tests — verification itself still blocked by P0 access** | P0 access | yes (content + build + CI) | the deploy that publishes them |
 | **P1** | `/admissions/` readiness section and `/tuition-fees/` verified figures; `/courses/medicine/` qualification titles | P1 verification | yes | deploy |
 | **P1** | Visual layer 1–2 (hero photograph, process illustrations, course photographs) per `VISUAL_AUDIT_AND_IMAGE_REGISTER.md` V1, V2, V5, V6, V7 | image sourcing route (owner-downloaded Unsplash or allow-list) | yes | deploy; image source decision |
-| **P1** | Stepped Stage-1 profile form (`/apply/`) with have/need checklist — still e-mail/JSON backed, no accounts yet | design V8 | yes | deploy |
+| **P1** DONE on branch 2026-10-11 | Stepped Stage-1 profile form (`/apply/`) with have/need checklist — still e-mail/JSON backed, no accounts yet (`6a35310`, merged in `4136658`; not deployed) | design V8 | yes | deploy |
 | **P2** | Stage 2 application platform (accounts, save-and-resume, documents, reviewer queue) in PHP 8 + MySQL on the plan, synthetic data only | E3/E4 hPanel facts; §APPLICATION_SYSTEM_SPEC §11 gates | yes (local + CI with PHP) | go-live with real documents; database creation on the host |
 | **P2** | `/courses/nursing/` parity; preparatory-routes section; public-health/rehab decisions | R1 results + supply verification | yes | deploy; any new page passes §KEYWORD_URL_MAP §7 first |
 | **P2** | GSC property + sitemap submission; decision on a privacy-reviewed analytics tool (CSP change needed) | owner's Google account | n/a | analytics choice |
-| **P3** | R3–R5 SEMrush (SERPs, competitors) and the quarterly review loop | approval | n/a | units spend |
+| ~~P3~~ R3–R5 DONE 2026-10-11 | R3–R5 SEMrush (SERPs, competitors): executed under programme 3 as RB1–RB5 (`KEYWORD_URL_MAP.md` §14, §16; `SEMRUSH_API_LEDGER.md`). The quarterly review loop stays P3 | approval | n/a | units spend |
 | **P3** | Decap/Pages CMS activation for non-technical editing; D9 default-branch decision | owner | yes | GitHub App install; merge to `main` |
 
 ### 8.2 Dependencies and critical path
@@ -141,7 +141,7 @@ Network allow-list (free, owner, minutes) → live verification + official verif
 
 ### 8.4 Test plan
 
-Every release: `npm test` (record schema + evidence invariants, build, links, meta incl. JSON-LD and alt text, redirects, UI smoke 3 widths, axe, Lighthouse budgets, tooling self-test, staging guard, publication gate over production and preview builds, preview UI + axe over every draft) → publish workflow → Hostinger deploy → `npm run verify:live` → report. Stage 2: automated state-machine, access-control (cross-account 403), upload-validation and CSRF tests with synthetic fixtures; restore rehearsal. Content: schema validation fails the build on malformed claims; the meta test fails if an unpublishable profile leaks into the sitemap.
+Every release: `npm test` (record schema + evidence invariants, readiness logic (`test:readiness`), build, links, meta incl. JSON-LD and alt text, redirects, UI smoke 3 widths, axe, Lighthouse budgets, tooling self-test, staging guard, publication gate over production and preview builds, preview UI + axe over every draft, PHP handler tests (`test:php`: `php -l` and `tests/enquiry-php.mjs`)) → publish workflow → Hostinger deploy → `npm run verify:live` → report. Stage 2: automated state-machine, access-control (cross-account 403), upload-validation and CSRF tests with synthetic fixtures; restore rehearsal. Content: schema validation fails the build on malformed claims; the meta test fails if an unpublishable profile leaks into the sitemap.
 
 ### 8.5 Approval boundaries (exact)
 
@@ -151,7 +151,7 @@ Approval is required for: any SEMrush spend (R1–R5); any production deployment
 
 Done on the branch (details: `UNIVERSITY_DATA_REGISTER.md` §1, §4, §10–§11): extended content schema (multiple programmes per university, qualification levels, intake-specific requirement objects with subjects and scales, document objects, preparatory routes, research references, synthetic flag); reusable profile, directory and comparison layouts (responsive, axe-clean); seven draft record shells in the approved order, all unpublished, every claim unverified/not-published, no fee or date values; production build excludes them entirely (no page, link, sitemap entry, JSON-LD or form option); preview build (`npm run build:preview`) renders them noindex with a draft banner and the verification queue; new automated tests (`test:records`, `test:gate`, `test:preview`) wired into `npm test` and CI.
 
-Not done, by design: no claim verified (official domains still blocked — P0 access), no image downloaded (hosts blocked; no purchase), no deployment, no DNS or production change, no SEMrush call (cumulative 2,960 units; `SEMRUSH_API_LEDGER.md`).
+Not done, by design: no claim verified (official domains still blocked — P0 access), no image downloaded (hosts blocked; no purchase), no deployment, no DNS or production change, no SEMrush call (cumulative 2,960 units at that point; programme 3 later brought it to 6,230 line-based: `SEMRUSH_API_LEDGER.md`).
 
 **Behaviour change awaiting acknowledgement before any deploy (corrected 2026-10-11):** the live `noindex` Ternopil profile URL now redirects with a temporary 302 to `/universities/` (it no longer 404s; `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §13), and the Ternopil option disappears from the home/apply selects once this branch is published.
 
