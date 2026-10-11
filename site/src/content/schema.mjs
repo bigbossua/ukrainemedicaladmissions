@@ -130,7 +130,8 @@ export const record = z.object({
   accreditation: claim(z.string()),
   recognition: claim(z.array(z.string())),
   accommodation: claim(z.string()),
-  programmes: z.array(programme),
+  programmes: z.array(programme),                     // ONLY programmes with official evidence of admission for international applicants (owner decision 2026-10-11)
+  deferredProgrammes: z.array(programme).default([]),  // recorded programmes WITHOUT that evidence: never rendered publicly; preview-only verification queue
   preparatoryRoutes: z.array(preparatoryRoute).default([]),
   researchReferences: z.array(researchReference).default([]),
   faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),

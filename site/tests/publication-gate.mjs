@@ -27,6 +27,19 @@ const ldBlocks = (html) => [...html.matchAll(/<script type="application\/ld\+jso
 // ---------------------------------------------------------------- production
 if (!existsSync(DIST)) { console.log('dist/ missing — run npm run build first'); process.exit(1); }
 const prodHtml = htmlFiles(DIST).map((p) => ({ p: p.replace(DIST, ''), h: readFileSync(p, 'utf8') }));
+const htaccess = readFileSync(resolve('public/.htaccess'), 'utf8');
+// Profile URLs that were live BEFORE the publication gate (HOSTING_AND_DEPLOYMENT_ASSESSMENT.md §13): while such a record is
+// unpublished its URL must be redirected (302) to the directory, never 404; once publishable the rule must be removed.
+const LIVE_BEFORE_GATE = ['ternopil-national-medical-university'];
+for (const slug of LIVE_BEFORE_GATE) {
+  const rec = real.find((r) => r.slug === slug);
+  const rule = new RegExp(`^RedirectMatch\\s+302\\s+\\^/universities/${slug}/\\?\\$\\s+/universities/\\s*$`, 'm');
+  const anyRule = new RegExp(`^Redirect(Match)?\\s+.*${slug}`, 'm');
+  if (!rec) fail(`LIVE_BEFORE_GATE slug ${slug} has no record`);
+  else if (!rec.verification.publishable && !rule.test(htaccess)) fail(`.htaccess: unpublished ${slug} (live before the gate) needs "RedirectMatch 302 ^/universities/${slug}/?$ /universities/"`);
+  else if (rec.verification.publishable && anyRule.test(htaccess)) fail(`.htaccess: ${slug} is publishable — remove its redirect rule so the page is served`);
+  ok();
+}
 const sitemap = existsSync(join(DIST, 'sitemap-0.xml')) ? readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8') : '';
 if (!sitemap) fail('production sitemap-0.xml missing');
 if (existsSync(join(DIST, 'preview'))) fail('production build contains /preview/'); ok();
@@ -48,6 +61,8 @@ for (const s of samples) {
 }
 for (const r of published) {
   if (!existsSync(join(DIST, 'universities', r.slug, 'index.html'))) fail(`published record ${r.slug} has no page`);
+  const page = existsSync(join(DIST, 'universities', r.slug, 'index.html')) ? readFileSync(join(DIST, 'universities', r.slug, 'index.html'), 'utf8') : '';
+  for (const p of r.deferredProgrammes ?? []) if (page.includes(p.name)) fail(`published ${r.slug}: deferred programme "${p.name}" rendered publicly`);
   if (!sitemap.includes(`/universities/${r.slug}/`)) fail(`published record ${r.slug} missing from sitemap`);
   ok();
 }

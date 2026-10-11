@@ -1,0 +1,181 @@
+# Evidence register — Bukovinian State Medical University (`bukovinian-state-medical-university`)
+
+**Status:** NOTHING VERIFIED. Every "Verified value / wording" cell below is empty because no official page could be opened from the build environment (DNS blocked for `.ua` domains, tested 2026-10-11 with curl and the fetch tool). This register is the exact list of what to open, what to read and what to record so that the record can be verified either (A) by Claude once the domains are allow-listed, or (B) from captures made by the owner or daughter in an ordinary browser.
+
+**Record under verification:** `site/src/content/universities/bukovinian-state-medical-university.json` — 3 programme(s) with an official-domain lead of international admission (Medicine, Dentistry, Pharmacy); 2 deferred programme(s) kept unpublished until eligibility is read (Nursing («Медсестринство»), Physical therapy («Фізична терапія»), specialty «Терапія та реабілітація»).
+
+## How to capture a page (Route B)
+
+1. Open the URL in a normal browser. If the page redirects or you navigate further, note the **final URL** shown in the address bar.
+2. Save it as a PDF with the browser's print header on (File → Print → "Headers and footers" ticked → Save as PDF), so the URL and the date are printed on every page; or take a full-page screenshot with the address bar visible.
+3. Name the file `bukovinian-state-medical-university--NN--short-name.pdf` where NN is the row number of this register (e.g. `bukovinian-state-medical-university--01--homepage.pdf`).
+4. Keep captures **outside this repository** while the repository is public (the repository is public as of 2026-10-11); send them as a folder or attach them to the review. The register records only the file name.
+5. If a page does not exist or does not publish a fact, write "NOT FOUND" or "SILENT" in the capture column — that is a valid result; the field is then closed as not-published with a note.
+
+## Verification rules that apply (owner decisions 2026-10-11)
+
+- Baseline intake **2026–27**, but record the **exact academic year and wording printed on the page** (e.g. "2026/2027", "2026-2027 academic year"); never translate a 2025/26 figure into a 2026/27 claim.
+- Only programmes for which an official page states that international (foreign) applicants are admitted go in `programmes[]`; all others stay in `deferredProgrammes[]` (unpublished) until that page is read.
+- Fees, deadlines and intake dates: record a value only when printed on the official page for the stated intake, with currency, per-period, academic year and payment schedule; otherwise the profile shows "To be confirmed" with its explanation. No estimate, no third-party figure, no conversion.
+- Quote the university's own wording verbatim for the status statement and the preparatory progression text; never type a quotation from a search snippet.
+- Never: recognition or licensing implications, rankings, "MBBS/BSN/MSN/MPH" unless the university prints it, promotional statistics.
+- Each verified claim = `status: verified` + `source` (the exact https URL) + `checked` (the capture or reading date).
+
+## A. Pages to open (official domain)
+
+| # | Page | Purpose | Capture file (fill) | Result (fill: captured / not found / changed URL) |
+|---|---|---|---|---|
+| 1 | [Official English homepage](https://www.bsmu.edu.ua/en/) | Official name, languages of instruction, specialties list |  |  |
+| 2 | [International FAQ](https://www.bsmu.edu.ua/en/faq) | Contact address, English level, document language and legalisation rules |  |  |
+| 3 | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course) | Duration, subjects, English-track statement, certificate wording, fee with year |  |  |
+| 4 | [Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Official fee page: read the academic year it states (snippet showed 2023–2024 content), amounts, currency, per-period and schedule *(Surfaced in the second sweep (topic: preparatory); figures NOT recorded)* |  |  |
+| 5 | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/) | Medicine programme for foreign students; award title |  |  |
+| 6 | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Current admission rules and deadlines for foreigners |  |  |
+| 7 | [English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Exam format (CEFR B2 interview), specialties covered, remote option |  |  |
+| 8 | [English entrance-exam programme 2024](https://vstup.bsmu.edu.ua/wp-content/uploads/2024/08/english_program_2024.pdf) | Earlier version: Medicine, Dentistry, Pharmacy at Master's level *(Superseded by the 2026 document; comparison only)* |  |  |
+| 9 | [University booklet 2023](https://www.bsmu.edu.ua/wp-content/uploads/2023/07/buklet-bdmu-2023.pdf) | Dentistry specialty 221 for foreign students *(Dated 2023 — may be out of date)* |  |  |
+| 10 | [Guide for foreign applicants 2019](https://www.bsmu.edu.ua/wp-content/uploads/2019/11/the-guide-for-foreign-applicants-2019.pdf) | Historic specialties list incl. Nursing *(Dated 2019 — out of date; context only)* |  |  |
+| 11 | [Physical therapy programme document 2025](https://www.bsmu.edu.ua/wp-content/uploads/2025/05/op_fizichna-terapiya-na-sajt.doc) | Level, award title, professional qualification |  |  |
+| 12 | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf) | Licence re-issue (2025), accreditation of Medicine (master) |  |  |
+| 13 | [Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | Operating context |  |  |
+| 14 | [Timetable: 1st-year medicine, foreigners, autumn 2025](https://www.bsmu.edu.ua/wp-content/uploads/2025/08/1_kurs_mediczina-inozemczi-osin_2025-2026.pdf) | Indirect evidence of teaching format (remote synchronous sessions) |  |  |
+| 15 | [Timetable: 1st-year medicine, foreigners, spring 2026](https://www.bsmu.edu.ua/wp-content/uploads/2026/02/1_kurs_mediczina-inozemczi-vesna_2026.pdf) | Indirect evidence of teaching format |  |  |
+| 16 | [Timetable: 1st-year dentistry, foreigners, autumn 2025](https://www.bsmu.edu.ua/wp-content/uploads/2025/08/1_kurs_stomatologiya-inozemczi-osin_2025-2026.pdf) | Dentistry taught to foreign students |  |  |
+| 17 | [Timetable: 2nd-year pharmacy, foreigners, autumn 2025](https://www.bsmu.edu.ua/wp-content/uploads/2025/08/2_kurs_farmacziya-inozemczi-osin_2025-2026.pdf) | Pharmacy taught to foreign students |  |  |
+| 18 | [Transfer guide 2023](https://www.bsmu.edu.ua/wp-content/uploads/2023/01/transfer-to-bsmu-ukraine.docx) | Older contact address inter@bsmu.edu.ua *(Dated 2023)* |  |  |
+| 19 | To locate: Official contacts page with the postal address — not surfaced by any snippet | — |  |  |
+| 20 | To locate: The Medicine, Dentistry and Pharmacy programme pages linked from the faculty pages (level, award title, duration) | — |  |  |
+| 21 | To locate: The 2026/27 Rules of admission for foreign citizens on vstup.bsmu.edu.ua — capture the index AND the rules | — |  |  |
+| 22 | To locate: A dated university-wide notice on the 2026–27 teaching format (news section) | — |  |  |
+| 23 | To locate: EDEBO or Ministry-portal entry (university id 21) | — |  |  |
+
+Cross-check only, never a source: [Ministry portal: preparatory department](https://universities.studyinukraine.gov.ua/en/minedu/university/21/preparatory-department); [Ministry portal: dual-degree programmes](https://universities.studyinukraine.gov.ua/en/minedu/university/21/dual-degree-programs); [Third-party admissions portal (2025 offers)](https://vstup.osvita.ua/y2025/r25/85/); [Third-party admissions portal (2026 dentistry offer)](https://vstup.osvita.ua/y2026/r25/85/1611246/)
+
+## B. Record-level claims
+
+| Field (JSON path) | Status now | Lead (unverified, from snippets) | Page(s) to open | What to read and record | Capture file | Verified value / wording | Date read |
+|---|---|---|---|---|---|---|---|
+| `officialName` | unverified | LEAD: Bukovinian State Medical University | [Official English homepage](https://www.bsmu.edu.ua/en/) | The full official name exactly as printed (English, and Ukrainian if shown); note the abbreviation |  |  |  |
+| `website` | unverified | LEAD: https://www.bsmu.edu.ua/en/ | [Official English homepage](https://www.bsmu.edu.ua/en/) | The canonical domain and the international-students section |  |  |  |
+| `address` | not-published | — (no lead) | [International FAQ](https://www.bsmu.edu.ua/en/faq) | Postal address exactly as printed on the contacts page |  |  |  |
+| `internationalOffice` | unverified | LEAD: email: admission@bsmu.edu.ua | [International FAQ](https://www.bsmu.edu.ua/en/faq) | Name of the unit for foreign applicants, email, phone, page URL |  |  |  |
+| `status` | unverified | LEAD: operating | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf)<br>[Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | "operating" only if a dated current-year official statement or order shows the university operating at its address; "relocated" if it says so |  |  |  |
+| `statusStatement` | not-published | — (no lead) | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf)<br>[Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | The university's own dated statement on the organisation/format of the current academic year — VERBATIM, with its date |  |  |  |
+| `teachingFormat` | not-published | — (no lead) | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf)<br>[Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | in-person / blended / distance exactly as the statement says; otherwise not-published |  |  |  |
+| `founded` | not-published | — (no lead) | [Official English homepage](https://www.bsmu.edu.ua/en/) | Founding year only from the official history page |  |  |  |
+| `accreditation` | not-published | — (no lead) | NAQA register (to locate) | Only from the NAQA register or the certificate; a news item is not evidence |  |  |  |
+| `recognition` | not-published | — (no lead) | search.wdoms.org (to locate) | At most a bare "listed in the World Directory of Medical Schools" with its own URL; never licensing implications |  |  |  |
+| `accommodation` | not-published | — (no lead) | [Official English homepage](https://www.bsmu.edu.ua/en/) | Hostel availability and published prices with year, or not-published |  |  |  |
+
+## C. Programme `medicine` — Medicine (`programmes[].id = "medicine"`, field medicine)
+
+| Field (JSON path) | Status now | Lead (unverified, from snippets) | Page(s) to open | What to read and record | Capture file | Verified value / wording | Date read |
+|---|---|---|---|---|---|---|---|
+| `internationalAdmission` | unverified | LEAD: True | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | The sentence stating that foreign/international applicants are admitted to THIS programme for the stated intake (quote it) |  |  |  |
+| `intakeYear` | unverified | LEAD: 2026/27 | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | The intake/academic year the page refers to, exactly as printed |  |  |  |
+| `level` | unverified | LEAD: integrated_master | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Level as the university classifies it (master's / single-cycle master's / bachelor) |  |  |  |
+| `specialtyCode` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Specialty code(s) exactly as printed (e.g. "222", "I2") |  |  |  |
+| `qualification` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Exact award title as printed (never MBBS unless printed) |  |  |  |
+| `durationText` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Duration exactly as printed (e.g. "5 years 10 months", "12 semesters") |  |  |  |
+| `durationYears` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Whole years only if the page states years |  |  |  |
+| `language` | unverified | LEAD: English, Ukrainian | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Languages of instruction offered to foreign applicants for this programme |  |  |  |
+| `format` | not-published | — (no lead) | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf)<br>[Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | Teaching format only from the dated statement (row statusStatement) |  |  |  |
+| `tuition` | not-published | — (no lead) | [Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Amount, currency, per year/semester, academic year, payment schedule, year-by-year variation — ALL as printed; if the page shows another year or is silent → "To be confirmed" |  |  |  |
+| `deadlines` | not-published | — (no lead) | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Application window dates with the year as printed; a committee working period is recorded as exactly that |  |  |  |
+| `intake` | not-published | — (no lead) | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Start of studies as printed |  |  |  |
+| `requirements[english-exam]` | unverified | LEAD: Entrance examination in English, conducted as an English-language interview designed at CEFR B2 level (2026 programme); admission may be in person and/or remote. | [English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Entrance requirement wording verbatim (language; subject English; format English-language interview (CEFR B2)); intake year |  |  |  |
+| `documents[language-of-documents]` | unverified | LEAD: Documents in English or Ukrainian (Certain documents must additionally be certified in the country of origin and legalised) | [International FAQ](https://www.bsmu.edu.ua/en/faq) | Document name and any condition (translation, legalisation, format) verbatim |  |  |  |
+
+## C. Programme `dentistry` — Dentistry (`programmes[].id = "dentistry"`, field dentistry)
+
+| Field (JSON path) | Status now | Lead (unverified, from snippets) | Page(s) to open | What to read and record | Capture file | Verified value / wording | Date read |
+|---|---|---|---|---|---|---|---|
+| `internationalAdmission` | unverified | LEAD: True | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | The sentence stating that foreign/international applicants are admitted to THIS programme for the stated intake (quote it) |  |  |  |
+| `intakeYear` | unverified | LEAD: 2026/27 | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | The intake/academic year the page refers to, exactly as printed |  |  |  |
+| `level` | unverified | LEAD: master | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Level as the university classifies it (master's / single-cycle master's / bachelor) |  |  |  |
+| `specialtyCode` | unverified | LEAD: 221 | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Specialty code(s) exactly as printed (e.g. "222", "I2") |  |  |  |
+| `qualification` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Exact award title as printed (never MBBS unless printed) |  |  |  |
+| `durationText` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Duration exactly as printed (e.g. "5 years 10 months", "12 semesters") |  |  |  |
+| `durationYears` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Whole years only if the page states years |  |  |  |
+| `language` | unverified | LEAD: English, Ukrainian | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Languages of instruction offered to foreign applicants for this programme |  |  |  |
+| `format` | not-published | — (no lead) | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf)<br>[Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | Teaching format only from the dated statement (row statusStatement) |  |  |  |
+| `tuition` | not-published | — (no lead) | [Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Amount, currency, per year/semester, academic year, payment schedule, year-by-year variation — ALL as printed; if the page shows another year or is silent → "To be confirmed" |  |  |  |
+| `deadlines` | not-published | — (no lead) | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Application window dates with the year as printed; a committee working period is recorded as exactly that |  |  |  |
+| `intake` | not-published | — (no lead) | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Start of studies as printed |  |  |  |
+| `requirements[english-exam]` | unverified | LEAD: Entrance examination in English (interview, CEFR B2) for Master's applicants. | [English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Entrance requirement wording verbatim (language; subject English; format English-language interview (CEFR B2)); intake year |  |  |  |
+| `documents[]` | not-published | — (no lead) | [International FAQ](https://www.bsmu.edu.ua/en/faq) | The full numbered document list for foreign applicants, with conditions — one row each |  |  |  |
+
+## C. Programme `pharmacy` — Pharmacy (`programmes[].id = "pharmacy"`, field pharmacy)
+
+| Field (JSON path) | Status now | Lead (unverified, from snippets) | Page(s) to open | What to read and record | Capture file | Verified value / wording | Date read |
+|---|---|---|---|---|---|---|---|
+| `internationalAdmission` | unverified | LEAD: True | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | The sentence stating that foreign/international applicants are admitted to THIS programme for the stated intake (quote it) |  |  |  |
+| `intakeYear` | unverified | LEAD: 2026/27 | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | The intake/academic year the page refers to, exactly as printed |  |  |  |
+| `level` | unverified | LEAD: master | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Level as the university classifies it (master's / single-cycle master's / bachelor) |  |  |  |
+| `specialtyCode` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Specialty code(s) exactly as printed (e.g. "222", "I2") |  |  |  |
+| `qualification` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Exact award title as printed (never MBBS unless printed) |  |  |  |
+| `durationText` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Duration exactly as printed (e.g. "5 years 10 months", "12 semesters") |  |  |  |
+| `durationYears` | not-published | — (no lead) | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Whole years only if the page states years |  |  |  |
+| `language` | unverified | LEAD: English, Ukrainian | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Languages of instruction offered to foreign applicants for this programme |  |  |  |
+| `format` | not-published | — (no lead) | [Annual report 2025](https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf)<br>[Results of 2024–25 academic year](https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf) | Teaching format only from the dated statement (row statusStatement) |  |  |  |
+| `tuition` | not-published | — (no lead) | [Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Amount, currency, per year/semester, academic year, payment schedule, year-by-year variation — ALL as printed; if the page shows another year or is silent → "To be confirmed" |  |  |  |
+| `deadlines` | not-published | — (no lead) | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Application window dates with the year as printed; a committee working period is recorded as exactly that |  |  |  |
+| `intake` | not-published | — (no lead) | [Admissions sub-site](https://vstup.bsmu.edu.ua/) | Start of studies as printed |  |  |  |
+| `requirements[english-exam]` | unverified | LEAD: Entrance examination in English (interview, CEFR B2) for Master's applicants. | [English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Entrance requirement wording verbatim (language; subject English; format English-language interview (CEFR B2)); intake year |  |  |  |
+| `documents[]` | not-published | — (no lead) | [International FAQ](https://www.bsmu.edu.ua/en/faq) | The full numbered document list for foreign applicants, with conditions — one row each |  |  |  |
+
+## D. Preparatory route `preparatory-course` — Preparatory department / preparatory course for foreign applicants (profile "Public Health")
+
+| Field (JSON path) | Status now | Lead (unverified, from snippets) | Page(s) to open | What to read and record | Capture file | Verified value / wording | Date read |
+|---|---|---|---|---|---|---|---|
+| `languageOfInstruction` | unverified | LEAD: Ukrainian, English | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Language(s) the preparatory subjects are taught in |  |  |  |
+| `englishTrack` | unverified | LEAD: True | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Whether an English-language preparatory track exists (quote) |  |  |  |
+| `durationText` | unverified | LEAD: 40 weeks (2 semesters); academic year November–August | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Duration exactly as printed |  |  |  |
+| `subjects` | unverified | LEAD: Ukrainian, Biology, Physics, Chemistry, Mathematics, Country studies | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Subject list as printed |  |  |  |
+| `certificateName` | unverified | LEAD: Certificate recommending enrollment | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Name of the certificate awarded, as printed |  |  |  |
+| `progressionText` | not-published | — (no lead) | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | VERBATIM wording on what completion gives / does not give |  |  |  |
+| `appliesToEnglishDegreeTrack` | unverified | LEAD: True | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Whether English-track degree applicants use this route |  |  |  |
+| `startDate` | unverified | LEAD: November | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Start date or month as printed, with year |  |  |  |
+| `fee` | not-published | — (no lead) | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Fee with currency and academic year as printed; else To be confirmed |  |  |  |
+| `eligibilityText` | not-published | — (no lead) | [Preparatory course page](https://www.bsmu.edu.ua/en/admission/preparatory-course)<br>[Tuition fees — foreign students](https://www.bsmu.edu.ua/en/admission/tuition-fees/) | Eligibility wording verbatim |  |  |  |
+
+## E. Deferred programmes — eligibility question only (stay unpublished until answered)
+
+| Programme (`deferredProgrammes[].id`) | Field | Lead | Page(s) to open | What to read | Capture file | Answer | Date read |
+|---|---|---|---|---|---|---|---|
+| `nursing` — Nursing («Медсестринство») (nursing) | internationalAdmission; language | Third-party portal marking only; not confirmed on the official domain. | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Does an official page state that foreign applicants are admitted, and in which language? If yes → move to programmes[] and verify its rows as in section C; if no or silent → stays deferred |  |  |  |
+| `physical-therapy` — Physical therapy («Фізична терапія»), specialty «Терапія та реабілітація» (physical_therapy) | internationalAdmission; language | No snippet shows availability to international applicants. | [Medical Faculty No. 3](https://www.bsmu.edu.ua/en/medical-faculty-no3/)<br>[Admissions sub-site](https://vstup.bsmu.edu.ua/)<br>[English entrance-exam programme 2026](https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf) | Does an official page state that foreign applicants are admitted, and in which language? If yes → move to programmes[] and verify its rows as in section C; if no or silent → stays deferred |  |  |  |
+
+## F. Open questions to close (each: answered by a verified row above, or closed as not-published with the page that is silent)
+
+
+1. Dated official statement of teaching format and location for 2025–26 / 2026–27 (only timetable PDFs found).  
+   Closure (fill): 
+2. Official postal address and current international-admissions email (admission@ vs inter@).  
+   Closure (fill): 
+3. Exact award titles for Medicine, Dentistry, Pharmacy and Nursing (never assume BSN/MSN).  
+   Closure (fill): 
+4. Which programmes are open to international applicants for the next intake and in which language; nursing English track to be confirmed.  
+   Closure (fill): 
+5. Official international tuition fee schedule: amount, currency, academic year, payment schedule, other mandatory charges.  
+   Closure (fill): 
+6. Full numbered document list from the FAQ (which documents need certification and legalisation).  
+   Closure (fill): 
+7. Application deadlines and intake dates for foreign applicants for the current cycle.  
+   Closure (fill): 
+8. Preparatory course: duration inconsistency (40 weeks / 10 months / one year), current fee with year, progression wording verbatim.  
+   Closure (fill): 
+9. Public health: no degree programme found — confirm whether one exists before adding it.  
+   Closure (fill): 
+10. Physical therapy: eligibility of international applicants and language.  
+   Closure (fill): 
+11. Accommodation availability and published prices.  
+   Closure (fill): 
+12. Evidence-backed recognition statements only.  
+   Closure (fill): 
+
+## G. Session log (fill)
+
+| Date | Who | Pages opened (numbers from section A) | Rows verified | Rows closed as not-published | Notes |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |

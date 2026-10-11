@@ -268,3 +268,17 @@ Cross-check only (not official sources): https://vstup.osvita.ua/y2025/r8/207/15
 - Trimming Ukrainian-only programmes narrows the comparison table and the candidate-profile service until eligibility is read.
 - Deployment behaviour change: the only university URL on production today (Ternopil, noindex) returns 404 after the first deploy from this branch unless a 302/410 is chosen; publishing three verified profiles in that same release avoids an empty production directory.
 - Operating conditions change within a year; every published status statement needs a diaried re-check and an `outdated` flip, operable by the daughter (Pages CMS Rung 1).
+
+## 8. Status 2026-10-11 (after the owner's decisions)
+
+Decisions taken by the owner: start with Vinnytsia, Odesa, Bukovinian; publish only programmes with official evidence of international admission (others deferred); "To be confirmed" with an explanation where a current fee or deadline cannot be confirmed; baseline 2026–27 with each source's exact year and wording preserved; no SEMrush units, no new shells, nothing published; resolve the Ternopil URL before any release.
+
+Done on the branch:
+- `deferredProgrammes[]` added to the schema; every programme without an official-domain lead of international admission moved there in all seven records (rule R9 in `test:records`; published profiles are checked for leaked deferred names by `test:gate`). The three approved records now list Medicine, Dentistry and Pharmacy only.
+- "To be confirmed" rows for tuition, application window, intake and preparatory fee now carry a plain-language explanation of the limitation.
+- Ternopil URL: temporary 302 to `/universities/` in `.htaccess`, tested (`test:redirects`, `test:gate`); the rule must be removed when the record becomes publishable (test-enforced).
+- Access test: `curl` and the fetch tool both fail with DNS errors for every official domain (`SOURCE_VERIFICATION_REGISTER.md`). **No claim has been verified.**
+- Evidence registers prepared for the three records: `research/verification/<slug>/EVIDENCE_REGISTER.md` (one row per claim; pages to open; what to read; empty verified-value columns), generator `site/scripts/make-evidence-register.py`.
+
+Waiting on the owner: Route A (allow-list the domains in §3) and/or Route B (captures per the registers). Until one of them happens, the three profiles remain draft shells in the preview build and no release is proposed.
+

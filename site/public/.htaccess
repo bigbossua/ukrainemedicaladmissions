@@ -21,6 +21,11 @@ Options -Indexes
 RedirectMatch 301 ^/dentistry-admissions-in-ukraine/?$ /courses/dentistry/
 RedirectMatch 301 ^/document-translation-legalisation/?$ /admissions/
 
+# Publication gate (2026-10-11): the Ternopil profile was live as a noindex draft before the gate; while its record is
+# unpublished the URL is redirected TEMPORARILY (302) to the directory so it never 404s. tests/publication-gate.mjs
+# requires this rule while the record is unpublished and REJECTS it once the record is publishable (then the page returns).
+RedirectMatch 302 ^/universities/ternopil-national-medical-university/?$ /universities/
+
 # Astro "directory" output: /page/ -> /page/index.html (default DirectoryIndex)
 DirectoryIndex index.html index.php
 ErrorDocument 404 /404.html

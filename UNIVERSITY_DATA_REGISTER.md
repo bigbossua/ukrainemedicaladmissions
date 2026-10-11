@@ -29,6 +29,8 @@ Every factual field is a **claim**: `{ value, status, source, checked, note }`.
 
 **Hard rule enforced by `test:records`:** a tuition, fee, other-cost or deadline *value* may exist only with `status = verified`. Leads about fees or dates go in `note` text, never in `value`.
 
+**Deferred programmes (owner decision 2026-10-11, rule R9).** `programmes[]` holds only programmes for which an official page gives at least a lead that international applicants are admitted; every other programme the university runs is recorded in `deferredProgrammes[]` with the same structure. Deferred programmes are never rendered on a public page (the gate test checks published profiles) and appear only in the preview verification queue; a programme moves to `programmes[]` once an official page states eligibility, and must then be verified like any other. Where a fee, deadline or intake cannot be confirmed for the current intake, the profile shows "To be confirmed" with a plain-language explanation (owner decision 3). The verification baseline is the 2026–27 intake, but the exact year and wording printed by each university is what gets recorded (owner decision 4).
+
 University fees are never mixed with our own service fees (which do not exist in the data model at all).
 
 ## 2. Inclusion criteria for the directory (PROPOSED)
@@ -66,17 +68,17 @@ Cross-check against the Wikipedia research list in the brief (research inventory
 
 ## 4. Record status (2026-10-11, branch `claude/university-profile-pipeline`)
 
-Seven real records exist, all **unpublished draft shells** built from the 2026-10-11 search-snippet sweep (`research/universities/*.json`). Every claim in them is `unverified` (with a provenance note) or `not-published`; **no claim is verified** and no fee, deadline or intake date is recorded as a value. None produces a page in a production build.
+Seven real records exist, all **unpublished draft shells** built from the 2026-10-11 search-snippet sweep (`research/universities/*.json`). Every claim in them is `unverified` (with a provenance note) or `not-published`; **no claim is verified** and no fee, deadline or intake date is recorded as a value. None produces a page in a production build. Programmes without an official-domain lead of international admission were moved to `deferredProgrammes[]` on 2026-10-11 (owner decision 2). Verification of Vinnytsia, Odesa and Bukovinian is approved; the official domains remain unreachable from the build environment, so the evidence registers in `research/verification/` are the work-list for the allow-list or capture route.
 
-| Slug | Official name (claimed, unverified) | Publishable | Verified claims | Programmes (families) | Requirement / document objects (all unverified) | Preparatory routes | Research references | Open questions |
+| Slug | Official name (claimed, unverified) | Publishable | Verified claims | Programmes with an international-admission lead (families) + deferred | Requirement / document objects (all unverified) | Preparatory routes | Research references | Open questions |
 |---|---|---|---|---|---|---|---|---|
-| `bukovinian-state-medical-university` | Bukovinian State Medical University | **No** (draft shell) | 0 | 5 (dentistry, medicine, nursing, pharmacy, physical_therapy) | 3 / 1 | 1 | 21 | 12 |
-| `vinnytsia-national-pirogov-memorial-medical-university` | National Pirogov Memorial Medical University, Vinnytsya | **No** (draft shell) | 0 | 7 (dentistry, medicine, nursing, pharmacy, physical_education, physical_therapy, public_health) | 2 / 5 | 1 | 19 | 12 |
-| `odesa-national-medical-university` | Odesa National Medical University | **No** (draft shell) | 0 | 6 (dentistry, medicine, nursing, pharmacy, physical_therapy, public_health) | 3 / 2 | 1 | 21 | 11 |
-| `bogomolets-national-medical-university` | Bogomolets National Medical University | **No** (draft shell) | 0 | 5 (dentistry, medicine, pharmacy, physical_therapy, public_health) | 3 / 0 | 1 | 13 | 13 |
-| `ivano-frankivsk-national-medical-university` | Ivano-Frankivsk National Medical University | **No** (draft shell) | 0 | 7 (dentistry, medicine, nursing, pharmacy, physical_therapy, public_health) | 2 / 0 | 1 | 22 | 12 |
-| `uzhhorod-national-university` | State University "Uzhhorod National University" | **No** (draft shell) | 0 | 7 (dentistry, medicine, nursing, pharmacy, physical_education, physical_therapy, public_health) | 2 / 2 | 1 | 16 | 12 |
-| `ternopil-national-medical-university` | I. Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine | **No** (draft shell) | 0 | 6 (dentistry, medicine, nursing, pharmacy, physical_therapy, public_health) | 0 / 9 | 1 | 8 | 11 |
+| `bukovinian-state-medical-university` | Bukovinian State Medical University | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 2 deferred | 3 / 1 | 1 | 22 | 12 |
+| `vinnytsia-national-pirogov-memorial-medical-university` | National Pirogov Memorial Medical University, Vinnytsya | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 4 deferred | 2 / 5 | 1 | 19 | 12 |
+| `odesa-national-medical-university` | Odesa National Medical University | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 3 deferred | 3 / 2 | 1 | 21 | 11 |
+| `bogomolets-national-medical-university` | Bogomolets National Medical University | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 2 deferred | 3 / 0 | 1 | 13 | 13 |
+| `ivano-frankivsk-national-medical-university` | Ivano-Frankivsk National Medical University | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 4 deferred | 2 / 0 | 1 | 22 | 12 |
+| `uzhhorod-national-university` | State University "Uzhhorod National University" | **No** (draft shell) | 0 | 1 (medicine) + 6 deferred | 2 / 2 | 1 | 16 | 12 |
+| `ternopil-national-medical-university` | I. Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine | **No** (draft shell) | 0 | 3 (medicine, dentistry, pharmacy) + 3 deferred | 0 / 9 | 1 | 8 | 11 |
 
 Synthetic sample: `site/src/content/samples/example-medical-university.json` (`synthetic: true`, never publishable, sources on `example.invalid`) demonstrates the layouts with verified-looking values; it renders only at `/preview/example-medical-university/` in a preview build and is kept out of the real directory by `test:gate`.
 

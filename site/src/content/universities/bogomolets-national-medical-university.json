@@ -446,7 +446,9 @@
         "source": null,
         "checked": null
       }
-    },
+    }
+  ],
+  "deferredProgrammes": [
     {
       "id": "public-health",
       "name": "Public Health («Громадське здоров'я»)",

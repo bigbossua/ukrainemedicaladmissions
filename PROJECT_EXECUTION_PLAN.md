@@ -155,3 +155,5 @@ Not done, by design: no claim verified (official domains still blocked — P0 ac
 
 **Behaviour change awaiting acknowledgement before any deploy:** the live `noindex` Ternopil profile URL will 404 and the Ternopil option disappears from the home/apply selects once this branch is published (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §13).
 
+**Verification stage (approved 2026-10-11, in progress):** Vinnytsia → Odesa → Bukovinian. Official domains still unreachable from the build environment (DNS), so the three evidence registers (`research/verification/`) are the work-list for the allow-list or capture route; deferred-programme rule and the Ternopil 302 are on the branch; nothing verified, nothing published.
+

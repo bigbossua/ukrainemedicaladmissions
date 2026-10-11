@@ -239,7 +239,9 @@
         "source": null,
         "checked": null
       }
-    },
+    }
+  ],
+  "deferredProgrammes": [
     {
       "id": "dentistry",
       "name": "Dentistry (Dental practitioner programme)",

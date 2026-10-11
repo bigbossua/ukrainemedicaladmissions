@@ -8,8 +8,10 @@ interface Props {
   label: string;
   claim: { value: unknown; status: string; source: string | null; checked: string | null; note?: string };
   format?: (v: any) => string;
+  /** Plain-language explanation shown with "To be confirmed" (owner decision 2026-10-11: explain the limitation clearly). */
+  tbcText?: string;
 }
-const { label, claim, format } = Astro.props;
+const { label, claim, format, tbcText } = Astro.props;
 const hasValue = claim.value !== null && claim.value !== undefined && !(Array.isArray(claim.value) && claim.value.length === 0);
 const verified = claim.status === 'verified' && hasValue;
 const display = hasValue ? (format ? format(claim.value) : Array.isArray(claim.value) ? claim.value.join(', ') : String(claim.value)) : null;
@@ -30,7 +32,7 @@ const display = hasValue ? (format ? format(claim.value) : Array.isArray(claim.v
     ) : (
       <>
         <span class="badge badge-pending">To be confirmed</span>
-        <small>Not yet published here. We only list this once it is confirmed from an official source.</small>
+        <small>{tbcText ?? 'Not yet published here. We only list this once it is confirmed from an official source.'}</small>
       </>
     )}
   </dd>

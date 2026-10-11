@@ -12,6 +12,8 @@
 //  R7  a synthetic sample is never publishable, is flagged `synthetic`, and every source URL it carries is on
 //      example.invalid (so a sample can never pass as evidence); a real record never cites example.invalid
 //  R8  research reference URLs are https; slugs match file names and are unique across real records and samples
+//  R9  programmes[] holds only programmes with (at least a lead of) international admission = true; a programme without
+//      that evidence lives in deferredProgrammes[] (never rendered publicly); ids are unique across both lists
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve, basename } from 'node:path';
 import { record } from '../src/content/schema.mjs';
@@ -85,6 +87,11 @@ for (const [kind, dir] of Object.entries(dirs)) {
       }
     }
     if (new Set(d.programmes.map((p) => p.id)).size !== d.programmes.length) fail(file, 'duplicate programme ids');
+    // R9 deferred programmes
+    for (const p of d.programmes) if (p.internationalAdmission.value !== true) fail(file, `programme ${p.id} has no international-admission evidence (value ${p.internationalAdmission.value}) — move it to deferredProgrammes`);
+    for (const p of d.deferredProgrammes) if (p.internationalAdmission.status === 'verified' && p.internationalAdmission.value === true) fail(file, `deferred programme ${p.id} is verified as open to international applicants — move it to programmes[]`);
+    if (new Set([...d.programmes, ...d.deferredProgrammes].map((p) => p.id)).size !== d.programmes.length + d.deferredProgrammes.length) fail(file, 'programme ids not unique across programmes and deferredProgrammes');
+    ok();
     // R8 research references
     for (const r of d.researchReferences) { if (!httpsUrl(r.url)) fail(file, `researchReferences: ${r.label} is not https`); ok(); }
     // R6 publication readiness
@@ -95,7 +102,7 @@ for (const [kind, dir] of Object.entries(dirs)) {
       for (const p of d.programmes) if (p.internationalAdmission.status !== 'verified') fail(file, `publishable but programme ${p.id} internationalAdmission is ${p.internationalAdmission.status}`);
       ok();
     }
-    console.log(`${failures ? '' : 'ok   '}${file}: ${d.programmes.length} programmes, ${d.preparatoryRoutes.length} preparatory routes, ${d.researchReferences.length} research references, publishable=${d.verification.publishable}${synthetic ? ' (synthetic)' : ''}`);
+    console.log(`${failures ? '' : 'ok   '}${file}: ${d.programmes.length} programmes (+${d.deferredProgrammes.length} deferred), ${d.preparatoryRoutes.length} preparatory routes, ${d.researchReferences.length} research references, publishable=${d.verification.publishable}${synthetic ? ' (synthetic)' : ''}`);
   }
 }
 console.log(`records-evidence: ${slugs.size} records, ${checks} checks, ${failures} failures`);

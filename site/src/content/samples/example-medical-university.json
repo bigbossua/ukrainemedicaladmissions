@@ -425,7 +425,9 @@
         "source": "https://example.invalid/admission",
         "checked": "2026-10-01"
       }
-    },
+    }
+  ],
+  "deferredProgrammes": [
     {
       "id": "public-health",
       "name": "Public Health (sample)",

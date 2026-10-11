@@ -27,10 +27,10 @@ const levelLabel = p.level.value ? (LEVELS as any)[p.level.value] ?? p.level.val
     <Fact label="Language" claim={p.language} />
     <Fact label="Format" claim={p.format} />
     <Fact label="Intake these facts refer to" claim={p.intakeYear} />
-    <Fact label="Tuition fee" claim={p.tuition} format={money} />
+    <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee schedule for the ${p.intakeYear.value ?? 'current'} intake has not yet been verified. We publish a fee only with its academic year, currency, payment schedule and the date we read it on the official page — never an estimate.`} />
     {p.otherMandatoryCosts.map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}
-    <Fact label="Application window" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} />
-    <Fact label="Intake" claim={p.intake} />
+    <Fact label="Application window" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} tbcText="The university's application dates for this intake have not yet been verified. We publish dates only as printed on the official admissions page, with the year." />
+    <Fact label="Intake" claim={p.intake} tbcText="The intake start has not yet been verified from the official admissions page." />
   </dl>
   <div class="two">
     <section>

@@ -15,7 +15,7 @@ const yesno = (v: boolean) => (v ? 'Yes' : 'No');
     <Fact label="Start" claim={r.startDate} />
     <Fact label="Certificate awarded" claim={r.certificateName} />
     <Fact label="Open to English-degree applicants" claim={r.appliesToEnglishDegreeTrack} format={yesno} />
-    <Fact label="Fee" claim={r.fee} format={money} />
+    <Fact label="Fee" claim={r.fee} format={money} tbcText="The preparatory-course fee has not yet been verified. We publish it only with its academic year and currency as printed on the official page." />
     <Fact label="Eligibility (university wording)" claim={r.eligibilityText} />
   </dl>
   <div class="progression">

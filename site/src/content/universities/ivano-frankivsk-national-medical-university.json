@@ -435,7 +435,9 @@
         "source": null,
         "checked": null
       }
-    },
+    }
+  ],
+  "deferredProgrammes": [
     {
       "id": "nursing",
       "name": "Nursing Care («Сестринська справа»), specialty 223 Nursing",

@@ -466,7 +466,9 @@
         "source": null,
         "checked": null
       }
-    },
+    }
+  ],
+  "deferredProgrammes": [
     {
       "id": "nursing",
       "name": "Nursing (I5 «Медсестринство») — bachelor programmes: Midwifery («Акушерська справа»), Nursing with basics of cosmetology, Emergency medicine",

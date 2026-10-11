@@ -66,7 +66,7 @@ const applyHref = `/apply/?university=${d.slug}`;
       </dl>
 
       <h2 id="programmes" style="margin-top:2.5rem">Programmes</h2>
-      <p class="prose">Each programme lists the facts the university publishes for the intake named on the card: qualification, duration, language, fee, entry requirements and documents. A fact is shown as verified only once it has been read on an official page, with the date.</p>
+      <p class="prose">Only programmes for which the university's own pages state that international applicants are admitted are listed here; other programmes the university runs are kept unpublished until that is verified. Each card lists the facts the university publishes for the intake named on it: qualification, duration, language, fee, entry requirements and documents. A fact is shown as verified only once it has been read on an official page, with the date.</p>
       {programmes.length > 1 && (
         <nav class="jump" aria-label="Programmes on this page">
           {programmes.map((p: any) => <a href={`#${p.id}`}>{p.name.length > 48 ? `${p.name.slice(0, 46)}…` : p.name}</a>)}
@@ -96,7 +96,7 @@ const applyHref = `/apply/?university=${d.slug}`;
       {publishable && d.verification.openQuestions.length > 0 && (
         <details><summary>Open verification questions ({d.verification.openQuestions.length})</summary><ul>{d.verification.openQuestions.map((q: string) => <li>{q}</li>)}</ul></details>
       )}
-      {PREVIEW && draft && <ResearchReferences refs={d.researchReferences} openQuestions={d.verification.openQuestions} />}
+      {PREVIEW && draft && <ResearchReferences refs={d.researchReferences} openQuestions={d.verification.openQuestions} deferred={d.deferredProgrammes} />}
       <p class="note">{SITE.disclaimer} University fees are charged by the university; any fee for our own services is shown separately and only after you have applied.</p>
     </div>
 
