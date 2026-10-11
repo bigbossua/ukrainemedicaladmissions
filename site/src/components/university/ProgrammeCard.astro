@@ -2,45 +2,54 @@
 import Fact from '../Fact.astro';
 import RequirementList from './RequirementList.astro';
 import DocumentList from './DocumentList.astro';
-import { SITE } from '../../lib/site';
+import { SITE, PREVIEW } from '../../lib/site';
 import { FIELDS, LEVELS } from '../../lib/fields';
+import { viewClaim } from '../../lib/publication.mjs';
 interface Props { p: any; slug: string }
 const { p, slug } = Astro.props;
+const view = (c: unknown) => viewClaim(c, { preview: PREVIEW });
 const field = (FIELDS as any)[p.field] ?? FIELDS.other;
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})${m.variesByYear ? ` — ${m.variesByYear}` : ''}`;
-const levelLabel = p.level.value ? (LEVELS as any)[p.level.value] ?? p.level.value : null;
+const level = view(p.level);
+const levelLabel = level.state !== 'tbc' && typeof level.value === 'string' ? (LEVELS as any)[level.value] ?? level.value : null;
+const intl = view(p.internationalAdmission);
+const intakeYear = view(p.intakeYear);
+const duration = view(p.durationText).state !== 'tbc' ? p.durationText : p.durationYears;
+// Projections (published profiles) carry withheld counts; raw drafts (PREVIEW only) list every item with its status.
+const reqWithheld = typeof p.requirementsWithheld === 'number' ? p.requirementsWithheld : 0;
+const docWithheld = typeof p.documentsWithheld === 'number' ? p.documentsWithheld : 0;
 ---
 <article class="prog" id={p.id}>
   <header class="prog-head">
     <div>
-      <p class="family">{field.page ? <a href={field.page}>{field.label}</a> : field.label}{levelLabel && <> · <span class={p.level.status === 'verified' ? '' : 'tbc'}>{levelLabel}</span>{p.level.status !== 'verified' && <span class="visually-hidden"> (level pending verification)</span>}</>}</p>
+      <p class="family">{field.page ? <a href={field.page}>{field.label}</a> : field.label}{levelLabel && <> · <span class={level.state === 'verified' ? '' : 'tbc'}>{levelLabel}</span>{level.state !== 'verified' && <span class="visually-hidden"> (level pending verification)</span>}</>}</p>
       <h3>{p.name}</h3>
     </div>
     <div class="state">
-      {p.internationalAdmission.status === 'verified' && p.internationalAdmission.value === true ? <span class="badge badge-verified">Open to international applicants (verified)</span> : p.internationalAdmission.status === 'verified' && p.internationalAdmission.value === false ? <span class="badge badge-pending">Not open to international applicants</span> : <span class="badge badge-pending">International admission to be confirmed</span>}
+      {intl.state === 'verified' && intl.value === true ? <span class="badge badge-verified">Open to international applicants (verified)</span> : intl.state === 'verified' && intl.value === false ? <span class="badge badge-pending">Not open to international applicants</span> : <span class="badge badge-pending">International admission to be confirmed</span>}
     </div>
   </header>
   <dl class="facts">
     <Fact label="Qualification awarded" claim={p.qualification} />
     <Fact label="Specialty code" claim={p.specialtyCode} />
-    <Fact label="Duration" claim={p.durationText.value ? p.durationText : p.durationYears} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
+    <Fact label="Duration" claim={duration} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
     <Fact label="Language" claim={p.language} />
     <Fact label="Format" claim={p.format} />
     <Fact label="Intake these facts refer to" claim={p.intakeYear} />
-    <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee schedule for the ${p.intakeYear.value ?? 'current'} intake has not yet been verified. We publish a fee only with its academic year, currency, payment schedule and the date we read it on the official page — never an estimate.`} />
-    {p.otherMandatoryCosts.map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}
+    <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee schedule for the ${intakeYear.state !== 'tbc' && typeof intakeYear.value === 'string' ? intakeYear.value : 'current'} intake has not yet been verified. We publish a fee only with its academic year, currency, payment schedule and the date we read it on the official page — never an estimate.`} />
+    {p.otherMandatoryCosts.filter((c: any) => PREVIEW || view(c.cost).state === 'verified').map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}
     <Fact label="Application window" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} tbcText="The university's application dates for this intake have not yet been verified. We publish dates only as printed on the official admissions page, with the year." />
     <Fact label="Intake" claim={p.intake} tbcText="The intake start has not yet been verified from the official admissions page." />
   </dl>
   <div class="two">
     <section>
       <h4>Entry requirements{p.requirements.some((r: any) => r.intakeYear) && <small> (intake-specific)</small>}</h4>
-      <RequirementList items={p.requirements} />
-      {p.gradingNote && <p class="note">{p.gradingNote}</p>}
+      <RequirementList items={p.requirements} withheld={reqWithheld} />
+      {PREVIEW && p.gradingNote && <p class="note">{p.gradingNote}</p>}
     </section>
     <section>
       <h4>Documents the university asks for</h4>
-      <DocumentList items={p.documents} />
+      <DocumentList items={p.documents} withheld={docWithheld} />
     </section>
   </div>
   <p class="cta"><a class="btn btn-primary btn-sm" href={`/apply/?university=${slug}&course=${p.field}`}>{SITE.cta}</a> <span class="hint">Free to start; nothing is sent to the university until you confirm.</span></p>

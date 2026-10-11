@@ -1,18 +1,25 @@
 ---
+/**
+ * Directory card. `u` is a published projection (src/lib/records.ts) or, in PREVIEW builds only, a raw draft or sample.
+ * The data-* attributes the filters read and the chips come from the same helpers as the filter options, so a published
+ * card carries only verified levels, languages and intakes; a raw draft carries reported values only in PREVIEW.
+ */
 import { FIELDS, LEVELS } from '../../lib/fields';
-import { formatDate } from '../../lib/site';
+import { formatDate, PREVIEW } from '../../lib/site';
+import { fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
+import { viewClaim } from '../../lib/publication.mjs';
 interface Props { u: any; href?: string; draft?: boolean }
 const { u, href = `/universities/${u.slug}/`, draft = false } = Astro.props;
-const fields = [...new Set(u.programmes.map((p: any) => p.field))] as string[];
-const levels = [...new Set(u.programmes.map((p: any) => p.level.value).filter(Boolean))] as string[];
-const langs = [...new Set(u.programmes.flatMap((p: any) => p.language.value ?? []))] as string[];
-const langVerified = u.programmes.some((p: any) => p.language.status === 'verified');
-const intakes = [...new Set(u.programmes.map((p: any) => p.intakeYear.value).filter(Boolean))] as string[];
+const fields = fieldsOf(u.programmes);
+const levels = levelsOf(u.programmes);
+const langs = languagesOf(u.programmes);
+const langVerified = u.programmes.some((p: any) => viewClaim(p.language, { preview: PREVIEW }).state === 'verified');
+const intakes = intakesOf(u.programmes);
 const hasPrep = u.preparatoryRoutes.length > 0;
 const initials = u.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
 const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 0) % 40;
 ---
-<article class="ucard" data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={hasPrep ? 'yes' : 'no'} data-intakes={intakes.join(' ')} data-publishable={u.verification.publishable ? 'yes' : 'no'}>
+<article class="ucard" data-slug={u.slug} data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={hasPrep ? 'yes' : 'no'} data-intakes={intakes.join(' ')} data-publishable={draft ? 'no' : 'yes'}>
   <a class="tile" href={href} aria-hidden="true" tabindex="-1" style={`--h:${hue}`}><span>{initials}</span><span class="city">{u.city}</span></a>
   <div class="body">
     <h2><a href={href}>{u.shortName}</a></h2>
@@ -24,7 +31,7 @@ const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 
       {hasPrep && <span>Preparatory route</span>}
     </div>
     <p class="status">
-      {u.verification.publishable ? <span class="badge badge-verified">Verified profile</span> : <span class="badge badge-pending">{draft ? 'Draft — verification in progress' : 'Verification in progress'}</span>}
+      {!draft ? <span class="badge badge-verified">Verified profile</span> : <span class="badge badge-pending">Draft — verification in progress</span>}
       {u.verification.lastReview && <small> · reviewed {formatDate(u.verification.lastReview)}</small>}
     </p>
     <a class="more" href={href}>View profile →</a>

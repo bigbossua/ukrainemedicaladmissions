@@ -227,3 +227,51 @@ Words the site never uses about a university: best, top, safest, cheapest, most 
 | Tests | `site/tests/records-evidence.mjs` (schema + evidence invariants), `site/tests/publication-gate.mjs` (production leak check + preview gating), `site/tests/preview-ui.mjs` (Playwright + axe over drafts, filters, 3 widths, screenshots), `ui-smoke.mjs` and `perf.mjs` made data-driven; `package.json` scripts `build:preview`, `test:records`, `test:gate`, `test:preview`; `.github/workflows/ci.yml` runs them |
 
 Nothing in this phase was deployed, published or changed on the live host; the `production` branch is untouched.
+
+## Publication policy (fail-closed)
+
+*Added 2026-10-11 (branch `wip/pubgate`, backlog N23). Code: `site/src/lib/publication.mjs` (the rules), `site/src/lib/evidence.mjs` (the evidence format), `site/src/lib/records.ts` (the only way pages get university data).*
+
+**In one sentence:** a fact about a university appears on the public site only when the record marks it verified **and** the evidence store holds a matching, quoted, dated entry from an allowed official source; anything else is shown as "To be confirmed", and research notes never appear.
+
+**The evidence store.** One file per record, `site/data/evidence/<slug>.json`, outside `src/content` and `public/`, so it is never served. Each entry names the claim it supports (`claimPath`, e.g. `officialName`, `programmes.medicine.tuition`, `programmes.medicine.requirements.bio`), the exact `value`, the official `sourceUrl`, a `sourceTier`, the `quotation` as published, the date it was read (`accessed`), its `status` (verified, partially-verified, conflicting, unverified, outdated, not-applicable), a `nextReview` date and a `decision` (publish or withhold, with the reason). For a requirement or document item the `value` is the item's content: requirement `{ type, summary, subject?, minimum?, condition?, examFormat?, intakeYear? }`, document `{ name, condition?, formatNote?, intakeYear? }`. A missing file means "nothing verified". An invalid file counts as missing. Today no file exists, because no official page can be opened from this environment.
+
+**When a fact is shown.** All of these must hold:
+1. The record marks the claim `verified`, with a value, an https `source` and a `checked` date (not in the future).
+2. At least one evidence entry for the same `claimPath` is `verified`, has `decision: "publish"`, a quotation, an `accessed` date, an https `sourceUrl` equal to the record's `source`, and the same value.
+3. The source tier is allowed: recognition needs tier 4 (the recognition authority of the destination country), and its page must not be on the university's own website; everything else needs tier 1, 2 or 3.
+4. No entry for that claim is `conflicting`, and no verified entry gives a different value. If sources disagree, the fact is withheld ("Official sources give different information").
+5. Time-sensitive facts (statement for the current year, teaching format, fees and other costs, deadlines, intake, intake year, requirements, documents, preparatory fee and start date) need a `nextReview` date that has not passed. Fees need an academic year that has not ended, and the evidence must name the same year. The current-year statement needs evidence naming the current academic year or dated within it. A deadline that has passed is never shown, and a deadline must be written YYYY-MM-DD.
+
+Anything else: the page prints "To be confirmed" with a fixed explanation. The value, the note and the source are not printed. Unverified requirement, document and cost items are left out, and the page says that some items are still being confirmed.
+
+**Fields that never appear publicly.** Every field of the record has a class in `FIELD_POLICY`: *public* (shown once its evidence passes), *editorial-public* (our own text, e.g. slug, short name, city, overview, programme name) or *internal*. Internal: notes, research references, deferred programmes, open questions, the reviewer, alternative names, FAQs and images (no publication rule yet), grading notes, the legacy summary lists and the publishable flag itself. A new field added to `site/src/content/schema.mjs` without a class makes the tests and every build fail, so nobody can add a field to public pages without deciding about it.
+
+**When a profile is published.** The `publishable` flag can only narrow the decision. A record is published only when the flag is `true` **and** all of these pass:
+- an evidence file exists and is valid;
+- official name, official website, address, operating status, the university's statement for the current year and the teaching format are all shown (status operating or relocated; teaching format not "unknown");
+- at least one programme can be listed. A programme is listed only when its international admission (open), level, language, duration and intake year are shown and its fee page has been read (a current tier 1 or 2 evidence entry for its tuition, whatever the outcome). Other programmes are left off the page;
+- `verification.lastReview` is set, not in the future and no more than 180 days old;
+- there are no open questions;
+- it is not a synthetic sample.
+
+If the flag is `true` but a check fails, a production build **stops** with an error that names the record and each failure. A preview build still renders the record as a draft and lists the failures in its verification queue.
+
+**Commands** (from `site/`):
+
+| Command | What it does |
+|---|---|
+| `node scripts/publication-report.mjs` | For every record: flag, policy result, and each failure in plain words. Add a slug to report one record. |
+| `npm run test:records` | Schema and evidence rules R1–R11: R6 runs the policy for every flagged record and also requires `programmes[]` to be trimmed; R10 requires a matching verified evidence entry for every claim marked verified; R11 validates every evidence file. |
+| `node tests/publication-policy.mjs` | Unit tests for every rule (no build), including the twelve owner scenarios and the static checks. |
+| `node tests/publication-build.mjs` | Real production and preview builds of fixture records full of traps; scans every output file. Takes under a minute. |
+| `npm run build:preview` | Preview build (`dist-preview/`): drafts with their failures. |
+
+**What a reviewer does to publish a profile.**
+1. Open each official page in a browser and save a capture showing the address and the date (filed outside the repository).
+2. For each fact: in the record, set `status: "verified"`, `source` (the page address) and `checked` (today); in `site/data/evidence/<slug>.json`, add an entry with the same `claimPath`, the identical `value`, the same address as `sourceUrl`, the tier, the exact quotation, `accessed`, `status: "verified"`, `decision: "publish"`, and for time-sensitive facts a `nextReview` date (before the next intake) and, for fees, the `academicYear`.
+3. Read the fee page for each programme you want listed, and record what it says: the fee, or an entry with `decision: "withhold"` explaining what the page does not say.
+4. Where two official sources disagree, add both entries, mark the second `conflicting` with `contradicts`, and leave the fact withheld until the university clarifies.
+5. Answer or close every open question, set `lastReview` to today, then set `publishable: true`.
+6. Run `node scripts/publication-report.mjs <slug>` until it says "Every publication check passes", then `npm test`.
+7. Check the profile in the preview build against the captures before asking the owner to approve a release.

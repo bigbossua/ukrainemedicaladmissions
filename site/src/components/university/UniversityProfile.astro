@@ -1,8 +1,10 @@
 ---
 /**
  * The university profile body, shared by /universities/[slug]/ (real records) and /preview/[sample]/ (synthetic
- * sample). Every fact is rendered through Fact/ClaimChip so an unverified value is never shown as plain fact.
- * Research references (the verification queue) render ONLY for drafts in PREVIEW builds — never on a publishable page.
+ * sample). A published profile receives the PROJECTION built by the publication policy (src/lib/records.ts,
+ * src/lib/publication.mjs): withheld claims carry no value and internal fields (notes, research references, deferred
+ * programmes, FAQs, open questions) are absent. Every fact is rendered through Fact/ClaimChip.
+ * Drafts and samples are passed RAW and exist only in PREVIEW builds, with the verification queue.
  */
 import Breadcrumbs from '../Breadcrumbs.astro';
 import Fact from '../Fact.astro';
@@ -13,22 +15,30 @@ import ResearchReferences from './ResearchReferences.astro';
 import { SITE, PREVIEW, formatDate } from '../../lib/site';
 import { FIELDS, LEVELS, TEACHING_FORMATS } from '../../lib/fields';
 import { fieldsOf, levelsOf, languagesOf, officeText } from '../../lib/records';
+import { viewClaim } from '../../lib/publication.mjs';
 
 interface Props {
   d: any;
   publishable: boolean;
-  /** Draft = not publishable: built only in preview, shown with the draft banner by the page. */
+  /** Draft = not published: built only in preview, shown with the draft banner by the page. */
   draft: boolean;
   crumbs: { label: string; href?: string }[];
   /** Where the directory lives for the "compare" links (differs for the synthetic sample). */
   directoryHref?: string;
+  /** Drafts only (PREVIEW): what the publication policy still fails on, for the verification queue. */
+  failures?: { message: string }[];
+  notListed?: { message: string }[];
+  flagged?: boolean;
 }
-const { d, publishable, draft, crumbs, directoryHref = '/universities/' } = Astro.props;
+const { d, publishable, draft, crumbs, directoryHref = '/universities/', failures = [], notListed = [], flagged = false } = Astro.props;
 const fields = fieldsOf(d.programmes);
 const levels = levelsOf(d.programmes);
 const langs = languagesOf(d.programmes);
-const anyLangVerified = d.programmes.some((p: any) => p.language.status === 'verified');
-const anyLevelVerified = d.programmes.some((p: any) => p.level.status === 'verified');
+const verifiedState = (c: unknown) => viewClaim(c, { preview: PREVIEW }).state === 'verified';
+const anyLangVerified = d.programmes.some((p: any) => verifiedState(p.language));
+const anyLevelVerified = d.programmes.some((p: any) => verifiedState(p.level));
+// FAQs have no publication policy yet: they render only on drafts in PREVIEW builds (projections carry none).
+const faqs: any[] = PREVIEW && draft && Array.isArray(d.faqs) ? d.faqs : [];
 const fieldOrder = Object.keys(FIELDS);
 const programmes = [...d.programmes].sort((a: any, b: any) => fieldOrder.indexOf(a.field) - fieldOrder.indexOf(b.field));
 const applyHref = `/apply/?university=${d.slug}`;
@@ -59,7 +69,7 @@ const applyHref = `/apply/?university=${d.slug}`;
         <Fact label="Founded" claim={d.founded} />
         <Fact label="Address" claim={d.address} />
         <Fact label="Official website" claim={d.website} />
-        <Fact label="International office" claim={{ ...d.internationalOffice, value: d.internationalOffice.value && officeText(d.internationalOffice.value) ? d.internationalOffice.value : null }} format={officeText} />
+        <Fact label="International office" claim={d.internationalOffice} format={officeText} />
         <Fact label="Accreditation" claim={d.accreditation} />
         <Fact label="Recognition" claim={d.recognition} />
         <Fact label="Accommodation" claim={d.accommodation} />
@@ -83,20 +93,17 @@ const applyHref = `/apply/?university=${d.slug}`;
         </>
       )}
 
-      {d.faqs.length > 0 && (
+      {faqs.length > 0 && (
         <>
           <h2 style="margin-top:2.5rem">Frequently asked questions</h2>
-          {d.faqs.map((f: any) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+          {faqs.map((f: any) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
         </>
       )}
 
       <h2 style="margin-top:2.5rem">Sources and verification</h2>
       <p class="prose">Facts on this page are checked against the university's official website and, where relevant, Ukrainian government registers. Each row shows its status; verified rows also show the source and check date.
         {d.verification.lastReview ? ` Last full review: ${formatDate(d.verification.lastReview)}.` : ' A full review has not yet been completed.'}</p>
-      {publishable && d.verification.openQuestions.length > 0 && (
-        <details><summary>Open verification questions ({d.verification.openQuestions.length})</summary><ul>{d.verification.openQuestions.map((q: string) => <li>{q}</li>)}</ul></details>
-      )}
-      {PREVIEW && draft && <ResearchReferences refs={d.researchReferences} openQuestions={d.verification.openQuestions} deferred={d.deferredProgrammes} />}
+      {PREVIEW && draft && <ResearchReferences refs={d.researchReferences ?? []} openQuestions={d.verification.openQuestions ?? []} deferred={d.deferredProgrammes ?? []} failures={failures} notListed={notListed} flagged={flagged} />}
       <p class="note">{SITE.disclaimer} University fees are charged by the university; any fee for our own services is shown separately and only after you have applied.</p>
     </div>
 
@@ -110,7 +117,7 @@ const applyHref = `/apply/?university=${d.slug}`;
         <h3>How to read this profile</h3>
         <ul class="legend">
           <li><span class="badge badge-verified">Verified</span> read on an official page on the date shown.</li>
-          <li><span class="badge badge-pending">Verification pending</span> a reported value we have not yet confirmed.</li>
+          {draft && <li><span class="badge badge-pending">Verification pending</span> a reported value we have not yet confirmed.</li>}
           <li><span class="badge badge-pending">To be confirmed</span> not published here until confirmed.</li>
         </ul>
       </div>

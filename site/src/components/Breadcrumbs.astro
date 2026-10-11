@@ -1,5 +1,6 @@
 ---
 import { SITE, STAGING } from '../lib/site';
+import { serializeJsonLd } from '../lib/publication.mjs';
 interface Props { items: { label: string; href?: string }[]; /** Draft (preview-only) page: emit no structured data. */ draft?: boolean }
 const { items, draft = false } = Astro.props;
 const trail = [{ label: 'Home', href: '/' }, ...items];
@@ -22,4 +23,5 @@ const ld = {
     ))}
   </ol>
 </nav>
-{!STAGING && !draft && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}
+{/* serializeJsonLd escapes < > & U+2028 U+2029 so a label can never close the script element. */}
+{!STAGING && !draft && <script type="application/ld+json" set:html={serializeJsonLd(ld)} />}

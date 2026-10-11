@@ -1,24 +1,28 @@
 ---
-import { formatDate } from '../../lib/site';
-interface Props { items: any[] }
-const { items } = Astro.props;
+/** Documents of one programme. Same rules as RequirementList: projected items only, raw draft items in PREVIEW only. */
+import { formatDate, PREVIEW } from '../../lib/site';
+import { viewItems } from '../../lib/publication.mjs';
+interface Props { items: any[]; /** Items withheld by the publication policy (not verified yet). */ withheld?: number }
+const { items, withheld = 0 } = Astro.props;
+const list = viewItems(items, { preview: PREVIEW });
 ---
-{items.length === 0 ? <p class="note">No document requirement has been verified for this programme yet.</p> : (
+{list.length === 0 ? <p class="note">No document requirement has been verified for this programme yet.</p> : (
   <ul class="docs">
-    {items.map((d) => (
-      <li class={`doc doc-${d.status}`}>
-        <span class="tick" aria-hidden="true">{d.status === 'verified' ? '✓' : '○'}</span>
+    {list.map((d) => (
+      <li class={`doc doc-${d.state}`}>
+        <span class="tick" aria-hidden="true">{d.state === 'verified' ? '✓' : '○'}</span>
         <div>
           <span class="name">{d.name}</span>
-          {d.status === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{d.status === 'not-published' ? 'Not published' : 'Pending'}</span>}
+          {d.state === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{d.state === 'not-published' ? 'Not published' : 'Pending'}</span>}
           {d.condition && <p class="cond">Only if: {d.condition}</p>}
           {d.formatNote && <p class="cond">Format: {d.formatNote}</p>}
-          <small>{d.status === 'verified' && d.source ? <>Source: <a href={d.source} rel="nofollow noopener">official page</a>{d.checked && ` · checked ${formatDate(d.checked)}`}</> : (d.note ?? 'Not yet confirmed against an official source.')}</small>
+          <small>{d.state === 'verified' && d.source ? <>Source: <a href={d.source} rel="nofollow noopener">official page</a>{d.checked && ` · checked ${formatDate(d.checked)}`}</> : (d.note ?? 'Not yet confirmed against an official source.')}</small>
         </div>
       </li>
     ))}
   </ul>
 )}
+{withheld > 0 && list.length > 0 && <p class="note withheld">Some documents are still being confirmed against the university's official pages and are not listed yet.</p>}
 <style>
   .docs { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
   .doc { display: grid; grid-template-columns: 28px 1fr; gap: .5rem; align-items: start; padding: .5rem 0; border-bottom: 1px solid var(--line); }
@@ -27,4 +31,5 @@ const { items } = Astro.props;
   .name { font-weight: 600; margin-right: .5rem; }
   .cond { margin: .2rem 0 0; font-size: .9rem; color: var(--slate); }
   small { display: block; color: var(--slate); font-size: .78rem; margin-top: .2rem; }
+  .withheld { margin-top: .6rem; }
 </style>

@@ -2,13 +2,17 @@
 // Plain JS so the automated tests (tests/records-evidence.mjs) can validate every record with the SAME schema the build uses.
 //
 // Every factual field is a `Claim`: a value plus where it came from and when it was last checked.
-// Pages render unverified claims with a visible "verification pending" state and never as plain fact;
-// records with `verification.publishable = false` produce NO page in production builds at all
-// (they are built only when PREVIEW_UNPUBLISHED=1, for local review).
+// Production pages never read these records directly: they get the projection built by the publication policy
+// (src/lib/publication.mjs via src/lib/records.ts), which shows a claim only when the evidence store backs it.
+// Records that are not published produce NO page in production builds at all (they are built only when
+// PREVIEW_UNPUBLISHED=1, for local review, where drafts render as they are with a draft banner).
+// A NEW FIELD here must also be classified in FIELD_POLICY (src/lib/publication.mjs) or the tests and the build fail.
 // See UNIVERSITY_DATA_REGISTER.md for the process and the field-by-field meaning.
 import { z } from 'astro/zod';
 
-export const verification = z.enum(['verified', 'unverified', 'outdated', 'not-published']);
+// 'partially-verified' and 'conflicting' (added 2026-10-11, publication policy): a page never shows either; a conflicting
+// claim is withheld as "To be confirmed" until the official sources agree (src/lib/publication.mjs).
+export const verification = z.enum(['verified', 'unverified', 'outdated', 'not-published', 'partially-verified', 'conflicting']);
 
 /** @template {import('astro/zod').ZodTypeAny} T @param {T} value */
 const claim = (value) =>

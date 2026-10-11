@@ -5,17 +5,17 @@ import CtaBand from '../../components/CtaBand.astro';
 import DraftBanner from '../../components/university/DraftBanner.astro';
 import UniversityCard from '../../components/university/UniversityCard.astro';
 import CompareTable from '../../components/university/CompareTable.astro';
-import { getCollection } from 'astro:content';
 import { SITE, PREVIEW } from '../../lib/site';
 import { FIELDS, LEVELS } from '../../lib/fields';
-import { isVisible, byShortName, fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
+import { getListedUniversities, fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
 
-// Publication gate: unpublished records are listed only in PREVIEW builds (see lib/records.ts).
+// Publication gate (lib/records.ts): production lists only published records, as projections built by the publication
+// policy; unpublished records are listed only in PREVIEW builds, raw, as drafts.
 // Copy rule: this page names no university and states no university-specific fact. Everything it says
 // about a university comes from the records, and only verified values are shown as fact.
-const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
-const records = universities.map((u) => u.data);
-const drafts = records.filter((d) => !d.verification.publishable).length;
+const universities = await getListedUniversities();
+const records = universities.map((u) => u.d);
+const drafts = universities.filter((u) => u.draft).length;
 const allProgrammes = records.flatMap((d) => d.programmes);
 const cities = [...new Set(records.map((d) => d.city))].sort();
 const fields = fieldsOf(allProgrammes);
@@ -69,10 +69,10 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
         </label>
         <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Reset filters</button></p>
       </form>
-      <p class="count" aria-live="polite"><span data-count>{universities.length}</span> <span data-noun>{universities.length === 1 ? 'university' : 'universities'}</span> listed. Level, language and intake filters use reported values; a profile marks each as verified or pending.</p>
+      <p class="count" aria-live="polite"><span data-count>{universities.length}</span> <span data-noun>{universities.length === 1 ? 'university' : 'universities'}</span> listed. {PREVIEW ? 'Preview build: level, language and intake filters use reported values for drafts; a profile marks each as verified or pending.' : 'Level, language and intake filters use verified values only.'}</p>
 
       <div class="grid grid-3" data-list>
-        {records.map((d) => <UniversityCard u={d} draft={!d.verification.publishable} />)}
+        {universities.map((u) => <UniversityCard u={u.d} draft={u.draft} />)}
       </div>
       {universities.length === 0 ? (
         <div class="empty" data-empty>

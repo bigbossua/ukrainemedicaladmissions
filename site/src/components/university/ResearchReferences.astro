@@ -1,11 +1,30 @@
 ---
-/** PREVIEW ONLY. Official pages a verification pass must open. These are research references, never evidence. */
-interface Props { refs: any[]; openQuestions: string[]; deferred?: any[] }
-const { refs, openQuestions, deferred = [] } = Astro.props;
+/**
+ * PREVIEW ONLY. The verification queue of a draft: what still blocks publication (the publication policy's failures,
+ * src/lib/publication.mjs), programmes that would not be listed, official pages a verification pass must open (research
+ * references, never evidence), open questions and deferred programmes.
+ */
+interface Props {
+  refs: any[];
+  openQuestions: string[];
+  deferred?: any[];
+  failures?: { message: string }[];
+  notListed?: { message: string }[];
+  /** The record is flagged publishable but fails the policy (a production build would stop). */
+  flagged?: boolean;
+}
+const { refs, openQuestions, deferred = [], failures = [], notListed = [], flagged = false } = Astro.props;
 ---
 <section class="refs" aria-labelledby="refs-h">
   <h2 id="refs-h">Verification queue (internal — not shown on the public site)</h2>
-  <p class="note">The links below are research references surfaced by search snippets. A link is not evidence: each page must be opened and read, and every claim it supports marked <em>verified</em> with that URL and the date.</p>
+  {failures.length > 0 && (
+    <div data-publication-failures>
+      <h3>{flagged ? `Flagged publishable, but a production build refuses it (${failures.length} ${failures.length === 1 ? 'failure' : 'failures'})` : `What still blocks publication (${failures.length})`}</h3>
+      <ul>{failures.map((f) => <li>{f.message}</li>)}</ul>
+    </div>
+  )}
+  {notListed.length > 0 && <><h3>Programmes that would not be listed ({notListed.length})</h3><ul>{notListed.map((n) => <li>{n.message}</li>)}</ul></>}
+  <p class="note">The links below are research references surfaced by search snippets. A link is not evidence: each page must be opened and read, and every claim it supports marked <em>verified</em> with that URL and the date, with a matching entry in the evidence file.</p>
   {refs.length > 0 && <ol>{refs.map((r) => <li><a href={r.url} rel="nofollow noopener">{r.label}</a> — {r.purpose}{r.snippetDate && <small> (snippet {r.snippetDate})</small>}{r.note && <small> · {r.note}</small>}</li>)}</ol>}
   {openQuestions.length > 0 && <><h3>Open questions ({openQuestions.length})</h3><ul>{openQuestions.map((q) => <li>{q}</li>)}</ul></>}
   {deferred.length > 0 && <><h3>Programmes recorded but deferred ({deferred.length}) — no official evidence yet that international applicants are admitted; never rendered publicly</h3><ul>{deferred.map((p) => <li>{p.name} <small>({p.field}; level {p.level.value ?? 'not stated'}; {p.internationalAdmission.note ?? 'eligibility not stated'})</small></li>)}</ul></>}
