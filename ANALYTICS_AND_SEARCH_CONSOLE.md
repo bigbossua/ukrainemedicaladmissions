@@ -16,6 +16,8 @@ Labels: **VERIFIED-IN-REPO** = read in a repository file or built page; **MEASUR
 
 Search Console is Google's own report of how the site appears in Google Search. It needs no code on the page beyond verification, sets no cookie and collects nothing from visitors. Cost: free (as published by Google; UNVERIFIED here). It is the first-party source for the "current performance" lines in `KEYWORD_URL_MAP.md` §18 and closes checklist item A11.
 
+The property types, menu names, permission levels and date ranges in A1 to A3 are from general knowledge of the product (UNVERIFIED here: Google's help pages were not opened for this plan). Re-check them on Google's own help pages on the day.
+
 ### A1. Choose the property type
 
 | Option | What it covers | How it is verified | What that means here |

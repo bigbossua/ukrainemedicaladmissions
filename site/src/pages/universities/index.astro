@@ -76,18 +76,17 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
       </div>
       {universities.length === 0 ? (
         <div class="empty" data-empty>
-          <p class="lead"><strong>No university profile has completed verification yet.</strong> We publish profiles one at a time, and only when every fact on them has been checked against the university's own official pages.</p>
+          <p class="lead"><strong>No university profile has completed verification yet.</strong> We publish profiles one at a time, and only after the core facts below have been checked against the university's own official pages.</p>
           <h2 id="what-we-check">What we check before a profile is published</h2>
           <ul>
             <li>The university's official name, website and address, from its own website.</li>
-            <li>A dated statement from the university that it is operating, and how it is teaching this academic year.</li>
-            <li>Which programmes the university says are open to international applicants.</li>
-            <li>For each programme: the qualification level and title as printed, the duration, the teaching language, the entry requirements and the documents asked for.</li>
-            <li>Tuition fees with the academic year, currency and payment basis, where the university publishes them. Intake dates only where the university prints the year.</li>
-            <li>Any preparatory route, quoting the university's own words on what completing it leads to.</li>
+            <li>A dated statement from the university that it is operating this academic year, and how it is teaching.</li>
+            <li>Which programmes the university says are open to international applicants. Only those programmes are listed.</li>
+            <li>For each listed programme: the qualification level, the teaching language, the duration and the intake.</li>
+            <li>The tuition fee with its academic year, or a note that the university does not publish one, after we have read its fee page. Deadlines only where the university prints the year.</li>
           </ul>
-          <p>Until a profile passes these checks we do not list the university here, not even as “pending”. We do not fill the gaps with figures from agency or other third-party websites.</p>
-          <p>You do not have to wait for the list. Start your candidate profile now: tell us your course, your country and the qualifications you have so far, and we will reply by e-mail. There is no account or document upload yet, and nothing is sent to a university.</p>
+          <p>Until a profile passes these checks we do not list the university here, not even as “pending”. Other details, such as entry requirements, documents and preparatory routes, are marked on each published profile as verified, pending or “to be confirmed”. We do not fill the gaps with figures from agency or other third-party websites.</p>
+          <p>You do not have to wait for the list. Start your candidate profile now: tell us your course, your country and the qualifications you have so far, and we will reply by email. There is no account or document upload yet, and nothing is sent to a university.</p>
           <p><a class="btn btn-primary" href={SITE.ctaHref}>{SITE.cta}</a></p>
         </div>
       ) : (
@@ -108,7 +107,7 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
         <h3 id="no-ranking">Why we do not rank universities</h3>
         <ul>
           <li><strong>A ranking hides its choices.</strong> It turns many different facts into one order, and the publisher decides how much each fact counts. Those choices rarely match what matters to you.</li>
-          <li><strong>A league table may measure something else.</strong> Check what a table measures before you rely on it. Many measure research, not how international students are taught on a particular programme.</li>
+          <li><strong>A league table may measure something else.</strong> Check what a table measures before you rely on it. Some measure research output, not how international students are taught on a particular programme.</li>
           <li><strong>A list can be old or unsourced.</strong> Check who publishes it, whether it names its sources and the year they describe, and whether the publisher is paid when students enrol. Fees, intakes and teaching arrangements change from year to year.</li>
           <li><strong>Your home rules matter more than a position in a list.</strong> Whether you can practise after graduating is decided by the regulator in the country where you want to work.</li>
         </ul>
@@ -126,7 +125,7 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
       <p class="note">Only filters supported by recorded data are offered. Fee-range and deadline filters are not offered until official fee schedules have been verified. {SITE.disclaimer}</p>
     </div>
   </section>
-  <CtaBand title="Not sure which university?" text="Start your candidate profile with your course, country and qualifications. We reply by e-mail, and nothing is sent to a university." />
+  <CtaBand title="Not sure which university?" text="Start your candidate profile with your course, country and qualifications. We reply by email, and nothing is sent to a university." />
 </Base>
 
 <style>
