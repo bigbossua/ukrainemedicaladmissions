@@ -81,12 +81,12 @@ def load_evidence(slug):
         if eid in seen: problems.append(f'`{eid}`: duplicate id')
         seen.add(eid)
         if e.get('status') not in STATUSES: problems.append(f'`{eid}`: unknown status "{e.get("status")}"')
-        if e.get('sourceTier') not in (1, 2, 3, 4, 5): problems.append(f'`{eid}`: sourceTier must be 1-5')
+        if type(e.get('sourceTier')) is not int or e.get('sourceTier') not in (1, 2, 3, 4, 5): problems.append(f'`{eid}`: sourceTier must be the number 1, 2, 3, 4 or 5')
         if e.get('evidenceType') not in EVIDENCE_TYPES: problems.append(f'`{eid}`: unknown evidenceType "{e.get("evidenceType")}"')
         if e.get('decision') not in ('publish', 'withhold'): problems.append(f'`{eid}`: decision must be publish or withhold')
         if e.get('decision') == 'withhold' and not e.get('withholdReason'): problems.append(f'`{eid}`: withheld without a withholdReason')
         if not str(e.get('sourceUrl', '')).startswith('https://'): problems.append(f'`{eid}`: sourceUrl is not https')
-        if e.get('claimPath') and not str(eid).startswith(f'{slug}/{e["claimPath"]}/'): problems.append(f'`{eid}`: id does not follow `<slug>/<claimPath>/<n>`')
+        if e.get('claimPath') and not (str(eid).startswith(f'{slug}/{e["claimPath"]}/') and str(eid)[len(f'{slug}/{e["claimPath"]}/'):].isdigit()): problems.append(f'`{eid}`: id does not follow `<slug>/<claimPath>/<n>`')
         if e.get('decision') == 'publish' and (e.get('status') != 'verified' or not str(e.get('quotation') or '').strip()):
             problems.append(f'`{eid}`: decision publish needs status verified and a quotation')
     return ev, problems
