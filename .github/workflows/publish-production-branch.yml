@@ -7,7 +7,9 @@
 #
 # TRIGGERS: (1) the "Run workflow" button (workflow_dispatch) — GitHub shows it only once this file is on the
 # default branch; (2) pushing a tag named publish-production-<stamp> or publish-staging-<stamp> to the commit
-# to publish — works from any branch and is the route used while the workflow lives only on the working branch.
+# to publish, or creating/updating a branch named publish-production or publish-staging at that commit (the
+# GitHub API can create such a branch when tags cannot be pushed) — both work while this file lives only on
+# the working branch. The publish-* branch is a pointer to the source commit, never the deploy branch itself.
 # SAFETY: the target is validated and anything other than the two names fails the job, so no other branch
 # (e.g. main) can ever be the push target; production needs the explicit confirmation (typed PUBLISH, or the
 # explicit publish-production-* tag name). Nothing deploys until the owner has connected Hostinger Git to the
@@ -31,6 +33,9 @@ on:
     tags:
       - 'publish-production-*'
       - 'publish-staging-*'
+    branches:
+      - publish-production
+      - publish-staging
 
 permissions:
   contents: write
@@ -46,8 +51,8 @@ jobs:
         run: |
           if [ "$GITHUB_EVENT_NAME" = "push" ]; then
             case "$GITHUB_REF_NAME" in
-              publish-production-*) TARGET=production; CONFIRM=PUBLISH ;;
-              publish-staging-*)    TARGET=staging; CONFIRM="" ;;
+              publish-production|publish-production-*) TARGET=production; CONFIRM=PUBLISH ;;
+              publish-staging|publish-staging-*)       TARGET=staging; CONFIRM="" ;;
               *) echo "tag '$GITHUB_REF_NAME' names no deploy target"; exit 1 ;;
             esac
           else
