@@ -60,3 +60,21 @@ Keep the brand system; add **three visual layers** in this order: (1) a small se
 ## 6. Checks that gate every visual change
 
 axe (0 serious/critical), Lighthouse mobile performance ≥ 90 with the new LCP image, CLS 0, UI smoke at 3 widths, `check-meta` (alt text present on every `<img>`, to be added to the checker), image licence record present for every raster asset, no WhatsApp strings, no image implying a named institution.
+
+## 7. Refinement 2026-10-11 — sourcing status and subject briefs
+
+**Sourcing reality from this environment (VERIFIED today):** Unsplash, Pexels, Pixabay, Wikimedia Commons, Openverse and Wikipedia are all denied by the network policy; no image file can be downloaded here. Candidate images can still be *identified* from search-result metadata (file page URL, licence text, author as shown) for the owner to download, or the domains can be allow-listed (free). No image-generation tool is available in this session; generated visuals, if the owner has a tool, must follow the labelling rule in §2. In-repo SVG illustrations (V2, V6, V7, V11) need no external source and are the first assets to build.
+
+**Subject briefs and alt-text drafts (for whichever source is used):**
+
+| Row | Subject brief | Must not show | Alt text draft |
+|---|---|---|---|
+| V1 | Two or three students at a library table with open textbooks or a laptop; natural light; calm; no logos, no uniforms with institutional badges | hospital wards, stethoscope clichés, flags, any readable institution name | "Students studying together at a library table" |
+| V5 medicine | Anatomy atlas, model or study notes on a desk | real patients, surgery | "Anatomy study materials on a desk" |
+| V5 dentistry | Dental training model (typodont) in a teaching setting | a patient in a chair | "Dental training model used in teaching" |
+| V5 pharmacy | Laboratory glassware or a pharmacy teaching lab, no people's faces required | hazard scenes, branded products | "Laboratory glassware in a teaching laboratory" |
+| V5 nursing | Clinical-skills classroom with a training mannequin | real patients | "Clinical-skills training classroom with a mannequin" |
+| V10 | Advising conversation across a table, documents in hand; faces optional | anything implying a university office | "An adviser and a student reviewing documents together" |
+| University profiles | Only a Wikimedia Commons photograph of that institution's own main building, licence and author recorded, used solely on that institution's profile with attribution | any other institution's building; interiors implying facilities we have not verified | "Main building of <official name>, <city>" |
+
+**Licence record format (one row per asset, kept in this file §8 once assets exist):** file name · subject · source page URL · licence (exact text) · author · date downloaded · modifications (crop, colour grade) · pages used on · depicts named institution (yes/no).

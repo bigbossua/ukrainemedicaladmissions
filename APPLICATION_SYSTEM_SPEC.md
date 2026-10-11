@@ -149,3 +149,54 @@ New tables: `programmes` (id, university_slug, title_official, qualification, le
 - [ ] Privacy notice and consent text reviewed for the applicable law (UK GDPR if the business is UK-based; GDPR-equivalent for EU applicants; the owner confirms the legal entity — D7).
 - [ ] Access review: cross-account access attempts return 403 in automated tests; reviewer roles scoped.
 - [ ] Owner's written sign-off recorded here with date.
+
+---
+
+## 12. Candidate-profile design detail (added 2026-10-11; planning only — nothing implemented, no document collection)
+
+### 12.1 Stage-1 stepped form (replaces the single `/apply/` form; still e-mail + JSON backed until Stage 2)
+
+| Step | Fields | Validation | Saved as |
+|---|---|---|---|
+| 1 Your plan | field of study (9 options incl. undecided) · level (bachelor / master / integrated master / preparatory / unsure) · up to 3 preferred universities (from the directory; "not decided yet" allowed) · intended intake (year or "not sure") | one field required: field of study | `profile.intent` |
+| 2 Your education | highest level completed or in progress · school-leaving qualification name · awarding country · year (achieved / expected) · grading scale (selected from a list or free text) · subjects studied with grade (repeatable rows; Biology, Chemistry, Physics, Mathematics, English and "other" offered as suggestions, none required) · results still outstanding (free text) | none required; grades accepted as typed, never converted | `profile.education[]`, `profile.subjects[]` |
+| 3 Your documents | checklist of common document types, each marked **have / need / not sure**: secondary-school certificate, transcript, passport, photographs, birth certificate, medical certificate, translations, legalisation/apostille, language certificate, other | none required | `profile.documents[]` (states: have · need · not_sure) |
+| 4 About you | name · e-mail (verification link) · country of residence · nationality (optional) · preferred language of correspondence · your questions | name, e-mail, consent required | `profile.contact`, `consent.version` |
+| 5 Review | summary; "Create my profile" (primary) · "Apply Online Now" stays the global primary CTA leading into this flow | — | state 1 (enquiry) record + e-mail; later Stage 2 account |
+
+Copy rules: no step mentions deadlines, scarcity or eligibility; the thank-you page states what happens next and that nothing is sent to any university. Anti-abuse as today (honeypot, timing, 405/422). Accessible: one question group per screen, error summary at the top, progress indicator with step names, keyboard order verified by the UI test.
+
+### 12.2 Readiness assessment — worked example with synthetic data (illustrates the rules; not a published requirement)
+
+Synthetic candidate: field = medicine, level = integrated master, qualification = "Secondary School Certificate", country = Example-land, subjects: Biology B, Chemistry C, Physics not studied, English B, Mathematics A; documents: certificate have, transcript need, passport have, translation not sure.
+
+Synthetic programme P at University U with **verified** requirement objects: `subject Biology` (source U/admissions, checked 2026-10-11), `subject Chemistry`, `language English B1 or school instruction in English`, `document secondary certificate + transcript`, `document translation if not in Ukrainian/English`; and an **unverified** object `grade minimum 60% in Biology` (status unverified).
+
+| Requirement | Candidate data | Result shown | Wording |
+|---|---|---|---|
+| Biology studied | B | **met** | "Biology: studied (grade B as you entered it)" |
+| Chemistry studied | C | **met** | — |
+| Minimum 60% Biology | B on an unknown scale; requirement unverified | **unknown** | "The university's minimum grade has not yet been verified by us; we will confirm it from the official page." |
+| English B1 or instruction in English | English B | **pending evidence** | "Upload your English certificate or school letter when you have it." |
+| Certificate + transcript | have / need | **outstanding** (transcript) | "Transcript: outstanding — request it from your school." |
+| Translation | not sure | **unknown** | "Needed only if your documents are not in Ukrainian or English — tell us the language." |
+
+The page never totals these into a score or a verdict. If a verified preparatory route exists at U, it is shown beneath with its official wording on progression; if not, nothing is suggested.
+
+### 12.3 Missing-document workflow (Stage 2 behaviour; states from §8.3)
+
+`required → outstanding`: created from verified requirement objects when the candidate selects a programme; the candidate sees the list immediately.
+`outstanding → uploaded`: candidate uploads (allow-listed types, size cap, outside web root); the item shows "received, not yet reviewed".
+`uploaded → under review`: a reviewer opens it (logged).
+`under review → accepted for processing`: reviewer confirms it is complete and legible for our review — label text: "Accepted for our review. This is not confirmation of authenticity or acceptance by the university."
+`under review → replacement or clarification requested`: templated reason (illegible, wrong document, expired, missing pages, translation needed) → e-mail with the reason → item returns to `outstanding` with the note visible.
+Any state → `not requested`: if the requirement object is withdrawn (programme or intake changed), with the reason logged.
+Reminders: one per fortnight at most, listing outstanding items only; a candidate can pause reminders.
+
+### 12.4 Save-and-resume
+
+Magic-link sign-in (e-mail) plus optional password at Stage 2; profile autosaves per step; "Continue where you left off" lands on the first incomplete step; progress indicator shows steps done, items outstanding and the next best action; deletion request honoured within the retention rules of §3.
+
+### 12.5 What is not built in this phase
+
+No accounts, no uploads, no database, no reviewer interface. The Stage-1 stepped form (§12.1) is the only candidate-facing build proposed for the next implementation cycle, and it only reaches production through an approved release.

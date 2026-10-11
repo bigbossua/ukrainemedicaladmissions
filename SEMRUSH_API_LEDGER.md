@@ -81,3 +81,22 @@ Reading B is almost certainly wrong: six identical 8-line requests reported six 
 3. `domain_overview` + `organic_research` for the production domain (baseline).
 4. Record each call here with cost and output location (`research/semrush/YYYY-MM-DD-<report>.csv`).
 5. Stop and report at 200 units; continue only on approval.
+
+## 2026-10-11 — R1 + R2 conditionally authorised; NOT executed (pre-flight condition unmet)
+
+**Owner's instruction:** run R1 and R2 only, capped at 2,340 units, *provided the available balance and actual cost are verified before execution*; otherwise stop and report the blocker. No R3–R5, no purchase.
+
+| Pre-flight item | Result | Label |
+|---|---|---|
+| Price per line | Semrush's developer documentation prices the Keyword Overview reports (`phrase_this`, `phrase_all`) at **10 API units per line** (snippet: "10 API units per line"; a historical 50-unit price is also shown, so prices change) — [developer.semrush.com keyword reports](https://developer.semrush.com/api/v3/analytics/keyword-reports/). The MCP's batch form `phrase_these` metered 130 units for 12 returned lines on 2026-10-10 (≈10.8/line) and 80 per 8-line call at published prices. **R1 (144 lines) + R2 (90 lines) = 234 lines ⇒ 2,340 units at 10/line; a per-request overhead like the 2026-10-10 pilot's could add ≈8%.** | VERIFIED (published price, snippet) / observed metering recorded |
+| Available balance | **Cannot be read from this environment.** The MCP returns no balance field (only a running usage counter), exposes no account tool, and the API-units page requires the owner's login; the Semrush API key must never be handled here. Last reading: the owner's screenshot (50,000 units, date unknown) before 2,240 units were consumed. | **UNVERIFIED — blocker** |
+| Authorisation | Given for R1+R2 ≤ 2,340 units, conditional on the two items above. | VERIFIED (owner message 2026-10-11) |
+
+**Decision:** stopped before any call. **Units spent this session: 0.** Cumulative remains **2,240** (published prices).
+
+**What unblocks execution (owner, two minutes):** open Semrush → Subscription info → API units, and tell me the current Standard API balance figure (a screenshot or the number). If it is ≥ 2,340 + the margin you want to keep, execution proceeds as below.
+
+**Execution plan once the balance is confirmed (no changes to R1/R2 keyword sets in `KEYWORD_URL_MAP.md` §9):**
+1. Probe: one `phrase_these` call, 1 keyword × 1 database (`in`, "mbbs in ukraine", a known-data row) — expected ≈10 units; its `metadata.usage.api_units` is read as the actual per-line price (sequential call, so the counter equals the call).
+2. If the probe meters > 15 units/line, stop and report; otherwise run R1 as six sequential `phrase_these` calls (one per database, 24 keywords each) and R2 as three sequential calls (`in`, `uk`, `ng`; 30 keywords each), recording the counter after every call; hard stop if cumulative metered usage for the batch reaches 2,340.
+3. Save every CSV under `research/semrush/2026-10-11-*.csv`, validate (header, row count, duplicates), update `KEYWORD_URL_MAP.md` §6–§7 and this ledger with metered usage per call.

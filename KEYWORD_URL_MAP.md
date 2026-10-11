@@ -188,7 +188,7 @@ Field key: **Evidence** = report · database · retrieval date (`research/semrus
 
 Order of work implied: M8 and M1 (product and verification), then M2/M3, then M4→M5→M6 as verification completes, M7 on supply; everything marked defer waits for §9 data and `PROGRAMME_SUPPLY_REGISTER.md`.
 
-## 9. Costed SEMrush research request — REQUIRES OWNER APPROVAL (no call has been made)
+## 9. Costed SEMrush research request — R1+R2 CONDITIONALLY APPROVED 2026-10-11 (cap 2,340 units; execution waits for the owner's balance reading — see `SEMRUSH_API_LEDGER.md`); R3–R5 NOT approved; no call has been made
 
 Prices: `phrase_these` 10 units/line and `phrase_fullsearch` 20 units/line are the published per-line prices recorded in the ledger. Prices for `phrase_organic`, `phrase_related`, `phrase_questions` and `domain_organic` are **assumptions to be confirmed on Semrush's API pricing page before approval** (assumed 10/line for organic reports, 40/line for related/questions). Cumulative spend so far: 2,240 units; the brief's preservation floor (48,000 of 50,000) is already crossed by 240 units if the screenshot balance was current, so **every request below exceeds the original cap and needs explicit approval**. Each line can be approved separately.
 
