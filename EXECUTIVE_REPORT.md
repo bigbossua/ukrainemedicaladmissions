@@ -8,8 +8,8 @@
 | Raw exports | 10 files, 85 returned lines, each file's lines × 10 = the recorded cost of its call (all ten match) | `research/semrush/2026-10-11-*.csv`; programmatic check + independent audit agent (≈400 values, 0 errors) |
 | Units used this phase | **850** of the 2,340 cap; R3–R5 not run | ledger |
 | Consumption before this phase | **2,110** (50,000 − owner's 47,890) — **DERIVED**: assumes the 50,000 screenshot preceded the first paid call and that no other tool connected to the account drew on the shared unit pool; replaces the ledger's earlier 2,240; the 130 overstatement sat in the published-price estimate of the 2026-10-10 parallel batch (actual 1,070; per-call split unrecoverable) | ledger reconciliation entry |
-| **Cumulative** | **2,960** | |
-| **Expected remaining** | **47,040** — to be confirmed on the owner's next API Units reading | |
+| **Cumulative** | **2,960** (position after R1/R2; superseded 2026-10-11 by programme 3: 6,230 line-based, see §N.6) | |
+| **Expected remaining** | **47,040** after R1/R2 (superseded: 43,770 after programme 3, ESTIMATE; §N.6) | |
 | Audit corrections applied | wording only: UK "every other name 20" → ten names 20, Vinnytsia 0; nursing intent "informational" → not computed; §4.1 "45 databases incl. lk" → 44, lk not returned; ledger "234 requested" → 235 incl. probe; stale §9/§10 headers and §6 status cells marked superseded | this commit |
 
 ## B. Evidence classes — what is measured, what is a lead, what is assumed
@@ -162,7 +162,7 @@ DONE: baseline report; reconciliation of all cited metrics against exports; coun
 
 **Probe:** `phrase_these`, 1 keyword → 10 units; every subsequent sequential call read exactly 10 × returned lines; unreturned keywords are not billed.
 
-**Spend:** R1 250 + R2 590 + probe 10 = **850 units** (cap 2,340; R3–R5 not run). Cumulative 2,960; expected balance **47,040** (owner to confirm). Ten raw exports in `research/semrush/2026-10-11-*.csv`.
+**Spend:** R1 250 + R2 590 + probe 10 = **850 units** (cap 2,340; R3–R5 not run). Cumulative 2,960; expected balance **47,040** (owner to confirm) at that point; superseded by programme 3 (§N.6). Ten raw exports in `research/semrush/2026-10-11-*.csv`.
 
 **How the findings change the money-page priorities**
 - University profiles are the main acquisition opportunity and there are twelve measured names, not two: Bukovinian 480 (mixed informational + transactional), Odessa 390 (kd 16), Kharkiv 390 (kd 34), Bogomolets 320 (uk 90), Ivano-Frankivsk 210, Uzhhorod 140, Ternopil 110 (kd 16), Zaporizhzhia 90, Vinnytsia 50 (+ Pirogov 390), Lviv 50, Poltava 20, Dnipro 20 — all India unless stated. Seven profiles are approved for planning in the order Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv is held behind an operating-conditions check; Zaporizhzhia, Lviv, Poltava and Dnipro deferred. Every profile still requires official verification before it can be indexed.
@@ -185,7 +185,7 @@ Labels: **MEASURED** = read from a SEMrush CSV in `research/semrush/`; **OFFICIA
 | Preview build (`npm run build:preview`, never deployed) | 29 pages: the seven draft profiles (noindex, no canonical/JSON-LD, draft banner, verification queue), `/preview/` and the synthetic sample. |
 | Production release (`origin/production` = `b2ca3d6`, build of `4d4e605`) | 45 files; sitemap 18 URLs (identical set to the branch build); `/universities/ternopil-national-medical-university/` served with `noindex, nofollow` and a self-canonical; home and `/apply/` selects offer Ternopil; no other university anywhere. Live behaviour could not be fetched from this environment (host blocked) — `npm run verify:live` has never run. |
 | Tests | Local full suite 2026-10-11 (`npm test`, log `npm-test-2.log`): records-evidence 0 failures · check-links 0 broken · check-meta 0 problems · check-redirects 0 problems · ui-smoke 0 failures · a11y 0 blocking/0 minor · perf 4 pages within budget · staging-guard 0 problems · publication-gate 178 checks, 0 failures · preview-ui 0 failures, 0 blocking a11y · EXIT=0. CI runs #12–#15 on this branch: success (run 15 = `ca21a48`). |
-| SEMrush | 20 raw exports; 2,960 units consumed in total (2,110 DERIVED from the owner's 47,890 reading + 850 VERIFIED per call); expected remaining 47,040 (ESTIMATE until the owner reads the API Units page). No call in this phase. |
+| SEMrush | 20 raw exports; 2,960 units consumed in total (2,110 DERIVED from the owner's 47,890 reading + 850 VERIFIED per call); expected remaining 47,040 (ESTIMATE until the owner reads the API Units page). No call in this phase. (Superseded by programme 3: §N.6.) |
 | University facts | **0 verified** across all seven records (749 claim objects; 0 with a source URL or check date). Every value is a search-snippet LEAD or not-published. |
 | What the website does for a student today | Reads guidance pages; filters an (empty in production) directory; submits a Stage-1 enquiry (`/apply/` → `public/api/enquiry.php` → e-mail + JSON, honeypot, 422/303 handling) — no account, no save-and-resume, no upload, no payment, no university submission. |
 | Blocked | Official `.ua` domains, Ministry portal, EDEBO, NAQA, WDOMS, image hosts and the production host — DNS refused for curl and the fetch tool (`SOURCE_VERIFICATION_REGISTER.md` 2026-10-11 row). |
@@ -309,7 +309,7 @@ Allow-list the official domains listed in §C plus the gaps named in K.6 (or sen
 
 ## M. Master mandate — Phase 1 report (evidence programme), 2026-10-11
 
-**Completed:** research programme 3 executed under the owner's cap (working cap 5,000 incl. the 850 R1/R2 units): 26 calls, 22 with data, **3,270 units line-based (worst case 3,380)**; raw exports `research/semrush/2026-10-11-P3-*` (22 files); per-call ledger `SEMRUSH_API_LEDGER.md`; SERP and competitor register `KEYWORD_URL_MAP.md` §16; opportunity register §13 updated (competition column now measured for O1–O4; O5: question phrasings only); backlog §14 items RB1–RB5 executed; decision log §17. Cumulative consumption 6,230 line-based (worst 6,340); expected balance 43,770 (worst 43,660) — ESTIMATE until the owner's next reading.
+**Completed:** research programme 3 executed under the owner's cap (working cap 5,000 incl. the 850 R1/R2 units): 26 calls, 22 with data, **3,270 units line-based (max-reading estimate 3,380; conservative bound 3,850)**; raw exports `research/semrush/2026-10-11-P3-*` (22 files); per-call ledger `SEMRUSH_API_LEDGER.md`; SERP and competitor register `KEYWORD_URL_MAP.md` §16; opportunity register §13 updated (competition column now measured for O1–O4; O5: question phrasings only); backlog §14 items RB1–RB5 executed; decision log §17. Cumulative consumption 6,230 line-based (max-reading estimate 6,340; conservative 6,810); expected balance 43,770 (max-reading 43,660; conservative 43,190) — ESTIMATE until the owner's next reading.
 
 **What SEMrush now shows (MEASURED):** every India SERP for the fees, MBBS and college terms is held by education agencies (plus Wikipedia's list for the directory terms, Quora, shiksha, ranking sites); no official university and no regulator ranks for them. Named-university head terms belong to the official sites (Bukovinian #1/#3/#5), and for Vinnytsia two look-alike domains outrank the official site. The top agency page captures the whole cluster with an estimated 701 visits/month. Broad ceilings outside India are 20–40. Students' questions cluster on cost, duration, validity in India, NEET, and how to apply.
 
@@ -317,3 +317,54 @@ Allow-list the official domains listed in §C plus the gaps named in K.6 (or sen
 
 **Blocked:** official-source verification (DNS), so no fee or profile can yet be published; UK SERP competition (not stored by SEMrush).
 
+
+## N. Integration handover — Phases 2–5 (2026-10-11; working branch `claude/university-profile-pipeline`, mirrored on `claude/new-session-ppgh22`; nothing deployed)
+
+**Commits.** `50376e3` Phase 2 page content → five work packages merged without conflicts (`2ffc221` apply, `b1f87e0` readiness, `e37946e` stage2, `d19d662` visual, `1634697` directory) → `4136658` integration fixes (CSP inline scripts N20, keyed IP hash N21, false-claim copy, test wiring) → a follow-up commit with the fixes found by the read-only verification of `4136658` (claims, security and documents; see "Verification" below). The final hash is the branch head in `git log`.
+
+### N.1 Work packages and files (VERIFIED-IN-REPO: `git diff --name-status 50376e3 wip/<key>`)
+
+| Package | Files |
+|---|---|
+| Stepped candidate-profile form (`wip/apply`) | `site/public/api/enquiry.php`, `site/src/pages/apply/index.astro`, `site/src/pages/apply/thank-you.astro`, `site/src/pages/privacy/index.astro`, `site/src/scripts/apply-steps.ts` (new), `site/src/scripts/form-validate.ts`, `site/tests/a11y.mjs`, `site/tests/enquiry-php.mjs` (new), `site/tests/ui-smoke.mjs` |
+| Readiness logic and synthetic demo (`wip/readiness`) | `site/src/lib/readiness.mjs` (new), `site/src/lib/synthetic-candidate.mjs` (new), `site/src/components/readiness/*` (7 new), `site/src/pages/preview/[...path].astro`, `site/tests/preview-ui.mjs`, `site/tests/publication-gate.mjs`, `site/tests/readiness-logic.mjs` (new) |
+| Stage-2 design and readiness-review offer (`wip/stage2`, documents only) | `APPLICATION_SYSTEM_SPEC.md` (§14), `SECURITY_AND_RELEASE_CHECKLIST.md` (§C), `SERVICE_TIERS_SPEC.md` |
+| Visual layer (`wip/visual`) | `site/src/components/illustrations/{ApplicationJourney,DocumentStates,HeroIllustration,Icon}.astro` (new), `site/src/components/CtaBand.astro`, `site/src/lib/courses.ts`, `site/src/pages/{index,admissions/index,courses/index,courses/[course]}.astro`, `site/src/styles/global.css`, `VISUAL_AUDIT_AND_IMAGE_REGISTER.md` (§11) |
+| Directory, per-URL specs, analytics plan (`wip/directory`) | `site/src/pages/universities/index.astro`, `KEYWORD_URL_MAP.md` (§18–§19), `DIRECTORY_VERIFICATION_PLAN.md` (§9), `ANALYTICS_AND_SEARCH_CONSOLE.md` (new) |
+
+### N.2 Tests by layer
+
+- **Local (this environment):** the full `npm test` chain plus `npx astro check` on the integrated tree; results are in the commit messages of `4136658` and the follow-up commit (every stage 0 failures; a11y covers 20 pages at two widths plus 14 apply-form states; `enquiry-php` and `readiness-logic` included).
+- **CI:** Site CI succeeded on `4136658` (runs 38156249853 and 38156251319); the follow-up commit's run is recorded in the chat handover.
+- **Live:** not run. The production host and every official `.ua` domain are blocked from this environment; `npm run verify:live` has never run.
+
+### N.3 Verification of `4136658` (three read-only reviewers) and what was done
+
+Fixed in the follow-up commit: present-tense claims of features that do not exist (services document review and status tracking, FAQ readiness check, FAQ photographs, privacy access log, disclosure "paid services"); "verified information" in the site description, Organization JSON-LD, about, services, course and fees descriptions; "full list" in the directory title and medicine page; an unapproved promise of a free manual requirements comparison and fee confirmation (apply, thank-you, admissions, privacy, fees, FAQ); unverified generalisations (fee currency practice, passport validity, "often biology and chemistry"); the privacy notice now discloses the keyed IP code, the timestamp and the mailbox copy; the handler no longer strips "<" from input (a grade "<50" was stored empty); MIME headers; `display_errors` off; CSP sent on error responses; `/uma-private` refused; directory cards now actually hide when filtered, with a stronger test; contact form length limits and an announced error. Documentation inconsistencies fixed on `wip/docs-fix` and merged.
+
+### N.4 Open items
+
+| Item | Status | Owner action |
+|---|---|---|
+| Enquiry e-mail delivery from the host (N4) | NOT VERIFIED: only captured locally through a redirected sendmail | after an approved release, send one synthetic profile and confirm it reaches the business mailbox, not spam |
+| Legal pages are drafts with placeholders but are in the build and sitemap; the forms collect data under the draft notice (A10/D7) | release blocker | legal entity, address, retention periods, legal review |
+| Latent: once a record is publishable, components would print unverified values and internal notes, and the R6 gate enforces less than the published "What we check" list (N23) | must be fixed before the first profile is published | none (development task) |
+| `ip_hash_key` in `uma-private/config.php` (N21) | needed at release | create a random key on the host |
+| Live CSP and header behaviour (N20) | UNVERIFIED | after an approved release, check the mobile menu on a phone |
+| Minor deferred defects (N22) | documented | none |
+
+### N.5 Directory (VERIFIED-IN-REPO; `DIRECTORY_VERIFICATION_PLAN.md` §9)
+
+0 profiles published; 7 draft records with 749 claim objects, 0 verified, 0 with a source URL; production builds show the empty state and redirect the old Ternopil URL (302). Most important gaps: no official page can be read from here (owner Route A allow-list or Route B captures); no verified fee schedule, so `/tuition-fees/` cannot answer the strongest fee queries; fewer than three profiles, so the directory cannot satisfy the "list" intent; N23 must be fixed before the first profile flips to publishable.
+
+### N.6 SEMrush position
+
+Units spent in Phases 2–5: **0**. Cumulative consumption 6,230 line-based (max-reading estimate 6,340; conservative bound 6,810); expected balance 43,770 (43,660; 43,190): ESTIMATE until the owner's next API Units reading, which is the required reconciliation step before any further metered call. Programme-3 headroom under the 5,000 cap: 880 / 770 / 300. Strongest evidence-backed opportunities (MEASURED, India database): fee phrasings (ukraine medical fees 720, kd 18; ukraine medical college fees 590, kd 12; medical fees in ukraine 480, kd 12; ukraine mbbs fees 260, kd 7; cost of mbbs in ukraine 260, kd 11) → `/tuition-fees/`; named universities (bukovinian state medical university 480, kd 30; odessa 390; pirogov 390 broad; bogomolets 320) → profiles; directory phrasings (ukraine medical college 2,900 broad, kd 22; list 210, kd 11; best 390, kd 14) → `/universities/`; ukraine mbbs college 480, kd 7 → `/courses/medicine/`. Every India SERP for the fee, MBBS and college terms is held by agencies, and the top agency page earns an estimated 701 visits a month across 20 keywords: the realistic prize is hundreds of high-intent visits, not thousands.
+
+### N.7 Deployment and data
+
+No deployment: `origin/production` is unchanged at `b2ca3d6` (release of 2026-10-11 00:53 UTC). No sensitive-data collection was introduced: the stepped form asks for study plans, education with self-reported grades, have/need/not-sure answers about documents (no files), residence, optional nationality and language preference; no passport number, date of birth, document upload, health or payment data; nothing is sent to any university.
+
+### N.8 Recommended next task
+
+Verify the first university profile from official sources, starting with its fee schedule, then complete the three-profile set in the owner's order (Vinnytsia → Odesa → Bukovinian). Reason: every proven organic cluster (fees, named universities, directory) and the only legitimate revenue line (the document-readiness review) depend on verified official data, and none exists. Preconditions: the owner opens access (Route A, minutes) or supplies captures (Route B); N23 is fixed in the same change so a published profile shows only verified facts; release only on separate approval.
