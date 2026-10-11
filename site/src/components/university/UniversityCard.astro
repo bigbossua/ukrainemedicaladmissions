@@ -1,0 +1,47 @@
+---
+import { FIELDS, LEVELS } from '../../lib/fields';
+import { formatDate } from '../../lib/site';
+interface Props { u: any; href?: string; draft?: boolean }
+const { u, href = `/universities/${u.slug}/`, draft = false } = Astro.props;
+const fields = [...new Set(u.programmes.map((p: any) => p.field))] as string[];
+const levels = [...new Set(u.programmes.map((p: any) => p.level.value).filter(Boolean))] as string[];
+const langs = [...new Set(u.programmes.flatMap((p: any) => p.language.value ?? []))] as string[];
+const langVerified = u.programmes.some((p: any) => p.language.status === 'verified');
+const intakes = [...new Set(u.programmes.map((p: any) => p.intakeYear.value).filter(Boolean))] as string[];
+const hasPrep = u.preparatoryRoutes.length > 0;
+const initials = u.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
+const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 0) % 40;
+---
+<article class="ucard" data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={hasPrep ? 'yes' : 'no'} data-intakes={intakes.join(' ')} data-publishable={u.verification.publishable ? 'yes' : 'no'}>
+  <a class="tile" href={href} aria-hidden="true" tabindex="-1" style={`--h:${hue}`}><span>{initials}</span><span class="city">{u.city}</span></a>
+  <div class="body">
+    <h2><a href={href}>{u.shortName}</a></h2>
+    <p class="loc">{u.city}{u.region && `, ${u.region}`}</p>
+    <div class="chips">
+      {fields.map((f) => <span>{((FIELDS as any)[f] ?? FIELDS.other).short}</span>)}
+      {levels.map((l) => <span class="lvl">{(LEVELS as any)[l] ?? l}</span>)}
+      {langs.map((l) => <span>{l}{!langVerified && ' (pending)'}</span>)}
+      {hasPrep && <span>Preparatory route</span>}
+    </div>
+    <p class="status">
+      {u.verification.publishable ? <span class="badge badge-verified">Verified profile</span> : <span class="badge badge-pending">{draft ? 'Draft — verification in progress' : 'Verification in progress'}</span>}
+      {u.verification.lastReview && <small> · reviewed {formatDate(u.verification.lastReview)}</small>}
+    </p>
+    <a class="more" href={href}>View profile →</a>
+  </div>
+</article>
+<style>
+  .ucard { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+  .tile { display: flex; align-items: flex-end; justify-content: space-between; aspect-ratio: 16 / 7; padding: .9rem 1rem; color: #fff; text-decoration: none; background: linear-gradient(135deg, hsl(calc(214 + var(--h)) 70% 42%), var(--navy-800)); font-family: var(--font-display); }
+  .tile span:first-child { font-size: 1.6rem; font-weight: 700; letter-spacing: .02em; }
+  .tile .city { font-size: .8rem; opacity: .85; }
+  .body { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+  h2 { font-size: 1.15rem; margin: 0; }
+  h2 a { color: var(--navy-900); text-decoration: none; }
+  h2 a:hover { text-decoration: underline; }
+  .loc { margin: 0; font-size: .9rem; color: var(--slate); }
+  .lvl { background: var(--blue-50) !important; color: var(--navy-800) !important; }
+  .status { margin: 0; font-size: .85rem; }
+  .status small { color: var(--slate); }
+  .more { margin-top: auto; font-weight: 600; text-decoration: none; }
+</style>

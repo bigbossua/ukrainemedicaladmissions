@@ -1,0 +1,627 @@
+{
+  "slug": "example-medical-university",
+  "synthetic": true,
+  "officialName": {
+    "value": "Example Medical University (SYNTHETIC SAMPLE — not a real institution)",
+    "status": "verified",
+    "source": "https://example.invalid/about",
+    "checked": "2026-10-01"
+  },
+  "shortName": "Example Medical University (synthetic sample)",
+  "alternativeNames": [
+    "EMU (sample)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "verified",
+    "source": "https://example.invalid/notices",
+    "checked": "2026-10-01"
+  },
+  "statusStatement": {
+    "value": "Sample statement: \"Teaching in the 2026/27 academic year is in person on the Sampletown campus.\" (synthetic)",
+    "status": "verified",
+    "source": "https://example.invalid/notices",
+    "checked": "2026-10-01"
+  },
+  "teachingFormat": {
+    "value": "in-person",
+    "status": "verified",
+    "source": "https://example.invalid/notices",
+    "checked": "2026-10-01"
+  },
+  "city": "Sampletown",
+  "region": "Sample Oblast",
+  "address": {
+    "value": "1 Example Street, Sampletown, 00000",
+    "status": "verified",
+    "source": "https://example.invalid/contacts",
+    "checked": "2026-10-01"
+  },
+  "website": {
+    "value": "https://example.invalid/",
+    "status": "verified",
+    "source": "https://example.invalid/",
+    "checked": "2026-10-01"
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "international@example.invalid",
+      "url": "https://example.invalid/international"
+    },
+    "status": "verified",
+    "source": "https://example.invalid/international",
+    "checked": "2026-10-01"
+  },
+  "founded": {
+    "value": 1950,
+    "status": "verified",
+    "source": "https://example.invalid/history",
+    "checked": "2026-10-01"
+  },
+  "overview": "SYNTHETIC SAMPLE RECORD. Every value on this page is invented to demonstrate the profile layout, the verified/pending states, structured requirements, document checklists and a preparatory route. It is built only in preview builds and never appears on the public site.",
+  "accreditation": {
+    "value": "Sample accreditation certificate No. 0000 (synthetic)",
+    "status": "verified",
+    "source": "https://example.invalid/accreditation",
+    "checked": "2026-10-01"
+  },
+  "recognition": {
+    "value": [
+      "Listed in a sample directory (synthetic)"
+    ],
+    "status": "verified",
+    "source": "https://example.invalid/recognition",
+    "checked": "2026-10-01"
+  },
+  "accommodation": {
+    "value": "Hostel places for first-year international students (sample)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Synthetic unverified example to show the pending state."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "specialtyCode": {
+        "value": "222 / I2",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "qualification": {
+        "value": "Master of Medicine (sample title)",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "durationYears": {
+        "value": 6,
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "durationText": {
+        "value": "5 years 10 months",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "format": {
+        "value": "on-campus",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/medicine",
+        "checked": "2026-10-01"
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "tuition": {
+        "value": {
+          "amount": 4000,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "2026/27",
+          "schedule": "First year in full before enrolment; later years per semester (sample)",
+          "variesByYear": "Year 1: 3,500; years 2–6: 4,100 (sample)"
+        },
+        "status": "verified",
+        "source": "https://example.invalid/fees",
+        "checked": "2026-10-01"
+      },
+      "otherMandatoryCosts": [
+        {
+          "label": "Hostel (sample)",
+          "cost": {
+            "value": {
+              "amount": 800,
+              "currency": "USD",
+              "per": "year",
+              "academicYear": "2026/27"
+            },
+            "status": "verified",
+            "source": "https://example.invalid/fees",
+            "checked": "2026-10-01"
+          }
+        }
+      ],
+      "entryRequirements": {
+        "value": [
+          "Complete secondary education with Biology and Chemistry (sample)",
+          "English B1 or schooling in English (sample)"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "requirements": [
+        {
+          "id": "bio",
+          "type": "subject",
+          "summary": "Biology studied at secondary level (sample)",
+          "subject": "Biology",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/admission",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "chem",
+          "type": "subject",
+          "summary": "Chemistry studied at secondary level (sample)",
+          "subject": "Chemistry",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/admission",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "bio-min",
+          "type": "grade",
+          "summary": "Minimum 60% in Biology (sample — unverified to show the pending state)",
+          "subject": "Biology",
+          "minimum": {
+            "value": "60",
+            "scale": "percent"
+          },
+          "intakeYear": "2026/27",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Synthetic unverified requirement."
+        },
+        {
+          "id": "eng",
+          "type": "language",
+          "summary": "English level B1, or secondary schooling in English (sample)",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/admission",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "exam",
+          "type": "exam",
+          "summary": "Oral entrance examination in Biology and Chemistry (sample)",
+          "examFormat": "oral examination, online or in person (sample)",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/admission",
+          "checked": "2026-10-01"
+        }
+      ],
+      "requiredDocuments": {
+        "value": [
+          "Passport",
+          "Secondary certificate with transcript",
+          "Photographs",
+          "Translation if not in Ukrainian or English"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/documents",
+        "checked": "2026-10-01"
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "Passport (scan of the main page)",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/documents",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "certificate",
+          "name": "Secondary school certificate with transcript of grades",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/documents",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "translation",
+          "name": "Notarised translation of the certificate",
+          "condition": "Only if the certificate is not in Ukrainian or English (sample)",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/documents",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "photos",
+          "name": "Photographs",
+          "formatNote": "6 photographs, 3 × 4 cm (sample)",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/documents",
+          "checked": "2026-10-01"
+        },
+        {
+          "id": "medical",
+          "name": "Medical certificate",
+          "intakeYear": "2026/27",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Synthetic unverified document to show the pending state."
+        }
+      ],
+      "deadlines": {
+        "value": [
+          {
+            "label": "Autumn intake applications close (sample)",
+            "date": "2026-10-31"
+          }
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "intake": {
+        "value": "September 2026 (sample)",
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "gradingNote": "Sample: the university accepts percentage and letter scales and converts them itself."
+    },
+    {
+      "id": "nursing",
+      "name": "Nursing (sample)",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "specialtyCode": {
+        "value": "223 / I5",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "qualification": {
+        "value": "Bachelor of Nursing (sample title)",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "durationYears": {
+        "value": 4,
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "durationText": {
+        "value": "3 years 10 months",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "language": {
+        "value": [
+          "English"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "format": {
+        "value": "on-campus",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/nursing",
+        "checked": "2026-10-01"
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "tuition": {
+        "value": {
+          "amount": 2500,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "2026/27"
+        },
+        "status": "verified",
+        "source": "https://example.invalid/fees",
+        "checked": "2026-10-01"
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": [
+          "Complete secondary education (sample)"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "requirements": [
+        {
+          "id": "bio",
+          "type": "subject",
+          "summary": "Biology (sample)",
+          "subject": "Biology",
+          "intakeYear": "2026/27",
+          "status": "verified",
+          "source": "https://example.invalid/admission",
+          "checked": "2026-10-01"
+        }
+      ],
+      "requiredDocuments": {
+        "value": [
+          "Passport",
+          "Certificate"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/documents",
+        "checked": "2026-10-01"
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": "September 2026 (sample)",
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      }
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health (sample)",
+      "field": "public_health",
+      "level": {
+        "value": "master",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "specialtyCode": {
+        "value": "229 / I9",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "qualification": {
+        "value": "Master's degree in Public Health (sample title)",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "durationYears": {
+        "value": 2,
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "durationText": {
+        "value": "1 year 10 months",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "language": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "format": {
+        "value": "on-campus",
+        "status": "verified",
+        "source": "https://example.invalid/programmes/public-health",
+        "checked": "2026-10-01"
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Sample: not stated by the university."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "verified",
+        "source": "https://example.invalid/admission",
+        "checked": "2026-10-01"
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Sample: fee not published."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "prep",
+      "name": "Preparatory Department for foreign citizens (sample)",
+      "languageOfInstruction": {
+        "value": [
+          "Ukrainian",
+          "English"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "englishTrack": {
+        "value": true,
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "durationText": {
+        "value": "10 months (November to August)",
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian or English language",
+          "Biology",
+          "Chemistry",
+          "Physics"
+        ],
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "certificateName": {
+        "value": "Certificate of completion (sample)",
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "progressionText": {
+        "value": "Sample wording: \"Graduates who pass the final examinations may apply for admission to the first year; completion does not guarantee admission.\"",
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": true,
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "startDate": {
+        "value": "1 November (sample)",
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      },
+      "fee": {
+        "value": {
+          "amount": 1500,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "2026/27"
+        },
+        "status": "verified",
+        "source": "https://example.invalid/fees",
+        "checked": "2026-10-01"
+      },
+      "eligibilityText": {
+        "value": "Complete secondary education; no minimum grades stated (sample)",
+        "status": "verified",
+        "source": "https://example.invalid/preparatory",
+        "checked": "2026-10-01"
+      }
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Sample reference",
+      "url": "https://example.invalid/admission",
+      "purpose": "Demonstrates the research-references block (synthetic)"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is this a real university?",
+      "a": "No. This record is a synthetic sample used only to demonstrate the profile layout in local preview builds."
+    }
+  ],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": "2026-10-01",
+    "reviewer": "sample",
+    "openQuestions": [
+      "Synthetic record — never publishable."
+    ]
+  }
+}

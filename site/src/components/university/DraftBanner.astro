@@ -1,0 +1,20 @@
+---
+/** Shown only in PREVIEW_UNPUBLISHED builds: this page does not exist in production. */
+interface Props { kind: 'unpublished' | 'synthetic'; /** Override the standard wording (e.g. the directory in a preview build). */ text?: string }
+const { kind, text } = Astro.props;
+---
+<div class="draft" role="status" data-draft-banner>
+  <div class="wrap">
+    {text ? (
+      <p>{text}</p>
+    ) : kind === 'synthetic' ? (
+      <p><strong>Synthetic sample record.</strong> Every value on this page is invented to demonstrate the layout. It is not a real university and this page is never built for the public site.</p>
+    ) : (
+      <p><strong>Draft record — not published.</strong> Values marked “pending” are research leads from search snippets, not verified facts. This page is built for internal review only and does not exist on the public site.</p>
+    )}
+  </div>
+</div>
+<style>
+  .draft { background: #5C4500; color: #fff; padding: .75rem 0; font-size: .95rem; }
+  .draft p { margin: 0; }
+</style>

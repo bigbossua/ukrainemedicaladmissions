@@ -4,8 +4,10 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { getCollection } from 'astro:content';
 import { SITE, formatDate } from '../../lib/site';
+import { isVisible, byShortName } from '../../lib/records';
 
-const universities = (await getCollection('universities')).sort((a, b) => a.data.shortName.localeCompare(b.data.shortName));
+// Publication gate: unpublished records never appear here (lib/records.ts).
+const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
 const rows = universities.flatMap((u) => u.data.programmes.map((p) => ({ u, p })));
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / ${m.per} (${m.academicYear})`;
 ---
@@ -31,10 +33,11 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / $
     </div>
 
     <h2 style="margin-top:2rem" id="by-university">Medical college fees in Ukraine, by university</h2>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Fees by university" tabindex="0">
       <table>
         <thead><tr><th>University</th><th>Programme</th><th>Tuition fee</th><th>Status</th><th>Checked</th></tr></thead>
         <tbody>
+          {rows.length === 0 && <tr><td colspan="5"><span class="badge badge-pending">No fee verified yet</span> No university's official fee schedule has been verified yet. Rows appear here as each university profile completes verification.</td></tr>}
           {rows.map(({ u, p }) => (
             <tr>
               <td><a href={`/universities/${u.data.slug}/#${p.id}`}>{u.data.shortName}</a></td>

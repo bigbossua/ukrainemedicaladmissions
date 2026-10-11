@@ -1,89 +1,930 @@
 {
   "slug": "ternopil-national-medical-university",
+  "synthetic": false,
   "officialName": {
     "value": "I. Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine",
     "status": "unverified",
     "source": null,
     "checked": null,
-    "note": "Starting record from the project brief (recorded as 'Ivan Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine'). Confirm current official English name on the university's own site and in the Ukrainian state register (EDEBO)."
+    "note": "Starting record from the project brief; official pages seen in search snippets use 'I. Horbachevsky Ternopil National Medical University' (TNMU/TDMU). Confirm on the official site and in EDEBO."
   },
   "shortName": "Ternopil National Medical University",
-  "alternativeNames": ["TNMU", "Ivan Horbachevsky Ternopil National Medical University", "Ternopil State Medical University (former name)"],
-  "status": { "value": "operating", "status": "unverified", "source": null, "checked": null, "note": "Operational status to be confirmed against the official site and Ministry of Education sources." },
+  "alternativeNames": [
+    "TNMU",
+    "TDMU",
+    "Ivan Horbachevsky Ternopil National Medical University",
+    "Ternopil State Medical University (former name)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "No relocation found in snippets; rectorate readiness reports Aug 2025, Nov 2025, Aug 2026 (snippet leads). Confirm with a dated official statement."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Latest explicit teaching-format statement found in snippets covers 2024–25 only (\"traditional (classroom) format\", subject to change). No 2025–26 statement found. Quote the current official statement verbatim with its date."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from the dated official statement for the current academic year."
+  },
   "city": "Ternopil",
   "region": "Ternopil Oblast",
-  "address": { "value": "1 Maidan Voli, Ternopil, 46001, Ukraine", "status": "unverified", "source": null, "checked": null, "note": "From the project brief; confirm on the official contacts page." },
-  "website": { "value": "https://www.tdmu.edu.ua/", "status": "unverified", "source": null, "checked": null, "note": "Search results on 2026-10-10 show the university's own pages on tdmu.edu.ua (incl. /int/ international section); tnmu.edu.ua and tsmu.te.ua are unconfirmed. No page could be fetched from the build environment (network policy), so this stays unverified." },
-  "internationalOffice": { "value": {}, "status": "not-published", "source": null, "checked": null, "note": "Record only the contact details published on the official international-students page." },
-  "founded": { "value": 1957, "status": "unverified", "source": null, "checked": null, "note": "Widely reported founding year as Ternopil State Medical Institute; confirm on the official history page." },
-  "overview": "A state medical university in the city of Ternopil, western Ukraine. This profile is the pilot for our verification process: each fact below shows whether it has been checked against an official source and when. Fields awaiting verification are marked and are not presented as current facts.",
-  "accreditation": { "value": null, "status": "not-published", "source": null, "checked": null, "note": "Record accreditation level only with the official certificate or Ministry listing as the source." },
-  "recognition": { "value": null, "status": "not-published", "source": null, "checked": null, "note": "List only recognition that can be evidenced (e.g. presence in the World Directory of Medical Schools), each with its own source URL. Never imply automatic licensing rights in any country." },
-  "accommodation": { "value": null, "status": "not-published", "source": null, "checked": null },
+  "address": {
+    "value": "1 Maidan Voli, Ternopil, 46001, Ukraine",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "From the project brief; confirm on the official contacts page."
+  },
+  "website": {
+    "value": "https://www.tdmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Official domain per search snippets (incl. the international subsite /int/ and the English site /en/). No page could be fetched from the build environment (network policy)."
+  },
+  "internationalOffice": {
+    "value": {},
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only the contact details published on the official international-students page (snippet: dean's office of the International Students Faculty)."
+  },
+  "founded": {
+    "value": 1957,
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Widely reported founding year as Ternopil State Medical Institute; confirm on the official history page."
+  },
+  "overview": "A state medical university in Ternopil, western Ukraine, and the template record for our verification process. Each fact below shows whether it has been checked against an official source and when; fields awaiting verification are marked and are not presented as current facts.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or Ministry listing as the source."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Snippet mentions hostel for preparatory students; record only published details."
+  },
   "programmes": [
     {
       "id": "medicine",
-      "name": "Medicine",
-      "qualification": { "value": null, "status": "not-published", "source": null, "checked": null, "note": "Confirm the awarded qualification title (e.g. Master of Medicine / Doctor of Medicine) from the official programme page." },
-      "course": "medicine",
-      "durationYears": { "value": 6, "status": "unverified", "source": null, "checked": null },
-      "language": { "value": ["English"], "status": "unverified", "source": null, "checked": null },
-      "format": { "value": "on-campus", "status": "unverified", "source": null, "checked": null },
-      "internationalAdmission": { "value": null, "status": "not-published", "source": null, "checked": null, "note": "Confirm the current intake for international applicants and whether admissions are open for the coming academic year." },
-      "tuition": { "value": null, "status": "not-published", "source": null, "checked": null, "note": "Publish only the fee from the official fee schedule, with academic year, currency and payment schedule." },
+      "name": "General Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 6,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "5 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "intakeYear": {
+        "value": "2025/26",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official international tuition page (tdmu.edu.ua/int/?p=5664) is stated for 2025/26 in a search snippet; the figures were not read and are not recorded here. Publish only after reading the page."
+      },
       "otherMandatoryCosts": [],
-      "entryRequirements": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "requiredDocuments": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "deadlines": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "intake": { "value": null, "status": "not-published", "source": null, "checked": null }
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "Passport (scan)",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: applicants first send scanned documents (passport, secondary school certificate with transcript, personal data)."
+        },
+        {
+          "id": "certificate",
+          "name": "Secondary school certificate with transcript",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        },
+        {
+          "id": "consent",
+          "name": "Personal-data consent",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Official international page lists admission deadlines of 1 November (autumn) and 1 March (spring) in an undated snippet — confirm for the current intake."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
     },
     {
       "id": "dentistry",
       "name": "Dentistry",
-      "qualification": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "course": "dentistry",
-      "durationYears": { "value": 5, "status": "unverified", "source": null, "checked": null },
-      "language": { "value": ["English"], "status": "unverified", "source": null, "checked": null },
-      "format": { "value": "on-campus", "status": "unverified", "source": null, "checked": null },
-      "internationalAdmission": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "tuition": { "value": null, "status": "not-published", "source": null, "checked": null },
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "5 years",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "intakeYear": {
+        "value": "2025/26",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Official fee page snippet lists an English-track total for Dentistry (2025/26); not read; not recorded."
+      },
       "otherMandatoryCosts": [],
-      "entryRequirements": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "requiredDocuments": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "deadlines": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "intake": { "value": null, "status": "not-published", "source": null, "checked": null }
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "Passport (scan)",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: applicants first send scanned documents (passport, secondary school certificate with transcript, personal data)."
+        },
+        {
+          "id": "certificate",
+          "name": "Secondary school certificate with transcript",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        },
+        {
+          "id": "consent",
+          "name": "Personal-data consent",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Publish only dated deadlines for the current intake from the official admissions page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
     },
     {
       "id": "pharmacy",
       "name": "Pharmacy",
-      "qualification": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "course": "pharmacy",
-      "durationYears": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "language": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "format": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "internationalAdmission": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "tuition": { "value": null, "status": "not-published", "source": null, "checked": null },
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "5 years (Ukrainian track: 4 years 10 months)",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "intakeYear": {
+        "value": "2025/26",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Publish only the fee from the official fee schedule, with academic year, currency and payment schedule."
+      },
       "otherMandatoryCosts": [],
-      "entryRequirements": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "requiredDocuments": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "deadlines": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "intake": { "value": null, "status": "not-published", "source": null, "checked": null }
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "Passport (scan)",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: applicants first send scanned documents (passport, secondary school certificate with transcript, personal data)."
+        },
+        {
+          "id": "certificate",
+          "name": "Secondary school certificate with transcript",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        },
+        {
+          "id": "consent",
+          "name": "Personal-data consent",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Publish only dated deadlines for the current intake from the official admissions page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
     },
     {
       "id": "nursing",
       "name": "Nursing",
-      "qualification": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "course": "nursing",
-      "durationYears": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "language": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "format": { "value": null, "status": "not-published", "source": null, "checked": null, "note": "The university has historically advertised distance-learning nursing routes for international students; confirm current availability, legal status and the qualification awarded before listing a format." },
-      "internationalAdmission": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "tuition": { "value": null, "status": "not-published", "source": null, "checked": null },
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 4,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "3 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official snippet states whether international applicants are admitted to this programme."
+      },
+      "intakeYear": {
+        "value": "2025/26",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official fee table shows an English-track bachelor line believed to be Nursing (label garbled in the snippet). Award name (\"Bachelor of Nursing\" vs \"Bachelor of Science\") unconfirmed. Do not publish until read."
+      },
       "otherMandatoryCosts": [],
-      "entryRequirements": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "requiredDocuments": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "deadlines": { "value": null, "status": "not-published", "source": null, "checked": null },
-      "intake": { "value": null, "status": "not-published", "source": null, "checked": null }
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Publish only dated deadlines for the current intake from the official admissions page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health",
+      "field": "public_health",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official snippet states whether international applicants are admitted to this programme."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Listed by ASPHER as a Ukrainian-taught master's (\"Master of Public Health\" is ASPHER's listing label, not a confirmed award title). No snippet shows availability to international applicants."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Publish only dated deadlines for the current intake from the official admissions page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical therapy, occupational therapy (specialty 227)",
+      "field": "physical_therapy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": "227",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction for international applicants not stated in any official snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official snippet states whether international applicants are admitted to this programme."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Faculty subsite lists bachelor graduates in specialty 227 and master's graduates; language and international eligibility not in any snippet."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Publish only dated deadlines for the current intake from the official admissions page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "preparatory-department",
+      "name": "Preparatory Department for foreigners and stateless persons",
+      "languageOfInstruction": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: Ukrainian (Russian) language taught as a subject."
+      },
+      "englishTrack": {
+        "value": false,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet indicates the department does not serve English-track applicants."
+      },
+      "durationText": {
+        "value": "1 academic year (10 months)",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian language",
+          "Biology",
+          "Chemistry",
+          "Physics",
+          "Mathematics",
+          "Computer science"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "certificateName": {
+        "value": "State certificate",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Quote the official wording verbatim after reading the page (snippet fragment: \"entitles to continue their studies for medico-biological…\" — incomplete)."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": false,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "startDate": {
+        "value": "1 October",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee snippet found for the preparatory department."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the official eligibility wording verbatim."
+      },
+      "note": "Ministry \"Study in Ukraine\" portal (university/68/preparatory-department) and junior.tdmu.edu.ua/english surfaced the same facts (groups of 12; licensed for 100 students) — leads only."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "International admission page",
+      "url": "https://www.tdmu.edu.ua/int/admission/",
+      "purpose": "Admission route, documents, deadlines for international applicants",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "International tuition / payment info",
+      "url": "https://www.tdmu.edu.ua/int/payment-info/",
+      "purpose": "Fee schedule by programme and track; deadlines",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Tuition table 2025/26 (page ?p=5664)",
+      "url": "https://www.tdmu.edu.ua/int/?p=5664",
+      "purpose": "Per-year USD fees by programme; nursing English-track line",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Rules of admission",
+      "url": "https://www.tdmu.edu.ua/int/rules-of-admission/",
+      "purpose": "Entry requirements and exams",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Preparatory department (international site)",
+      "url": "https://www.tdmu.edu.ua/int/?p=1625",
+      "purpose": "Duration, subjects, certificate, progression wording",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Preparatory department (junior site)",
+      "url": "https://junior.tdmu.edu.ua/english",
+      "purpose": "Duration (10 months), start in October, state certificate wording",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Ministry \"Study in Ukraine\" portal — university 68",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/68/preparatory-department",
+      "purpose": "Cross-check of preparatory department details",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "English site home",
+      "url": "https://www.tdmu.edu.ua/en/",
+      "purpose": "Official name, status notices, teaching-format statements",
+      "snippetDate": "2026-10-11"
     }
   ],
   "faqs": [],
@@ -92,13 +933,17 @@
     "publishable": false,
     "lastReview": null,
     "openQuestions": [
+      "Dated official statement of teaching format and location for 2025–26 (latest found covers 2024–25).",
       "Current official English name and domain (tdmu.edu.ua vs tnmu.edu.ua).",
-      "Which programmes are open to international applicants for the next intake, and in which language.",
-      "Official tuition fee schedule: amount, currency, academic year, payment schedule, other mandatory charges.",
-      "Entry requirements and required documents as published for international applicants.",
-      "Application deadlines and intake dates.",
+      "Exact award titles for medicine, dentistry, pharmacy and nursing.",
+      "Which programmes are open to international applicants for the next intake, and in which language; nursing English track to be confirmed.",
+      "Official tuition fee schedule for the current year: amount, currency, academic year, payment schedule, other mandatory charges.",
+      "Entry requirements, entrance exams and required documents as published for international applicants.",
+      "Application deadlines (1 November / 1 March seen undated) and intake dates for the current cycle.",
+      "Preparatory department: progression wording verbatim, fee, eligibility.",
+      "Public health and physical therapy: eligibility of international applicants and language.",
       "Accommodation availability and published prices.",
-      "Evidence-backed recognition statements only."
+      "Evidence-backed recognition statements only (e.g. World Directory listing)."
     ]
   }
 }

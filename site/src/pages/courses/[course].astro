@@ -6,16 +6,19 @@ import CtaBand from '../../components/CtaBand.astro';
 import { getCollection } from 'astro:content';
 import { COURSES, type CourseSlug } from '../../lib/courses';
 import { SITE } from '../../lib/site';
+import { isVisible, byShortName } from '../../lib/records';
 
 export function getStaticPaths() {
   return Object.keys(COURSES).map((course) => ({ params: { course } }));
 }
 const course = Astro.params.course as CourseSlug;
 const c = COURSES[course];
+// Publication gate: unpublished records never appear here (lib/records.ts).
 const universities = (await getCollection('universities'))
-  .map((u) => ({ u, progs: u.data.programmes.filter((p) => p.course === course) }))
-  .filter((x) => x.progs.length > 0)
-  .sort((a, b) => a.u.data.shortName.localeCompare(b.u.data.shortName));
+  .filter(isVisible)
+  .sort(byShortName)
+  .map((u) => ({ u, progs: u.data.programmes.filter((p) => p.field === course) }))
+  .filter((x) => x.progs.length > 0);
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})`;
 ---
 <Base title={c.title} description={c.description}>
@@ -38,7 +41,7 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per
           <h3><a href={`/universities/${u.data.slug}/#${p.id}`}>{u.data.shortName}</a></h3>
           <p style="font-size:.9rem;color:var(--slate);margin:0">{u.data.city}{!u.data.verification.publishable && ' · '}{!u.data.verification.publishable && <span class="badge badge-pending">Verification in progress</span>}</p>
           <dl style="margin:0">
-            <Fact label="Duration" claim={p.durationYears} format={(v) => `${v} years`} />
+            <Fact label="Duration" claim={p.durationText.value ? p.durationText : p.durationYears} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
             <Fact label="Language" claim={p.language} />
             <Fact label="Tuition" claim={p.tuition} format={money} />
           </dl>

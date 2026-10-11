@@ -114,7 +114,7 @@ Evidence base: `BASELINE_REPORT.md`, `KEYWORD_URL_MAP.md` §6–§9, `PROGRAMME_
 | **P0** | Live verification run (`npm run verify:live`) and the authorised end-to-end enquiry/e-mail test | network allow-list for the two production hosts (free) | yes (read-only) | nothing beyond the allow-list; fixes found are proposed, not deployed |
 | **P0** | Official-source verification access: allow-list `tdmu.edu.ua`, `nmuofficial.com`, `vnmu.edu.ua`, `bsmu.edu.ua`, `universities.studyinukraine.gov.ua`, `info.edbo.gov.ua` and the other domains in `UNIVERSITY_DATA_REGISTER.md` §6 (or the owner supplies official PDFs) | D5 | yes | nothing (free) |
 | ~~P0~~ DONE 2026-10-11 | SEMrush research R1 + R2 — executed for 850 units; results in `KEYWORD_URL_MAP.md` §6.1/§11/§12 | — | — | — |
-| **P1** | Verify and publish the first university profiles in the revised order (Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv gated) and at least one fee schedule; flip `publishable` only when complete | P0 access | yes (content + build + CI) | the deploy that publishes them |
+| **P1** | Verify and publish the first university profiles in the revised order (Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv gated) and at least one fee schedule; flip `publishable` only when complete. **Pipeline built locally 2026-10-11 (§8.6): seven draft shells, profile/directory/comparison layouts, preview build, gate tests — verification itself still blocked by P0 access** | P0 access | yes (content + build + CI) | the deploy that publishes them |
 | **P1** | `/admissions/` readiness section and `/tuition-fees/` verified figures; `/courses/medicine/` qualification titles | P1 verification | yes | deploy |
 | **P1** | Visual layer 1–2 (hero photograph, process illustrations, course photographs) per `VISUAL_AUDIT_AND_IMAGE_REGISTER.md` V1, V2, V5, V6, V7 | image sourcing route (owner-downloaded Unsplash or allow-list) | yes | deploy; image source decision |
 | **P1** | Stepped Stage-1 profile form (`/apply/`) with have/need checklist — still e-mail/JSON backed, no accounts yet | design V8 | yes | deploy |
@@ -141,8 +141,17 @@ Network allow-list (free, owner, minutes) → live verification + official verif
 
 ### 8.4 Test plan
 
-Every release: `npm test` (build, links, meta incl. JSON-LD and alt text, redirects, UI smoke 3 widths, axe, Lighthouse budgets, tooling self-test, staging guard) → publish workflow → Hostinger deploy → `npm run verify:live` → report. Stage 2: automated state-machine, access-control (cross-account 403), upload-validation and CSRF tests with synthetic fixtures; restore rehearsal. Content: schema validation fails the build on malformed claims; the meta test fails if an unpublishable profile leaks into the sitemap.
+Every release: `npm test` (record schema + evidence invariants, build, links, meta incl. JSON-LD and alt text, redirects, UI smoke 3 widths, axe, Lighthouse budgets, tooling self-test, staging guard, publication gate over production and preview builds, preview UI + axe over every draft) → publish workflow → Hostinger deploy → `npm run verify:live` → report. Stage 2: automated state-machine, access-control (cross-account 403), upload-validation and CSRF tests with synthetic fixtures; restore rehearsal. Content: schema validation fails the build on malformed claims; the meta test fails if an unpublishable profile leaks into the sitemap.
 
 ### 8.5 Approval boundaries (exact)
 
 Approval is required for: any SEMrush spend (R1–R5); any production deployment (each release); any new indexable page (after §KEYWORD_URL_MAP §7); analytics tooling choice (CSP change, privacy notice); Stage 2 go-live with real documents; database creation on the host; the image-sourcing route if it involves any account or purchase; merging to `main` (D9); legal entity details (D7); any change to DNS or hosting configuration. Everything else in §8.1 marked "safe locally" proceeds on the branch and is reported.
+
+### 8.6 Phase E progress — university-profile pipeline (2026-10-11, branch `claude/university-profile-pipeline` from `16e8df1`; LOCAL, nothing deployed)
+
+Done on the branch (details: `UNIVERSITY_DATA_REGISTER.md` §1, §4, §10–§11): extended content schema (multiple programmes per university, qualification levels, intake-specific requirement objects with subjects and scales, document objects, preparatory routes, research references, synthetic flag); reusable profile, directory and comparison layouts (responsive, axe-clean); seven draft record shells in the approved order, all unpublished, every claim unverified/not-published, no fee or date values; production build excludes them entirely (no page, link, sitemap entry, JSON-LD or form option); preview build (`npm run build:preview`) renders them noindex with a draft banner and the verification queue; new automated tests (`test:records`, `test:gate`, `test:preview`) wired into `npm test` and CI.
+
+Not done, by design: no claim verified (official domains still blocked — P0 access), no image downloaded (hosts blocked; no purchase), no deployment, no DNS or production change, no SEMrush call (cumulative 2,960 units; `SEMRUSH_API_LEDGER.md`).
+
+**Behaviour change awaiting acknowledgement before any deploy:** the live `noindex` Ternopil profile URL will 404 and the Ternopil option disappears from the home/apply selects once this branch is published (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §13).
+

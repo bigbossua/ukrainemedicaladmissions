@@ -44,24 +44,46 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       if (links < 6) fail(`mobile menu shows ${links} links`);
     }
     if (name === 'desktop' && path === '/universities/') {
-      await page.selectOption('[data-filter="course"]', 'dentistry');
-      const n = await page.textContent('[data-count]');
-      if (n !== '1') fail(`directory filter dentistry => ${n}`);
-      await page.selectOption('[data-filter="city"]', 'Ternopil');
-      await page.selectOption('[data-filter="language"]', 'Ukrainian');
-      if ((await page.textContent('[data-count]')) !== '0') fail('directory filter Ukrainian should yield 0');
-      if (await page.$eval('[data-empty]', (el) => el.hidden)) fail('empty-state message not shown');
+      // Data-driven: the directory may list zero universities in production (publication gate), so derive
+      // expectations from the cards' own data attributes instead of hard-coding a university.
+      const total = await page.$$eval('[data-list] > article', (a) => a.length);
+      const count = Number(await page.textContent('[data-count]'));
+      if (count !== total) fail(`directory count ${count} ≠ ${total} cards`);
+      if (total === 0) {
+        if (await page.$eval('[data-empty]', (el) => el.hidden)) fail('directory empty state hidden with zero universities');
+        if (await page.$('[data-list] a[href^="/universities/"]')) fail('directory lists a profile link with zero published records');
+      } else {
+        const fields = await page.$$eval('[data-filter="field"] option', (o) => o.map((x) => x.value).filter(Boolean));
+        for (const f of fields.slice(0, 2)) {
+          await page.selectOption('[data-filter="field"]', f);
+          const predicted = await page.$$eval('[data-list] > article', (a, f) => a.filter((el) => (el.dataset.fields ?? '').split(' ').includes(f)).length, f);
+          if (Number(await page.textContent('[data-count]')) !== predicted) fail(`directory filter field=${f} count mismatch`);
+          await page.selectOption('[data-filter="field"]', '');
+        }
+        // A city combined with a language none of its cards offers must show the empty state (when such a pair exists).
+        const cards = await page.$$eval('[data-list] > article', (a) => a.map((el) => ({ city: el.dataset.city, langs: (el.dataset.languages ?? '').split(' ') })));
+        const langs = await page.$$eval('[data-filter="language"] option', (o) => o.map((x) => x.value).filter(Boolean));
+        const pair = cards.flatMap((c) => langs.filter((l) => !cards.some((x) => x.city === c.city && x.langs.includes(l))).map((l) => [c.city, l]))[0];
+        if (pair) {
+          await page.selectOption('[data-filter="city"]', pair[0]); await page.selectOption('[data-filter="language"]', pair[1]);
+          if ((await page.textContent('[data-count]')) !== '0') fail(`directory filter ${pair.join('+')} should yield 0`);
+          if (await page.$eval('[data-empty]', (el) => el.hidden)) fail('empty-state message not shown');
+        }
+      }
     }
     if (name === 'desktop' && path === '/apply/') {
-      await page.goto(base + '/apply/?course=medicine&university=ternopil-national-medical-university', { waitUntil: 'load' });
+      // Prefill uses whichever universities the publication gate lets through; with none, an unknown slug must be ignored.
+      const slugs = await page.$$eval('[name="university"] option', (o) => o.map((x) => x.value).filter((v) => v && v !== 'unlisted'));
+      const uni = slugs[0] ?? 'not-a-listed-university';
+      await page.goto(base + `/apply/?course=medicine&university=${uni}`, { waitUntil: 'load' });
       if ((await page.inputValue('[name="course"]')) !== 'medicine') fail('apply prefill course');
-      if ((await page.inputValue('[name="university"]')) !== 'ternopil-national-medical-university') fail('apply prefill university');
+      if ((await page.inputValue('[name="university"]')) !== (slugs[0] ?? '')) fail('apply prefill university');
       await page.click('form[data-form] button[type="submit"]');
       if (await page.$eval('[data-form-error]', (el) => el.hidden)) fail('apply form: validation summary not shown');
       if (!(await page.$('.field.error'))) fail('apply form: no field marked invalid');
       if (!page.url().includes('/apply/')) fail('apply form submitted despite missing fields');
     }
-    if (['/', '/universities/', '/universities/ternopil-national-medical-university/', '/apply/', '/tuition-fees/'].includes(path)) {
+    if (['/', '/universities/', '/apply/', '/tuition-fees/'].includes(path) || /^\/universities\/[^/]+\/$/.test(path)) {
       await page.screenshot({ path: join(OUT, `${name}${path.replace(/\//g, '_') || '_home'}.png`), fullPage: true });
     }
     await page.close();

@@ -1,0 +1,908 @@
+{
+  "slug": "bukovinian-state-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Bukovinian State Medical University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: official English site and FAQ use \"Bukovinian State Medical University\" (BSMU); Ukrainian «Буковинський державний медичний університет» (БДМУ)."
+  },
+  "shortName": "Bukovinian State Medical University",
+  "alternativeNames": [
+    "BSMU",
+    "БДМУ",
+    "Буковинський державний медичний університет"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: no relocation found; official foreign-student timetables for autumn 2025 and spring 2026 exist (some sessions marked \"remotely in synchronous mode\" via Google Meet). No university-wide dated statement on the 2025–26 teaching format was found."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No dated university-wide statement on operation/teaching format for 2025–26 found. Timetable PDFs (autumn 2025, spring 2026) are indirect evidence only. Quote the official statement verbatim with its date when found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year (2025–26 or 2026–27). None found in snippets."
+  },
+  "city": "Chernivtsi",
+  "region": "Chernivtsi Oblast",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No address snippet found. Record from the official contacts page."
+  },
+  "website": {
+    "value": "https://www.bsmu.edu.ua/en/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: FAQ and faculty pages on bsmu.edu.ua; admissions sub-domain vstup.bsmu.edu.ua also seen."
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "admission@bsmu.edu.ua"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: FAQ: \"Please contact Department for International Relations: admission@bsmu.edu.ua\" (undated). Older 2023 transfer guides list inter@bsmu.edu.ua — current address unverified."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year only from the official history page."
+  },
+  "overview": "A state medical university in Chernivtsi, western Ukraine. Draft record built from search-snippet leads on 2026-10-11; every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or Ministry/NAQA listing as the source."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year)."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Master's in Medicine\" (Medical Faculty No. 3 trains foreign students in General Medicine); entry on complete general secondary education."
+      },
+      "specialtyCode": {
+        "value": "222",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: homepage: \"Teaching is provided by the Ukrainian and English languages (for foreigners)\"."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: 2024 and 2026 entrance-exam programmes for foreign Master's applicants in Medicine, Dentistry and Pharmacy."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official BSMU fee schedule for degree programmes for international students was found. Contract prices seen on a third-party admissions portal are not recorded. Publish only after reading an official fee page."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "english-exam",
+          "type": "language",
+          "summary": "Entrance examination in English, conducted as an English-language interview designed at CEFR B2 level (2026 programme); admission may be in person and/or remote.",
+          "subject": "English",
+          "examFormat": "English-language interview (CEFR B2)",
+          "intakeYear": "2026/27",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. From the official \"english_program_2026.pdf\" snippet; the FAQ (undated) says B1 (B2) is the most widely accepted level."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "language-of-documents",
+          "name": "Documents in English or Ukrainian",
+          "condition": "Certain documents must additionally be certified in the country of origin and legalised",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. FAQ snippet: \"documents № 2,4,5,7 shall, in addition, be certified … and legalized\". The full numbered list was not in the snippet."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official deadline for foreign applicants found. A third-party portal showed a short 2025 window that may not apply to foreigners; not recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": "221",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: homepage statement for foreigners; not stated specifically for Dentistry."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: listed in the Master's entrance-exam programme for foreigners (2024); foreign-student timetable autumn 2025 exists."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "english-exam",
+          "type": "language",
+          "summary": "Entrance examination in English (interview, CEFR B2) for Master's applicants.",
+          "subject": "English",
+          "examFormat": "English-language interview (CEFR B2)",
+          "intakeYear": "2026/27",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: 2024 entrance-exam programme: \"Medicine, Dentistry and Pharmacy at the Master's level\"."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: homepage statement for foreigners; not stated specifically for Pharmacy."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: foreign-student pharmacy timetables (2025) exist."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "english-exam",
+          "type": "language",
+          "summary": "Entrance examination in English (interview, CEFR B2) for Master's applicants.",
+          "subject": "English",
+          "examFormat": "English-language interview (CEFR B2)",
+          "intakeYear": "2026/27",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "nursing",
+      "name": "Nursing («Медсестринство»)",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: bachelor offer marked \"в т.ч. для іноземців\" on a third-party admissions portal (2025); a Master's offer exists but is not marked for foreigners. Exact English award name not found — never \"BSN\"/\"MSN\"."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet confirms an English-medium nursing programme; language not recorded."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Third-party portal marking only; not confirmed on the official domain."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical therapy («Фізична терапія»), specialty «Терапія та реабілітація»",
+      "field": "physical_therapy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: official programme document (2025): first (bachelor) level; award «Бакалавр терапії та реабілітації», professional qualification «Асистент фізичного терапевта»."
+      },
+      "specialtyCode": {
+        "value": "227",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Programme document is in Ukrainian; no English-medium or foreigner marking found."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet shows availability to international applicants."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "preparatory-course",
+      "name": "Preparatory department / preparatory course for foreign applicants (profile \"Public Health\")",
+      "languageOfInstruction": {
+        "value": [
+          "Ukrainian",
+          "English"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Students who plan to continue in English also learn main curriculum subjects in English\" (undated official page)."
+      },
+      "englishTrack": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: core subjects in English for students planning English-medium study — undated page."
+      },
+      "durationText": {
+        "value": "40 weeks (2 semesters); academic year November–August",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: the same page elsewhere says \"10 months\"; the Ministry portal says one year — inconsistent; verify."
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian",
+          "Biology",
+          "Physics",
+          "Chemistry",
+          "Mathematics",
+          "Country studies"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "certificateName": {
+        "value": "Certificate recommending enrollment",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: fragment: completion with passed exams \"earns a certificate recommending enrollment\"."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Snippet fragment only (\"earns a certificate recommending enrollment\"). Quote the full official wording verbatim; it does not state admission is guaranteed."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: English-track students take core subjects in English (undated page)."
+      },
+      "startDate": {
+        "value": "November",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"Academic year: November-August\"; \"Admission deadline: all year around\"."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official page quotes an annual fee in USD on an undated page — not recorded here; record only with the academic year after reading the page."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the official eligibility wording verbatim."
+      },
+      "note": "Ministry \"Study in Ukraine\" portal (university/21/preparatory-department) surfaced the same department (language training; planned 120 trainees) — lead only."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Official English homepage",
+      "url": "https://www.bsmu.edu.ua/en/",
+      "purpose": "Official name, languages of instruction, specialties list",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "International FAQ",
+      "url": "https://www.bsmu.edu.ua/en/faq",
+      "purpose": "Contact address, English level, document language and legalisation rules",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Preparatory course page",
+      "url": "https://www.bsmu.edu.ua/en/admission/preparatory-course",
+      "purpose": "Duration, subjects, English-track statement, certificate wording, fee with year",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Medical Faculty No. 3",
+      "url": "https://www.bsmu.edu.ua/en/medical-faculty-no3/",
+      "purpose": "Medicine programme for foreign students; award title",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Admissions sub-site",
+      "url": "https://vstup.bsmu.edu.ua/",
+      "purpose": "Current admission rules and deadlines for foreigners",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "English entrance-exam programme 2026",
+      "url": "https://vstup.bsmu.edu.ua/wp-content/uploads/2026/06/english_program_2026.pdf",
+      "purpose": "Exam format (CEFR B2 interview), specialties covered, remote option",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "English entrance-exam programme 2024",
+      "url": "https://vstup.bsmu.edu.ua/wp-content/uploads/2024/08/english_program_2024.pdf",
+      "purpose": "Earlier version: Medicine, Dentistry, Pharmacy at Master's level",
+      "snippetDate": "2026-10-11",
+      "note": "Superseded by the 2026 document; comparison only"
+    },
+    {
+      "label": "University booklet 2023",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2023/07/buklet-bdmu-2023.pdf",
+      "purpose": "Dentistry specialty 221 for foreign students",
+      "snippetDate": "2026-10-11",
+      "note": "Dated 2023 — may be out of date"
+    },
+    {
+      "label": "Guide for foreign applicants 2019",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2019/11/the-guide-for-foreign-applicants-2019.pdf",
+      "purpose": "Historic specialties list incl. Nursing",
+      "snippetDate": "2026-10-11",
+      "note": "Dated 2019 — out of date; context only"
+    },
+    {
+      "label": "Physical therapy programme document 2025",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2025/05/op_fizichna-terapiya-na-sajt.doc",
+      "purpose": "Level, award title, professional qualification",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Annual report 2025",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2026/01/zvit-pro-diyalnist-bdmu-za-2025-rik-sajt.pdf",
+      "purpose": "Licence re-issue (2025), accreditation of Medicine (master)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Results of 2024–25 academic year",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2025/11/informacziya-pro-pidsumki-roboti-bdmu-v-2024-2025-n.r.pdf",
+      "purpose": "Operating context",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Timetable: 1st-year medicine, foreigners, autumn 2025",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2025/08/1_kurs_mediczina-inozemczi-osin_2025-2026.pdf",
+      "purpose": "Indirect evidence of teaching format (remote synchronous sessions)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Timetable: 1st-year medicine, foreigners, spring 2026",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2026/02/1_kurs_mediczina-inozemczi-vesna_2026.pdf",
+      "purpose": "Indirect evidence of teaching format",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Timetable: 1st-year dentistry, foreigners, autumn 2025",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2025/08/1_kurs_stomatologiya-inozemczi-osin_2025-2026.pdf",
+      "purpose": "Dentistry taught to foreign students",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Timetable: 2nd-year pharmacy, foreigners, autumn 2025",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2025/08/2_kurs_farmacziya-inozemczi-osin_2025-2026.pdf",
+      "purpose": "Pharmacy taught to foreign students",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Transfer guide 2023",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2023/01/transfer-to-bsmu-ukraine.docx",
+      "purpose": "Older contact address inter@bsmu.edu.ua",
+      "snippetDate": "2026-10-11",
+      "note": "Dated 2023"
+    },
+    {
+      "label": "Ministry portal: preparatory department",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/21/preparatory-department",
+      "purpose": "Cross-check of preparatory department details",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Ministry portal: dual-degree programmes",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/21/dual-degree-programs",
+      "purpose": "Nursing double-diploma mention",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Third-party admissions portal (2025 offers)",
+      "url": "https://vstup.osvita.ua/y2025/r25/85/",
+      "purpose": "Cross-check only — not an official source",
+      "snippetDate": "2026-10-11",
+      "note": "Third-party; contract prices and windows here are not recorded"
+    },
+    {
+      "label": "Third-party admissions portal (2026 dentistry offer)",
+      "url": "https://vstup.osvita.ua/y2026/r25/85/1611246/",
+      "purpose": "Cross-check only — not an official source",
+      "snippetDate": "2026-10-11",
+      "note": "Third-party"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "Dated official statement of teaching format and location for 2025–26 / 2026–27 (only timetable PDFs found).",
+      "Official postal address and current international-admissions email (admission@ vs inter@).",
+      "Exact award titles for Medicine, Dentistry, Pharmacy and Nursing (never assume BSN/MSN).",
+      "Which programmes are open to international applicants for the next intake and in which language; nursing English track to be confirmed.",
+      "Official international tuition fee schedule: amount, currency, academic year, payment schedule, other mandatory charges.",
+      "Full numbered document list from the FAQ (which documents need certification and legalisation).",
+      "Application deadlines and intake dates for foreign applicants for the current cycle.",
+      "Preparatory course: duration inconsistency (40 weeks / 10 months / one year), current fee with year, progression wording verbatim.",
+      "Public health: no degree programme found — confirm whether one exists before adding it.",
+      "Physical therapy: eligibility of international applicants and language.",
+      "Accommodation availability and published prices.",
+      "Evidence-backed recognition statements only."
+    ]
+  }
+}

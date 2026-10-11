@@ -2,10 +2,12 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
+import { isVisible, byShortName } from '../../lib/records';
 import { COURSES } from '../../lib/courses';
 import { SITE } from '../../lib/site';
 
-const universities = (await getCollection('universities')).sort((a, b) => a.data.shortName.localeCompare(b.data.shortName));
+// Publication gate: unpublished records are not offered as options (lib/records.ts).
+const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
 ---
 <Base title="Apply online — start your application" description="Start your application to a medical university in Ukraine. Tell us your course and background; nothing is sent to any university until you confirm.">
   <div class="page-head"><div class="wrap"><span class="eyebrow">Apply online</span><h1>Start your application</h1><p>Stage 1 of 4: your enquiry. It takes about two minutes, costs nothing, and sends nothing to a university.</p></div></div>
@@ -24,6 +26,7 @@ const universities = (await getCollection('universities')).sort((a, b) => a.data
         <select name="university">
           <option value="">Help me choose</option>
           {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
+          <option value="unlisted">A university not listed here</option>
         </select>
       </label>
       <label class="field">Intended start year

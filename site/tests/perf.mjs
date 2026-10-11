@@ -8,7 +8,9 @@ import { join, resolve, extname } from 'node:path';
 
 const DIST = resolve('dist');
 const OUT = resolve('tests/output'); mkdirSync(OUT, { recursive: true });
-const PAGES = ['/', '/universities/', '/universities/ternopil-national-medical-university/', '/tuition-fees/', '/apply/'];
+// University profiles exist in production only once published (publication gate): audit whichever are built.
+const profilePages = existsSync('dist/universities') ? readdirSync('dist/universities').filter((d) => existsSync(`dist/universities/${d}/index.html`)).map((d) => `/universities/${d}/`) : [];
+const PAGES = ['/', '/universities/', ...profilePages, '/tuition-fees/', '/apply/'];
 const BUDGET = { performance: 0.9, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 };
 
 const MIME = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.xml': 'application/xml', '.txt': 'text/plain' };

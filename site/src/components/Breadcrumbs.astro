@@ -1,9 +1,9 @@
 ---
 import { SITE, STAGING } from '../lib/site';
-interface Props { items: { label: string; href?: string }[] }
-const { items } = Astro.props;
+interface Props { items: { label: string; href?: string }[]; /** Draft (preview-only) page: emit no structured data. */ draft?: boolean }
+const { items, draft = false } = Astro.props;
 const trail = [{ label: 'Home', href: '/' }, ...items];
-// BreadcrumbList structured data (omitted in staging builds, like all JSON-LD). The last item carries no URL.
+// BreadcrumbList structured data (omitted in staging builds and on draft pages, like all JSON-LD). The last item carries no URL.
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -22,4 +22,4 @@ const ld = {
     ))}
   </ol>
 </nav>
-{!STAGING && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}
+{!STAGING && !draft && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}

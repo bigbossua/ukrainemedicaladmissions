@@ -1,0 +1,17 @@
+---
+/** Compact claim renderer for header bands and cards: value + verification state, never a bare unverified value. */
+interface Props { label: string; claim: { value: unknown; status: string }; format?: (v: any) => string }
+const { label, claim, format } = Astro.props;
+const has = claim.value !== null && claim.value !== undefined && !(Array.isArray(claim.value) && claim.value.length === 0);
+const text = has ? (format ? format(claim.value) : Array.isArray(claim.value) ? (claim.value as unknown[]).join(', ') : String(claim.value)) : null;
+const state = claim.status === 'verified' && has ? 'verified' : has ? 'pending' : 'tbc';
+---
+<span class={`chip chip-${state}`}><span class="chip-label">{label}</span> {state === 'tbc' ? 'to be confirmed' : text}{state === 'pending' && <span class="visually-hidden"> (verification pending)</span>}</span>
+<style>
+  .chip { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; padding: .3rem .7rem; font-size: .8rem; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.25); }
+  .chip-label { opacity: .75; }
+  .chip-verified { border-color: #7FD0A1; }
+  .chip-pending { border-color: var(--yellow-400); }
+  .chip-tbc { border-style: dashed; }
+  :global(.light) .chip { background: var(--mist); color: var(--ink); border-color: var(--line); }
+</style>

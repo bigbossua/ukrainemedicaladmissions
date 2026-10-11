@@ -1,0 +1,148 @@
+---
+/**
+ * The university profile body, shared by /universities/[slug]/ (real records) and /preview/[sample]/ (synthetic
+ * sample). Every fact is rendered through Fact/ClaimChip so an unverified value is never shown as plain fact.
+ * Research references (the verification queue) render ONLY for drafts in PREVIEW builds — never on a publishable page.
+ */
+import Breadcrumbs from '../Breadcrumbs.astro';
+import Fact from '../Fact.astro';
+import ProfileHeader from './ProfileHeader.astro';
+import ProgrammeCard from './ProgrammeCard.astro';
+import PreparatoryRoute from './PreparatoryRoute.astro';
+import ResearchReferences from './ResearchReferences.astro';
+import { SITE, PREVIEW, formatDate } from '../../lib/site';
+import { FIELDS, LEVELS, TEACHING_FORMATS } from '../../lib/fields';
+import { fieldsOf, levelsOf, languagesOf, officeText } from '../../lib/records';
+
+interface Props {
+  d: any;
+  publishable: boolean;
+  /** Draft = not publishable: built only in preview, shown with the draft banner by the page. */
+  draft: boolean;
+  crumbs: { label: string; href?: string }[];
+  /** Where the directory lives for the "compare" links (differs for the synthetic sample). */
+  directoryHref?: string;
+}
+const { d, publishable, draft, crumbs, directoryHref = '/universities/' } = Astro.props;
+const fields = fieldsOf(d.programmes);
+const levels = levelsOf(d.programmes);
+const langs = languagesOf(d.programmes);
+const anyLangVerified = d.programmes.some((p: any) => p.language.status === 'verified');
+const anyLevelVerified = d.programmes.some((p: any) => p.level.status === 'verified');
+const fieldOrder = Object.keys(FIELDS);
+const programmes = [...d.programmes].sort((a: any, b: any) => fieldOrder.indexOf(a.field) - fieldOrder.indexOf(b.field));
+const applyHref = `/apply/?university=${d.slug}`;
+---
+<ProfileHeader d={d} publishable={publishable} />
+<Breadcrumbs items={crumbs} draft={draft} />
+
+<section style="padding-top:1rem">
+  <div class="wrap layout">
+    <div>
+      <section class="glance" aria-labelledby="glance-h">
+        <h2 id="glance-h">At a glance</h2>
+        <dl class="glance-grid">
+          <div><dt>Programme families</dt><dd>{fields.length ? fields.map((f) => <span class="pill">{(FIELDS as any)[f].label}</span>) : <span class="muted">None recorded</span>}</dd></div>
+          <div><dt>Qualification levels</dt><dd>{levels.length ? levels.map((l) => <span class="pill">{(LEVELS as any)[l]}</span>) : <span class="muted">Not yet recorded</span>}{levels.length > 0 && !anyLevelVerified && <small class="pend">pending verification</small>}</dd></div>
+          <div><dt>Languages of instruction</dt><dd>{langs.length ? langs.map((l) => <span class="pill">{l}</span>) : <span class="muted">Not yet recorded</span>}{langs.length > 0 && !anyLangVerified && <small class="pend">pending verification</small>}</dd></div>
+          <div><dt>Preparatory route</dt><dd>{d.preparatoryRoutes.length ? <a href="#preparatory">{d.preparatoryRoutes.length === 1 ? 'Yes — see below' : `${d.preparatoryRoutes.length} routes — see below`}</a> : <span class="muted">None recorded</span>}</dd></div>
+        </dl>
+      </section>
+
+      <h2>Overview</h2>
+      <p class="prose">{d.overview}</p>
+      <dl>
+        <Fact label="Official name" claim={d.officialName} />
+        <Fact label="Operating status" claim={d.status} />
+        <Fact label="University's own statement (current year)" claim={d.statusStatement} />
+        <Fact label="Teaching format" claim={d.teachingFormat} format={(v) => (TEACHING_FORMATS as any)[v] ?? v} />
+        <Fact label="Founded" claim={d.founded} />
+        <Fact label="Address" claim={d.address} />
+        <Fact label="Official website" claim={d.website} />
+        <Fact label="International office" claim={{ ...d.internationalOffice, value: d.internationalOffice.value && officeText(d.internationalOffice.value) ? d.internationalOffice.value : null }} format={officeText} />
+        <Fact label="Accreditation" claim={d.accreditation} />
+        <Fact label="Recognition" claim={d.recognition} />
+        <Fact label="Accommodation" claim={d.accommodation} />
+      </dl>
+
+      <h2 id="programmes" style="margin-top:2.5rem">Programmes</h2>
+      <p class="prose">Each programme lists the facts the university publishes for the intake named on the card: qualification, duration, language, fee, entry requirements and documents. A fact is shown as verified only once it has been read on an official page, with the date.</p>
+      {programmes.length > 1 && (
+        <nav class="jump" aria-label="Programmes on this page">
+          {programmes.map((p: any) => <a href={`#${p.id}`}>{p.name.length > 48 ? `${p.name.slice(0, 46)}…` : p.name}</a>)}
+        </nav>
+      )}
+      {programmes.length === 0 && <p class="note">No programme has been recorded for this university yet.</p>}
+      {programmes.map((p: any) => <ProgrammeCard p={p} slug={d.slug} />)}
+
+      {d.preparatoryRoutes.length > 0 && (
+        <>
+          <h2 id="preparatory" style="margin-top:2.5rem">Preparatory / foundation route</h2>
+          <p class="prose">What the university itself says about its preparatory department. Completing a preparatory course is not an admission decision: the degree programme's own entry requirements still apply.</p>
+          <div class="prep-grid">{d.preparatoryRoutes.map((r: any) => <PreparatoryRoute r={r} />)}</div>
+        </>
+      )}
+
+      {d.faqs.length > 0 && (
+        <>
+          <h2 style="margin-top:2.5rem">Frequently asked questions</h2>
+          {d.faqs.map((f: any) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        </>
+      )}
+
+      <h2 style="margin-top:2.5rem">Sources and verification</h2>
+      <p class="prose">Facts on this page are checked against the university's official website and, where relevant, Ukrainian government registers. Each row shows its status and check date.
+        {d.verification.lastReview ? ` Last full review: ${formatDate(d.verification.lastReview)}.` : ' A full review has not yet been completed.'}</p>
+      {publishable && d.verification.openQuestions.length > 0 && (
+        <details><summary>Open verification questions ({d.verification.openQuestions.length})</summary><ul>{d.verification.openQuestions.map((q: string) => <li>{q}</li>)}</ul></details>
+      )}
+      {PREVIEW && draft && <ResearchReferences refs={d.researchReferences} openQuestions={d.verification.openQuestions} />}
+      <p class="note">{SITE.disclaimer} University fees are charged by the university; any fee for our own services is shown separately and only after you have applied.</p>
+    </div>
+
+    <aside class="side">
+      <div class="card">
+        <h3>Apply to {d.shortName}</h3>
+        <p style="font-size:.9rem">Start your application now. You can save your progress and add documents later. Nothing is sent to the university until you confirm.</p>
+        <a class="btn btn-primary" href={applyHref}>{SITE.cta}</a>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h3>How to read this profile</h3>
+        <ul class="legend">
+          <li><span class="badge badge-verified">Verified</span> read on an official page on the date shown.</li>
+          <li><span class="badge badge-pending">Verification pending</span> a reported value we have not yet confirmed.</li>
+          <li><span class="badge badge-pending">To be confirmed</span> not published here until confirmed.</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h3>Next steps</h3>
+        <ul style="padding-left:1.1rem;margin:0;font-size:.95rem">
+          <li><a href="/admissions/">Admission requirements &amp; process</a></li>
+          <li><a href="/tuition-fees/">Tuition fees &amp; costs guide</a></li>
+          <li><a href={directoryHref}>Compare other universities</a></li>
+          <li><a href="/faq/">Student FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .layout { display: grid; gap: 2rem; }
+  @media (min-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; } .side { position: sticky; top: 90px; } }
+  .glance { background: var(--blue-50); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 2rem; }
+  .glance h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
+  .glance-grid { display: grid; gap: 1rem; margin: 0; }
+  @media (min-width: 640px) { .glance-grid { grid-template-columns: 1fr 1fr; } }
+  .glance-grid dt { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--slate); margin-bottom: .35rem; }
+  .glance-grid dd { margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
+  .pill { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: .2rem .6rem; font-size: .85rem; }
+  .pend { color: #5C4500; font-size: .78rem; }
+  .muted { color: var(--slate); font-size: .9rem; }
+  .jump { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.25rem; }
+  .jump a { font-size: .85rem; text-decoration: none; background: var(--mist); border: 1px solid var(--line); border-radius: 999px; padding: .3rem .7rem; color: var(--navy-900); }
+  .jump a:hover { background: var(--blue-50); }
+  .prep-grid { display: grid; gap: 1.25rem; }
+  .legend { list-style: none; padding: 0; margin: 0; font-size: .85rem; display: grid; gap: .5rem; }
+  dl { margin: 0; }
+</style>

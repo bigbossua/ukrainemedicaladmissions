@@ -18,6 +18,7 @@ jobs:
         with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
       - run: npm ci
       - run: npx astro check
+      - run: npm run test:records
       - run: npm run build
       - run: npm run test:links
       - run: npm run test:meta
@@ -28,6 +29,8 @@ jobs:
       - run: npm run test:perf
       - run: npm run test:release
       - run: npm run test:staging
+      - run: npm run test:gate
+      - run: npm run test:preview
       - run: php -l public/api/enquiry.php
       - uses: actions/upload-artifact@v4
         if: always()

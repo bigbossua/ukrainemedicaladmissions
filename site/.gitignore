@@ -1,6 +1,7 @@
 node_modules/
 dist/
 dist-staging/
+dist-preview/
 .astro/
 tests/output/
 .env

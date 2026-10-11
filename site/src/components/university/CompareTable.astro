@@ -1,0 +1,50 @@
+---
+/**
+ * Side-by-side comparison built ONLY from verified claims (UNIVERSITY_DATA_REGISTER.md §7).
+ * Anything else renders as "not published" or "awaiting verification". No ranking, no ordering by merit.
+ */
+import { formatDate } from '../../lib/site';
+interface Props { records: any[]; hrefFor?: (u: any) => string }
+const { records, hrefFor = (u: any) => `/universities/${u.slug}/` } = Astro.props;
+const verifiedOnly = (claim: any) => (claim.status === 'verified' && claim.value !== null && claim.value !== undefined ? claim.value : null);
+const cell = (v: any, awaiting = 'Awaiting verification') => (v === null ? { text: awaiting, pending: true } : { text: v, pending: false });
+const rows = records.map((u) => {
+  const progs = u.programmes.filter((p: any) => verifiedOnly(p.internationalAdmission) === true);
+  const programmes = progs.length ? progs.map((p: any) => `${p.name}`).join(', ') : null;
+  const languages = (() => { const ls = new Set<string>(); for (const p of u.programmes) for (const l of verifiedOnly(p.language) ?? []) ls.add(l); return ls.size ? [...ls].join(', ') : null; })();
+  const reqs = u.programmes.reduce((n: number, p: any) => n + p.requirements.filter((r: any) => r.status === 'verified').length, 0);
+  const prep = u.preparatoryRoutes.length ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) !== null) ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) === true) ? 'Yes, incl. English track' : 'Yes (Ukrainian-language)') : null) : 'None listed';
+  const fees = u.programmes.map((p: any) => ({ p, t: verifiedOnly(p.tuition) })).filter((x: any) => x.t);
+  const tuition = fees.length ? fees.map((x: any) => `${x.p.name}: ${x.t.amount.toLocaleString('en-GB')} ${x.t.currency}/${x.t.per} (${x.t.academicYear})`).join('; ') : null;
+  const windows = u.programmes.map((p: any) => verifiedOnly(p.deadlines)).filter(Boolean).flat();
+  const window = windows.length ? windows.map((w: any) => `${w.label}: ${w.date}`).join('; ') : null;
+  const status = verifiedOnly(u.status); const fmt = verifiedOnly(u.teachingFormat);
+  return { u, programmes: cell(programmes), languages: cell(languages), reqs: reqs ? { text: `${reqs} verified`, pending: false } : { text: 'None verified yet', pending: true }, prep: cell(prep), tuition: cell(tuition, 'Not published'), window: cell(window), status: cell(status && fmt ? `${status}; ${fmt}` : status ?? null), review: u.verification.lastReview ? formatDate(u.verification.lastReview) : null };
+});
+---
+<div class="compare" role="region" aria-label="University comparison table" tabindex="0">
+  <table>
+    <caption>Comparison of listed universities — verified facts only. Blank or pending cells mean the university has not published the fact or we have not yet verified it. No ranking is implied by the order.</caption>
+    <thead><tr><th scope="col">University</th><th scope="col">Programmes open to international applicants</th><th scope="col">Languages</th><th scope="col">Entry requirements</th><th scope="col">Preparatory route</th><th scope="col">Tuition</th><th scope="col">Application window</th><th scope="col">Status</th><th scope="col">Last review</th></tr></thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row"><a href={hrefFor(r.u)}>{r.u.shortName}</a><br /><small>{r.u.city}</small></th>
+          {[r.programmes, r.languages, r.reqs, r.prep, r.tuition, r.window, r.status].map((c) => <td class={c.pending ? 'pending' : ''}>{c.text}</td>)}
+          <td>{r.review ?? <span class="pending">Not yet reviewed</span>}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<style>
+  .compare { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+  .compare:focus-visible { outline: var(--focus); }
+  table { border-collapse: collapse; width: 100%; min-width: 980px; font-size: .9rem; }
+  caption { text-align: left; padding: .9rem 1rem; color: var(--slate); font-size: .85rem; caption-side: top; }
+  th, td { text-align: left; padding: .7rem .9rem; border-top: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--mist); font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--slate); }
+  tbody th a { color: var(--navy-900); text-decoration: none; font-weight: 600; }
+  tbody th small { color: var(--slate); font-weight: 400; }
+  .pending { color: var(--slate); font-style: italic; }
+</style>

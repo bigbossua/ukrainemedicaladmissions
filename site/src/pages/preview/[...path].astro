@@ -1,0 +1,64 @@
+---
+/**
+ * PREVIEW-ONLY routes. In a production build getStaticPaths returns [] so NOTHING under /preview/ exists.
+ *   /preview/            — index of draft records and synthetic samples + directory/comparison layout demo
+ *   /preview/<sample>/   — a synthetic sample record (src/content/samples), clearly separated from real records
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DraftBanner from '../../components/university/DraftBanner.astro';
+import UniversityProfile from '../../components/university/UniversityProfile.astro';
+import UniversityCard from '../../components/university/UniversityCard.astro';
+import CompareTable from '../../components/university/CompareTable.astro';
+import { getCollection } from 'astro:content';
+import { PREVIEW } from '../../lib/site';
+import { byShortName } from '../../lib/records';
+
+export async function getStaticPaths() {
+  if (!PREVIEW) return [];
+  const samples = (await getCollection('samples')).sort(byShortName);
+  return [
+    { params: { path: undefined }, props: { kind: 'index' as const, s: null } },
+    ...samples.map((s) => ({ params: { path: s.data.slug }, props: { kind: 'sample' as const, s } })),
+  ];
+}
+const { kind, s } = Astro.props;
+const samples = (await getCollection('samples')).sort(byShortName);
+const drafts = (await getCollection('universities')).filter((u) => !u.data.verification.publishable).sort(byShortName);
+const published = (await getCollection('universities')).filter((u) => u.data.verification.publishable).sort(byShortName);
+const hrefFor = (u: any) => (u.synthetic ? `/preview/${u.slug}/` : `/universities/${u.slug}/`);
+const demoRecords = [...samples.map((x) => x.data), ...drafts.map((x) => x.data)];
+---
+{kind === 'sample' && s ? (
+  <Base title={`${s.data.shortName} — synthetic sample`} description="Synthetic sample record used to demonstrate the university-profile layout. Not a real university. Preview build only." noindex draft suffix={false}>
+    <DraftBanner kind="synthetic" />
+    <UniversityProfile d={s.data} publishable={false} draft={true} crumbs={[{ label: 'Preview', href: '/preview/' }, { label: s.data.shortName }]} directoryHref="/preview/" />
+  </Base>
+) : (
+  <Base title="Preview index — drafts and samples" description="Internal preview of unpublished draft records and synthetic samples. Not part of the public site." noindex draft suffix={false}>
+    <DraftBanner kind="unpublished" text="Preview build. Everything linked from this page is either an unpublished draft record (research leads, not verified facts) or a synthetic sample (invented values). None of it exists on the public site." />
+    <div class="page-head"><div class="wrap"><span class="eyebrow">Internal preview</span><h1>Drafts and samples</h1><p>Review the record pipeline before anything is published: draft records built from research leads, synthetic sample records that demonstrate the layouts with verified-looking data, and the directory and comparison layouts with both.</p></div></div>
+    <Breadcrumbs items={[{ label: 'Preview' }]} draft />
+    <section style="padding-top:1rem"><div class="wrap">
+      <h2>Publication status</h2>
+      <div class="table-wrap" role="region" aria-label="Publication status of records" tabindex="0"><table>
+        <thead><tr><th>Record</th><th>Type</th><th>Status</th><th>Programmes</th><th>Preparatory routes</th><th>Research references</th><th>Open questions</th></tr></thead>
+        <tbody>
+          {published.map((u) => <tr><td><a href={`/universities/${u.data.slug}/`}>{u.data.shortName}</a></td><td>Real record</td><td><span class="badge badge-verified">Published</span></td><td>{u.data.programmes.length}</td><td>{u.data.preparatoryRoutes.length}</td><td>{u.data.researchReferences.length}</td><td>{u.data.verification.openQuestions.length}</td></tr>)}
+          {drafts.map((u) => <tr><td><a href={`/universities/${u.data.slug}/`}>{u.data.shortName}</a></td><td>Real record</td><td><span class="badge badge-pending">Draft — unpublished</span></td><td>{u.data.programmes.length}</td><td>{u.data.preparatoryRoutes.length}</td><td>{u.data.researchReferences.length}</td><td>{u.data.verification.openQuestions.length}</td></tr>)}
+          {samples.map((u) => <tr><td><a href={`/preview/${u.data.slug}/`}>{u.data.shortName}</a></td><td>Synthetic sample</td><td><span class="badge badge-pending">Never publishable</span></td><td>{u.data.programmes.length}</td><td>{u.data.preparatoryRoutes.length}</td><td>—</td><td>—</td></tr>)}
+        </tbody>
+      </table></div>
+      <p class="note">A draft record becomes publishable only when every claim shown on its page has been verified against an official page (UNIVERSITY_DATA_REGISTER.md §3). The synthetic sample exists to show what a verified profile looks like; its values are invented and its sources point to <code>example.invalid</code>.</p>
+
+      <h2 style="margin-top:2.5rem">Directory layout demo (samples and drafts)</h2>
+      <div class="grid grid-3" data-list>
+        {demoRecords.map((d) => <UniversityCard u={d} href={hrefFor(d)} draft={true} />)}
+      </div>
+
+      <h2 style="margin-top:2.5rem">Comparison layout demo</h2>
+      <p class="prose">Verified facts only: the synthetic sample fills its cells; the drafts show the “awaiting verification” state a real unverified record produces.</p>
+      <CompareTable records={demoRecords} hrefFor={hrefFor} />
+    </div></section>
+  </Base>
+)}

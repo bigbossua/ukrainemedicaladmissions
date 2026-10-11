@@ -1,0 +1,62 @@
+---
+import Fact from '../Fact.astro';
+import RequirementList from './RequirementList.astro';
+import DocumentList from './DocumentList.astro';
+import { SITE } from '../../lib/site';
+import { FIELDS, LEVELS } from '../../lib/fields';
+interface Props { p: any; slug: string }
+const { p, slug } = Astro.props;
+const field = (FIELDS as any)[p.field] ?? FIELDS.other;
+const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})${m.variesByYear ? ` — ${m.variesByYear}` : ''}`;
+const levelLabel = p.level.value ? (LEVELS as any)[p.level.value] ?? p.level.value : null;
+---
+<article class="prog" id={p.id}>
+  <header class="prog-head">
+    <div>
+      <p class="family">{field.page ? <a href={field.page}>{field.label}</a> : field.label}{levelLabel && <> · <span class={p.level.status === 'verified' ? '' : 'tbc'}>{levelLabel}</span>{p.level.status !== 'verified' && <span class="visually-hidden"> (level pending verification)</span>}</>}</p>
+      <h3>{p.name}</h3>
+    </div>
+    <div class="state">
+      {p.internationalAdmission.status === 'verified' && p.internationalAdmission.value === true ? <span class="badge badge-verified">Open to international applicants (verified)</span> : p.internationalAdmission.status === 'verified' && p.internationalAdmission.value === false ? <span class="badge badge-pending">Not open to international applicants</span> : <span class="badge badge-pending">International admission to be confirmed</span>}
+    </div>
+  </header>
+  <dl class="facts">
+    <Fact label="Qualification awarded" claim={p.qualification} />
+    <Fact label="Specialty code" claim={p.specialtyCode} />
+    <Fact label="Duration" claim={p.durationText.value ? p.durationText : p.durationYears} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
+    <Fact label="Language" claim={p.language} />
+    <Fact label="Format" claim={p.format} />
+    <Fact label="Intake these facts refer to" claim={p.intakeYear} />
+    <Fact label="Tuition fee" claim={p.tuition} format={money} />
+    {p.otherMandatoryCosts.map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}
+    <Fact label="Application window" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} />
+    <Fact label="Intake" claim={p.intake} />
+  </dl>
+  <div class="two">
+    <section>
+      <h4>Entry requirements{p.requirements.some((r: any) => r.intakeYear) && <small> (intake-specific)</small>}</h4>
+      <RequirementList items={p.requirements} />
+      {p.gradingNote && <p class="note">{p.gradingNote}</p>}
+    </section>
+    <section>
+      <h4>Documents the university asks for</h4>
+      <DocumentList items={p.documents} />
+    </section>
+  </div>
+  <p class="cta"><a class="btn btn-primary btn-sm" href={`/apply/?university=${slug}&course=${p.field}`}>{SITE.cta}</a> <span class="hint">Free to start; nothing is sent to the university until you confirm.</span></p>
+</article>
+<style>
+  .prog { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; background: #fff; }
+  .prog-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; align-items: start; margin-bottom: .5rem; }
+  .family { margin: 0 0 .25rem; font-size: .85rem; color: var(--slate); }
+  .family a { color: var(--blue-600); text-decoration: underline; text-underline-offset: 2px; }
+  .prog h3 { margin: 0; }
+  .facts { margin: .5rem 0 1rem; }
+  .two { display: grid; gap: 1.25rem; }
+  .two > section { padding: 0; }
+  @media (min-width: 800px) { .two { grid-template-columns: 1fr 1fr; } }
+  h4 { font-size: 1rem; margin: 0 0 .5rem; }
+  h4 small { font-weight: 400; color: var(--slate); }
+  .cta { margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+  .hint { font-size: .85rem; color: var(--slate); }
+</style>

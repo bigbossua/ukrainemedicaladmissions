@@ -2,9 +2,11 @@
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { getCollection } from 'astro:content';
+import { isVisible, byShortName } from '../lib/records';
 import { SITE } from '../lib/site';
 
-const universities = (await getCollection('universities')).sort((a, b) => a.data.shortName.localeCompare(b.data.shortName));
+// Publication gate: unpublished records never appear on the home page (lib/records.ts).
+const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
 const courses = [
   { slug: 'medicine', name: 'Medicine', blurb: 'Six-year programmes leading to a medical degree.' },
   { slug: 'dentistry', name: 'Dentistry', blurb: 'Five-year dental programmes.' },
@@ -56,6 +58,7 @@ const jsonLd = [{
             <select name="university">
               <option value="">Help me choose</option>
               {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
+              <option value="unlisted">A university not listed here</option>
             </select>
           </label>
           <button class="btn btn-primary" type="submit">{SITE.cta} →</button>
@@ -81,7 +84,8 @@ const jsonLd = [{
     <div class="wrap">
       <span class="eyebrow">Universities</span>
       <h2>Medical universities in Ukraine</h2>
-      <p class="prose">Our directory grows one verified profile at a time. Profiles still under verification are clearly marked.</p>
+      <p class="prose">Our directory grows one verified profile at a time. A profile is published only once every fact on it has been checked against official sources.</p>
+      {universities.length === 0 && <p class="note">No university profile has completed verification yet. The first profiles are being verified now; each will appear here, dated, as soon as it passes.</p>}
       <div class="grid grid-3">
         {universities.map((u) => (
           <article class="card">

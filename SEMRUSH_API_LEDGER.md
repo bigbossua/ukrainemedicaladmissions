@@ -140,3 +140,17 @@ Pre-flight satisfied: balance 47,890 confirmed by the owner; price confirmed by 
 **Counter semantics — corrected observation.** On every sequential call today the `usage.api_units` reading equalled that call's own cost (10 × returned lines) and did **not** accumulate across calls (readings 10, 60, 60, 20, 40, 30, 40, 210, 240, 140). The 2026-10-10 parallel-batch readings (520 … 1,200 for 8- and 18-line requests) therefore remain anomalous — most plausibly the field reported an in-flight aggregate while eight requests ran concurrently — and the per-call attribution for that batch is unrecoverable; the verified total (2,110 before today) governs, as recorded in the reconciliation above. Rule from now on: **run metered calls sequentially and read the counter after each.**
 
 **Cumulative consumption: 2,110 (verified) + 850 (this phase) = 2,960 units; balance expected 47,040.**
+
+## 2026-10-11 — University-profile pipeline phase: NO API calls (reconciliation restated for the completion report)
+
+| Item | Units | Label |
+|---|---|---|
+| Starting pool (owner screenshot, date unknown) | 50,000 | OWNER-REPORTED |
+| Consumed before 2026-10-11 (= 50,000 − 47,890) | 2,110 | DERIVED from the owner's verified 47,890 reading; assumes the 50,000 screenshot preceded the first paid call and that no other connected tool drew on the shared pool |
+| 2026-10-11 batch: probe 10 + R1 250 + R2 590 | 850 | VERIFIED per call (sequential counter readings = per-call cost, 10 units per returned line; unreturned keywords unbilled) |
+| **Cumulative consumption** | **2,960** | DERIVED (2,110) + VERIFIED (850) |
+| **Expected remaining balance** | **47,040** | ESTIMATE = 47,890 − 850; to be confirmed by the owner's next reading of Subscription info → API units; any difference is recorded here |
+| Calls in this phase (pipeline implementation) | 0 | VERIFIED — no SEMrush tool was invoked |
+
+The 130-unit discrepancy found earlier (published-price estimate 1,200 vs derived actual 1,070 for the 2026-10-10 follow-up batch) stays resolved as recorded above. R3–R5 remain unauthorised and unexecuted.
+

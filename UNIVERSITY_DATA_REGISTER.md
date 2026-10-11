@@ -1,23 +1,33 @@
 # UNIVERSITY_DATA_REGISTER.md
 
-**Single source of truth:** `site/src/content/universities/<slug>.json`, validated at build time by the schema in `site/src/content.config.ts`. This document explains the model, the verification process and the current state of each record. It does not duplicate the data.
+**Single source of truth:** `site/src/content/universities/<slug>.json`, validated at build time by the schema in `site/src/content/schema.mjs` (wired into the collections by `site/src/content.config.ts`; the same schema file is used by `npm run test:records`). This document explains the model, the verification process and the current state of each record. It does not duplicate the data.
 
-## 1. Data model (summary)
+## 1. Data model (summary) — extended 2026-10-11
 
 Every factual field is a **claim**: `{ value, status, source, checked, note }`.
 
 | `status` | Meaning | How pages render it |
 |---|---|---|
 | `verified` | Checked against the official source in `source` on date `checked` | Shown as fact with "Verified", source link and date |
-| `unverified` | Reported value (brief, earlier list, general knowledge) not yet checked | Shown highlighted with "Verification pending" and a warning |
+| `unverified` | Reported value (search-snippet lead, brief, earlier list) not yet checked — **must carry a `note` saying where it came from** | Shown highlighted with "Verification pending" and a warning; never as plain fact |
 | `outdated` | Was verified, but the source has changed or the academic year has passed | Treated like unverified until re-checked |
-| `not-published` | We deliberately hold no value (e.g. a fee we have not confirmed) | "To be confirmed" — nothing invented |
+| `not-published` | We deliberately hold no value (e.g. a fee we have not read on the official page) | "To be confirmed" — nothing invented |
 
-Record-level: `officialName`, `alternativeNames`, `status` (operating / relocated / merged / suspended), `city`, `address`, `website`, `internationalOffice`, `founded`, `accreditation`, `recognition`, `accommodation`, `programmes[]`, `faqs[]`, `images[]` (with credit, licence, source, retrieval date), `verification { publishable, lastReview, openQuestions }`.
+**Record level:** `slug`, `synthetic` (true only for the sample record in `site/src/content/samples/`), `officialName`, `shortName`, `alternativeNames`, `status` (operating / relocated / merged / suspended / unknown), `statusStatement` (the university's own dated statement for the current year, verbatim), `teachingFormat`, `city`, `region`, `address`, `website`, `internationalOffice`, `founded`, `overview`, `accreditation`, `recognition`, `accommodation`, `programmes[]`, `preparatoryRoutes[]`, `researchReferences[]`, `faqs[]`, `images[]` (credit, licence, source, retrieval date), `verification { publishable, lastReview, reviewer, openQuestions }`.
 
-Programme-level: `qualification`, `course` (medicine | dentistry | nursing | pharmacy | preparatory | other), `durationYears`, `language`, `format`, `internationalAdmission`, `tuition { amount, currency, per, academicYear, schedule }`, `otherMandatoryCosts[]`, `entryRequirements`, `requiredDocuments`, `deadlines`, `intake`.
+**Programme level (one object per programme; a university may have several per family):** `id`, `name` (as the university names it), `field` ∈ {medicine, dentistry, pharmacy, nursing, public_health, physical_therapy, physical_education, preparatory, other}, `level` ∈ {bachelor, master, integrated_master, junior_bachelor, preparatory, phd, other} (a claim), `specialtyCode`, `qualification` (exact award title — never "MBBS"/"BSN"/"MSN" unless the university uses it), `durationYears`, `durationText` (as printed), `language`, `format`, `internationalAdmission`, `intakeYear` (the intake the programme-level claims refer to), `tuition { amount, currency, per, academicYear, schedule, variesByYear }`, `otherMandatoryCosts[]`, `requirements[]`, `documents[]`, `deadlines`, `intake`, `gradingNote`; the legacy summary lists `entryRequirements` and `requiredDocuments` are retained.
 
-**`verification.publishable = false`** ⇒ the profile is built but `noindex`, excluded from the sitemap, carries a banner, and emits no structured data. Flip to `true` only after a full review.
+**Requirement object (intake-specific, verbatim):** `{ id, type ∈ subject | grade | exam | language | age | document | other, summary, subject?, minimum? { value, scale }, condition?, examFormat?, intakeYear?, status, source, checked, note }`. Only `verified` requirement objects feed a readiness assessment (APPLICATION_SYSTEM_SPEC §8). Academic subjects and grading scales live here (`subject`, `minimum.scale`) exactly as the university states them.
+
+**Document object:** `{ id, name, condition?, formatNote?, intakeYear?, status, source, checked, note }` — `condition` makes a document conditional (e.g. legalisation for the remote route).
+
+**Preparatory route object:** `{ id, name, languageOfInstruction, englishTrack, durationText, subjects, certificateName, progressionText (verbatim), appliesToEnglishDegreeTrack, startDate, fee, eligibilityText, note }` — every field a claim; the profile prints the standing sentence that a preparatory course does not guarantee admission, and quotes `progressionText` only once verified.
+
+**Research reference:** `{ label, url, purpose, snippetDate?, note? }` — the official pages a verification pass must open. **A research reference is never evidence**; it renders only on draft pages in a preview build.
+
+**Publication gate (changed 2026-10-11).** `verification.publishable = false` ⇒ the record produces **no page at all** in a production build, is absent from the sitemap, from every list, link, form select and JSON-LD block. It is built only with `PREVIEW_UNPUBLISHED=1` (`npm run build:preview` → `dist-preview/`), where every page carrying it is `noindex`, has no canonical / `og:url` / sitemap link / JSON-LD, and shows a draft banner. `publishable = true` is accepted by `test:records` only when `officialName`, `status`, `website` and `address` are verified, `lastReview` is set, there are no open questions, and every programme's `internationalAdmission` is verified. **Behaviour change versus the live site:** the currently live `noindex` Ternopil profile URL will return 404 after the next deploy from this branch (see HOSTING_AND_DEPLOYMENT_ASSESSMENT.md §13) — this requires the owner's explicit acknowledgement before any deployment.
+
+**Hard rule enforced by `test:records`:** a tuition, fee, other-cost or deadline *value* may exist only with `status = verified`. Leads about fees or dates go in `note` text, never in `value`.
 
 University fees are never mixed with our own service fees (which do not exist in the data model at all).
 
@@ -50,17 +60,27 @@ Cross-check against the Wikipedia research list in the brief (research inventory
 3. Fees: copy amount, currency, per-period and academic year exactly; record the payment schedule; never convert currencies.
 4. If a page does not publish a fact, set `status = not-published` and explain in `note`.
 5. Record the session in `SOURCE_VERIFICATION_REGISTER.md`.
-6. When every programme the page shows has verified `language`, `durationYears`, `internationalAdmission` and `tuition` (or explicit `not-published`), set `verification.publishable = true` and `lastReview`.
-7. Re-run `npm test`; the build fails on schema errors; the meta test fails if an unpublishable page leaks into the sitemap.
+6. When every programme the page shows has verified `language`, `level`, `durationText`/`durationYears`, `internationalAdmission` and `tuition` (or explicit `not-published`), and the record-level identity fields are verified with no open questions, set `verification.publishable = true` and `lastReview`.
+7. Re-run `npm test`: `test:records` validates the schema and the evidence invariants (R1–R8 in `site/tests/records-evidence.mjs`); the build fails on schema errors; `test:gate` fails if an unpublished record leaks into the production build in any form; `test:preview` renders and audits every draft.
 8. Diary a re-check before the next intake; set `outdated` when the academic year passes.
 
-## 4. Record status
+## 4. Record status (2026-10-11, branch `claude/university-profile-pipeline`)
 
-| Slug | Official name (claimed) | Publishable | Verified claims | Open questions |
-|---|---|---|---|---|
-| `ternopil-national-medical-university` | I. Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine | **No** | 0 of 7 record-level, 0 of 44 programme-level | 7 (listed in the JSON) — official domain, international intake, fee schedule, requirements, deadlines, accommodation, recognition evidence |
+Seven real records exist, all **unpublished draft shells** built from the 2026-10-11 search-snippet sweep (`research/universities/*.json`). Every claim in them is `unverified` (with a provenance note) or `not-published`; **no claim is verified** and no fee, deadline or intake date is recorded as a value. None produces a page in a production build.
 
-Access attempt 2026-10-10: `www.tdmu.edu.ua` — DNS resolution failed from the build environment (network policy). No claim could be verified. Nothing has been invented to fill the gap.
+| Slug | Official name (claimed, unverified) | Publishable | Verified claims | Programmes (families) | Requirement / document objects (all unverified) | Preparatory routes | Research references | Open questions |
+|---|---|---|---|---|---|---|---|---|
+| `bukovinian-state-medical-university` | Bukovinian State Medical University | **No** (draft shell) | 0 | 5 (dentistry, medicine, nursing, pharmacy, physical_therapy) | 3 / 1 | 1 | 21 | 12 |
+| `vinnytsia-national-pirogov-memorial-medical-university` | National Pirogov Memorial Medical University, Vinnytsya | **No** (draft shell) | 0 | 7 (dentistry, medicine, nursing, pharmacy, physical_education, physical_therapy, public_health) | 2 / 5 | 1 | 19 | 12 |
+| `odesa-national-medical-university` | Odesa National Medical University | **No** (draft shell) | 0 | 6 (dentistry, medicine, nursing, pharmacy, physical_therapy, public_health) | 3 / 2 | 1 | 21 | 11 |
+| `bogomolets-national-medical-university` | Bogomolets National Medical University | **No** (draft shell) | 0 | 5 (dentistry, medicine, pharmacy, physical_therapy, public_health) | 3 / 0 | 1 | 13 | 13 |
+| `ivano-frankivsk-national-medical-university` | Ivano-Frankivsk National Medical University | **No** (draft shell) | 0 | 7 (dentistry, medicine, nursing, pharmacy, physical_therapy, public_health) | 2 / 0 | 1 | 22 | 12 |
+| `uzhhorod-national-university` | State University "Uzhhorod National University" | **No** (draft shell) | 0 | 7 (dentistry, medicine, nursing, pharmacy, physical_education, physical_therapy, public_health) | 2 / 2 | 1 | 16 | 12 |
+| `ternopil-national-medical-university` | I. Horbachevsky Ternopil National Medical University of the Ministry of Health of Ukraine | **No** (draft shell) | 0 | 6 (dentistry, medicine, nursing, pharmacy, physical_therapy, public_health) | 0 / 9 | 1 | 8 | 11 |
+
+Synthetic sample: `site/src/content/samples/example-medical-university.json` (`synthetic: true`, never publishable, sources on `example.invalid`) demonstrates the layouts with verified-looking values; it renders only at `/preview/example-medical-university/` in a preview build and is kept out of the real directory by `test:gate`.
+
+Access status: official `.ua` domains and the Ministry portal remain unreachable from the build environment (network policy), so no claim could be verified in this phase; nothing has been invented to fill a gap. The expansion order (Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil) follows §9.
 
 ## 5. Verification priority (SEMrush named-university evidence, updated 2026-10-11 with R2)
 
@@ -180,10 +200,26 @@ Only fields with `status = verified` are compared; anything else is shown as "no
 
 Words the site never uses about a university: best, top, safest, cheapest, most recognised, guaranteed, partner (unless a written agreement exists and is cited).
 
-## 10. How the directory and candidate-profile system support many universities and programmes
+## 10. How the directory and candidate-profile system support many universities and programmes — IMPLEMENTED locally 2026-10-11
 
-- **One source of truth:** `site/src/content/universities/<slug>.json` holds record-level and programme-level claims; programmes carry `course`, `qualification`, `level`, `language`, `durationYears`, `internationalAdmission`, `tuition`, and (new) `requirements[]` and `preparatoryRoute` claim objects. The schema in `site/src/content.config.ts` is extended for `field ∈ {medicine, dentistry, pharmacy, nursing, public_health, physical_therapy, physical_education, preparatory, other}` and `level ∈ {bachelor, master, integrated_master, junior_bachelor, preparatory, phd}`.
-- **Directory filters** by field, level, language, city, preparatory route and "verified for intake <year>"; cards show only verified facts and the last-verified date.
-- **Candidate profile** (APPLICATION_SYSTEM_SPEC §8) lets the candidate pick field + level first, then universities; the readiness assessment compares their record with the verified requirement objects of each selected programme and lists gaps per programme, with the university's preparatory route shown where verified.
-- **Nothing hard-coded:** Ternopil is one record among many; the profile template, the filters, the readiness logic and the application database import all iterate over whatever records are publishable.
-- **Operating-status guard:** a record whose `status` is not `operating` or `relocated` with a dated official notice within the current academic year cannot be publishable.
+- **One source of truth:** `site/src/content/universities/<slug>.json` holds record-level and programme-level claims; programmes carry `field`, `level`, `specialtyCode`, `qualification`, `language`, `durationText`, `internationalAdmission`, `intakeYear`, `tuition`, structured `requirements[]` and `documents[]`; the record carries `preparatoryRoutes[]` and `researchReferences[]`. Schema: `site/src/content/schema.mjs`.
+- **No separate SEO page per programme.** Programme families beyond the four course pages (public health, physical therapy/rehabilitation, physical education/sport, preparatory, other) are supported in the directory filters, on the profile and in the candidate-profile service without any new URL (`site/src/lib/fields.ts`: `page: null`). KEYWORD_URL_MAP.md §7 remains the only route to a new indexable page.
+- **Directory** (`/universities/`): filters by city, programme family, qualification level, teaching language, preparatory route and intake, driven by data attributes on each card; count and empty state; a side-by-side comparison table built **only from verified claims** (unverified cells read "awaiting verification"/"not published"; alphabetical order, no ranking). With zero publishable records the production directory shows an explicit empty state.
+- **Profile** (`/universities/<slug>/`): header with status/teaching chips, an at-a-glance block (families, levels, languages, preparatory route), facts list, one card per programme (qualification, code, duration, language, format, intake, fee, application window, intake-specific requirements, documents, CTA `Apply Online Now`), preparatory-route cards with the standing "does not guarantee admission" sentence, sources and verification. Structured data only for a publishable record and only from verified fields.
+- **Preview** (`npm run build:preview` → `dist-preview/`, never deployed): draft records render with a draft banner, noindex and no canonical/JSON-LD/sitemap, plus the internal verification queue (research references + open questions); `/preview/` lists drafts and samples and demonstrates the directory and comparison layouts; `/preview/<sample>/` renders the synthetic record.
+- **Candidate profile** (APPLICATION_SYSTEM_SPEC §8) will compare a candidate's record with the verified requirement objects of each selected programme and list gaps per programme, with the university's preparatory route shown where verified. Not built in this phase (Stage 2, gated).
+- **Nothing hard-coded:** the profile template, the filters, the comparison table, the home/apply selects and the tests iterate over whatever records pass the publication gate; Ternopil is one record among seven.
+- **Operating-status guard (policy, to be enforced when the first record is verified):** a record whose `status` is not `operating` or `relocated` with a dated official statement within the current academic year must not be made publishable.
+
+## 11. Implementation record 2026-10-11 (branch `claude/university-profile-pipeline`, from `16e8df1`)
+
+| Area | Files |
+|---|---|
+| Schema and flags | `site/src/content/schema.mjs` (new, shared by build and tests), `site/src/content.config.ts`, `site/src/lib/fields.ts`, `site/src/lib/records.ts` (publication gate helper `isVisible`), `site/src/lib/site.ts` (`PREVIEW`) |
+| Layout | `site/src/layouts/Base.astro` (`draft` prop: noindex, no canonical/og:url/sitemap link/JSON-LD), `site/src/components/Breadcrumbs.astro` (`draft`), `site/src/pages/robots.txt.ts` (preview = no sitemap) , `site/astro.config.mjs` (no sitemap integration in preview) |
+| Components | `site/src/components/university/` — `UniversityProfile`, `ProfileHeader`, `ProgrammeCard`, `RequirementList`, `DocumentList`, `PreparatoryRoute`, `UniversityCard`, `CompareTable`, `ClaimChip`, `DraftBanner`, `ResearchReferences` |
+| Pages | `site/src/pages/universities/[slug].astro`, `site/src/pages/universities/index.astro`, `site/src/pages/preview/[...path].astro` (empty in production), gating in `courses/[course].astro`, `tuition-fees/index.astro`, `index.astro`, `apply/index.astro` |
+| Records | seven draft shells in `site/src/content/universities/`; synthetic sample in `site/src/content/samples/` |
+| Tests | `site/tests/records-evidence.mjs` (schema + evidence invariants), `site/tests/publication-gate.mjs` (production leak check + preview gating), `site/tests/preview-ui.mjs` (Playwright + axe over drafts, filters, 3 widths, screenshots), `ui-smoke.mjs` and `perf.mjs` made data-driven; `package.json` scripts `build:preview`, `test:records`, `test:gate`, `test:preview`; `.github/workflows/ci.yml` runs them |
+
+Nothing in this phase was deployed, published or changed on the live host; the `production` branch is untouched.

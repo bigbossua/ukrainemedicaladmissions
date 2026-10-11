@@ -275,3 +275,18 @@ Two smaller items, not blockers for the deploy itself: the PHP version in hPanel
 | 5 | Me | Record release tag, fingerprint, deploy time and evidence in §9 and the checklist (A12); submit the sitemap in Search Console once the owner has verified the property. | none |
 
 Later releases: push to the working branch → CI green → run the publish workflow → Hostinger auto-deploys the new `production` commit. Rollback: run the publish workflow from the previous `release-*` tag.
+
+## 13. Behaviour change queued on branch `claude/university-profile-pipeline` — NOT deployed; needs explicit acknowledgement
+
+The publication gate introduced on 2026-10-11 (UNIVERSITY_DATA_REGISTER.md §1) changes what a production build contains. Compared with the live release (`production` = build of `4d4e605`, tag `release-20261011-005330`, 45 files):
+
+| Live today (`production` branch) | After a deploy built from this branch | Why |
+|---|---|---|
+| `/universities/ternopil-national-medical-university/` exists, `noindex`, with a "verification in progress" banner | **404** (the custom 404 page) — no profile page is built until the record is verified and `publishable: true` | an unverified record must not be rendered publicly at all |
+| `/universities/`, home and `/tuition-fees/` list Ternopil as "verification in progress" | explicit empty states ("No university profile has completed verification yet"); fees table shows a single "No fee verified yet" row | same |
+| Home and `/apply/` university selects offer Ternopil | selects offer "Help me choose" and "A university not listed here" (`unlisted`) | a draft is not offered as a choice; the enquiry handler already accepts an empty or `unlisted` value |
+| Sitemap: 15 URLs (Ternopil already excluded) | unchanged: 15 URLs | no indexable URL is added or removed |
+| Directory filters: city / course / language | city / programme family / level / language / preparatory route / intake, plus a verified-only comparison table | new layouts |
+
+The Ternopil URL is `noindex` today, so no indexed URL is lost; a 410 or a 302 to `/universities/` could be added to `.htaccess` if the owner prefers an explicit signal — proposed, not written. Nothing here runs until the owner approves a release; the `production` branch has not been touched in this phase.
+

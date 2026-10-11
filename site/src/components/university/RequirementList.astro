@@ -1,0 +1,41 @@
+---
+import { formatDate } from '../../lib/site';
+import { REQUIREMENT_TYPES } from '../../lib/fields';
+interface Props { items: any[]; emptyText?: string }
+const { items, emptyText = 'No requirement has been verified for this programme yet.' } = Astro.props;
+---
+{items.length === 0 ? <p class="note">{emptyText}</p> : (
+  <ul class="reqs">
+    {items.map((r) => (
+      <li class={`req req-${r.status}`}>
+        <div class="req-head">
+          <span class="type">{(REQUIREMENT_TYPES as any)[r.type] ?? r.type}{r.subject && ` · ${r.subject}`}</span>
+          {r.status === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{r.status === 'not-published' ? 'Not published' : 'Verification pending'}</span>}
+          {r.intakeYear && <span class="intake">intake {r.intakeYear}</span>}
+        </div>
+        <p class="summary">{r.summary}</p>
+        {(r.minimum || r.condition || r.examFormat) && (
+          <p class="meta">
+            {r.minimum && <span>Minimum: {r.minimum.value} ({r.minimum.scale}). </span>}
+            {r.condition && <span>Applies when: {r.condition}. </span>}
+            {r.examFormat && <span>Format: {r.examFormat}.</span>}
+          </p>
+        )}
+        <small>{r.status === 'verified' && r.source ? <>Source: <a href={r.source} rel="nofollow noopener">official page</a>{r.checked && ` · checked ${formatDate(r.checked)}`}</> : (r.note ?? 'Not yet confirmed against an official source.')}</small>
+      </li>
+    ))}
+  </ul>
+)}
+<style>
+  .reqs { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+  .req { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: .75rem .9rem; background: #fff; }
+  .req-verified { border-left-color: #14532D; }
+  .req-unverified, .req-outdated { border-left-color: var(--yellow-400); }
+  .req-not-published { border-left-color: var(--line); }
+  .req-head { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .8rem; }
+  .type { font-weight: 600; color: var(--navy-900); }
+  .intake { color: var(--slate); }
+  .summary { margin: .35rem 0 .2rem; }
+  .meta { margin: 0 0 .2rem; font-size: .9rem; color: var(--slate); }
+  small { display: block; color: var(--slate); font-size: .78rem; }
+</style>

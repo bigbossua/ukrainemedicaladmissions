@@ -1,119 +1,33 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import Fact from '../../components/Fact.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import DraftBanner from '../../components/university/DraftBanner.astro';
+import UniversityProfile from '../../components/university/UniversityProfile.astro';
 import { getCollection } from 'astro:content';
-import { SITE, formatDate } from '../../lib/site';
+import { isVisible } from '../../lib/records';
 
 export async function getStaticPaths() {
+  // PUBLICATION GATE: a record with verification.publishable = false produces NO page in a production build.
+  // A PREVIEW_UNPUBLISHED=1 build renders it for internal review only (noindex, no canonical, no JSON-LD, no sitemap).
   const universities = await getCollection('universities');
-  return universities.map((u) => ({ params: { slug: u.data.slug }, props: { u } }));
+  return universities.filter(isVisible).map((u) => ({ params: { slug: u.data.slug }, props: { u } }));
 }
 const { u } = Astro.props;
 const d = u.data;
 const publishable = d.verification.publishable;
+const draft = !publishable;
 const title = `${d.shortName}: admissions & fees`;
 const description = `${d.shortName}, ${d.city}: programmes for international students, language, fees and entry requirements — each marked verified or pending.`;
-const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})`;
-// Structured data only once the profile is verified and publishable.
-const jsonLd = publishable && d.officialName.value ? [{
+// Structured data only for a verified, publishable profile, and only from verified fields.
+const v = (c: any) => (c.status === 'verified' && c.value ? c.value : undefined);
+const jsonLd = publishable && v(d.officialName) ? [{
   '@context': 'https://schema.org', '@type': 'CollegeOrUniversity',
-  name: d.officialName.value, alternateName: d.alternativeNames,
-  url: d.website.value ?? undefined, address: d.address.value ?? undefined,
+  name: v(d.officialName), alternateName: d.alternativeNames,
+  url: v(d.website), address: v(d.address),
 }] : [];
 ---
-<Base title={title} description={description} noindex={!publishable} jsonLd={jsonLd} suffix={false}>
-  <div class="page-head">
-    <div class="wrap">
-      <span class="eyebrow">{d.city}{d.region && `, ${d.region}`}</span>
-      <h1>{d.shortName}</h1>
-      <p>{d.officialName.value}</p>
-      {!publishable && <p class="pending-banner">This profile is being verified. Facts marked “pending” or “to be confirmed” have not yet been checked against official sources and should not be relied on.</p>}
-    </div>
-  </div>
-  <Breadcrumbs items={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} />
-
-  <section style="padding-top:1rem">
-    <div class="wrap layout">
-      <div>
-        <h2>Overview</h2>
-        <p class="prose">{d.overview}</p>
-        <dl>
-          <Fact label="Official name" claim={d.officialName} />
-          <Fact label="Status" claim={d.status} />
-          <Fact label="Founded" claim={d.founded} />
-          <Fact label="Address" claim={d.address} />
-          <Fact label="Official website" claim={d.website} />
-          <Fact label="Accreditation" claim={d.accreditation} />
-          <Fact label="Recognition" claim={d.recognition} />
-          <Fact label="Accommodation" claim={d.accommodation} />
-        </dl>
-
-        <h2 id="programmes" style="margin-top:2.5rem">Programmes for international students</h2>
-        {d.programmes.map((p) => (
-          <article class="prog" id={p.id}>
-            <h3><a href={`/courses/${p.course}/`}>{p.name}</a></h3>
-            <dl>
-              <Fact label="Qualification" claim={p.qualification} />
-              <Fact label="Duration" claim={p.durationYears} format={(v) => `${v} years`} />
-              <Fact label="Language" claim={p.language} />
-              <Fact label="Format" claim={p.format} />
-              <Fact label="International admission" claim={p.internationalAdmission} format={(v) => (v ? 'Open to international applicants' : 'Not currently open')} />
-              <Fact label="Tuition fee" claim={p.tuition} format={money} />
-              {p.otherMandatoryCosts.map((c) => <Fact label={c.label} claim={c.cost} format={money} />)}
-              <Fact label="Entry requirements" claim={p.entryRequirements} />
-              <Fact label="Required documents" claim={p.requiredDocuments} />
-              <Fact label="Deadlines" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} />
-              <Fact label="Intake" claim={p.intake} />
-            </dl>
-            <p style="margin-top:1rem"><a class="btn btn-primary btn-sm" href={`/apply/?university=${d.slug}&course=${p.course}`}>{SITE.cta}</a></p>
-          </article>
-        ))}
-
-        {d.faqs.length > 0 && (
-          <>
-            <h2 style="margin-top:2.5rem">Frequently asked questions</h2>
-            {d.faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
-          </>
-        )}
-
-        <h2 style="margin-top:2.5rem">Sources and verification</h2>
-        <p class="prose">Facts on this page are checked against the university's official website and, where relevant, Ukrainian government registers. Each row shows its status and check date.
-          {d.verification.lastReview ? ` Last full review: ${formatDate(d.verification.lastReview)}.` : ' A full review has not yet been completed.'}</p>
-        {d.verification.openQuestions.length > 0 && (
-          <details><summary>Open verification questions ({d.verification.openQuestions.length})</summary><ul>{d.verification.openQuestions.map((q) => <li>{q}</li>)}</ul></details>
-        )}
-        <p class="note">{SITE.disclaimer} University fees are charged by the university; any fee for our own services is shown separately and only after you have applied.</p>
-      </div>
-
-      <aside class="side">
-        <div class="card">
-          <h3>Apply to {d.shortName}</h3>
-          <p style="font-size:.9rem">Start your application now. You can save your progress and add documents later.</p>
-          <a class="btn btn-primary" href={`/apply/?university=${d.slug}`}>{SITE.cta}</a>
-        </div>
-        <div class="card" style="margin-top:1rem">
-          <h3>Next steps</h3>
-          <ul style="padding-left:1.1rem;margin:0;font-size:.95rem">
-            <li><a href="/admissions/">Admission requirements &amp; process</a></li>
-            <li><a href="/tuition-fees/">Tuition fees &amp; costs guide</a></li>
-            <li><a href="/universities/">Compare other universities</a></li>
-            <li><a href="/faq/">Student FAQ</a></li>
-          </ul>
-        </div>
-      </aside>
-    </div>
-  </section>
+<Base title={title} description={description} noindex={draft} draft={draft} jsonLd={jsonLd} suffix={false}>
+  {draft && <DraftBanner kind="unpublished" />}
+  <UniversityProfile d={d} publishable={publishable} draft={draft} crumbs={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} />
   <CtaBand title={`Ready to apply to ${d.shortName}?`} text="Begin online — it takes a few minutes and nothing is sent to the university until you confirm." />
 </Base>
-
-<style>
-  .layout { display: grid; gap: 2rem; }
-  @media (min-width: 900px) { .layout { grid-template-columns: 1fr 320px; align-items: start; } .side { position: sticky; top: 90px; } }
-  .prog { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
-  .prog h3 { margin-bottom: .5rem; }
-  .prog h3 a { color: var(--navy-900); text-decoration: none; }
-  .pending-banner { background: rgba(242,194,48,.15); border: 1px solid rgba(242,194,48,.5); color: #fff; border-radius: 10px; padding: .75rem 1rem; margin-top: 1rem !important; font-size: .95rem; }
-  dl { margin: 0; }
-</style>

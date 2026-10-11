@@ -112,3 +112,17 @@ axe (0 serious/critical), Lighthouse mobile performance ≥ 90 with the new LCP 
 | Generated imagery (if the owner has a tool) | the tool's commercial-use terms (to be read) | caption/alt "Illustrative image"; never a named institution, never presented as students or facilities of any university; no logos, flags or recognisable landmarks | V1/V5 fallbacks only |
 
 Rule restated: no image is published without a row in §8 holding its source URL, licence text, author, download date and modifications; no image may imply a named institution unless it is that institution's own, correctly identified, licensed photograph on its own profile page.
+
+## 10. Visual register implemented 2026-10-11 (profiles and directory; no images downloaded, nothing purchased)
+
+What changed in the build (branch `claude/university-profile-pipeline`, preview-only for drafts):
+
+| Element | Implementation | Image needed? |
+|---|---|---|
+| Directory cards (`UniversityCard`) | CSS gradient tile with the university's initials and city, hue derived from the city name; chips for programme families, levels, languages (marked "pending" until verified), preparatory route; status badge | No — tiles replace photographs until licensed images exist |
+| Profile header (`ProfileHeader`) | Dark band with an initials tile, status/teaching chips, counts of verified programmes, last-review date, pending banner | No |
+| At-a-glance block, programme cards, requirement/document lists, preparatory-route card, comparison table | Typography, badges and the existing colour tokens; underlined in-text links (axe `link-in-text-block` clean); scrollable comparison region is keyboard-focusable and labelled | No |
+| Draft banner / verification queue | High-contrast brown band and dashed yellow box so a draft can never be mistaken for a published page | No |
+
+Image sourcing status: the §8 Pexels candidates (library/study groups for V1; skeleton and dental models for V5) remain **unopened** — image hosts are blocked by the network policy and nothing may be downloaded or purchased from this environment. When the owner downloads a candidate, the §8 row is completed (licence text as shown on the page, author, download date, modifications) and the file is added through the Astro image pipeline (TECHNICAL_REPAIR_BACKLOG N5) with alt text and dimensions (checked by `check-meta`). No image may depict or imply a named institution without that institution's own licence (§9).
+

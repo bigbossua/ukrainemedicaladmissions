@@ -14,9 +14,12 @@ interface Props {
   ogImage?: string;
   /** Append " | Ukraine Medical Admissions". Disable for long entity titles (university profiles). */
   suffix?: boolean;
+  /** Draft (preview-only) page: noindex, no canonical, no og:url, no structured data, no sitemap link. */
+  draft?: boolean;
 }
-const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true } = Astro.props;
-const noindex = noindexProp || STAGING;
+const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true, draft = false } = Astro.props;
+const noindex = noindexProp || STAGING || draft;
+const bare = STAGING || draft; // omit every signal that could point a crawler at this URL
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.name}`;
 ---
@@ -27,13 +30,13 @@ const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.na
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  {!STAGING && <link rel="canonical" href={canonical} />}
+  {!bare && <link rel="canonical" href={canonical} />}
   {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
-  {!STAGING && <meta property="og:url" content={canonical} />}
+  {!bare && <meta property="og:url" content={canonical} />}
   <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0B1F3F" />
@@ -41,11 +44,11 @@ const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.na
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  {!STAGING && <link rel="sitemap" href="/sitemap-index.xml" />}
+  {!bare && <link rel="sitemap" href="/sitemap-index.xml" />}
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/fonts.css" />
-  {!STAGING && jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  {!bare && jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

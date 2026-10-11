@@ -1,0 +1,38 @@
+---
+import ClaimChip from './ClaimChip.astro';
+import { formatDate } from '../../lib/site';
+import { TEACHING_FORMATS } from '../../lib/fields';
+interface Props { d: any; publishable: boolean }
+const { d, publishable } = Astro.props;
+const openIntl = d.programmes.filter((p: any) => p.internationalAdmission.value === true && p.internationalAdmission.status === 'verified').length;
+const english = d.programmes.filter((p: any) => p.language.status === 'verified' && (p.language.value ?? []).includes('English')).length;
+const initials = d.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
+---
+<div class="page-head profile-head">
+  <div class="wrap head-grid">
+    <div class="tile" aria-hidden="true"><span>{initials}</span></div>
+    <div>
+      <span class="eyebrow">{d.city}{d.region && `, ${d.region}`}</span>
+      <h1>{d.shortName}</h1>
+      <p class="official">{d.officialName.value}{d.officialName.status !== 'verified' && <span class="badge badge-pending" style="margin-left:.5rem">name pending verification</span>}</p>
+      <div class="chips">
+        <ClaimChip label="Status" claim={d.status} />
+        <ClaimChip label="Teaching" claim={d.teachingFormat} format={(v) => (TEACHING_FORMATS as any)[v] ?? v} />
+        <span class="chip"><span class="chip-label">Verified programmes open to internationals</span> {openIntl}</span>
+        <span class="chip"><span class="chip-label">English-taught (verified)</span> {english}</span>
+        <span class="chip"><span class="chip-label">Last full review</span> {d.verification.lastReview ? formatDate(d.verification.lastReview) : 'not yet completed'}</span>
+      </div>
+      {!publishable && <p class="pending-banner">This profile is being verified. Facts marked “pending” or “to be confirmed” have not yet been checked against official sources and must not be relied on.</p>}
+    </div>
+  </div>
+</div>
+<style>
+  .head-grid { display: grid; gap: 1.5rem; align-items: start; }
+  @media (min-width: 800px) { .head-grid { grid-template-columns: 120px 1fr; } }
+  .tile { width: 120px; height: 120px; border-radius: 20px; background: linear-gradient(135deg, var(--blue-600), var(--navy-700)); display: grid; place-items: center; color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 2rem; letter-spacing: .02em; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); }
+  .official { color: #CFDAEC; margin: 0 0 1rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; padding: .3rem .7rem; font-size: .8rem; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.25); }
+  .chip-label { opacity: .75; }
+  .pending-banner { background: rgba(242,194,48,.15); border: 1px solid rgba(242,194,48,.5); color: #fff; border-radius: 10px; padding: .75rem 1rem; margin-top: 1rem !important; font-size: .95rem; max-width: none; }
+</style>

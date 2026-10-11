@@ -1,0 +1,1121 @@
+{
+  "slug": "vinnytsia-national-pirogov-memorial-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "National Pirogov Memorial Medical University, Vinnytsya",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: official PDFs and the foreign-faculty portal use this English form; Ukrainian «Вінницький національний медичний університет ім. М.І. Пирогова» (ВНМУ)."
+  },
+  "shortName": "Vinnytsia National Pirogov Memorial Medical University",
+  "alternativeNames": [
+    "VNMU",
+    "ВНМУ",
+    "National Pirogov Memorial Medical University, Vinnytsya",
+    "Vinnytsia National Medical University"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: order No. 146 of 20.08.2025 organises the 2025–26 educational process; 2025–26 timetables published; no relocation found. The order's content (format) is not in snippets."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Only a 2024–25 format statement was found (classroom and classroom-plus-distance). Order No. 146 (20.08.2025) exists but its wording was not read. Quote the current official statement verbatim with its date."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year (2025–26 or 2026–27). None found in snippets."
+  },
+  "city": "Vinnytsia",
+  "region": "Vinnytsia Oblast",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No address snippet found. Record from the official contacts page."
+  },
+  "website": {
+    "value": "https://www.vnmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: main site; international-student portal foreign.vnmu.edu.ua (Faculty of Foreign Citizens Training)."
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "foredean@vnmu.edu.ua",
+      "url": "https://foreign.vnmu.edu.ua/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: contact given in the 2026 foreigner-admission procedures PDF."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year only from the official history page."
+  },
+  "overview": "A state medical university in Vinnytsia, central Ukraine, with a dedicated Faculty of Foreign Citizens Training. Draft record built from search-snippet leads on 2026-10-11; every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or Ministry/NAQA listing as the source."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year)."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine (General Medicine)",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: \"master's programmes in 221 Dentistry, 222 Medicine, and 226 Pharmacy\" (2023 rules); foreign-faculty page: \"Medicine runs 12 semesters\"."
+      },
+      "specialtyCode": {
+        "value": "222",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 6,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "12 semesters",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: foreign-faculty admission page (2022) and 2025/2026 foreigner-admission procedures."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "An official tuition PDF for 2026/27 (and one for 2025/26) exists on the official domain; the figures were surfaced only in search snippets and are NOT recorded here. Record amount, currency, year and payment basis (UAH at NBU rate) only after reading the PDF."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-exam",
+          "type": "exam",
+          "summary": "Direct entry to year one requires an entrance exam in Biology, Chemistry and the language of instruction.",
+          "subject": "Biology; Chemistry; language of instruction",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. From the foreign-faculty admission page dated 2022 — may be out of date; confirm against the 2026 procedures."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "Passport of a foreign citizen (or document certifying a stateless person)",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. From the official \"List_doc_obtaining.pdf\" snippet."
+        },
+        {
+          "id": "education-document",
+          "name": "Document on the obtained level of education with grades (points) or an academic certificate",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. From the official \"List_doc_obtaining.pdf\" snippet."
+        },
+        {
+          "id": "consent",
+          "name": "Written consent to the processing of personal data",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        },
+        {
+          "id": "translation",
+          "name": "Translation into Ukrainian",
+          "condition": "Applies to the passport and the education document (\"documents 1 and 2 must be translated into Ukrainian\")",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        },
+        {
+          "id": "legalised-copies",
+          "name": "Legalised and notarised copies of previous education documents",
+          "condition": "Remote admission route via the \"Electronic Journal\" system",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No specific application deadline for foreigners found; the 2026 procedures mention twice-yearly master's intakes. Record dates only from the official page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": "221",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "10 semesters",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: foreign-faculty admission page (2022)."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Official 2026/27 tuition PDF exists; figures not recorded here. Read the PDF before publishing."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-exam",
+          "type": "exam",
+          "summary": "Entrance exam in Biology, Chemistry and the language of instruction (direct entry).",
+          "subject": "Biology; Chemistry; language of instruction",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. 2022 page — confirm against current procedures."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy, industrial pharmacy",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "specialtyCode": {
+        "value": "226",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "durationText": {
+        "value": "10 semesters (full-time); part-time track also listed",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: foreign-faculty admission page (2022); 2026/27 tuition PDF lists full-time and part-time tracks."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Official 2026/27 tuition PDF exists; figures not recorded here. Read the PDF before publishing."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "nursing",
+      "name": "Nursing («Медсестринство»)",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: 2025 educational-professional programme (bachelor), valid from 1 September 2025. No master's in Nursing found. Not in any foreign-student list — never \"BSN\"."
+      },
+      "specialtyCode": {
+        "value": "I5",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: Ukrainian-language programme documents only; no English-medium snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not found in the foreigner-admission lists (2023 rules name only 221/222/226)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health («Громадське здоров'я»)",
+      "field": "public_health",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: 2026 intake page lists Master's in specialty 19 «Громадське здоров'я»; the 2025 programme document is a draft marked \"not accredited\". No \"MPH\" label found."
+      },
+      "specialtyCode": {
+        "value": "229 / 19",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": "1 year 10 months (120 ECTS, draft document)",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: no English-medium snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not found in the foreigner-admission lists."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical therapy («Фізична терапія»), specialty «Терапія та реабілітація»",
+      "field": "physical_therapy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: 2026 intake page: Bachelor — «Асистент фізичного терапевта»; faculty page: 3 years 10 months."
+      },
+      "specialtyCode": {
+        "value": "17 (formerly 227), specialisation 17.01",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": "3 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "language": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: no English-medium snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not found in the foreigner-admission lists."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "physical-culture-sport",
+      "name": "Physical Culture and Sport (adaptive sport specialisation)",
+      "field": "physical_education",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything. Snippet: third-party admissions portal listing for the 2026 intake; no official-domain programme page found (only a department)."
+      },
+      "specialtyCode": {
+        "value": "A7",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (THIRD-PARTY source, 2026-10-11) — NOT verified and not an official statement; confirm on the official domain before recording anything."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet shows availability to international applicants."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "preparatory-department",
+      "name": "Preparatory Department (Preparatory Faculty) of the Faculty of Foreign Citizens Training",
+      "languageOfInstruction": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing. Snippet: chair of Ukrainian language and chair of natural sciences; language of instruction for the science subjects not stated."
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet states an English-language preparatory track; the 2022 admission page says students without enough Ukrainian or English study here first."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet."
+      },
+      "subjects": {
+        "value": [
+          "Ukrainian language",
+          "Biology",
+          "Physics",
+          "Chemistry",
+          "Geography",
+          "Mathematics"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Certificate name not stated in any snippet."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No progression wording found. Quote the official wording verbatim after reading the page."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated."
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "2026 procedures: \"Enrollment in the preparatory faculty can happen during the year\" — no fixed start date recorded."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official 2026/27 tuition PDF lists a preparatory-department fee; the figure is NOT recorded here. Record it with the academic year after reading the PDF (older 2020–22 pages quote different figures — outdated)."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the official eligibility wording verbatim."
+      },
+      "note": "History dates back to 1979 (official foreign-faculty page); hostel places offered to preparatory students (lead)."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Foreign faculty: admission conditions",
+      "url": "https://foreign.vnmu.edu.ua/en/admission-conditions-5/",
+      "purpose": "Programmes in English, semesters, entrance exam subjects, additional costs",
+      "snippetDate": "2026-10-11",
+      "note": "Page dated 2022 — treat as potentially out of date"
+    },
+    {
+      "label": "Admission of foreign citizens",
+      "url": "https://vnmu.edu.ua/admission-of-foreign-citizens",
+      "purpose": "Selection Commission procedure",
+      "snippetDate": "2026-10-11",
+      "note": "Labelled with 2023 materials — may be outdated"
+    },
+    {
+      "label": "Foreigner-admission procedures 2026",
+      "url": "https://www.vnmu.edu.ua/downloads/other/specific%20features_studies_2026.pdf",
+      "purpose": "Current admission procedures, intakes, contacts",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Foreigner-admission procedures 2025",
+      "url": "https://www.vnmu.edu.ua/downloads/other/specific%20features_studies_2025.PDF",
+      "purpose": "Previous-year procedures for comparison",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Document list for admission",
+      "url": "https://www.vnmu.edu.ua/downloads/other/List_doc_obtaining.pdf",
+      "purpose": "Required documents, translation and legalisation, remote route",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Tuition fee 2026–2027 (official PDF)",
+      "url": "https://www.vnmu.edu.ua/downloads/other/Tuition_fee_2026-2027.pdf",
+      "purpose": "Fee per programme/track with year and payment basis — read before any fee is recorded",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Tuition fee 2025–2026 (official PDF)",
+      "url": "https://www.vnmu.edu.ua/downloads/other/Tuition%20fee_2025-2026.pdf",
+      "purpose": "Previous-year fees and the orders that set them",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Preparatory faculty",
+      "url": "https://foreign.vnmu.edu.ua/en/preparatory-faculty/",
+      "purpose": "Structure, subjects, duration, certificate, progression wording",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Preparatory department article",
+      "url": "https://foreign.vnmu.edu.ua/?p=1556",
+      "purpose": "History, chairs, subjects, hostel",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Foreign faculty: faculties",
+      "url": "https://foreign.vnmu.edu.ua/en/faculties-2/",
+      "purpose": "Programmes available to foreign students",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Foreign faculty: about the university",
+      "url": "https://foreign.vnmu.edu.ua/en/about-university/",
+      "purpose": "Official name and overview",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Postgraduate admission conditions",
+      "url": "https://foreign.vnmu.edu.ua/en/admission-conditions-for-post-graduate-studies/",
+      "purpose": "PhD route (out of profile scope; context)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Admissions 2026 (Ukrainian)",
+      "url": "https://www.vnmu.edu.ua/вступ-2026",
+      "purpose": "Full programme list incl. nursing, public health, physical therapy",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Orders and directives",
+      "url": "https://www.vnmu.edu.ua/накази-та-розпорядження",
+      "purpose": "Order No. 146 of 20.08.2025 on the 2025–26 educational process (teaching format)",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Nursing programme 2025 (OPP)",
+      "url": "https://www.vnmu.edu.ua/downloads/pdf/OPP_medsestr_2025.pdf",
+      "purpose": "Level, award title, validity",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Public Health master's programme 2025 (draft)",
+      "url": "https://www.vnmu.edu.ua/downloads/other/OPP_I9_grom-zd_2025(proekt).pdf",
+      "purpose": "Level, ECTS, duration, accreditation status",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Medicine programme 2025 (OPP)",
+      "url": "https://www.vnmu.edu.ua/downloads/pdf/OPP_%20I2%20Medicine%20(mag)_2025.pdf",
+      "purpose": "Award title, duration, ECTS",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Medical Faculty No. 2",
+      "url": "https://www.vnmu.edu.ua/медичний-факультет-2",
+      "purpose": "Physical therapy bachelor duration and qualification",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Documents (new site)",
+      "url": "https://new.vnmu.edu.ua/documents",
+      "purpose": "Current regulatory documents",
+      "snippetDate": "2026-10-11"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "Dated official statement of teaching format for 2025–26 / 2026–27 (order No. 146 of 20.08.2025 — read its wording).",
+      "Official postal address.",
+      "Exact award titles for Medicine, Dentistry, Pharmacy and Nursing.",
+      "Official tuition PDFs for 2025/26 and 2026/27: read and record amount, currency, year, payment basis; reconcile with the outdated 2022 page.",
+      "Application deadlines and intake dates for foreign applicants (only \"twice-yearly\" found).",
+      "Entrance exam subjects for the current cycle (2022 page: Biology, Chemistry, language of instruction).",
+      "Preparatory department: duration, language of instruction for science subjects, certificate, progression wording, fee with year.",
+      "Nursing, public health, physical therapy, physical culture and sport: eligibility of international applicants and language.",
+      "Public health master's: accreditation status (2025 draft marked \"not accredited\").",
+      "Additional mandatory costs (medical examination, insurance, hostel) with year.",
+      "Accommodation availability and published prices.",
+      "Evidence-backed recognition statements only."
+    ]
+  }
+}
