@@ -1,0 +1,909 @@
+{
+  "slug": "zaporizhzhia-state-medical-and-pharmaceutical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Zaporizhzhia State Medical and Pharmaceutical University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: the international section uses this name and the abbreviation ZSMPhU; formerly Zaporizhzhia State Medical University (ZSMU). Confirm the full official name, in English and Ukrainian, on the official site."
+  },
+  "shortName": "Zaporizhzhia State Medical and Pharmaceutical University",
+  "alternativeNames": [
+    "ZSMPhU",
+    "Zaporizhzhia State Medical University (former name)",
+    "ZSMU (former abbreviation)"
+  ],
+  "status": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "GATED — teaching location and operating conditions. Official international-section pages (undated) say foreign students have been taught offline in Berehove, Zakarpattia region, under an agreement with the regional authorities reached as early as 2023, with classrooms in the Berehove Medical College building; the same page says classes can be held \"even during an air raid\" (where exactly is not clear from the snippet). Whether this is a relocation, a second site or a temporary arrangement, and whether it applies in 2026–27, is not stated. No status is recorded until a dated official statement for the current academic year has been read."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No dated current-year statement found. The page titled \"Off-line teaching of foreign students is continuing in a safe area\" is undated and must not be quoted as current. Quote the current official statement verbatim with its date; until then the profile must say nothing about normal operation or about where teaching takes place."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year (the undated Berehove pages describe offline teaching of foreign students)."
+  },
+  "city": "Zaporizhzhia",
+  "region": "Zaporizhzhia Oblast",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No address snippet found. Record the university address from the official contacts page, and a Berehove teaching address only if the university publishes one."
+  },
+  "website": {
+    "value": "https://mphu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: \"the only official ZSMPhU Web-site is mphu.edu.ua (zsmu.edu.ua)\"; international section int.mphu.edu.ua. Whether the legacy domain zsmu.edu.ua still redirects is not confirmed. No page could be opened from the build environment (network policy)."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No contact details in the snippets. Read them in the international section (int.mphu.edu.ua)."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year only from the official history page."
+  },
+  "overview": "A medical and pharmaceutical university based in Zaporizhzhia, south-eastern Ukraine, with an international section for foreign students. This draft is gated on teaching location: the university's own undated pages say foreign students are taught in Berehove, Zakarpattia, and no part of this record may be published until a dated official statement says where and how foreign students are taught in the current academic year. Draft record built from search-snippet leads on 2026-10-11; every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only with the official certificate or the NAQA register as the source. (The admissions-table snippet marks Medicine as \"accredited\" — a programme-level lead.)"
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year), for Zaporizhzhia and for Berehove separately if both are published."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet (requirements page): \"master's-level Medicine (for foreigners) track with 50 non-budget places\". Whether it is classified as a single-cycle (integrated) master's must be read on the official page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The snippets give \"5 years and 10 months\"; whole years are not stated, so none is recorded."
+      },
+      "durationText": {
+        "value": "5 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page: \"Medicine and Pediatrics run 5 years and 10 months\" (undated); the requirements page lists English-medium Medicine at 5 years 10 months."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: the requirements-page row seen shows Medicine for foreigners taught in Ukrainian (50 non-budget places) and the page lists English-medium Medicine at 5 years 10 months; the international section says foreign students have been taught in English since 2002; the Ministry \"Study in Ukraine\" cost page (government source, undated) lists English-medium Medicine."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: requirements page \"Requirements for admission of foreigners and stateless persons to ZSMPhU\" (titled 2025-2026 in a 2026-10-11 search result; another snippet the same day reported 2026-2027 content): Medicine \"(for foreigners)\" track; Training Fields page (undated): \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology\"."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Conflicting year labels for the requirements page (2025-2026 in one search result, 2026-2027 content reported in another, 2024 dates in its table). Record the intake only from the page as read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official tuition page (int.mphu.edu.ua/p_259.html; labelled 2025-2026 in one snippet and 2026-2027 in another) and the Ministry portal cost page list per-year USD figures; none is recorded here. Record amount, currency, year and payment schedule only after reading the official page."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-exams",
+          "type": "exam",
+          "summary": "Foreign citizens are enrolled in the first year on the results of entrance examinations; the minimum passing mark is 6 out of 12.",
+          "minimum": {
+            "value": "6",
+            "scale": "out of 12"
+          },
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippets: \"the minimum passing mark for admission exams is 6 out of 12\" (2025–26 page); \"foreign citizens are enrolled in the University for first year of studying on the results of entrance examinations\" (2026–27 rules, as reported). Subjects are not in the snippets."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The requirements page says enrolment for a Master's degree is \"no later than November 1 and March 1\"; the table dates seen in the snippet are from 2024. No date is recorded; read the current calendar on the official page."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry",
+      "field": "dentistry",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in any snippet; read it from the official programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The snippets give \"4 years and 10 months\"; whole years are not stated, so none is recorded."
+      },
+      "durationText": {
+        "value": "4 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page: the programmes other than Medicine and Pediatrics \"run 4 years and 10 months\" (undated); requirements page: \"Dentistry and Pharmacy are listed at 4 years 10 months\"."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated on the official domain in the snippets: the admissions-table snippet shows no separate English-medium Dentistry row. The Ministry \"Study in Ukraine\" cost page (government source, undated) lists an English-medium Dentistry fee."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page (undated): \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology\"."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official tuition page and the Ministry portal list per-year figures (year labels conflict or are missing); none is recorded. No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in any snippet; read it from the official programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The snippets give \"4 years and 10 months\"; whole years are not stated, so none is recorded."
+      },
+      "durationText": {
+        "value": "4 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page: \"Period of study is 4 years and 10 months for Pharmacy\" (undated); requirements page: \"Dentistry and Pharmacy are listed at 4 years 10 months\"."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated on the official domain in the snippets. The Ministry \"Study in Ukraine\" cost page (government source, undated) lists an English-medium Pharmacy fee."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page (undated): \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology\"."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official tuition page and the Ministry portal list per-year figures (year labels conflict or are missing); none is recorded. No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "pediatrics",
+      "name": "Pediatrics",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in any snippet; read it from the official programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The snippets give \"5 years and 10 months\"; whole years are not stated, so none is recorded."
+      },
+      "durationText": {
+        "value": "5 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page: \"Medicine and Pediatrics run 5 years and 10 months\" (undated)."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction for foreign applicants is not stated in any snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page (undated): \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology\"."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "perfume-cosmetic-technology",
+      "name": "Perfume-Cosmetic Technology",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in any snippet; read it from the official programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only as printed on the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The snippets give \"4 years and 10 months\"; whole years are not stated, so none is recorded."
+      },
+      "durationText": {
+        "value": "4 years 10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page: the programmes other than Medicine and Pediatrics \"run 4 years and 10 months\" (undated)."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction for foreign applicants is not stated in any snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: Training Fields page (undated): \"Foreign students can enroll in Medicine, Pediatrics, Dentistry, Pharmacy, and Perfume-Cosmetic Technology\"."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "therapy-rehabilitation",
+      "name": "Therapy and Rehabilitation (specialty 227)",
+      "field": "physical_therapy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Bachelor according to third-party directories only; not recorded."
+      },
+      "specialtyCode": {
+        "value": "227",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11; the search tool returned a summary with quoted fragments, not raw page text) — NOT verified; read the official page before publishing. Snippet: the 2024 annual review PDF on mphu.edu.ua reports \"166 вітчизняних здобувачів та 61 іноземний здобувач\" (166 domestic and 61 foreign students) on specialty 227 — attribution to the university by snippet only."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration in whole years is not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated on the official domain. A third-party directory says the university \"offers programmes in English and Ukrainian\" (not programme-specific)."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official admission statement found. Leads: the official 2024 annual review PDF counts 61 foreign students on specialty 227 (enrolment, not an admission statement); third-party directories say international students can study Therapy and Rehabilitation (specialisation \"Physical Therapy\"). Move to programmes[] only after an official page states admission."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "international-faculty-1",
+      "name": "International (preparatory) Faculty No. 1",
+      "languageOfInstruction": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (Ministry \"Study in Ukraine\" portal, a government source and not the university's own page, 2026-10-11) — NOT verified; confirm on the official university page before publishing. Snippet: \"From the 2017-2018 academic year, studies at the ZSMU Preparatory Faculty are conducted in Ukrainian\" (undated)."
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet states an English-language preparatory track."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The Ministry portal prices the course per \"one year of study\"; no official statement of duration found."
+      },
+      "subjects": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Snippet (official Berehove news, undated): future students \"can study the Ukrainian language and other essential subjects needed for admission to their chosen specialties\" — no subject list. The eight- and three-month Biology, Chemistry and Ukrainian courses on int.mphu.edu.ua/p_1547.html are for domestic contract entrants and are not this route."
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Quote the official wording verbatim after reading the current rules. Snippets: foreigners applying to the International (preparatory) Faculty No. 1 \"are enrolled without entrance examinations\", while \"foreign citizens are enrolled in the University for first year of studying on the results of entrance examinations\" — read whether completing the faculty changes the entrance-examination requirement."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated."
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The official tuition page (labelled 2026-2027 in one snippet) and the Ministry portal list a per-year preparatory fee; the figure is not recorded. Record it with the academic year after reading the official page."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the official eligibility wording verbatim (snippet: foreigners applying to the faculty \"are enrolled without entrance examinations\")."
+      },
+      "note": "Founded in 1973 according to the Ministry portal and the admission rules (leads); a preparatory department for future students is also reported running in Berehove (official news, undated)."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Requirements for admission of foreigners and stateless persons",
+      "url": "https://int.mphu.edu.ua/p_1276.html",
+      "purpose": "Programmes and languages for foreigners, places, intake windows, entrance examinations and pass mark, preparatory-faculty enrolment",
+      "snippetDate": "2026-10-11",
+      "note": "Year label conflicts across snippets (2025-2026 title; 2026-2027 content reported; 2024 table dates) — record the year printed on the page"
+    },
+    {
+      "label": "Tuition fee",
+      "url": "https://int.mphu.edu.ua/p_259.html",
+      "purpose": "Per-year fees by programme and language, preparatory fee — read before any fee is recorded",
+      "snippetDate": "2026-10-11",
+      "note": "Labelled 2025-2026 in one snippet and 2026-2027 in another"
+    },
+    {
+      "label": "Training fields",
+      "url": "https://int.mphu.edu.ua/p_257.html",
+      "purpose": "Programmes open to foreign students, durations, languages; official-site notice",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "Off-line teaching of foreign students is continuing in a safe area",
+      "url": "https://int.mphu.edu.ua/p_1848.html",
+      "purpose": "Operating-conditions gate: where and how foreign students are taught (Berehove); find the date",
+      "snippetDate": "2026-10-11",
+      "note": "Undated"
+    },
+    {
+      "label": "News about studying in Berehove",
+      "url": "https://int.mphu.edu.ua/p_1847_10.html",
+      "purpose": "Berehove teaching and preparatory department; dates of the news items",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Studies in Berehove: practical skills and USQE preparation",
+      "url": "https://int.mphu.edu.ua/p_1886.html",
+      "purpose": "Berehove arrangement; preparatory-department wording",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Paediatric clinical training at the Berehove campus (news)",
+      "url": "https://int.mphu.edu.ua/new_2699.html",
+      "purpose": "Berehove campus: date and scope of teaching",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Practice at the Berehove hospital (news)",
+      "url": "https://int.mphu.edu.ua/p_1849.html",
+      "purpose": "Clinical-practice location for foreign students",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "International section: site map",
+      "url": "https://int.mphu.edu.ua/map_en.html",
+      "purpose": "Locate the contacts page, the international office and current-year notices",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Pre-university training courses",
+      "url": "https://int.mphu.edu.ua/p_1547.html",
+      "purpose": "Confirm whether these courses (for domestic entrants) have any role for foreign applicants",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Official homepage",
+      "url": "https://mphu.edu.ua/",
+      "purpose": "Official-site notice; university-wide 2026–27 notices on teaching format and location; contacts and address",
+      "snippetDate": "2026-10-11"
+    },
+    {
+      "label": "Annual review 2024 (PDF)",
+      "url": "https://mphu.edu.ua/upload/razdel/240828_ro_24.pdf",
+      "purpose": "Foreign students on specialty 227 (therapy and rehabilitation); context",
+      "snippetDate": "2026-10-11",
+      "note": "Attribution to the university by snippet only"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "TEACHING LOCATION AND OPERATING CONDITIONS (gate — answer first): a dated official statement for 2026–27 on where and how foreign students are taught (Berehove, Zaporizhzhia or remotely), which programmes and years the Berehove arrangement covers, and whether it is current. The Berehove pages found are undated. No other work on this record should be published until this is answered.",
+      "Which academic year the requirements page and the tuition page currently state (snippets conflict: 2024 table dates, 2025-2026 titles, 2026-2027 content reported).",
+      "Official postal address(es) and international-office contacts as printed.",
+      "Language of instruction for foreign applicants per programme (Medicine: a Ukrainian-medium row in the admissions table and English-medium listed elsewhere; Dentistry, Pharmacy, Pediatrics and Perfume-Cosmetic Technology: not stated on the official domain).",
+      "Level, specialty code and exact award title for each programme.",
+      "Official tuition fees with the academic year and payment schedule (official page and Ministry portal; year labels conflict).",
+      "Intake windows and dates for the current cycle (only \"no later than November 1 and March 1\" and 2024 table dates found).",
+      "Entrance examinations: subjects and format for the current cycle (pass mark 6 out of 12 seen).",
+      "Required documents for foreign applicants (none in the snippets).",
+      "Preparatory faculty: duration, subjects, language of instruction on an official page, certificate, progression wording verbatim, fee with year, start date, and whether it runs in Berehove.",
+      "Therapy and Rehabilitation (227), nursing (a third-party directory lists \"Nursing (Cosmetology)\") and public health: whether any is offered and open to foreign applicants, at what level and in which language.",
+      "Status of the legacy domain zsmu.edu.ua.",
+      "Accommodation availability and published prices (Zaporizhzhia and Berehove).",
+      "Evidence-backed recognition statements only."
+    ]
+  }
+}
