@@ -186,15 +186,62 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
         }
         if (!/^\d+$/.test(sent.get('ts') ?? '')) fail(`apply submit: timing field ts not set (${sent.get('ts')})`);
 
-        // Enter in a text field on step 1 acts as Continue, never as a submit.
+        // Keyboard order (APPLICATION_SYSTEM_SPEC.md §12.1): pressing Tab moves through the current step only, in page
+        // order, with a visible focus outline on every stop, and ends on Continue (then Back from step 2 on).
+        const tabWalk = async (step, label) => {
+          // Expected stops: every visible, focusable control of the step after the current focus, in page order
+          // (one stop per radio group: its checked radio, else its first).
+          const expected = await page.evaluate((sel) => {
+            const all = [...document.querySelectorAll('*')]; const root = document.querySelector(sel); const start = all.indexOf(document.activeElement);
+            const groups = new Set(); const out = [];
+            for (const el of root.querySelectorAll('a[href], button, input, select, textarea')) {
+              if (el.tabIndex < 0 || el.disabled || el.type === 'hidden' || !el.getClientRects().length) continue;
+              if (el.type === 'radio') {
+                if (groups.has(el.name)) continue;
+                groups.add(el.name);
+                out.push(root.querySelector(`input[type="radio"][name="${CSS.escape(el.name)}"]:checked`) ?? el);
+              } else out.push(el);
+            }
+            return out.map((el) => all.indexOf(el)).filter((p) => p > start).sort((a, b) => a - b);
+          }, step);
+          const stops = [];
+          for (let i = 0; i < 120; i++) {
+            await page.keyboard.press('Tab');
+            const s = await page.evaluate((sel) => {
+              const a = document.activeElement; const root = document.querySelector(sel);
+              const cs = a ? getComputedStyle(a) : null;
+              return { id: a?.id || a?.getAttribute('href') || a?.tagName || '', inStep: !!(a && root?.contains(a)), next: !!a?.hasAttribute('data-next'), back: !!a?.hasAttribute('data-back'),
+                pos: a ? [...document.querySelectorAll('*')].indexOf(a) : -1, outline: !!cs && cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0 };
+            }, step);
+            stops.push(s);
+            if (!s.inStep || s.back || (s.next && step === '#step-1')) break;
+          }
+          const ids = stops.map((s) => s.id).join(' > ');
+          if (stops.some((s) => !s.inStep)) fail(`apply keyboard ${label}: Tab left the step or reached a hidden step (${ids})`);
+          if (stops.some((s, i) => i > 0 && s.pos <= stops[i - 1].pos)) fail(`apply keyboard ${label}: Tab order is not page order (${ids})`);
+          if (stops.map((s) => s.pos).join() !== expected.join()) fail(`apply keyboard ${label}: Tab skips or adds controls (${stops.length} stops, ${expected.length} focusable controls expected: ${ids})`);
+          if (stops.some((s) => !s.outline)) fail(`apply keyboard ${label}: no visible focus outline on ${stops.filter((s) => !s.outline).map((s) => s.id).join(', ')}`);
+          const end = stops.slice(-2);
+          if (step === '#step-1' ? !end[1]?.next : !(end[0]?.next && end[1]?.back)) fail(`apply keyboard ${label}: Tab order does not end on Continue${step === '#step-1' ? '' : ' then Back'} (${ids})`);
+        };
         posted = 0;
         await page.unroute('**/api/enquiry.php');
         await page.goto(base + '/apply/', { waitUntil: 'load' });
+        await page.focus('#f-course');
+        await tabWalk('#step-1', 'step 1');
+
+        // Enter in a text field on step 1 acts as Continue, never as a submit.
         await page.selectOption('#f-course', 'dentistry');
         await page.focus('#f-university-other');
         await page.keyboard.press('Enter');
         await page.waitForTimeout(150);
         if ((await visibleSteps()) !== '2' || posted) fail('apply: Enter on step 1 did not act as Continue');
+        if ((await focused()) !== 'step-2-title') fail(`apply keyboard: focus not on the step 2 heading after Enter (on ${await focused()})`);
+        await tabWalk('#step-2', 'step 2');
+        await page.click('#step-2 [data-next]');
+        await tabWalk('#step-3', 'step 3');
+        await page.click('#step-3 [data-next]');
+        await tabWalk('#step-4', 'step 4');
 
         // Without JavaScript: every fieldset visible, no step buttons, one submit button.
         const noJs = await browser.newContext({ viewport: { width, height: 900 }, javaScriptEnabled: false });
