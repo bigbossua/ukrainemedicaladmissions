@@ -1,0 +1,103 @@
+---
+/**
+ * Document checklist states as a compact state diagram: required → outstanding → uploaded → under review →
+ * accepted for processing | clarification requested. Labelled as how the checklist WILL work once uploads
+ * open: uploads do not exist today. Real HTML text; icons and arrows are decorative. Container query:
+ * horizontal in a wide column, vertical when narrow.
+ * Drawn in-repo 2026-10-11; register row in VISUAL_AUDIT_AND_IMAGE_REGISTER.md §11.
+ */
+import Icon from './Icon.astro';
+
+interface Props { id?: string; }
+const { id = 'doc-states' } = Astro.props;
+
+const steps = [
+  { icon: 'required', name: 'Required', desc: 'On the programme’s verified document list' },
+  { icon: 'outstanding', name: 'Outstanding', desc: 'Not provided yet' },
+  { icon: 'uploaded', name: 'Uploaded', desc: 'Added through secure upload' },
+  { icon: 'review', name: 'Under review', desc: 'Our reviewer checks it' },
+] as const;
+const outcomes = [
+  // APPLICATION_SYSTEM_SPEC §8.3 / §12.3: the caveat is shown beside this state, not only in nearby prose.
+  { icon: 'accepted', name: 'Accepted for processing', desc: 'Complete and legible for our own review. Not confirmation of authenticity or of acceptance by the university', tone: 'ok' },
+  { icon: 'clarify', name: 'Clarification requested', desc: 'We say what is needed; you upload again', tone: 'ask' },
+] as const;
+---
+<figure class="states" aria-labelledby={`${id}-cap`}>
+  <figcaption id={`${id}-cap`}>
+    <span class="cap-title">How the checklist will work once uploads open</span>
+    <span class="cap-note">Planned. Uploads are not available yet.</span>
+  </figcaption>
+  <ol class="flow">
+    {steps.map((s) => (
+      <li class="st">
+        <span class="tile" aria-hidden="true"><Icon name={s.icon} /></span>
+        <span class="txt"><span class="name">{s.name}</span><span class="desc">{s.desc}</span></span>
+      </li>
+    ))}
+    <li class="st end">
+      <span class="branch">After review, one of two outcomes:</span>
+      <ul class="outcomes">
+        {outcomes.map((o) => (
+          <li class:list={['out', o.tone]}>
+            <span class="tile" aria-hidden="true"><Icon name={o.icon} /></span>
+            <span class="txt"><span class="name">{o.name}</span><span class="desc">{o.desc}</span></span>
+          </li>
+        ))}
+      </ul>
+    </li>
+  </ol>
+</figure>
+
+<style>
+  .states {
+    container-type: inline-size; margin: 1.25rem 0; padding: 1.25rem; border-radius: var(--radius);
+    background: var(--blue-50); border: 1px solid var(--blue-100);
+  }
+  figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; margin: 0 0 1rem; }
+  .cap-title { font-family: var(--font-display); font-weight: 600; color: var(--navy-900); }
+  .cap-note { font-size: .8rem; font-weight: 600; color: #5C4500; background: var(--yellow-100); border-radius: 999px; padding: .1rem .55rem; }
+
+  .flow, .outcomes { list-style: none; margin: 0; padding: 0; }
+  .flow { display: grid; gap: 1.1rem; }
+  .st, .out { position: relative; margin: 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: .75rem; align-items: start; }
+  .st.end { display: block; }
+  .branch { display: block; margin: 0 0 .5rem; font-size: .8rem; font-weight: 600; color: var(--slate); }
+  .outcomes { display: grid; gap: .6rem; padding-left: 1rem; border-left: 2px solid var(--blue-100); }
+  .out { background: var(--white); border: 1px solid var(--blue-100); border-radius: var(--radius-sm); padding: .6rem; }
+
+  .tile {
+    width: 2.5rem; height: 2.5rem; border-radius: 10px; display: grid; place-items: center;
+    background: var(--white); color: var(--blue-600); border: 1px solid var(--blue-100);
+  }
+  .tile :global(svg) { width: 22px; height: 22px; }
+  .ok .tile { color: #14532D; background: #E3F4EA; border-color: #BFE3CC; }
+  .ask .tile { color: #5C4500; background: var(--yellow-100); border-color: #EBD48A; }
+
+  .txt { display: grid; gap: .1rem; min-width: 0; padding-top: .15rem; }
+  .name { font-weight: 600; color: var(--navy-900); font-size: .95rem; line-height: 1.3; }
+  .desc { font-size: .85rem; color: var(--slate); line-height: 1.4; }
+
+  /* Narrow: downward chevrons between linear states. */
+  .st:not(.end)::after {
+    content: ""; position: absolute; left: calc(1.25rem - 4px); bottom: -.85rem; width: 7px; height: 7px;
+    border-right: 2px solid var(--blue-500); border-bottom: 2px solid var(--blue-500); transform: rotate(45deg);
+  }
+
+  /* Wide: the four linear states in a row, then the branch to two outcomes side by side beneath. */
+  @container (min-width: 560px) {
+    .flow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 1.5rem; align-items: start; }
+    .st { grid-template-columns: 1fr; gap: .5rem; }
+    .st:not(.end):not(:nth-child(4))::before {
+      content: ""; position: absolute; left: calc(2.5rem + .5rem); right: -1.05rem; top: calc(1.25rem - 1px);
+      border-top: 2px dashed var(--blue-500); opacity: .55;
+    }
+    .st:not(.end):not(:nth-child(4))::after {
+      left: auto; right: -1.05rem; bottom: auto; top: calc(1.25rem - 4px);
+      border-bottom: 0; border-top: 2px solid var(--blue-500);
+    }
+    .st:nth-child(4)::after { content: none; }
+    .st.end { grid-column: 1 / -1; }
+    .outcomes { grid-template-columns: 1fr 1fr; padding: .75rem 0 0; border-left: 0; border-top: 2px solid var(--blue-100); }
+  }
+</style>
