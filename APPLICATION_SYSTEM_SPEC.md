@@ -223,7 +223,7 @@ Status: specification complete for Stage 1 (stepped form) and the data model; **
 
 **Status 2026-10-11: DESIGN ONLY. Nothing in §14 is built.** No account, sign-in, upload, payment, reviewer screen or real document handling exists. The only live-capable component is Stage 1: the `/apply/` and `/contact/` forms posting to `site/public/api/enquiry.php`, which e-mails the business address and writes a JSON record outside the web root. Stage 2 is developed and tested on **synthetic records only** (`@example.invalid`) until the owner signs §11.
 
-Labels: **VERIFIED-IN-REPO** (read in a repository file) · **VERIFIED (screenshot)** and **OWNER-REPORTED** (as recorded in `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`) · **SNIPPET-BACKED** (search-snippet evidence recorded in that assessment) · **UNVERIFIED** (not yet checked on the host) · **ASSUMPTION** · **RECOMMENDATION** (a design choice the owner may change) · **ESTIMATE** (effort, not measured).
+Labels: **VERIFIED-IN-REPO** (read in a repository file) · **VERIFIED (screenshot)** and **OWNER-REPORTED** (as recorded in `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`) · **SNIPPET-BACKED** (search-snippet evidence recorded in that assessment; in the owner's label set this is a LEAD, not OFFICIAL) · **UNVERIFIED** (not yet checked on the host) · **ASSUMPTION** · **RECOMMENDATION** (a design choice the owner may change) · **ESTIMATE** (effort, not measured).
 
 ### 14.0 Phasing, and what this section changes
 
@@ -245,25 +245,27 @@ Where §14 differs from earlier sections, §14 governs:
 
 Factual corrections made elsewhere in this file on 2026-10-11, each marked in place: §3 (framework example), §6 (synthetic address domain), §10 (private directory path), §12.1 (the committed handler has no timing check).
 
+Corrections made inside §14 by the adversarial review on 2026-10-11: §14.1 (hosting-plan label), §14.3 (which requirement objects are imported), §14.7, §14.11 and §14.12 (deleted data stays in older backups until they leave the window; deletions are re-applied after a restore), §14.5 (the confirmation page names the address), §14.8 (`subjects.result_status` may be NULL), §14.14 (v2 field names checked against `wip/apply` at `6a35310`).
+
 ### 14.1 Why server-rendered PHP, and the stack
 
-- The site is on Hostinger shared web hosting managed in hPanel (VERIFIED (screenshot), assessment §1). Its Git feature copies files as they are and runs no build step; build commands exist only in Hostinger's separate Node.js hosting product (SNIPPET-BACKED, assessment §12). There is no Node runtime at request time on this kind of plan (assessment §3; §10 above). A Node or serverless back end would therefore need a paid service. PHP is already what the Stage-1 handler uses.
+- The site's Hostinger account is managed in hPanel (VERIFIED (screenshot), assessment §1). That it is a shared web-hosting plan is inferred from the menus seen there (PHP Configuration, Databases, Cron Jobs, Cache Manager, Git); the exact plan is UNVERIFIED (assessment §1). Its Git feature copies files as they are and runs no build step; build commands exist only in Hostinger's separate Node.js hosting product (SNIPPET-BACKED, assessment §12). There is no Node runtime at request time on this kind of plan (assessment §3; §10 above). A Node or serverless back end would therefore need a paid service. PHP is already what the Stage-1 handler uses.
 - Server-rendered HTML forms work without JavaScript, fit the current CSP (`script-src 'self'`, no inline scripts) and can reuse the site's design system. Small bundled scripts may improve forms; nothing depends on them.
 - RECOMMENDATION: PHP 8.3 (minimum 8.2, §7 B2), PDO MySQL, libsodium, no full framework. Routing, templates, sessions, CSRF, rate limits and TOTP are small in-repo modules with unit tests. Third-party code only where writing our own is riskier: an SMTP mailer (for example PHPMailer) and, for tests, PHPUnit. Dependencies are pinned in `composer.lock`, installed in GitHub Actions (never on the host), checked with `composer audit` in CI and shipped vendored.
 - The code lives in this repository in a new top-level `app/` directory, separate from `site/`. The public Astro build is unchanged.
 
 ### 14.2 Host facts to confirm before anything is built on the host
 
-None of these has been checked on the plan. Each stays UNVERIFIED until the owner sends a dated screenshot, or the first synthetic test on the host proves it.
+None of these has been checked on the plan. Each stays UNVERIFIED until the owner sends a dated screenshot, or the first synthetic test on the host proves it. The hPanel menu names come from the assessment; tab and sub-page names that it does not record (**PHP extensions**, **PHP options**, Databases → **Management**, the Emails pages) are approximate and may read differently on the owner's screen.
 
 | # | Fact needed | Why | Where the owner checks in hPanel | Status |
 |---|---|---|---|---|
 | H1 | The domain's document root, and that a sibling directory beside it is writable by PHP | Config, code, data and backups must sit outside the web root | Websites → the domain → Dashboard → **FTP Accounts** (path line, assessment §10.1); checklist A1, A8 | UNVERIFIED |
-| H2 | PHP ≥ 8.2 selectable for this website | Language features (the Stage-1 handler already needs ≥ 8.1) | Websites → the domain → Advanced → **PHP Configuration** (evidence E3) | UNVERIFIED |
+| H2 | PHP ≥ 8.2 selectable for this website | Language features (the assessment, §9 risk (e), already asks for ≥ 8.1 for the Stage-1 handler) | Websites → the domain → Advanced → **PHP Configuration** (evidence E3) | UNVERIFIED |
 | H3 | Extensions `pdo_mysql`, `sodium`, `fileinfo`, `mbstring`, `openssl`, `gd` or `imagick`, `exif`, `zip`; `password_algos()` includes `argon2id` | Database, encryption, MIME sniffing, image re-encoding, export archives, optional passwords | PHP Configuration → **PHP extensions**; confirmed by a one-off check script run over SSH and then deleted | UNVERIFIED |
 | H4 | MySQL or MariaDB, and its version (target MySQL ≥ 8.0.16 or MariaDB ≥ 10.6, which enforce `CHECK` constraints); one database and user can be created; whether per-table grants are possible | Data model §14.8; append-only audit log | **Databases** → Management; version in phpMyAdmin (evidence E4) | UNVERIFIED |
 | H5 | Cron jobs can run PHP scripts | Backups, retention, purges, reminders | Advanced → **Cron Jobs** (menu seen in the screenshot, assessment §1; behaviour unknown) | UNVERIFIED |
-| H6 | Authenticated SMTP from a domain mailbox; SPF and DKIM (ideally DMARC) for the sending address | Magic links must arrive and not land in spam | **Emails** → the domain's mail service and its DNS records; checklist A7; backlog N4; §7 B3 | NOT TESTED |
+| H6 | Authenticated SMTP from a domain mailbox; SPF and DKIM (ideally DMARC) for the sending address | Magic links must arrive and not land in spam | **Emails** → the domain's mail service and its DNS records; checklist A7; backlog N4; §7 B3 | UNVERIFIED (not tested) |
 | H7 | PHP limits: `upload_max_filesize`, `post_max_size`, `max_file_uploads`, `memory_limit`, `max_execution_time` | Upload caps (§14.7) and backups | PHP Configuration → **PHP options** | UNVERIFIED |
 | H8 | `REMOTE_ADDR` is the visitor's address (no undocumented proxy in front) | Per-IP rate limits | First synthetic request on the host from a known address | UNVERIFIED |
 | H9 | The server cache never stores `/apply/app/` responses | Personal pages must not be served from a cache | **Cache Manager** (menu seen, assessment §1) | UNVERIFIED |
@@ -310,7 +312,7 @@ None of these has been checked on the plan. Each stays UNVERIFIED until the owne
 | Services | MagicLink, Session, Csrf, RateLimiter, Readiness (pure functions over a profile and requirement objects), DocumentStateMachine, UploadValidator, Mailer, Audit, Retention, Backup, Export, Stage1Importer. |
 | Repositories | PDO prepared statements only. Every method on candidate-owned data takes a scope object built from the session (§14.9). |
 | Cron jobs | Nightly backup. Daily retention and purge (tokens, sessions, rate-limit rows, expired exports). Daily reminder run: at most one e-mail per candidate per fortnight, listing outstanding items only (§8.4). |
-| Requirement import | The publish workflow exports **only publishable records and their verified objects** from `site/src/content/universities/*.json` to `data/requirements.json`; `bin/import-requirements` loads them. With today's data (seven records, none publishable, zero verified claims) it imports nothing, so no readiness result can yet be `met` or `not_met`. |
+| Requirement import | The publish workflow exports **only publishable records** from `site/src/content/universities/*.json` to `data/requirements.json`, and for each of their programmes every requirement object with its status. The official wording (`value_text`) is exported only for `verified` (or `outdated`) objects, so an unverified or unpublished requirement can only give `unknown` and its value is never shown (§8.2, §14.8 `ck_requirements_unverified_value_hidden`). The content schema spells one status `not-published`; the importer maps it to `not_published`. `bin/import-requirements` loads the file. *(Corrected 2026-10-11 in review: an earlier draft exported verified objects only, which would have hidden unverified requirements instead of reporting them as `unknown`, contrary to §12.2.)* With today's data (seven records, none publishable, zero verified claims) it imports nothing, so no readiness result can yet be `met` or `not_met`. |
 
 ### 14.4 Request flow
 
@@ -334,7 +336,7 @@ None of these has been checked on the plan. Each stays UNVERIFIED until the owne
 - Expiry 15 minutes. Single use (`used_at`). Sending a new link invalidates earlier unused links for that address.
 - Bound to the e-mail address: the token row keeps the address it was sent to and is accepted only if that address still belongs to the account (or, on a first sign-in, to no other account).
 - Comparison: `hash_equals($row['verifier_hash'], hash('sha256', $verifier, true))`, which runs in constant time.
-- Mail scanners open links automatically. So opening the link (GET) **never** signs anyone in. It shows a "Continue signing in" button that POSTs the selector and verifier. The POST consumes the token, creates a fresh session, sets `email_verified_at` on first use and redirects (303) to a URL without the token. Both pages send `Referrer-Policy: no-referrer` and `Cache-Control: no-store`.
+- Mail scanners open links automatically. So opening the link (GET) **never** signs anyone in. It shows a "Continue signing in" button that POSTs the selector and verifier, and names the address being signed in to, so a person sent someone else's link (a login-CSRF trick to capture what they then type) can see it is not their account. The POST consumes the token, creates a fresh session, sets `email_verified_at` on first use and redirects (303) to a URL without the token. Both pages send `Referrer-Policy: no-referrer` and `Cache-Control: no-store`.
 - The e-mail is plain text: the link, when it expires, and "If you did not ask for this, ignore this e-mail". No other personal data.
 
 **Optional password (later):** `password_hash($p, PASSWORD_ARGON2ID)` only (needs H3); `password_needs_rehash()` at sign-in; never required; reset by magic link; checked against a local list of common passwords, with no external service.
@@ -411,8 +413,8 @@ The app directory's `.htaccess` replaces the inherited site CSP so that only one
 - Images: dimensions checked with `getimagesize()` before decoding (decode cap, §14.5); EXIF orientation applied; then re-encoded with GD or Imagick (H3). Re-encoding drops EXIF, GPS and other metadata and breaks most polyglot files. The re-encoded file is the one stored, and its SHA-256 is recorded.
 - PDFs: must start with `%PDF-`; encrypted PDFs are refused (they cannot be checked); a PDF is refused if, after decoding `#xx` escapes in names, it contains `/JavaScript`, `/JS`, `/Launch`, `/EmbeddedFile`, `/RichMedia`, `/XFA` or `/AA`. This byte-level check is a heuristic, because compressed object streams can hide such names. So reviewers open PDFs only in a browser's built-in viewer, never in a desktop reader with scripting switched on, and the download response carries a sandboxing CSP. Server-side flattening (Ghostscript, qpdf) is probably not available on shared hosting (ASSUMPTION; H3 or H10 would show it).
 - Malware scan: only if H10 finds a scanner that can be called per file. Otherwise `scan_status = 'not_available'` is recorded and the gap is put to the owner under §11 gate 2.
-- Encryption at rest: each file is encrypted with libsodium `secretstream` under a per-candidate data key, which is itself wrapped by a master key in `stage2/config.php`. Honest limit: the master key is on the same server, so this protects against stray copies, web misconfiguration and backup leaks, not against a full compromise of the hosting account. Destroying a candidate's wrapped key makes their files unreadable in old backups too (crypto-shredding, §14.12).
-- Download: `GET /apply/app/files/<public_id>` → session → scope check (the owning candidate, or an assigned reviewer) → audit row `file.view` → headers `Content-Type` (the stored allow-listed value), `Content-Disposition: attachment; filename="document.pdf"; filename*=UTF-8''<sanitised name>`, `X-Content-Type-Options: nosniff`, `Cache-Control: no-store`, `Content-Security-Policy: default-src 'none'; sandbox`, `Cross-Origin-Resource-Policy: same-origin` → decrypting stream.
+- Encryption at rest: each file is encrypted with libsodium `secretstream` under a per-candidate data key, which is itself wrapped by a master key in `stage2/config.php`. Honest limit: the master key is on the same server, so this protects against stray copies, web misconfiguration and backup leaks, not against a full compromise of the hosting account. Destroying a candidate's wrapped key at deletion makes any copy of their files left on the live disk unreadable. It does **not** reach old backups: each nightly backup holds the database dump (with `candidates.data_key_wrapped`) and the master key sealed to the owner's key (§14.11), so a backup taken before the deletion can still decrypt that candidate's files with the owner's offline key until it leaves the rotation window (§14.12). *(Corrected 2026-10-11 in review: an earlier draft said key destruction also made old backups unreadable.)*
+- Download: `GET /apply/app/files/<public_id>` → session → scope check (the owning candidate, or an assigned reviewer) → audit row `file.view` → headers `Content-Type` (the stored allow-listed value), `Content-Disposition: attachment; filename="document.<ext>"; filename*=UTF-8''<sanitised name>` (`<ext>` is `pdf`, `jpg` or `png` from the stored type), `X-Content-Type-Options: nosniff`, `Cache-Control: no-store`, `Content-Security-Policy: default-src 'none'; sandbox`, `Cross-Origin-Resource-Policy: same-origin` → decrypting stream.
 - While an item is `uploaded` (not yet under review) the candidate may replace their own file. The earlier file is soft-deleted and later removed by the retention job.
 
 ### 14.8 Data model (MySQL DDL; draft; not created on any server and not yet run against a database engine)
@@ -560,7 +562,7 @@ CREATE TABLE subjects (
   grade_text        VARCHAR(40) NULL,                   -- exactly as typed
   scale_type        ENUM('percentage','letter','points','gpa','other') NULL,   -- defaults to the qualification's scale
   scale_max         VARCHAR(20) NULL,
-  result_status     ENUM('achieved','predicted','pending','not_studied') NOT NULL,   -- §13, plus not_studied (§14.14)
+  result_status     ENUM('achieved','predicted','pending','not_studied') NULL,   -- §13, plus not_studied (§14.14); NULL = not stated (Stage-1 v2 allows an empty status)
   position          TINYINT UNSIGNED NOT NULL,          -- display order
   PRIMARY KEY (id),
   KEY ix_subjects_candidate (candidate_id),
@@ -871,7 +873,8 @@ CREATE TABLE deletion_requests (
 - **Nightly job (cron, H5):** `bin/backup` dumps the database (`mysqldump` if the host provides it, otherwise a PDO-based dump; UNVERIFIED which), compresses it, and encrypts it with libsodium: a fresh random file key encrypts the dump (`secretstream`), and that file key is sealed with the owner's **public** key (`crypto_box_seal`). The matching private key is held offline by the owner and never stored on the server. A stolen backup is therefore unreadable without the offline key. New document files are copied in their already-encrypted form, with a manifest (storage name, SHA-256) and the master key sealed to the same public key.
 - **Separate location:** a place the owner controls that is not this hosting account, for example the owner's own computer pulling the files over SFTP (SSH Access is ACTIVE, assessment §1). Owner decision; no purchase is assumed. Hostinger's own backups (hPanel → Files → Backups) are useful but are on the same provider, so they do not count as the separate copy.
 - **Rotation:** a rolling window of nightly copies; length TO BE CONFIRMED (it decides how long deleted data survives in backups, §14.12).
-- **Restore rehearsal:** before go-live and then quarterly (§3), on a local or CI environment with **synthetic data only**: decrypt with the offline key, load into an empty database, check row counts against the manifest, check each file's SHA-256 against `document_files.sha256`, sign in as a synthetic candidate and open a file. The rehearsal log (date, who, time taken, result, problems) is kept beside checklist §C.
+- **Deletions after a restore:** a backup taken before a deletion brings the deleted candidate back. So, before the app reopens after any restore, every deletion request completed after that backup was taken is applied again (matched on `deletion_requests.email_hmac`, from the newest copy of that table available), and the restore log lists them.
+- **Restore rehearsal:** before go-live and then quarterly (§3), on a local or CI environment with **synthetic data only**: decrypt with the offline key, load into an empty database, check row counts against the manifest, check each file's SHA-256 against `document_files.sha256`, re-apply a synthetic deletion completed after the backup and confirm it is gone, sign in as a synthetic candidate and open a file. The rehearsal log (date, who, time taken, result, problems) is kept beside checklist §C.
 
 ### 14.12 Retention, deletion, export and data minimisation
 
@@ -886,10 +889,10 @@ Periods come from §3 and the draft privacy notice (`site/src/pages/privacy/inde
 | Application metadata after closure | Kept for a limited period for accountability, then deleted | Privacy notice | TO BE CONFIRMED |
 | Login links, sessions, rate-limit rows, exports | Purged daily after expiry | Design | RECOMMENDATION |
 | Audit trail and application logs | Kept for a fixed period, then purged by `uma_maint` | Design | TO BE CONFIRMED |
-| Backups | Rolling window (§14.11); deleted data disappears when the window passes; per-candidate keys are destroyed at deletion so their files cannot be read even in older copies | Design | Window TO BE CONFIRMED |
+| Backups | Rolling window (§14.11). Deleted data stays in the backups taken before the deletion, readable only with the owner's offline key, and disappears when the last of those backups leaves the window. The privacy notice must say so. Destroying a candidate's key at deletion does not change this, because each backup also holds the wrapped key and the sealed master key (§14.7) | Design | Window TO BE CONFIRMED |
 | Deletion requests | The request row (address kept only as an HMAC) is kept as proof that deletion happened | Design | Period TO BE CONFIRMED |
 
-**Deletion on request:** the candidate asks in the account (or by e-mail, after which we send a magic link to the address to confirm it is theirs) → `deletion_requests` row with `due_by` → account set to `deletion_pending` and every session ended → job deletes the files and destroys the candidate's wrapped key → database rows deleted (cascades in §14.8) → confirmation e-mail → `completed_at` set. Anything kept under a legal duty is listed in `retained_note` with the reason. On shared hosting a deleted file cannot be guaranteed to be physically erased from disk; destroying the key is what makes it unreadable.
+**Deletion on request:** the candidate asks in the account (or by e-mail, after which we send a magic link to the address to confirm it is theirs) → `deletion_requests` row with `due_by` → account set to `deletion_pending` and every session ended → job deletes the files and destroys the candidate's wrapped key → database rows deleted (cascades in §14.8) → confirmation e-mail → `completed_at` set. Anything kept under a legal duty is listed in `retained_note` with the reason. On shared hosting a deleted file cannot be guaranteed to be physically erased from disk; destroying the key is what makes any copy left on the live disk unreadable. Copies inside backups taken before the deletion remain until they leave the rotation window (§14.11, table above).
 
 **Export on request:** a JSON file of every stored field plus the candidate's files (as a zip if H3 has `zip`, otherwise separate downloads), generated on request, available for a short time, every step audited.
 
@@ -934,7 +937,7 @@ Periods come from §3 and the draft privacy notice (`site/src/pages/privacy/inde
 **Sources.** Files in `uma-private/enquiries/*.json`, one per submission.
 
 - **Version 1** (VERIFIED-IN-REPO: `site/public/api/enquiry.php` at `50376e3`): no `version` key. Keys `id` (16 hex characters), `type` (`enquiry` or `application-start`), `stage` (always `enquiry`), `received`, `name`, `email`, `country` (the form labels it "Country of your school-leaving certificate"), `course` (a course slug: `medicine`, `dentistry`, `nursing` or `pharmacy` from `site/src/lib/courses.ts`), `university` (a directory slug or `unlisted`), `startYear`, `qualification`, `message`, `consent`, `consentText`, `ip_hash`.
-- **Version 2**: `"version": 2` plus a nested `profile` object produced by the Stage-1 stepped form. The field names below are taken from that change as it was being prepared in parallel (branch `wip/apply`, not merged when this section was written). They must be re-checked against the merged handler before the importer is written.
+- **Version 2**: `"version": 2` plus a nested `profile` object produced by the Stage-1 stepped form. The field names and enumerations below were checked in review on 2026-10-11 against the handler committed on branch `wip/apply` at `6a35310` (not merged into this branch; `site/public/api/enquiry.php` here is still version 1). They must be re-checked against the merged handler before the importer is written.
 
 **Rules.**
 
@@ -987,7 +990,7 @@ All tests use synthetic data (`@example.invalid`), an injected clock and a captu
 | T-AUTH-3 | A link used 15 minutes and 1 second after issue is refused. |
 | T-AUTH-4 | A used link is refused on a second POST. |
 | T-AUTH-5 | A link is refused after the account's address changes; a newer link invalidates an older one. |
-| T-AUTH-6 | A GET of the link page (as a mail scanner does) does not consume the token. |
+| T-AUTH-6 | A GET of the link page (as a mail scanner does) does not consume the token; the page names the address being signed in to. |
 | T-AUTH-7 | Link pages send `Referrer-Policy: no-referrer` and `Cache-Control: no-store`; the final URL after the POST holds no token. |
 | T-AUTH-8 | Static check: token and CSRF comparisons use `hash_equals`. |
 | T-SESS-1 | Cookie is `__Host-uma_s` with `Secure`, `HttpOnly`, `SameSite=Lax`, `Path=/`, no `Domain`. |
@@ -1048,7 +1051,7 @@ All tests use synthetic data (`@example.invalid`), an injected clock and a captu
 | T-RET-2 | A deletion request leaves no candidate rows or files and destroys the key; the request row keeps only the HMAC. |
 | T-RET-3 | An export holds every stored field of that candidate and nothing of anyone else. |
 | T-BKP-1 | A backup cannot be decrypted with anything held on the server, and decrypts with the offline key. |
-| T-BKP-2 | The restore rehearsal checks in §14.11 pass. |
+| T-BKP-2 | The restore rehearsal checks in §14.11 pass, including the re-application of a deletion completed after the backup was taken. |
 | T-MIG-1 | Version 1 and version 2 fixtures import as §14.14 maps them. |
 | T-MIG-2 | A second run imports nothing. |
 | T-MIG-3 | Tampered or malformed records are skipped or have fields dropped, and are reported by record id. |

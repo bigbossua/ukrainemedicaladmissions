@@ -91,7 +91,7 @@ Never in the report: an eligibility verdict, a score, a total, a percentage, a p
 - Not visa advice, and not advice on whether the degree will be recognised in the candidate's country. On recognition the report points to the candidate's home regulator and asks them to check its current rules.
 - Not a check that any document is genuine; not a translation or legalisation service.
 - Not an application. Nothing is sent to any university.
-- Not a replacement for the free readiness comparison. Everything the free profile shows stays free. The paid review adds a person's reading, the to-do list and our follow-up on unknowns.
+- Not a replacement for the free readiness comparison planned for Stage 2a (APPLICATION_SYSTEM_SPEC §14.0; not built). Everything the free profile shows, now or later, stays free. The paid review adds a person's reading, the to-do list and our follow-up on unknowns.
 
 ### Turnaround
 
@@ -115,7 +115,7 @@ To be measured, not promised. No turnaround is stated to candidates until the pi
 
 - [ ] Workload measured as above, and the cost of delivery worked out from the measured minutes.
 - [ ] Competitor price points recorded with sources: page link, capture date, currency and what is included. None is recorded today and none is quoted here.
-- [ ] Consumer-law terms reviewed for the operating jurisdiction: information given before purchase; cancellation rights (the tier text above already notes 14-day cancellation where the law requires it); what happens if the review starts within the cancellation period; the refund rule; the complaints route (the complaints policy page is still a draft).
+- [ ] Consumer-law terms reviewed for the operating jurisdiction: information given before purchase; cancellation rights (Option A in the table above already notes 14-day cancellation where the law requires it); what happens if the review starts within the cancellation period; the refund rule; the complaints route (the complaints policy page is still a draft).
 - [ ] Legal entity confirmed (D7) and named on the terms, privacy notice and invoice; VAT position known.
 - [ ] Payment route approved (APPLICATION_SYSTEM_SPEC §5; no payment system exists today).
 - [ ] Owner approval of the price, with the cost basis recorded in this section.
@@ -131,6 +131,7 @@ To be measured, not promised. No turnaround is stated to candidates until the pi
 ### What has to be true before it is offered
 
 - [ ] At least one programme with VERIFIED requirements (today: none).
+- [ ] The owner has decided how this offer fits the eligibility rule at the top of this file (paid choices appear only after state 3 and an initial completeness review). This review is meant for a Stage-1 profile (state 1), so either it waits for state 3, or the owner records in writing that this fixed-scope review is an exception and why.
 - [ ] The report template reviewed by the owner, using the measured pilot cases.
 - [ ] A safe way to receive the profile and deliver the report agreed: sending a report that holds academic personal data by e-mail needs the owner's decision; delivery inside the account needs Stage 2a and its §11 sign-off.
 - [ ] Workload measured, price set, and every pricing gate ticked.
