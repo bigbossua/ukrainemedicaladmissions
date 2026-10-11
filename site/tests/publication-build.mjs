@@ -120,7 +120,7 @@ try {
       for (const v of ['POSCTRL-ALPHA-OFFICIAL-NAME Medical University', 'POSCTRL-ALPHA-STATEMENT: teaching this academic year is in person.', 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville',
         '7,123 USD per year', `(${AY})`, 'POSCTRL-ALPHA-COST-LABEL', '345 USD per year', 'POSCTRL-ALPHA-REQ-BIOLOGY', 'POSCTRL-ALPHA-DOC-PASSPORT', 'POSCTRL-ALPHA-PREP-ROUTE',
         'POSCTRL-ALPHA-PREP-DURATION', 'POSCTRL-ALPHA-ACCREDITATION', 'https://register.fixture.gov.ua/alpha', 'POSCTRL-222', 'posctrl-office@alpha.fixture.example', 'POSCTRL-ALPHA-MEDICINE', 'POSCTRL-ALPHA-OVERVIEW', '1901',
-        'https://alpha.fixture.example/fees', 'Verified', 'To be confirmed', 'still being confirmed'])
+        'https://alpha.fixture.example/fees', 'Verified', 'To be confirmed', 'still being confirmed', 'Some other mandatory costs have not yet been verified'])
         check(alpha.includes(v), `(b) alpha profile: positive control "${v}" missing`);
       for (const v of ['POSCTRL-BETA-OFFICIAL-NAME', 'POSCTRL-BETA-STATEMENT', 'POSCTRL-BETA-MEDICINE', 'POSCTRL-BETA-PHARMACY', 'POSCTRL-BETA-DEADLINE', 'POSCTRL-BETA-DURATION 6 years', 'relocated', 'To be confirmed'])
         check(beta.includes(v), `(b) beta profile: positive control "${v}" missing`);

@@ -18,6 +18,8 @@ const duration = view(p.durationText).state !== 'tbc' ? p.durationText : p.durat
 // Projections (published profiles) carry withheld counts; raw drafts (PREVIEW only) list every item with its status.
 const reqWithheld = typeof p.requirementsWithheld === 'number' ? p.requirementsWithheld : 0;
 const docWithheld = typeof p.documentsWithheld === 'number' ? p.documentsWithheld : 0;
+// A projection drops unverified cost items and counts them: say so, so a missing row is never read as "no other costs".
+const costWithheld = typeof p.otherCostsWithheld === 'number' ? p.otherCostsWithheld : 0;
 ---
 <article class="prog" id={p.id}>
   <header class="prog-head">
@@ -38,6 +40,7 @@ const docWithheld = typeof p.documentsWithheld === 'number' ? p.documentsWithhel
     <Fact label="Intake these facts refer to" claim={p.intakeYear} />
     <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee schedule for the ${intakeYear.state !== 'tbc' && typeof intakeYear.value === 'string' ? intakeYear.value : 'current'} intake has not yet been verified. We publish a fee only with its academic year, currency, payment schedule and the date we read it on the official page — never an estimate.`} />
     {p.otherMandatoryCosts.filter((c: any) => PREVIEW || view(c.cost).state === 'verified').map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}
+    {costWithheld > 0 && <Fact label="Other mandatory costs" claim={null} tbcText="Some other mandatory costs have not yet been verified against the university's official pages, so they are not listed here yet." />}
     <Fact label="Application window" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} tbcText="The university's application dates for this intake have not yet been verified. We publish dates only as printed on the official admissions page, with the year." />
     <Fact label="Intake" claim={p.intake} tbcText="The intake start has not yet been verified from the official admissions page." />
   </dl>

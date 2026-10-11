@@ -448,6 +448,32 @@ section('adversarial review');
   check(toPublicRecord(rf, ef, { now: NOW }).programmes.length === 0, 'a fee page "read" on an agent site does not get the programme listed');
   ef.entries[ef.entries.length - 1].sourceUrl = `${H}/fees`;
   check(toPublicRecord(rf, ef, { now: NOW }).programmes.length === 1, 'positive control: a fee page read on the official website does');
+  // The fee page counts as read only under the same source rules as a shown fact (review 2026-10-11).
+  const feeRead = (o) => { const x = clone(ef); Object.assign(x.entries[x.entries.length - 1], o); return toPublicRecord(rf, x, { now: NOW }).programmes.length; };
+  eq(feeRead({ method: 'Copied from a search snippet of the fee page' }), 0, 'a fee page "read" from a search snippet does not get the programme listed');
+  eq(feeRead({ academicYear: academicYear(NOW, -1) }), 0, 'a fee page read for an academic year that has ended does not get the programme listed');
+  eq(feeRead({ status: 'outdated' }), 0, 'an outdated fee-page entry does not get the programme listed');
+  // Ids that collide share every evidence entry, so neither item is used (review 2026-10-11).
+  const rdup = clone(rec); rdup.programmes.push({ ...clone(rec.programmes[0]), name: 'CANARY-DUPLICATE-PROGRAMME', field: 'dentistry' });
+  const pdup = toPublicRecord(rdup, e, { now: NOW });
+  check(pdup.programmes.length === 0 && pdup.programmesWithheld === 2 && !JSON.stringify(pdup).includes('CANARY'), 'two programmes with one id: neither is listed');
+  check(evaluatePublication(rdup, e, { now: NOW }).notListed.some((n) => n.reasons.includes('duplicate-id')), 'the duplicate id is explained in the report');
+  const rdef = clone(rec); rdef.deferredProgrammes = [{ ...clone(rec.programmes[0]), name: 'Deferred copy' }];
+  eq(toPublicRecord(rdef, e, { now: NOW }).programmes.length, 0, 'a listed programme whose id is also used by a deferred programme is not listed');
+  const ritem = clone(rec); const bio = { id: 'bio', type: 'subject', summary: 'Biology', status: 'verified', source: `${H}/page`, checked: day(-2) };
+  ritem.programmes[0].requirements = [bio, { ...bio, summary: 'CANARY-DUPLICATE-ITEM' }];
+  const eitem = clone(e); eitem.entries.push(entry('programmes.medicine.requirements.bio', { type: 'subject', summary: 'Biology' }));
+  const pitem = toPublicRecord(ritem, eitem, { now: NOW }).programmes[0];
+  check(pitem.requirements.length === 0 && pitem.requirementsWithheld === 2 && !JSON.stringify(pitem).includes('CANARY'), 'two requirement items with one id: both withheld and counted');
+  ritem.programmes[0].requirements = [bio];
+  eq(toPublicRecord(ritem, eitem, { now: NOW }).programmes[0].requirements.length, 1, 'positive control: the same item alone is shown');
+  const rroute = clone(rec); const route = { id: 'prep', name: 'Preparatory course', languageOfInstruction: V(['Ukrainian']), englishTrack: { value: null, status: 'not-published', source: null, checked: null } };
+  rroute.preparatoryRoutes = [route, { ...clone(route), name: 'CANARY-DUPLICATE-ROUTE' }];
+  const eroute = clone(e); eroute.entries.push(entry('preparatoryRoutes.prep.languageOfInstruction', ['Ukrainian']));
+  const proute = toPublicRecord(rroute, eroute, { now: NOW });
+  check(proute.preparatoryRoutes.length === 0 && proute.routesWithheld === 2 && !JSON.stringify(proute).includes('CANARY'), 'two preparatory routes with one id: both withheld and counted');
+  rroute.preparatoryRoutes = [route];
+  eq(toPublicRecord(rroute, eroute, { now: NOW }).preparatoryRoutes.length, 1, 'positive control: the same route alone is shown');
   // An evidence file with a slug or claim path full of regular-expression characters is invalid, never a crash.
   const oddSlug = (() => { try { const x = clone(e); x.slug = 'bad(['; x.entries = x.entries.map((y) => ({ ...y, id: `bad([/${y.claimPath}/1` })); return parseEvidence(x).state; } catch (err) { return `threw: ${err.message}`; } })();
   eq(oddSlug, 'invalid', 'an evidence file with a regex-like slug is reported invalid');

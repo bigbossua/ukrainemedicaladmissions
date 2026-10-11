@@ -10,15 +10,17 @@
 //      AND the evidence store (src/lib/evidence.mjs) holds a matching entry: verified, decision "publish", quoted, dated,
 //      exactly the same value, the same source address and an allowed source tier (recognition: tier 4 only and never on
 //      the university's own website; everything else: tiers 1-3), on an address that fits the tier (tiers 1-2: the
-//      official website; tier 3: .gov.ua; never a search result, archive, directory, social page or blog). Any
+//      official website; tier 3: .gov.ua; tier 4: not checked against a list, the reviewer's judgement; never a search
+//      result, cache, archive, Wikipedia, WDOMS, social page, blog or link shortener). Any
 //      conflicting entry, declared contradiction or verified entry with another value withholds the claim. An entry past
 //      its next-review date, or naming an academic year that has ended, no longer counts; time-sensitive claims must have
 //      a next-review date; fees need an academic year that has not ended (and the evidence must name it); a deadline that
 //      has passed is never shown; a value carrying research-note wording is never shown.
 //      Anything else is withheld: no value, no note, no source. Pages print "To be confirmed".
 //   3. toPublicRecord() builds a NEW object holding only public and editorial-public keys, every claim replaced by its
-//      evaluated form. Programmes are listed only when their international admission, level, language, duration and
-//      intake year are shown and their fee page has been read; requirement, document and cost items only when shown.
+//      evaluated form. Programmes are listed only when their id is safe and unique, their international admission, level,
+//      language, duration and intake year are shown and their fee page has been read; requirement, document and cost
+//      items only when shown (items or routes sharing an id are withheld, because their evidence cannot be told apart).
 //   4. evaluatePublication() decides whether a record may have a public page at all. verification.publishable can only
 //      NARROW that decision: a record is published only when the flag is true AND the policy passes. A production build
 //      with a flagged record that fails the policy stops with an error naming the record and each failure.
@@ -208,8 +210,12 @@ const REQUIREMENT_PATH = /^programmes\.[^.]+\.requirements\.[^.]+$/;
 const DOCUMENT_PATH = /^programmes\.[^.]+\.documents\.[^.]+$/;
 /** @param {string} path */ export const isTimeSensitive = (path) => TIME_SENSITIVE_PATH.some((r) => r.test(path));
 /** @param {string} path */ export const isMoneyPath = (path) => MONEY_PATH.some((r) => r.test(path));
-/** Source tiers that may support a claim at `path` (see the evidence interface). @param {string} path @returns {number[]} */
-export const allowedTiers = (path) => (path === 'recognition' ? [4] : path === 'accreditation' ? [1, 2, 3] : [1, 2, 3]);
+/**
+ * Source tiers that may support a claim at `path` (see the evidence interface): recognition only tier 4 (the destination
+ * country's recognition authority); every other claim, accreditation included, tiers 1-3. Tier 5 supports nothing.
+ * @param {string} path @returns {number[]}
+ */
+export const allowedTiers = (path) => (path === 'recognition' ? [4] : [1, 2, 3]);
 
 /**
  * The public content of a requirement or document item: the value an evidence entry for it must carry.
@@ -252,6 +258,9 @@ const hostOf = (url) => { try { return new URL(url).hostname.toLowerCase().repla
 
 // Sources that are never evidence at any tier (owner rule: search snippets, third-party directories, archives, social
 // media and blogs are research leads only). Matched on the host name, any country domain (google.co.uk, yandex.ua ...).
+// Other third-party sites fail the tier host rules instead (tiers 1-2: official website; tier 3: .gov.ua); tier 4 hosts
+// are not listed, so the reviewer must confirm a tier 4 page belongs to the destination country's recognition authority.
+// UNIVERSITY_DATA_REGISTER.md lists these hosts by name: keep the two in step.
 const NOT_EVIDENCE_HOST = /(^|\.)(google|googleusercontent|bing|yahoo|yandex|baidu|duckduckgo|ecosia|startpage|ask|wikipedia|wikiwand|wikimedia|archive|facebook|instagram|youtube|tiktok|twitter|linkedin|reddit|quora|medium|blogspot|wordpress|telegram|whatsapp|wdoms)\.[a-z]{2,}(\.[a-z]{2})?$|(^|\.)(t\.me|x\.com|youtu\.be|wa\.me|archive\.ph|archive\.is|archive\.today|search\.brave\.com|bit\.ly|tinyurl\.com)$|\.translate\.goog$/;
 /** True when a URL is on a search engine, archive, directory, social network or blog host: never evidence. @param {string} url */
 export const isNotEvidenceSource = (url) => { const h = hostOf(url); return !h || NOT_EVIDENCE_HOST.test(h); };
@@ -293,11 +302,11 @@ export const CODE_WORDS = Object.freeze({
   'no-evidence': 'the evidence file has no entry for it',
   'evidence-not-publishable': 'no evidence entry for it is verified, marked "publish", quoted, dated (not in the future), on an https page and identical to the record value',
   'tier-not-allowed': 'its evidence is not from an allowed kind of source (recognition needs tier 4, the recognition authority of the destination country; everything else tier 1, 2 or 3)',
-  'source-not-evidence': 'its evidence is a search result, archive copy, directory, social-media page or blog (a research lead, never evidence), or its method says it was read from a search snippet',
+  'source-not-evidence': 'its evidence is a search result, cached or translated copy, archive copy, Wikipedia, the WDOMS directory, a social-media page, a blog or a link shortener (a research lead, never evidence), or its method says it was read from a search snippet',
   'source-not-official': "its evidence page is not on the address its tier requires (tier 1 and 2: the university's official website, as recorded in the website field; tier 3: a Ukrainian government address ending .gov.ua)",
   'no-capture': 'its evidence is an owner capture with no capture file named',
   'evidence-year-ended': 'its evidence names an academic year that has ended',
-  'internal-wording': 'its value contains wording from an internal research note (for example "snippet", "not verified" or "to be confirmed")',
+  'internal-wording': 'its value contains wording from an internal research note (for example "search snippet", "not verified" or "to be confirmed")',
   'recognition-from-university': "its recognition evidence is on the university's own website",
   'source-mismatch': "the record's source link is not the address of its verified evidence entry",
   conflict: 'the record or an evidence entry marks it conflicting, an evidence entry lists a contradiction (contradicts) for it, or verified evidence entries disagree with each other',
@@ -429,17 +438,34 @@ function hostsOf(record, entries) {
   return { officialHosts: [...official], universityHosts: [...university] };
 }
 
-/** The fee page was read: a current tier 1 or 2 entry on the official website (whatever it found). @param {any[]} entries @param {string} path @param {{ now: Date, officialHosts: string[] }} ctx */
+/**
+ * The fee page was read (whatever it found): an entry for the tuition claim that is not outdated, at tier 1 or 2 on the
+ * official website, read on the page itself (not from a search snippet, cache or archive), accessed on or before today,
+ * with a next-review date that has not passed and no academic year that has ended. The same source rules as evaluateClaim.
+ * @param {any[]} entries @param {string} path @param {{ now: Date, officialHosts: string[] }} ctx
+ */
 function feePageRead(entries, path, { now, officialHosts }) {
   const today = isoDay(now);
-  return entries.some((e) => e.claimPath === path && e.status !== 'outdated' && (e.sourceTier === 1 || e.sourceTier === 2) && isHttpsUrl(e.sourceUrl) && onHost(e.sourceUrl, officialHosts) && !isNotEvidenceSource(e.sourceUrl) && isIsoDate(e.accessed) && e.accessed <= today && isIsoDate(e.nextReview) && e.nextReview >= today);
+  return entries.some((e) => e.claimPath === path && e.status !== 'outdated'
+    && (e.sourceTier === 1 || e.sourceTier === 2) && isHttpsUrl(e.sourceUrl) && onHost(e.sourceUrl, officialHosts)
+    && !isNotEvidenceSource(e.sourceUrl) && !(typeof e.method === 'string' && SNIPPET_METHOD.test(e.method))
+    && isIsoDate(e.accessed) && e.accessed <= today && isIsoDate(e.nextReview) && e.nextReview >= today
+    && (e.academicYear === null || e.academicYear === undefined || !yearHasEnded(e.academicYear, now)));
 }
 
 // ------------------------------------------------------------------------------------------------ projection
 
+/** Ids that occur more than once in a list of objects (their claim paths, and so their evidence, would collide). @param {unknown} list @returns {Set<string>} */
+function duplicateIds(list) {
+  const seen = new Set(), dup = new Set();
+  for (const x of Array.isArray(list) ? list : []) { const id = x && typeof x === 'object' ? x.id : undefined; if (typeof id === 'string') { if (seen.has(id)) dup.add(id); seen.add(id); } }
+  return dup;
+}
+
 /** Words for the reasons a programme is not listed. */
 export const NOT_LISTED_WORDS = Object.freeze({
   'unsafe-id': 'its id contains characters other than letters, digits, "-" and "_"',
+  'duplicate-id': 'another programme (listed or deferred) has the same id, so its evidence entries cannot be told apart',
   'international-admission': 'international admission is not shown as verified and open',
   level: 'its level is not shown as verified',
   language: 'its teaching language is not shown as verified',
@@ -468,8 +494,9 @@ function projectProgramme(p, entries, ctx) {
     } else if (key === 'requirements' || key === 'documents') {
       const kind = key === 'requirements' ? 'requirement' : 'documentRequirement';
       const items = []; let withheld = 0;
+      const dupItems = duplicateIds(v);
       for (const item of Array.isArray(v) ? v : []) {
-        if (!item || typeof item.id !== 'string' || !SAFE_ID.test(item.id)) { withheld++; continue; }
+        if (!item || typeof item.id !== 'string' || !SAFE_ID.test(item.id) || dupItems.has(item.id)) { withheld++; continue; }
         const r = evaluateClaim(`${base}.${key}.${item.id}`, { value: itemValue(kind, item), status: item.status, source: item.source, checked: item.checked }, entries, ctx);
         if (r.show) items.push({ id: item.id, ...r.value, source: r.source, checked: r.checked, publicState: 'verified' }); else withheld++;
       }
@@ -516,14 +543,17 @@ function projection(record, evidence, now) {
     const v = record?.[key];
     if (key === 'programmes') {
       out.programmes = [];
+      // Two programmes (listed or deferred) with one id would share every evidence entry: list neither (fail closed).
+      const dup = duplicateIds([...(Array.isArray(v) ? v : []), ...(Array.isArray(record?.deferredProgrammes) ? record.deferredProgrammes : [])]);
       for (const p of Array.isArray(v) ? v : []) {
-        const r = projectProgramme(p, entries, ctx);
+        const r = typeof p?.id === 'string' && dup.has(p.id) ? { listed: false, programme: null, reasons: ['duplicate-id'] } : projectProgramme(p, entries, ctx);
         if (r.listed) out.programmes.push(r.programme); else notListed.push({ id: typeof p?.id === 'string' ? p.id : '?', reasons: r.reasons });
       }
       out.programmesWithheld = notListed.length;
     } else if (key === 'preparatoryRoutes') {
       out.preparatoryRoutes = [];
-      for (const r of Array.isArray(v) ? v : []) { const pr = projectRoute(r, entries, ctx); if (pr) out.preparatoryRoutes.push(pr); else routesWithheld++; }
+      const dupRoutes = duplicateIds(v);
+      for (const r of Array.isArray(v) ? v : []) { const pr = typeof r?.id === 'string' && dupRoutes.has(r.id) ? null : projectRoute(r, entries, ctx); if (pr) out.preparatoryRoutes.push(pr); else routesWithheld++; }
       out.routesWithheld = routesWithheld;
     } else if (key === 'verification') out.verification = { lastReview: isIsoDate(v?.lastReview) ? v.lastReview : null };
     else if (cls === 'editorial-public') { if (typeof v === 'string') out[key] = v; }
@@ -586,7 +616,7 @@ export function evaluatePublication(record, evidence, { now = new Date() } = {})
   // Our own editorial text is printed without evidence, so it must never carry a research note copied into it.
   const editorial = [['shortName', out.shortName], ['city', out.city], ['region', out.region], ['overview', out.overview],
     ...out.programmes.map((/** @type {any} */ p) => [`programmes.${p.id}.name`, p.name]), ...out.preparatoryRoutes.map((/** @type {any} */ r) => [`preparatoryRoutes.${r.id}.name`, r.name])];
-  for (const [field, text] of editorial) if (hasInternalWording(text)) f('internal-wording', field, `Our own text in ${field} contains wording from an internal research note (for example "snippet", "not verified" or "to be confirmed"). Rewrite it; notes never appear on a public page.`);
+  for (const [field, text] of editorial) if (hasInternalWording(text)) f('internal-wording', field, `Our own text in ${field} contains wording from an internal research note (for example "search snippet", "not verified" or "to be confirmed"). Rewrite it; notes never appear on a public page.`);
   const oq = Array.isArray(record?.verification?.openQuestions) ? record.verification.openQuestions.length : 0;
   if (oq) f('open-questions', 'verification.openQuestions', `${oq} open verification question${oq === 1 ? '' : 's'} remain${oq === 1 ? 's' : ''}. Answer or close each one.`);
   return {
