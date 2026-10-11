@@ -25,6 +25,7 @@ const TYPE_TEXT: Record<string, string> = REQUIREMENT_TYPES;
               <span class="type">{TYPE_TEXT[r.type] ?? r.type}{r.subject && ` · ${r.subject}`}</span>
               <span class="summary">{r.summary}</span>
               {r.verified ? <span class="badge badge-verified">Verified requirement</span> : <span class="badge badge-pending">Not verified</span>}
+              {r.condition && <small class="intake">Applies only: {r.condition}</small>}
               {r.intakeYear && <small class="intake">Intake {r.intakeYear}{r.intakeMismatch && ' (not your intake)'}</small>}
             </th>
             <td>{r.candidateData}</td>

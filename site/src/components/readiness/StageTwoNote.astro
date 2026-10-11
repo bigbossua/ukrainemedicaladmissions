@@ -5,12 +5,14 @@
  */
 import { STATES, STATE_LABELS, STATE_NOTES } from '../../lib/readiness.mjs';
 import { SITE } from '../../lib/site';
+interface Props { /** Real records that have completed verification (published). */ publishedCount: number }
+const { publishedCount } = Astro.props;
 ---
 <section class="how" aria-labelledby="how-h">
   <h2 id="how-h">How this will work for real candidates</h2>
   <div class="prose">
-    <p><strong>None of this exists for real candidates yet.</strong> Today the “{SITE.cta}” form only sends us your details by e-mail. There are no accounts, no saved profiles, no uploads, no status tracking and no payments.</p>
-    <p>A real check will compare only requirements we have verified on the university's official page, each with its source and the date we read it. No university record on this site is verified yet, so no real comparison can be shown.</p>
+    <p><strong>None of this exists for real candidates yet.</strong> Today the “{SITE.cta}” form sends your details to us by e-mail, and we keep a private copy of the enquiry. That is all it does. There are no accounts, no saved profiles, no uploads, no status tracking and no payments.</p>
+    <p>A real check will compare only requirements we have verified on the university's official page, each with its source and the date we read it.{publishedCount === 0 && ' No university record on this site has completed verification yet, so no real comparison can be shown.'}</p>
     <p>Accounts, saved profiles and secure uploads belong to Stage 2. Stage 2 is gated: it starts only after the owner signs off account security, upload handling, abuse controls, backups, retention and deletion, the privacy notice and an access review (APPLICATION_SYSTEM_SPEC.md §11). Until then, please do not send scans of your passport or certificates.</p>
     <h3>Document states after Stage 2</h3>
     <ol class="states">

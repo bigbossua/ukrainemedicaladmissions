@@ -76,6 +76,7 @@ note('sample adds documents not in §12.2: passport (available), photographs wit
 note('§12.2 shows "—" as Chemistry wording; the logic gives "Chemistry: studied (grade C as you entered it)" by the same rule as Biology');
 note('§12.2 says Biology B is "on an unknown scale"; the synthetic candidate uses a letter scale (§13 scale_type). Row 3 is unknown either way because the requirement is unverified (and percent ≠ letter)');
 note('§12.2 row 4 wording "Upload your English certificate…" is used only with uploadsOpen: true; the default Stage-1 wording does not mention uploads (no uploads exist)');
+note('§12.2 models certificate + transcript and translation as type=document REQUIREMENT objects; the sample keeps them in programme.documents (schema documentRequirement), so they appear in the checklist, not as readiness rows');
 
 // ------------------------------------------------------------------ rule-level checks
 const req = (o) => ({ id: 'x', type: 'subject', summary: 's', status: 'verified', source: 'https://example.invalid/r', checked: '2026-10-01', intakeYear: '2026/27', ...o });
@@ -142,6 +143,20 @@ ok(later.intakeMismatch === true && later.result === 'unknown' && /2026\/27/.tes
 eq(one(cand([sub()], { intent: { intake: 'not sure' } }), req({ subject: 'Biology' })).intakeMismatch, false, 'intake: candidate "not sure" → no flag');
 eq(one(cand([sub()], { intent: { intake: '2026' } }), req({ subject: 'Biology' })).result, 'met', 'intake: "2026" matches "2026/27"');
 eq(one(cand([sub()], { intent: {} }), req({ subject: 'Biology', intakeYear: undefined })).result, 'met', 'intake: requirement without intakeYear is compared');
+const laterUnv = one(cand([sub()], { intent: { intake: '2027/28' } }), req({ subject: 'Biology', status: 'unverified' }));
+ok(laterUnv.intakeMismatch === true && laterUnv.result === 'unknown' && /not yet been verified/.test(laterUnv.wording), 'intake: unverified requirement for another intake is still flagged (and stays unknown)');
+
+// conditional requirements (§8.2 condition, e.g. "applicants with A-levels"): never settled from the profile
+const condReq = (o) => req({ subject: 'Physics', condition: 'Applicants with A-levels only (sample)', ...o });
+const cNot = one(cand([sub({ name: 'Physics', studied: false })]), condReq());
+ok(cNot.result === 'unknown' && cNot.reason === 'condition_unsettled' && cNot.wording.includes('“Applicants with A-levels only (sample)”'), 'conditional requirement: would-be not_met → unknown, condition quoted');
+eq(cNot.condition, 'Applicants with A-levels only (sample)', 'conditional requirement: condition carried on the result');
+eq(one(cand([sub({ name: 'Physics' })]), condReq()).result, 'unknown', 'conditional requirement: would-be met → unknown (condition not settled)');
+eq(one(cand([sub({ name: 'Physics', grade: 'D' })]), condReq({ type: 'grade', minimum: { value: 'C', scale: 'letter' } })).result, 'unknown', 'conditional grade requirement: never not_met');
+eq(one(cand([]), condReq({ type: 'exam', examFormat: 'written test (sample)' })).result, 'pending_evidence', 'conditional exam requirement: still pending_evidence');
+ok(one(cand([]), condReq({ status: 'unverified' })).wording === "The university's subject requirement has not yet been verified by us; we will confirm it from the official page.", 'conditional unverified requirement keeps the fixed wording');
+eq(R.preparatorySuggestion([cNot], sample), null, 'conditional requirement cannot trigger a preparatory suggestion');
+eq(one(cand([sub()]), req({ subject: 'Biology' })).condition, null, 'unconditional requirement: condition null');
 
 // only verified objects can produce met / not_met (exhaustive over types × statuses × candidate shapes)
 const shapes = [cand([]), cand([sub()]), cand([sub({ studied: false })]), cand([sub({ grade: '90', scaleType: 'percentage' })]), cand([sub({ grade: '10', scaleType: 'percentage' })])];
@@ -155,7 +170,7 @@ for (const type of ['subject', 'grade', 'exam', 'language', 'age', 'document', '
 eq(leak, 0, 'no unverified / not-published / outdated requirement yields anything but unknown');
 
 // never a score, percentage, verdict, "eligible" or "ineligible"
-const ALLOWED = ['requirementId', 'type', 'summary', 'subject', 'verified', 'source', 'checked', 'candidateData', 'intakeYear', 'intakeMismatch', 'result', 'reason', 'wording'].sort();
+const ALLOWED = ['requirementId', 'type', 'summary', 'subject', 'verified', 'source', 'checked', 'candidateData', 'intakeYear', 'intakeMismatch', 'condition', 'result', 'reason', 'wording'].sort();
 const all = [...res, ...R.assessReadiness(V, P), ...R.assessReadiness(C, P, { uploadsOpen: true })];
 ok(all.every((a) => JSON.stringify(Object.keys(a).sort()) === JSON.stringify(ALLOWED)), 'result objects have exactly the documented fields');
 ok(all.every((a) => R.RESULTS.includes(a.result)), 'every result is one of the four');
@@ -185,6 +200,19 @@ eq([tr2(null, 'need').state, tr2(null, 'need').conditionStatus], ['unknown', 'un
 const hague = R.documentChecklist(dc([{ type: 'legalisation', state: 'need' }], { education: { certificateLanguage: 'French', awardingCountry: 'Example-land' } }), docP({ id: 'l', name: 'Apostille', condition: 'Applicants from countries outside the Hague Convention' }))[0];
 eq([hague.state, hague.conditionStatus], ['unknown', 'unsettled'], 'conditional: condition the data cannot settle stays unknown');
 ok(hague.wording.includes('Applicants from countries outside the Hague Convention'), 'unsettled condition is quoted in the wording');
+// a language condition about another document, or about documents in general, is not settled by the certificate's language
+const cl = (condition, name = 'Notarised translation') => R.documentChecklist(dc([{ type: 'translation', state: 'need' }], { education: { certificateLanguage: 'English' } }), docP({ id: 't2', name, condition }))[0];
+eq([cl('Only if the birth certificate is not in Ukrainian or English').state, cl('Only if the birth certificate is not in Ukrainian or English').conditionStatus], ['unknown', 'unsettled'], 'conditional: birth-certificate language not settled by the school certificate');
+eq(cl('Only if the passport is not in Ukrainian or English').conditionStatus, 'unsettled', 'conditional: passport language not settled by the school certificate');
+eq(cl('If your documents are not in Ukrainian or English').conditionStatus, 'unsettled', 'conditional: "documents" in general not settled by the certificate language alone');
+eq(R.evaluateCondition('If your documents are not in Ukrainian or English', C).kind, 'language', 'conditional: documents-language condition asks for the language');
+eq(cl('Only if the certificate and other documents are not in Ukrainian or English').conditionStatus, 'unsettled', 'conditional: certificate plus other documents not settled by the certificate language alone');
+eq(R.evaluateCondition('Only if the certificate is not in Latin script', { ...C, education: { certificateLanguage: 'English' } }).kind, 'unrecognised', 'conditional: a script condition is not read as a language');
+ok(cl('Only if the birth certificate is not in Ukrainian or English').wording.includes('“Only if the birth certificate is not in Ukrainian or English”'), 'conditional: unsettled other-document condition is quoted');
+eq(R.documentTypesFor({ id: 'police', name: 'Police clearance certificate' }), [], 'documentTypesFor: police-clearance certificate is not the school certificate');
+eq(R.documentTypesFor({ id: 'hiv', name: 'HIV test certificate' }), ['medical_certificate'], 'documentTypesFor: HIV test certificate is a medical certificate');
+eq(R.documentTypesFor({ id: 'edu', name: 'Document on the obtained level of education with grades (points) or an academic certificate' }), ['certificate', 'transcript'], 'documentTypesFor: education document with grades → certificate + transcript');
+eq(R.documentChecklist(dc([{ type: 'certificate', state: 'have' }]), docP({ id: 'police', name: 'Police clearance certificate' }))[0].state, 'unknown', 'checklist: a school certificate the candidate has does not tick a police-clearance certificate');
 const unv = R.documentChecklist(dc([{ type: 'passport', state: 'have' }]), docP({ status: 'unverified', source: null }))[0];
 ok(unv.verified === false && unv.state === 'unknown' && unv.source === null, 'unverified document object marked not verified, state unknown, no source');
 eq(R.documentChecklist(dc([{ type: 'passport', state: 'have' }], { intent: { intake: '2027/28' } }), docP({}))[0].intakeMismatch, true, 'document for another intake is flagged');

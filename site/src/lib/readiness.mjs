@@ -107,6 +107,7 @@ export const DOCUMENT_TYPES = Object.freeze({
  * @property {string} candidateData            "what you told us"
  * @property {string | null} intakeYear
  * @property {boolean} intakeMismatch
+ * @property {string | null} condition         the university's applicability condition, quoted (never settled for requirements)
  *
  * @typedef {object} ChecklistItem
  * @property {string} documentId
@@ -130,6 +131,7 @@ export const REASONS = Object.freeze([
   'met', 'not_studied', 'below_minimum', 'unverified', 'not_published', 'outdated', 'intake_mismatch', 'no_data',
   'no_result_status', 'result_pending', 'no_verified_minimum', 'scale_unknown', 'scale_not_comparable',
   'grade_unreadable', 'evidence_needed', 'exam_result_needed', 'not_checkable', 'requirement_unreadable',
+  'condition_unsettled',
 ]);
 
 const NOUNS = Object.freeze({
@@ -252,8 +254,27 @@ export function assessReadiness(candidate, programme, options = {}) {
  * @returns {Assessment}
  */
 export function assessRequirement(c, r, options = {}) {
+  const a = assessUnconditional(c, r, options);
+  if (!r.condition) return a;
+  // A conditional requirement ("applicants with A-levels") applies only to some candidates. Nothing in the profile
+  // settles such a condition, so it can never produce "met" or "not met": the condition is quoted and checked with
+  // the candidate instead.
+  const note = ` The university states that this applies only in this case: “${r.condition}”. We will check with you whether it applies to you.`;
+  if (a.result === 'met' || a.result === 'not_met') return { ...a, result: 'unknown', reason: 'condition_unsettled', wording: a.wording + note };
+  return a.verified && !a.intakeMismatch ? { ...a, wording: a.wording + note } : a;
+}
+
+/**
+ * The comparison itself, ignoring any applicability condition (handled by assessRequirement).
+ * @param {Candidate} c
+ * @param {Requirement} r
+ * @param {Options} [options]
+ * @returns {Assessment}
+ */
+function assessUnconditional(c, r, options = {}) {
   const status = r.status ?? 'unverified';
   const verified = status === 'verified';
+  const want = intakeStartYear(c.intent?.intake), has = intakeStartYear(r.intakeYear);
   const base = {
     requirementId: r.id,
     type: r.type,
@@ -264,7 +285,9 @@ export function assessRequirement(c, r, options = {}) {
     checked: verified ? r.checked ?? null : null,
     candidateData: candidateDataFor(c, r),
     intakeYear: r.intakeYear ?? null,
-    intakeMismatch: false,
+    // Requirements are intake-specific: one published for another intake is flagged whatever its status.
+    intakeMismatch: !!(want && has && want !== has),
+    condition: r.condition ?? null,
   };
   /** @param {Result} result @param {string} reason @param {string} wording @returns {Assessment} */
   const out = (result, reason, wording) => ({ ...base, result, reason, wording });
@@ -275,10 +298,9 @@ export function assessRequirement(c, r, options = {}) {
     return out('unknown', status === 'not-published' ? 'not_published' : 'unverified', unverifiedWording(r.type));
   }
 
-  // 2. Requirements are intake-specific: a requirement for another intake is flagged and not compared.
-  const want = intakeStartYear(c.intent?.intake), has = intakeStartYear(r.intakeYear);
-  if (want && has && want !== has) {
-    return { ...out('unknown', 'intake_mismatch', `This requirement is published for the ${r.intakeYear} intake, but you plan to start in ${c.intent.intake}. We will confirm the requirement for your intake from the official page.`), intakeMismatch: true };
+  // 2. A requirement for another intake is flagged (above) and not compared.
+  if (base.intakeMismatch) {
+    return out('unknown', 'intake_mismatch', `This requirement is published for the ${r.intakeYear} intake, but you plan to start in ${c.intent?.intake}. We will confirm the requirement for your intake from the official page.`);
   }
 
   const name = r.subject ?? '';
@@ -351,7 +373,7 @@ export function assessRequirement(c, r, options = {}) {
 const DOC_MATCHERS = /** @type {[DocumentType, RegExp][]} */ ([
   ['translation', /translat/i],
   ['legalisation', /legali[sz]|apostil/i],
-  ['medical_certificate', /medical/i],
+  ['medical_certificate', /medical|\bhiv\b|health|vaccinat/i],
   ['birth_certificate', /birth/i],
   ['language_certificate', /language (?:certificate|test)|ielts|toefl|english (?:certificate|test)/i],
   ['photographs', /photo/i],
@@ -369,24 +391,32 @@ export function documentTypesFor(doc) {
   for (const [type, re] of DOC_MATCHERS) if (re.test(text)) return [type];
   /** @type {DocumentType[]} */
   const types = [];
-  if (/certificate|diploma|school-leaving/i.test(text)) types.push('certificate');
+  // Only the school-leaving certificate maps to "certificate": a police-clearance or other certificate does not.
+  if (/^certificate\b/i.test(doc.id ?? '') || /school-leaving|\b(?:school|secondary|education(?:al)?)\b[^.;]*\b(?:certificate|diploma)\b|\b(?:certificate|diploma)\b[^.;]*\b(?:school|secondary|education(?:al)?)\b/i.test(text)) types.push('certificate');
   if (/transcript|grades/i.test(text)) types.push('transcript');
   return types;
 }
 
 /**
  * Evaluate a document condition against the candidate's data. Only conditions the data can settle are resolved;
- * today that is the language of the certificate ("not in Ukrainian or English"). Anything else stays unsettled.
+ * today that is the language of the school-leaving certificate ("if the certificate is not in Ukrainian or English").
+ * A language condition about other documents (passport, birth certificate, "documents" in general) is never settled
+ * by the certificate's language; anything else stays unsettled and is quoted.
  * @param {string} condition
  * @param {Candidate} c
  * @returns {{ status: 'applies' | 'does_not_apply' | 'unsettled', kind: 'language' | 'unrecognised', languages: string[] }}
  */
 export function evaluateCondition(condition, c) {
-  const m = String(condition ?? '').match(/not (?:issued |written )?in ([A-Z][a-z]+(?:(?:,\s*|\s+or\s+|\s*\/\s*)[A-Z][a-z]+)*)/);
-  if (!m) return { status: 'unsettled', kind: 'unrecognised', languages: [] };
+  const text = String(condition ?? '');
+  const m = text.match(/not (?:issued |written )?in ([A-Z][a-z]+(?:(?:,\s*|\s+or\s+|\s*\/\s*)[A-Z][a-z]+)*)/);
+  const about = /\b(?:birth|medical|health|police|vaccination|language|bank)\s+certificate|\bpassport/i.test(text) ? 'other'
+    : /\bdocuments?\b/i.test(text) ? 'documents'
+    : /\b(?:certificate|diploma)\b/i.test(text) ? 'certificate' : 'other';
+  if (!m || about === 'other' || /^\s*(?:script|alphabet|characters|letters)\b/i.test(text.slice((m.index ?? 0) + m[0].length)))
+    return { status: 'unsettled', kind: 'unrecognised', languages: [] };
   const languages = m[1].split(/,\s*|\s+or\s+|\s*\/\s*/);
   const lang = c.education?.certificateLanguage;
-  if (!lang) return { status: 'unsettled', kind: 'language', languages };
+  if (!lang || about !== 'certificate') return { status: 'unsettled', kind: 'language', languages };
   return { status: languages.some((l) => norm(l) === norm(lang)) ? 'does_not_apply' : 'applies', kind: 'language', languages };
 }
 

@@ -11,14 +11,16 @@ interface Suggestion {
   facts: { key: string; label: string; value: string; source: string; checked: string | null }[];
   standing: string; triggeredBy: string[];
 }
-interface Props { suggestion: Suggestion | null; emptyText: string; because?: string }
-const { suggestion: s, emptyText, because } = Astro.props;
+interface Props { suggestion: Suggestion | null; emptyText: string; because?: string; /** Heading level of the route name (default 3). */ level?: 3 | 4 }
+const { suggestion: s, emptyText, because, level = 3 } = Astro.props;
+const H = `h${level}` as 'h3' | 'h4';
+const Sub = `h${level + 1}` as 'h4' | 'h5';
 ---
 {s ? (
   <article class="prep" data-prep-suggestion>
-    <h3>{s.name}</h3>
+    <H class="prep-name">{s.name}</H>
     {because && <p class="why">{because}</p>}
-    <h4>What completing the course gives, in the university's own words</h4>
+    <Sub class="prep-sub">What completing the course gives, in the university's own words</Sub>
     <blockquote>{s.progressionText}</blockquote>
     <p class="src">Source: <a href={s.source} rel="nofollow noopener">official page<span class="visually-hidden"> for the preparatory route</span></a>{s.checked && ` · checked ${formatDate(s.checked)}`}</p>
     {s.facts.length > 0 && (
@@ -31,8 +33,8 @@ const { suggestion: s, emptyText, because } = Astro.props;
 ) : <p class="note" data-prep-none>{emptyText}</p>}
 <style>
   .prep { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; background: var(--blue-50); }
-  .prep h3 { margin-bottom: .5rem; }
-  .prep h4 { font-size: .95rem; margin: 1rem 0 .4rem; }
+  .prep-name { font-size: 1.15rem; margin-bottom: .5rem; }
+  .prep-sub { font-size: .95rem; margin: 1rem 0 .4rem; }
   .why { margin: 0; color: var(--slate); }
   blockquote { margin: 0 0 .5rem; padding: .75rem 1rem; border-left: 4px solid var(--blue-600); background: #fff; border-radius: 8px; }
   .src { font-size: .8rem; color: var(--slate); margin: 0 0 .75rem; }

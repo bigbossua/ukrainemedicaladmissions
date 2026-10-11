@@ -12,8 +12,8 @@ import ResultBadge from './ResultBadge.astro';
 import StageTwoNote from './StageTwoNote.astro';
 import { assessReadiness, documentChecklist, preparatorySuggestion, RESULT_LABELS } from '../../lib/readiness.mjs';
 import { SYNTHETIC_CANDIDATE, SYNTHETIC_VARIANT_NO_CHEMISTRY } from '../../lib/synthetic-candidate.mjs';
-interface Props { record: any; programmeId?: string }
-const { record, programmeId = 'medicine' } = Astro.props;
+interface Props { record: any; programmeId?: string; /** Real records that have completed verification (published). */ publishedCount: number }
+const { record, programmeId = 'medicine', publishedCount } = Astro.props;
 const programme = record.programmes.find((p: any) => p.id === programmeId) ?? record.programmes[0];
 const results = assessReadiness(SYNTHETIC_CANDIDATE, programme);
 const checklist = documentChecklist(SYNTHETIC_CANDIDATE, programme);
@@ -61,10 +61,10 @@ const resultKeys = Object.keys(RESULT_LABELS) as (keyof typeof RESULT_LABELS)[];
         {variantNotMet.map((r) => <li><ResultBadge result={r.result} /> {r.wording}</li>)}
       </ul>
     )}
-    <PreparatorySuggestion suggestion={variantSuggestion} because="Shown because a verified requirement is not met in this scenario." emptyText="Nothing is suggested: no verified preparatory route exists for this university." />
+    <PreparatorySuggestion suggestion={variantSuggestion} level={4} because="Shown because a verified requirement is not met in this scenario." emptyText="Nothing is suggested: no verified preparatory route exists for this university." />
   </section>
 
-  <StageTwoNote />
+  <StageTwoNote publishedCount={publishedCount} />
 </div></section>
 <style>
   .block { padding: 0; margin-top: 2.5rem; }

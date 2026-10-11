@@ -38,7 +38,7 @@ const demoRecords = [...samples.map((x) => x.data), ...drafts.map((x) => x.data)
 {kind === 'readiness' && s ? (
   <Base title="Readiness check demo — synthetic candidate and university" description="Worked example of the readiness check and document checklist using an invented candidate and an invented university. Preview build only." noindex draft suffix={false}>
     <DraftBanner kind="synthetic" text="Synthetic demonstration. Both the candidate and the university on this page are invented: no real person's data is used and Example Medical University is not a real institution. This page is built only for internal preview and never for the public site." />
-    <ReadinessDemo record={s.data} />
+    <ReadinessDemo record={s.data} publishedCount={published.length} />
   </Base>
 ) : kind === 'sample' && s ? (
   <Base title={`${s.data.shortName} — synthetic sample`} description="Synthetic sample record used to demonstrate the university-profile layout. Not a real university. Preview build only." noindex draft suffix={false}>
