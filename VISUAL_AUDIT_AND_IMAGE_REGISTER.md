@@ -126,3 +126,78 @@ What changed in the build (branch `claude/university-profile-pipeline`, preview-
 
 Image sourcing status: the §8 Pexels candidates (library/study groups for V1; skeleton and dental models for V5) remain **unopened** — image hosts are blocked by the network policy and nothing may be downloaded or purchased from this environment. When the owner downloads a candidate, the §8 row is completed (licence text as shown on the page, author, download date, modifications) and the file is added through the Astro image pipeline (TECHNICAL_REPAIR_BACKLOG N5) with alt text and dimensions (checked by `check-meta`). No image may depict or imply a named institution without that institution's own licence (§9).
 
+
+## 11. In-repo SVG illustration set and honest feature claims (implemented 2026-10-11, branch `wip/visual`)
+
+No photograph, download or purchase. Every asset below is hand-written inline SVG in the brand tokens (navy, blue, one small yellow accent), stored as Astro components in `site/src/components/illustrations/` (or inline where noted). None depicts an institution, building, landmark, flag, logo, person or "doctor" cliché, and none uses a cross or crescent of any kind (the red cross and red crescent emblems are legally protected). There is no raster image, so no `<img>`, no licence file and no `alt` attribute are involved. Where text matters it is real HTML, not SVG text, so it stays legible at 390 px and is read by screen readers and translation tools. This covers rows V2 and V6 of §4 and the course-family icons; V1, V5 and V10 still wait for licensed photographs (§8).
+
+### 11.1 Register (one row per illustration or icon)
+
+Source for every row: **own SVG, drawn in-repo 2026-10-11**. Licence for every row: **ours**. "Checks" refers to §11.3.
+
+| # | File | What it depicts | Where used | Accessible text | Checks |
+|---|---|---|---|---|---|
+| S1 | `illustrations/HeroIllustration.astro` | Calm abstract composition: two layered document sheets with a three-row checklist (two rows ticked, one open), a small note card, a compass with a 12-dot dial and a needle with a small yellow tip, a dotted route ending in a tick in a circle, a soft radial halo | Home hero, behind the "Start your application" card, shown from 1080 px wide only (hidden on phones and tablets so the form stays prominent and mobile stays uncluttered) | Decorative: `aria-hidden="true"`, `focusable="false"` on the SVG and its wrapper; the hero text carries the meaning | C1–C5 |
+| S2 | `illustrations/ApplicationJourney.astro` | The four stages of `APPLICATION_SYSTEM_SPEC.md` §1 (Enquiry; Draft application; Submitted to Ukraine Medical Admissions; Official submission to the university) as numbered icon tiles joined by dashed connectors and chevrons. Horizontal when its container is at least 760 px wide, vertical stepper otherwise (CSS container query). Each stage carries a status tag: **Open now** (stage 1) or **Planned** (stages 2 to 4) | Home "How it works" (short wording); `/admissions/#stages` (detailed wording, wider than the reading column) | Real HTML `<ol aria-label="The four stages of an application">`, one `<h3>` per stage, visible "Stage n" and status text; tiles, numbers and connectors are `aria-hidden` | C1–C5 |
+| S3 | `illustrations/DocumentStates.astro` | Compact state diagram of the checklist: required → outstanding → uploaded → under review → accepted for processing, or clarification requested (upload again) | `/admissions/#checklist` | `<figure>` named by its visible caption "How the checklist will work once uploads open" plus the tag "Planned. Uploads are not available yet."; states are an ordered list with visible names and one-line meanings; icons and arrows are `aria-hidden` | C1–C5 |
+| S4 | `illustrations/Icon.astro` → `medicine` | Stethoscope outline | Home course card, `/courses/` card, `/courses/medicine/` header tile | `aria-hidden`; the card heading or H1 names the course | C1–C4 |
+| S5 | `Icon.astro` → `dentistry` | Tooth outline | Home, `/courses/`, `/courses/dentistry/` header | as S4 | C1–C4 |
+| S6 | `Icon.astro` → `pharmacy` | Capsule and a scored round tablet | Home, `/courses/`, `/courses/pharmacy/` header | as S4 | C1–C4 |
+| S7 | `Icon.astro` → `nursing` | Heart above cupped hands (care) | Home, `/courses/`, `/courses/nursing/` header | as S4 | C1–C4 |
+| S8 | `Icon.astro` → `dated` | Calendar with a tick | Home "Why students use us": "Official sources, dated" (replaces the text glyph ✓) | `aria-hidden`; card heading gives the meaning | C1–C4 |
+| S9 | `Icon.astro` → `compare` | Two-column table | Home card "Compare side by side" (replaces ⇄) | as S8 | C1–C4 |
+| S10 | `Icon.astro` → `journey` | Route between two points | Home card "One application journey" (replaces ◎) | as S8 | C1–C4 |
+| S11 | `Icon.astro` → `enquiry` | Envelope | S2, stage 1 | `aria-hidden`; stage title is text | C1–C4 |
+| S12 | `Icon.astro` → `draft` | Document with a pencil | S2, stage 2 | as S11 | C1–C4 |
+| S13 | `Icon.astro` → `submitted` | Tray with an incoming arrow | S2, stage 3 | as S11 | C1–C4 |
+| S14 | `Icon.astro` → `official` | Paper plane (sent onwards); deliberately not a building | S2, stage 4 | as S11 | C1–C4 |
+| S15 | `Icon.astro` → `required` | Bulleted list | S3 | `aria-hidden`; state name is text | C1–C4 |
+| S16 | `Icon.astro` → `outstanding` | Clock | S3 | as S15 | C1–C4 |
+| S17 | `Icon.astro` → `uploaded` | Arrow up out of a tray | S3 | as S15 | C1–C4 |
+| S18 | `Icon.astro` → `review` | Magnifier | S3 | as S15 | C1–C4 |
+| S19 | `Icon.astro` → `accepted` | Tick in a circle | S3 | as S15 | C1–C4 |
+| S20 | `Icon.astro` → `clarify` | Speech bubble with a question mark | S3 | as S15 | C1–C4 |
+| S21 | inline in `components/CtaBand.astro` | Three arcs from the top-right corner (one dotted) and one small yellow dot | Every page that uses the CTA band | `aria-hidden`, `focusable="false"` | C1–C4 |
+
+Icon grid: 24 × 24, 1.75 px round stroke, `currentColor`, so each icon takes its tile's colour (blue on blue-50; white on blue-600 on hover or keyboard focus of a link card; blue-100 on the dark course header). The SVG sources live in the components; a separate copy under `brand/illustrations/` (§3) has not been made, to avoid two sources drifting apart.
+
+### 11.2 Honest feature claims on these pages (blocking defects fixed)
+
+| Location | Before | After | Why |
+|---|---|---|---|
+| Home hero form small print | "Save and resume anytime. No fee to start. We never share your documents without consent." | "No fee to start. Nothing is sent to a university until you confirm. Please do not send document scans at this stage." | Save-and-resume does not exist; Stage 1 collects no documents |
+| `CtaBand` default text (home, `/courses/`, `/admissions/`, `/about/`, `/services/`, `/faq/`) | "Start your application in minutes. You can save your progress and come back at any time." | "Start with a short online enquiry. It costs nothing, and nothing is sent to a university until you confirm." | Save-and-resume does not exist |
+| Home "How it works" | Choose / Apply online ("save and resume at any time") / Documents ("Upload securely") / Track ("Follow every status change"); H2 "From enquiry to enrolment, step by step" | S2 with the four real stages and their status (stage 1 open now, 2 to 4 planned); H2 "From enquiry to official submission" | Uploads, save-and-resume and status tracking are not built; the service's stages end at official submission, the decision is the university's |
+| Home course blurbs | "Six-year programmes leading to a medical degree." / "Five-year dental programmes." / "Bachelor-level nursing routes." / "Pharmacy degrees for international students." | One-line `summary` per course from `lib/courses.ts` (each says the detail is set per university and listed only once checked) | Durations and award levels are programme-specific and unverified; consistent with the eligibility FAQ |
+| Home card "Verified university data" | "Every fee, deadline and programme is checked against official university sources…" | "Official sources, dated": "We publish a fee, deadline or programme detail only after checking it against the university's official source, and we show the date we checked it. Anything not yet checked is marked as awaiting confirmation." | Zero records are verified today; stated as the publication rule |
+| Home card "Compare side by side" | "Tuition, language of instruction, duration and entry requirements in one directory." | "As profiles pass verification, their programmes, languages, entry requirements, tuition and application windows appear side by side in one comparison table." | No profile is published yet; the comparison table (`CompareTable.astro`) has no duration column |
+| Home card "One application journey" and hero trust line | "A clear document checklist and status updates from your first enquiry to the university's decision"; "One application journey from enquiry to decision" | "Four clear stages, from your first enquiry to official submission… A document checklist and status updates are planned."; "Four clear stages from enquiry to official submission" | Checklist and status updates are not built |
+| `lib/courses.ts` intros (course pages; first sentence was also the `/courses/` card text) | "Medicine is the most sought-after programme…"; "typically six years"; "Dentistry programmes in Ukraine are typically five years."; "Pharmacy programmes are usually five years." | Each university sets its own duration and qualification title; cards use the new `summary` field | Unsourced ranking and unverified durations removed |
+| `/courses/<course>/` "Not sure whether you qualify yet?" and CTA band | "Start a free candidate profile… you can finish later"; "we will confirm the current requirements with you" | A short free enquiry now; the readiness check is described as planned; CTA: "Start with a short online enquiry… Nothing is sent to a university until you confirm." | Candidate profiles and save-and-resume do not exist; no requirement is verified |
+| `/admissions/#stages` | Stage 2 "complete our online application and upload documents at your own pace"; stage 3 "advise on eligibility" | S2 (detailed): stage 2 not open yet, drafts, saving and uploads planned; stage 3 "We review it and ask for anything missing" (spec §1 wording) | Uploads and online drafts do not exist; the readiness rules forbid eligibility verdicts |
+| `/admissions/#readiness` | Present tense ("When you start a candidate profile… the check shows…") | Heading "…How the readiness check will work", a note that profiles and the check are planned, future tense throughout | Not built (spec §8 is PROPOSED) |
+| `/admissions/#preparatory` | "usually a year of Ukrainian (sometimes English) language and science subjects, ending in a certificate" | "Some Ukrainian universities publish a preparatory (foundation) course… Each university sets its own duration, subjects, language of instruction and fee…" | Unverified generalised duration removed |
+| `/admissions/#checklist` | "How your document checklist works"; note "At this stage we only ask which documents you already have and which you still need" | "…will work", S3 labelled as planned; note: no scans by e-mail, use the message box of the Apply Online form | The Stage 1 form has no have/need document field |
+
+Unchanged by design: every H1, page title and meta description (none states something false). The home hero paragraph was left as the 2026-10-11 strategic review set it.
+
+### 11.3 Checks run (VERIFIED-IN-REPO, local runs on 2026-10-11 in `/home/user/wt/visual/site`)
+
+- **C1** `node tests/a11y.mjs`: 20 pages × 2 widths, 0 blocking, 0 minor violations. `node tests/preview-ui.mjs`: 10 pages × 3 widths, 0 failures, 0 blocking a11y violations.
+- **C2** `node tests/ui-smoke.mjs`: 20 pages × 390/820/1440 px, 0 failures (includes the horizontal-overflow check).
+- **C3** Keyboard and motion (scratch Playwright script, not committed): Tab reaches all seven link cards on the home page in reading order; the focused card shows the yellow link outline plus a blue border ring; with `prefers-reduced-motion: reduce` the card transition duration computes to 0.01 ms and the hover lift is removed.
+- **C4** Screenshots inspected by eye at 390, 820 and 1440 px (and the hero at 960 and 1100 px), see §11.4.
+- **C5** `node tests/perf.mjs` (Lighthouse, mobile emulation), final run: `/` perf 99, total 187 KB; `/universities/` 99; `/tuition-fees/` 99; `/apply/` 99 (100 in an earlier run the same day); 0 below budget. Baseline for comparison, built from `50376e3` in a scratch copy and measured with the same script: `/` perf 99, total 167 KB. The home page grew by about 20 KB uncompressed (inline SVG and component CSS); LCP and CLS stay inside the budget.
+- Also run: `npx astro check` 0 errors; `npm run test:records`; `check-links`, `check-meta`, `check-redirects`; `npm run build:preview` + `publication-gate` (0 failures); full `npm test` chain exit 0. Exact final lines are in the branch's report to the orchestrator.
+
+### 11.4 Screenshots (in `site/tests/output/`, which `site/.gitignore` excludes; not committed)
+
+Before (baseline `50376e3`) and after, at 390, 820 and 1440 px, for the home page, `/admissions/`, `/courses/` and `/courses/medicine/`:
+
+- `before-390_home.png`, `before-820_home.png`, `before-1440_home.png`, and the same pattern for `_admissions`, `_courses`, `_courses_medicine` (12 files)
+- `after-390_home.png`, `after-820_home.png`, `after-1440_home.png`, and the same pattern for `_admissions`, `_courses`, `_courses_medicine` (12 files)
+- `after-960_home-hero.png`, `after-1100_home-hero.png` (hero composition at the breakpoint), `after-focus-card-1440.png`, `after-hover-card-1440.png`
+
+### 11.5 Design-system changes (`site/src/styles/global.css`)
+
+Icon tiles (`.ico`, 48 px, SVG sized at 26 px); link cards (`.card-link`: whole card is the target of its single link, lift and shadow on hover, blue ring on keyboard focus); `.section-head` for a consistent gap under every section heading; hero radial highlight with `overflow: hidden`; breadcrumbs keep the `.wrap` side gutters (they previously lost them, so the trail sat flush with the screen edge at 390 px and out of line with the page at 1440 px); the CTA band no longer doubles the white gap after a white section; a global `prefers-reduced-motion` rule. No new fonts, no external resources, no inline scripts or event handlers (the CSP is unchanged).
