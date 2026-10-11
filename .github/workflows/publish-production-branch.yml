@@ -5,10 +5,13 @@
 #                        files, X-Robots-Tag header in .htaccess. For a password-protected staging subdomain.
 #   target: production → branch `production` — full test suite must pass; requires typing PUBLISH; tags a release.
 #
-# SAFETY: manual trigger only; the target is validated and anything other than the two names fails the job,
-# so no other branch (e.g. main) can ever be the push target. Nothing deploys until the owner has connected
-# Hostinger Git to the chosen branch and directory. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md and
-# SECURITY_AND_RELEASE_CHECKLIST.md.
+# TRIGGERS: (1) the "Run workflow" button (workflow_dispatch) — GitHub shows it only once this file is on the
+# default branch; (2) pushing a tag named publish-production-<stamp> or publish-staging-<stamp> to the commit
+# to publish — works from any branch and is the route used while the workflow lives only on the working branch.
+# SAFETY: the target is validated and anything other than the two names fails the job, so no other branch
+# (e.g. main) can ever be the push target; production needs the explicit confirmation (typed PUBLISH, or the
+# explicit publish-production-* tag name). Nothing deploys until the owner has connected Hostinger Git to the
+# chosen branch and directory. See HOSTING_AND_DEPLOYMENT_ASSESSMENT.md and SECURITY_AND_RELEASE_CHECKLIST.md.
 name: Publish deploy branch
 
 on:
@@ -24,6 +27,10 @@ on:
         description: 'For production only: type PUBLISH to confirm SECURITY_AND_RELEASE_CHECKLIST.md is complete'
         required: false
         default: ''
+  push:
+    tags:
+      - 'publish-production-*'
+      - 'publish-staging-*'
 
 permissions:
   contents: write
@@ -31,19 +38,28 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    env:
-      TARGET: ${{ github.event.inputs.target }}
-      CONFIRM: ${{ github.event.inputs.confirm }}
     steps:
-      - name: Validate target and confirmation
+      - name: Resolve and validate target
+        env:
+          INPUT_TARGET: ${{ github.event.inputs.target }}
+          INPUT_CONFIRM: ${{ github.event.inputs.confirm }}
         run: |
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            case "$GITHUB_REF_NAME" in
+              publish-production-*) TARGET=production; CONFIRM=PUBLISH ;;
+              publish-staging-*)    TARGET=staging; CONFIRM="" ;;
+              *) echo "tag '$GITHUB_REF_NAME' names no deploy target"; exit 1 ;;
+            esac
+          else
+            TARGET="$INPUT_TARGET"; CONFIRM="$INPUT_CONFIRM"
+          fi
           case "$TARGET" in
-            staging) echo "target=staging" ;;
-            production)
-              if [ "$CONFIRM" != "PUBLISH" ]; then echo "production requires confirm=PUBLISH"; exit 1; fi
-              echo "target=production" ;;
+            staging) ;;
+            production) if [ "$CONFIRM" != "PUBLISH" ]; then echo "production requires confirm=PUBLISH"; exit 1; fi ;;
             *) echo "invalid target: '$TARGET'"; exit 1 ;;
           esac
+          echo "TARGET=$TARGET" >> "$GITHUB_ENV"
+          echo "target=$TARGET (event $GITHUB_EVENT_NAME, ref $GITHUB_REF_NAME)"
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
