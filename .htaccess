@@ -1,0 +1,56 @@
+# Ukraine Medical Admissions — Apache/LiteSpeed rules (Hostinger shared hosting)
+# Reviewed before every production deployment (SECURITY_AND_RELEASE_CHECKLIST.md)
+
+# Canonical host: non-www, HTTPS — applied ONLY to the production host so a staging
+# subdomain is never redirected onto production.
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www\.)?ukrainemedicaladmissions\.com$ [NC]
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://ukrainemedicaladmissions.com%{REQUEST_URI} [L,R=301]
+
+# Never serve a Git checkout or its metadata if the deploy tool leaves one in the document root
+RewriteRule (^|/)\.git(/|$) - [F,L]
+
+# No directory listings (every page directory has an index.html; this covers _astro/, fonts/, brand/, api/)
+Options -Indexes
+
+# Legacy URLs (search-evidenced on the old site, 2026-10-10). Extend from the live backup before deploy.
+# /services and /about are KEPT as pages; Apache's DirectorySlash already 301s /services -> /services/.
+# Anchored RedirectMatch (not prefix Redirect) so /courses/dentistry/ etc. can never loop.
+RedirectMatch 301 ^/dentistry-admissions-in-ukraine/?$ /courses/dentistry/
+RedirectMatch 301 ^/document-translation-legalisation/?$ /admissions/
+
+# Astro "directory" output: /page/ -> /page/index.html (default DirectoryIndex)
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+# Private: never serve dotfiles or anything resembling data exports
+<FilesMatch "^\.|\.(json|log|bak|sql)$">
+  <IfModule mod_authz_core.c>Require all denied</IfModule>
+</FilesMatch>
+# but allow the web manifest
+<Files "site.webmanifest">
+  <IfModule mod_authz_core.c>Require all granted</IfModule>
+</Files>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
+</IfModule>
+
+# Caching for hashed assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/html "access plus 10 minutes"
+</IfModule>
