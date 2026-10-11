@@ -1,6 +1,6 @@
 # PAGE_ASSET_REGISTER.md
 
-Every published URL must justify itself here. SEMrush evidence column now cites measured rows (`KEYWORD_URL_MAP.md` §4); "unvalidated" where nothing was measured. Last updated 2026-10-10 (evening).
+Every published URL must justify itself here. SEMrush evidence column now cites measured rows (`KEYWORD_URL_MAP.md` §4); "unvalidated" where nothing was measured. Last updated 2026-10-11.
 
 | URL | Target intent | SEMrush evidence | Audience | Unique applicant value | Official sources required | Conversion path | Key internal links | Status | Last verified | Maintainer |
 |---|---|---|---|---|---|---|---|---|---|---|

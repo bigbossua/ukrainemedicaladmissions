@@ -1,13 +1,13 @@
 # DECISION REPORT — research audit complete, 2026-10-11 (latest; supersedes the addenda below where they differ)
 
-## A. SEMrush batch reconciliation (VERIFIED)
+## A. SEMrush batch reconciliation (reconciled; derived figures labelled)
 
 | Item | Figure | Source |
 |---|---|---|
 | Calls made 2026-10-11 | 10 (1 probe + 6 R1 + 3 R2) | `SEMRUSH_API_LEDGER.md` "R1 + R2 executed" |
 | Raw exports | 10 files, 85 returned lines, each file's lines × 10 = the recorded cost of its call (all ten match) | `research/semrush/2026-10-11-*.csv`; programmatic check + independent audit agent (≈400 values, 0 errors) |
 | Units used this phase | **850** of the 2,340 cap; R3–R5 not run | ledger |
-| Consumption before this phase | **2,110** (50,000 − owner's 47,890), replacing the ledger's earlier 2,240; the 130 overstatement sat in the published-price estimate of the 2026-10-10 parallel batch (actual 1,070; per-call split unrecoverable) | ledger reconciliation entry |
+| Consumption before this phase | **2,110** (50,000 − owner's 47,890) — **DERIVED**: assumes the 50,000 screenshot preceded the first paid call and that no other tool connected to the account drew on the shared unit pool; replaces the ledger's earlier 2,240; the 130 overstatement sat in the published-price estimate of the 2026-10-10 parallel batch (actual 1,070; per-call split unrecoverable) | ledger reconciliation entry |
 | **Cumulative** | **2,960** | |
 | **Expected remaining** | **47,040** — to be confirmed on the owner's next API Units reading | |
 | Audit corrections applied | wording only: UK "every other name 20" → ten names 20, Vinnytsia 0; nursing intent "informational" → not computed; §4.1 "45 databases incl. lk" → 44, lk not returned; ledger "234 requested" → 235 incl. probe; stale §9/§10 headers and §6 status cells marked superseded | this commit |
@@ -78,7 +78,7 @@ Labels used throughout: **VERIFIED** (observed, evidence named) · **OWNER-REPOR
 
 ## 2. SEMrush research: what exists, what is missing
 
-Exists: 10 raw exports, 16 logged calls, 2,240 units at published prices (balance not re-read; not inferred). Every number cited in the registers was re-checked against the exports today. Missing: SERP/competitor data for any term; related/question keywords; trends; difficulty/intent outside India; course terms outside the UK; nursing/public-health/rehabilitation/preparatory terms everywhere (except uk "study nursing in ukraine" 20); university names outside in/uk; city terms; broad match outside in/uk. A costed request (R1–R5, `KEYWORD_URL_MAP.md` §9) is written; **no call has been made** — NEEDS APPROVAL.
+Exists *(superseded by the decision report section A: 20 exports, 26 calls, 2,960 cumulative)*: 10 raw exports, 16 logged calls, 2,240 units at published prices (balance not re-read; not inferred). Every number cited in the registers was re-checked against the exports today. Missing: SERP/competitor data for any term; related/question keywords; trends; difficulty/intent outside India; course terms outside the UK; nursing/public-health/rehabilitation/preparatory terms everywhere (except uk "study nursing in ukraine" 20); university names outside in/uk; city terms; broad match outside in/uk. A costed request (R1–R5, `KEYWORD_URL_MAP.md` §9) is written; **no call has been made** — NEEDS APPROVAL.
 
 ## 3. Country comparison and recommended priorities (evidence in `KEYWORD_URL_MAP.md` §6)
 
@@ -90,7 +90,7 @@ DECISION: content wording follows India; the UK is the second content market; no
 
 ## 4. Keyword-to-URL map and money-page register — DONE (`KEYWORD_URL_MAP.md` §7–§8)
 
-23 clusters mapped over every indexable URL plus the expanded programme and university clusters; 15 money-page candidates assessed with the ten required fields. Decisions: **improve** `/tuition-fees/` (verified figures), `/courses/medicine/`, `/universities/`, `/admissions/` (readiness section), `/courses/nursing/` (on verified supply); **approve for planning after verification** three university profiles — Vinnytsia, Bogomolets, Bukovinian (plus Ternopil on verification merit); **defer** preparatory resource, country page, public health, physiotherapy; **reject** city pages, a standalone MBBS page, a separate comparison page, sport. **No new SEO page is created by this report.**
+23 clusters mapped over every indexable URL plus the expanded programme and university clusters; 15 money-page candidates assessed with the ten required fields. Decisions: **improve** `/tuition-fees/` (verified figures), `/courses/medicine/`, `/universities/`, `/admissions/` (readiness section), `/courses/nursing/` (on verified supply); **approve for planning after verification** three university profiles — Vinnytsia, Bogomolets, Bukovinian (plus Ternopil on verification merit) *(superseded by section D: seven profiles, Bukovinian first)*; **defer** preparatory resource, country page, public health, physiotherapy; **reject** city pages, a standalone MBBS page, a separate comparison page, sport. **No new SEO page is created by this report.**
 
 ## 5. Candidate-profile and document-readiness product — recommendation (`APPLICATION_SYSTEM_SPEC.md` §8–§11)
 
@@ -106,7 +106,7 @@ The site has a sound design system and **no imagery at all** beyond logos. Direc
 
 ## 8. University and programme portfolio — research DONE, verification NOT DONE (`UNIVERSITY_DATA_REGISTER.md` §6–§10, `PROGRAMME_SUPPLY_REGISTER.md`, `research/universities/`)
 
-Nine universities swept at snippet level (Vinnytsia, Bogomolets, Bukovinian, Lviv, Ivano-Frankivsk, Odesa, Poltava, Ternopil, Kharkiv): English-medium integrated master's in medicine, dentistry and pharmacy for foreigners is the consistently documented offer; preparatory departments (10 months, Ukrainian + sciences) at all nine; **English-track nursing bachelor leads at Kharkiv and Ternopil only**; public health and physical therapy exist only as Ukrainian-language programmes, several new or unaccredited; no medical-university sport degree; **no university returned a dated official statement of its 2025–26 teaching format** — the first thing to verify. Expansion order: Vinnytsia → Bogomolets → Ternopil (verification merit) → Bukovinian → Ivano-Frankivsk/Odesa/Lviv/Poltava (R2 decides) → Kharkiv (operating-conditions check first). Zaporizhzhia, Dnipro, Uzhhorod and the two programme-topic sweeps were **not researched** (the shared web-search budget ran out) and are repeated next turn. **0 claims verified; nothing from the sweep may be published.**
+Nine universities swept at snippet level (Vinnytsia, Bogomolets, Bukovinian, Lviv, Ivano-Frankivsk, Odesa, Poltava, Ternopil, Kharkiv): English-medium integrated master's in medicine, dentistry and pharmacy for foreigners is the consistently documented offer; preparatory departments (10 months, Ukrainian + sciences) at all nine; **English-track nursing bachelor leads at Kharkiv and Ternopil only**; public health and physical therapy exist only as Ukrainian-language programmes, several new or unaccredited; no medical-university sport degree; **no university returned a dated official statement of its 2025–26 teaching format** — the first thing to verify. Expansion order *(superseded by the decision report section D after R2: Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv gated)*: Vinnytsia → Bogomolets → Ternopil (verification merit) → Bukovinian → Ivano-Frankivsk/Odesa/Lviv/Poltava (R2 decides) → Kharkiv (operating-conditions check first). Zaporizhzhia, Dnipro, Uzhhorod and the two programme-topic sweeps were **not researched** (the shared web-search budget ran out) and are repeated next turn. **0 claims verified; nothing from the sweep may be published.**
 
 ## 9. Technical, privacy, security and admissions-information risks
 
@@ -114,7 +114,7 @@ Live site unverified (PHP execution, headers, redirects); e-mail delivery unveri
 
 ## 10. Prioritised actions (rationale in `PROJECT_EXECUTION_PLAN.md` §8)
 
-P0: allow-list the production hosts and run `verify:live`; allow-list official university domains (or supply PDFs) and verify Vinnytsia first; approve R1+R2 (2,340 units). P1: verified fees and profiles; `/admissions/` readiness section; visual layers 1–2; stepped Stage-1 profile form. P2: Stage 2 platform on synthetic data; nursing parity; GSC + analytics decision. P3: R3–R5; CMS activation; D9.
+P0 *(updated 2026-10-11: R1+R2 done for 850 units; verify Bukovinian, Vinnytsia and Odesa first)*: allow-list the production hosts and run `verify:live`; allow-list official university domains (or supply PDFs). P1: verified fees and profiles; `/admissions/` readiness section; visual layers 1–2; stepped Stage-1 profile form. P2: Stage 2 platform on synthetic data; nursing parity; GSC + analytics decision. P3: R3–R5; CMS activation; D9.
 
 ## 11. Completed / not completed
 
@@ -122,7 +122,7 @@ DONE: baseline report; reconciliation of all cited metrics against exports; coun
 
 ## 12. Costs or paid research needing approval
 
-SEMrush R1 (1,440), R2 (900) — minimum 2,340 units; R3 (1,440); R4 ≈1,200 and R5 ≈1,500 at assumed prices to be confirmed. No other spend proposed; no purchase of any kind is recommended.
+*(Updated 2026-10-11: R1+R2 executed for 850 units; remaining approval candidates are R3 (1,440), R4 ≈1,200 and R5 ≈1,500 at assumed prices — not authorised.)* Original: SEMrush R1 (1,440), R2 (900) — minimum 2,340 units; R3 (1,440); R4 ≈1,200 and R5 ≈1,500 at assumed prices to be confirmed. No other spend proposed; no purchase of any kind is recommended.
 
 ## 13. Decisions required before production changes
 

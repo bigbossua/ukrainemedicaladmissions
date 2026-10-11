@@ -13,7 +13,7 @@
 | Website scaffold | DONE — `site/`, Astro static site, 18 pages, all tests passing locally (see §4) |
 | University data model | DONE — schema in `site/src/content.config.ts`; Ternopil pilot record, every claim marked unverified / not-published |
 | Enquiry / application-start (Stage 1) | DONE — `site/public/api/enquiry.php`, tested with synthetic data; stores outside web root |
-| SEMrush research | DONE (pilot + approved follow-up, 2,240 units at published prices; balance to be confirmed by owner). Evidence and per-URL actions in `KEYWORD_URL_MAP.md` §4; raw exports in `research/semrush/`. No further paid calls without approval |
+| SEMrush research | DONE — pilot + follow-up 2026-10-10 (2,110 verified via the owner's balance) and approved R1 + R2 2026-10-11 (850); cumulative 2,960; expected balance 47,040 (owner to confirm). Evidence and per-URL actions in `KEYWORD_URL_MAP.md` §4; raw exports in `research/semrush/`. No further paid calls without approval |
 | University fact verification | BLOCKED — official domains unreachable (network policy). Official sources *identified* by search (tdmu.edu.ua, nmuofficial.com, kmu.edu.ua, MoES portal, EDEBO) and logged snippet-only in `SOURCE_VERIFICATION_REGISTER.md`; 0 claims verified; Ternopil stays noindex |
 | Deployment | PREPARED, NOT ACTIVE — CI + manual publisher with `staging` (forced noindex, X-Robots-Tag, no sitemap, guard test) and `production` (PUBLISH confirmation + release tag) targets; Hostinger Git connection is an owner action |
 | Legacy site | Live pages exist on the domain (`/services`, `/about`, `/dentistry-admissions-in-ukraine`, `/document-translation-legalisation` — search-evidenced, unfetched); inventory and migration risks in `PAGE_ASSET_REGISTER.md`; earlier-audit claims 0 confirmed / 0 refuted |
@@ -113,8 +113,8 @@ Evidence base: `BASELINE_REPORT.md`, `KEYWORD_URL_MAP.md` §6–§9, `PROGRAMME_
 |---|---|---|---|---|
 | **P0** | Live verification run (`npm run verify:live`) and the authorised end-to-end enquiry/e-mail test | network allow-list for the two production hosts (free) | yes (read-only) | nothing beyond the allow-list; fixes found are proposed, not deployed |
 | **P0** | Official-source verification access: allow-list `tdmu.edu.ua`, `nmuofficial.com`, `vnmu.edu.ua`, `bsmu.edu.ua`, `universities.studyinukraine.gov.ua`, `info.edbo.gov.ua` and the other domains in `UNIVERSITY_DATA_REGISTER.md` §6 (or the owner supplies official PDFs) | D5 | yes | nothing (free) |
-| **P0** | SEMrush research R1 + R2 (2,340 units) — the minimum to decide programme and university expansion | approval of §KEYWORD_URL_MAP §9 | n/a | **units spend** |
-| **P1** | Verify and publish the first three university profiles (Vinnytsia, Bogomolets, Bukovinian) and at least one fee schedule; flip `publishable` only when complete | P0 access | yes (content + build + CI) | the deploy that publishes them |
+| ~~P0~~ DONE 2026-10-11 | SEMrush research R1 + R2 — executed for 850 units; results in `KEYWORD_URL_MAP.md` §6.1/§11/§12 | — | — | — |
+| **P1** | Verify and publish the first university profiles in the revised order (Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil; Kharkiv gated) and at least one fee schedule; flip `publishable` only when complete | P0 access | yes (content + build + CI) | the deploy that publishes them |
 | **P1** | `/admissions/` readiness section and `/tuition-fees/` verified figures; `/courses/medicine/` qualification titles | P1 verification | yes | deploy |
 | **P1** | Visual layer 1–2 (hero photograph, process illustrations, course photographs) per `VISUAL_AUDIT_AND_IMAGE_REGISTER.md` V1, V2, V5, V6, V7 | image sourcing route (owner-downloaded Unsplash or allow-list) | yes | deploy; image source decision |
 | **P1** | Stepped Stage-1 profile form (`/apply/`) with have/need checklist — still e-mail/JSON backed, no accounts yet | design V8 | yes | deploy |

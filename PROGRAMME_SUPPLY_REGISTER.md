@@ -31,11 +31,11 @@ Status key: **LEAD-OFFICIAL** (snippet from the university's own domain) · **LE
 
 | Cluster | Supply evidence | Demand evidence | Decision |
 |---|---|---|---|
-| Nursing | programmes exist; English-medium bachelor leads on the official domain at Kharkiv and Ternopil, Ministry-portal line for Poltava; current eligibility of foreigners unconfirmed | uk 20/mo; elsewhere unmeasured (R1) | **Improve `/courses/nursing/`** with verified award titles and the two/three universities once verified; honest statement on language/eligibility; no new page |
-| Public health | master's programmes exist, several new/unaccredited; no English/foreigner evidence | unmeasured (R1) | **Defer**; revisit when a university publishes an English-medium programme open to foreigners |
-| Physical therapy / rehabilitation | bachelor programmes exist in Ukrainian; no English/foreigner evidence | unmeasured (R1) | **Defer** |
-| Physical education / sport | essentially no medical-university supply | unmeasured | **Reject for now** |
-| Preparatory / foundation | official preparatory departments at 7 of 7 swept universities with public pages | unmeasured (R1) | **Improve `/admissions/` with a verified "preparatory routes" section**; a dedicated resource page only if R1 shows demand; this is the readiness service's natural content |
+| Nursing | programmes exist; English-medium bachelor leads on the official domain at Kharkiv and Ternopil, Ministry-portal line for Poltava; current eligibility of foreigners unconfirmed | R1 (2026-10-11): uk 20/mo · in 0 · za 0; BSN / MSN / "for international students" not returned in any database | **Retain `/courses/nursing/`; improve only on verified supply (P3)**; never BSN/MSN as award names; no new page |
+| Public health | master's programmes exist at ≥10 universities, Ukrainian-taught in every official snippet, several new/unaccredited; Bogomolets excludes it for foreigners (2026) | R1: uk 10 · in 0; MPH phrasings not returned | **Defer** |
+| Physical therapy / rehabilitation | bachelor/master programmes exist in Ukrainian at ≥10 universities; no English/foreigner evidence; recognition route undocumented | R1: not returned in any of six databases | **Defer** |
+| Physical education / sport | no medical-university supply; specialist universities only | R1: not returned in any database | **Reject** |
+| Preparatory / foundation | official preparatory departments at 12 of 12 swept universities (Uzhhorod: existence only); certificate and progression wording differ; only Bukovinian English-track | R1: not returned in any database (incl. "without biology") | **Improve `/admissions/` with a verified per-university "preparatory routes" section; no page** — the value is inside the readiness service |
 
 ## 4. Regulatory and terminology notes from the topic sweeps (snippet-backed; sources in `research/universities/2026-10-11-snippet-sweep-2.json`)
 

@@ -136,13 +136,13 @@ Reading (12 universities): English-medium **medicine, dentistry and pharmacy for
 
 | Order | University | Why | What must be true before the profile is indexable |
 |---|---|---|---|
-| 1 | Bukovinian (Chernivtsi) | Largest measured demand (in 480, intent incl. transactional; uk 20; ng 30); official preparatory course incl. English track; FAQ and faculty pages found | §3 procedure complete for Medicine, Dentistry, Pharmacy; official degree fees (none in snippets); teaching-format notice for the current year |
-| 2 | Vinnytsia (Pirogov) | pirogov 390 + name 50; official 2026/27 fee PDF and admission PDFs exist | as above |
-| 3 | Odesa | in 390 at the lowest difficulty (16); official 2026 fee page and intake window | as above |
-| 4 | Bogomolets (Kyiv) | in 320, uk 90, ng 20 + fees 30; 2026 intake window official; no official fee page in snippets | as above + fee page |
-| 5 | Ivano-Frankivsk | in 210; richest official documentation (2025 fee table, 2026 rules) | current-year documents |
-| 6 | Uzhhorod | in 140; broadest health-sciences supply; western region; 2026 intake stages official; no fee page captured | official English fee page; eligibility/language of nursing, PH, rehab |
-| 7 | Ternopil | in 110 at kd 16; template record exists; 2025/26 fee table, deadlines, English-track nursing lead | nursing award and English availability confirmed or left unpublished; current format statement |
+| 1 | Bukovinian (Chernivtsi) | Largest measured demand (in 480, intent incl. transactional; uk 20; ng 30); snippet leads: official preparatory course incl. English track; FAQ and faculty pages | §3 procedure complete for Medicine, Dentistry, Pharmacy; official degree fees (none in snippets); teaching-format notice for the current year |
+| 2 | Vinnytsia (Pirogov) | pirogov 390 + name 50; snippet leads: 2026/27 fee PDF and admission PDFs | as above |
+| 3 | Odesa | in 390 at the joint-lowest difficulty (16, with Ternopil); snippet leads: 2026 fee page and intake window | as above |
+| 4 | Bogomolets (Kyiv) | in 320, uk 90, ng 20 + fees 30; snippet lead: 2026 intake window; no official fee page in snippets | as above + fee page |
+| 5 | Ivano-Frankivsk | in 210; snippet leads: richest official documentation (2025 fee table, 2026 rules) | current-year documents |
+| 6 | Uzhhorod | in 140; snippet leads: broadest health-sciences supply; western region; 2026 intake stages; no fee page captured | official English fee page; eligibility/language of nursing, PH, rehab |
+| 7 | Ternopil | in 110 at kd 16 (joint-lowest); template record exists; snippet leads: 2025/26 fee table, deadlines, English-track nursing | nursing award and English availability confirmed or left unpublished; current format statement |
 | 8 (gated) | Kharkiv | in 390 but kd 34; front-line region; nine international admissions in 2025 per press | **dated** official statement on format and location for the current year, then the standard set |
 | 9 (gated) | Zaporizhzhia | in 90; official pages say foreigners are taught in Berehove (undated) | dated official statement of where and how foreigners are taught |
 | 10–12 | Lviv (50), Poltava (20), Dnipro (20) | Small demand; Lviv and Poltava fee documents out of date or conflicting; Dnipro has no official English-programme snippet | later pass |

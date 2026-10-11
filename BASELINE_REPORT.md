@@ -60,9 +60,9 @@ Labels: **VERIFIED** (observed in this session, evidence named) · **OWNER-REPOR
 
 ## 8. SEMrush: what exists, what it cost, what is missing
 
-- 10 raw exports (`research/semrush/`), 16 logged requests, **2,240 units at published prices** (`SEMRUSH_API_LEDGER.md`); the account balance has not been read since the owner's 50,000-unit screenshot — **not inferred**.
+- *(Updated 2026-10-11: 20 raw exports, 26 logged calls, cumulative 2,960 units — 2,110 derived from the owner's 47,890 balance reading plus 850 for the approved R1/R2 batch; see the ledger.)* Original text: 10 raw exports (`research/semrush/`), 16 logged requests, **2,240 units at published prices** (`SEMRUSH_API_LEDGER.md`); the account balance has not been read since the owner's 50,000-unit screenshot — **not inferred**.
 - Reports used: `phrase_all` (1 phrase, 79 databases), `phrase_these` (uk seeds; 8 variants × 6 databases), `phrase_fullsearch` ("ukraine medical", in + uk, 18 rows each). All metrics re-checked against the CSVs today: every figure cited in `KEYWORD_URL_MAP.md` matches its export.
-- Missing (not purchased): SERP/competitor data for any term; related/question keywords; trends; kd/intent outside in/ru; course and programme terms outside uk; nursing/public-health/rehabilitation/preparatory terms (except uk "study nursing in ukraine" 20); university names outside in/uk; city terms; broad match outside in/uk. A costed request is in `KEYWORD_URL_MAP.md` §9 — **requires approval; no call has been made**.
+- Missing (not purchased) — *as of 2026-10-11 the R1/R2 batch added programme terms in six databases, university names in in/uk/ng and 12-month trends; SERP/competitor data is still missing*: SERP/competitor data for any term; related/question keywords; trends (before R1/R2); kd/intent outside in/ru; course and programme terms outside uk; nursing/public-health/rehabilitation/preparatory terms (except uk "study nursing in ukraine" 20); university names outside in/uk; city terms; broad match outside in/uk. A costed request is in `KEYWORD_URL_MAP.md` §9 — **requires approval; no call has been made**.
 
 ## 9. Live verification blocker — exact status
 

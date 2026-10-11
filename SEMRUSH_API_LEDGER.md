@@ -3,7 +3,7 @@
 Every material SEMrush API request is recorded here. No keys or credentials are stored in this file.
 
 **Budget rule (brief):** initial research cap 2,000 Standard API units; preserve ≥48,000 unless the owner approves otherwise. Treated as a ceiling only if the allowance is authorised *and available*.
-**Last observed balance (owner screenshot, date unknown):** 50,000 Standard API units.
+**Last observed balance (owner screenshot, date unknown):** 50,000 Standard API units. **Latest reading (owner, 2026-10-11): 47,890** before the R1/R2 batch; expected 47,040 after it.
 **Balance observed via the MCP integration:** 0 usable units until the owner re-authorised the connector on 2026-10-10 (toast "Connected to Semrush"); after that, calls succeed. The MCP reports units *metered per call* (`metadata.usage.api_units`) but never the remaining balance — owner to confirm balance on the API Units page.
 
 ## Request log
@@ -107,13 +107,13 @@ Reading B is almost certainly wrong: six identical 8-line requests reported six 
 |---|---|---|
 | Owner's current balance | **47,890** Standard API units (screenshot of Subscription info → API units, 2026-10-11) | VERIFIED (owner) |
 | Starting allowance | 50,000 (owner's earlier screenshot) | VERIFIED (owner) |
-| **Actual units consumed to date** | **50,000 − 47,890 = 2,110** | VERIFIED |
+| **Actual units consumed to date** | **50,000 − 47,890 = 2,110** | DERIVED — assumes the 50,000 screenshot was the balance immediately before the first paid call and that no other connected tool drew on the shared pool |
 | Ledger's running total before this entry | 2,240 (Reading A: observed 910 + observed 130 + *published-price estimate* 1,200 for the eight parallel follow-up calls) | superseded |
 | Discrepancy | **130 units over-stated** | explained below |
 
 **Where the 130 comes from.** Two calls were *observed* (910 for `phrase_all`; 130 for the uk-seeds `phrase_these`) and the eight follow-up calls were *estimated* at published prices (1,200) because their `metadata.usage.api_units` readings (520 → 1,200) had been identified as a running counter rather than per-call costs. The only arithmetic consistent with the verified balance is: the counter in that session was cumulative **including the earlier uk-seeds call (130)** that ran in the same connector session, so the counter's final value 1,200 = 130 (uk seeds) + **1,070 (the eight follow-up calls together)**; with `phrase_all` (910) having run in a separate session: 910 + 130 + 1,070 = **2,110** — exactly the verified figure. The per-call split of the 1,070 cannot be recovered after the fact (zero-volume lines may not have been billed; `phrase_fullsearch` may have billed fewer lines than 20/line); the batch total is what the balance proves.
 
-**Corrections applied:** cumulative consumption is now **2,110 (VERIFIED)**; the eight follow-up calls are re-stated as **1,070 in total (derived from the verified balance), not 1,200**; the "running counter" conclusion stands, refined to *cumulative within a connector session*. From this entry on, each call's cost is recorded as the **counter delta within the session** and the session total is reconciled against the owner's next balance reading.
+**Corrections applied:** cumulative consumption is now **2,110 (DERIVED from the owner's verified balance)**; the eight follow-up calls are re-stated as **1,070 in total (derived from the verified balance), not 1,200**; the "running counter" conclusion stands, refined to *cumulative within a connector session*. From this entry on, each call's cost is recorded as the **counter delta within the session** and the session total is reconciled against the owner's next balance reading.
 
 **Position before the approved research:** 47,890 available; approved spend ≤ 2,340 (R1 + R2) plus a 10-unit probe; the brief's 48,000 preservation floor was already crossed before this phase and the owner has explicitly approved the spend; expected balance after the phase ≈ 45,540 if the full cap is used.
 
@@ -124,7 +124,7 @@ Pre-flight satisfied: balance 47,890 confirmed by the owner; price confirmed by 
 | # | Call | Requested → returned lines | `metadata.usage.api_units` reading | Cost recorded | Notes |
 |---|---|---|---|---|---|
 | 1 | probe · in · "mbbs in ukraine" | 1 → 1 | 10 | **10** | sequential; confirms 10 units per returned line and the earlier 260/kd 18 figure |
-| 2 | R1 · in · 24 programme terms | 24 → 6 | 60 | **60** | sequential; 18 keywords with no data were **not billed** |
+| 2 | R1 · in · 24 programme terms | 24 → 6 | 60 | **60** | sequential; 18 keywords with no data were **not billed** (inferred from the counter; confirmed only when the owner's next balance reading matches 47,040) |
 | 3 | R1 · uk | 24 → 6 | 60 | **60** | sequential (reading equals this call's cost, not a cumulative total) |
 | 4 | R1 · ng | 24 → 2 | 20 | **20** | |
 | 5 | R1 · pk | 24 → 4 | 40 | **40** | |
