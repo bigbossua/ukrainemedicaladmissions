@@ -8,10 +8,13 @@
 //      a classification fails the tests and the build; an unclassified or internal key is never copied to a page.
 //   2. A claim is SHOWN only when the record marks it verified with a non-empty value, an https source and a check date,
 //      AND the evidence store (src/lib/evidence.mjs) holds a matching entry: verified, decision "publish", quoted, dated,
-//      the same value, the same source address and an allowed source tier (recognition: tier 4 only and never on the
-//      university's own website; everything else: tiers 1-3). Any conflicting entry, or a verified entry with another
-//      value, withholds the claim. Time-sensitive claims also need a next-review date that has not passed; fees need an
-//      academic year that has not ended (and the evidence must name it); a deadline that has passed is never shown.
+//      exactly the same value, the same source address and an allowed source tier (recognition: tier 4 only and never on
+//      the university's own website; everything else: tiers 1-3), on an address that fits the tier (tiers 1-2: the
+//      official website; tier 3: .gov.ua; never a search result, archive, directory, social page or blog). Any
+//      conflicting entry, declared contradiction or verified entry with another value withholds the claim. An entry past
+//      its next-review date, or naming an academic year that has ended, no longer counts; time-sensitive claims must have
+//      a next-review date; fees need an academic year that has not ended (and the evidence must name it); a deadline that
+//      has passed is never shown; a value carrying research-note wording is never shown.
 //      Anything else is withheld: no value, no note, no source. Pages print "To be confirmed".
 //   3. toPublicRecord() builds a NEW object holding only public and editorial-public keys, every claim replaced by its
 //      evaluated form. Programmes are listed only when their international admission, level, language, duration and
@@ -247,6 +250,25 @@ function onHost(url, hosts) {
 /** @param {string} url */
 const hostOf = (url) => { try { return new URL(url).hostname.toLowerCase().replace(/^www\./, ''); } catch { return null; } };
 
+// Sources that are never evidence at any tier (owner rule: search snippets, third-party directories, archives, social
+// media and blogs are research leads only). Matched on the host name, any country domain (google.co.uk, yandex.ua ...).
+const NOT_EVIDENCE_HOST = /(^|\.)(google|googleusercontent|bing|yahoo|yandex|baidu|duckduckgo|ecosia|startpage|ask|wikipedia|wikiwand|wikimedia|archive|facebook|instagram|youtube|tiktok|twitter|linkedin|reddit|quora|medium|blogspot|wordpress|telegram|whatsapp|wdoms)\.[a-z]{2,}(\.[a-z]{2})?$|(^|\.)(t\.me|x\.com|youtu\.be|wa\.me|archive\.ph|archive\.is|archive\.today|search\.brave\.com|bit\.ly|tinyurl\.com)$|\.translate\.goog$/;
+/** True when a URL is on a search engine, archive, directory, social network or blog host: never evidence. @param {string} url */
+export const isNotEvidenceSource = (url) => { const h = hostOf(url); return !h || NOT_EVIDENCE_HOST.test(h); };
+/** An evidence method that says the claim was read from a search result rather than the page itself. */
+const SNIPPET_METHOD = /snippet|search[- ](result|engine)|cached cop/i;
+
+// Wording that belongs in an internal research note, never in a public value (owner rule: notes never reach a page).
+// A shown value or one of our own editorial strings that contains it is withheld (values) or blocks publication (text).
+const INTERNAL_WORDING = /search[- ]?snippet|snippet[- ]lead|\bnot (?:yet )?verified\b|\bunverified\b|\b(?:awaiting|pending) verification\b|\bdraft record\b|read the official page|before publishing|\bresearch (?:lead|note|reference)s?\b|\bto be confirmed\b|\bTBC\b|\bTODO\b|\bFIXME\b|\bplaceholder\b|lorem ipsum/i;
+/** True when a value (deep) contains internal research-note wording. @param {unknown} v @returns {boolean} */
+export function hasInternalWording(v) {
+  if (typeof v === 'string') return INTERNAL_WORDING.test(v);
+  if (Array.isArray(v)) return v.some(hasInternalWording);
+  if (v && typeof v === 'object') return Object.values(v).some(hasInternalWording);
+  return false;
+}
+
 // ------------------------------------------------------------------------------------------------ evaluate one claim
 
 /** Fixed, public-safe sentences. Nothing from a record or an evidence file is ever used as a reason. */
@@ -271,11 +293,16 @@ export const CODE_WORDS = Object.freeze({
   'no-evidence': 'the evidence file has no entry for it',
   'evidence-not-publishable': 'no evidence entry for it is verified, marked "publish", quoted, dated (not in the future), on an https page and identical to the record value',
   'tier-not-allowed': 'its evidence is not from an allowed kind of source (recognition needs tier 4, the recognition authority of the destination country; everything else tier 1, 2 or 3)',
+  'source-not-evidence': 'its evidence is a search result, archive copy, directory, social-media page or blog (a research lead, never evidence), or its method says it was read from a search snippet',
+  'source-not-official': "its evidence page is not on the address its tier requires (tier 1 and 2: the university's official website, as recorded in the website field; tier 3: a Ukrainian government address ending .gov.ua)",
+  'no-capture': 'its evidence is an owner capture with no capture file named',
+  'evidence-year-ended': 'its evidence names an academic year that has ended',
+  'internal-wording': 'its value contains wording from an internal research note (for example "snippet", "not verified" or "to be confirmed")',
   'recognition-from-university': "its recognition evidence is on the university's own website",
   'source-mismatch': "the record's source link is not the address of its verified evidence entry",
-  conflict: 'the record or an evidence entry marks it conflicting, or verified evidence entries disagree with each other',
+  conflict: 'the record or an evidence entry marks it conflicting, an evidence entry lists a contradiction (contradicts) for it, or verified evidence entries disagree with each other',
   'value-mismatch': 'a verified evidence entry has a different value from the record',
-  'stale-review': 'its evidence has no next-review date, or that date has passed',
+  'stale-review': 'its evidence has a next-review date that has passed (or, for a time-sensitive fact, no next-review date)',
   'past-academic-year': 'the fee is for an academic year that has ended (or the year is not written like 2026/27)',
   'academic-year-not-evidenced': "the evidence entry does not name the fee's academic year",
   'past-intake': 'it refers to an intake year that has ended (or the year is not written like 2026/27)',
@@ -290,38 +317,63 @@ export const CODE_WORDS = Object.freeze({
  * @param {string} path claim path, e.g. "programmes.medicine.tuition"
  * @param {any} claim the record claim { value, status, source, checked } (for items: the item's content as `value`)
  * @param {any[]} evidenceEntries entries of the record's (validated) evidence file
- * @param {{ now?: Date, officialHosts?: string[] }} [opts]
+ * `officialHosts`: the university's official website host(s) (from the record's website field); tier 1 and 2 evidence
+ * must be on one of them. `universityHosts` (default officialHosts): every host the university publishes on; recognition
+ * evidence must be on none of them. Omitted hosts fail closed: no tier 1 or 2 entry counts.
+ * @param {{ now?: Date, officialHosts?: string[], universityHosts?: string[] }} [opts]
  * @returns {EvaluatedClaim}
  */
-export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), officialHosts = [] } = {}) {
+export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), officialHosts = [], universityHosts = officialHosts } = {}) {
   const today = isoDay(now);
   /** @param {PublicState} publicState @param {string} code @returns {EvaluatedClaim} */
   const withheld = (publicState, code) => ({ show: false, value: null, source: null, checked: null, publicState, reason: PUBLIC_REASONS[publicState], code });
   if (!claim || typeof claim !== 'object' || !('value' in claim)) return withheld('to-be-confirmed', 'missing');
   const value = pickValue(path, claim.value);
-  const entries = (Array.isArray(evidenceEntries) ? evidenceEntries : []).filter((e) => e && e.claimPath === path);
-  // Conflicts first: a conflicting entry, or verified entries that disagree with each other, withhold the claim
-  // whatever the record says.
-  const verifiedValues = entries.filter((e) => e.status === 'verified').map((e) => pickValue(path, e.value));
-  if (claim.status === 'conflicting' || entries.some((e) => e.status === 'conflicting') || verifiedValues.some((v) => !deepEqual(v, verifiedValues[0]))) return withheld('withheld-conflict', 'conflict');
+  const all = (Array.isArray(evidenceEntries) ? evidenceEntries : []).filter((e) => e && typeof e === 'object');
+  const entries = all.filter((e) => e.claimPath === path);
+  // Conflicts first, whatever the record says: a conflicting entry; an entry for this claim that lists a contradiction;
+  // an entry anywhere in the file that names an entry for this claim in its `contradicts` (an `outdated` entry no longer
+  // counts: that is how a resolved conflict is closed); or verified entries that disagree with each other.
+  const ids = new Set(entries.map((e) => e.id));
+  const live = (/** @type {any} */ e) => e.status !== 'outdated' && Array.isArray(e.contradicts);
+  const contradicted = entries.some((e) => live(e) && e.contradicts.length > 0) || all.some((e) => live(e) && e.contradicts.some((/** @type {string} */ id) => ids.has(id)));
+  const verifiedValues = entries.filter((e) => e.status === 'verified').map((e) => e.value);
+  if (claim.status === 'conflicting' || entries.some((e) => e.status === 'conflicting') || contradicted || verifiedValues.some((v) => !deepEqual(v, verifiedValues[0]))) return withheld('withheld-conflict', 'conflict');
   if (claim.status !== 'verified') return withheld(claim.status === 'outdated' || claim.status === 'partially-verified' ? 'under-review' : 'to-be-confirmed', 'not-verified');
-  if (verifiedValues.some((v) => !deepEqual(v, value))) return withheld('withheld-conflict', 'value-mismatch');
+  // The evidence value must be deep-equal to the record value exactly as recorded (no extra or missing keys).
+  if (verifiedValues.some((v) => !deepEqual(v, claim.value))) return withheld('withheld-conflict', 'value-mismatch');
   if (value === undefined && hasValue(claim.value)) return withheld('under-review', 'no-public-form');
   if (!hasValue(value)) return withheld('to-be-confirmed', 'empty');
+  if (hasInternalWording(value)) return withheld('under-review', 'internal-wording');
   if (!isHttpsUrl(claim.source)) return withheld('under-review', 'source-not-https');
   if (!isIsoDate(claim.checked)) return withheld('under-review', 'no-check-date');
   if (claim.checked > today) return withheld('under-review', 'check-date-future');
   if ((path === 'website' && !isHttpsUrl(value)) || (path === 'internationalOffice' && value.url !== undefined && !isHttpsUrl(value.url))) return withheld('under-review', 'unsafe-url');
   if (entries.length === 0) return withheld('to-be-confirmed', 'no-evidence');
-  let ok = entries.filter((e) => e.status === 'verified' && e.decision === 'publish' && typeof e.quotation === 'string' && e.quotation.trim() && isIsoDate(e.accessed) && e.accessed <= today && isHttpsUrl(e.sourceUrl) && deepEqual(pickValue(path, e.value), value));
+  let ok = entries.filter((e) => e.status === 'verified' && e.decision === 'publish' && typeof e.quotation === 'string' && e.quotation.trim() && isIsoDate(e.accessed) && e.accessed <= today && isHttpsUrl(e.sourceUrl) && deepEqual(e.value, claim.value));
   if (!ok.length) return withheld('under-review', 'evidence-not-publishable');
   const tiers = allowedTiers(path);
   ok = ok.filter((e) => tiers.includes(e.sourceTier));
   if (!ok.length) return withheld('under-review', 'tier-not-allowed');
-  if (path === 'recognition') { ok = ok.filter((e) => !onHost(e.sourceUrl, officialHosts)); if (!ok.length) return withheld('under-review', 'recognition-from-university'); }
+  ok = ok.filter((e) => !isNotEvidenceSource(e.sourceUrl) && !(typeof e.method === 'string' && SNIPPET_METHOD.test(e.method)));
+  if (!ok.length) return withheld('under-review', 'source-not-evidence');
+  ok = ok.filter((e) => (e.sourceTier === 1 || e.sourceTier === 2 ? onHost(e.sourceUrl, officialHosts) : e.sourceTier === 3 ? onHost(e.sourceUrl, ['gov.ua']) : true));
+  if (!ok.length) return withheld('under-review', 'source-not-official');
+  ok = ok.filter((e) => e.evidenceType !== 'owner-capture' || (typeof e.captureRef === 'string' && e.captureRef.trim()));
+  if (!ok.length) return withheld('under-review', 'no-capture');
+  if (path === 'recognition') { ok = ok.filter((e) => !onHost(e.sourceUrl, universityHosts)); if (!ok.length) return withheld('under-review', 'recognition-from-university'); }
   ok = ok.filter((e) => e.sourceUrl === claim.source);
   if (!ok.length) return withheld('under-review', 'source-mismatch');
-  if (isTimeSensitive(path)) { ok = ok.filter((e) => isIsoDate(e.nextReview) && e.nextReview >= today); if (!ok.length) return withheld('under-review', 'stale-review'); }
+  // A next-review date that has passed retires the entry for EVERY claim; a time-sensitive claim must also have one.
+  ok = ok.filter((e) => (e.nextReview === null || e.nextReview === undefined ? !isTimeSensitive(path) : isIsoDate(e.nextReview) && e.nextReview >= today));
+  if (!ok.length) return withheld('under-review', 'stale-review');
+  // A fee, intake year or item for a year that has ended is withheld whatever its evidence says.
+  if (isMoneyPath(path) && yearHasEnded(value.academicYear, now)) return withheld('under-review', 'past-academic-year');
+  if (INTAKE_YEAR_PATH.test(path) && yearHasEnded(value, now)) return withheld('under-review', 'past-intake');
+  if ((REQUIREMENT_PATH.test(path) || DOCUMENT_PATH.test(path)) && value.intakeYear !== undefined && yearHasEnded(value.intakeYear, now)) return withheld('under-review', 'past-intake');
+  // Evidence that names an academic year which has ended no longer supports any claim.
+  ok = ok.filter((e) => e.academicYear === null || e.academicYear === undefined || !yearHasEnded(e.academicYear, now));
+  if (!ok.length) return withheld('under-review', 'evidence-year-ended');
   if (path === 'statusStatement') {
     // The university's own statement must be for THIS academic year: the evidence names the year, or is dated in it.
     const ay = currentAcademicYear(now), ayStart = `${currentAcademicYearStart(now)}-09-01`;
@@ -329,12 +381,9 @@ export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), 
     if (!ok.length) return withheld('under-review', 'statement-not-current');
   }
   if (isMoneyPath(path)) {
-    if (yearHasEnded(value.academicYear, now)) return withheld('under-review', 'past-academic-year');
     ok = ok.filter((e) => e.academicYear === value.academicYear);
     if (!ok.length) return withheld('under-review', 'academic-year-not-evidenced');
   }
-  if (INTAKE_YEAR_PATH.test(path) && yearHasEnded(value, now)) return withheld('under-review', 'past-intake');
-  if ((REQUIREMENT_PATH.test(path) || DOCUMENT_PATH.test(path)) && value.intakeYear !== undefined && yearHasEnded(value.intakeYear, now)) return withheld('under-review', 'past-intake');
   if (DEADLINES_PATH.test(path)) {
     if (!Array.isArray(value) || value.some((d) => !d || !isIsoDate(d.date))) return withheld('under-review', 'deadline-unparseable');
     if (value.some((d) => d.date < today)) return withheld('under-review', 'deadline-passed');
@@ -366,19 +415,24 @@ export function normaliseEvidence(evidence, slug) {
   return r;
 }
 
-/** @param {any} record @param {any[]} entries */
-function officialHostsOf(record, entries) {
-  const hosts = new Set();
+/**
+ * officialHosts: the host of the record's official website (tier 1 and 2 evidence must be on it or a subdomain).
+ * universityHosts: that host plus every host a tier 1 or 2 entry cites (recognition evidence must be on none of them).
+ * @param {any} record @param {any[]} entries
+ */
+function hostsOf(record, entries) {
+  const official = new Set();
   const w = record?.website?.value;
-  if (typeof w === 'string') { const h = hostOf(w); if (h) hosts.add(h); }
-  for (const e of entries) if (e.sourceTier === 1 || e.sourceTier === 2) { const h = hostOf(e.sourceUrl); if (h) hosts.add(h); }
-  return [...hosts];
+  if (typeof w === 'string' && isHttpsUrl(w)) { const h = hostOf(w); if (h) official.add(h); }
+  const university = new Set(official);
+  for (const e of entries) if (e.sourceTier === 1 || e.sourceTier === 2) { const h = hostOf(e.sourceUrl); if (h) university.add(h); }
+  return { officialHosts: [...official], universityHosts: [...university] };
 }
 
-/** @param {any[]} entries @param {string} path @param {Date} now */
-function feePageRead(entries, path, now) {
+/** The fee page was read: a current tier 1 or 2 entry on the official website (whatever it found). @param {any[]} entries @param {string} path @param {{ now: Date, officialHosts: string[] }} ctx */
+function feePageRead(entries, path, { now, officialHosts }) {
   const today = isoDay(now);
-  return entries.some((e) => e.claimPath === path && e.status !== 'outdated' && (e.sourceTier === 1 || e.sourceTier === 2) && isHttpsUrl(e.sourceUrl) && isIsoDate(e.accessed) && e.accessed <= today && isIsoDate(e.nextReview) && e.nextReview >= today);
+  return entries.some((e) => e.claimPath === path && e.status !== 'outdated' && (e.sourceTier === 1 || e.sourceTier === 2) && isHttpsUrl(e.sourceUrl) && onHost(e.sourceUrl, officialHosts) && !isNotEvidenceSource(e.sourceUrl) && isIsoDate(e.accessed) && e.accessed <= today && isIsoDate(e.nextReview) && e.nextReview >= today);
 }
 
 // ------------------------------------------------------------------------------------------------ projection
@@ -391,11 +445,11 @@ export const NOT_LISTED_WORDS = Object.freeze({
   language: 'its teaching language is not shown as verified',
   duration: 'its duration (durationText or durationYears) is not shown as verified',
   'intake-year': 'its intake year is not shown as verified',
-  'fee-page-not-read': 'no current evidence entry (tier 1 or 2, next review not passed) shows that its fee page was read',
+  'fee-page-not-read': 'no current evidence entry (tier 1 or 2, on the official website, next review not passed) shows that its fee page was read',
 });
 
 /**
- * @param {any} p @param {any[]} entries @param {{ now: Date, officialHosts: string[] }} ctx
+ * @param {any} p @param {any[]} entries @param {{ now: Date, officialHosts: string[], universityHosts: string[] }} ctx
  * @returns {{ programme: any, listed: boolean, reasons: string[] }}
  */
 function projectProgramme(p, entries, ctx) {
@@ -409,7 +463,7 @@ function projectProgramme(p, entries, ctx) {
       out.otherMandatoryCosts = []; out.otherCostsWithheld = 0;
       (Array.isArray(v) ? v : []).forEach((c, i) => {
         const r = evaluateClaim(`${base}.otherMandatoryCosts.${i}`, c?.cost, entries, ctx);
-        if (r.show && typeof c.label === 'string' && c.label.trim()) out.otherMandatoryCosts.push({ label: c.label, cost: publicForm(r) }); else out.otherCostsWithheld++;
+        if (r.show && typeof c.label === 'string' && c.label.trim() && !hasInternalWording(c.label)) out.otherMandatoryCosts.push({ label: c.label, cost: publicForm(r) }); else out.otherCostsWithheld++;
       });
     } else if (key === 'requirements' || key === 'documents') {
       const kind = key === 'requirements' ? 'requirement' : 'documentRequirement';
@@ -429,11 +483,11 @@ function projectProgramme(p, entries, ctx) {
   if (!out.language.show) reasons.push('language');
   if (!out.durationText.show && !out.durationYears.show) reasons.push('duration');
   if (!out.intakeYear.show) reasons.push('intake-year');
-  if (!out.tuition.show && !feePageRead(entries, `${base}.tuition`, ctx.now)) reasons.push('fee-page-not-read');
+  if (!out.tuition.show && !feePageRead(entries, `${base}.tuition`, ctx)) reasons.push('fee-page-not-read');
   return { programme: out, listed: reasons.length === 0, reasons };
 }
 
-/** @param {any} r @param {any[]} entries @param {{ now: Date, officialHosts: string[] }} ctx */
+/** @param {any} r @param {any[]} entries @param {{ now: Date, officialHosts: string[], universityHosts: string[] }} ctx */
 function projectRoute(r, entries, ctx) {
   if (!r || typeof r !== 'object' || typeof r.id !== 'string' || !SAFE_ID.test(r.id)) return null;
   /** @type {Record<string, any>} */ const out = {};
@@ -453,7 +507,7 @@ function projectRoute(r, entries, ctx) {
 function projection(record, evidence, now) {
   const ev = normaliseEvidence(evidence, record?.slug);
   const entries = ev.state === 'ok' ? ev.data.entries : [];
-  const ctx = { now, officialHosts: officialHostsOf(record, entries) };
+  const ctx = { now, ...hostsOf(record, entries) };
   /** @type {Record<string, any>} */ const out = {};
   const notListed = [];
   let routesWithheld = 0;
@@ -529,6 +583,10 @@ export function evaluatePublication(record, evidence, { now = new Date() } = {})
     const age = Math.round((Date.parse(`${isoDay(now)}T00:00:00Z`) - Date.parse(`${lr}T00:00:00Z`)) / 86400000);
     if (age > REVIEW_MAX_AGE_DAYS) f('stale-last-review', 'verification.lastReview', `The last full review was ${age} days ago. It must be within ${REVIEW_MAX_AGE_DAYS} days.`);
   }
+  // Our own editorial text is printed without evidence, so it must never carry a research note copied into it.
+  const editorial = [['shortName', out.shortName], ['city', out.city], ['region', out.region], ['overview', out.overview],
+    ...out.programmes.map((/** @type {any} */ p) => [`programmes.${p.id}.name`, p.name]), ...out.preparatoryRoutes.map((/** @type {any} */ r) => [`preparatoryRoutes.${r.id}.name`, r.name])];
+  for (const [field, text] of editorial) if (hasInternalWording(text)) f('internal-wording', field, `Our own text in ${field} contains wording from an internal research note (for example "snippet", "not verified" or "to be confirmed"). Rewrite it; notes never appear on a public page.`);
   const oq = Array.isArray(record?.verification?.openQuestions) ? record.verification.openQuestions.length : 0;
   if (oq) f('open-questions', 'verification.openQuestions', `${oq} open verification question${oq === 1 ? '' : 's'} remain${oq === 1 ? 's' : ''}. Answer or close each one.`);
   return {

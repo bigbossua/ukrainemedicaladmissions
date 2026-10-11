@@ -6,8 +6,11 @@
 //   (4) expired admission deadline                  (10) a new schema field without a policy entry
 //   (5) internal notes                              (11) passes preview but fails publication
 //   (6) recognition backed only by the university   (12) stale data
-// plus static checks over src/: only lib/records.ts reads the universities collection, and every JSON-LD block is
-// written through serializeJsonLd. Prints "publication-policy: N checks, M failures".
+// plus the leak-hunter review's adversarial fixtures (snippet, agent and archive sources; expired next-review dates;
+// evidence for 2025/26; declared contradictions; inexact evidence values; notes copied into values and into our own
+// text; markup; unknown keys; unevidenced items; deferred programmes), and static checks over src/: only
+// lib/records.ts reads the universities collection, and every JSON-LD block is written through serializeJsonLd.
+// Prints "publication-policy: N checks, M failures".
 import { readdirSync, readFileSync, statSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { join, resolve, relative } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -42,7 +45,8 @@ const entry = (claimPath, value, o = {}) => ({
 });
 const evidence = (entries) => ({ slug: SLUG, access: { status: 'open', checked: day(-2), note: 'unit test' }, entries });
 const ev = (claimPath, value, o) => [entry(claimPath, value, o)];
-const C = (path, claim, entries, opts = {}) => evaluateClaim(path, claim, entries, { now: NOW, ...opts });
+// The university's official website host is unit.example (tier 1 and 2 evidence must be on it).
+const C = (path, claim, entries, opts = {}) => evaluateClaim(path, claim, entries, { now: NOW, officialHosts: ['unit.example'], ...opts });
 
 /** A minimal record that passes the policy, and its evidence. */
 function passing() {
@@ -125,7 +129,7 @@ section('evaluateClaim');
   hidden(C('officialName', V('Name'), ev('officialName', 'Name', { sourceTier: 5 })), 'under-review', 'tier-not-allowed', 'tier 5 source');
   hidden(C('officialName', V('Name'), ev('officialName', 'Name', { sourceTier: 4 })), 'under-review', 'tier-not-allowed', 'tier 4 for a non-recognition claim');
   hidden(C('officialName', V('Name', `${H}/other`), ev('officialName', 'Name')), 'under-review', 'source-mismatch', 'record source is not the evidence page');
-  check(C('accreditation', V('Cert 1', 'https://register.example/1'), ev('accreditation', 'Cert 1', { sourceTier: 3, sourceUrl: 'https://register.example/1' })).show, 'accreditation from a tier-3 register is shown');
+  check(C('accreditation', V('Cert 1', 'https://register.unit-test.gov.ua/1'), ev('accreditation', 'Cert 1', { sourceTier: 3, sourceUrl: 'https://register.unit-test.gov.ua/1' })).show, 'accreditation from a tier-3 government register is shown');
   hidden(C('website', V('javascript:alert(1)'), ev('website', 'javascript:alert(1)')), 'under-review', 'unsafe-url', 'website value that is not https');
   hidden(C('internationalOffice', V({ url: 'javascript:alert(1)' }), ev('internationalOffice', { url: 'javascript:alert(1)' })), 'under-review', 'unsafe-url', 'office url that is not https');
   // (6) recognition: only tier 4, never on the university's own website
@@ -343,6 +347,112 @@ section('rendering helpers');
   const e2 = clone(e); e2.entries = e2.entries.filter((x) => x.claimPath !== 'address');
   check(!('address' in profileJsonLd(toPublicRecord(rec, e2, { now: NOW }))[0]), 'a withheld address is left out of the JSON-LD');
   eq(listClaims(rec).filter((c) => c.path === 'programmes.medicine.tuition').length, 1, 'listClaims finds programme claims by path');
+}
+
+// ------------------------------------------------------------------------------------------------ adversarial review
+// Leak-hunter review (2026-10-11): fixtures written to defeat the gate. Every one must be withheld.
+section('adversarial review');
+{
+  const hidden = (r, code, msg) => { check(!r.show && r.value === null && r.source === null && r.checked === null, `${msg}: must be withheld (got show=${r.show}, code=${r.code})`); if (code) eq(r.code, code, `${msg} code`); };
+  const shown = (r, msg) => check(r.show === true, `${msg}: positive control must be shown (code ${r.code})`);
+  // A search snippet, cache, archive copy, directory, social page or blog is never evidence, at any tier.
+  for (const [url, tier, path, value] of [
+    ['https://www.google.com/search?q=unit+test+university', 1, 'officialName', 'Name'], ['https://www.google.co.uk/search?q=unit', 2, 'officialName', 'Name'],
+    ['https://webcache.googleusercontent.com/search?q=cache:unit.example', 1, 'officialName', 'Name'], ['https://unit-example.translate.goog/page', 1, 'officialName', 'Name'],
+    ['https://www.bing.com/search?q=unit', 3, 'accreditation', 'Cert'], ['https://en.wikipedia.org/wiki/Unit', 3, 'accreditation', 'Cert'],
+    ['https://web.archive.org/web/2025/https://unit.example/page', 1, 'officialName', 'Name'], ['https://www.facebook.com/unit', 1, 'officialName', 'Name'],
+    ['https://t.me/unit', 1, 'officialName', 'Name'], ['https://docs.google.com/document/d/x', 2, 'officialName', 'Name'],
+    ['https://wdoms.org/school/unit', 4, 'recognition', ['Listed']], ['https://yandex.ua/search/?text=unit', 4, 'recognition', ['Listed']],
+  ]) hidden(C(path, V(value, url), ev(path, value, { sourceTier: tier, sourceUrl: url })), 'source-not-evidence', `snippet or third-party source marked verified (tier ${tier}, ${new URL(url).hostname})`);
+  hidden(C('officialName', V('Name'), ev('officialName', 'Name', { method: 'Read in a search snippet on 2026-10-11' })), 'source-not-evidence', 'evidence whose method says it came from a search snippet');
+  // Tier 1 and 2 must be on the official website; tier 3 on a Ukrainian government address.
+  hidden(C('officialName', V('Name', 'https://best-agent.example/unit'), ev('officialName', 'Name', { sourceUrl: 'https://best-agent.example/unit' })), 'source-not-official', 'an agent site marked tier 1');
+  hidden(C('officialName', V('Name', 'https://unit.example.attacker.example/page'), ev('officialName', 'Name', { sourceTier: 2, sourceUrl: 'https://unit.example.attacker.example/page' })), 'source-not-official', 'a look-alike host marked tier 2');
+  shown(C('officialName', V('Name', 'https://admission.unit.example/page'), ev('officialName', 'Name', { sourceUrl: 'https://admission.unit.example/page' })), 'tier 1 on a subdomain of the official website');
+  hidden(C('accreditation', V('Cert', 'https://register.example/1'), ev('accreditation', 'Cert', { sourceTier: 3, sourceUrl: 'https://register.example/1' })), 'source-not-official', 'tier 3 on an address that is not .gov.ua');
+  hidden(C('accreditation', V('Cert', 'https://gov.ua.attacker.example/1'), ev('accreditation', 'Cert', { sourceTier: 3, sourceUrl: 'https://gov.ua.attacker.example/1' })), 'source-not-official', 'tier 3 on a look-alike of .gov.ua');
+  hidden(evaluateClaim('officialName', V('Name'), ev('officialName', 'Name'), { now: NOW }), 'source-not-official', 'no official host known: tier 1 evidence fails closed');
+  // Owner captures must name their capture file.
+  hidden(C('officialName', V('Name'), ev('officialName', 'Name', { evidenceType: 'owner-capture', captureRef: null })), 'no-capture', 'owner capture without a capture file');
+  shown(C('officialName', V('Name'), ev('officialName', 'Name', { evidenceType: 'owner-capture', captureRef: 'unit-2026-10-09.pdf' })), 'owner capture with a capture file');
+  // An expired next-review date retires the entry for every claim, not only time-sensitive ones.
+  hidden(C('officialName', V('Name'), ev('officialName', 'Name', { nextReview: day(-1) })), 'stale-review', 'expired nextReview on the official name');
+  hidden(C('programmes.medicine.language', V(['English']), ev('programmes.medicine.language', ['English'], { nextReview: day(-1) })), 'stale-review', 'expired nextReview on a programme language');
+  hidden(C('recognition', V(['Listed'], 'https://regulator.example/list'), ev('recognition', ['Listed'], { sourceTier: 4, sourceUrl: 'https://regulator.example/list', nextReview: day(-30) })), 'stale-review', 'expired nextReview on recognition');
+  // Evidence that names an academic year which has ended (2025/26 when the current year is 2026/27).
+  const last = academicYear(NOW, -1);
+  eq(last, '2025/26', 'the previous academic year');
+  hidden(C('programmes.medicine.language', V(['English']), ev('programmes.medicine.language', ['English'], { academicYear: last })), 'evidence-year-ended', 'language evidence for 2025/26');
+  hidden(C('programmes.medicine.intakeYear', V(AY), ev('programmes.medicine.intakeYear', AY, { academicYear: last })), 'evidence-year-ended', 'intake-year evidence read on the 2025/26 page');
+  hidden(C('programmes.medicine.requirements.bio', V({ type: 'subject', summary: 'Biology' }), ev('programmes.medicine.requirements.bio', { type: 'subject', summary: 'Biology' }, { academicYear: last })), 'evidence-year-ended', 'requirement evidence for 2025/26');
+  hidden(C('programmes.medicine.tuition', V(money(5000, last)), ev('programmes.medicine.tuition', money(5000, last), { academicYear: last })), 'past-academic-year', 'a 2025/26 fee');
+  hidden(C('programmes.medicine.tuition', V(money(5000)), ev('programmes.medicine.tuition', money(5000), { academicYear: last })), 'evidence-year-ended', 'a current fee backed by the 2025/26 fee page');
+  shown(C('programmes.medicine.language', V(['English']), ev('programmes.medicine.language', ['English'], { academicYear: AY })), 'language evidence for the current year');
+  // Contradictions declared through `contradicts` withhold the claim, from either side, until the entry is outdated.
+  hidden(C('officialName', V('Name'), [entry('officialName', 'Name', { contradicts: [`${SLUG}/officialName/2`] }), entry('officialName', 'Other', { n: 2, status: 'unverified', decision: 'withhold', withholdReason: 'x' })]), 'conflict', 'a verified entry that lists a contradiction');
+  hidden(C('officialName', V('Name'), [entry('officialName', 'Name'), entry('officialName', 'Other', { n: 2, status: 'unverified', decision: 'withhold', withholdReason: 'x', contradicts: [`${SLUG}/officialName/1`] })]), 'conflict', 'an unverified second entry that contradicts the verified one');
+  hidden(C('programmes.medicine.durationYears', V(6), [entry('programmes.medicine.durationYears', 6), entry('programmes.medicine.durationText', '5 years 10 months', { status: 'unverified', decision: 'withhold', withholdReason: 'x', contradicts: [`${SLUG}/programmes.medicine.durationYears/1`] })]), 'conflict', 'an entry for another claim that contradicts this one');
+  shown(C('officialName', V('Name'), [entry('officialName', 'Name'), entry('officialName', 'Other', { n: 2, status: 'outdated', decision: 'withhold', withholdReason: 'superseded', contradicts: [`${SLUG}/officialName/1`] })]), 'a contradiction closed by marking the entry outdated');
+  // Evidence must carry exactly the record's value: no extra or missing keys, no quotation-less entries.
+  hidden(C('programmes.medicine.tuition', V(money(5000)), ev('programmes.medicine.tuition', { ...money(5000), agentMargin: 'CANARY' }, { academicYear: AY })), 'value-mismatch', 'fee evidence with an extra key');
+  hidden(C('programmes.medicine.tuition', V({ ...money(5000), schedule: 'two instalments' }), ev('programmes.medicine.tuition', money(5000), { academicYear: AY })), 'value-mismatch', 'record fee with a schedule the evidence does not carry');
+  hidden(C('officialName', V('Name'), ev('officialName', 'Name ')), 'value-mismatch', 'evidence value differing by a trailing space');
+  const noQuote = entry('officialName', 'Name'); delete noQuote.quotation;
+  hidden(C('officialName', V('Name'), [noQuote]), 'evidence-not-publishable', 'evidence with no quotation key');
+  // A research note copied into a value or into our own text.
+  for (const [path, value] of [
+    ['programmes.medicine.requirements.bio', { type: 'subject', summary: NOTE }], ['address', 'Search-snippet lead — read the official page before publishing'],
+    ['programmes.medicine.intake', 'To be confirmed'], ['programmes.medicine.deadlines', [{ label: 'Applications close (TBC)', date: day(30) }]],
+    ['programmes.medicine.documents.passport', { name: 'Passport', formatNote: 'unverified research lead' }],
+  ]) hidden(C(path, V(value), ev(path, value)), 'internal-wording', `note wording copied into ${path}`);
+  shown(C('programmes.medicine.requirements.bio', V({ type: 'subject', summary: 'Biology at grade C or above' }), ev('programmes.medicine.requirements.bio', { type: 'subject', summary: 'Biology at grade C or above' })), 'an ordinary requirement summary');
+  const { rec, ev: e } = passing();
+  for (const [field, mut] of [
+    ['overview', (r) => { r.overview = `Overview. ${NOTE}`; }], ['shortName', (r) => { r.shortName = 'Unit (not verified)'; }],
+    ['programmes.medicine.name', (r) => { r.programmes[0].name = 'Medicine — TODO check the name'; }], ['city', (r) => { r.city = 'Testville (awaiting verification)'; }],
+  ]) {
+    const r = clone(rec); mut(r);
+    const res = evaluatePublication(r, e, { now: NOW });
+    check(!res.publishable && res.failures.some((x) => x.code === 'internal-wording' && x.field === field), `note wording in our own ${field} blocks publication (got ${res.failures.map((x) => x.code)})`);
+    check(publicationDecision(r, e, { now: NOW }).buildError, `note wording in ${field} of a flagged record stops a production build`);
+  }
+  const rc = clone(rec); rc.programmes[0].otherMandatoryCosts = [{ label: 'Hostel (search-snippet lead)', cost: V(money(300)) }];
+  const ec = clone(e); ec.entries.push(entry('programmes.medicine.otherMandatoryCosts.0', money(300), { academicYear: AY }));
+  const pc = toPublicRecord(rc, ec, { now: NOW });
+  check(pc.programmes[0].otherMandatoryCosts.length === 0 && pc.programmes[0].otherCostsWithheld === 1, 'a cost whose label carries note wording is dropped and counted');
+  // HTML and "</script>" in verified values: data in, escaped out (Astro escapes text; JSON-LD via serializeJsonLd).
+  const evil = 'Unit </script><script>alert(1)</script> <img src=x onerror=alert(1)> University';
+  const re = clone(rec); re.officialName = V(evil); const ee = clone(e); ee.entries.find((x) => x.claimPath === 'officialName').value = evil;
+  const ldEvil = serializeJsonLd(profileJsonLd(toPublicRecord(re, ee, { now: NOW }))[0]);
+  check(!/[<>]/.test(ldEvil) && JSON.parse(ldEvil).name === evil, 'markup in a verified name is escaped in the profile JSON-LD and round-trips');
+  // An extra top-level key: the schema the build uses drops it, and the projection never copies it.
+  const withExtra = { ...clone(rec), agentCommission: 'CANARY-EXTRA-TOP-LEVEL' };
+  check(!('agentCommission' in record.parse(withExtra)), 'the record schema drops an unknown top-level key');
+  check(!JSON.stringify(toPublicRecord(withExtra, e, { now: NOW })).includes('CANARY-EXTRA-TOP-LEVEL'), 'an unknown top-level key never reaches the projection');
+  // A requirement or document item marked verified without an evidence entry is dropped and counted.
+  const ri = clone(rec);
+  ri.programmes[0].requirements = [{ id: 'english', type: 'language', summary: 'CANARY-REQ-NO-EVIDENCE', status: 'verified', source: `${H}/page`, checked: day(-2) }];
+  ri.programmes[0].documents = [{ id: 'passport', name: 'CANARY-DOC-NO-EVIDENCE', status: 'verified', source: `${H}/page`, checked: day(-2) }];
+  const pi = toPublicRecord(ri, e, { now: NOW });
+  check(pi.programmes[0].requirements.length === 0 && pi.programmes[0].requirementsWithheld === 1 && pi.programmes[0].documents.length === 0 && pi.programmes[0].documentsWithheld === 1 && !JSON.stringify(pi).includes('CANARY'), 'verified items without evidence are dropped and counted');
+  // A deferred programme stays internal even when every one of its claims has matching verified evidence.
+  const rd = clone(rec); rd.deferredProgrammes = [{ ...clone(rec.programmes[0]), id: 'dentistry', name: 'CANARY-DEFERRED-PROGRAMME', field: 'dentistry' }];
+  const ed = clone(e); for (const x of e.entries.filter((y) => y.claimPath.startsWith('programmes.medicine.'))) { const c = clone(x); c.claimPath = x.claimPath.replace('medicine', 'dentistry'); c.id = `${SLUG}/${c.claimPath}/1`; ed.entries.push(c); }
+  eq(parseEvidence(ed).state, 'ok', 'deferred-programme evidence file is valid');
+  const pd = toPublicRecord(rd, ed, { now: NOW });
+  check(!JSON.stringify(pd).includes('CANARY-DEFERRED') && pd.programmes.map((p) => p.id).join() === 'medicine', 'a fully evidenced deferred programme never reaches the projection');
+  // A programme is listed with its fee "To be confirmed" only when the fee page was read on the official website.
+  const rf = clone(rec); rf.programmes[0].tuition = { value: null, status: 'not-published', source: null, checked: null };
+  const ef = clone(e); ef.entries = ef.entries.filter((x) => x.claimPath !== 'programmes.medicine.tuition');
+  ef.entries.push(entry('programmes.medicine.tuition', null, { status: 'unverified', decision: 'withhold', withholdReason: 'no fee table found', sourceUrl: 'https://best-agent.example/fees', academicYear: AY }));
+  check(toPublicRecord(rf, ef, { now: NOW }).programmes.length === 0, 'a fee page "read" on an agent site does not get the programme listed');
+  ef.entries[ef.entries.length - 1].sourceUrl = `${H}/fees`;
+  check(toPublicRecord(rf, ef, { now: NOW }).programmes.length === 1, 'positive control: a fee page read on the official website does');
+  // An evidence file with a slug or claim path full of regular-expression characters is invalid, never a crash.
+  const oddSlug = (() => { try { const x = clone(e); x.slug = 'bad(['; x.entries = x.entries.map((y) => ({ ...y, id: `bad([/${y.claimPath}/1` })); return parseEvidence(x).state; } catch (err) { return `threw: ${err.message}`; } })();
+  eq(oddSlug, 'invalid', 'an evidence file with a regex-like slug is reported invalid');
+  // The minimal passing record still passes: the new rules do not withhold properly evidenced facts.
+  eq(evaluatePublication(rec, e, { now: NOW }).failures.map((x) => x.code), [], 'positive control: the minimal record still passes');
 }
 
 // ------------------------------------------------------------------------------------------------ static checks over src/

@@ -85,16 +85,16 @@
         "checked": "@today-3"
       },
       "specialtyCode": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": "CANARY-OWNER-CAPTURE-NO-REF",
+        "status": "verified",
+        "source": "https://beta.fixture.example/medicine",
+        "checked": "@today-3"
       },
       "qualification": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": "CANARY-AGENT-SITE-QUALIFICATION",
+        "status": "verified",
+        "source": "https://best-agent.fixture.example/beta",
+        "checked": "@today-3"
       },
       "durationYears": {
         "value": null,
@@ -146,7 +146,22 @@
         "source": "https://beta.fixture.example/fees",
         "checked": "@today-3"
       },
-      "otherMandatoryCosts": [],
+      "otherMandatoryCosts": [
+        {
+          "label": "CANARY-COST-EXTRA-KEY",
+          "cost": {
+            "value": {
+              "amount": 64646,
+              "currency": "USD",
+              "per": "year",
+              "academicYear": "@ay"
+            },
+            "status": "verified",
+            "source": "https://beta.fixture.example/fees",
+            "checked": "@today-3"
+          }
+        }
+      ],
       "entryRequirements": {
         "value": null,
         "status": "not-published",
@@ -158,6 +173,14 @@
           "id": "english",
           "type": "language",
           "summary": "CANARY-REQ-NO-EVIDENCE",
+          "status": "verified",
+          "source": "https://beta.fixture.example/admission",
+          "checked": "@today-3"
+        },
+        {
+          "id": "note-copy",
+          "type": "other",
+          "summary": "CANARY-NOTE-IN-SUMMARY research lead, not verified",
           "status": "verified",
           "source": "https://beta.fixture.example/admission",
           "checked": "@today-3"
@@ -182,10 +205,10 @@
         "checked": "@today-3"
       },
       "intake": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": "CANARY-NOTE-COPIED Search-snippet lead (official domain) — NOT verified; read the official page before publishing.",
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
       }
     },
     {

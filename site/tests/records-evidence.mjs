@@ -26,7 +26,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve, basename } from 'node:path';
 import { record } from '../src/content/schema.mjs';
 import { loadEvidence, listEvidenceFiles, evidenceDir } from '../src/lib/evidence.mjs';
-import { evaluatePublication, listClaims, pickValue, deepEqual } from '../src/lib/publication.mjs';
+import { evaluatePublication, listClaims, deepEqual } from '../src/lib/publication.mjs';
 
 const dirs = { universities: resolve('src/content/universities'), samples: resolve('src/content/samples') };
 let failures = 0, checks = 0;
@@ -123,7 +123,8 @@ for (const [kind, dir] of Object.entries(dirs)) {
       const entries = ev.state === 'ok' ? ev.data.entries : [];
       for (const { path, claim } of listClaims(d)) {
         if (claim.status !== 'verified') continue;
-        const match = entries.some((e) => e.claimPath === path && e.status === 'verified' && deepEqual(pickValue(path, e.value), pickValue(path, claim.value)));
+        // Exactly the recorded value (deep-equal, no extra or missing keys), as the publication policy requires.
+        const match = entries.some((e) => e.claimPath === path && e.status === 'verified' && deepEqual(e.value, claim.value));
         if (!match) fail(file, `R10 ${path}: marked verified but data/evidence/${d.slug}.json has no verified entry with the same value${ev.state === 'invalid' ? ' (the evidence file is invalid)' : ev.state === 'missing' ? ' (no evidence file)' : ''}`);
         ok();
       }

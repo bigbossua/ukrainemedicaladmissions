@@ -62,7 +62,7 @@
   "accreditation": {
     "value": "POSCTRL-ALPHA-ACCREDITATION",
     "status": "verified",
-    "source": "https://register.fixture.example/alpha",
+    "source": "https://register.fixture.gov.ua/alpha",
     "checked": "@today-3"
   },
   "recognition": {
@@ -98,11 +98,10 @@
         "checked": "@today-3"
       },
       "qualification": {
-        "value": "CANARY-QUALIFICATION-TITLE",
-        "status": "unverified",
-        "source": null,
-        "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "value": "CANARY-SNIPPET-SOURCE-QUALIFICATION",
+        "status": "verified",
+        "source": "https://www.google.com/search?q=alpha+medicine+qualification",
+        "checked": "@today-3"
       },
       "durationYears": {
         "value": 6,
@@ -111,11 +110,10 @@
         "checked": "@today-3"
       },
       "durationText": {
-        "value": "CANARY-DURATION-TEXT",
-        "status": "unverified",
-        "source": null,
-        "checked": null,
-        "note": "CANARY-NOTE-DURATION"
+        "value": "CANARY-EXPIRED-NEXT-REVIEW",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/medicine",
+        "checked": "@today-3"
       },
       "language": {
         "value": [
@@ -558,10 +556,12 @@
       "id": "prep",
       "name": "POSCTRL-ALPHA-PREP-ROUTE",
       "languageOfInstruction": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": [
+          "CANARY-NO-QUOTATION"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
       },
       "englishTrack": {
         "value": null,
@@ -576,23 +576,24 @@
         "checked": "@today-3"
       },
       "subjects": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": [
+          "CANARY-TIER5-SUBJECT"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
       },
       "certificateName": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": "CANARY-EVIDENCE-YEAR-ENDED",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
       },
       "progressionText": {
-        "value": "CANARY-PROGRESSION-TEXT",
-        "status": "unverified",
-        "source": null,
-        "checked": null,
-        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+        "value": "CANARY-SNIPPET-METHOD-PROGRESSION",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
       },
       "appliesToEnglishDegreeTrack": {
         "value": null,
@@ -619,10 +620,10 @@
         "note": "CANARY-NOTE-FEE"
       },
       "eligibilityText": {
-        "value": null,
-        "status": "not-published",
-        "source": null,
-        "checked": null
+        "value": "CANARY-CONTRADICTED-ELIGIBILITY",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
       },
       "note": "CANARY-NOTE-ROUTE"
     },
@@ -642,11 +643,10 @@
         "checked": null
       },
       "durationText": {
-        "value": "CANARY-ROUTE-TWO-DURATION",
-        "status": "unverified",
-        "source": null,
-        "checked": null,
-        "note": "CANARY-NOTE-ROUTE-TWO-DURATION"
+        "value": "CANARY-TIER3-NOT-GOVERNMENT",
+        "status": "verified",
+        "source": "https://directory.fixture.example/prep-two",
+        "checked": "@today-3"
       },
       "subjects": {
         "value": null,

@@ -238,10 +238,12 @@ Nothing in this phase was deployed, published or changed on the live host; the `
 
 **When a fact is shown.** All of these must hold:
 1. The record marks the claim `verified`, with a value, an https `source` and a `checked` date (not in the future).
-2. At least one evidence entry for the same `claimPath` is `verified`, has `decision: "publish"`, a quotation, an `accessed` date, an https `sourceUrl` equal to the record's `source`, and the same value.
+2. At least one evidence entry for the same `claimPath` is `verified`, has `decision: "publish"`, a quotation, an `accessed` date, an https `sourceUrl` equal to the record's `source`, and exactly the same value (deep-equal: no extra or missing keys, no extra spaces).
 3. The source tier is allowed: recognition needs tier 4 (the recognition authority of the destination country), and its page must not be on the university's own website; everything else needs tier 1, 2 or 3.
-4. No entry for that claim is `conflicting`, and no verified entry gives a different value. If sources disagree, the fact is withheld ("Official sources give different information").
-5. Time-sensitive facts (statement for the current year, teaching format, fees and other costs, deadlines, intake, intake year, requirements, documents, preparatory fee and start date) need a `nextReview` date that has not passed. Fees need an academic year that has not ended, and the evidence must name the same year. The current-year statement needs evidence naming the current academic year or dated within it. A deadline that has passed is never shown, and a deadline must be written YYYY-MM-DD.
+4. The source address fits its tier. Tier 1 and 2 pages must be on the official website recorded in the record's `website` field (or a subdomain of it). Tier 3 pages must be on a Ukrainian government address ending `.gov.ua`. At any tier, a search result or snippet, a cached or translated copy, an archive copy (for example web.archive.org), Wikipedia, a directory such as WDOMS, social media, a blog or a link shortener is never evidence, and neither is an entry whose `method` says it was read from a search snippet. An `owner-capture` entry must name its `captureRef`.
+5. No entry for that claim is `conflicting`, no verified entry gives a different value, and no entry lists a contradiction for it in `contradicts` (from either side). If sources disagree, the fact is withheld ("Official sources give different information"). To close a contradiction after the university clarifies, mark the superseded entry `outdated`.
+6. An entry whose `nextReview` date has passed no longer counts, for any fact. Time-sensitive facts (statement for the current year, teaching format, fees and other costs, deadlines, intake, intake year, requirements, documents, preparatory fee and start date) must also have a `nextReview` date. An entry that names an academic year that has ended (for example 2025/26 during 2026/27) no longer counts. Fees need an academic year that has not ended, and the evidence must name the same year. The current-year statement needs evidence naming the current academic year or dated within it. A deadline that has passed is never shown, and a deadline must be written YYYY-MM-DD.
+7. The value carries no wording from a research note ("snippet", "not verified", "unverified", "awaiting verification", "draft record", "read the official page", "before publishing", "research lead", "to be confirmed", "TBC", "TODO", "placeholder"). The same wording in our own text (short name, city, region, overview, programme or route name) blocks publication of the whole profile.
 
 Anything else: the page prints "To be confirmed" with a fixed explanation. The value, the note and the source are not printed. Unverified requirement, document and cost items are left out, and the page says that some items are still being confirmed.
 
@@ -250,7 +252,7 @@ Anything else: the page prints "To be confirmed" with a fixed explanation. The v
 **When a profile is published.** The `publishable` flag can only narrow the decision. A record is published only when the flag is `true` **and** all of these pass:
 - an evidence file exists and is valid;
 - official name, official website, address, operating status, the university's statement for the current year and the teaching format are all shown (status operating or relocated; teaching format not "unknown");
-- at least one programme can be listed. A programme is listed only when its international admission (open), level, language, duration and intake year are shown and its fee page has been read (a current tier 1 or 2 evidence entry for its tuition, whatever the outcome). Other programmes are left off the page;
+- at least one programme can be listed. A programme is listed only when its international admission (open), level, language, duration and intake year are shown and its fee page has been read (a current tier 1 or 2 evidence entry for its tuition on the official website, whatever the outcome). Other programmes are left off the page;
 - `verification.lastReview` is set, not in the future and no more than 180 days old;
 - there are no open questions;
 - it is not a synthetic sample.
@@ -271,7 +273,7 @@ If the flag is `true` but a check fails, a production build **stops** with an er
 1. Open each official page in a browser and save a capture showing the address and the date (filed outside the repository).
 2. For each fact: in the record, set `status: "verified"`, `source` (the page address) and `checked` (today); in `site/data/evidence/<slug>.json`, add an entry with the same `claimPath`, the identical `value`, the same address as `sourceUrl`, the tier, the exact quotation, `accessed`, `status: "verified"`, `decision: "publish"`, and for time-sensitive facts a `nextReview` date (before the next intake) and, for fees, the `academicYear`.
 3. Read the fee page for each programme you want listed, and record what it says: the fee, or an entry with `decision: "withhold"` explaining what the page does not say.
-4. Where two official sources disagree, add both entries, mark the second `conflicting` with `contradicts`, and leave the fact withheld until the university clarifies.
+4. Where two official sources disagree, add both entries, mark the second `conflicting` with `contradicts`, and leave the fact withheld until the university clarifies. When it does, mark the superseded entry `outdated`.
 5. Answer or close every open question, set `lastReview` to today, then set `publishable: true`.
 6. Run `node scripts/publication-report.mjs <slug>` until it says "Every publication check passes", then `npm test`.
 7. Check the profile in the preview build against the captures before asking the owner to approve a release.

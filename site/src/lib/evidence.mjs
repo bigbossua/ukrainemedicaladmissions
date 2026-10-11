@@ -57,7 +57,9 @@ export const evidenceFile = z.object({
   f.entries.forEach((e, i) => {
     if (ids.has(e.id)) ctx.addIssue({ code: 'custom', path: ['entries', i, 'id'], message: `duplicate id ${e.id}` });
     ids.add(e.id);
-    if (!new RegExp(`^${f.slug}/${e.claimPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/\\d+$`).test(e.id)) ctx.addIssue({ code: 'custom', path: ['entries', i, 'id'], message: `id must be "${f.slug}/${e.claimPath}/<n>"` });
+    // Compare as text (no regular expression built from file content, so an odd slug or path can never throw).
+    const prefix = `${f.slug}/${e.claimPath}/`;
+    if (!(e.id.startsWith(prefix) && /^\d+$/.test(e.id.slice(prefix.length)))) ctx.addIssue({ code: 'custom', path: ['entries', i, 'id'], message: `id must be "${f.slug}/${e.claimPath}/<n>"` });
   });
 });
 

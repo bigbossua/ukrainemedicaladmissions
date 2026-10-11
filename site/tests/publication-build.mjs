@@ -63,6 +63,11 @@ const CANARIES = [
   'NOT verified; read the official page', 'Search-snippet lead',
   '<script>alert(1)', '</script><script>', 'alert(1)</script>',
   TMP, 'data/evidence', 'tests/fixtures', 'UMA_EVIDENCE_DIR', 'UMA_UNIVERSITIES_DIR', SITE_DIR,
+  // Sources of withheld claims (a withheld claim prints no source link): a search snippet, an agent site, a directory,
+  // a second "rules" page that contradicts the first, the conflicting fee page, an http page and the register whose
+  // value does not match.
+  'google.com/search', 'best-agent.fixture.example', 'directory.fixture.example', 'alpha.fixture.example/prep-rules', 'beta.fixture.example/fees-2',
+  'http://beta.fixture.example', 'register.fixture.example',
 ];
 // A numeric canary matches only as a whole number (not inside a longer number, a decimal or an asset hash).
 const matcher = (c) => (/^\d[\d,]*$/.test(c) ? ((t) => new RegExp(`(?<![\\w.,])${c}(?![\\w,]|\\.\\d)`).test(t)) : (t) => t.includes(c));
@@ -114,7 +119,7 @@ try {
       // Positive controls: verified values with matching evidence must be shown.
       for (const v of ['POSCTRL-ALPHA-OFFICIAL-NAME Medical University', 'POSCTRL-ALPHA-STATEMENT: teaching this academic year is in person.', 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville',
         '7,123 USD per year', `(${AY})`, 'POSCTRL-ALPHA-COST-LABEL', '345 USD per year', 'POSCTRL-ALPHA-REQ-BIOLOGY', 'POSCTRL-ALPHA-DOC-PASSPORT', 'POSCTRL-ALPHA-PREP-ROUTE',
-        'POSCTRL-ALPHA-PREP-DURATION', 'POSCTRL-ALPHA-ACCREDITATION', 'POSCTRL-222', 'posctrl-office@alpha.fixture.example', 'POSCTRL-ALPHA-MEDICINE', 'POSCTRL-ALPHA-OVERVIEW', '1901',
+        'POSCTRL-ALPHA-PREP-DURATION', 'POSCTRL-ALPHA-ACCREDITATION', 'https://register.fixture.gov.ua/alpha', 'POSCTRL-222', 'posctrl-office@alpha.fixture.example', 'POSCTRL-ALPHA-MEDICINE', 'POSCTRL-ALPHA-OVERVIEW', '1901',
         'https://alpha.fixture.example/fees', 'Verified', 'To be confirmed', 'still being confirmed'])
         check(alpha.includes(v), `(b) alpha profile: positive control "${v}" missing`);
       for (const v of ['POSCTRL-BETA-OFFICIAL-NAME', 'POSCTRL-BETA-STATEMENT', 'POSCTRL-BETA-MEDICINE', 'POSCTRL-BETA-PHARMACY', 'POSCTRL-BETA-DEADLINE', 'POSCTRL-BETA-DURATION 6 years', 'relocated', 'To be confirmed'])
