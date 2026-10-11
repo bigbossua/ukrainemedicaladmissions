@@ -1,0 +1,187 @@
+{
+  "slug": "fixture-flagged-no-evidence",
+  "officialName": {
+    "value": "CANARY-FLAGGED-OFFICIAL-NAME",
+    "status": "verified",
+    "source": "https://flagged.fixture.example/about",
+    "checked": "@today-3"
+  },
+  "shortName": "Fixture Flagged University",
+  "status": {
+    "value": "operating",
+    "status": "verified",
+    "source": "https://flagged.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "statusStatement": {
+    "value": "CANARY-FLAGGED-STATEMENT",
+    "status": "verified",
+    "source": "https://flagged.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "teachingFormat": {
+    "value": "in-person",
+    "status": "verified",
+    "source": "https://flagged.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "city": "Flagtown",
+  "address": {
+    "value": "CANARY-FLAGGED-ADDRESS",
+    "status": "verified",
+    "source": "https://flagged.fixture.example/contacts",
+    "checked": "@today-3"
+  },
+  "website": {
+    "value": "https://flagged.fixture.example/",
+    "status": "verified",
+    "source": "https://flagged.fixture.example/",
+    "checked": "@today-3"
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "overview": "Fixture: flagged publishable, but there is no evidence file. A production build must refuse it.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Fixture Flagged Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "verified",
+        "source": "https://flagged.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": 6,
+        "status": "verified",
+        "source": "https://flagged.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": [
+          "English"
+        ],
+        "status": "verified",
+        "source": "https://flagged.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://flagged.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intakeYear": {
+        "value": "@ay",
+        "status": "verified",
+        "source": "https://flagged.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "tuition": {
+        "value": {
+          "amount": 64646,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay"
+        },
+        "status": "verified",
+        "source": "https://flagged.fixture.example/fees",
+        "checked": "@today-3"
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Fixture research reference",
+      "url": "https://flagged.fixture.example/admission",
+      "purpose": "Shows in the preview verification queue only."
+    }
+  ],
+  "verification": {
+    "publishable": true,
+    "lastReview": "@today-10",
+    "openQuestions": [
+      "CANARY-FLAGGED-OPEN-QUESTION"
+    ]
+  }
+}

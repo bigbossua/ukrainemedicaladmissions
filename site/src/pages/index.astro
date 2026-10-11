@@ -4,13 +4,12 @@ import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/illustrations/Icon.astro';
 import HeroIllustration from '../components/illustrations/HeroIllustration.astro';
 import ApplicationJourney from '../components/illustrations/ApplicationJourney.astro';
-import { getCollection } from 'astro:content';
-import { isVisible, byShortName } from '../lib/records';
+import { getListedUniversities } from '../lib/records';
 import { SITE } from '../lib/site';
 import { COURSES, type CourseSlug } from '../lib/courses';
 
-// Publication gate: unpublished records never appear on the home page (lib/records.ts).
-const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
+// Publication gate (lib/records.ts): only published records (projections) appear on the home page; drafts only in PREVIEW builds.
+const universities = await getListedUniversities();
 // Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact.
 const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary }));
 const jsonLd = [{
@@ -59,7 +58,7 @@ const jsonLd = [{
             <label class="field">University
               <select name="university">
                 <option value="">Help me choose</option>
-                {universities.map((u) => <option value={u.data.slug}>{u.data.shortName}</option>)}
+                {universities.map((u) => <option value={u.d.slug}>{u.d.shortName}</option>)}
                 <option value="unlisted">A university not listed here</option>
               </select>
             </label>
@@ -96,13 +95,14 @@ const jsonLd = [{
       <div class="grid grid-3">
         {universities.map((u) => (
           <article class="card">
-            <h3><a href={`/universities/${u.data.slug}/`}>{u.data.shortName}</a></h3>
+            <h3><a href={`/universities/${u.d.slug}/`}>{u.d.shortName}</a></h3>
             <div class="chips">
-              <span>{u.data.city}</span>
-              {u.data.programmes.filter((p) => p.internationalAdmission.value !== false).map((p) => <span>{p.name}</span>)}
-              {!u.data.verification.publishable && <span class="badge badge-pending">Verification in progress</span>}
+              <span>{u.d.city}</span>
+              {/* A projection lists only programmes the policy shows as open to international applicants. */}
+              {u.d.programmes.filter((p: any) => !u.draft || p.internationalAdmission.value !== false).map((p: any) => <span>{p.name}</span>)}
+              {u.draft && <span class="badge badge-pending">Verification in progress</span>}
             </div>
-            <a class="more" href={`/universities/${u.data.slug}/`}>View profile →</a>
+            <a class="more" href={`/universities/${u.d.slug}/`}>View profile →</a>
           </article>
         ))}
       </div>

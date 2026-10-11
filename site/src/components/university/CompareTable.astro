@@ -3,17 +3,19 @@
  * Side-by-side comparison built ONLY from verified claims (UNIVERSITY_DATA_REGISTER.md §7).
  * Anything else renders as "not published" or "awaiting verification". No ranking, no ordering by merit.
  */
-import { formatDate } from '../../lib/site';
+import { formatDate, PREVIEW } from '../../lib/site';
+import { viewClaim, viewItems } from '../../lib/publication.mjs';
 interface Props { records: any[]; hrefFor?: (u: any) => string }
 const { records, hrefFor = (u: any) => `/universities/${u.slug}/` } = Astro.props;
-const verifiedOnly = (claim: any) => (claim.status === 'verified' && claim.value !== null && claim.value !== undefined ? claim.value : null);
+// Published projections: only values the publication policy shows. Raw drafts and samples (PREVIEW only): verified values.
+const verifiedOnly = (claim: unknown) => { const v = viewClaim(claim, { preview: PREVIEW }); return v.state === 'verified' ? v.value : null; };
 const cell = (v: any, awaiting = 'Awaiting verification') => (v === null ? { text: awaiting, pending: true } : { text: v, pending: false });
 const rows = records.map((u) => {
   const progs = u.programmes.filter((p: any) => verifiedOnly(p.internationalAdmission) === true);
   const programmes = progs.length ? progs.map((p: any) => `${p.name}`).join(', ') : null;
   const languages = (() => { const ls = new Set<string>(); for (const p of u.programmes) for (const l of verifiedOnly(p.language) ?? []) ls.add(l); return ls.size ? [...ls].join(', ') : null; })();
-  const reqs = u.programmes.reduce((n: number, p: any) => n + p.requirements.filter((r: any) => r.status === 'verified').length, 0);
-  const prep = u.preparatoryRoutes.length ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) !== null) ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) === true) ? 'Yes, incl. English track' : 'Yes (Ukrainian-language)') : null) : 'None listed';
+  const reqs = u.programmes.reduce((n: number, p: any) => n + viewItems(p.requirements, { preview: PREVIEW }).filter((r: any) => r.state === 'verified').length, 0);
+  const prep = u.preparatoryRoutes.length ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) !== null) ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) === true) ? 'Yes, incl. English track' : 'Yes (Ukrainian-language)') : null) : typeof u.routesWithheld === 'number' && u.routesWithheld > 0 ? null : 'None listed'; // withheld routes are awaiting verification, not absent
   const fees = u.programmes.map((p: any) => ({ p, t: verifiedOnly(p.tuition) })).filter((x: any) => x.t);
   const tuition = fees.length ? fees.map((x: any) => `${x.p.name}: ${x.t.amount.toLocaleString('en-GB')} ${x.t.currency}/${x.t.per} (${x.t.academicYear})`).join('; ') : null;
   const windows = u.programmes.map((p: any) => verifiedOnly(p.deadlines)).filter(Boolean).flat();

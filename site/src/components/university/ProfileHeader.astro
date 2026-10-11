@@ -1,11 +1,14 @@
 ---
 import ClaimChip from './ClaimChip.astro';
-import { formatDate } from '../../lib/site';
+import { formatDate, PREVIEW } from '../../lib/site';
 import { TEACHING_FORMATS } from '../../lib/fields';
+import { viewClaim } from '../../lib/publication.mjs';
 interface Props { d: any; publishable: boolean }
 const { d, publishable } = Astro.props;
-const openIntl = d.programmes.filter((p: any) => p.internationalAdmission.value === true && p.internationalAdmission.status === 'verified').length;
-const english = d.programmes.filter((p: any) => p.language.status === 'verified' && (p.language.value ?? []).includes('English')).length;
+const view = (c: unknown) => viewClaim(c, { preview: PREVIEW });
+const openIntl = d.programmes.filter((p: any) => { const v = view(p.internationalAdmission); return v.state === 'verified' && v.value === true; }).length;
+const english = d.programmes.filter((p: any) => { const v = view(p.language); return v.state === 'verified' && Array.isArray(v.value) && v.value.includes('English'); }).length;
+const name = view(d.officialName);
 const initials = d.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
 ---
 <div class="page-head profile-head">
@@ -14,7 +17,7 @@ const initials = d.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)
     <div>
       <span class="eyebrow">{d.city}{d.region && `, ${d.region}`}</span>
       <h1>{d.shortName}</h1>
-      <p class="official">{d.officialName.value}{d.officialName.status !== 'verified' && <span class="badge badge-pending" style="margin-left:.5rem">name pending verification</span>}</p>
+      <p class="official">{name.state !== 'tbc' && name.value}{name.state !== 'verified' && <span class="badge badge-pending" style={name.state === 'tbc' ? undefined : 'margin-left:.5rem'}>{name.state === 'tbc' ? 'official name to be confirmed' : 'name pending verification'}</span>}</p>
       <div class="chips">
         <ClaimChip label="Status" claim={d.status} />
         <ClaimChip label="Teaching" claim={d.teachingFormat} format={(v) => (TEACHING_FORMATS as any)[v] ?? v} />

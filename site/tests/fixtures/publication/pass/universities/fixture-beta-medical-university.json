@@ -1,0 +1,389 @@
+{
+  "slug": "fixture-beta-medical-university",
+  "officialName": {
+    "value": "POSCTRL-BETA-OFFICIAL-NAME",
+    "status": "verified",
+    "source": "https://beta.fixture.example/about",
+    "checked": "@today-3"
+  },
+  "shortName": "Fixture Beta Medical University",
+  "status": {
+    "value": "relocated",
+    "status": "verified",
+    "source": "https://beta.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "statusStatement": {
+    "value": "POSCTRL-BETA-STATEMENT: teaching this academic year is blended.",
+    "status": "verified",
+    "source": "https://beta.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "teachingFormat": {
+    "value": "blended",
+    "status": "verified",
+    "source": "https://beta.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "city": "Betatown",
+  "address": {
+    "value": "POSCTRL-BETA-ADDRESS </script><script>alert(1)</script>",
+    "status": "verified",
+    "source": "https://beta.fixture.example/contacts",
+    "checked": "@today-3"
+  },
+  "website": {
+    "value": "https://beta.fixture.example/",
+    "status": "verified",
+    "source": "https://beta.fixture.example/",
+    "checked": "@today-3"
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "canary-withheld@beta.fixture.example"
+    },
+    "status": "verified",
+    "source": "https://beta.fixture.example/international",
+    "checked": "@today-3"
+  },
+  "founded": {
+    "value": 1955,
+    "status": "verified",
+    "source": "https://beta.fixture.example/history",
+    "checked": "@today-3"
+  },
+  "overview": "Second fixture record for the publication build test (POSCTRL-BETA-OVERVIEW). Not a real university.",
+  "accreditation": {
+    "value": "CANARY-MISMATCH-RECORD",
+    "status": "verified",
+    "source": "https://register.fixture.example/beta",
+    "checked": "@today-3"
+  },
+  "recognition": {
+    "value": [
+      "CANARY-RECOGNITION-HOST-TRAP"
+    ],
+    "status": "verified",
+    "source": "https://beta.fixture.example/recognition",
+    "checked": "@today-3"
+  },
+  "accommodation": {
+    "value": "CANARY-HTTP-SOURCE-VALUE",
+    "status": "verified",
+    "source": "http://beta.fixture.example/hostel",
+    "checked": "@today-3"
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "POSCTRL-BETA-MEDICINE",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "verified",
+        "source": "https://beta.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "specialtyCode": {
+        "value": "CANARY-OWNER-CAPTURE-NO-REF",
+        "status": "verified",
+        "source": "https://beta.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "qualification": {
+        "value": "CANARY-AGENT-SITE-QUALIFICATION",
+        "status": "verified",
+        "source": "https://best-agent.fixture.example/beta",
+        "checked": "@today-3"
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": "POSCTRL-BETA-DURATION 6 years",
+        "status": "verified",
+        "source": "https://beta.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "verified",
+        "source": "https://beta.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intakeYear": {
+        "value": "@ay",
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "tuition": {
+        "value": {
+          "amount": 55501,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay"
+        },
+        "status": "verified",
+        "source": "https://beta.fixture.example/fees",
+        "checked": "@today-3"
+      },
+      "otherMandatoryCosts": [
+        {
+          "label": "CANARY-COST-EXTRA-KEY",
+          "cost": {
+            "value": {
+              "amount": 64646,
+              "currency": "USD",
+              "per": "year",
+              "academicYear": "@ay"
+            },
+            "status": "verified",
+            "source": "https://beta.fixture.example/fees",
+            "checked": "@today-3"
+          }
+        }
+      ],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "english",
+          "type": "language",
+          "summary": "CANARY-REQ-NO-EVIDENCE",
+          "status": "verified",
+          "source": "https://beta.fixture.example/admission",
+          "checked": "@today-3"
+        },
+        {
+          "id": "note-copy",
+          "type": "other",
+          "summary": "CANARY-NOTE-IN-SUMMARY research lead, not verified",
+          "status": "verified",
+          "source": "https://beta.fixture.example/admission",
+          "checked": "@today-3"
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": [
+          {
+            "label": "POSCTRL-BETA-DEADLINE",
+            "date": "@today+40"
+          }
+        ],
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intake": {
+        "value": "CANARY-NOTE-COPIED Search-snippet lead (official domain) — NOT verified; read the official page before publishing.",
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "POSCTRL-BETA-PHARMACY",
+      "field": "pharmacy",
+      "level": {
+        "value": "integrated_master",
+        "status": "verified",
+        "source": "https://beta.fixture.example/pharmacy",
+        "checked": "@today-3"
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "verified",
+        "source": "https://beta.fixture.example/pharmacy",
+        "checked": "@today-3"
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": [
+          "English"
+        ],
+        "status": "verified",
+        "source": "https://beta.fixture.example/pharmacy",
+        "checked": "@today-3"
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intakeYear": {
+        "value": "@ay",
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "tuition": {
+        "value": {
+          "amount": 98765,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay"
+        },
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-FEE-LEAD Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "verification": {
+    "publishable": true,
+    "lastReview": "@today-20",
+    "reviewer": "CANARY-REVIEWER-BETA",
+    "openQuestions": []
+  },
+  "preparatoryRoutes": [
+    {
+      "id": "beta-prep",
+      "name": "CANARY-BETA-ROUTE-WITHHELD",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": "CANARY-BETA-ROUTE-DURATION",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-BETA-ROUTE"
+      },
+      "subjects": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "note": "CANARY-NOTE-BETA-ROUTE-ITSELF"
+    }
+  ]
+}

@@ -1,16 +1,23 @@
 ---
-import { formatDate } from '../../lib/site';
+/**
+ * Entry requirements of one programme. A published profile passes projected items, which are verified by construction
+ * (src/lib/publication.mjs drops every other item and counts it in `withheld`). Raw draft items, with their status and
+ * note, are rendered only in PREVIEW builds (viewItems); outside PREVIEW they are dropped.
+ */
+import { formatDate, PREVIEW } from '../../lib/site';
 import { REQUIREMENT_TYPES } from '../../lib/fields';
-interface Props { items: any[]; emptyText?: string }
-const { items, emptyText = 'No requirement has been verified for this programme yet.' } = Astro.props;
+import { viewItems } from '../../lib/publication.mjs';
+interface Props { items: any[]; emptyText?: string; /** Items withheld by the publication policy (not verified yet). */ withheld?: number }
+const { items, emptyText = 'No requirement has been verified for this programme yet.', withheld = 0 } = Astro.props;
+const list = viewItems(items, { preview: PREVIEW });
 ---
-{items.length === 0 ? <p class="note">{emptyText}</p> : (
+{list.length === 0 ? <p class="note">{emptyText}</p> : (
   <ul class="reqs">
-    {items.map((r) => (
-      <li class={`req req-${r.status}`}>
+    {list.map((r) => (
+      <li class={`req req-${r.state}`}>
         <div class="req-head">
           <span class="type">{(REQUIREMENT_TYPES as any)[r.type] ?? r.type}{r.subject && ` · ${r.subject}`}</span>
-          {r.status === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{r.status === 'not-published' ? 'Not published' : 'Verification pending'}</span>}
+          {r.state === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{r.state === 'not-published' ? 'Not published' : 'Verification pending'}</span>}
           {r.intakeYear && <span class="intake">intake {r.intakeYear}</span>}
         </div>
         <p class="summary">{r.summary}</p>
@@ -21,16 +28,17 @@ const { items, emptyText = 'No requirement has been verified for this programme 
             {r.examFormat && <span>Format: {r.examFormat}.</span>}
           </p>
         )}
-        <small>{r.status === 'verified' && r.source ? <>Source: <a href={r.source} rel="nofollow noopener">official page</a>{r.checked && ` · checked ${formatDate(r.checked)}`}</> : (r.note ?? 'Not yet confirmed against an official source.')}</small>
+        <small>{r.state === 'verified' && r.source ? <>Source: <a href={r.source} rel="nofollow noopener">official page</a>{r.checked && ` · checked ${formatDate(r.checked)}`}</> : (r.note ?? 'Not yet confirmed against an official source.')}</small>
       </li>
     ))}
   </ul>
 )}
+{withheld > 0 && list.length > 0 && <p class="note withheld">Some requirements are still being confirmed against the university's official pages and are not listed yet.</p>}
 <style>
   .reqs { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
   .req { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: .75rem .9rem; background: #fff; }
   .req-verified { border-left-color: #14532D; }
-  .req-unverified, .req-outdated { border-left-color: var(--yellow-400); }
+  .req-pending { border-left-color: var(--yellow-400); }
   .req-not-published { border-left-color: var(--line); }
   .req-head { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .8rem; }
   .type { font-weight: 600; color: var(--navy-900); }
@@ -38,4 +46,5 @@ const { items, emptyText = 'No requirement has been verified for this programme 
   .summary { margin: .35rem 0 .2rem; }
   .meta { margin: 0 0 .2rem; font-size: .9rem; color: var(--slate); }
   small { display: block; color: var(--slate); font-size: .78rem; }
+  .withheld { margin-top: .6rem; }
 </style>

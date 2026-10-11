@@ -2,13 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { getCollection } from 'astro:content';
-import { SITE, formatDate } from '../../lib/site';
-import { isVisible, byShortName } from '../../lib/records';
+import { SITE, PREVIEW, formatDate } from '../../lib/site';
+import { getListedUniversities } from '../../lib/records';
+import { viewClaim } from '../../lib/publication.mjs';
 
-// Publication gate: unpublished records never appear here (lib/records.ts).
-const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
-const rows = universities.flatMap((u) => u.data.programmes.map((p) => ({ u, p })));
+// Publication gate (lib/records.ts): published records (projections) only; drafts only in PREVIEW builds.
+// A fee is printed only when the publication policy shows it (verified, evidenced, current academic year).
+const universities = await getListedUniversities();
+const rows = universities.flatMap((u) => u.d.programmes.map((p: any) => ({ u: u.d, p, fee: viewClaim(p.tuition, { preview: PREVIEW }) })));
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / ${m.per} (${m.academicYear})`;
 ---
 <Base title="Medical college fees in Ukraine: tuition & cost of study" description="How Ukrainian medical universities publish tuition fees, what the cost of medical education includes, and how we verify a fee before listing it." suffix={false}>
@@ -53,13 +54,13 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / $
         <thead><tr><th>University</th><th>Programme</th><th>Tuition fee</th><th>Status</th><th>Checked</th></tr></thead>
         <tbody>
           {rows.length === 0 && <tr><td colspan="5"><span class="badge badge-pending">No fee verified yet</span> No university's official fee schedule has been verified yet. Rows appear here as each university profile completes verification.</td></tr>}
-          {rows.map(({ u, p }) => (
+          {rows.map(({ u, p, fee }) => (
             <tr>
-              <td><a href={`/universities/${u.data.slug}/#${p.id}`}>{u.data.shortName}</a></td>
+              <td><a href={`/universities/${u.slug}/#${p.id}`}>{u.shortName}</a></td>
               <td>{p.name}</td>
-              <td>{p.tuition.value && p.tuition.status === 'verified' ? money(p.tuition.value) : <span class="badge badge-pending">To be confirmed</span>}</td>
-              <td>{p.tuition.status === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{p.tuition.status === 'unverified' ? 'Pending' : 'Not yet published'}</span>}</td>
-              <td>{p.tuition.checked ? formatDate(p.tuition.checked) : '—'}</td>
+              <td>{fee.state === 'verified' ? money(fee.value) : <span class="badge badge-pending">To be confirmed</span>}</td>
+              <td>{fee.state === 'verified' ? <span class="badge badge-verified">Verified</span> : <span class="badge badge-pending">{fee.state === 'pending' ? 'Pending' : 'Not yet published'}</span>}</td>
+              <td>{fee.state === 'verified' && fee.checked ? formatDate(fee.checked) : '—'}</td>
             </tr>
           ))}
         </tbody>

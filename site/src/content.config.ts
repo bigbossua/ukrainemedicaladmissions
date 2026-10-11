@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { resolve } from 'node:path';
 import { record } from './content/schema.mjs';
 
 /**
@@ -8,8 +9,15 @@ import { record } from './content/schema.mjs';
  */
 export { FIELD_KEYS, LEVEL_KEYS } from './content/schema.mjs';
 
+/**
+ * Where the real university records live. UMA_UNIVERSITIES_DIR overrides it ONLY for the publication fixture builds
+ * (tests/publication-build.mjs); astro.config.mjs and src/lib/evidence.mjs resolve the same variable the same way, so the
+ * sitemap filter and the publication policy always look at exactly the records the pages are built from.
+ */
+const universitiesDir = process.env.UMA_UNIVERSITIES_DIR ? resolve(process.env.UMA_UNIVERSITIES_DIR) : './src/content/universities';
+
 const universities = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/universities' }),
+  loader: glob({ pattern: '**/*.json', base: universitiesDir }),
   schema: record,
 });
 

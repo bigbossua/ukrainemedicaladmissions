@@ -1,0 +1,726 @@
+{
+  "slug": "fixture-alpha-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "POSCTRL-ALPHA-OFFICIAL-NAME Medical University",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/about",
+    "checked": "@today-3",
+    "internalComment": "CANARY-EXTRA-KEY-CLAIM"
+  },
+  "shortName": "Fixture Alpha Medical University",
+  "alternativeNames": [
+    "CANARY-ALT-NAME"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/news/operating",
+    "checked": "@today-3"
+  },
+  "statusStatement": {
+    "value": "POSCTRL-ALPHA-STATEMENT: teaching this academic year is in person.",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/news/operating",
+    "checked": "@today-3"
+  },
+  "teachingFormat": {
+    "value": "in-person",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/news/operating",
+    "checked": "@today-3"
+  },
+  "city": "Alphaville",
+  "region": "Alpha Oblast",
+  "address": {
+    "value": "POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/contacts",
+    "checked": "@today-3"
+  },
+  "website": {
+    "value": "https://alpha.fixture.example/",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/",
+    "checked": "@today-3"
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "posctrl-office@alpha.fixture.example"
+    },
+    "status": "verified",
+    "source": "https://alpha.fixture.example/international",
+    "checked": "@today-3"
+  },
+  "founded": {
+    "value": 1901,
+    "status": "verified",
+    "source": "https://alpha.fixture.example/history",
+    "checked": "@today-3"
+  },
+  "overview": "Fixture record for the publication build test (POSCTRL-ALPHA-OVERVIEW). Not a real university.",
+  "accreditation": {
+    "value": "POSCTRL-ALPHA-ACCREDITATION",
+    "status": "verified",
+    "source": "https://register.fixture.gov.ua/alpha",
+    "checked": "@today-3"
+  },
+  "recognition": {
+    "value": [
+      "CANARY-RECOGNITION-OWN-SITE"
+    ],
+    "status": "verified",
+    "source": "https://alpha.fixture.example/recognition",
+    "checked": "@today-3"
+  },
+  "accommodation": {
+    "value": "POSCTRL-ALPHA-HOSTEL </script><script>alert(1)</script> & co",
+    "status": "verified",
+    "source": "https://alpha.fixture.example/hostel",
+    "checked": "@today-3"
+  },
+  "privateField": "CANARY-EXTRA-KEY-RECORD",
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "POSCTRL-ALPHA-MEDICINE",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "specialtyCode": {
+        "value": "POSCTRL-222",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "qualification": {
+        "value": "CANARY-SNIPPET-SOURCE-QUALIFICATION",
+        "status": "verified",
+        "source": "https://www.google.com/search?q=alpha+medicine+qualification",
+        "checked": "@today-3"
+      },
+      "durationYears": {
+        "value": 6,
+        "status": "verified",
+        "source": "https://alpha.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "durationText": {
+        "value": "CANARY-EXPIRED-NEXT-REVIEW",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "language": {
+        "value": [
+          "English"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/medicine",
+        "checked": "@today-3"
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://alpha.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intakeYear": {
+        "value": "@ay",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "tuition": {
+        "value": {
+          "amount": 7123,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay",
+          "schedule": "POSCTRL-ALPHA-SCHEDULE per semester"
+        },
+        "status": "verified",
+        "source": "https://alpha.fixture.example/fees",
+        "checked": "@today-3"
+      },
+      "otherMandatoryCosts": [
+        {
+          "label": "POSCTRL-ALPHA-COST-LABEL",
+          "cost": {
+            "value": {
+              "amount": 345,
+              "currency": "USD",
+              "per": "year",
+              "academicYear": "@ay"
+            },
+            "status": "verified",
+            "source": "https://alpha.fixture.example/fees",
+            "checked": "@today-3"
+          }
+        },
+        {
+          "label": "CANARY-COST-LABEL-UNVERIFIED",
+          "cost": {
+            "value": {
+              "amount": 91919,
+              "currency": "USD",
+              "per": "year",
+              "academicYear": "@ay"
+            },
+            "status": "unverified",
+            "source": null,
+            "checked": null,
+            "note": "CANARY-NOTE-COST"
+          }
+        }
+      ],
+      "entryRequirements": {
+        "value": [
+          "CANARY-LEGACY-ENTRY"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "requirements": [
+        {
+          "id": "bio",
+          "type": "subject",
+          "summary": "POSCTRL-ALPHA-REQ-BIOLOGY",
+          "subject": "Biology",
+          "intakeYear": "@ay",
+          "status": "verified",
+          "source": "https://alpha.fixture.example/admission",
+          "checked": "@today-3"
+        },
+        {
+          "id": "min",
+          "type": "grade",
+          "summary": "CANARY-REQ-UNVERIFIED",
+          "subject": "Chemistry",
+          "minimum": {
+            "value": "CANARY-MIN-77",
+            "scale": "percent"
+          },
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "CANARY-NOTE-REQ"
+        }
+      ],
+      "requiredDocuments": {
+        "value": [
+          "CANARY-LEGACY-DOCS"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "POSCTRL-ALPHA-DOC-PASSPORT",
+          "status": "verified",
+          "source": "https://alpha.fixture.example/admission",
+          "checked": "@today-3"
+        },
+        {
+          "id": "photo",
+          "name": "CANARY-DOC-UNVERIFIED",
+          "formatNote": "CANARY-DOC-FORMAT",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "CANARY-NOTE-DOC"
+        }
+      ],
+      "deadlines": {
+        "value": [
+          {
+            "label": "CANARY-EXPIRED-DEADLINE",
+            "date": "@today-5"
+          }
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intake": {
+        "value": "CANARY-INTAKE-START",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-INTAKE"
+      },
+      "gradingNote": "CANARY-GRADING-NOTE",
+      "secretNote": "CANARY-EXTRA-KEY-PROGRAMME"
+    },
+    {
+      "id": "dentistry",
+      "name": "CANARY-PROGRAMME-INCOMPLETE",
+      "field": "dentistry",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-LEVEL"
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "verified",
+        "source": "https://alpha.fixture.example/dentistry",
+        "checked": "@today-3"
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": [
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-LANGUAGE"
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://alpha.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intakeYear": {
+        "value": "@ay-1",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-INTAKE-YEAR"
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "nursing",
+      "name": "CANARY-PROGRAMME-LEAD",
+      "field": "nursing",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "public-health",
+      "name": "CANARY-DEFERRED-PROGRAMME",
+      "field": "public_health",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-DEFERRED"
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "prep",
+      "name": "POSCTRL-ALPHA-PREP-ROUTE",
+      "languageOfInstruction": {
+        "value": [
+          "CANARY-NO-QUOTATION"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": "POSCTRL-ALPHA-PREP-DURATION",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "subjects": {
+        "value": [
+          "CANARY-TIER5-SUBJECT"
+        ],
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "certificateName": {
+        "value": "CANARY-EVIDENCE-YEAR-ENDED",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "progressionText": {
+        "value": "CANARY-SNIPPET-METHOD-PROGRESSION",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "startDate": {
+        "value": "CANARY-STALE-START",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "fee": {
+        "value": {
+          "amount": 81818,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay"
+        },
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-FEE"
+      },
+      "eligibilityText": {
+        "value": "CANARY-CONTRADICTED-ELIGIBILITY",
+        "status": "verified",
+        "source": "https://alpha.fixture.example/prep",
+        "checked": "@today-3"
+      },
+      "note": "CANARY-NOTE-ROUTE"
+    },
+    {
+      "id": "prep-two",
+      "name": "CANARY-ROUTE-UNVERIFIED-NAME",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": "CANARY-TIER3-NOT-GOVERNMENT",
+        "status": "verified",
+        "source": "https://directory.fixture.example/prep-two",
+        "checked": "@today-3"
+      },
+      "subjects": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "note": "CANARY-NOTE-ROUTE-TWO"
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "CANARY-RESEARCH-LABEL",
+      "url": "https://canary-research.example/CANARY-RESEARCH-PATH",
+      "purpose": "CANARY-RESEARCH-PURPOSE",
+      "note": "CANARY-RESEARCH-NOTE"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "CANARY-FAQ-Q",
+      "a": "CANARY-FAQ-A"
+    }
+  ],
+  "images": [
+    {
+      "src": "/CANARY-IMAGE.png",
+      "alt": "CANARY-IMAGE-ALT",
+      "credit": "CANARY-IMAGE-CREDIT",
+      "licence": "CC0",
+      "source": "https://alpha.fixture.example/img",
+      "retrieved": "@today-3"
+    }
+  ],
+  "verification": {
+    "publishable": true,
+    "lastReview": "@today-10",
+    "reviewer": "CANARY-REVIEWER-NAME",
+    "openQuestions": []
+  }
+}

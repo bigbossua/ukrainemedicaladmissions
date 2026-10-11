@@ -1,30 +1,37 @@
 ---
 /**
- * Renders one verified-or-pending claim as a definition row.
- * Unverified / not-published values are never shown as plain fact.
+ * Renders one claim as a definition row, through the publication policy's view (src/lib/publication.mjs viewClaim):
+ *  - a projected claim (published profile) shows its value ONLY when the policy shows it; otherwise "To be confirmed"
+ *    with the plain-language explanation. It never prints a record note.
+ *  - a raw record claim (drafts and samples) is rendered as reported, with "Verification pending", ONLY in PREVIEW
+ *    builds; outside PREVIEW a raw claim is always "To be confirmed".
  */
-import { formatDate } from '../lib/site';
+import { formatDate, PREVIEW } from '../lib/site';
+import { viewClaim } from '../lib/publication.mjs';
 interface Props {
   label: string;
-  claim: { value: unknown; status: string; source: string | null; checked: string | null; note?: string };
+  claim: unknown;
   format?: (v: any) => string;
   /** Plain-language explanation shown with "To be confirmed" (owner decision 2026-10-11: explain the limitation clearly). */
   tbcText?: string;
 }
 const { label, claim, format, tbcText } = Astro.props;
-const hasValue = claim.value !== null && claim.value !== undefined && !(Array.isArray(claim.value) && claim.value.length === 0);
-const verified = claim.status === 'verified' && hasValue;
-const display = hasValue ? (format ? format(claim.value) : Array.isArray(claim.value) ? claim.value.join(', ') : String(claim.value)) : null;
+const v = viewClaim(claim, { preview: PREVIEW });
+let display: string | null = null;
+if (v.state !== 'tbc') {
+  try { display = format ? format(v.value) : Array.isArray(v.value) ? v.value.join(', ') : String(v.value); } catch { display = null; }
+}
+const state = display && display.trim() ? v.state : 'tbc';
 ---
 <div class="fact">
   <dt>{label}</dt>
   <dd>
-    {verified ? (
+    {state === 'verified' ? (
       <>
         {display} <span class="badge badge-verified">Verified</span>
-        <small>Source: {claim.source ? <a href={claim.source} rel="nofollow noopener">official page</a> : 'official document'}{claim.checked && ` · checked ${formatDate(claim.checked)}`}</small>
+        <small>Source: {v.source ? <a href={v.source} rel="nofollow noopener">official page</a> : 'official document'}{v.checked && ` · checked ${formatDate(v.checked)}`}</small>
       </>
-    ) : hasValue && claim.status === 'unverified' ? (
+    ) : state === 'pending' ? (
       <>
         <span class="tbc">{display}</span> <span class="badge badge-pending">Verification pending</span>
         <small>Reported value — not yet confirmed against an official source.</small>
@@ -32,7 +39,7 @@ const display = hasValue ? (format ? format(claim.value) : Array.isArray(claim.v
     ) : (
       <>
         <span class="badge badge-pending">To be confirmed</span>
-        <small>{tbcText ?? 'Not yet published here. We only list this once it is confirmed from an official source.'}</small>
+        <small>{tbcText ?? v.reason}</small>
       </>
     )}
   </dd>

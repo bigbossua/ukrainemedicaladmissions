@@ -1,11 +1,17 @@
-// Publication-gate test over BOTH builds:
+// Publication-gate test over BOTH builds of the REAL records:
 //   dist/          production build  — unpublished records and samples must be entirely absent
-//   dist-preview/  PREVIEW_UNPUBLISHED=1 build — drafts render as noindex, bare (no canonical / JSON-LD / sitemap), banner-marked
-// Fails on any leak. Run after `npm run build` and `npm run build:preview`.
+//   dist-preview/  PREVIEW_UNPUBLISHED=1 build — drafts render as noindex, bare (no canonical / JSON-LD / sitemap), banner-marked,
+//                  with the publication policy's failures in the verification queue
+// "Published" is decided exactly as the build decides it (src/lib/publication.mjs): verification.publishable AND the
+// publication policy passes against the record's evidence file (data/evidence/<slug>.json).
+// Fails on any leak. Run after `npm run build` and `npm run build:preview`. Fixture builds: tests/publication-build.mjs.
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { DISCLAIMER } from '../src/lib/readiness.mjs';
 import { SYNTHETIC_MARKERS } from '../src/lib/synthetic-candidate.mjs';
+import { record as recordSchema } from '../src/content/schema.mjs';
+import { loadEvidence } from '../src/lib/evidence.mjs';
+import { publicationDecision } from '../src/lib/publication.mjs';
 
 const DIST = resolve('dist'), PREV = resolve('dist-preview');
 const SITE = 'https://ukrainemedicaladmissions.com';
@@ -16,14 +22,24 @@ const ok = () => { checks++; };
 const load = (dir) => readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(join(dir, f), 'utf8')));
 const real = load(resolve('src/content/universities'));
 const samples = load(resolve('src/content/samples'));
-const unpublished = real.filter((r) => !r.verification.publishable);
-const published = real.filter((r) => r.verification.publishable);
+const NOW = new Date();
+const decision = new Map(real.map((r) => [r.slug, publicationDecision(recordSchema.parse(r), loadEvidence(r.slug), { now: NOW, preview: false })]));
+const isPublished = (r) => decision.get(r.slug).published;
+const unpublished = real.filter((r) => !isPublished(r));
+const published = real.filter(isPublished);
+// Every note string in a record (claims, items, routes, references): internal, never on a public page.
+function notesOf(obj, out = []) {
+  if (Array.isArray(obj)) obj.forEach((x) => notesOf(x, out));
+  else if (obj && typeof obj === 'object') for (const [k, v] of Object.entries(obj)) { if (k === 'note' && typeof v === 'string' && v.trim().length > 12) out.push(v); else notesOf(v, out); }
+  return out;
+}
 
 function htmlFiles(root) {
   const out = [];
   (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : f.endsWith('.html') && out.push(p); } })(root);
   return out;
 }
+const escapeHtml = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 const ldBlocks = (html) => [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
 
 // ---------------------------------------------------------------- production
@@ -38,8 +54,8 @@ for (const slug of LIVE_BEFORE_GATE) {
   const rule = new RegExp(`^RedirectMatch\\s+302\\s+\\^/universities/${slug}/\\?\\$\\s+/universities/\\s*$`, 'm');
   const anyRule = new RegExp(`^Redirect(Match)?\\s+.*${slug}`, 'm');
   if (!rec) fail(`LIVE_BEFORE_GATE slug ${slug} has no record`);
-  else if (!rec.verification.publishable && !rule.test(htaccess)) fail(`.htaccess: unpublished ${slug} (live before the gate) needs "RedirectMatch 302 ^/universities/${slug}/?$ /universities/"`);
-  else if (rec.verification.publishable && anyRule.test(htaccess)) fail(`.htaccess: ${slug} is publishable — remove its redirect rule so the page is served`);
+  else if (!isPublished(rec) && !rule.test(htaccess)) fail(`.htaccess: unpublished ${slug} (live before the gate) needs "RedirectMatch 302 ^/universities/${slug}/?$ /universities/"`);
+  else if (isPublished(rec) && anyRule.test(htaccess)) fail(`.htaccess: ${slug} is publishable — remove its redirect rule so the page is served`);
   ok();
 }
 const sitemap = existsSync(join(DIST, 'sitemap-0.xml')) ? readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8') : '';
@@ -66,8 +82,14 @@ for (const r of published) {
   const page = existsSync(join(DIST, 'universities', r.slug, 'index.html')) ? readFileSync(join(DIST, 'universities', r.slug, 'index.html'), 'utf8') : '';
   for (const p of r.deferredProgrammes ?? []) if (page.includes(p.name)) fail(`published ${r.slug}: deferred programme "${p.name}" rendered publicly`);
   if (!sitemap.includes(`/universities/${r.slug}/`)) fail(`published record ${r.slug} missing from sitemap`);
+  // Internal notes and research references never reach any production page.
+  for (const n of notesOf(r)) for (const { p, h } of prodHtml) if (h.includes(n) || h.includes(n.replace(/&/g, '&amp;'))) fail(`${p}: internal note of ${r.slug} rendered: "${n.slice(0, 60)}…"`);
+  for (const ref of r.researchReferences ?? []) for (const { p, h } of prodHtml) if (h.includes(ref.url) || h.includes(ref.url.replace(/&/g, '&amp;'))) fail(`${p}: research reference of ${r.slug} rendered`);
   ok();
 }
+// The verification queue and its failures list exist only in preview builds.
+for (const { p, h } of prodHtml) if (h.includes('data-publication-failures') || h.includes('Verification queue')) fail(`${p}: verification queue in a production page`);
+ok();
 // The directory must not be empty of meaning: with no published records it must show the explicit empty state.
 const dirPage = prodHtml.find((x) => x.p === '/universities/index.html');
 if (!dirPage) fail('production /universities/ missing');
@@ -107,7 +129,7 @@ function checkDraftPage(path, label, mustContain = []) {
   if (/whatsapp|wa\.me/i.test(h)) fail(`preview /${path}/: WhatsApp reference`);
   ok();
 }
-for (const r of unpublished) checkDraftPage(`universities/${r.slug}`, r.slug, ['Draft record — not published', 'Verification queue', r.shortName]);
+for (const r of unpublished) checkDraftPage(`universities/${r.slug}`, r.slug, ['Draft record — not published', 'Verification queue', r.shortName, 'data-publication-failures', ...decision.get(r.slug).failures.map((f) => escapeHtml(f.message))]);
 for (const s of samples) checkDraftPage(`preview/${s.slug}`, s.slug, ['Synthetic sample record', 'allow-verified']);
 checkDraftPage('preview', 'preview index', ['Drafts and samples', 'allow-verified', '/preview/readiness/']);
 // Readiness demo: banner says both the candidate and the university are invented; disclaimer present; synthetic only.

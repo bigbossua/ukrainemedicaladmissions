@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE, STAGING } from '../lib/site';
+import { serializeJsonLd } from '../lib/publication.mjs';
 
 interface Props {
   title: string;
@@ -48,7 +49,8 @@ const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.na
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/fonts.css" />
-  {!bare && jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  {/* serializeJsonLd escapes < > & U+2028 U+2029, so no value can close the script element (never plain JSON.stringify here). */}
+  {!bare && jsonLd.map((obj) => <script type="application/ld+json" set:html={serializeJsonLd(obj)} />)}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

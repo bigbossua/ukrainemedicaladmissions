@@ -1,7 +1,10 @@
 ---
 import Fact from '../Fact.astro';
+import { PREVIEW } from '../../lib/site';
+import { viewClaim } from '../../lib/publication.mjs';
 interface Props { r: any }
 const { r } = Astro.props;
+const progression = viewClaim(r.progressionText, { preview: PREVIEW });
 const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})`;
 const yesno = (v: boolean) => (v ? 'Yes' : 'No');
 ---
@@ -20,10 +23,10 @@ const yesno = (v: boolean) => (v ? 'Yes' : 'No');
   </dl>
   <div class="progression">
     <h4>What completing the course gives — in the university's own words</h4>
-    {r.progressionText.status === 'verified' && r.progressionText.value ? <blockquote>“{r.progressionText.value}”</blockquote> : <p class="note">The university's wording on progression has not yet been verified; nothing is assumed.</p>}
+    {progression.state === 'verified' && progression.value ? <blockquote>“{progression.value}”</blockquote> : <p class="note">The university's wording on progression has not yet been verified; nothing is assumed.</p>}
     <p class="standing">A preparatory course improves academic preparation. It does not guarantee admission, progression or a place on any degree programme; the degree's own entry requirements still apply.</p>
   </div>
-  {r.note && <small class="src">{r.note}</small>}
+  {PREVIEW && r.note && <small class="src">{r.note}</small>}
 </article>
 <style>
   .prep { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; background: var(--blue-50); }
