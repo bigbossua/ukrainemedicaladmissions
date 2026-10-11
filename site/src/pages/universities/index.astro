@@ -11,6 +11,8 @@ import { FIELDS, LEVELS } from '../../lib/fields';
 import { isVisible, byShortName, fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
 
 // Publication gate: unpublished records are listed only in PREVIEW builds (see lib/records.ts).
+// Copy rule: this page names no university and states no university-specific fact. Everything it says
+// about a university comes from the records, and only verified values are shown as fact.
 const universities = (await getCollection('universities')).filter(isVisible).sort(byShortName);
 const records = universities.map((u) => u.data);
 const drafts = records.filter((d) => !d.verification.publishable).length;
@@ -22,19 +24,30 @@ const languages = languagesOf(allProgrammes);
 const intakes = intakesOf(allProgrammes);
 const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
 ---
-<Base title="Medical universities in Ukraine: full list of medical colleges" description="Directory of Ukrainian medical universities (medical colleges) for international students: programmes, levels, language, city and verification status." suffix={false}>
+<Base title="Medical universities in Ukraine: full list of medical colleges" description="Directory of Ukrainian medical universities (medical colleges) for international students: profiles listed only once verified, compared but never ranked." suffix={false}>
   {PREVIEW && drafts > 0 && <DraftBanner kind="unpublished" text={`Preview build: this directory includes ${drafts} draft ${drafts === 1 ? 'record' : 'records'} that ${drafts === 1 ? 'is' : 'are'} not on the public site. Values marked “pending” are research leads, not verified facts.`} />}
   <div class="page-head">
     <div class="wrap">
       <span class="eyebrow">Directory</span>
       <h1>Medical universities in Ukraine</h1>
-      <p>Filter by city, programme family, qualification level, teaching language, preparatory route and intake, then compare side by side. Each profile shows what has been verified against official sources and what is still being confirmed. Applicants from India often call these institutions medical colleges; in the UK they are usually called medical schools — this directory covers the same institutions under their official names.</p>
+      <p>A directory of Ukrainian medical universities for international students. A university is listed only after its profile has been checked against official sources. Applicants from India often call these institutions medical colleges, and in the UK they are often called medical schools. We use each university's official name.</p>
     </div>
   </div>
   <Breadcrumbs items={[{ label: 'Universities' }]} />
 
   <section style="padding-top:1rem">
     <div class="wrap">
+      <div class="how">
+        <h2 id="how-to-use">How to use this directory</h2>
+        <ol>
+          <li><strong>Filter the list.</strong> Choose a city, programme family, qualification level, teaching language, preparatory route or intake. The filters are built from the profiles listed, so they grow as profiles are added.</li>
+          <li><strong>Open a profile.</strong> Every fact on a profile is marked. A verified fact links to the official page and shows the date we checked it. Anything not yet confirmed is marked as pending or “to be confirmed”. We never guess.</li>
+          <li><strong>Compare side by side.</strong> When profiles are listed, a table below the list compares their verified facts. Universities appear in alphabetical order.</li>
+          <li><strong>Check cost and entry requirements.</strong> Read <a href="/tuition-fees/">how tuition fees are published</a> and <a href="/admissions/#readiness">how entry requirements are compared with your qualifications</a>.</li>
+          <li><strong>Start your candidate profile.</strong> Use <a href={SITE.ctaHref}>{SITE.cta}</a> to tell us your course, country and qualifications. Nothing is sent to a university.</li>
+        </ol>
+      </div>
+
       <form class="filters" data-filters aria-label="Filter universities">
         <label class="field">City
           <select name="city" data-filter="city"><option value="">All cities</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
@@ -61,29 +74,76 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
       <div class="grid grid-3" data-list>
         {records.map((d) => <UniversityCard u={d} draft={!d.verification.publishable} />)}
       </div>
-      <p class="note" data-empty hidden={universities.length > 0}>{universities.length === 0 ? 'No university profile has completed verification yet. Profiles are published one at a time, once every fact on them has been checked against official sources.' : 'No universities match these filters. Reset the filters to see every listed university; the directory expands as each institution is verified.'}</p>
+      {universities.length === 0 ? (
+        <div class="empty" data-empty>
+          <p class="lead"><strong>No university profile has completed verification yet.</strong> We publish profiles one at a time, and only after the core facts below have been checked against the university's own official pages.</p>
+          <h2 id="what-we-check">What we check before a profile is published</h2>
+          <ul>
+            <li>The university's official name, website and address, from its own website.</li>
+            <li>A dated statement from the university that it is operating this academic year, and how it is teaching.</li>
+            <li>Which programmes the university says are open to international applicants. Only those programmes are listed.</li>
+            <li>For each listed programme: the qualification level, the teaching language, the duration and the intake.</li>
+            <li>The tuition fee with its academic year, or a note that the university does not publish one, after we have read its fee page. Deadlines only where the university prints the year.</li>
+          </ul>
+          <p>Until a profile passes these checks we do not list the university here, not even as “pending”. Other details, such as entry requirements, documents and preparatory routes, are marked on each published profile as verified, pending or “to be confirmed”. We do not fill the gaps with figures from agency or other third-party websites.</p>
+          <p>You do not have to wait for the list. Start your candidate profile now: tell us your course, your country and the qualifications you have so far, and we will reply by email. There is no account or document upload yet, and nothing is sent to a university.</p>
+          <p><a class="btn btn-primary" href={SITE.ctaHref}>{SITE.cta}</a></p>
+        </div>
+      ) : (
+        <p class="note" data-empty hidden>No universities match these filters. Reset the filters to see every listed university; the directory expands as each institution is verified.</p>
+      )}
 
       {universities.length > 0 && (
         <>
           <h2 style="margin-top:2.5rem" id="compare">Compare side by side</h2>
-          <p class="prose">The table shows verified facts only. Where a cell says “awaiting verification” or “not published”, the university has not published the fact or we have not yet confirmed it — it is never guessed. Universities are listed alphabetically; no ranking is implied.</p>
+          <p class="prose">The table shows verified facts only. Where a cell says “awaiting verification” or “not published”, the university has not published the fact or we have not yet confirmed it. It is never guessed. Universities are listed alphabetically; no ranking is implied.</p>
           <CompareTable records={records} />
         </>
       )}
 
-      <h2 style="margin-top:2.5rem">Which is the best medical university in Ukraine?</h2>
-      <p class="prose">There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. Compare institutions on facts you can verify on each profile: whether your programme is open to applicants from your country this intake, the language of instruction, the qualification title awarded, the published tuition fee with its academic year and payment schedule, other mandatory charges, and the entry requirements and documents. Where a fact has not yet been confirmed from an official source, the profile says so instead of guessing. The <a href="/tuition-fees/">medical college fees in Ukraine</a> guide explains how costs are published, and the <a href="/admissions/">admissions guide</a> covers the process.</p>
-      <p class="note">Only filters supported by recorded data are offered. Fee-range and deadline filters will appear once official fee schedules have been confirmed. {SITE.disclaimer}</p>
+      <div class="prose">
+        <h2 style="margin-top:2.5rem" id="best">Which is the best medical university in Ukraine?</h2>
+        <p>There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. The right university depends on you: the programme you want, your school-leaving qualification, your budget, the language you want to study in and the country where you plan to work.</p>
+        <h3 id="no-ranking">Why we do not rank universities</h3>
+        <ul>
+          <li><strong>A ranking hides its choices.</strong> It turns many different facts into one order, and the publisher decides how much each fact counts. Those choices rarely match what matters to you.</li>
+          <li><strong>A league table may measure something else.</strong> Check what a table measures before you rely on it. Some measure research output, not how international students are taught on a particular programme.</li>
+          <li><strong>A list can be old or unsourced.</strong> Check who publishes it, whether it names its sources and the year they describe, and whether the publisher is paid when students enrol. Fees, intakes and teaching arrangements change from year to year.</li>
+          <li><strong>Your home rules matter more than a position in a list.</strong> Whether you can practise after graduating is decided by the regulator in the country where you want to work.</li>
+        </ul>
+        <h3 id="compare-instead">What to compare instead</h3>
+        <p>Compare facts you can check on each profile: whether your programme is open to applicants from your country this intake, the teaching language, the qualification title awarded, the tuition fee with its academic year and payment schedule, other mandatory charges, and the entry requirements and documents. Where a fact has not yet been confirmed from an official source, the profile says so. The <a href="/tuition-fees/">medical college fees in Ukraine</a> guide explains how costs are published.</p>
+
+        <h2 id="official-websites">Check the official website before you send anything</h2>
+        <p>Some third-party websites are made to look like a university's own site. They may use the university's name in the web address, or copy its logo and colours. Before you send documents, personal details or money:</p>
+        <ul>
+          <li>check that the web address matches the university's official domain (each published profile shows the official website, with the date we checked it);</li>
+          <li>follow only the admission procedure the university publishes on its own website.</li>
+        </ul>
+        <p>Read more in <a href="/admissions/#official-sites">apply through official channels only</a>.</p>
+      </div>
+      <p class="note">Only filters supported by recorded data are offered. Fee-range and deadline filters are not offered until official fee schedules have been verified. {SITE.disclaimer}</p>
     </div>
   </section>
-  <CtaBand title="Not sure which university?" text="Start an application and tell us your course and country — we will help you shortlist." />
+  <CtaBand title="Not sure which university?" text="Start your candidate profile with your course, country and qualifications. We reply by email, and nothing is sent to a university." />
 </Base>
 
 <style>
+  .how { background: var(--blue-50); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; max-width: 72ch; }
+  .how h2 { font-size: 1.2rem; margin: 0 0 .5rem; }
+  .how ol { margin: 0; padding-left: 1.25rem; }
+  .how li { margin-bottom: .4rem; }
   .filters { display: grid; gap: 1rem; margin-bottom: 1rem; }
   @media (min-width: 700px) { .filters { grid-template-columns: repeat(3, 1fr); } }
   .filter-actions { margin: 0; align-self: end; }
   .count { font-size: .9rem; color: var(--slate); }
+  .empty { border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); background: #fff; padding: 1.25rem 1.5rem; margin: 1rem 0; max-width: 72ch; }
+  .empty[hidden] { display: none; }
+  .empty .lead { margin-top: 0; }
+  .empty h2 { font-size: 1.1rem; margin: 1rem 0 .5rem; }
+  .empty ul { padding-left: 1.25rem; }
+  .empty li { margin-bottom: .35rem; }
+  .empty p:last-child { margin-bottom: 0; }
 </style>
 
 <script>

@@ -373,3 +373,146 @@ Report: `phrase_organic` (top 10 organic positions), database **in** unless stat
 | Traffic expectation for the India cluster: a few hundred visits/month at positions 1–3 for a comprehensive page (ESTIMATE from the competitor's SEMrush traffic column) | §16 competitor set | recorded |
 | UK: competition unmeasured (no SERPs stored); treat as a trust market served by existing pages; no spend on UK SERPs | not-returned calls | deferred |
 | Further metered research: none until the first verified profiles exist and Search Console data arrives; remaining programme headroom (≈770 worst case) kept | ledger | hold |
+
+## 18. Priority URL specifications (Phase 2, 2026-10-11)
+
+**How to read this section.** One block per priority URL. Demand figures are **MEASURED** (SEMrush estimates, copied from the named CSV in `research/semrush/` or from §13/§16; `phrase_fullsearch` rows are broad-container rows and are never added together). **Current performance for every URL: not measured — no Search Console or analytics access** (no Search Console property exists, no analytics tool is installed, and the production host is unreachable from this environment). Internal links are **VERIFIED-IN-REPO** from the branch build at `8482ec7` (`dist/`; `dist-preview/` for the profile template): "in-content" means links inside `<main>` excluding breadcrumbs. Site-wide links on every page, not repeated below: header logo → `/`; header nav → `/universities/`, `/courses/`, `/admissions/`, `/tuition-fees/`, `/faq/`, `/about/` and the **Apply Online Now** button → `/apply/`; footer → `/universities/`, `/courses/`, `/tuition-fees/`, `/faq/`, `/admissions/`, `/admissions/#documents`, `/apply/` and the company and legal pages; breadcrumbs → `/`. "Phase 2 commit" = `50376e3`; "this branch" = `8482ec7` on `wip/directory`. Success metrics are defined in `ANALYTICS_AND_SEARCH_CONSOLE.md`; no target number is promised anywhere.
+
+**Common success measures and review periods (RECOMMENDATION).** Search Console impressions, clicks, CTR and average position for the mapped query group, filtered by country (India first, then UK). Baseline: the first 28 days after the property is verified, plus the longest history Search Console offers at that point. Then monthly (last 28 days against the previous 28), quarterly against §13, and 28 days after any release that changes the page or publishes a verified fact. Event measures (candidate-profile starts and completions, CTA clicks) apply only once the events in `ANALYTICS_AND_SEARCH_CONSOLE.md` §C exist.
+
+### 18.1 `/tuition-fees/` (money page 1)
+
+- **Clusters:** §7 #3 and #17; §13 O1 (O14 trigger for a country page stays unmet).
+- **Exact phrasings (MEASURED):** `2026-10-10-phrase_these-in-variants.csv` (exact, in): mbbs in ukraine fees 260 (kd 7, intent informational); the same phrase in `…-uk-variants.csv` 20, `…-ae-variants.csv` 20, `…-pk-variants.csv` 20, `…-ng-` and `…-za-variants.csv` 0. `2026-10-10-phrase_fullsearch-in-ukraine-medical.csv` (broad container, not additive): ukraine medical college fees for indian students 2,900 (kd 9; cpc 0, competition 0: a lead, not qualified demand) · ukraine medical fees 720 (kd 18) · ukraine medical college fees 590 (kd 12) · medical fees in ukraine 480 (kd 12) · cost of medical education in ukraine 320 (kd 11). `2026-10-11-P3-phrase_related-in-mbbs-in-ukraine.csv`: ukraine mbbs fees 260 (kd 7) · cost of mbbs in ukraine 260 (kd 11) · ukraine me mbbs fees kitni hai 260 (kd 26) · cost of mbbs in ukraine for indian students 210 (kd 10) · mbbs in ukraine for indian students fees 170 (kd 15) · ukraine medical university fees 170 (kd 11) · ukraine mbbs college fees 140 (kd 12). `2026-10-11-P3-phrase_questions-in-mbbs-in-ukraine.csv`: how much does it cost to do mbbs in ukraine 40 · how much does it cost to study mbbs in ukraine 20 · what is the fees of mbbs in ukraine 20. `2026-10-11-R1-phrase_these-in-programme-terms.csv`: mbbs in ukraine for indian students 20 (cpc 0.36).
+- **Dominant intent:** informational (SEMrush intent 1 wherever computed); budgeting before shortlisting.
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings (§16):** "ukraine medical college fees" top 10 = nine agency results (eight domains) and Quora at #6; no university and no regulator. "mbbs in ukraine fees" (in): no SERP returned. The top agency page ranks 1–2 on all its fee phrasings except "ukraine me mbbs fees kitni hai" (position 4), with an estimated 701 visits/month over its 20 keywords (`2026-10-11-P3-resource_organic-in-rmcedu-mbbs-in-ukraine.csv`; SEMrush ESTIMATE).
+- **Missing information (cannot be said until verified):** any fee for any university (0 verified tuition claims in 7 records); the academic year, currency, payment basis, period or track of any schedule; instalment terms; whether any university prices by nationality; any "total cost". The measured cost questions cannot be answered with a figure. The Indian regulator's own document has not been read.
+- **Internal links in (in-content):** `/admissions/`, `/courses/dentistry/`, `/courses/medicine/`, `/courses/nursing/`, `/courses/pharmacy/`, `/faq/`, `/contact/`, `/universities/`, `/apply/thank-you/`. **Out:** `/courses/medicine/`, `/admissions/#readiness`, `/admissions/`, `/universities/`, `/apply/` (body link and CTA band). Each verified fee row will also link `/universities/<slug>/#<programme>`.
+- **Verified facts required before the next improvement:** at least one official fee schedule read with its five properties (academic year; currency and payment basis; period; track; exclusions). Nearest candidates are LEADS only: the Vinnytsia 2026/27 fee PDF and the Odesa 2026 fee table (`EXECUTIVE_REPORT.md` §K.5).
+- **Improvement made:** Phase 2 commit: "How to read a Ukrainian university fee schedule" (five properties), "Questions applicants ask about cost" (four questions answered without figures), a link into `/admissions/#readiness`; the table keeps its single "No fee verified yet" row. This branch: none (outside this brief).
+- **What remains:** the first verified, dated fee rows; answers to the measured cost questions with those figures; an in-content link to the FAQ eligibility answers (RECOMMENDATION); the note "We are reading the official schedules of the first universities now" overstates progress while official sites are blocked (reported to the orchestrator).
+- **Success metrics:** Search Console for the fee query group above (India), and for "mbbs in ukraine fees" in UK, UAE and Pakistan; `cta_click` (location `tuition-fees`) and `readiness_link_click` from this page. Review: common periods, plus 28 days after the first fee row is published.
+
+### 18.2 `/universities/` (money page 2)
+
+- **Clusters:** §7 #4, #5 and #16 (language filter, no page); §13 O3.
+- **Exact phrasings (MEASURED):** `2026-10-10-phrase_fullsearch-in-ukraine-medical.csv`: ukraine medical college 2,900 (kd 22; a rounded bucket shared with two other rows) · best medical college in ukraine 390 (kd 14, intent "1,0" = informational and commercial) · ukraine medical college list 210 (kd 11). `2026-10-11-P3-phrase_related-in-mbbs-in-ukraine.csv`: ukraine medical college for indian students 170 (kd 10) · ukraine mbbs college list 140 (kd 16). `2026-10-11-P3-resource_organic-in-rmcedu-mbbs-in-ukraine.csv`: best mbbs college in ukraine 110 (volume as exported in the competitor report). `2026-10-10-phrase_these-{in,ng,za,ae,pk}-variants.csv`: medical universities in ukraine 20 in each (uk 0); ukraine medical university 20 in all six databases. `2026-10-10-phrase_fullsearch-uk-ukraine-medical.csv`: best medical colleges / best medical schools / best medical university in ukraine 20 each. `2026-10-11-P3-phrase_fullsearch-pk-ukraine-medical.csv`: ukraine medical college 40 (kd 27, intent commercial); `…-ng-…`: medical universities in kiev ukraine 40, best medical university in ukraine 20; `…-za-…`: medical schools in ukraine 20, ukraine medical university 20.
+- **Dominant intent:** informational list and shortlisting; the "best" phrasings are mixed and expect a ranking.
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings (§16):** "ukraine medical college": Wikipedia's list #1, agencies, a university-agent site (#6), a directory (#7) and "MCI approved colleges" pages (#8, #9). "best medical college in ukraine": agencies (#1, #2, #4, #5, #9), Wikipedia #3, a research-rankings site #6, shiksha #7, medlinkstudents #8, YouTube #10. A dated, verified list is a page type the SERP rewards; the ranking expectation is one we will not meet.
+- **Missing information:** zero publishable profiles, so no list, no comparison table, no language, fee or intake per university, no official domain to link. The page cannot name a university.
+- **Internal links in (in-content):** `/`, `/admissions/`, `/courses/medicine/`, `/services/`, `/tuition-fees/`, `/apply/thank-you/` (and every draft profile in the preview build). **Out (this branch):** `/tuition-fees/`, `/admissions/#readiness`, `/admissions/#official-sites`, `/apply/` (how-to step, empty-state button, CTA band); each listed profile once records are published.
+- **Verified facts required:** at least three profiles meeting the minimum viable profile in `DIRECTORY_VERIFICATION_PLAN.md` §5 (decision log §17).
+- **Improvement made:** Phase 2 commit: none. This branch: "How to use this directory" (filter, open a profile, compare, check cost and entry requirements, start a candidate profile); an empty state that keeps the tested sentence, lists what is checked before publication and invites a candidate profile while saying there is no account or upload yet; "Why we do not rank universities" and "What to compare instead" under the existing "best" question; "Check the official website before you send anything" (look-alike sites); meta description rewritten (153 characters). Title, filters, data attributes and the filter script unchanged.
+- **What remains:** three verified profiles; fix the inline-script defect that the production CSP would block (filters and mobile menu; `DIRECTORY_VERIFICATION_PLAN.md` §9.1); in-content links to `/courses/medicine/` and `/faq/` (RECOMMENDATION).
+- **Success metrics:** Search Console for the directory query group (India) and CTR on the "best" phrasings specifically (does the no-ranking answer earn the click?); `directory_filter_change` per directory view, `cta_click` (locations `directory-how`, `directory-empty`, `cta-band`) and, once profiles exist, `official_link_click`. Review: common periods, plus 28 days after the first release that lists profiles.
+
+### 18.3 `/courses/medicine/` (money page 3)
+
+- **Clusters:** §7 #1 and #2; §13 O4.
+- **Exact phrasings (MEASURED):** `2026-10-10-phrase_these-in-variants.csv`: mbbs in ukraine 260 (kd 18, informational) · ukraine mbbs 260 (kd 18) · study medicine in ukraine 10 · medicine in ukraine 10; `2026-10-11-probe-phrase_these-in-mbbs-in-ukraine.csv`: mbbs in ukraine 260 (repeat). "study medicine in ukraine" in the other variants files: uk 30 (cpc 1.02, competition 0.66) · za 30 · ae 20 · ng 10 · pk 0; "mbbs in ukraine": uk 20 · ae 10 · pk 10 · ng 10 · za 0. `2026-10-11-P3-phrase_related-in-mbbs-in-ukraine.csv`: ukraine mbbs college 480 (kd 7). `2026-10-11-P3-phrase_these-in-study-mbbs-in-ukraine.csv`: study mbbs in ukraine 40. `2026-10-11-P3-phrase_questions-in-mbbs-in-ukraine.csv`: how many years for mbbs in ukraine 30.
+- **Dominant intent:** informational (programme orientation; "MBBS" vocabulary in India).
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings (§16):** "mbbs in ukraine": 10 of 10 agency "MBBS in Ukraine" pages. "ukraine mbbs college": agency pages plus shiksha (#4). "study medicine in ukraine" (uk): no SERP returned.
+- **Missing information:** no verified qualification title, duration, teaching language, entry requirement or fee for any university's medicine programme; the university list is empty by design.
+- **Internal links in (in-content):** `/`, `/courses/`, `/tuition-fees/`. **Out:** `/universities/`, `/tuition-fees/`, `/apply/?course=medicine`, `/admissions/`, `/apply/`.
+- **Verified facts required:** per university, that medicine is open to international applicants for the intake, with level, award title and duration as printed, language and intake.
+- **Improvement made:** Phase 2 commit: readiness card ("Not sure whether you qualify yet?" → `/apply/?course=medicine`), look-alike note, intro saying the list is empty by design, four new "what to check" items (requirements per qualification; India's regulator; official site). This branch: none (outside this brief).
+- **What remains:** verified programme rows; point the readiness card at `/admissions/#readiness` as well as `/apply/`; the card's "you can finish later" implies save-and-resume, which does not exist (reported to the orchestrator).
+- **Success metrics:** Search Console for the MBBS/medicine group (India) and "study medicine in ukraine" (UK, South Africa); `cta_click` (location `course-medicine`). Review: common periods.
+
+### 18.4 `/admissions/`
+
+- **Clusters:** §7 #8 and #15; §13 O5 and O11.
+- **Exact phrasings (MEASURED):** `2026-10-11-R1-phrase_these-in-programme-terms.csv`: mbbs in ukraine eligibility 30 (0 in the uk, ng, pk, za and ae R1 files). Requirements and documents phrasings: not returned in any R1 database and "no data" in `2026-10-10-phrase_these-uk-seeds.csv`. Preparatory, foundation and "without biology" phrasings: not returned in any of six databases (R1). `2026-10-11-P3-phrase_questions-in-mbbs-in-ukraine.csv`: is neet required for mbbs in ukraine 20 · how to get admission in mbbs in ukraine 10 · how to study mbbs in ukraine 10.
+- **Dominant intent:** informational (eligibility and process); the entry to the candidate-profile service.
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings:** none: no SERP report was run for these phrasings (not measured).
+- **Missing information:** no verified requirement (subject, grade, scale, examination), document list, preparatory route or intake date for any programme.
+- **Internal links in (in-content):** `/`, `/apply/` (to `#stages`), `/apply/thank-you/`, `/contact/`, `/courses/dentistry/`, `/courses/medicine/`, `/courses/nursing/`, `/courses/pharmacy/`, `/faq/`, `/services/`, `/tuition-fees/` (to `#readiness`), `/universities/` (to `#readiness` and `#official-sites`). **Out:** `/tuition-fees/`, `/universities/`, `/apply/`.
+- **Verified facts required:** verified requirement and document objects for at least one programme before the readiness check can show a real result.
+- **Improvement made:** Phase 2 commit: `#readiness` (met / not met / unknown / pending evidence; not an admission decision), `#preparatory` (no-guarantee wording), `#checklist` (document states; uploads not available), `#official-sites`. This branch: none (outside this brief).
+- **What remains:** verified requirements; stage 2 of "The four stages" ("upload documents at your own pace") and the default CTA band text ("You can save your progress and come back at any time") describe features that do not exist (reported to the orchestrator); an in-content link to the FAQ eligibility answers.
+- **Success metrics:** Search Console for the eligibility/admission group (India); `readiness_link_click` into `#readiness`; `cta_click` (location `admissions`). Review: common periods.
+
+### 18.5 `/faq/`
+
+- **Clusters:** §7 #22; §13 O5 (question phrasings).
+- **Exact phrasings (MEASURED):** `2026-10-11-R1-phrase_these-in-programme-terms.csv`: is ukraine mbbs valid in india 20 (single-month spike, §6.1). `2026-10-11-P3-phrase_questions-in-mbbs-in-ukraine.csv`: is mbbs degree from ukraine valid in india 30 · is ukraine mbbs valid in india 20 · is mbbs from ukraine valid in india 10 · is ukraine mbbs degree valid in india 10 · is ukraine mbbs valid in germany 20 · is ukraine mbbs valid in canada 10 · how many years for mbbs in ukraine 30 · is neet required for mbbs in ukraine 20 · how much does it cost to do mbbs in ukraine 40.
+- **Dominant intent:** informational questions; trust.
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings:** none: no SERP report was run for the question phrasings.
+- **Missing information:** no regulator document has been read (India, Germany, Canada); no verified programme duration or fee.
+- **Internal links in (in-content):** `/contact/`, `/services/` (plus every draft profile in the preview build). **Out:** `/admissions/`, `/tuition-fees/`, `/contact/`, `/apply/`.
+- **Verified facts required:** the regulator's own published document before any recognition or examination rule is summarised.
+- **Improvement made:** Phase 2 commit: section "Eligibility, duration and recognition" (six answers that defer to regulators and official pages; FAQPage JSON-LD follows the visible text). This branch: none.
+- **What remains:** regulator-sourced answers; stable question ids in the FAQ content (needed for `faq_open`); in-content links from `/tuition-fees/#questions`, `/admissions/#readiness` and `/courses/medicine/` (RECOMMENDATION).
+- **Success metrics:** Search Console impressions for the question phrasings; `faq_open` by question id. Review: common periods; quarterly content review against the question export.
+
+### 18.6 `/` (home)
+
+- **Clusters:** §7 #23 (brand and orientation; not a keyword page). The H1 was de-conflicted from "study medicine in Ukraine" (§4.6). No brand query has been measured in SEMrush.
+- **Dominant intent:** navigational (brand) and orientation.
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings:** none (not measured).
+- **Missing information:** no verified profile to feature; the home directory note "The first profiles are being verified now" overstates progress while official sites are blocked (reported to the orchestrator).
+- **Internal links in:** site-wide header logo and breadcrumbs only. **Out (in-content):** `/apply/`, `/universities/`, `/about/#verification`, `/admissions/`, `/courses/medicine/`, `/courses/dentistry/`, `/courses/nursing/`, `/courses/pharmacy/`.
+- **Verified facts required:** none for the next copy fix; published profiles before the directory section can show cards.
+- **Improvement made:** Phase 2 commit: none (hero wording corrected earlier, `bf1a464`). This branch: none.
+- **What remains:** correct the "being verified now" sentence; show published profiles once they exist.
+- **Success metrics:** Search Console brand impressions and clicks once data exists; `cta_click` (locations `home-hero`, `home-start`). Review: common periods.
+
+### 18.7 `/apply/`
+
+- **Clusters:** §7 #23 (transactional). No SEMrush phrasing targets this URL; "how to get admission in mbbs in ukraine" (10, questions file) belongs to `/admissions/`.
+- **Dominant intent:** transactional (start a candidate profile).
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings:** none (not measured).
+- **Missing information:** none needed for the form itself. The page must keep saying what Stage 1 is: an e-mail/JSON enquiry handled by `site/public/api/enquiry.php`, with no account, save-and-resume, upload, status tracking or payment.
+- **Internal links in (in-content):** `/`, `/about/`, `/admissions/`, `/contact/`, `/courses/`, `/courses/dentistry/`, `/courses/medicine/`, `/courses/nursing/`, `/courses/pharmacy/`, `/faq/`, `/services/`, `/tuition-fees/`, `/universities/`, plus the header button on every page. **Out:** `/privacy/`, `/admissions/#stages`.
+- **Verified facts required:** none for Stage 1; verified programmes before a university can be offered in the select.
+- **Improvement made:** none on this branch (the stepped Stage-1 form is a separate workstream).
+- **What remains:** the stepped form (`APPLICATION_SYSTEM_SPEC.md` §12.1) and the events in `ANALYTICS_AND_SEARCH_CONSOLE.md` §C.
+- **Success metrics:** candidate-profile starts (`apply_step_view`, step 1), step completion (`apply_step_complete`), field friction (`apply_validation_error`), submissions (`apply_submit`) and completions counted from the handler's stored records (the ground truth). Search Console is secondary for this URL. Review: monthly once events exist.
+
+### 18.8 `/courses/dentistry/`
+
+- **Clusters:** §7 #9; §13 O6.
+- **Exact phrasings (MEASURED):** `2026-10-11-R1-phrase_these-in-programme-terms.csv`: study dentistry in ukraine 30; `…R1-phrase_these-uk-programme-terms.csv` 10 (also 10 in `2026-10-10-phrase_these-uk-seeds.csv`); `…-pk-` and `…-ae-programme-terms.csv` 0; ng and za not returned. "dentistry universities in ukraine" uk 0 (uk seeds). "dentistry in ukraine fees": not returned in any database (R1).
+- **Dominant intent:** informational (intent not computed).
+- **Current performance:** not measured: no Search Console or analytics access.
+- **SERP findings:** none (not measured).
+- **Missing information:** no verified dentistry programme (award title, duration, language, fee).
+- **Internal links in (in-content):** `/`, `/courses/`. **Out:** `/apply/?course=dentistry`, `/admissions/`, `/tuition-fees/`, `/apply/`.
+- **Verified facts required:** per university, dentistry open to international applicants with level, award title, duration, language and intake.
+- **Improvement made:** Phase 2 commit: the shared course-template readiness card and look-alike note. This branch: none.
+- **What remains:** verified programme rows; dentistry-specific "what to check" items (RECOMMENDATION).
+- **Success metrics:** Search Console for "study dentistry in ukraine" (India, UK); `cta_click` (location `course-dentistry`). Review: common periods.
+
+### 18.9 `/universities/<slug>/` (profile template)
+
+- **Clusters:** §7 #6 and #7; §13 O2.
+- **Exact phrasings (MEASURED):** `2026-10-11-R2-phrase_these-in-universities-cities.csv` (exact, in): bukovinian state medical university 480 (kd 30, informational + transactional; fees 20) · odessa national medical university 390 (kd 16, informational; fees 20) · kharkiv national medical university 390 (kd 34, navigational; fees 20) · bogomolets national medical university 320 (kd 25, navigational; fees 30) · ivano frankivsk national medical university 210 (kd 29, navigational; fees 30) · uzhhorod national university 140 (kd 30, navigational; fees 10) · ternopil national medical university 110 (kd 16, navigational; fees 10) · zaporizhzhia state medical university 90 · vinnytsia national medical university 50 · lviv national medical university 50 (fees 20) · poltava state medical university 20 (fees 10) · dnipro state medical university 20. `2026-10-10-phrase_fullsearch-in-ukraine-medical.csv`: pirogov medical university ukraine 390 (kd 23) · bogomolets national medical university ukraine 320 (kd 28, navigational). `…R2-…-uk-…`: bogomolets 90, vinnytsia 0, the other names 20 (kharkiv fees 10). `…R2-…-ng-…`: 10–30 (bogomolets fees 30). `2026-10-11-P3-phrase_these-{ae,pk,za}-universities.csv`: ae 10–40 (bukovinian 40, kd 21, informational + transactional), pk 10–30, za 10–20 (four names).
+- **Dominant intent:** navigational for most names (the official site wins the head term); our target is the admissions-for-international-applicants sub-intent (§17).
+- **Current performance:** not measured: no Search Console or analytics access; no profile is published.
+- **SERP findings (§16):** "bukovinian state medical university": official site #1, #3, #5; Wikipedia #2; Instagram #4; Facebook #6; agencies #7–#10. "pirogov medical university ukraine": look-alike third-party domains #1 and #3 above the official site at #6. "bogomolets national medical university" (uk): no SERP returned.
+- **Missing information:** everything: 0 verified claims across the seven records (`DIRECTORY_VERIFICATION_PLAN.md` §9.2). The template also has no field for naming look-alike domains, although `/admissions/` and the course pages say profiles name them (reported to the orchestrator).
+- **Internal links (preview build only; draft pages are noindex and absent from production builds):** in from `/`, `/courses/medicine/`, `/courses/dentistry/`, `/courses/pharmacy/`, `/tuition-fees/`, `/universities/`, `/preview/`; out to `/courses/<family>/`, `/apply/?university=<slug>&course=<family>`, `/apply/?university=<slug>`, `/admissions/`, `/tuition-fees/`, `/universities/`, `/faq/`, `/apply/`. On this branch `site/public/.htaccess` redirects the old Ternopil URL to `/universities/` with a 302 (rule as written and checked by `check-redirects`; not tested on a live server).
+- **Verified facts required:** the minimum viable profile (`DIRECTORY_VERIFICATION_PLAN.md` §5): identity fields, a dated current-year operating statement, programmes open to international applicants with level, language, duration and intake, tuition verified or closed as not published after reading the fee page, open questions closed, `lastReview` set.
+- **Improvement made:** none on this branch (records and template are outside this brief).
+- **What remains:** verification (blocked: `DIRECTORY_VERIFICATION_PLAN.md` §9.3); a look-alike-domain field; the profile CTA "You can save your progress and add documents later" describes features that do not exist (reported to the orchestrator).
+- **Success metrics:** per indexed profile, Search Console impressions, clicks, CTR and position for its name and "<name> fees" queries (India first); `official_link_click` (domain); `cta_click` (location `profile`). Review: 28 days after Search Console reports the profile indexed, then monthly.
+
+## 19. Strategic review output (Phase 2-3, 2026-10-11)
+
+**No new SEMrush calls were made in this phase. Units spent this phase: 0.** Cumulative consumption and the expected balance are unchanged from `SEMRUSH_API_LEDGER.md` (6,230 line-based, worst case 6,340; expected balance 43,770, worst case 43,660: ESTIMATE until the owner's next reading).
+
+1. **SEMrush data examined:** the existing exports only, re-read from the raw CSVs in `research/semrush/` (42 files): the 22 files prefixed `2026-10-11-P3-` (seven `phrase_organic` SERPs, `phrase_related` and `phrase_questions` for "mbbs in ukraine", `resource_organic` for the top agency page, `phrase_fullsearch` for ng/pk/za, `phrase_these` for named universities in ae/pk/za and "study mbbs in ukraine", plus five single-line probes); the R1 and R2 `phrase_these` files; the 2026-10-10 `phrase_these` variants (six databases) and UK seeds; `phrase_fullsearch` "ukraine medical" (in, uk); `phrase_all` for the head term.
+2. **Opportunities supported:** unchanged: O1 fees, O2 named universities, O3 directory/list (the "best" phrasings answered with the no-ranking stance), O4 MBBS/medicine, O5 eligibility and recognition. Nothing else in §13 changed status.
+3. **Unknown or unmeasured:** actual search performance of every URL (no Search Console property, no analytics); conversion from any page; UK SERPs (not stored by SEMrush); SERPs for the admissions, eligibility, question and dentistry phrasings (never run); demand for the readiness service itself; whether the live host sends the CSP header and therefore blocks the inline scripts (`DIRECTORY_VERIFICATION_PLAN.md` §9.1; live check blocked).
+4. **Existing pages to improve (in order):** `/tuition-fees/`, `/universities/`, `/courses/medicine/`, `/admissions/` and `/faq/`, `/courses/dentistry/`; the next change for each is in §18. On this branch `/universities/` gained the how-to, empty-state, no-ranking and look-alike copy.
+5. **New pages meriting consideration:** only `/universities/<slug>/` per verified profile (O2), in the owner's verifiability order (Vinnytsia → Odesa → Bukovinian, Ivano-Frankivsk as substitute; then Ivano-Frankivsk → Bogomolets → Ternopil → Uzhhorod; Kharkiv gated; §8). No new indexable URL was created in this phase.
+6. **Revenue link:** unchanged: fees and named-university visitors reach Apply Online Now; eligibility visitors reach the readiness explanation and the candidate profile. Nothing is sellable before verified requirements and fees exist. The event dictionary in `ANALYTICS_AND_SEARCH_CONSOLE.md` §C is designed to measure the start-to-completion rate of the candidate profile before any pricing decision.
+7. **Official facts to verify before publication:** at least one official fee schedule with its five properties; for three profiles the minimum viable profile in `DIRECTORY_VERIFICATION_PLAN.md` §5; for recognition and NEET answers, the regulator's own document.
+8. **Next action and why:** (a) the owner opens official-source access (allow-list or captures, `DIRECTORY_VERIFICATION_PLAN.md` §9.3), because every proven cluster depends on verified official data; (b) fix the inline-script/CSP defect before any release, because it would disable the directory filters and the mobile menu on the live site; (c) after the next approved release, the owner creates and verifies the Search Console property (`ANALYTICS_AND_SEARCH_CONSOLE.md` §A), so that the "current performance" lines in §18 stop reading "not measured". No metered research until the first verified profiles exist and Search Console data arrives (§17).

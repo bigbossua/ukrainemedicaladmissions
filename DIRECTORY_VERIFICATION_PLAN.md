@@ -282,3 +282,54 @@ Done on the branch:
 
 Waiting on the owner: Route A (allow-list the domains in §3) and/or Route B (captures per the registers). Until one of them happens, the three profiles remain draft shells in the preview build and no release is proposed.
 
+
+## 9. Directory audit (Phase 3, 2026-10-11)
+
+**Scope and labels.** VERIFIED-IN-REPO = read from this branch (`wip/directory`: source at commit `8482ec7`, built with `npm run build` and `npm run build:preview` in the worktree) or from the deployed release branch with `git show origin/production:<path>` (`origin/production` = `b2ca3d6`, "Build 4d4e605 (release-20261011-005330)", 45 files). MEASURED-LOCAL = reproduced in this environment with a script against a local build. **Live checks are impossible here:** at 2026-10-11 15:29 UTC `curl` to `https://ukrainemedicaladmissions.com/universities/` and to `www.vnmu.edu.ua`, `onmedu.edu.ua` and `www.bsmu.edu.ua` failed with `CONNECT tunnel failed, response 403` (the environment's network policy). `npm run verify:live` has never run. Nothing below describes what the live server actually returns.
+
+### 9.1 `/universities/` on this branch versus the production branch (VERIFIED-IN-REPO)
+
+| Check | This branch (source + local build) | Production branch (`origin/production`) |
+|---|---|---|
+| Exists in source | `site/src/pages/universities/index.astro` | built files only (no source on that branch) |
+| Exists in build | `dist/universities/index.html` | `universities/index.html` |
+| In navigation | first item of `NAV` in `site/src/lib/site.ts` ("Universities"); header nav and footer "Explore" list on every page; `aria-current="page"` on the directory itself | header nav and footer links present |
+| Home page | section "Medical universities in Ukraine" with the empty-state note and an "All universities" button to `/universities/` | links to `/universities/` plus two links to the Ternopil profile from the home directory section |
+| Self-canonical | `<link rel="canonical" href="https://ukrainemedicaladmissions.com/universities/">` | same |
+| Indexable | `<meta name="robots" content="index, follow, max-image-preview:large">` | same |
+| In sitemap | yes; `dist/sitemap-0.xml` has 18 URLs, the **identical set** to production (compared with `diff`) | yes; 18 URLs |
+| Title / description | title unchanged ("Medical universities in Ukraine: full list of medical colleges"); description changed on this branch to 153 characters | older description ("…programmes, language, city and verification status.") |
+| Universities listed | **0** (all seven records have `publishable: false`; the publication gate in `site/src/lib/records.ts` keeps them out) | **1**: the unverified Ternopil record as a card ("Verification in progress", "English (pending)", city and four programme chips) on an indexable page |
+| Empty state with zero published profiles | visible `data-empty` block: "No university profile has completed verification yet." plus what is checked before publication and the Apply Online Now invitation; required by `tests/publication-gate.mjs` (regex on the built page) and `tests/ui-smoke.mjs` (empty state visible, no profile link) | not applicable (one draft listed); `data-empty` holds only the "no match for these filters" message |
+| Profiles gated | `getStaticPaths` in `universities/[slug].astro` filters with `isVisible`; no `dist/universities/<slug>/` directory exists; `publication-gate`: 7 unpublished, 0 published, 1 sample, 178 checks, 0 failures (no page, link, slug, sitemap entry or JSON-LD for an unpublished record) | `universities/ternopil-national-medical-university/index.html` is served with `noindex, nofollow` and a self-canonical, not in the sitemap, linked from `/universities/` and the home page |
+| Filters | six: city, programme family, qualification level, teaching language, preparatory route, intake (`data-filter` on each select); with zero records each select offers only its default option, and the preparatory filter also offers "No preparatory route recorded" | three: city, course, language |
+| Comparison table | `CompareTable` (verified-only cells, alphabetical, "no ranking is implied") renders only when at least one record is listed: absent from the production build today, present in the preview build with the seven drafts | absent |
+| Ternopil URL | `site/public/.htaccess`: `RedirectMatch 302 ^/universities/ternopil-national-medical-university/?$ /universities/`; `check-redirects` reports it "ok" (no loop or chain); `publication-gate` requires the rule while the record is unpublished and rejects it once publishable | no such rule; the noindex draft page is served (HOSTING_AND_DEPLOYMENT_ASSESSMENT.md §13) |
+| Structured data | `BreadcrumbList` only | `BreadcrumbList` only |
+| Scripts under the production CSP | **defect (MEASURED-LOCAL):** Astro inlines processed scripts smaller than Vite's `build.assetsInlineLimit` (4,096 bytes by default; `node_modules/astro/dist/core/build/plugins/plugin-scripts.js`), so the directory filter and the header menu are emitted as inline `<script type="module">` on every page. Served locally **with** the `.htaccess` CSP header (`script-src 'self'`), the preview directory's count stayed 7 after choosing a city, the mobile menu stayed `aria-expanded="false"` and the browser logged 2 CSP messages; **without** the header the count fell to 1 and the menu opened. A throw-away build with `vite: { build: { assetsInlineLimit: 0 } }` emitted external `/_astro/*.js` files and both worked under the CSP. The test suite does not send the CSP header, so it passes. Fix belongs in `site/astro.config.mjs` (not edited here; reported to the orchestrator) | `index.html` and `universities/index.html` also carry inline module scripts, and the production `.htaccess` sets the same CSP, so the same failure is expected on the live site if the host sends the header (UNVERIFIED: live check blocked) |
+
+**Reading.** On this branch the directory is indexable, self-canonical, in the sitemap and linked from navigation and the home page, but it lists nothing: the "list" intent (KEYWORD_URL_MAP §16–§17) cannot be satisfied until at least three profiles pass verification. Production still shows one unverified record on an indexable page; the branch fixes that, and a release from the branch would replace the card with the empty state and redirect the Ternopil URL (302). The inline-script defect must be fixed before any release, because on the live site it would disable the filters and the mobile menu.
+
+### 9.2 Discovery and verification status per record (VERIFIED-IN-REPO by script over `site/src/content/universities/*.json`; no new shell created)
+
+| Record (slug) | Publishable | Claim objects | Verified | With a source URL | Programmes / deferred | Open questions | `lastReview` | Evidence register | Verification order (owner, 2026-10-11) |
+|---|---|---|---|---|---|---|---|---|---|
+| `vinnytsia-national-pirogov-memorial-medical-university` | no | 119 | 0 | 0 | 3 / 4 | 12 | not set | `research/verification/vinnytsia-…/EVIDENCE_REGISTER.md` | 1 |
+| `odesa-national-medical-university` | no | 105 | 0 | 0 | 3 / 3 | 11 | not set | `research/verification/odesa-…/EVIDENCE_REGISTER.md` | 2 |
+| `bukovinian-state-medical-university` | no | 91 | 0 | 0 | 3 / 2 | 12 | not set | `research/verification/bukovinian-…/EVIDENCE_REGISTER.md` | 3 (Ivano-Frankivsk as substitute) |
+| `ivano-frankivsk-national-medical-university` | no | 119 | 0 | 0 | 3 / 4 | 12 | not set | none yet (§6.4 checklist) | 4 |
+| `bogomolets-national-medical-university` | no | 91 | 0 | 0 | 3 / 2 | 13 | not set | none yet (§6.5) | 5 |
+| `ternopil-national-medical-university` | no | 105 | 0 | 0 | 3 / 3 | 11 | not set | none yet (§6.6) | 6 |
+| `uzhhorod-national-university` | no | 119 | 0 | 0 | 1 / 6 | 12 | not set | none yet (§6.7) | 7 |
+
+Total 749 claim objects, 0 verified, 0 with a source URL: unchanged from §1 and `UNIVERSITY_DATA_REGISTER.md` §4. Discovery status for these seven and for the candidates without a record (Kharkiv and Zaporizhzhia gated on operating conditions; Lviv, Poltava, Dnipro later; the rest of the research inventory not swept) is in `UNIVERSITY_DATA_REGISTER.md` §5, §6 (discovery register) and §9. Every value in the records is a search-snippet LEAD or not-published. No record file was added in this phase, as §5 step 12 requires.
+
+### 9.3 What is blocked and the exact owner action to unblock it
+
+**Blocked:** every official page needed to verify a claim (the university domains in §3 and `EXECUTIVE_REPORT.md` §C, the Ministry portal, EDEBO, NAQA, WDOMS) and the production host. Today's attempt is recorded in the scope note at the top of §9; earlier attempts are in `SOURCE_VERIFICATION_REGISTER.md`.
+
+**Owner action, either route (free; minutes for Route A):**
+- **Route A (allow-list).** In the Claude Code session, open the cloud environment menu in the session's title bar, choose Edit, then Network access. Either choose a broader access level, or stay on the Limited level and add the hosts under Allowed domains, leaving "Allow package managers" ticked. Hosts: the `EXECUTIVE_REPORT.md` §C list plus the extra hosts in §3 of this plan (`www.` and sub-hosts such as `foreign.vnmu.edu.ua`, `vstup.bsmu.edu.ua`, `junior.tdmu.edu.ua`; `naqa.gov.ua`, `en.naqa.gov.ua`; `nmu.ua`, `nmu.edu.ua`; `ukrainemedicaladmissions.com` and `www.ukrainemedicaladmissions.com` for `npm run verify:live`). Steps: https://code.claude.com/docs/en/cloud-environments#network-access. Gate: a test fetch of each host succeeds and is logged in `SOURCE_VERIFICATION_REGISTER.md`.
+- **Route B (captures).** The owner or daughter opens each page listed in `research/verification/<slug>/EVIDENCE_REGISTER.md` (Vinnytsia, Odesa, Bukovinian first) and saves it as a PDF with the browser's URL and date header, following "How to capture a page" in each register. Captures stay outside the repository while it is public (`research/verification/README.md`); the register records only the file name. A page that cannot be found is reported as "not found" so the field can be closed as not-published.
+
+After either route: verify per §5 steps 4–7; `npm run test:records`, `npm test`; owner sign-off per profile; a separate release approval (§5 step 8). Until then the directory stays empty in production builds, by design.
