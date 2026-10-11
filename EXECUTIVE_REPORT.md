@@ -127,7 +127,7 @@ DONE: baseline report; reconciliation of all cited metrics against exports; coun
 ## 13. Decisions required before production changes
 
 1. Network allow-list: production hosts; official university and registry domains (free).
-2. SEMrush spend R1–R2 (and optionally R3–R5).
+2. ~~SEMrush spend R1–R2~~ done 2026-10-11 (850 units); R3–R5 remain optional and unapproved.
 3. Approval of each production deployment (none pending).
 4. Image-sourcing route (owner-downloaded Unsplash vs allow-list vs generated with labels).
 5. Analytics tool and CSP change; GSC property ownership.
