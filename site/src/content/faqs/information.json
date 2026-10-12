@@ -1,10 +1,9 @@
 {
   "section": "Our information",
-  "order": 2,
+  "order": 3,
   "items": [
-    { "q": "Where do your fees and requirements come from?", "a": "Only from the university's official website, published fee schedules and admissions documents, or Ukrainian government sources. A fact is shown as verified, with its source and check date, only after we have read it there; anything not yet checked is marked pending or to be confirmed." },
-    { "q": "Why are some facts marked “to be confirmed”?", "a": "Because we have not yet verified them from an official source. We would rather show a gap than an invented or outdated figure. If you need that fact now, ask us in the Apply Online form and we will tell you whether we have been able to check it." },
-    { "q": "Are fees in different currencies or years comparable?", "a": "Not directly. We always show the academic year and currency, and we never merge different years or programme types into one figure." },
-    { "q": "Do you use real photos of each university?", "a": "Not yet: university profiles do not show photographs. If we add them, we will use only images the university allows, credited with source and licence, and never present generic stock photography as a specific campus." }
+    { "q": "What does “not yet verified” mean?", "a": "It means we have not yet confirmed that university's facts from its official website or a Ukrainian government register. It is not a judgement about the university. Until we have, our [directory](/universities/) shows its name only, with no fees, programmes, dates or entry requirements." },
+    { "q": "Where do your fees and requirements come from?", "a": "Only from the university's official website, its published fee schedules and admissions documents, or Ukrainian government sources. A fact is shown as verified, with its source and the date we checked it, only after we have read it there." },
+    { "q": "Why are some facts marked “to be confirmed”?", "a": "Because we have not yet verified them from an official source, and we would rather show a gap than a guessed or outdated figure. If you need that fact now, ask us in your candidate profile and we will tell you whether we have been able to check it." }
   ]
 }

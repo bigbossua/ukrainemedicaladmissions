@@ -3,68 +3,102 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import ApplicationJourney from '../../components/illustrations/ApplicationJourney.astro';
-import DocumentStates from '../../components/illustrations/DocumentStates.astro';
 import { SITE } from '../../lib/site';
+// Anchors linked from other pages: #stages (home, /apply/, /services/), #readiness (/tuition-fees/, /universities/, course
+// pages, research-preview profiles: it sits on the eligibility heading, where entry requirements are compared), #documents
+// (footer, /services/), #official-sites (/universities/, research-preview profiles), #preparatory, #checklist.
+// No university fact appears here: every requirement is written as a check the student makes with the university or the regulator.
 ---
-<Base title="Admission requirements & process" description="How international students apply to medical universities in Ukraine: the four application stages, documents usually requested, and what we do and do not do.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Admissions guide</span><h1>Admission requirements and application process</h1><p>What the process involves, which documents universities typically ask for, and exactly what we do and do not do.</p></div></div>
+<Base title="How to apply to a medical university in Ukraine: eligibility and steps" suffix={false} description="MBBS in Ukraine eligibility, documents and application steps for international students, and how to check each requirement with the university itself.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Admissions guide</span><h1>How to apply to a medical university in Ukraine</h1><p>What you can do today: check whether you qualify, start gathering your documents and send us a free candidate profile. This guide tells you what to check, and where.</p></div></div>
   <Breadcrumbs items={[{ label: 'Admissions' }]} />
   <section class="guide"><div class="wrap prose">
-    <h2>Who sets the requirements</h2>
-    <p>Entry requirements, document lists and deadlines are set by each university and by Ukrainian regulations for international students. They change from year to year. On every university profile we show the published requirement with its source and the date we last checked it; where we have not yet confirmed a requirement it is marked “to be confirmed”.</p>
+    <h2 id="steps">Your steps, starting today</h2>
+    <ol class="today">
+      <li><strong>Choose your course.</strong> Start with <a href="/courses/medicine/">medicine (often searched as MBBS)</a>, or see <a href="/courses/">all courses</a>.</li>
+      <li><strong>Check whether you qualify.</strong> Ask the university about its entry requirements for your qualification, and check with the regulator in the country where you plan to work. See <a href="#readiness">eligibility</a> below.</li>
+      <li><strong>Start gathering documents.</strong> Use the <a href="#documents">list below</a> and check each item against the university's own list.</li>
+      <li><strong>Send us your candidate profile.</strong> It is free. Tell us your course, your subjects and grades so far, and your questions in the <a href={SITE.ctaHref}>Apply Online form</a>. We reply by email with answers and suggested next steps, and we say plainly what we have not yet verified.</li>
+      <li><strong>Apply only through the university's own procedure.</strong> Send documents and payments only where the university's official website tells you to. See <a href="#official-sites">how to recognise official channels</a>.</li>
+    </ol>
 
-    <h2 id="stages">The four stages of an application</h2>
-    <p>The stages are kept separate, and nothing reaches a university before the last one. Only the first stage, the enquiry, is open today.</p>
-  </div>
-  <div class="wrap journey-wrap"><ApplicationJourney detail /></div>
-  <div class="wrap prose">
-    <h2 id="readiness">Are you eligible? How the readiness check will work</h2>
-    <p>Entry requirements are specific to a university, a programme, your own school-leaving qualification and the intake year. There is no universal list of subjects or grades for “medicine in Ukraine”. We record each requirement exactly as the university publishes it — subject, minimum grade and grading scale, entrance examination and its format, language requirement — with the source and the date read. Only verified requirements are used in a readiness check.</p>
-    <p class="note">The readiness check, and online profiles you can save and return to, are planned and not available yet. Today the Apply Online form already records your Stage-1 candidate profile: your study plans, your qualification with subjects, grades and outstanding results, and which documents you have or still need. We reply by e-mail and say where a requirement has not yet been verified.</p>
-    <p>When the readiness check opens, it will use your qualification, the subjects you studied with their grades, and any results still outstanding. For each verified requirement of the programme you choose, the check will show one of four results: <strong>met</strong>, <strong>not met</strong>, <strong>unknown</strong> (the requirement is not yet verified, or your record lacks the detail) or <strong>pending evidence</strong> (your result is not out yet). It is a comparison with published requirements, not an admission decision, and it never says you are “eligible” or “ineligible”.</p>
-    <p>If a requirement is not met, the profile will explain the gap and, where a university publishes a preparatory route, what that route is (see below). You will be able to start a profile with missing documents or incomplete results; nothing about it is final until you choose to submit.</p>
+    <h2 id="readiness">MBBS in Ukraine eligibility: what decides whether you qualify</h2>
+    <p>Entry requirements are specific to the university, the programme, your school-leaving qualification and the year you start, so there is no single list for “medicine in Ukraine”. Admission decisions are made solely by the university.</p>
+    <p>On the university's programme page or admission rules, check:</p>
+    <ul>
+      <li>which school subjects it asks for (for example biology or chemistry) and the minimum grades;</li>
+      <li>how it reads your grading scale, and what it accepts if some of your results are still to come;</li>
+      <li>whether there is an entrance test or interview, and its format;</li>
+      <li>the language level it asks for, and how you can show it;</li>
+      <li>whether the programme is open to applicants from your country for your intake.</li>
+    </ul>
+    <p>Then check the other side. Recognition of the degree and the right to practise are decided by the regulator in the country where you plan to work, not by the university or by us. Read that regulator's current rules on its own website before you apply. Applying from India? Read <a href="/faq/#is-neet-required-to-study-mbbs-in-ukraine">Is NEET required?</a> and <a href="/faq/#is-an-mbbs-from-ukraine-valid-in-india">Is an MBBS from Ukraine valid in India?</a></p>
+    <p>A verified profile on this site shows each requirement with its official source and the date we checked it. More answers on cost, duration and recognition are in the <a href="/faq/#eligibility-duration-and-recognition">FAQ</a>.</p>
 
-    <p>Common questions on duration, eligibility and recognition are answered in the <a href="/faq/#eligibility-duration-and-recognition">FAQ</a>.</p>
+    <div class="later">
+      <h2 id="checklist">Coming later: a readiness check and a document checklist</h2>
+      <p>Planned, not available yet: a readiness check that compares your subjects and grades with a programme's verified entry requirements (a comparison, not an admission decision); profiles you can save and return to; and secure uploads with a checklist built from the university's own document list. Until then, use the checks on this page and the Apply Online form.</p>
+    </div>
+
+    <h2 id="documents">Documents to start gathering — check each against the university's own list</h2>
+    <p>This is a starting point, not any university's list. Ask the university for its list for your programme and intake.</p>
+    <ul>
+      <li>Passport. Ask whether it must stay valid for a set period.</li>
+      <li>School-leaving certificate and transcript or mark sheet, with your subject grades.</li>
+      <li>Birth certificate.</li>
+      <li>Language certificate, if you have one (for example English).</li>
+      <li>Medical certificate. Ask which tests and which form the university wants.</li>
+      <li>Passport-style photographs.</li>
+      <li>If you are transferring or applying for postgraduate study: transcripts from your earlier studies.</li>
+      <li>Translations, notarisation and legalisation or an apostille. Ask which documents need them, into which language, and who may certify a translation.</li>
+    </ul>
+    <p>Do not send original documents to anyone until the university's own procedure asks for them. Please do not email us scans of your passport or certificates either: the Apply Online form lets you mark each document as have, need or not sure, and we answer document questions by email.</p>
+
+    <h2 id="check-with-university">Check on the university's own website</h2>
+    <div class="table-wrap">
+    <table aria-labelledby="check-with-university">
+      <thead><tr><th scope="col">Topic</th><th scope="col">What to look for</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Teaching language</th><td>The teaching language of your programme, on the university's programme page.</td></tr>
+        <tr><th scope="row">Intake and deadline</th><td>The intake dates and the application deadline for the year you plan to start.</td></tr>
+        <tr><th scope="row">Fees</th><td>The university's own fee schedule for your intake. <a href="/tuition-fees/">How to read a fee schedule</a>.</td></tr>
+      </tbody>
+    </table>
+    </div>
 
     <h2 id="preparatory">Preparatory and foundation routes</h2>
-    <p>Some Ukrainian universities publish a preparatory (foundation) course for foreign applicants. Each university sets its own duration, subjects, language of instruction and fee and, most importantly, its own wording on what completing the course gives. We quote that wording verbatim on the profile once it has been verified, and never generalise it.</p>
-    <p>A preparatory course improves academic preparation. It does not guarantee admission, progression or a place on any degree programme; the degree's own entry requirements still apply. No route is listed on this site until its official page has been read.</p>
+    <p>Some Ukrainian universities may offer a preparatory (foundation) course for foreign applicants. If you are considering one, ask the university for its length, subjects, teaching language and fee, and for its own written wording on what completing the course leads to. Do not assume it guarantees a place on a degree programme: ask whether the degree's own entry requirements still apply to you.</p>
 
-    <h2 id="documents">Documents universities commonly request</h2>
-    <p>The exact list is confirmed per university and intake. Typical items include:</p>
-    <ul>
-      <li>Passport (check whether the university requires it to be valid for a set period).</li>
-      <li>School-leaving certificate and transcript, with subject grades (check which subjects the programme requires).</li>
-      <li>For transfer or postgraduate applicants: prior academic transcripts.</li>
-      <li>Medical certificate and, where required, specific test results.</li>
-      <li>Passport-style photographs.</li>
-      <li>Certified translations into Ukrainian where the university requires them.</li>
-      <li>Legalisation or apostille of documents where required for your country.</li>
-    </ul>
-    <p>Do not send original documents to anyone until the university's procedure asks for them.</p>
-    <h3 id="checklist">How your document checklist will work</h3>
-    <p>Once candidate profiles and secure uploads open, your profile will keep a checklist generated from the verified document requirements of the programme you choose. Each item will move through the states shown below. “Accepted for processing” means our reviewer found the item complete and legible for our own review; it never asserts that a document is authentic or that a university has accepted it.</p>
-    <DocumentStates />
-    <p class="note">Uploads are not available yet, so please do not e-mail scans of your passport or certificates. The Apply Online form lets you mark each document as have, need or not sure.</p>
-
-    <h2>Language of instruction</h2>
-    <p>Some programmes are taught in English and some in Ukrainian; availability for international applicants varies by programme and year. We record the language only from the university's official programme page.</p>
-
-    <h2>Timing</h2>
-    <p>Intake dates and deadlines are published by each university. Because they vary, we show them on the university profile rather than here, each with a check date.</p>
+    <h2 id="promises">What we can and cannot promise</h2>
+    <p>We can answer your questions and suggest next steps. We cannot guarantee admission, a visa, a scholarship, recognition of a qualification or employment. We will never tell you an application has reached a university unless it has. Our <a href="/disclosure/">disclosure</a> explains how we work.</p>
 
     <h2 id="official-sites">Apply through official channels only</h2>
-    <p>Some websites use a university's name in their domain without being the university. Every published profile on this site links the university's official domain, so check the address before you send anything. Admission documents and payments go only through the university's own published procedure.</p>
+    <p>Some websites use a university's name in their address without being the university. Find the official website from the domain the university publishes about itself, or from a Ukrainian government register, not from an advert, a social-media page or an agency's copy of the site. Check the address before you send anything. Admission documents and payments go only through the university's own published procedure.</p>
 
-    <h2>What we do not do</h2>
-    <p>We do not guarantee admission, visas, scholarships, recognition of a qualification in any country, or employment. {SITE.disclaimer}</p>
-    <p>Next: read the <a href="/tuition-fees/">tuition fees guide</a>, browse <a href="/universities/">universities</a>, or <a href="/apply/">start your application</a>.</p>
+    <h2 id="stages">The four stages of an application</h2>
+    <p>Only the first stage, your candidate profile, is open today.</p>
+  </div>
+  <div class="wrap journey-wrap"><ApplicationJourney /></div>
+  <div class="wrap prose">
+    <h2 id="next">Next steps</h2>
+    <ul>
+      <li><a href="/tuition-fees/">How to read a university fee schedule</a></li>
+      <li><a href="/universities/">See the universities we are researching</a></li>
+      <li><a href="/services/">What we do for you</a></li>
+      <li><a href="/faq/">Student FAQ</a></li>
+    </ul>
   </div></section>
-  <CtaBand />
+  <CtaBand title="Ready to start?" text="Send us your free candidate profile: your course, your subjects and grades so far, and your questions." />
 </Base>
 
 <style>
   .guide { padding-top: 1rem; }
   /* The stages diagram breaks out of the reading column so it can run horizontally on wide screens. */
-  .journey-wrap { max-width: 1080px; margin-top: .5rem; margin-bottom: 2.5rem; }
+  .journey-wrap { max-width: 1080px; margin-top: .5rem; margin-bottom: 1rem; }
+  .today li { margin-bottom: .6rem; }
+  /* One short "Coming later" box for everything planned (content audit §5.6). */
+  .later { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 2rem 0; }
+  .later h2 { font-size: 1.125rem; margin: 0 0 .4rem; }
+  .later p { margin: 0; font-size: .95rem; }
+  .table-wrap th[scope="row"] { background: transparent; }
 </style>

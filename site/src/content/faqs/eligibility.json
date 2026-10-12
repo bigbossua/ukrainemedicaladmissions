@@ -1,30 +1,30 @@
 {
   "section": "Eligibility, duration and recognition",
-  "order": 3,
+  "order": 1,
   "items": [
     {
-      "q": "How many years does medicine take in Ukraine?",
-      "a": "Each university publishes the duration of its own programme, and the wording differs between universities and programmes, so we do not state a general figure. We show the exact wording on the university's profile once it has been read from the official programme page; until then the profile says “to be confirmed”."
+      "q": "How much does it cost to study medicine (MBBS) in Ukraine?",
+      "a": "The only reliable figure is the university's own fee schedule for your programme and intake. When you read it, check the academic year, the currency, and whether the fee is per year, per semester or for the whole programme. Ask what it includes, for example a preparatory course, accommodation, insurance or a medical examination. Fees for different years, currencies or programmes cannot be compared directly. Our [tuition fees guide](/tuition-fees/) shows how to read a fee schedule. We show a university's fee only after reading it on that schedule, with the date we checked it."
     },
     {
-      "q": "How much does it cost to study medicine in Ukraine?",
-      "a": "Only each university's official fee schedule for the current intake can answer this. We publish a fee only with its academic year, currency, payment basis and the date we read it, and never an estimate or a figure copied from an agency website. See the tuition fees guide for what a schedule includes and excludes."
-    },
-    {
-      "q": "Is NEET required to study medicine in Ukraine?",
-      "a": "Whether an applicant from India must pass an eligibility examination before studying medicine abroad is decided by India's medical regulator, not by any Ukrainian university. We do not advise on it and we will summarise the rule only with a link to the regulator's own published document. Check the National Medical Commission's current rules before you apply."
-    },
-    {
-      "q": "Is a medical degree from Ukraine valid in India, Germany or Canada?",
-      "a": "Recognition of a foreign medical qualification is decided by the regulator of the country where you intend to practise, under its current rules for foreign medical graduates, and often involves its own examinations. No university, agent or website can grant recognition. We do not publish recognition claims; where we can cite a regulator's own document we will link it."
+      "q": "How many years does medicine (MBBS) take in Ukraine?",
+      "a": "Check the length on the university's own programme page for your intake; we do not give a general figure. Look at the number of years of study, whether a preparatory year or an internship is counted separately, and the exact title of the qualification. “MBBS” is how many applicants search, but each university awards its own qualification title. We show a programme's length on a university's profile only after reading it there. See also [medicine (MBBS) in Ukraine](/courses/medicine/)."
     },
     {
       "q": "Do I need biology and chemistry to apply?",
-      "a": "It depends on the university, the programme, your school-leaving qualification and the intake. Medical programmes often name subjects or entrance examinations, but there is no universal rule, and we only use a requirement once it has been read on the official page. A readiness check is planned: once a programme's requirements have been verified, it will compare your subjects and grades with them. It is not available yet."
+      "a": "It depends on the university, the programme, your school-leaving qualification and the intake, so there is no universal answer. On the university's programme page or admission rules, check which subjects it asks for, the minimum grades and the grading scale it uses, and whether there is an entrance test or interview. The [admissions guide](/admissions/#readiness) lists the checks to make, and you can ask us about a specific programme in your candidate profile."
     },
     {
-      "q": "How do I know a website is the university's official site?",
-      "a": "Most Ukrainian state universities publish on their own domain, and the Ministry of Education's “Study in Ukraine” portal lists each institution with its contacts. Several third-party sites use university names in their addresses. Every published profile here links the university's official domain; check the address before you send anything. Send documents and payments only through the university's own published procedure."
+      "q": "Is NEET required to study MBBS in Ukraine?",
+      "a": "If you plan to practise in India, check two things before you apply. First, read the current rules of India's National Medical Commission (NMC) on its own website, including anything they say about NEET: the NMC, not a Ukrainian university or an agent, decides what it requires of doctors who studied abroad. Second, ask the university whether it asks for a NEET result in its own admission requirements, and keep its answer in writing. We do not summarise the NMC's rules here."
+    },
+    {
+      "q": "Is an MBBS from Ukraine valid in India?",
+      "a": "Whether a medical qualification from Ukraine lets you practise in India is decided by India's National Medical Commission (NMC), not by any university, agent or website, including this one. Read the NMC's current rules on its own website before you apply, check your chosen programme against them, and keep a note of what you read and when. If anything is unclear, ask the NMC. We do not publish recognition claims."
+    },
+    {
+      "q": "Is a Ukrainian medical degree accepted in Germany, Canada or other countries?",
+      "a": "That is decided by the medical regulator in the country where you plan to work, not by the university, an agent or us. Find that regulator's own website, read what it currently asks of doctors who qualified abroad, and check your chosen programme against it before you apply. We do not publish recognition claims for any country."
     }
   ]
 }

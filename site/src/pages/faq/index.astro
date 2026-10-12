@@ -7,27 +7,50 @@ import { getCollection } from 'astro:content';
 const sections = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
 // Stable anchors from the visible text, so other pages can link to a section or an answer (and analytics can name
 // the question). They change only if the wording changes; duplicates get a numeric suffix.
-const slug = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+// Linked from other pages: #eligibility-duration-and-recognition (/tuition-fees/, /admissions/), and the questions
+// #is-neet-required-to-study-mbbs-in-ukraine and #is-an-mbbs-from-ukraine-valid-in-india (/admissions/).
+const slug = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
 const used = new Set<string>();
 const anchor = (t: string) => { let a = slug(t) || 'item', b = a, n = 2; while (used.has(b)) b = `${a}-${n++}`; used.add(b); return b; };
+
+// An answer may link to another page of this site, written as [link text](/path/). Only site-relative paths become
+// links (rendered as elements, never as HTML strings); any other bracket-and-parenthesis form fails the build, so a
+// mistyped or external link cannot reach the page as raw text. The structured data carries the same answer as plain text.
+const LINK = /\[([^\]\n]+)\]\((\/(?!\/)[^)\s]*)\)/g;
+type Part = string | { text: string; href: string };
+const plain = (a: string) => a.replace(LINK, '$1');
+const parts = (a: string): Part[] => {
+  if (/\]\(/.test(plain(a))) throw new Error(`FAQ answer has a link that is not a site-relative [text](/path/): ${a.slice(0, 80)}`);
+  const out: Part[] = [];
+  let last = 0;
+  for (const m of a.matchAll(LINK)) {
+    const at = m.index ?? 0;
+    if (at > last) out.push(a.slice(last, at));
+    out.push({ text: m[1], href: m[2] });
+    last = at + m[0].length;
+  }
+  if (last < a.length) out.push(a.slice(last));
+  return out;
+};
+
 const all = sections.flatMap((s) => s.data.items);
-// FAQPage structured data: every Q&A below is visible on the page.
+// FAQPage structured data: every Q&A below is visible on the page, with the same wording.
 const jsonLd = [{
   '@context': 'https://schema.org', '@type': 'FAQPage',
-  mainEntity: all.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  mainEntity: all.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } })),
 }];
 ---
-<Base title="Student FAQ" description="Answers for international applicants: fees to apply, what counts as a submitted application, guarantees, and how our university information is verified." jsonLd={jsonLd}>
+<Base title="Student FAQ: cost, duration, recognition" description="Answers for international students on MBBS in Ukraine: cost, duration, NEET, recognition in India and abroad, and how our service works." jsonLd={jsonLd}>
   <div class="page-head"><div class="wrap"><span class="eyebrow">FAQ</span><h1>Student questions, answered plainly</h1><p>If your question is not here, contact us or start an application and ask within it.</p></div></div>
   <Breadcrumbs items={[{ label: 'FAQ' }]} />
   <section style="padding-top:1rem"><div class="wrap prose">
     {sections.map((s) => (
       <>
         <h2 id={anchor(s.data.section)}>{s.data.section}</h2>
-        {s.data.items.map((f) => <details id={anchor(f.q)}><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        {s.data.items.map((f) => <details id={anchor(f.q)}><summary>{f.q}</summary><p>{parts(f.a).map((p) => (typeof p === 'string' ? p : <a href={p.href}>{p.text}</a>))}</p></details>)}
       </>
     ))}
-    <p style="margin-top:2rem">Still unsure? See the <a href="/admissions/">admissions guide</a>, the <a href="/tuition-fees/">fees guide</a>, or <a href="/contact/">contact us</a>.</p>
+    <p style="margin-top:2rem">Still unsure? See the <a href="/admissions/">admissions guide</a>, the <a href="/tuition-fees/">fees guide</a>, the <a href="/universities/">universities we are researching</a>, or <a href="/contact/">contact us</a>.</p>
   </div></section>
-  <CtaBand />
+  <CtaBand title="Question not answered here?" text="Ask it in your free candidate profile. We reply by email with answers and suggested next steps." />
 </Base>

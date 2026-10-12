@@ -1,10 +1,13 @@
 {
   "section": "Applying",
-  "order": 1,
+  "order": 2,
   "items": [
+    { "q": "What do you do for me today?", "a": "You send us a free candidate profile through the [Apply Online form](/apply/): your course, your qualifications so far and your questions. We reply by email with answers and the next steps we suggest, and we tell you plainly which facts about a university we have not yet verified. We can also answer questions about your documents, such as translations, notarisation and legalisation. Nothing is sent to a university without your confirmation." },
     { "q": "Is there a fee to start an application?", "a": "No. Starting an application on this site is free and does not commit you to anything. Any fee for our own support services would be stated in writing before you choose it." },
-    { "q": "Does starting an application mean my application has been sent to a university?", "a": "No. An application is sent to a university only through that university's authorised procedure and only after you confirm. We clearly distinguish an enquiry, a draft, an application submitted to our service, and an official submission to a university." },
-    { "q": "Can you guarantee my admission?", "a": "No. Admission decisions are made solely by the university. Today we answer your questions and suggest next steps; once later stages open we will help you prepare a complete, accurate application. We do not and cannot guarantee the outcome, nor visas, scholarships or recognition of a qualification." },
+    { "q": "Does starting an application mean my application has been sent to a university?", "a": "No. Your candidate profile comes only to us: it is an enquiry, not an application. An official application is made only through the university's own procedure, at the last of [the four stages of an application](/admissions/#stages)." },
+    { "q": "Can you guarantee my admission?", "a": "No. Admission decisions are made solely by the university. We do not and cannot guarantee admission, a visa, a scholarship or recognition of a qualification." },
+    { "q": "Can you help with a university that is not on your list?", "a": "Yes. In the [Apply Online form](/apply/), choose “A university not listed here” and type its name. We will tell you what we have and have not been able to check about it." },
+    { "q": "How do I know a website is the university's official site?", "a": "Use the domain the university publishes about itself, or a Ukrainian government register, not an advert or an agency's copy of the site. Some websites use a university's name in their address without being the university, so check the address before you send anything. Send documents and payments only through the university's own published procedure. More in the [admissions guide](/admissions/#official-sites)." },
     { "q": "Are you part of a university or the Ukrainian government?", "a": "No. Ukraine Medical Admissions is an independent service and is not affiliated with, or endorsed by, any university or government body." }
   ]
 }
