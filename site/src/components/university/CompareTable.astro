@@ -4,7 +4,7 @@
  * Anything else renders as "not published" or "awaiting verification". No ranking, no ordering by merit.
  */
 import { formatDate, PREVIEW } from '../../lib/site';
-import { viewClaim, viewItems } from '../../lib/publication.mjs';
+import { viewClaim, viewItems, formatMoney } from '../../lib/publication.mjs';
 interface Props { records: any[]; hrefFor?: (u: any) => string }
 const { records, hrefFor = (u: any) => `/universities/${u.slug}/` } = Astro.props;
 // Published projections: only values the publication policy shows. Raw drafts and samples (PREVIEW only): verified values.
@@ -17,7 +17,8 @@ const rows = records.map((u) => {
   const reqs = u.programmes.reduce((n: number, p: any) => n + viewItems(p.requirements, { preview: PREVIEW }).filter((r: any) => r.state === 'verified').length, 0);
   const prep = u.preparatoryRoutes.length ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) !== null) ? (u.preparatoryRoutes.some((r: any) => verifiedOnly(r.englishTrack) === true) ? 'Yes, incl. English track' : 'Yes (Ukrainian-language)') : null) : typeof u.routesWithheld === 'number' && u.routesWithheld > 0 ? null : 'None listed'; // withheld routes are awaiting verification, not absent
   const fees = u.programmes.map((p: any) => ({ p, t: verifiedOnly(p.tuition) })).filter((x: any) => x.t);
-  const tuition = fees.length ? fees.map((x: any) => `${x.p.name}: ${x.t.amount.toLocaleString('en-GB')} ${x.t.currency}/${x.t.per} (${x.t.academicYear})`).join('; ') : null;
+  // The whole verified fee, including year-by-year amounts and the payment schedule when recorded (N24 e).
+  const tuition = fees.length ? fees.map((x: any) => `${x.p.name}: ${formatMoney(x.t, { compact: true })}`).join('; ') : null;
   const windows = u.programmes.map((p: any) => verifiedOnly(p.deadlines)).filter(Boolean).flat();
   const window = windows.length ? windows.map((w: any) => `${w.label}: ${w.date}`).join('; ') : null;
   const status = verifiedOnly(u.status); const fmt = verifiedOnly(u.teachingFormat);
@@ -31,7 +32,7 @@ const rows = records.map((u) => {
     <tbody>
       {rows.map((r) => (
         <tr>
-          <th scope="row"><a href={hrefFor(r.u)}>{r.u.shortName}</a><br /><small>{r.u.city}</small></th>
+          <th scope="row"><a href={hrefFor(r.u)}>{r.u.shortName}</a><br /><small>{r.u.editorialWithheld?.city ? 'City to be confirmed' : r.u.city}</small></th>
           {[r.programmes, r.languages, r.reqs, r.prep, r.tuition, r.window, r.status].map((c) => <td class={c.pending ? 'pending' : ''}>{c.text}</td>)}
           <td>{r.review ?? <span class="pending">Not yet reviewed</span>}</td>
         </tr>

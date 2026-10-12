@@ -33,7 +33,7 @@
   "city": "Alphaville",
   "region": "Alpha Oblast",
   "address": {
-    "value": "POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville",
+    "value": "POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville, Alpha Oblast",
     "status": "verified",
     "source": "https://alpha.fixture.example/contacts",
     "checked": "@today-3"
@@ -147,7 +147,8 @@
           "currency": "USD",
           "per": "year",
           "academicYear": "@ay",
-          "schedule": "POSCTRL-ALPHA-SCHEDULE per semester"
+          "schedule": "POSCTRL-ALPHA-SCHEDULE per semester",
+          "variesByYear": "POSCTRL-ALPHA-VARIES-BY-YEAR"
         },
         "status": "verified",
         "source": "https://alpha.fixture.example/fees",
@@ -721,6 +722,11 @@
     "publishable": true,
     "lastReview": "@today-10",
     "reviewer": "CANARY-REVIEWER-NAME",
-    "openQuestions": []
+    "openQuestions": [],
+    "editorialReview": {
+      "reviewer": "CANARY-EDITORIAL-REVIEWER",
+      "date": "@today-2",
+      "overviewSha256": "d0c5233037cab9407d47fd9c5a636ae8faef39fa02d392091470b962bf781496"
+    }
   }
 }

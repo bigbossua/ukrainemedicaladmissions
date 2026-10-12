@@ -25,7 +25,8 @@
     "source": "https://beta.fixture.example/news",
     "checked": "@today-3"
   },
-  "city": "Betatown",
+  "city": "CANARY-CITY-NOT-IN-ADDRESS",
+  "region": "CANARY-REGION-NOT-IN-ADDRESS",
   "address": {
     "value": "POSCTRL-BETA-ADDRESS </script><script>alert(1)</script>",
     "status": "verified",
@@ -52,7 +53,7 @@
     "source": "https://beta.fixture.example/history",
     "checked": "@today-3"
   },
-  "overview": "Second fixture record for the publication build test (POSCTRL-BETA-OVERVIEW). Not a real university.",
+  "overview": "CANARY-OVERVIEW-NOT-REVIEWED Second fixture record for the publication build test. Not a real university.",
   "accreditation": {
     "value": "CANARY-MISMATCH-RECORD",
     "status": "verified",
@@ -251,6 +252,106 @@
         ],
         "status": "verified",
         "source": "https://beta.fixture.example/pharmacy",
+        "checked": "@today-3"
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "intakeYear": {
+        "value": "@ay",
+        "status": "verified",
+        "source": "https://beta.fixture.example/admission",
+        "checked": "@today-3"
+      },
+      "tuition": {
+        "value": {
+          "amount": 98765,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay"
+        },
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-FEE-LEAD Search-snippet lead (official domain, 2026-10-11) — NOT verified; read the official page before publishing."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "CANARY-PROGRAMME-NAME-NOT-QUOTED",
+      "field": "dentistry",
+      "level": {
+        "value": "integrated_master",
+        "status": "verified",
+        "source": "https://beta.fixture.example/dentistry",
+        "checked": "@today-3"
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": 5,
+        "status": "verified",
+        "source": "https://beta.fixture.example/dentistry",
+        "checked": "@today-3"
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": [
+          "English"
+        ],
+        "status": "verified",
+        "source": "https://beta.fixture.example/dentistry",
         "checked": "@today-3"
       },
       "format": {

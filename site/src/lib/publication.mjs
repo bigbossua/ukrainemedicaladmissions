@@ -10,21 +10,39 @@
 //      AND the evidence store (src/lib/evidence.mjs) holds a matching entry: verified, decision "publish", quoted, dated,
 //      exactly the same value, the same source address and an allowed source tier (recognition: tier 4 only and never on
 //      the university's own website; everything else: tiers 1-3), on an address that fits the tier (tiers 1-2: the
-//      official website; tier 3: .gov.ua; tier 4: not checked against a list, the reviewer's judgement; never a search
+//      official website, once it is shown; tier 3: .gov.ua; tier 4: a listed recognition authority host; never a search
 //      result, cache, archive, Wikipedia, WDOMS, social page, blog or link shortener). Any
 //      conflicting entry, declared contradiction or verified entry with another value withholds the claim. An entry past
 //      its next-review date, or naming an academic year that has ended, no longer counts; time-sensitive claims must have
 //      a next-review date; fees need an academic year that has not ended (and the evidence must name it); a deadline that
-//      has passed is never shown; a value carrying research-note wording is never shown.
+//      has passed is never shown; a value carrying research-note wording is never shown. A preparatory start date written
+//      YYYY-MM-DD that has passed, and a free-text intake or start date naming a year before the current academic year,
+//      are never shown.
+//      Owner settings (src/lib/publication-config.mjs, backlog N24): recognition is shown only from a tier-4 page on a
+//      listed recognition authority host (the list is empty by default, so none is shown); the official website is shown
+//      only when a verified tier-3 government entry carries exactly the same website, and until it is shown the
+//      university's own pages (tiers 1-2) support nothing.
 //      Anything else is withheld: no value, no note, no source. Pages print "To be confirmed".
 //   3. toPublicRecord() builds a NEW object holding only public and editorial-public keys, every claim replaced by its
 //      evaluated form. Programmes are listed only when their id is safe and unique, their international admission, level,
-//      language, duration and intake year are shown and their fee page has been read; requirement, document and cost
-//      items only when shown (items or routes sharing an id are withheld, because their evidence cannot be told apart).
+//      language, duration and intake year are shown, their fee page has been read and (owner setting) their name appears
+//      in the quotation that verifies their international admission; requirement, document and cost items only when
+//      shown (items or routes sharing an id are withheld, because their evidence cannot be told apart). Our own text:
+//      the overview only with an editorial review whose hash matches the current text; city and region only when the
+//      verified address contains them (owner settings; otherwise the city reads "To be confirmed" and the region is left out).
 //   4. evaluatePublication() decides whether a record may have a public page at all. verification.publishable can only
 //      NARROW that decision: a record is published only when the flag is true AND the policy passes. A production build
 //      with a flagged record that fails the policy stops with an error naming the record and each failure.
+import { createHash } from 'node:crypto';
 import { parseEvidence, isIsoDate, isHttpsUrl } from './evidence.mjs';
+import { PUBLICATION_SETTINGS, REVIEW_MAX_AGE_DAYS } from './publication-config.mjs';
+
+/** @typedef {typeof PUBLICATION_SETTINGS} PublicationSettings */
+/**
+ * The default settings, optionally with some replaced (the unit tests prove each setting this way; the build never
+ * passes settings). @param {Partial<PublicationSettings> | undefined} s @returns {PublicationSettings}
+ */
+const resolveSettings = (s) => (s && s !== PUBLICATION_SETTINGS ? Object.freeze({ ...PUBLICATION_SETTINGS, ...s }) : PUBLICATION_SETTINGS);
 
 /** @typedef {'public' | 'editorial-public' | 'internal'} PolicyClass */
 /** @typedef {'verified' | 'to-be-confirmed' | 'under-review' | 'withheld-conflict'} PublicState */
@@ -47,7 +65,8 @@ export const FIELD_POLICY = Object.freeze({
     accreditation: 'public', recognition: 'public', accommodation: 'public', programmes: 'public', deferredProgrammes: 'internal',
     preparatoryRoutes: 'public', researchReferences: 'internal', faqs: 'internal', images: 'internal', verification: 'editorial-public',
   }),
-  verification: Object.freeze({ publishable: 'internal', lastReview: 'editorial-public', reviewer: 'internal', openQuestions: 'internal' }),
+  // editorialReview (N24 a): internal; its only effect is whether the overview may be printed.
+  verification: Object.freeze({ publishable: 'internal', lastReview: 'editorial-public', reviewer: 'internal', openQuestions: 'internal', editorialReview: 'internal' }),
   claim: Object.freeze({ value: 'public', status: 'internal', source: 'public', checked: 'public', note: 'internal' }),
   internationalOffice: Object.freeze({ email: 'public', phone: 'public', url: 'public' }),
   programme: Object.freeze({
@@ -153,7 +172,8 @@ export function assertPolicyCoverage(recordSchema) {
 
 // ------------------------------------------------------------------------------------------------ dates and values
 
-export const REVIEW_MAX_AGE_DAYS = 180;
+/** Re-exported from publication-config.mjs (the owner setting) for existing importers. */
+export { REVIEW_MAX_AGE_DAYS };
 /** @param {Date} d */
 export const isoDay = (d) => d.toISOString().slice(0, 10);
 /** Start year of the academic year containing `now` (academic years start on 1 September). @param {Date} now */
@@ -196,6 +216,45 @@ function pickKeys(v, policy) {
   return out;
 }
 
+// ------------------------------------------------------------------------------------------------ our own text (N24 a)
+
+/**
+ * SHA-256 (lower-case hex) of a piece of our own text exactly as stored (UTF-8, no trimming or other change). An editorial
+ * review records this for the overview; any later edit changes it. `node scripts/publication-report.mjs --overview-hash
+ * <slug>` prints it for a record. @param {unknown} text
+ */
+export const editorialTextHash = (text) => createHash('sha256').update(typeof text === 'string' ? text : '', 'utf8').digest('hex');
+
+/** Unicode NFC, lower case, every run of white space one space, trimmed. @param {string} s */
+const normaliseText = (s) => s.normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim();
+const WORD_CHAR = /[\p{L}\p{N}]/u;
+/**
+ * True when `phrase` occurs in `text` as whole words, ignoring letter case and repeated white space: the characters
+ * either side of the match are not letters or digits ("Lviv" is not found in "Lvivska Street"). An empty phrase is
+ * never found. @param {unknown} text @param {unknown} phrase
+ */
+export function containsPhrase(text, phrase) {
+  if (typeof text !== 'string' || typeof phrase !== 'string') return false;
+  const t = normaliseText(text), p = normaliseText(phrase);
+  if (!p) return false;
+  for (let i = t.indexOf(p); i !== -1; i = t.indexOf(p, i + 1)) {
+    const before = i > 0 ? t[i - 1] : '', after = t[i + p.length] ?? '';
+    if (!(before && WORD_CHAR.test(before)) && !(after && WORD_CHAR.test(after))) return true;
+  }
+  return false;
+}
+
+/**
+ * The editorial review of the overview counts only when it names a reviewer, is dated (a real date, not after today)
+ * and records the SHA-256 of the overview text exactly as it is now. @param {any} record @param {string} today
+ */
+export function editorialReviewMatches(record, today) {
+  const r = record?.verification?.editorialReview;
+  return !!r && typeof r === 'object' && typeof r.reviewer === 'string' && r.reviewer.trim().length > 0
+    && isIsoDate(r.date) && r.date <= today && typeof r.overviewSha256 === 'string' && typeof record?.overview === 'string'
+    && r.overviewSha256 === editorialTextHash(record.overview);
+}
+
 // ------------------------------------------------------------------------------------------------ claim paths
 
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
@@ -208,6 +267,10 @@ const DEADLINES_PATH = /^programmes\.[^.]+\.deadlines$/;
 const INTAKE_YEAR_PATH = /^programmes\.[^.]+\.intakeYear$/;
 const REQUIREMENT_PATH = /^programmes\.[^.]+\.requirements\.[^.]+$/;
 const DOCUMENT_PATH = /^programmes\.[^.]+\.documents\.[^.]+$/;
+const START_DATE_PATH = /^preparatoryRoutes\.[^.]+\.startDate$/;
+const INTAKE_TEXT_PATH = /^programmes\.[^.]+\.intake$/;
+/** Four-digit years 1900-2099 written as a number of their own (not part of a longer number). */
+const YEAR_IN_TEXT = /(?<!\d)(?:19|20)\d{2}(?!\d)/g;
 /** @param {string} path */ export const isTimeSensitive = (path) => TIME_SENSITIVE_PATH.some((r) => r.test(path));
 /** @param {string} path */ export const isMoneyPath = (path) => MONEY_PATH.some((r) => r.test(path));
 /**
@@ -251,17 +314,18 @@ export function pickValue(path, v) {
   return undefined;
 }
 
-/** @param {string} url @param {string[]} hosts */
+/** True when the URL's host is one of `hosts` or a subdomain of one ("www." ignored on both sides). @param {string} url @param {readonly string[]} hosts */
 function onHost(url, hosts) {
-  try { const h = new URL(url).hostname.toLowerCase().replace(/^www\./, ''); return hosts.some((o) => h === o || h.endsWith(`.${o}`)); } catch { return false; }
+  const list = (Array.isArray(hosts) ? hosts : []).filter((o) => typeof o === 'string').map((o) => o.trim().toLowerCase().replace(/^www\./, '')).filter(Boolean);
+  try { const h = new URL(url).hostname.toLowerCase().replace(/^www\./, ''); return list.some((o) => h === o || h.endsWith(`.${o}`)); } catch { return false; }
 }
 /** @param {string} url */
 const hostOf = (url) => { try { return new URL(url).hostname.toLowerCase().replace(/^www\./, ''); } catch { return null; } };
 
 // Sources that are never evidence at any tier (owner rule: search snippets, third-party directories, archives, social
 // media and blogs are research leads only). Matched on the host name, any country domain (google.co.uk, yandex.ua ...).
-// Other third-party sites fail the tier host rules instead (tiers 1-2: official website; tier 3: .gov.ua); tier 4 hosts
-// are not listed, so the reviewer must confirm a tier 4 page belongs to the destination country's recognition authority.
+// Other third-party sites fail the tier host rules instead (tiers 1-2: official website; tier 3: .gov.ua; tier 4: a host
+// in RECOGNITION_AUTHORITY_HOSTS, src/lib/publication-config.mjs, which is empty until the owner lists authorities).
 // UNIVERSITY_DATA_REGISTER.md lists these hosts by name: keep the two in step.
 const NOT_EVIDENCE_HOST = /(^|\.)(google|googleusercontent|bing|yahoo|yandex|baidu|duckduckgo|ecosia|startpage|ask|wikipedia|wikiwand|wikimedia|archive|facebook|instagram|youtube|tiktok|twitter|linkedin|reddit|quora|medium|blogspot|wordpress|telegram|whatsapp|wdoms)\.[a-z]{2,}(\.[a-z]{2})?$|(^|\.)(t\.me|x\.com|youtu\.be|wa\.me|archive\.ph|archive\.is|archive\.today|search\.brave\.com|bit\.ly|tinyurl\.com)$|\.translate\.goog$/;
 /** True when a URL is on a search engine, archive, directory, social network or blog host: never evidence. @param {string} url */
@@ -305,7 +369,12 @@ export const CODE_WORDS = Object.freeze({
   'evidence-not-publishable': 'no evidence entry for it is verified, marked "publish", quoted, dated (not in the future), on an https page and identical to the record value',
   'tier-not-allowed': 'its evidence is not from an allowed kind of source (recognition needs tier 4, the recognition authority of the destination country; everything else tier 1, 2 or 3)',
   'source-not-evidence': 'its evidence is a search result, cached or translated copy, archive copy, Wikipedia, the WDOMS directory, a social-media page, a blog or a link shortener (a research lead, never evidence), or its method says it was read from a search snippet',
-  'source-not-official': "its evidence page is not on the address its tier requires (tier 1 and 2: the university's official website, as recorded in the website field; tier 3: a Ukrainian government address ending .gov.ua)",
+  'source-not-official': "its evidence page is not on the address its tier requires (tier 1 and 2: the university's official website, as recorded in the website field and only once that website is itself shown as verified; tier 3: a Ukrainian government address ending .gov.ua)",
+  'website-not-government-listed': 'no verified evidence entry on a Ukrainian government address (tier 3, ending .gov.ua: for example a Ministry or EDEBO page) carries exactly the same website; until one does, the university\'s own pages support nothing (owner setting WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE in src/lib/publication-config.mjs)',
+  'recognition-authority-not-listed': 'its tier 4 evidence is not on the address of a recognition authority the owner has listed (RECOGNITION_AUTHORITY_HOSTS in src/lib/publication-config.mjs is empty by default, so no recognition claim is shown)',
+  'start-date-passed': 'its start date has passed',
+  'start-date-unparseable': 'its start date is written like YYYY-MM-DD but is not a real date',
+  'past-year-named': 'its wording names a year before the current academic year',
   'no-capture': 'its evidence is an owner capture with no capture file named',
   'evidence-year-ended': 'its evidence names an academic year that has ended',
   'internal-wording': 'its value contains wording from an internal research note (for example "search snippet", "not verified" or "to be confirmed")',
@@ -323,28 +392,58 @@ export const CODE_WORDS = Object.freeze({
 });
 
 /**
+ * An evidence entry that may support a claim, apart from the claim-specific rules: verified, decision "publish", quoted,
+ * read on a real date that is not in the future, on an https page that is not a search result, cache, archive, directory,
+ * social page or blog (and not read from a snippet), an owner capture naming its file, next review not passed and no
+ * academic year that has ended. @param {any} e @param {Date} now
+ */
+function isUsableEntry(e, now) {
+  const today = isoDay(now);
+  return !!e && e.status === 'verified' && e.decision === 'publish' && typeof e.quotation === 'string' && e.quotation.trim().length > 0
+    && isIsoDate(e.accessed) && e.accessed <= today && isHttpsUrl(e.sourceUrl) && !isNotEvidenceSource(e.sourceUrl)
+    && !(typeof e.method === 'string' && SNIPPET_METHOD.test(e.method))
+    && (e.evidenceType !== 'owner-capture' || (typeof e.captureRef === 'string' && e.captureRef.trim().length > 0))
+    && (e.nextReview === null || e.nextReview === undefined || (isIsoDate(e.nextReview) && e.nextReview >= today))
+    && (e.academicYear === null || e.academicYear === undefined || !yearHasEnded(e.academicYear, now));
+}
+
+/**
  * Evaluate one claim against its evidence. Shown ONLY when every rule passes; otherwise the value, source and check
  * date are withheld (null) and `reason` is a fixed public sentence. Never returns the record's note.
  * @param {string} path claim path, e.g. "programmes.medicine.tuition"
  * @param {any} claim the record claim { value, status, source, checked } (for items: the item's content as `value`)
  * @param {any[]} evidenceEntries entries of the record's (validated) evidence file
- * `officialHosts`: the university's official website host(s) (from the record's website field); tier 1 and 2 evidence
- * must be on one of them. `universityHosts` (default officialHosts): every host the university publishes on; recognition
- * evidence must be on none of them. Omitted hosts fail closed: no tier 1 or 2 entry counts.
- * @param {{ now?: Date, officialHosts?: string[], universityHosts?: string[] }} [opts]
+ * `officialHosts`: the university's official website host(s) (from the record's website field, once that website is
+ * shown); tier 1 and 2 evidence must be on one of them. `universityHosts` (default officialHosts): every host the
+ * university publishes on; recognition evidence must be on none of them. Omitted hosts fail closed: no tier 1 or 2 entry
+ * counts. `settings`: the owner settings (src/lib/publication-config.mjs); the build never passes this, tests do.
+ * @param {{ now?: Date, officialHosts?: string[], universityHosts?: string[], settings?: Partial<PublicationSettings> }} [opts]
  * @returns {EvaluatedClaim}
  */
-export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), officialHosts = [], universityHosts = officialHosts } = {}) {
+export function evaluateClaim(path, claim, evidenceEntries, opts = {}) {
+  return evaluateClaimDetailed(path, claim, evidenceEntries, opts).result;
+}
+
+/**
+ * evaluateClaim, plus the evidence entries that support the claim when it is shown (internal: used to check that a
+ * programme's name appears in the quotation that verifies its international admission). Never projected.
+ * @param {string} path @param {any} claim @param {any[]} evidenceEntries
+ * @param {{ now?: Date, officialHosts?: string[], universityHosts?: string[], settings?: Partial<PublicationSettings> }} [opts]
+ * @returns {{ result: EvaluatedClaim, entries: any[] }}
+ */
+function evaluateClaimDetailed(path, claim, evidenceEntries, { now = new Date(), officialHosts = [], universityHosts = officialHosts, settings } = {}) {
+  const S = resolveSettings(settings);
   const today = isoDay(now);
-  /** @param {PublicState} publicState @param {string} code @returns {EvaluatedClaim} */
-  const withheld = (publicState, code) => ({ show: false, value: null, source: null, checked: null, publicState, reason: PUBLIC_REASONS[publicState], code });
+  /** @param {PublicState} publicState @param {string} code */
+  const withheld = (publicState, code) => ({ result: /** @type {EvaluatedClaim} */ ({ show: false, value: null, source: null, checked: null, publicState, reason: PUBLIC_REASONS[publicState], code }), entries: [] });
   if (!claim || typeof claim !== 'object' || !('value' in claim)) return withheld('to-be-confirmed', 'missing');
   const value = pickValue(path, claim.value);
   const all = (Array.isArray(evidenceEntries) ? evidenceEntries : []).filter((e) => e && typeof e === 'object');
   const entries = all.filter((e) => e.claimPath === path);
   // Conflicts first, whatever the record says: a conflicting entry; an entry for this claim that lists a contradiction;
   // an entry anywhere in the file that names an entry for this claim in its `contradicts` (an `outdated` entry no longer
-  // counts: that is how a resolved conflict is closed); or verified entries that disagree with each other.
+  // counts: that is how a resolved conflict is closed); or verified entries that disagree with each other. (For the
+  // website this includes a verified government entry that lists a different website: N24 c.)
   const ids = new Set(entries.map((e) => e.id));
   const live = (/** @type {any} */ e) => e.status !== 'outdated' && Array.isArray(e.contradicts);
   const contradicted = entries.some((e) => live(e) && e.contradicts.length > 0) || all.some((e) => live(e) && e.contradicts.some((/** @type {string} */ id) => ids.has(id)));
@@ -368,11 +467,17 @@ export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), 
   if (!ok.length) return withheld('under-review', 'tier-not-allowed');
   ok = ok.filter((e) => !isNotEvidenceSource(e.sourceUrl) && !(typeof e.method === 'string' && SNIPPET_METHOD.test(e.method)));
   if (!ok.length) return withheld('under-review', 'source-not-evidence');
-  ok = ok.filter((e) => (e.sourceTier === 1 || e.sourceTier === 2 ? onHost(e.sourceUrl, officialHosts) : e.sourceTier === 3 ? onHost(e.sourceUrl, ['gov.ua']) : true));
+  ok = ok.filter((e) => (e.sourceTier === 1 || e.sourceTier === 2 ? onHost(e.sourceUrl, officialHosts) : e.sourceTier === 3 ? onHost(e.sourceUrl, S.GOVERNMENT_HOST_SUFFIXES) : true));
   if (!ok.length) return withheld('under-review', 'source-not-official');
   ok = ok.filter((e) => e.evidenceType !== 'owner-capture' || (typeof e.captureRef === 'string' && e.captureRef.trim()));
   if (!ok.length) return withheld('under-review', 'no-capture');
-  if (path === 'recognition') { ok = ok.filter((e) => !onHost(e.sourceUrl, universityHosts)); if (!ok.length) return withheld('under-review', 'recognition-from-university'); }
+  if (path === 'recognition') {
+    ok = ok.filter((e) => !onHost(e.sourceUrl, universityHosts));
+    if (!ok.length) return withheld('under-review', 'recognition-from-university');
+    // N24 (b): only the recognition authorities the owner has listed (none by default).
+    ok = ok.filter((e) => onHost(e.sourceUrl, S.RECOGNITION_AUTHORITY_HOSTS));
+    if (!ok.length) return withheld('under-review', 'recognition-authority-not-listed');
+  }
   ok = ok.filter((e) => e.sourceUrl === claim.source);
   if (!ok.length) return withheld('under-review', 'source-mismatch');
   // A next-review date that has passed retires the entry for EVERY claim; a time-sensitive claim must also have one.
@@ -399,7 +504,19 @@ export function evaluateClaim(path, claim, evidenceEntries, { now = new Date(), 
     if (!Array.isArray(value) || value.some((d) => !d || !isIsoDate(d.date))) return withheld('under-review', 'deadline-unparseable');
     if (value.some((d) => d.date < today)) return withheld('under-review', 'deadline-passed');
   }
-  return { show: true, value: JSON.parse(JSON.stringify(value)), source: claim.source, checked: claim.checked, publicState: 'verified', reason: PUBLIC_REASONS.verified, code: 'verified' };
+  // N24 (d): a preparatory start date written YYYY-MM-DD that has passed, and a free-text intake or start date that names
+  // a year before the current academic year (e.g. "September 2025" during 2026/27), are withheld whatever the evidence says.
+  if (START_DATE_PATH.test(path) && typeof value === 'string' && /^\s*\d{4}-\d{2}-\d{2}\s*$/.test(value)) {
+    if (!isIsoDate(value.trim())) return withheld('under-review', 'start-date-unparseable');
+    if (value.trim() < today) return withheld('under-review', 'start-date-passed');
+  }
+  if ((START_DATE_PATH.test(path) || INTAKE_TEXT_PATH.test(path)) && typeof value === 'string' && [...value.matchAll(YEAR_IN_TEXT)].some((m) => Number(m[0]) < currentAcademicYearStart(now))) return withheld('under-review', 'past-year-named');
+  // N24 (c): the official website also needs a verified government (tier 3) entry carrying exactly the same website.
+  if (path === 'website' && S.WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE) {
+    const listed = entries.some((e) => isUsableEntry(e, now) && e.sourceTier === 3 && onHost(e.sourceUrl, S.GOVERNMENT_HOST_SUFFIXES) && deepEqual(e.value, claim.value));
+    if (!listed) return withheld('under-review', 'website-not-government-listed');
+  }
+  return { result: { show: true, value: JSON.parse(JSON.stringify(value)), source: claim.source, checked: claim.checked, publicState: 'verified', reason: PUBLIC_REASONS.verified, code: 'verified' }, entries: ok };
 }
 
 /** The public form of an evaluated claim (drops the internal code). @param {EvaluatedClaim} c @returns {PublicClaim} */
@@ -427,17 +544,23 @@ export function normaliseEvidence(evidence, slug) {
 }
 
 /**
- * officialHosts: the host of the record's official website (tier 1 and 2 evidence must be on it or a subdomain).
- * universityHosts: that host plus every host a tier 1 or 2 entry cites (recognition evidence must be on none of them).
- * @param {any} record @param {any[]} entries
+ * The evaluation context of one record. The website claim is evaluated first, with the host of the record's own website
+ * value as its provisional official host (its own tier 1 page must be on that site). Only when the website is SHOWN
+ * (which, with WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE, needs a government entry carrying the same website) does that host
+ * become the official host that tier 1 and 2 evidence for every other claim must be on; otherwise officialHosts is empty
+ * and the university's own pages support nothing (N24 c: the official host must not come from the record alone).
+ * universityHosts: the website's host plus every host a tier 1 or 2 entry cites, shown or not (recognition evidence must
+ * be on none of them).
+ * @param {any} record @param {any[]} entries @param {Date} now @param {PublicationSettings} settings
  */
-function hostsOf(record, entries) {
-  const official = new Set();
+function contextOf(record, entries, now, settings) {
+  const provisional = new Set();
   const w = record?.website?.value;
-  if (typeof w === 'string' && isHttpsUrl(w)) { const h = hostOf(w); if (h) official.add(h); }
-  const university = new Set(official);
+  if (typeof w === 'string' && isHttpsUrl(w)) { const h = hostOf(w); if (h) provisional.add(h); }
+  const university = new Set(provisional);
   for (const e of entries) if (e.sourceTier === 1 || e.sourceTier === 2) { const h = hostOf(e.sourceUrl); if (h) university.add(h); }
-  return { officialHosts: [...official], universityHosts: [...university] };
+  const websiteClaim = evaluateClaim('website', record?.website, entries, { now, officialHosts: [...provisional], universityHosts: [...university], settings });
+  return { now, settings, officialHosts: websiteClaim.show ? [...provisional] : [], universityHosts: [...university], websiteClaim };
 }
 
 /**
@@ -474,20 +597,29 @@ export const NOT_LISTED_WORDS = Object.freeze({
   duration: 'its duration (durationText or durationYears) is not shown as verified',
   'intake-year': 'its intake year is not shown as verified',
   'fee-page-not-read': 'no current evidence entry (tier 1 or 2, on the official website, next review not passed) shows that its fee page was read',
+  'programme-name': "its name, as recorded, does not appear (as whole words, ignoring letter case) in the quotation of an evidence entry that verifies its international admission, or it carries research-note wording; a programme name is our text, so it is printed only when the university's own words contain it (owner setting PROGRAMME_NAME_REQUIRES_QUOTATION)",
 });
 
+/** @typedef {{ now: Date, officialHosts: string[], universityHosts: string[], settings: PublicationSettings, websiteClaim: EvaluatedClaim }} RecordContext */
+
 /**
- * @param {any} p @param {any[]} entries @param {{ now: Date, officialHosts: string[], universityHosts: string[] }} ctx
+ * @param {any} p @param {any[]} entries @param {RecordContext} ctx
  * @returns {{ programme: any, listed: boolean, reasons: string[] }}
  */
 function projectProgramme(p, entries, ctx) {
   if (!p || typeof p !== 'object' || typeof p.id !== 'string' || !SAFE_ID.test(p.id)) return { programme: null, listed: false, reasons: ['unsafe-id'] };
   const base = `programmes.${p.id}`;
   /** @type {Record<string, any>} */ const out = {};
+  /** @type {any[]} */ let admissionEntries = [];
   for (const [key, cls] of Object.entries(FIELD_POLICY.programme)) {
     if (cls === 'internal') continue;
     const v = p[key];
-    if (key === 'otherMandatoryCosts') {
+    if (key === 'internationalAdmission') {
+      // Kept with its supporting entries: the programme's name must appear in one of their quotations (N24 a).
+      const d = isClaimLike(v) ? evaluateClaimDetailed(`${base}.${key}`, v, entries, ctx) : null;
+      out.internationalAdmission = d ? publicForm(d.result) : tbc();
+      admissionEntries = d ? d.entries : [];
+    } else if (key === 'otherMandatoryCosts') {
       out.otherMandatoryCosts = []; out.otherCostsWithheld = 0;
       (Array.isArray(v) ? v : []).forEach((c, i) => {
         const r = evaluateClaim(`${base}.otherMandatoryCosts.${i}`, c?.cost, entries, ctx);
@@ -513,10 +645,17 @@ function projectProgramme(p, entries, ctx) {
   if (!out.durationText.show && !out.durationYears.show) reasons.push('duration');
   if (!out.intakeYear.show) reasons.push('intake-year');
   if (!out.tuition.show && !feePageRead(entries, `${base}.tuition`, ctx)) reasons.push('fee-page-not-read');
+  // N24 (a): the name is our text. With PROGRAMME_NAME_REQUIRES_QUOTATION it is printed only when the quotation that
+  // verifies the programme's international admission contains it; a programme whose name cannot be printed is not listed.
+  if (out.internationalAdmission.show && out.internationalAdmission.value === true) {
+    const nameOk = typeof p.name === 'string' && p.name.trim().length > 0 && !hasInternalWording(p.name)
+      && (!ctx.settings.PROGRAMME_NAME_REQUIRES_QUOTATION || admissionEntries.some((e) => containsPhrase(e.quotation, p.name)));
+    if (!nameOk) reasons.push('programme-name');
+  }
   return { programme: out, listed: reasons.length === 0, reasons };
 }
 
-/** @param {any} r @param {any[]} entries @param {{ now: Date, officialHosts: string[], universityHosts: string[] }} ctx */
+/** @param {any} r @param {any[]} entries @param {RecordContext} ctx */
 function projectRoute(r, entries, ctx) {
   if (!r || typeof r !== 'object' || typeof r.id !== 'string' || !SAFE_ID.test(r.id)) return null;
   /** @type {Record<string, any>} */ const out = {};
@@ -532,17 +671,18 @@ function projectRoute(r, entries, ctx) {
   return shown > 0 ? out : null;
 }
 
-/** @param {any} record @param {any} evidence @param {Date} now */
-function projection(record, evidence, now) {
+/** @param {any} record @param {any} evidence @param {Date} now @param {PublicationSettings} settings */
+function projection(record, evidence, now, settings) {
   const ev = normaliseEvidence(evidence, record?.slug);
   const entries = ev.state === 'ok' ? ev.data.entries : [];
-  const ctx = { now, ...hostsOf(record, entries) };
+  const ctx = contextOf(record, entries, now, settings);
   /** @type {Record<string, any>} */ const out = {};
   const notListed = [];
   let routesWithheld = 0;
   for (const [key, cls] of Object.entries(FIELD_POLICY.record)) {
     if (cls === 'internal') continue;
     const v = record?.[key];
+    if (key === 'city' || key === 'region' || key === 'overview') continue; // our own text: decided below (N24 a)
     if (key === 'programmes') {
       out.programmes = [];
       // Two programmes (listed or deferred) with one id would share every evidence entry: list neither (fail closed).
@@ -558,9 +698,22 @@ function projection(record, evidence, now) {
       for (const r of Array.isArray(v) ? v : []) { const pr = typeof r?.id === 'string' && dupRoutes.has(r.id) ? null : projectRoute(r, entries, ctx); if (pr) out.preparatoryRoutes.push(pr); else routesWithheld++; }
       out.routesWithheld = routesWithheld;
     } else if (key === 'verification') out.verification = { lastReview: isIsoDate(v?.lastReview) ? v.lastReview : null };
+    else if (key === 'website') out.website = publicForm(ctx.websiteClaim);
     else if (cls === 'editorial-public') { if (typeof v === 'string') out[key] = v; }
     else out[key] = isClaimLike(v) ? publicForm(evaluateClaim(key, v, entries, ctx)) : tbc();
   }
+  // N24 (a) our own text. The overview needs an editorial review whose hash matches the current text; city and region
+  // must each appear in the address the profile shows as verified. A withheld city reads WITHHELD_PLACE_TEXT on cards,
+  // filters and the profile (never a guess); a withheld region and a withheld overview are left out.
+  const usableText = (/** @type {unknown} */ t) => typeof t === 'string' && t.trim().length > 0 && !hasInternalWording(t);
+  const address = out.address?.show === true && typeof out.address.value === 'string' ? out.address.value : null;
+  const placeOk = (/** @type {unknown} */ t) => usableText(t) && (!settings.CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS || (address !== null && containsPhrase(address, t)));
+  const overviewOk = usableText(record?.overview) && (!settings.OVERVIEW_REQUIRES_EDITORIAL_REVIEW || editorialReviewMatches(record, isoDay(now)));
+  const cityOk = placeOk(record?.city), regionOk = placeOk(record?.region);
+  out.city = cityOk ? record.city : settings.WITHHELD_PLACE_TEXT;
+  if (regionOk) out.region = record.region;
+  if (overviewOk) out.overview = record.overview;
+  out.editorialWithheld = { overview: !overviewOk, city: !cityOk, region: typeof record?.region === 'string' && record.region.trim().length > 0 && !regionOk };
   return { out, notListed, ev, entries, ctx };
 }
 
@@ -569,11 +722,13 @@ function projection(record, evidence, now) {
  * form ({ show, value, source, checked, publicState, reason }). Programmes not meeting the listing rule, and requirement,
  * document and cost items that are not shown, are dropped and counted (programmesWithheld, requirementsWithheld,
  * documentsWithheld, otherCostsWithheld, routesWithheld). Notes, research references, deferred programmes, FAQs, images,
- * open questions, the reviewer and unknown keys never appear.
- * @param {any} record @param {any} evidence @param {{ now?: Date }} [opts]
+ * open questions, the reviewer, the editorial review and unknown keys never appear. Our own text (N24 a): `overview` and
+ * `region` are present only when shown; `city` is the recorded city or WITHHELD_PLACE_TEXT; `editorialWithheld` says
+ * which of the three was withheld.
+ * @param {any} record @param {any} evidence @param {{ now?: Date, settings?: Partial<PublicationSettings> }} [opts]
  */
-export function toPublicRecord(record, evidence, { now = new Date() } = {}) {
-  return projection(record, evidence, now).out;
+export function toPublicRecord(record, evidence, { now = new Date(), settings } = {}) {
+  return projection(record, evidence, now, resolveSettings(settings)).out;
 }
 
 // ------------------------------------------------------------------------------------------------ publication decision
@@ -586,38 +741,43 @@ const MANDATORY = /** @type {const} */ ([
 /**
  * May this record have a public page? Mandatory: evidence file present and valid; official name, website, address,
  * status, current statement and teaching format shown (status operating or relocated, teaching format stated); at least
- * one listed programme; lastReview set, not in the future and within 180 days; no open questions; not a synthetic sample.
- * @param {any} record @param {any} evidence @param {{ now?: Date }} [opts]
+ * one listed programme; lastReview set, not in the future and within REVIEW_MAX_AGE_DAYS; no research-note wording in our
+ * own text; no open questions; not a synthetic sample.
+ * @param {any} record @param {any} evidence @param {{ now?: Date, settings?: Partial<PublicationSettings> }} [opts]
  * @returns {{ publishable: boolean, failures: { code: string, field: string, message: string }[], notListed: { id: string, reasons: string[], message: string }[], publicRecord: any }}
  */
-export function evaluatePublication(record, evidence, { now = new Date() } = {}) {
+export function evaluatePublication(record, evidence, { now = new Date(), settings } = {}) {
+  const S = resolveSettings(settings);
   const failures = [];
   /** @param {string} code @param {string} field @param {string} message */
   const f = (code, field, message) => failures.push({ code, field, message });
   const slug = typeof record?.slug === 'string' ? record.slug : '?';
-  const { out, notListed, ev, entries, ctx } = projection(record, evidence, now);
+  const { out, notListed, ev, entries, ctx } = projection(record, evidence, now, S);
   if (record?.synthetic === true) f('synthetic', 'synthetic', 'This is a synthetic sample record. Samples are never published.');
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) f('unsafe-slug', 'slug', `The slug "${slug}" must use only lower-case letters, digits and single hyphens.`);
   if (ev.state === 'missing') f('no-evidence-file', 'evidence', `No evidence file: create data/evidence/${slug}.json with an entry for every claim the profile shows.`);
   else if (ev.state === 'invalid') f('invalid-evidence-file', 'evidence', `The evidence file data/evidence/${slug}.json does not match the evidence format: ${ev.errors.slice(0, 3).join('; ')}.`);
   for (const [key, label] of MANDATORY) {
-    const r = evaluateClaim(key, record?.[key], entries, ctx);
+    const r = key === 'website' ? ctx.websiteClaim : evaluateClaim(key, record?.[key], entries, ctx);
     if (!r.show) f(`not-shown:${r.code}`, key, `${label} is not shown: ${CODE_WORDS[/** @type {keyof typeof CODE_WORDS} */ (r.code)] ?? r.code}.`);
   }
   if (out.status?.show && !['operating', 'relocated'].includes(out.status.value)) f('status-not-operating', 'status', `The operating status is "${out.status.value}". Only operating or relocated universities are published.`);
   if (out.teachingFormat?.show && out.teachingFormat.value === 'unknown') f('teaching-format-unknown', 'teachingFormat', 'The teaching format is "unknown". The university must state how it is teaching this year.');
-  if (!out.programmes.length) f('no-listed-programme', 'programmes', 'No programme can be listed. A programme is listed only when its international admission (open), level, language, duration and intake year are verified and its fee page has been read.');
+  if (!out.programmes.length) f('no-listed-programme', 'programmes', 'No programme can be listed. A programme is listed only when its international admission (open), level, language, duration and intake year are verified, its fee page has been read and its name appears in the quotation that verifies its international admission.');
   const lr = record?.verification?.lastReview;
   if (!lr) f('no-last-review', 'verification.lastReview', 'The date of the last full review (verification.lastReview) is not set.');
   else if (!isIsoDate(lr)) f('bad-last-review', 'verification.lastReview', 'The date of the last full review is not a date written YYYY-MM-DD.');
   else if (lr > isoDay(now)) f('future-last-review', 'verification.lastReview', 'The date of the last full review is in the future.');
   else {
     const age = Math.round((Date.parse(`${isoDay(now)}T00:00:00Z`) - Date.parse(`${lr}T00:00:00Z`)) / 86400000);
-    if (age > REVIEW_MAX_AGE_DAYS) f('stale-last-review', 'verification.lastReview', `The last full review was ${age} days ago. It must be within ${REVIEW_MAX_AGE_DAYS} days.`);
+    if (age > S.REVIEW_MAX_AGE_DAYS) f('stale-last-review', 'verification.lastReview', `The last full review was ${age} days ago. It must be within ${S.REVIEW_MAX_AGE_DAYS} days.`);
   }
-  // Our own editorial text is printed without evidence, so it must never carry a research note copied into it.
-  const editorial = [['shortName', out.shortName], ['city', out.city], ['region', out.region], ['overview', out.overview],
-    ...out.programmes.map((/** @type {any} */ p) => [`programmes.${p.id}.name`, p.name]), ...out.preparatoryRoutes.map((/** @type {any} */ r) => [`preparatoryRoutes.${r.id}.name`, r.name])];
+  // Our own editorial text must never carry a research note copied into it. Checked on the RECORD's text (whether or not
+  // the page would print it): short name, city, region, overview, the name of every programme in programmes[] and of
+  // every preparatory route the page shows.
+  const editorial = [['shortName', record?.shortName], ['city', record?.city], ['region', record?.region], ['overview', record?.overview],
+    ...(Array.isArray(record?.programmes) ? record.programmes : []).map((/** @type {any} */ p) => [`programmes.${p?.id}.name`, p?.name]),
+    ...out.preparatoryRoutes.map((/** @type {any} */ r) => [`preparatoryRoutes.${r.id}.name`, r.name])];
   for (const [field, text] of editorial) if (hasInternalWording(text)) f('internal-wording', field, `Our own text in ${field} contains wording from an internal research note (for example "search snippet", "not verified" or "to be confirmed"). Rewrite it; notes never appear on a public page.`);
   const oq = Array.isArray(record?.verification?.openQuestions) ? record.verification.openQuestions.length : 0;
   if (oq) f('open-questions', 'verification.openQuestions', `${oq} open verification question${oq === 1 ? '' : 's'} remain${oq === 1 ? 's' : ''}. Answer or close each one.`);
@@ -632,11 +792,11 @@ export function evaluatePublication(record, evidence, { now = new Date() } = {})
 /**
  * The publication decision for one record. `published` = flag AND policy. `buildError` = flagged but failing in a
  * production (non-PREVIEW) build: the build must stop. `draft` records render only in PREVIEW builds.
- * @param {any} record @param {any} evidence @param {{ now?: Date, preview?: boolean }} [opts]
+ * @param {any} record @param {any} evidence @param {{ now?: Date, preview?: boolean, settings?: Partial<PublicationSettings> }} [opts]
  */
-export function publicationDecision(record, evidence, { now = new Date(), preview = false } = {}) {
+export function publicationDecision(record, evidence, { now = new Date(), preview = false, settings } = {}) {
   const flagged = record?.verification?.publishable === true;
-  const r = evaluatePublication(record, evidence, { now });
+  const r = evaluatePublication(record, evidence, { now, settings });
   const published = flagged && r.publishable;
   return { slug: typeof record?.slug === 'string' ? record.slug : '?', flagged, policyPasses: r.publishable, published, draft: !published, buildError: flagged && !r.publishable && !preview, failures: r.failures, notListed: r.notListed, publicRecord: published ? r.publicRecord : null };
 }
@@ -688,6 +848,26 @@ export function viewItems(items, { preview = false } = {}) {
     if (!preview || !i || typeof i !== 'object') return [];
     return [{ ...i, state: i.status === 'verified' ? 'verified' : i.status === 'not-published' ? 'not-published' : 'pending' }];
   });
+}
+
+const PER_WORDS = Object.freeze({ year: 'per year', semester: 'per semester', programme: 'for the whole programme', once: 'one-off' });
+const PER_SHORT = Object.freeze({ year: '/year', semester: '/semester', programme: ' for the whole programme', once: ' one-off' });
+/**
+ * Text for a shown fee (tuition, other mandatory cost, preparatory fee): amount, currency, basis and academic year, then
+ * the year-by-year amounts and the payment schedule exactly as recorded, when the verified value carries them (they are
+ * part of the value the evidence matched, so a page never prints the amount without them; N24 e). `compact` for tables.
+ * Never converts, rounds or totals anything. '' for anything that is not a fee object.
+ * @param {any} m @param {{ compact?: boolean }} [opts]
+ */
+export function formatMoney(m, { compact = false } = {}) {
+  if (!m || typeof m !== 'object' || typeof m.amount !== 'number' || !Number.isFinite(m.amount) || typeof m.currency !== 'string') return '';
+  const amount = m.amount.toLocaleString('en-GB');
+  const basis = /** @type {Record<string, string>} */ (compact ? PER_SHORT : PER_WORDS)[m.per] ?? '';
+  let text = compact ? `${amount} ${m.currency}${basis}` : `${amount} ${m.currency}${basis ? ` ${basis}` : ''}`;
+  if (typeof m.academicYear === 'string' && m.academicYear) text += ` (${m.academicYear})`;
+  if (typeof m.variesByYear === 'string' && m.variesByYear.trim()) text += ` — year by year, as published: ${m.variesByYear}`;
+  if (typeof m.schedule === 'string' && m.schedule.trim()) text += ` — payment schedule, as published: ${m.schedule}`;
+  return text;
 }
 
 /**

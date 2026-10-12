@@ -9,13 +9,15 @@ const view = (c: unknown) => viewClaim(c, { preview: PREVIEW });
 const openIntl = d.programmes.filter((p: any) => { const v = view(p.internationalAdmission); return v.state === 'verified' && v.value === true; }).length;
 const english = d.programmes.filter((p: any) => { const v = view(p.language); return v.state === 'verified' && Array.isArray(v.value) && v.value.includes('English'); }).length;
 const name = view(d.officialName);
+// A city or region the publication policy withholds (not found in the verified address, N24 a) is never guessed.
+const place = [d.editorialWithheld?.city ? 'City to be confirmed' : d.city, d.region].filter((x) => typeof x === 'string' && x.trim()).join(', ');
 const initials = d.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
 ---
 <div class="page-head profile-head">
   <div class="wrap head-grid">
     <div class="tile" aria-hidden="true"><span>{initials}</span></div>
     <div>
-      <span class="eyebrow">{d.city}{d.region && `, ${d.region}`}</span>
+      <span class="eyebrow">{place}</span>
       <h1>{d.shortName}</h1>
       <p class="official">{name.state !== 'tbc' && name.value}{name.state !== 'verified' && <span class="badge badge-pending" style={name.state === 'tbc' ? undefined : 'margin-left:.5rem'}>{name.state === 'tbc' ? 'official name to be confirmed' : 'name pending verification'}</span>}</p>
       <div class="chips">

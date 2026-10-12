@@ -1,0 +1,78 @@
+{
+  "slug": "fixture-website-no-government",
+  "officialName": {
+    "value": "CANARY-FIXTURE-WEBSITE-NO-GOVERNMENT-NAME",
+    "status": "verified",
+    "source": "https://nogov.fixture.example/about",
+    "checked": "@today-3"
+  },
+  "shortName": "Fixture Website No Government",
+  "status": {
+    "value": "operating",
+    "status": "verified",
+    "source": "https://nogov.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "statusStatement": {
+    "value": "CANARY-STATEMENT this academic year.",
+    "status": "verified",
+    "source": "https://nogov.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "teachingFormat": {
+    "value": "in-person",
+    "status": "verified",
+    "source": "https://nogov.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "city": "Fixturetown",
+  "address": {
+    "value": "CANARY-ADDRESS Fixturetown",
+    "status": "verified",
+    "source": "https://nogov.fixture.example/contacts",
+    "checked": "@today-3"
+  },
+  "website": {
+    "value": "https://nogov.fixture.example/",
+    "status": "verified",
+    "source": "https://nogov.fixture.example/",
+    "checked": "@today-3"
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "overview": "Fixture record.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "programmes": [],
+  "verification": {
+    "publishable": true,
+    "lastReview": "@today-10",
+    "openQuestions": []
+  }
+}

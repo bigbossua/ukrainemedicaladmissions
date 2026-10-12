@@ -1,11 +1,11 @@
 ---
 import Fact from '../Fact.astro';
 import { PREVIEW } from '../../lib/site';
-import { viewClaim } from '../../lib/publication.mjs';
+import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 interface Props { r: any }
 const { r } = Astro.props;
 const progression = viewClaim(r.progressionText, { preview: PREVIEW });
-const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})`;
+const money = (m: any) => formatMoney(m);
 const yesno = (v: boolean) => (v ? 'Yes' : 'No');
 ---
 <article class="prep" id={r.id}>
@@ -18,7 +18,7 @@ const yesno = (v: boolean) => (v ? 'Yes' : 'No');
     <Fact label="Start" claim={r.startDate} />
     <Fact label="Certificate awarded" claim={r.certificateName} />
     <Fact label="Open to English-degree applicants" claim={r.appliesToEnglishDegreeTrack} format={yesno} />
-    <Fact label="Fee" claim={r.fee} format={money} tbcText="The preparatory-course fee has not yet been verified. We publish it only with its academic year and currency as printed on the official page." />
+    <Fact label="Fee" claim={r.fee} format={money} tbcText="The preparatory-course fee has not yet been verified. We publish it only as the university states it on its own website: the amount, the currency, what it is charged per and the academic year, with the payment schedule and any year-by-year amounts where the university states them." />
     <Fact label="Eligibility (university wording)" claim={r.eligibilityText} />
   </dl>
   <div class="progression">

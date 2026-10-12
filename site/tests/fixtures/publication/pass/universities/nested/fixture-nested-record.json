@@ -1,0 +1,78 @@
+{
+  "slug": "fixture-nested-record",
+  "officialName": {
+    "value": "CANARY-FIXTURE-NESTED-RECORD-NAME",
+    "status": "verified",
+    "source": "https://nested.fixture.example/about",
+    "checked": "@today-3"
+  },
+  "shortName": "CANARY-NESTED-RECORD University",
+  "status": {
+    "value": "operating",
+    "status": "verified",
+    "source": "https://nested.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "statusStatement": {
+    "value": "CANARY-STATEMENT this academic year.",
+    "status": "verified",
+    "source": "https://nested.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "teachingFormat": {
+    "value": "in-person",
+    "status": "verified",
+    "source": "https://nested.fixture.example/news",
+    "checked": "@today-3"
+  },
+  "city": "Fixturetown",
+  "address": {
+    "value": "CANARY-ADDRESS Fixturetown",
+    "status": "verified",
+    "source": "https://nested.fixture.example/contacts",
+    "checked": "@today-3"
+  },
+  "website": {
+    "value": "https://nested.fixture.example/",
+    "status": "verified",
+    "source": "https://nested.fixture.example/",
+    "checked": "@today-3"
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "overview": "CANARY-NESTED-RECORD overview",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "programmes": [],
+  "verification": {
+    "publishable": true,
+    "lastReview": "@today-10",
+    "openQuestions": []
+  }
+}
