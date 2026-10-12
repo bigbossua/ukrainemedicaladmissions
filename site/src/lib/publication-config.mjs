@@ -22,7 +22,8 @@ export const OVERVIEW_REQUIRES_EDITORIAL_REVIEW = true;
 
 /**
  * true (default): a programme is listed on a published profile only when its name, as recorded, appears (ignoring
- * letter case and repeated spaces, and as whole words) in the quotation of an evidence entry that verifies that
+ * letter case and repeated spaces, and as whole words; a word joined by a hyphen or apostrophe counts as one word, so
+ * "Medicine" is not found in "Pre-Medicine") in the quotation of an evidence entry that verifies that
  * programme's international admission. A programme whose name cannot be shown is not listed at all, because every page
  * that lists a programme labels its facts and fee with its name, and any other label would be our guess.
  * false: programme names are printed without that check (the behaviour before 2026-10-12).
@@ -30,14 +31,19 @@ export const OVERVIEW_REQUIRES_EDITORIAL_REVIEW = true;
 export const PROGRAMME_NAME_REQUIRES_QUOTATION = true;
 
 /**
- * true (default): the city and the region are printed only when each appears (ignoring letter case, as whole words) in
- * the address value that the profile shows as verified. Otherwise cards, filters and the profile print
- * WITHHELD_PLACE_TEXT instead of the city, and leave the region out. We never guess a location.
+ * true (default): the city and the region are printed only when each appears (ignoring letter case, as whole words; a
+ * word joined by a hyphen or apostrophe counts as one word, so "Ivano" is not found in "Ivano-Frankivsk") in the
+ * address value that the profile shows as verified. Otherwise the projection carries WITHHELD_PLACE_TEXT instead of the
+ * city (see below) and leaves the region out. We never guess a location.
  * false: city and region are printed as recorded (the behaviour before 2026-10-12).
  */
 export const CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS = true;
 
-/** What cards, filters and pages print in place of a city that is withheld. Plain words; never a guess. */
+/**
+ * The city value a withheld city is replaced with. The directory's city filter and the home and course pages print it
+ * as it is; directory cards, the profile header and the comparison table print the fixed words "City to be confirmed"
+ * instead (src/components/university/*). Plain words; never a guess.
+ */
 export const WITHHELD_PLACE_TEXT = 'To be confirmed';
 
 // ------------------------------------------------------------------------------------------- (b) recognition
