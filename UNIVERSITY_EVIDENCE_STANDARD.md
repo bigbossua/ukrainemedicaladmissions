@@ -298,3 +298,59 @@ From this environment, `curl` through the environment's proxy to the root addres
 
 - 2026-10-11 — first version (Phase 3, evidence work package). Seven evidence files created with a `blocked` access block and no entries; the register generator now shows each claim's evidence entries and the access block; no claim verified.
 - 2026-10-11 — review: §7 now labels each row; only the recognition, accreditation and fee tiers (set by the brief) and the never-published row are POLICY, and the other tiers are TO CONFIRM (§13 items 16–17). §6 explains how Ministry-portal, EDEBO and NAQA pages count, given the older wording in `DIRECTORY_VERIFICATION_PLAN.md`. §11 is labelled. No claim verified.
+
+## 15. Tools
+
+Two scripts help a reviewer follow §11 without editing JSON by hand. They add no rule of their own beyond those marked below: they run the rules the code already enforces (the evidence format in `site/src/lib/evidence.mjs`, the publication policy in `site/src/lib/publication.mjs`, and rules R9 and R10 of `site/tests/records-evidence.mjs`) at the moment an entry is recorded. `site/tests/evidence-tools.mjs` tests both on temporary copies of a fixture record; neither has yet been run against a real record, because no official page has been read (§11.4).
+
+| Script | What it does | What it writes |
+|---|---|---|
+| `site/scripts/capture-intake.py` (Route B) | Lists the captures in a folder outside the repository with size and SHA-256; extracts their text (PDF with `pdftotext` if installed, HTML and `.txt`) into a temporary folder outside the repository; matches file names to the rows of section A of the register; with `--find`, shows each phrase with its file and page number | Nothing in the repository. It refuses a folder inside the repository, a folder that contains it, or a folder inside any git working tree |
+| `site/scripts/evidence-entry.mjs` (`npm run evidence:add --` once that entry is in `site/package.json`) | Builds one entry from its options, checks it against the evidence format, resolves its claim path in the record (an unknown path is refused), gives it the next id, and runs the publication policy to say whether the claim would be shown and, if not, why | Nothing without `--write`. `--write` appends the entry. `--apply-to-record` also sets the record claim's `value`, `status: verified`, `source` (= `--url`), `checked` (= `--accessed`) and a short note naming the entry, and only for an entry that is `verified` with the decision `publish` |
+
+**What the entry tool refuses** (nothing is written): an entry that does not match the evidence format (for example a non-https address, a withheld entry without a reason, a date that is not a real date); an unknown claim path; a value the record field cannot hold; an `accessed` date in the future; a `publish` decision without status `verified` or without a quotation; a `publish` decision the policy would not show; `--apply-to-record` for any other entry; `--apply-to-record` that would break rule R9 (international admission `true` for a programme still in `deferredProgrammes[]`, or anything but `true` for one in `programmes[]`: move the programme by hand first); an owner capture without `--capture-ref`, or a capture reference that is a path rather than a file name; any change that would break R10; a repeat of an entry already recorded; a control character in any option or value (only tabs and line feeds are kept in the quotation, statement, method and reasons; a `--quote-file` loses its byte-order mark and has Windows line endings turned into plain line feeds). Two rules are the tool's own: the control-character rule above, and one derived from §11.2 step 1: while the evidence file's access block says `blocked`, a `web-page` or `pdf` entry (Route A, read directly) is refused, and a capture made in an ordinary browser is recorded as `owner-capture` (Route B). The proposed defaults in §10.3 and §10.4 (30 June; 12 months) appear only as warnings, because the owner has not confirmed them (§13 items 1 and 2).
+
+**What the tools never do:** set `publishable`, `lastReview` or open questions; edit the access block; change a tier or any item §13 leaves to the owner; delete or rewrite an entry. The one change they make to an existing entry is `--mark-outdated <id>`, which sets only its `status` (outdated), `decision` (withhold) and `withholdReason`. `--contradicts <id>` records the new entry's side of a conflict only; §8 point 2 asks for both entries to list each other, so the reverse id is added to the older entry by hand, in its own commit (the policy already withholds the claim from either side).
+
+### 15.1 One Vinnytsia tuition claim, end to end
+
+The claim is `programmes.medicine.tuition` in `site/src/content/universities/vinnytsia-national-pirogov-memorial-medical-university.json`; the page is row 6 of section A of its register, "Tuition fee 2026–2027 (official PDF)". **Nothing below is a fee or a fact.** Every `<…>` is a placeholder for exactly what the source prints. A part the source does not print is left out, or the reading is recorded as partially verified or silent (step 3). Today every Vinnytsia host is refused from this environment, so the example follows Route B; Route A is the same with `--type pdf` once the fetch test has passed and the access block says `open` (§11.2 step 1).
+
+1. **Check the capture** (from the repository root):
+
+   ```
+   python3 -I site/scripts/capture-intake.py <captures folder outside the repository> \
+     vinnytsia-national-pirogov-memorial-medical-university --find "<words from the fee table>"
+   ```
+
+   Confirm that the PDF is listed against row 6 (file name `vinnytsia-national-pirogov-memorial-medical-university--06--<short-name>.pdf`). Open the capture itself: the address and the date must be printed on it (§11.3 step 3). Find the passage for Medicine with the page number the script gives, and copy it **from the capture**, in its original language and spelling, into a text file kept outside the repository; the extracted text is only a finding aid. Note the address printed on the capture, the capture date, the academic year the PDF prints and any date the PDF itself carries.
+
+2. **Dry run** (from `site/`; writes nothing):
+
+   ```
+   node scripts/evidence-entry.mjs \
+     --slug vinnytsia-national-pirogov-memorial-medical-university \
+     --path programmes.medicine.tuition \
+     --value '{"amount": <amount as printed>, "currency": "<ISO code>", "per": "<year|semester|programme|once>", "academicYear": "<year as printed, written 2026/27>"}' \
+     --statement "<the fee in plain words, as the site would state it>" \
+     --url "<address printed on the capture>" --org "<publisher's name as the PDF gives it>" \
+     --tier 2 --type owner-capture --capture-ref vinnytsia-national-pirogov-memorial-medical-university--06--<short-name>.pdf \
+     --quote-file <file holding the exact passage> \
+     --accessed <capture date> --academic-year <the same year> --effective <the PDF's own date, or leave the option out> \
+     --next-review <no later than the end of that academic year, or an earlier published deadline (§10.2)> \
+     --status verified --reviewer "verifier (Claude)" \
+     --method "read from owner capture <file name>, captured <date> in a browser session" \
+     --decision publish
+   ```
+
+   Add `"schedule"` and `"variesByYear"` to the value only as printed (§7.1). Refundability has no field yet (§7.1 point 7): keep it in the statement and the quotation.
+
+3. **Read the result.** "As the record stands now" normally says *would NOT be shown (not-verified)*, because the record claim is not verified yet. The line that matters is **"If applied to the record"**: *WOULD BE SHOWN* means every policy rule passes for this claim; otherwise it gives the policy's code and its plain words, for example `tier-not-allowed` (a fee needs tier 1 or 2), `source-not-official` (the address is not on the official website recorded in the `website` field), `academic-year-not-evidenced` (the entry does not name the fee's year), `stale-review` (no next-review date, or it has passed) or `source-not-evidence` (a search result, archive, social page, or a method that mentions a snippet). The profile line says whether Medicine would be listed; it also needs its international admission, level, language, duration and intake year verified. Read every WARNING and REFUSED line. Never change the value to make it pass. If the page does not support the claim as worded, record what was read instead: a fee without its academic year → `--status partially-verified --decision withhold --withhold-reason "<what is missing>"` (§7.1 point 6); a silent page → `--value null --quote "" --status unverified --decision withhold --withhold-reason "page read on <date>; it does not state the fee"` (§5.1).
+
+4. **Write and apply.** When the dry run says *WOULD BE SHOWN* and shows no REFUSED line, run the same command with `--write --apply-to-record`. The entry `vinnytsia-national-pirogov-memorial-medical-university/programmes.medicine.tuition/1` is appended to `site/data/evidence/vinnytsia-national-pirogov-memorial-medical-university.json`, and the record claim takes the same value, `status: verified`, `source` = `--url`, `checked` = `--accessed` and a note naming the entry. A withheld entry is recorded with `--write` alone; the tool refuses to apply it, so the record claim stays as it is (update its note by hand to name the page read, §11.2 step 12). Running the command again records nothing new; adding `--apply-to-record` after a plain `--write` applies the entry already recorded.
+
+5. **Regenerate the register** (from the repository root): `python3 -I site/scripts/make-evidence-register.py vinnytsia-national-pirogov-memorial-medical-university`. The `programmes.medicine.tuition` row now shows the entry (status, tier, date accessed, quotation yes, decision), and section H must report no problem. Fill in the row's capture file and date read.
+
+6. **Run the checks** (from `site/`): `npm run test:records` (R10: the record claim and the entry agree exactly; R11: the evidence file is valid), then `npm run report:publication`, which keeps the profile unpublished (`publishable` is still false) and lists what is still missing. Run the full `npm test` before committing, and record the session in `SOURCE_VERIFICATION_REGISTER.md` (§11.2 step 15).
+
+**A correction later.** Record the new reading as a new entry and add `--mark-outdated vinnytsia-national-pirogov-memorial-medical-university/programmes.medicine.tuition/1` to the same command (with `--write --apply-to-record` if the new entry is verified with the decision publish). The old entry stays in the file as outdated and withheld; nothing is deleted. Marking it outdated on its own is refused while the record claim still relies on it: set that claim to `outdated`, with a note, first.

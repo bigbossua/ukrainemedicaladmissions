@@ -1,0 +1,32 @@
+{
+  "slug": "fixture-tools-medical-university",
+  "access": {
+    "status": "open",
+    "checked": "2026-09-01",
+    "note": "Fixture evidence file for tests/evidence-tools.mjs. No real host was contacted."
+  },
+  "entries": [
+    {
+      "id": "fixture-tools-medical-university/officialName/1",
+      "claimPath": "officialName",
+      "statement": "Fixture: the official name page was read and is silent.",
+      "value": null,
+      "sourceUrl": "https://tools.fixture.example/about",
+      "sourceOrganisation": "Fixture Tools Medical University",
+      "sourceTier": 1,
+      "evidenceType": "web-page",
+      "quotation": "",
+      "effectiveDate": null,
+      "academicYear": null,
+      "accessed": "2026-09-01",
+      "captureRef": null,
+      "status": "unverified",
+      "reviewer": "fixture reviewer",
+      "method": "fixture: read on the fixture page",
+      "contradicts": [],
+      "nextReview": null,
+      "decision": "withhold",
+      "withholdReason": "Fixture: the page read on 2026-09-01 does not state the official name."
+    }
+  ]
+}

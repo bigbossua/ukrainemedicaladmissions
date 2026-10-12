@@ -37,11 +37,103 @@ PAGE_HINTS = {
         'programmes': ['Medical Faculty No. 3', 'Admissions sub-site', 'English entrance-exam programme 2026'], 'fees': ['Tuition fees'],
         'documents': ['International FAQ'], 'exams': ['English entrance-exam programme 2026'], 'dates': ['Admissions sub-site'], 'prep': ['Preparatory course page', 'Tuition fees'],
     },
+    # The five research drafts (2026-10-12, backlog N24 (i)): derived from each record's research-reference labels and
+    # purposes, and from its open questions for the rows still to locate. No new address is introduced.
+    'kharkiv-national-medical-university': {
+        'identity': ['University today'], 'website': ['University today', '#EDEBO'], 'contacts': ['Contacts and information for foreign applicants'],
+        'status': ['Special edition No. 29, 2026', '#operating-conditions gate'],
+        'programmes': ['VI Faculty for training foreign students', 'Admission rules and information for foreigners', '#admission regulations for foreign applicants'],
+        'programmes.medicine': ['VI Faculty for training foreign students', 'Admission rules and information for foreigners', 'Medicine (master) 2024', 'Medicine programme 2024/25', '#admission regulations for foreign applicants'],
+        'programmes.dentistry': ['VI Faculty for training foreign students', 'Dentistry programme 2024/25', "Dentistry master's programme 2024"],
+        'programmes.nursing-bachelor': ["Nursing (bachelor's) 2021"], 'programmes.nursing-master': ["Nursing master's programme 2024"],
+        'programmes.public-health': ['Public Health', 'IV Medical Faculty'], 'programmes.physical-therapy': ['IV Medical Faculty'],
+        'fees': ['#tuition-fee page'], 'documents': ['Admission rules and information for foreigners', '#required-documents list'],
+        'exams': ['Admission rules and information for foreigners', '#admission regulations for foreign applicants'], 'dates': ['#application deadlines'],
+        'prep': ['Preparatory department', '#tuition-fee page'], 'accommodation': ['#hostel'],
+    },
+    'zaporizhzhia-state-medical-and-pharmaceutical-university': {
+        'identity': ['Official homepage'], 'website': ['Official homepage', 'Training fields', '#EDEBO', '#legacy domain'],
+        'contacts': ['International section: site map', 'Official homepage', '#contacts page'],
+        'status': ['Off-line teaching of foreign students is continuing in a safe area', 'News about studying in Berehove', 'Official homepage', '#operating-conditions gate'],
+        'programmes': ['Requirements for admission of foreigners', 'Training fields'], 'programmes.therapy-rehabilitation': ['Training fields', 'Annual review 2024'],
+        'fees': ['Tuition fee'], 'documents': ['Requirements for admission of foreigners', '#required-documents list'],
+        'exams': ['Requirements for admission of foreigners'], 'dates': ['Requirements for admission of foreigners'],
+        'prep': ['Requirements for admission of foreigners', 'Tuition fee', 'Studies in Berehove', '#preparatory faculty'], 'accommodation': ['#hostel'],
+    },
+    'dnipro-state-medical-university': {
+        'identity': ['DSMU and the International Faculty'], 'website': ['DSMU and the International Faculty', '#EDEBO'],
+        'contacts': ['DSMU and the International Faculty', '#International Relations Department'], 'status': ['University news', '#university-wide, dated'],
+        'programmes': ['International portal', '=Admissions portal for foreigners', 'Graduates: general information', '#degree programmes open to foreign applicants'],
+        'fees': ['=Admissions portal for foreigners', 'Admission process (main site)', '#tuition fees for foreign applicants'],
+        'documents': ['Admission process (admissions portal for foreigners)'], 'exams': ['#entry requirements and entrance examinations'],
+        'dates': ['=Admissions portal for foreigners', 'Admission process (admissions portal for foreigners)', '#application deadlines'],
+        'prep': ['Pre-study language course', 'Preparatory Department for Foreign Citizens'], 'accommodation': ['Admission process (main site)', '#hostel'],
+    },
+    'danylo-halytsky-lviv-national-medical-university': {
+        'identity': ['Homepage'], 'website': ['Homepage', '#EDEBO'], 'contacts': ['=Homepage', 'Admission information for foreign applicants (PDF)', '#official contacts page'],
+        'status': ['=Homepage', 'Information letter to foreign students', 'Regulation on the organisation of the educational process', '#operation and teaching format'],
+        'programmes': ['English site: foreign students', 'Rules of Admission 2023', '#admission rules for foreign applicants'], 'programmes.nursing-college': ['English site: Medical College'],
+        'fees': ['Payment for study, hostel and additional services', '#current tuition fees'], 'documents': ['Admission information for foreign applicants (PDF)', '#required-documents list'],
+        'exams': ['Rules of Admission 2023', '#admission rules for foreign applicants'], 'dates': ['English site: foreign students', 'Rules of Admission 2023', '#admission rules for foreign applicants'],
+        'prep': ['English site: foreign students'], 'accommodation': ['Payment for study, hostel and additional services', '#hostel'],
+    },
+    'poltava-state-medical-university': {
+        'identity': ['Homepage'], 'website': ['=Homepage', '#EDEBO'], 'contacts': ['=International Faculty', '=Homepage', '#official postal address'],
+        'status': ['English news', '=Homepage', '#teaching format, including whether'],
+        'programmes': ['Fees for foreign students', 'Admission information for foreign citizens', 'Admissions site', '#admission rules for foreign applicants'],
+        'programmes.dentistry': ['Dentistry programme information', 'Fees for foreign students', 'Admission information for foreign citizens', 'Admissions site', '#admission rules for foreign applicants'],
+        'programmes.nursing-paramedic': ['Nursing "Paramedic" programme 2024', 'Admission information for foreign citizens'], 'programmes.public-health': ["Public Health master's programme"],
+        'programmes.physical-therapy': ['Physical therapy bachelor programme review'], 'programmes.pharmacy': ['College Pharmacy programme'],
+        'fees': ['Fees for foreign students', '#dated official fee schedule'], 'documents': ['Admissions site', '#required-documents list'],
+        'exams': ['Admission information for foreign citizens', 'Admissions site'], 'dates': ['Admissions site', '#application windows'],
+        'prep': ['Educational and Research Center for Foreign Citizens Training'], 'accommodation': ['#hostel'],
+    },
 }
+# Hint syntax: a plain string matches every research-reference label containing it (any letter case); "=Label" matches
+# that label exactly; "#words" points at the section A "To locate" row whose text contains the words. A key
+# "programmes.<id>" replaces "programmes" for that one programme; "website" and "accommodation" fall back to "identity".
+EDEBO = 'EDEBO (info.edbo.gov.ua) or Ministry-portal (universities.studyinukraine.gov.ua) entry for the university, to cross-check the official domain'
 TO_LOCATE = {
     'vinnytsia-national-pirogov-memorial-medical-university': ['Official contacts page with the postal address (www.vnmu.edu.ua or foreign.vnmu.edu.ua) — not surfaced by any snippet', 'The current order on the organisation of the educational process (No. 146 of 20.08.2025 or its 2026–27 successor): capture the orders list page AND the order itself', 'EDEBO (info.edbo.gov.ua) or universities.studyinukraine.gov.ua entry for ВНМУ ім. М.І. Пирогова'],
     'odesa-national-medical-university': ['A DATED current-year (2025–26 or 2026–27) notice on teaching format and location, found via the education news category — capture the index AND the notice', 'The fee page in full, including the table header and its academic-year label', 'EDEBO or Ministry-portal entry'],
     'bukovinian-state-medical-university': ['Official contacts page with the postal address — not surfaced by any snippet', 'The Medicine, Dentistry and Pharmacy programme pages linked from the faculty pages (level, award title, duration)', 'The 2026/27 Rules of admission for foreign citizens on vstup.bsmu.edu.ua — capture the index AND the rules', 'A dated university-wide notice on the 2026–27 teaching format (news section)', 'EDEBO or Ministry-portal entry (university id 21)'],
+    'kharkiv-national-medical-university': [
+        'A dated official statement for 2026–27 on where and how the university teaches, including whether international students are taught in Kharkiv, elsewhere in Ukraine or remotely (operating-conditions gate; only 2022 format statements and a September 2025 press interview were found)',
+        'Admission regulations for foreign applicants for the 2026 intake (only the 2025 regulations surfaced)',
+        'The official tuition-fee page or fee schedule for foreign applicants, with its academic year and payment schedule (none found on the official domain)',
+        'Application deadlines and intake dates for the current cycle (none found)',
+        'The required-documents list for foreign applicants as currently published (the older invitation page was not identified)',
+        'Hostel (accommodation) information for foreign students with published prices and their academic year', EDEBO],
+    'zaporizhzhia-state-medical-and-pharmaceutical-university': [
+        'A DATED official statement for 2026–27 on where and how foreign students are taught (Berehove, Zaporizhzhia or remotely) and which programmes and years the Berehove arrangement covers (operating-conditions gate; the Berehove pages found are undated)',
+        "The contacts page with the official postal address(es) and the international-office contacts (from the international section's site map or the homepage)",
+        'The required-documents list for foreign applicants (none in the snippets)',
+        "The preparatory faculty's own page for foreign applicants: duration, subjects, language of instruction, certificate, progression wording, start date, and whether it runs in Berehove",
+        'Hostel (accommodation) information with published prices and their academic year (Zaporizhzhia and Berehove)',
+        "Any official statement on the legacy domain zsmu.edu.ua (whether it is still the university's)", EDEBO],
+    'dnipro-state-medical-university': [
+        'A university-wide, dated official statement for 2026–27 on teaching format and location (only department-level notices from 2024 and 2025 and university notices from 2022 were found)',
+        'An official page naming the degree programmes open to foreign applicants and their language of instruction (no official page found names an English-medium programme)',
+        'Tuition fees for foreign applicants with the academic year (only domestic contract prices were found)',
+        'Application deadlines and intake dates for foreign applicants (none found)',
+        'Entry requirements and entrance examinations for foreign applicants (none in the snippets)',
+        'The International Relations Department contacts with the official postal address',
+        'Hostel (accommodation) information with published prices and their academic year', EDEBO],
+    'danylo-halytsky-lviv-national-medical-university': [
+        'A dated official statement for 2026–27 on operation and teaching format (only an undated letter, apparently 2022, was found)',
+        'Admission rules for foreign applicants for the 2026 intake: specialties open to foreigners, entrance tests, application windows, quota routes (the latest rules found are for 2023)',
+        'The official contacts page with the postal address and the current Faculty of Foreign Students contacts',
+        'Current tuition fees for foreign applicants with the academic year and payment schedule (only a 2021/22 table was found)',
+        'The required-documents list for foreign applicants as currently published (the list found comes from a 2023-cycle PDF)',
+        'Current hostel (accommodation) prices with their academic year (the payment PDF found is labelled 2021/2022)', EDEBO],
+    'poltava-state-medical-university': [
+        'A dated official statement for 2026–27 on teaching format, including whether international students are taught in Poltava or online',
+        'Admission rules for foreign applicants for the 2026 intake (programmes open to foreigners, entrance tests, invitation procedure)',
+        'A dated official fee schedule for 2026/27 (amount, currency, per period, payment schedule): the fee PDF found is undated and conflicts with the Ministry portal',
+        'Application windows and intake dates for foreign applicants (only 2024 domestic deadlines found)',
+        'The required-documents list for foreign applicants (none in the snippets)',
+        'The official postal address of the university (the lead is the International Faculty address)',
+        'Hostel (accommodation) information with published prices and their academic year', EDEBO],
 }
 
 
@@ -125,11 +217,28 @@ def claim_row(path, c, what, pages, evidence, prefix=False):
     return f"| `{shown}` | {c.get('status')} | {lead} | {pages} | {what} | {evidence.cell(path, prefix)} |  |  |  |"
 
 
-def pages_for(refs, hints, key):
-    labels = hints.get(key, [])
-    chosen = [r for r in refs if any(h.lower() in r['label'].lower() for h in labels)]
-    if not chosen: chosen = refs[:1]
-    return '<br>'.join(f"[{r['label']}]({r['url']})" for r in chosen)
+def pages_for(refs, hints, key, locate=(), fallback=None, pid=None):
+    """The official pages (and section A "To locate" rows) to open for one kind of claim; hint syntax above PAGE_HINTS."""
+    if pid is not None and f'{key}.{pid}' in hints: labels = hints[f'{key}.{pid}']
+    elif key in hints or fallback is None: labels = hints.get(key, [])
+    else: labels = hints.get(fallback, [])
+    match = lambda h, label: label.lower() == h[1:].lower() if h.startswith('=') else h.lower() in label.lower()
+    chosen = [r for r in refs if any(match(h, r['label']) for h in labels if not h.startswith('#'))]
+    todo = [f'To locate: section A row {len(refs) + j}' for j, t in enumerate(locate, 1) if any(h.startswith('#') and h[1:].lower() in t.lower() for h in labels)]
+    if not chosen and not todo: chosen = refs[:1]
+    return '<br>'.join([f"[{r['label']}]({r['url']})" for r in chosen] + todo)
+
+
+def unmatched_hints(refs, hints, locate):
+    """Hints that select nothing (a typo, or a label that changed): reported as warnings, never silently ignored."""
+    bad = []
+    for key, labels in hints.items():
+        for h in labels:
+            if h.startswith('#'): ok = any(h[1:].lower() in t.lower() for t in locate)
+            elif h.startswith('='): ok = any(r['label'].lower() == h[1:].lower() for r in refs)
+            else: ok = any(h.lower() in r['label'].lower() for r in refs)
+            if not ok: bad.append(f'{key}: {h}')
+    return bad
 
 
 HEADER = '''| Claim path (evidence `claimPath`) | Status now | Lead (unverified, from snippets) | Page(s) to open | What to read and record | Evidence entries (status · tier · accessed · quotation · decision) | Capture file | Verified value / wording | Date read |
@@ -143,7 +252,10 @@ for slug in SLUGS:
     gov = [r for r in d['researchReferences'] if urlparse(r['url']).netloc in GOV]
     third = [r for r in d['researchReferences'] if urlparse(r['url']).netloc in THIRD]
     hints = PAGE_HINTS.get(slug, {})
-    P = lambda key: pages_for(refs, hints, key)
+    locate = TO_LOCATE.get(slug, [])
+    P = lambda key, fallback=None, pid=None: pages_for(refs, hints, key, locate, fallback, pid)
+    for bad in unmatched_hints(refs, hints, locate):
+        print(f'warning {slug}: page hint selects nothing ({bad})', file=sys.stderr)
     published = [e for e in E.entries if e.get('status') == 'verified' and e.get('decision') == 'publish']
     if ev is None:
         access_line = f'**Access:** no evidence file at `{EVIDENCE_DIR}/{slug}.json`. Create it as `{STANDARD}` describes before recording any evidence.'
@@ -203,7 +315,7 @@ for slug in SLUGS:
 
 {HEADER}''')
     w(claim_row('officialName', d['officialName'], 'The full official name exactly as printed (English, and Ukrainian if shown); note the abbreviation', P('identity'), E))
-    w(claim_row('website', d['website'], 'The canonical domain and the international-students section', P('identity'), E))
+    w(claim_row('website', d['website'], 'The canonical domain and the international-students section', P('website', 'identity'), E))
     w(claim_row('address', d['address'], 'Postal address exactly as printed on the contacts page', P('contacts'), E))
     w(claim_row('internationalOffice', d['internationalOffice'], 'Name of the unit for foreign applicants, email, phone, page URL', P('contacts'), E))
     w(claim_row('status', d['status'], '"operating" only if a dated current-year official statement or order shows the university operating at its address; "relocated" if it says so', P('status'), E))
@@ -212,21 +324,21 @@ for slug in SLUGS:
     w(claim_row('founded', d['founded'], 'Founding year only from the official history page', P('identity'), E))
     w(claim_row('accreditation', d['accreditation'], 'Only from the NAQA register or the certificate (tiers 1–3); a news item is not evidence; never presented as recognition of the qualification in another country', 'NAQA register (to locate)', E))
     w(claim_row('recognition', d['recognition'], 'Only a statement by the official recognition authority of a named destination country (tier 4), quoted with its date; a World Directory of Medical Schools listing is not recognition; never imply registration or a licence to practise', 'The destination country\'s recognition authority (to locate per country)', E))
-    w(claim_row('accommodation', d['accommodation'], 'Hostel availability and published prices with year, or not-published', P('identity'), E))
+    w(claim_row('accommodation', d['accommodation'], 'Hostel availability and published prices with year, or not-published', P('accommodation', 'identity'), E))
     for p in d['programmes']:
         pp = f"programmes.{p['id']}"
         w(f'''
 ## C. Programme `{p['id']}` — {p['name']} (`programmes[].id = "{p['id']}"`, field {p['field']})
 
 {HEADER}''')
-        w(claim_row(f'{pp}.internationalAdmission', p['internationalAdmission'], 'The sentence stating that foreign/international applicants are admitted to THIS programme for the stated intake (quote it)', P('programmes'), E))
-        w(claim_row(f'{pp}.intakeYear', p['intakeYear'], 'The intake/academic year the page refers to, exactly as printed', P('programmes'), E))
-        w(claim_row(f'{pp}.level', p['level'], 'Level as the university classifies it (master\'s / single-cycle master\'s / bachelor)', P('programmes'), E))
-        w(claim_row(f'{pp}.specialtyCode', p['specialtyCode'], 'Specialty code(s) exactly as printed (e.g. "222", "I2")', P('programmes'), E))
-        w(claim_row(f'{pp}.qualification', p['qualification'], 'Exact award title as printed (never MBBS unless printed)', P('programmes'), E))
-        w(claim_row(f'{pp}.durationText', p['durationText'], 'Duration exactly as printed (e.g. "5 years 10 months", "12 semesters")', P('programmes'), E))
-        w(claim_row(f'{pp}.durationYears', p['durationYears'], 'Whole years only if the page states years', P('programmes'), E))
-        w(claim_row(f'{pp}.language', p['language'], 'Languages of instruction offered to foreign applicants for this programme', P('programmes'), E))
+        w(claim_row(f'{pp}.internationalAdmission', p['internationalAdmission'], 'The sentence stating that foreign/international applicants are admitted to THIS programme for the stated intake (quote it)', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.intakeYear', p['intakeYear'], 'The intake/academic year the page refers to, exactly as printed', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.level', p['level'], 'Level as the university classifies it (master\'s / single-cycle master\'s / bachelor)', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.specialtyCode', p['specialtyCode'], 'Specialty code(s) exactly as printed (e.g. "222", "I2")', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.qualification', p['qualification'], 'Exact award title as printed (never MBBS unless printed)', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.durationText', p['durationText'], 'Duration exactly as printed (e.g. "5 years 10 months", "12 semesters")', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.durationYears', p['durationYears'], 'Whole years only if the page states years', P('programmes', pid=p['id']), E))
+        w(claim_row(f'{pp}.language', p['language'], 'Languages of instruction offered to foreign applicants for this programme', P('programmes', pid=p['id']), E))
         w(claim_row(f'{pp}.format', p['format'], 'Teaching format only from the dated statement (row statusStatement)', P('status'), E))
         w(claim_row(f'{pp}.tuition', p['tuition'], 'Amount, currency, per year/semester, academic year, payment schedule, year-by-year variation, refundable or not — ALL as printed; if the page shows another year or is silent → "To be confirmed"', P('fees'), E))
         for i, oc in enumerate(p.get('otherMandatoryCosts', [])):
@@ -262,7 +374,7 @@ Deferred programmes use the same claim paths as programmes (`programmes.<id>.<fi
         for p in d['deferredProgrammes']:
             pp = f"programmes.{p['id']}"
             cell = f"internationalAdmission: {E.cell(pp + '.internationalAdmission')}<br>language: {E.cell(pp + '.language')}"
-            w(f"| `{p['id']}` — {p['name']} ({p['field']}) | `{pp}.internationalAdmission`; `{pp}.language` | {p['internationalAdmission'].get('note', '') or '—'} | {P('programmes')} | Does an official page state that foreign applicants are admitted, and in which language? If yes → move to programmes[] and verify its rows as in section C; if no or silent → stays deferred | {cell} |  |  |  |")
+            w(f"| `{p['id']}` — {p['name']} ({p['field']}) | `{pp}.internationalAdmission`; `{pp}.language` | {p['internationalAdmission'].get('note', '') or '—'} | {P('programmes', pid=p['id'])} | Does an official page state that foreign applicants are admitted, and in which language? If yes → move to programmes[] and verify its rows as in section C; if no or silent → stays deferred | {cell} |  |  |  |")
     w(f'''
 ## F. Open questions to close (each: answered by a verified row above, or closed as not-published with the page that is silent)
 
