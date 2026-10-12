@@ -16,7 +16,7 @@ const rows = universities.flatMap((u) => u.d.programmes.map((p: any) => ({ u: u.
 const money = (m: any) => formatMoney(m, { compact: true });
 const withheld = rows.some(({ fee }) => fee.state !== 'verified');
 ---
-<Base title="MBBS and medical college fees in Ukraine: how to compare costs" description="How to read and compare a Ukrainian medical university's fee schedule, what to ask about MBBS fees and the total cost, and how we check a fee before listing it." suffix={false}>
+<Base title="MBBS and medical college fees in Ukraine: compare costs" description="How to read and compare a Ukrainian medical university's fee schedule, what to ask about MBBS fees and the total cost, and how we check a fee before listing it." suffix={false}>
   <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Medical college and university fees in Ukraine</h1><p>Fees are set by each university. This guide shows you how to read an official fee schedule, what to ask the university and how to compare like with like. We list a fee only after checking it on the university's own schedule, with the date.</p></div></div>
   <Breadcrumbs items={[{ label: 'Tuition & fees' }]} />
   <section style="padding-top:1rem"><div class="wrap">

@@ -22,6 +22,15 @@ export const SITE = {
     'Ukraine Medical Admissions is an independent service. We are not affiliated with, or endorsed by, any university or government body. Admission decisions are made solely by the university.',
 } as const;
 
+/**
+ * Google Search Console verification token for a URL-prefix property (ANALYTICS_AND_SEARCH_CONSOLE.md §A1, option ii).
+ * null (default): no tag is printed. To verify, the owner copies ONLY the content value of the tag Google shows
+ * (<meta name="google-site-verification" content="THIS-PART">) here, runs `npm test`, and releases. A Domain property
+ * (DNS TXT record) needs nothing here. tests/check-meta.mjs checks the format and that every page carries the tag once
+ * it is set (staging builds never print it). Removing the value later un-verifies the property.
+ */
+export const SEARCH_CONSOLE_VERIFICATION: string | null = null;
+
 export const NAV = [
   { href: '/universities/', label: 'Universities' },
   { href: '/courses/', label: 'Courses' },

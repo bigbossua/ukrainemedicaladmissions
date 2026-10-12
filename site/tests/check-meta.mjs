@@ -9,6 +9,10 @@ const pages = [];
 (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : f.endsWith('.html') && pages.push(p); } })(DIST);
 const sitemap = readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8');
 
+// Search Console verification (site.ts SEARCH_CONSOLE_VERIFICATION): when set, a valid token on every page; when
+// null, no verification tag anywhere (a stray hard-coded tag would verify a property nobody configured on purpose).
+const siteTs = readFileSync(resolve('src/lib/site.ts'), 'utf8');
+const gscToken = /SEARCH_CONSOLE_VERIFICATION:\s*string \| null = (null|'([^']*)')/.exec(siteTs);
 const titles = new Map(), descs = new Map();
 let problems = 0;
 const warn = (f, msg) => { console.log(`${msg}  ${f.replace(DIST, '')}`); problems++; };
@@ -27,9 +31,15 @@ for (const f of pages) {
   if (/\son[a-z]+="/i.test(h.replace(/<script[\s\S]*?<\/script>/g, ''))) warn(f, 'INLINE EVENT HANDLER (blocked by the CSP)');
   if (title.length > 70) warn(f, `LONG TITLE (${title.length})`);
   if (!desc) warn(f, 'NO DESCRIPTION'); else if (!is404 && (desc.length > 165 || desc.length < 50)) warn(f, `DESC LENGTH ${desc.length}`);
-  if (!canon) warn(f, 'NO CANONICAL'); else if (!is404 && canon !== SITE + rel) warn(f, `CANONICAL MISMATCH ${canon}`);
+  if (!canon && !is404) warn(f, 'NO CANONICAL'); else if (is404 && canon) warn(f, 'CANONICAL ON THE 404 PAGE (every unknown URL serves it)');
+  else if (!is404 && canon !== SITE + rel) warn(f, `CANONICAL MISMATCH ${canon}`);
   if (!robots) warn(f, 'NO ROBOTS META');
   if (h1s !== 1) warn(f, `H1 COUNT ${h1s}`);
+  const gsc = [...h.matchAll(/<meta name="google-site-verification" content="([^"]*)"/g)].map((m) => m[1]);
+  if (!gscToken) warn(f, 'SEARCH_CONSOLE_VERIFICATION declaration not found in src/lib/site.ts');
+  else if (gscToken[1] === 'null' && gsc.length) warn(f, 'google-site-verification tag present although SEARCH_CONSOLE_VERIFICATION is null');
+  else if (gscToken[2] !== undefined && !/^[A-Za-z0-9_-]{20,100}$/.test(gscToken[2])) warn(f, 'SEARCH_CONSOLE_VERIFICATION is not a token of the expected form (copy only the content value Google shows)');
+  else if (gscToken[2] !== undefined && (gsc.length !== 1 || gsc[0] !== gscToken[2])) warn(f, `google-site-verification tag missing or different (${gsc.length} found)`);
   for (const img of h.match(/<img\b[^>]*>/g) ?? []) { if (!/\balt="/.test(img)) warn(f, `IMG WITHOUT ALT ${img.slice(0, 80)}`); if (!/\bwidth="/.test(img) || !/\bheight="/.test(img)) warn(f, `IMG WITHOUT DIMENSIONS ${img.slice(0, 80)}`); }
   if (titles.has(title)) warn(f, `DUPLICATE TITLE with ${titles.get(title)}`); else titles.set(title, rel);
   if (descs.has(desc)) warn(f, `DUPLICATE DESCRIPTION with ${descs.get(desc)}`); else descs.set(desc, rel);

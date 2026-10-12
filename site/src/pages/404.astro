@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { SITE } from '../lib/site';
 // The title "Page not found" is what scripts/verify-live.mjs looks for on the live 404 response: keep it.
 ---
-<Base title="Page not found" description="This page does not exist on Ukraine Medical Admissions. Try the universities we are researching, the fees guide, the FAQ or the home page." noindex={true}>
+<Base title="Page not found" description="This page does not exist on Ukraine Medical Admissions. Try the universities we are researching, the fees guide, the FAQ or the home page." noindex={true} canonical={false}>
   <div class="page-head"><div class="wrap"><h1>Page not found</h1><p>This page does not exist or has moved.</p></div></div>
   <section><div class="wrap prose">
     <p>These pages may help:</p>

@@ -513,4 +513,23 @@ See `RELEASE_CANDIDATE.md`: status, changes against production, the safeguard, b
 
 ### Q.4 What the owner needs to do
 
-See `OWNER_INPUT_NEEDED.md`: 32 legal and owner details (A–F) and the other decisions (G). These cover confirming N25 and the "Not yet verified" label, the N24 defaults, access to official sources, a SEMrush reading, the backup and `config.php`, release approval, and the email test after release.
+See `OWNER_INPUT_NEEDED.md` (rewritten 2026-10-12 into five sections: information only the owner can provide, decisions needing approval, work Claude can do independently, evidence from official sources, tests possible only after release). These cover confirming N25 and the "Not yet verified" label, the N24 defaults, access to official sources, a SEMrush reading, the backup and `config.php`, release approval, and the email test after release.
+
+
+## R. Evidence access, Google readiness, Search Console and owner checklist (2026-10-12; branch `claude/university-profile-pipeline`; nothing deployed)
+
+- **Official sources: still blocked, and nothing verified.** At 08:47 UTC every one of the 31 university hosts in the records, the government and register hosts and the control `example.com` was refused by this environment's network policy (403 at the proxy); `api.github.com` answered 200. Each evidence file's access block and `SOURCE_VERIFICATION_REGISTER.md` record the attempt.
+  - **Route to access:** the owner adds hosts under the environment's Network access → Allowed domains. The 20 hosts that cover all P1 work are listed at the top of `research/verification/CAPTURE_REQUEST_2026-10-12.md`.
+  - **If access cannot be enabled:** the same file lists 164 official pages (80 P1) for the seven priority universities plus Vinnytsia, how to capture them, and a 498-row claim register (status today: NOT ACCESSED).
+  - **Tooling:** evidence registers now exist for all twelve records (Bogomolets, Ivano-Frankivsk, Uzhhorod and Ternopil added), so captures can be matched to claims.
+  - **Record notes corrected:** recognition is per destination-country regulator; a WDOMS listing is a directory entry, not recognition; registration (EDEBO) and accreditation (NAQA) are separate claims.
+- **SEMrush:** 30 units, one `phrase_these` (in). "pirogov medical university ukraine" is 390 exact and steady, so Vinnytsia moves into the top verification group. The balance is not readable; estimate 43,740 (conservative 43,160). See the ledger.
+- **Google readiness:**
+  - **Audit:** a new tool, `site/scripts/seo-audit.mjs` (`npm run audit:seo`; in `npm test`, CI and the release gate via `test:seo`), audited all 96 URLs and 32 pages. It first found 1 medium (two thin pages) and 7 low issues; after the fixes, 0 high, 0 medium and 3 accepted low.
+  - **Lighthouse (mobile):** performance 98–100; accessibility, best practices and SEO 100.
+  - **Report:** URL by URL in `GOOGLE_READINESS_AUDIT.md`. No live, Search Console or indexing data exists.
+- **Search Console and GA4:** no access in this session (no connector; production host blocked). Nothing about indexing is claimed.
+  - **Prepared:** the verification-tag setting, with tests, and the steps (`ANALYTICS_AND_SEARCH_CONSOLE.md`, "Status check, 2026-10-12").
+  - **GA4:** not installed. It would need consent, a CSP change and a privacy-notice update; the recommended alternative is in the same document.
+- **Owner checklist:** `OWNER_INPUT_NEEDED.md` has five sections: information only the owner can provide, approvals, work Claude can do, official evidence, and tests possible only after release.
+- **Preview for the owner:** a private Artifact copy of the production build, with forms disabled.

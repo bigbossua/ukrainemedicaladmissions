@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, STAGING } from '../lib/site';
+import { SITE, STAGING, SEARCH_CONSOLE_VERIFICATION } from '../lib/site';
 import { serializeJsonLd } from '../lib/publication.mjs';
 
 interface Props {
@@ -20,19 +20,25 @@ interface Props {
   /** With noindex: let crawlers follow the page's links ("noindex, follow"). Research-preview profiles (N25) use it so the
    *  directory and apply links stay crawlable. Ignored in staging and on drafts, which are always "noindex, nofollow". */
   follow?: boolean;
+  /** false: no canonical link and no og:url (the 404 page, which every unknown URL serves; GOOGLE_READINESS_AUDIT.md SEO-02). */
+  canonical?: boolean;
 }
-const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true, draft = false, follow = false } = Astro.props;
+const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true, draft = false, follow = false, canonical: withCanonical = true } = Astro.props;
 const noindex = noindexProp || STAGING || draft;
 const robotsNoindex = follow && !STAGING && !draft ? 'noindex, follow' : 'noindex, nofollow';
 const bare = STAGING || draft; // omit every signal that could point a crawler at this URL
+const showCanonical = !bare && withCanonical;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.name}`;
+// The brand suffix is added only when the whole title stays within 60 characters (GOOGLE_READINESS_AUDIT.md SEO-08).
+const fullTitle = title === SITE.name || !suffix || `${title} | ${SITE.name}`.length > 60 ? title : `${title} | ${SITE.name}`;
 // Attribute text (meta description, og:title, og:description): Astro escapes & and " there, which is enough for a quoted
 // attribute, but a raw "<script>" would still alarm scanners and naive parsers. Angle brackets never occur in real titles or
 // descriptions, so they are removed from attribute text (defence in depth; the <title> element itself is escaped by Astro).
 const attrText = (s: string) => s.replace(/[<>]/g, '');
 const metaTitle = attrText(fullTitle);
 const metaDescription = attrText(description);
+const GSC_TOKEN_FORM = /^[A-Za-z0-9_-]{20,100}$/;
+const gscToken = !STAGING && typeof SEARCH_CONSOLE_VERIFICATION === 'string' && GSC_TOKEN_FORM.test(SEARCH_CONSOLE_VERIFICATION) ? SEARCH_CONSOLE_VERIFICATION : null;
 ---
 <!doctype html>
 <html lang="en">
@@ -41,13 +47,15 @@ const metaDescription = attrText(description);
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={metaDescription} />
-  {!bare && <link rel="canonical" href={canonical} />}
+  {/* Search Console URL-prefix verification (site.ts): production builds only, and only a token of the expected form. */}
+  {gscToken && <meta name="google-site-verification" content={gscToken} />}
+  {showCanonical && <link rel="canonical" href={canonical} />}
   {noindex ? <meta name="robots" content={robotsNoindex} /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:title" content={metaTitle} />
   <meta property="og:description" content={metaDescription} />
-  {!bare && <meta property="og:url" content={canonical} />}
+  {showCanonical && <meta property="og:url" content={canonical} />}
   <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0B1F3F" />

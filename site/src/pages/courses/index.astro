@@ -21,6 +21,18 @@ const courses = Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseS
         </article>
       ))}
     </div>
+    <div class="prose compare">
+      <h2>How the courses differ, and what to check for each</h2>
+      <p>Medicine, dentistry, pharmacy and nursing lead to different qualifications and different professional registers, so the questions that matter are not the same. For any course, check these on the university's own programme page before you apply:</p>
+      <ul>
+        <li><strong>The qualification title and level</strong> the university awards, in its own words. Each university uses its own titles; the search term you used (for example “MBBS”) may not appear.</li>
+        <li><strong>The length of the programme</strong> for your intake, and whether a preparatory year or an internship is counted separately.</li>
+        <li><strong>Clinical or practical training:</strong> where it takes place, in which language you talk to patients, and how much of it is in person.</li>
+        <li><strong>The teaching language</strong> of the programme, and the language level you must show.</li>
+        <li><strong>Registration at home:</strong> whether you can practise after graduating is decided by the regulator for that profession in the country where you plan to work. Read what it publishes for people who qualified abroad before you apply.</li>
+      </ul>
+      <p>Each course page lists the questions specific to that course. If you are choosing between two courses, tell us your subjects and grades in your candidate profile and we will reply with what to check for each.</p>
+    </div>
     <div class="prose next">
       <h2>Before you choose</h2>
       <ul>
@@ -37,6 +49,8 @@ const courses = Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseS
   .courses { padding-top: 1rem; }
   .course-card h2 { font-size: 1.25rem; margin: .5rem 0 0; }
   .course-card p { margin: 0 0 .75rem; }
+  .compare { margin-top: 2rem; }
+  .compare h2 { margin-top: 0; font-size: 1.25rem; }
   .next { margin-top: 2rem; }
   .next h2 { margin-top: 0; font-size: 1.25rem; }
 </style>

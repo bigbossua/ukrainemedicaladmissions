@@ -128,10 +128,10 @@ main > section:not(.alt) + section.cta-section { padding-top: 0; }
 
 /* Breadcrumbs */
 /* Vertical padding only: the element is also .wrap, whose side gutters must survive (alignment and the 390 px edge). */
-.crumbs { font-size: .85rem; color: var(--slate); padding-top: .9rem; padding-bottom: .9rem; }
+.crumbs { font-size: .85rem; color: var(--slate); padding-top: .4rem; padding-bottom: .4rem; }
 .crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
 .crumbs li + li::before { content: "›"; margin-right: .4rem; color: var(--slate); }
-.crumbs a { color: var(--slate); text-decoration: none; }
+.crumbs a { color: var(--slate); text-decoration: none; display: inline-block; padding: .5rem 0; }
 .crumbs a:hover { color: var(--blue-600); text-decoration: underline; }
 
 /* Tables */

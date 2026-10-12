@@ -223,3 +223,25 @@ The 130-unit discrepancy found earlier (published-price estimate 1,200 vs derive
 The gaps that remain (exact demand for "pirogov medical university ukraine", the Zaporizhzhia current name, the "for indian students" SERP, other universities) would not change what is built now. If the owner later wants them settled, the smallest batch is one `phrase_these` (in, 10 keywords, ≤100 units) plus one `phrase_organic` (in, "ukraine medical college fees for indian students", 100 units): ≤200 units, inside the 300-unit conservative headroom, and only after the owner's next API Units reading is recorded here.
 
 **Cumulative consumption unchanged: 6,230 line-based (6,340 max-reading; 6,810 conservative). Expected balance unchanged and unverified: 43,770 (43,660; 43,190).**
+
+## 2026-10-12 — Priority check for the verification queue (30 units)
+
+**Owner's instruction (2026-10-12, second message):** reuse the 42 exports first; check the actual balance if possible; spend only where a specific unanswered question could change a page, university or country priority; record database, report, units and decision.
+
+**Balance:** not readable. A zero-cost `get_report_schema` call succeeded, so the connector works, but the MCP reports only per-call usage (`metadata.usage.api_units`) and never the remaining balance. The expected balance before this call stays an **unverified estimate**: 43,770 (43,660; conservative 43,190).
+
+**Question:** does Vinnytsia National Pirogov Memorial Medical University belong in the top verification group? The only large figure for it, "pirogov medical university ukraine" 390, existed only as a broad-match row (2026-10-10). If exact, it moves Vinnytsia from #10 to about #2 in India and changes which official pages the owner should capture first. The Zaporizhzhia current name had never been measured (only the former name, 90).
+
+| # | Call | Requested → returned lines | `usage.api_units` | Cost recorded | File | Decision supported |
+|---|---|---|---|---|---|---|
+| 1 | `phrase_these` · in · 5 names (columns keyword, volume, cpc, competitive_density, results, keyword_difficulty, intent, trend) | 5 → 3 | 30 | **30** | `research/semrush/2026-10-12-phrase_these-in-vinnytsia-zaporizhzhia-names.csv` | Vinnytsia joins the top priority group |
+
+**Result (exact, database in):**
+- "pirogov medical university ukraine": **390**, kd 23, informational. The 12-month trend is steady (average 0.57 of peak; no single-month spike), so typical monthly demand is about 390.
+- "national pirogov memorial medical university": 320, but spike-driven (one month at peak, the others at 0.06–0.17 of it); typical month about 180.
+- "vinnytsia national medical university": 50, spike-driven.
+- "vinnytsia national pirogov memorial medical university" and "zaporizhzhia state medical and pharmaceutical university": no data (not returned, not billed).
+
+**Decision:** on steady exact demand, Vinnytsia (≈390) ranks with Odesa (390) and Kharkiv (390), behind Bukovinian (480). It is moved into the top verification group, and the capture request lists it with the other seven. Zaporizhzhia stays where it is (only its former name has demand, 90).
+
+**Cumulative consumption: 6,230 + 30 = 6,260 line-based (6,370 max-reading; 6,840 conservative). Expected balance: 43,740 (43,630; conservative 43,160) — ESTIMATE, unverified until the owner's next API Units reading. Programme-cap headroom left: 850 / 740 / 270.**

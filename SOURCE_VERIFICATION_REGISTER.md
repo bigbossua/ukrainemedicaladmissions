@@ -36,3 +36,7 @@ None. Every university fact renders as "Verification pending" or "To be confirme
 | Student visa process overview | Ukrainian Ministry of Foreign Affairs / State Migration Service pages |
 
 Rule: one claim, one source URL, one check date. If the source does not say it, we do not publish it.
+
+## 2026-10-12 — access re-test (all 12 records)
+
+08:47 UTC, from the build environment, curl through its proxy, one HTTPS request to the root of each host: all 31 university hosts named in the records' references or website leads, the government and register hosts mon.gov.ua, info.edbo.gov.ua, registry.edbo.gov.ua, vstup.edbo.gov.ua, naqa.gov.ua, studyinukraine.gov.ua and universities.studyinukraine.gov.ua, the third-party lead host vstup.osvita.ua, and the control example.com were each refused at the proxy ("CONNECT tunnel failed, response 403"). api.github.com returned 200. The proxy reports a non-selective policy (all hosts outside its allow-list are refused). No page was opened and no claim was checked. Each evidence file's `access` block now records this attempt. Route: the owner adds the hosts under the environment's Network access → Allowed domains, or supplies the captures listed in `research/verification/CAPTURE_REQUEST_2026-10-12.md`.

@@ -12,6 +12,21 @@ Labels: **VERIFIED-IN-REPO** = read in a repository file or built page; **MEASUR
 - Stage 1 of the application is an e-mail/JSON enquiry handled by `site/public/api/enquiry.php` (no accounts, save-and-resume, uploads, status tracking or payments); since `4136658` the `/apply/` form is the five-step candidate-profile form. The handler's stored records are the only ground truth for completed enquiries.
 - **Former defect, fixed in `4136658` (backlog N20; `DIRECTORY_VERIFICATION_PLAN.md` §9.1):** Astro inlined small processed scripts, which the CSP above blocks (served with the CSP header, the directory filter and the mobile menu stopped working). `site/astro.config.mjs` now sets `vite: { build: { assetsInlineLimit: 0 } }`, so every processed script is an external `/_astro/*.js` file, and `test:meta` fails on any executable inline script or inline handler. An event script bundled the same way runs under the CSP; whether the live host sends the CSP header is UNVERIFIED until `verify:live` runs.
 
+## Status check, 2026-10-12
+
+| Item | Status | Evidence |
+|---|---|---|
+| Search Console property | **Not verified from here; existence unknown.** No Search Console connector is installed for this account (connector list: Semrush only), the connector registry offers none, and the production host is refused by this environment's network policy. Nothing about indexing, coverage or performance has been observed. | `ListConnectors` / registry search, 2026-10-12; `SOURCE_VERIFICATION_REGISTER.md` 2026-10-12 |
+| GA4 | **Not installed** on the site and not reachable from here. The CSP allows only the site's own scripts, and the privacy notice says no analytics tool is installed. | `site/public/.htaccess`, `site/src/lib/legal.mjs` (`analyticsInstalled: false`) |
+| Verification tag | **Prepared, off.** `SEARCH_CONSOLE_VERIFICATION` in `site/src/lib/site.ts` (null by default). When set to the token Google shows for a URL-prefix property, every production page carries `<meta name="google-site-verification">`. `tests/check-meta.mjs` checks the token's form, checks the tag is on every page, and fails if a tag appears while the setting is null. A Domain property (DNS TXT) needs no site change. | `site/src/layouts/Base.astro` |
+| Sitemap | Ready to submit after release: `https://ukrainemedicaladmissions.com/sitemap-index.xml` lists the indexable pages only; the 12 research previews are excluded (noindex). Not submitted. | `site/dist/sitemap-0.xml`; `GOOGLE_READINESS_AUDIT.md` |
+| Application-start and enquiry events | Not measured. Events are defined (§C: `apply_step_view` step 1 = start, `apply_submit`, plus the handler's stored records as the ground truth for completed enquiries). The first-party beacon (§B option 3b) is not built, pending the owner's choice. With GA4 instead, the equivalents would be a `form_start`-style event on step 1 and `generate_lead` on `/apply/thank-you/`; that needs consent, a CSP change and a privacy-notice change. | §B, §C |
+
+**What the owner can do to give access (Claude cannot sign in to Google):**
+1. In Search Console, add the property: preferably a **Domain property** (DNS TXT record at the domain's DNS provider); or a **URL-prefix property**, copying the token into `SEARCH_CONSOLE_VERIFICATION` for the next release.
+2. After the release: submit `sitemap-index.xml`; inspect `/`, `/universities/`, `/tuition-fees/` and `/courses/medicine/`; then export the Pages (indexing) and Performance reports (§A3) and share the files. They are first-party data; summaries can be committed (keep raw exports out of the public repository until decision D8).
+3. Choose the analytics option (§B). Recommended: Search Console, plus host logs, plus the first-party event beacon (no cookies, no CSP change). GA4 only with consent, a CSP change and a privacy-notice update.
+
 ## A. Google Search Console setup (for the owner)
 
 Search Console is Google's own report of how the site appears in Google Search. It needs no code on the page beyond verification, sets no cookie and collects nothing from visitors. Cost: free (as published by Google; UNVERIFIED here). It is the first-party source for the "current performance" lines in `KEYWORD_URL_MAP.md` §18 and closes checklist item A11.

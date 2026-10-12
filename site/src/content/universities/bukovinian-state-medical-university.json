@@ -80,7 +80,7 @@
     "status": "not-published",
     "source": null,
     "checked": null,
-    "note": "List only recognition that can be evidenced (e.g. World Directory of Medical Schools listing), each with its own source URL. Never imply licensing rights in any country."
+    "note": "Recognition is decided separately by each destination country's regulator (for example India's National Medical Commission). Record it only from a tier-4 page on a recognition-authority host the owner has listed (N24 b; none listed yet), quoting what that page says, with its date. A World Directory of Medical Schools (WDOMS) listing is a directory entry, not recognition; institutional registration (EDEBO) and programme accreditation (NAQA) are separate claims. Never imply a right to practise in any country."
   },
   "accommodation": {
     "value": null,
