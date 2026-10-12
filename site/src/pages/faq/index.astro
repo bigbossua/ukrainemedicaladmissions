@@ -5,6 +5,11 @@ import CtaBand from '../../components/CtaBand.astro';
 import { getCollection } from 'astro:content';
 
 const sections = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
+// Stable anchors from the visible text, so other pages can link to a section or an answer (and analytics can name
+// the question). They change only if the wording changes; duplicates get a numeric suffix.
+const slug = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+const used = new Set<string>();
+const anchor = (t: string) => { let a = slug(t) || 'item', b = a, n = 2; while (used.has(b)) b = `${a}-${n++}`; used.add(b); return b; };
 const all = sections.flatMap((s) => s.data.items);
 // FAQPage structured data: every Q&A below is visible on the page.
 const jsonLd = [{
@@ -18,8 +23,8 @@ const jsonLd = [{
   <section style="padding-top:1rem"><div class="wrap prose">
     {sections.map((s) => (
       <>
-        <h2>{s.data.section}</h2>
-        {s.data.items.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        <h2 id={anchor(s.data.section)}>{s.data.section}</h2>
+        {s.data.items.map((f) => <details id={anchor(f.q)}><summary>{f.q}</summary><p>{f.a}</p></details>)}
       </>
     ))}
     <p style="margin-top:2rem">Still unsure? See the <a href="/admissions/">admissions guide</a>, the <a href="/tuition-fees/">fees guide</a>, or <a href="/contact/">contact us</a>.</p>

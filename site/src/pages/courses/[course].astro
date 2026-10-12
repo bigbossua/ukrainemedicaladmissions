@@ -56,7 +56,7 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per
     <ul class="prose">{c.whatToCheck.map((t) => <li>{t}</li>)}</ul>
     <div class="card qualify">
       <h3>Not sure whether you qualify yet?</h3>
-      <p style="margin:0 0 .75rem">Tell us your course and the subjects and grades you have so far in a short, free enquiry. A readiness check is planned: once a programme's published requirements have been verified, it will compare them with your record and show what is met, what is missing and which documents you still need. It will not be an admission decision.</p>
+      <p style="margin:0 0 .75rem">Tell us your course and the subjects and grades you have so far in a short, free enquiry. A readiness check is planned: once a programme's published requirements have been verified, it will compare them with your record and show what is met, what is missing and which documents you still need. It will not be an admission decision. <a href="/admissions/#readiness">How the readiness check will work</a>.</p>
       <a class="btn btn-primary btn-sm" href={`/apply/?course=${course}`}>{SITE.cta}</a>
     </div>
     <p class="note">Apply only through the university's official procedure. Some websites use a university's name in their address without being the university; every published profile here links the university's official domain, so check the address before you send anything.</p>
