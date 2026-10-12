@@ -298,6 +298,23 @@ guard('refusals and "would not be shown" reasons', () => {
 });
 
 // ---------------------------------------------------------------------------------------------- 5. mark outdated
+guard('the dry run applies the build\'s N24 (c) rule: no government listing, no official host', () => {
+  // Same fixture, but the website is no longer listed by a government register: under the policy the university's own
+  // site then supports nothing, so a fee read on it must be reported as "would not be shown" (never a false "would show").
+  const d = fresh();
+  const p = paths(d);
+  const rec = JSON.parse(readFileSync(p.rec, 'utf8'));
+  rec.website = { ...rec.website, status: 'unverified', source: null, checked: null };
+  writeFileSync(p.rec, `${JSON.stringify(rec, null, 2)}\n`);
+  const ev = JSON.parse(readFileSync(p.ev, 'utf8'));
+  ev.entries = ev.entries.filter((e) => e.claimPath !== 'website');
+  writeFileSync(p.ev, `${JSON.stringify(ev, null, 2)}\n`);
+  const r = tool(d, opts());
+  const ia = r.j?.evaluation?.ifApplied;
+  check(ia && ia.show === false, `without a government listing the fee would not be shown (got ${JSON.stringify(ia)})`);
+  check(ia && ia.code === 'source-not-official', `the reason is source-not-official (got ${ia?.code})`);
+});
+
 guard('--mark-outdated', () => {
   const d = fresh();
   check(tool(d, [...opts(), '--write', '--apply-to-record']).code === 0, 'setup: fee entry written and applied');

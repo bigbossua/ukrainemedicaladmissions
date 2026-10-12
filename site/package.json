@@ -21,7 +21,7 @@
     "manifest": "node scripts/release-manifest.mjs",
     "compare:backup": "node scripts/compare-live-backup.mjs",
     "verify:live": "node scripts/verify-live.mjs",
-    "test": "npm run test:records && npm run test:readiness && npm run test:publication && npm run build && npm run test:links && npm run test:meta && npm run test:redirects && npm run test:release-readiness && npm run test:publish-workflow && npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:release && npm run test:staging && npm run test:gate && npm run test:preview && npm run test:php",
+    "test": "npm run test:records && npm run test:readiness && npm run test:publication && npm run test:evidence-tools && npm run build && npm run test:links && npm run test:meta && npm run test:redirects && npm run test:release-readiness && npm run test:publish-workflow && npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:release && npm run test:staging && npm run test:gate && npm run test:preview && npm run test:php",
     "build:preview": "PREVIEW_UNPUBLISHED=1 astro build --outDir dist-preview",
     "test:records": "node tests/records-evidence.mjs",
     "test:gate": "npm run build:preview && node tests/publication-gate.mjs",
@@ -36,7 +36,10 @@
     "release:gate": "node scripts/release-gate.mjs",
     "test:release-readiness": "node tests/release-readiness.mjs",
     "test:release-gate": "node tests/release-gate-selftest.mjs",
-    "test:publish-workflow": "node tests/publish-workflow.mjs"
+    "test:publish-workflow": "node tests/publish-workflow.mjs",
+    "evidence:add": "node scripts/evidence-entry.mjs",
+    "evidence:register": "cd .. && python3 -I site/scripts/make-evidence-register.py",
+    "test:evidence-tools": "node tests/evidence-tools.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",

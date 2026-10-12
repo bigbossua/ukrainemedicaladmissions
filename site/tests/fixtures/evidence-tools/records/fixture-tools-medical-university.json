@@ -39,10 +39,10 @@
   },
   "website": {
     "value": "https://www.tools.fixture.example/",
-    "status": "unverified",
-    "source": null,
-    "checked": null,
-    "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+    "status": "verified",
+    "source": "https://register.tools-fixture.gov.ua/universities/tools",
+    "checked": "2026-10-01",
+    "note": "Fixture: verified against a (fictional) government register so the official host counts under N24 (c). Not a real university."
   },
   "internationalOffice": {
     "value": null,

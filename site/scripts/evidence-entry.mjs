@@ -28,7 +28,7 @@ import { fileURLToPath } from 'node:url';
 import { record as recordSchema } from '../src/content/schema.mjs';
 import { parseEvidence, isIsoDate, isHttpsUrl, EVIDENCE_STATUSES } from '../src/lib/evidence.mjs';
 import {
-  evaluateClaim, toPublicRecord, evaluatePublication, listClaims, deepEqual, CODE_WORDS, FIELD_POLICY,
+  evaluateClaim, claimContext, toPublicRecord, evaluatePublication, listClaims, deepEqual, CODE_WORDS, FIELD_POLICY,
   isTimeSensitive, allowedTiers, isoDay, academicYearStart,
 } from '../src/lib/publication.mjs';
 
@@ -118,24 +118,14 @@ const controlsIn = (s) => [...new Set([...s].filter((c) => CONTROL_LINE.test(c))
 /** Every string in a JSON value, object keys included. @param {any} v @returns {string[]} */
 const textLeaves = (v) => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(textLeaves) : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => [k, ...textLeaves(x)]) : []);
 
-// The same host rules as the policy's own hostsOf (src/lib/publication.mjs, not exported): the official host is the
-// record's website value; university hosts add every host a tier 1 or 2 entry cites. Cross-checked below against
-// toPublicRecord for every claim the projection exposes, so a drift between the two is reported, never hidden.
-const hostOf = (/** @type {string} */ u) => { try { return new URL(u).hostname.toLowerCase().replace(/^www\./, ''); } catch { return null; } };
-/** @param {any} rec @param {any[]} entries */
-function hostsOf(rec, entries) {
-  const official = new Set();
-  const w = rec?.website?.value;
-  if (typeof w === 'string' && isHttpsUrl(w)) { const h = hostOf(w); if (h) official.add(h); }
-  const university = new Set(official);
-  for (const e of entries) if (e.sourceTier === 1 || e.sourceTier === 2) { const h = hostOf(e.sourceUrl); if (h) university.add(h); }
-  return { officialHosts: [...official], universityHosts: [...university] };
-}
-
+// Host rules come from the policy itself (claimContext, the context toPublicRecord uses), so the dry run applies exactly
+// the build's rules, including the N24 (c) requirement that the official host counts only once a government page lists
+// the same website. Cross-checked below against toPublicRecord for every claim the projection exposes.
 /** @param {string} path @param {any} rec @param {any[]} entries */
 function evaluate(path, rec, entries) {
   const claim = listClaims(rec).find((c) => c.path === path)?.claim;
-  const r = evaluateClaim(path, claim, entries, { now: NOW, ...hostsOf(rec, entries) });
+  const ctx = claimContext(rec, entries, { now: NOW });
+  const r = path === 'website' ? ctx.websiteClaim : evaluateClaim(path, claim, entries, ctx);
   return { show: r.show, code: r.code, words: words(r.code), publicState: r.publicState };
 }
 

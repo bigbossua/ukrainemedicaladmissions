@@ -579,6 +579,15 @@ function contextOf(record, entries, now, settings) {
 }
 
 /**
+ * The same evaluation context toPublicRecord uses, for tools that evaluate one claim (scripts/evidence-entry.mjs), so a
+ * tool can never apply different host rules from the build (for example the N24 (c) government-listing requirement).
+ * @param {any} record @param {any[]} entries @param {{ now?: Date, settings?: Partial<PublicationSettings> }} [opts]
+ */
+export function claimContext(record, entries, { now = new Date(), settings } = {}) {
+  return contextOf(record, Array.isArray(entries) ? entries : [], now, resolveSettings(settings));
+}
+
+/**
  * The fee page was read (whatever it found): an entry for the tuition claim that is not outdated, at tier 1 or 2 on the
  * official website, read on the page itself (not from a search snippet, cache or archive), accessed on or before today,
  * with a next-review date that has not passed and no academic year that has ended. The same source rules as evaluateClaim.

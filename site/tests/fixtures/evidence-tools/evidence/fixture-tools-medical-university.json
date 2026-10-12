@@ -7,6 +7,28 @@
   },
   "entries": [
     {
+      "id": "fixture-tools-medical-university/website/1",
+      "claimPath": "website",
+      "statement": "The government register lists the university's official website.",
+      "value": "https://www.tools.fixture.example/",
+      "sourceUrl": "https://register.tools-fixture.gov.ua/universities/tools",
+      "sourceOrganisation": "Fixture government register (fictional)",
+      "sourceTier": 3,
+      "evidenceType": "web-page",
+      "quotation": "Official website: https://www.tools.fixture.example/",
+      "effectiveDate": null,
+      "academicYear": null,
+      "accessed": "2026-10-01",
+      "captureRef": null,
+      "status": "verified",
+      "reviewer": "fixture",
+      "method": "fixture for tests/evidence-tools.mjs",
+      "contradicts": [],
+      "nextReview": null,
+      "decision": "publish",
+      "withholdReason": null
+    },
+    {
       "id": "fixture-tools-medical-university/officialName/1",
       "claimPath": "officialName",
       "statement": "Fixture: the official name page was read and is silent.",
