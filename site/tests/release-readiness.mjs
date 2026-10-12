@@ -5,8 +5,9 @@
 //   B. Coverage: every key of LEGAL is an owner item or a documented fact; every owner item exists in LEGAL and appears
 //      on each page LEGAL_ITEMS names; the pages use no unknown item and keep no hard-coded bracketed placeholder.
 //   C. Documented facts still match the code: the business e-mail in site.ts, and the fields enquiry.php stores.
-//   D. A complete SYNTHETIC legal object passes legalStatus(); each single gap (missing, proposal, wrong form, review
-//      flag, reviewer, review date, a condition that switches an item on) makes it fail and names the gap.
+//   D. A complete SYNTHETIC legal object passes legalStatus(); each single gap (missing, proposal, wrong form, placeholder
+//      text such as "TBC", a malformed documented flag, review flag, reviewer, review date, a condition that switches an
+//      item on) makes it fail and names the gap; ordinary answers are not mistaken for placeholders.
 //   E. The release check end to end, as a child process: it fails on today's data; it passes with a complete synthetic
 //      legal object (UMA_LEGAL_MODULE, a temporary file), clean synthetic legal pages (UMA_DIST_DIR) and the real
 //      records; it fails again for a page still carrying draft text, for a missing build and for a record flagged
@@ -21,7 +22,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { LEGAL, LEGAL_ITEMS, LEGAL_DOCUMENTED_PATHS, LEGAL_PAGES, NOT_APPLICABLE, getPath, isProposal, legalStatus, legalPagesComplete, proposed } from '../src/lib/legal.mjs';
+import { LEGAL, LEGAL_ITEMS, LEGAL_DOCUMENTED_PATHS, LEGAL_PAGES, NOT_APPLICABLE, getPath, isProposal, itemState, legalItem, legalStatus, legalPagesComplete, proposed } from '../src/lib/legal.mjs';
 import { materialise } from './fixtures/publication/materialise.mjs';
 
 const LEGAL_FILE = resolve('src/lib/legal.mjs');
@@ -135,6 +136,26 @@ function syntheticComplete() {
   variant('a review date in the future', (l) => { l.reviewDate = day(30); }, (r) => r.review.some((x) => /future/.test(x)));
   const na = syntheticComplete(); na.entity.registrationNumber = NOT_APPLICABLE; na.complaintsBody = NOT_APPLICABLE;
   check(legalStatus(na, { now: NOW }).complete, 'D: NOT_APPLICABLE must be accepted where LEGAL_ITEMS allows it');
+  // Placeholder text typed in place of an answer must not count as supplied (the banner would otherwise disappear).
+  variant('"TBC" typed as the entity name', (l) => { l.entity.name = 'TBC'; }, (r) => paths(r.invalid).includes('entity.name'));
+  variant('"to be confirmed" inside a value', (l) => { l.retention.backups = 'Backups are kept for a period to be confirmed'; }, (r) => paths(r.invalid).includes('retention.backups'));
+  variant('a bracketed placeholder', (l) => { l.entity.address = '[registered address]'; }, (r) => paths(r.invalid).includes('entity.address'));
+  variant('"???" as a value', (l) => { l.courts = '???'; }, (r) => paths(r.invalid).includes('courts'));
+  variant('"N/A" where "not applicable" is not allowed', (l) => { l.governingLaw = 'N/A'; }, (r) => paths(r.invalid).includes('governingLaw'));
+  variant('a placeholder reviewer', (l) => { l.reviewedBy = 'TBD'; }, (r) => r.review.some((x) => /reviewer/.test(x)));
+  // The documented values the pages read must keep their form.
+  variant('the paid-service flag given as text', (l) => { l.paidServices.offered = 'no'; }, (r) => r.documented.some((x) => /paidServices\.offered/.test(x)));
+  variant('the referral flag removed', (l) => { l.referralArrangements = null; }, (r) => r.documented.some((x) => /referralArrangements/.test(x)));
+  variant('the business e-mail removed', (l) => { l.contact.email = ''; }, (r) => r.documented.some((x) => /contact\.email/.test(x)));
+  variant('the hosting provider replaced by a placeholder', (l) => { l.processors.hosting = 'TBC'; }, (r) => r.documented.some((x) => /processors\.hosting/.test(x)));
+  const naText = syntheticComplete(); naText.entity.registrationNumber = 'N/A'; naText.complaintsBody = 'not applicable';
+  check(legalStatus(naText, { now: NOW }).complete && itemState(naText, legalItem('complaintsBody')).state === 'not-applicable', 'D: "N/A" and "not applicable" must count as NOT_APPLICABLE where LEGAL_ITEMS allows it');
+  // Real answers that merely look unusual must still count as supplied.
+  const plausible = syntheticComplete();
+  plausible.internationalTransfers = 'None'; plausible.lawfulBasis.enquiries = 'Article 6(1)(b) UK GDPR: steps taken at your request before a contract';
+  plausible.retention.backups = 'Backups contain form submissions and are kept for 30 days'; plausible.entity.address = '1 Example Street, Example Town, EX1 2MP';
+  const ps = legalStatus(plausible, { now: NOW });
+  check(ps.complete, `D: ordinary answers must not be mistaken for placeholders (invalid ${paths(ps.invalid)})`);
 }
 
 // ---- E. The release check end to end -----------------------------------------------------------------------------
@@ -179,6 +200,13 @@ const realRecords = { UMA_UNIVERSITIES_DIR: undefined, UMA_EVIDENCE_DIR: undefin
     const r = run({ UMA_LEGAL_MODULE: completeModule, UMA_DIST_DIR: syntheticDist(`dist-${page}-${checks}`, { [String(page)]: String(html) }), ...realRecords });
     check(r.status === 1 && /** @type {RegExp} */ (expect).test(r.out), `E: a built page carrying ${label} must fail the check and be named (exit ${r.status})\n${r.out}`);
   }
+
+  const tbcModule = join(TMP, 'legal-tbc.mjs');
+  const tbc = syntheticComplete(); tbc.entity.name = 'TBC'; tbc.paidServices.offered = 'no';
+  writeFileSync(tbcModule, `export const LEGAL = ${JSON.stringify(tbc, null, 2)};\n`);
+  const tbcRun = run({ UMA_LEGAL_MODULE: tbcModule, UMA_DIST_DIR: clean, ...realRecords });
+  check(tbcRun.status === 1 && /"TBC" is a placeholder, not an answer \[entity\.name/.test(tbcRun.out) && /Documented values changed into the wrong form \(1\)/.test(tbcRun.out),
+    `E: a placeholder answer and a malformed documented flag must fail the check and be named (exit ${tbcRun.status})\n${tbcRun.out}`);
 
   const noBuild = run({ UMA_LEGAL_MODULE: completeModule, UMA_DIST_DIR: join(TMP, 'no-such-dist'), ...realRecords });
   check(noBuild.status === 1 && /not built/.test(noBuild.out), 'E: a missing build must fail the check');

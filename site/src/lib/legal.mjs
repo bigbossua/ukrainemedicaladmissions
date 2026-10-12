@@ -11,7 +11,8 @@
 //   - replace `null` (or a `proposed(...)` call) with the value as plain text in quotes,
 //   - dates as 'YYYY-MM-DD', yes/no answers as true or false,
 //   - only where LEGAL_ITEMS says `notApplicable: true` may the value be NOT_APPLICABLE (the page then shows "not
-//     applicable", or leaves the line out where a line would make no sense).
+//     applicable", or leaves the line out where a line would make no sense); "N/A" and "not applicable" count the same,
+//   - a placeholder such as "TBC", "to be confirmed", "???" or anything in square brackets counts as NOT supplied.
 // A value written as proposed(...) is text that today's draft pages already contain but that the owner has NOT approved
 // (no approval is recorded anywhere in the repository). It is shown on the page with a visible "proposed" marker and
 // counts as NOT supplied until the owner replaces the proposed(...) call with the plain value.
@@ -259,6 +260,13 @@ export function legalItem(path) {
 
 const isIsoDate = (/** @type {unknown} */ s) => typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) && new Date(`${s}T00:00:00Z`).toISOString().slice(0, 10) === s;
 const blank = (/** @type {unknown} */ v) => v === null || v === undefined || (typeof v === 'string' && v.trim() === '');
+// Text that is not yet an answer ("TBC", "to be confirmed", "[address]", "???"): an item holding it counts as NOT supplied,
+// so the draft banner stays and the page shows the "[to be supplied by the owner: …]" marker instead.
+const PLACEHOLDER_TEXT = /^\s*(?:tbc|tbd|tba|todo|fixme|unknown|pending|null|undefined|x{2,}|\?+|-+|\.{3}|…)\s*\.?\s*$|\b(?:to be (?:confirmed|supplied|decided|agreed|added|inserted|set|determined|advised)|tbc|tbd|todo|fixme|placeholder|lorem ipsum)\b|[[\]]/i;
+// Plain text meaning "not applicable" ("N/A", "not applicable") is treated exactly like NOT_APPLICABLE.
+const NOT_APPLICABLE_TEXT = /^\s*(?:n\/?a|not[ -]applicable)\s*\.?\s*$/i;
+/** True for text that is a placeholder rather than an answer. @param {unknown} v */
+export const looksLikePlaceholder = (v) => typeof v === 'string' && PLACEHOLDER_TEXT.test(v);
 
 /**
  * The state of one owner item: 'supplied', 'proposed', 'missing', 'not-applicable', 'invalid' or 'not-required'.
@@ -270,11 +278,12 @@ export function itemState(legal, item) {
   const v = getPath(legal, item.path);
   if (blank(v)) return { state: 'missing' };
   if (isProposal(v)) return { state: 'proposed', value: v.proposed };
-  if (v === NOT_APPLICABLE) return item.notApplicable ? { state: 'not-applicable' } : { state: 'invalid', value: v, problem: '"not applicable" is not an allowed answer for this item' };
+  if (v === NOT_APPLICABLE || (typeof v === 'string' && NOT_APPLICABLE_TEXT.test(v))) return item.notApplicable ? { state: 'not-applicable' } : { state: 'invalid', value: v, problem: '"not applicable" is not an allowed answer for this item' };
   const kind = item.kind ?? 'text';
   if (kind === 'boolean' && typeof v !== 'boolean') return { state: 'invalid', value: v, problem: 'must be true or false' };
   if (kind === 'date' && !isIsoDate(v)) return { state: 'invalid', value: v, problem: 'must be a date written YYYY-MM-DD' };
   if (kind === 'text' && typeof v !== 'string') return { state: 'invalid', value: v, problem: 'must be text' };
+  if (kind === 'text' && looksLikePlaceholder(v)) return { state: 'invalid', value: v, problem: `"${v.trim()}" is a placeholder, not an answer` };
   return { state: 'supplied', value: v };
 }
 
@@ -290,12 +299,21 @@ export function legalStatus(legal, { now = new Date() } = {}) {
     else if (s.state === 'proposed') proposals.push({ item, value: s.value });
     else if (s.state === 'invalid') invalid.push({ item, value: s.value, problem: s.problem });
   }
+  // The documented values the pages read must keep their form: a flag that is not true or false would hide a conditional
+  // line (paid-service terms, referral payments) and switch off the item it requires, while the banner disappeared.
+  const documented = [];
+  for (const [p, what] of [['paidServices.offered', 'Whether paid services are offered'], ['referralArrangements', 'Whether a referral arrangement exists']])
+    if (typeof getPath(legal, p) !== 'boolean') documented.push(`${what} (${p}) must be true or false.`);
+  const email = getPath(legal, 'contact.email');
+  if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) documented.push('The business e-mail (contact.email) must be an e-mail address.');
+  const hosting = getPath(legal, 'processors.hosting');
+  if (typeof hosting !== 'string' || blank(hosting) || looksLikePlaceholder(hosting)) documented.push('The hosting provider (processors.hosting) must be named.');
   const review = [];
   if (legal?.legalReviewCompleted !== true) review.push('The legal review is not recorded as completed (legalReviewCompleted is not true).');
-  if (blank(legal?.reviewedBy)) review.push('The reviewer is not named (reviewedBy is empty).');
+  if (typeof legal?.reviewedBy !== 'string' || blank(legal.reviewedBy) || looksLikePlaceholder(legal.reviewedBy)) review.push('The reviewer is not named (reviewedBy is empty or a placeholder).');
   if (!isIsoDate(legal?.reviewDate)) review.push('The review date is not set (reviewDate must be YYYY-MM-DD).');
   else if (legal.reviewDate > now.toISOString().slice(0, 10)) review.push('The review date is in the future.');
-  return { missing, proposals, invalid, review, complete: !missing.length && !proposals.length && !invalid.length && !review.length };
+  return { missing, proposals, invalid, documented, review, complete: !missing.length && !proposals.length && !invalid.length && !documented.length && !review.length };
 }
 
 /** True when the four pages may drop the "Draft for legal review" banner. @param {any} [legal] */

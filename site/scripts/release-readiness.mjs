@@ -65,6 +65,10 @@ if (status.invalid.length) {
   console.log(`   Supplied in the wrong form (${status.invalid.length}):`);
   for (const { item, problem } of status.invalid) { console.log(`     - ${item.what}: ${problem} ${where(item)}`); block(`invalid owner detail: ${item.path}`); }
 }
+if (status.documented.length) {
+  console.log(`   Documented values changed into the wrong form (${status.documented.length}):`);
+  for (const m of status.documented) { console.log(`     - ${m}`); block(`documented value: ${m}`); }
+}
 if (status.review.length) {
   console.log('   Legal review:');
   for (const r of status.review) { console.log(`     - ${r}`); block(`legal review: ${r}`); }

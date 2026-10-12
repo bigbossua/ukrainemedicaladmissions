@@ -10,7 +10,7 @@
 - **Visible gaps.** A detail that is still empty appears on the page as **"[to be supplied by the owner: …]"** (visible text, read out by screen readers). A proposal appears as its draft wording followed by **"[proposed in the draft, not yet approved by the owner]"**.
 - **The draft banner** ("Draft for legal review") stays on all four pages until every required detail is supplied (no empty value, no proposal) **and** `legalReviewCompleted` is `true` with `reviewedBy` and `reviewDate` set.
 - **The check.** From `site/`, `node scripts/release-readiness.mjs` (to be wired as `npm run check:release`) lists, in plain words, every missing detail, every unapproved proposal, the review flag, any draft text left in the built pages (`dist/`, so run `npm run build` first) and any university record flagged publishable that fails the publication policy. It exits non-zero until all of that is clear. Today it exits 1 with 38 blocking items (22 missing details, 9 proposals, 3 review fields, 4 draft pages).
-- **To supply a value:** in `legal.mjs`, replace `null` (or the `proposed(...)` call) with the value as plain text; dates as `'YYYY-MM-DD'`; yes/no answers as `true` or `false`. Only items 4 and 12 accept `NOT_APPLICABLE`.
+- **To supply a value:** in `legal.mjs`, replace `null` (or the `proposed(...)` call) with the value as plain text; dates as `'YYYY-MM-DD'`; yes/no answers as `true` or `false`. Only items 4 and 12 accept `NOT_APPLICABLE` ("N/A" or "not applicable" count the same). A placeholder such as "TBC", "to be confirmed", "???" or anything in square brackets counts as not supplied, so the draft banner stays.
 
 ## 1. Already documented in the repository (not asked again)
 
