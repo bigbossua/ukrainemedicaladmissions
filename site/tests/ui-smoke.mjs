@@ -66,9 +66,23 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
           await page.fill('[data-search]', 'Odessa');
           if ((await visible()) !== names.filter((n) => n.includes('odesa')).length) fail('directory search: the spelling "Odessa" does not find Odesa');
         }
+        // Separate institutions with similar names (src/lib/name-search.mjs): a look-alike name shows the nearest names under
+        // a caution, an exact name shows no caution.
+        const caution = () => page.$eval('[data-near-match]', (el) => !el.hidden);
+        if (names.some((n) => n.includes('kharkiv national medical'))) {
+          await page.fill('[data-search]', 'Kharkiv National University');
+          if (!(await caution()) || (await visible()) === 0) fail('directory search: "Kharkiv National University" (a different institution) is not shown under the caution');
+          await page.fill('[data-search]', 'Kharkiv National Medical University');
+          if ((await caution()) || (await visible()) !== 1) fail('directory search: the exact name "Kharkiv National Medical University" is not a plain single match');
+        }
+        if (names.some((n) => n.includes('cherkasy'))) {
+          await page.fill('[data-search]', 'Cherkassy');
+          if ((await visible()) !== names.filter((n) => n.includes('cherkasy')).length) fail('directory search: the spelling "Cherkassy" does not find Cherkasy');
+        }
         await page.fill('[data-search]', 'zzqx university');
         if ((await visible()) !== 0 || (await page.textContent('[data-count]')) !== '0') fail('directory search for a non-existent name still shows cards');
         if (await page.$eval('[data-no-match]', (el) => el.hidden)) fail('directory: no-match message hidden with zero results');
+        if (await caution()) fail('directory: the similar-name caution is shown with zero results');
         if ((await page.$$eval('[data-tier]', (t) => t.filter((x) => !x.hidden).length)) !== 0) fail('directory: an empty tier heading is still shown');
         await page.click('[data-reset]');
         await page.waitForTimeout(50);

@@ -25,6 +25,8 @@ jobs:
       - run: npm run test:evidence-tools
       - name: Allowlist consistency (20 hosts = capture request = owner action sheet; offline)
         run: npm run test:allowlist
+      - name: Directory name search (full or near matches; look-alike names of separate institutions never a full match)
+        run: npm run test:search
       - name: Publication report (fails if a flagged record fails the policy)
         run: npm run report:publication
       - run: npm run build

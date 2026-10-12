@@ -89,6 +89,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
       </form>
       <p class="count" aria-live="polite" aria-atomic="true">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' City, programme, level, language and intake filters use verified facts only, so universities not yet verified do not match them.')}</p>
 
+      <p class="note near-note" data-near-match role="status" hidden>No listed name matches every word you typed. Universities with similar names can be different institutions, so check the full name before you choose.</p>
       <div data-list>
         {universities.length > 0 && (
           <div class="tier" role="region" aria-labelledby="verified-h" data-tier>
@@ -160,6 +161,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   .filters[hidden] { display: none; }
   .filters input::placeholder { color: var(--slate); opacity: 1; }
   .count { font-size: .9rem; color: var(--slate); margin-top: 0; }
+  .near-note { margin: 0 0 .75rem; max-width: 80ch; }
   .tier { margin-top: 1.5rem; }
   .tier[hidden] { display: none; }
   .tier > h2 { font-size: 1.35rem; margin-bottom: .5rem; }
@@ -176,13 +178,11 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
 
 <script>
   // Client-side search and filters over data attributes written by UniversityCard and ResearchPreviewCard.
-  // name: substring search, accent- and case-insensitive, with spelling variants of words IN the names only (never a
-  // location a name does not contain). status: verified | preview | draft. Exact-match keys: city, prep. List keys:
-  // fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
+  // name: src/lib/name-search.mjs (full matches, or near matches under a caution so that separate institutions with
+  // similar names are never presented as one). status: verified | preview | draft. Exact-match keys: city, prep. List
+  // keys: fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
+  import { searchNames } from '../../lib/name-search.mjs';
   const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
-  const VARIANTS: [RegExp, string][] = [[/\bodessa\b/g, 'odesa'], [/\bkiev\b/g, 'kyiv'], [/\bkharkov\b/g, 'kharkiv'], [/\blvov\b/g, 'lviv'], [/\blwow\b/g, 'lviv'], [/\bvinn?[iy]t?s(?:i|y)?a\b/g, 'vinnytsia'], [/\bvinnytsya\b/g, 'vinnytsia'], [/\bzaporo(?:zh|j)(?:y|i)e\b/g, 'zaporizhzhia'], [/\bzaporizhia\b/g, 'zaporizhzhia'], [/\buzhgorod\b/g, 'uzhhorod'], [/\bternopol\b/g, 'ternopil'], [/\bfrankovsk\b/g, 'frankivsk'], [/\bdnepr\b/g, 'dnipro'], [/\bpirogova?\b/g, 'pirogov'], [/\bbukovina\b/g, 'bukovinian'], [/\bbogomolec\b/g, 'bogomolets']];
-  // Words people add to a name search that the names themselves may not contain ("Kharkiv medical university Ukraine").
-  const STOP = new Set(['of', 'the', 'in', 'at', 'and', 'for', 'ukraine', 'ukrainian', 'college', 'mbbs', 'medical', 'university', 'uni', 'national', 'state']);
   const form = document.querySelector<HTMLFormElement>('[data-filters]');
   if (form) form.hidden = false;
   const search = document.querySelector<HTMLInputElement>('[data-search]');
@@ -192,15 +192,14 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   const count = document.querySelector('[data-count]');
   const noun = document.querySelector('[data-noun]');
   const noMatch = document.querySelector<HTMLElement>('[data-no-match]');
+  const nearMatch = document.querySelector<HTMLElement>('[data-near-match]');
   const query = document.querySelector('[data-query]');
-  const norm = (s: string) => { let x = s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); for (const [re, to] of VARIANTS) x = x.replace(re, to); return x; };
+  const cardList = Array.from(cards);
   function apply() {
-    const q = norm(search?.value ?? '');
+    const found = searchNames(search?.value ?? '', cardList.map((c) => c.dataset.name ?? ''));
     let n = 0;
-    cards.forEach((c) => {
-      const name = norm(c.dataset.name ?? '');
-      const words = q.split(' ').filter((w) => w && !STOP.has(w));
-      let ok = words.length === 0 || words.every((w) => name.includes(w));
+    cardList.forEach((c, i) => {
+      let ok = found.show[i];
       selects.forEach((s) => {
         if (!ok || !s.value) return;
         const [attr, mode] = MAP[s.dataset.filter!];
@@ -214,6 +213,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
     if (noun) noun.textContent = cards.length === 1 ? 'university' : 'universities';
     if (query) query.textContent = search?.value ?? '';
     if (noMatch) noMatch.hidden = n > 0 || cards.length === 0;
+    if (nearMatch) nearMatch.hidden = n === 0 || found.tier !== 'near';
   }
   selects.forEach((s) => s.addEventListener('change', apply));
   search?.addEventListener('input', apply);
