@@ -1,10 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import OwnerValue from '../../components/OwnerValue.astro';
 import { SITE } from '../../lib/site';
+// Owner details come from ONE file, src/lib/legal.mjs (completion guide: LEGAL_COMPLETION_CHECKLIST.md).
+import { documented, legalPagesComplete } from '../../lib/legal.mjs';
+const complete = legalPagesComplete();
+const email: string = documented('contact.email');
+const paidServicesOffered = documented('paidServices.offered') === true;
 ---
 <Base title="Terms of use" description="Terms of use for the Ukraine Medical Admissions website and information service.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Terms of use</h1><p>Draft for legal review — effective date to be set before publication.</p></div></div>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Terms of use</h1>
+    {complete
+      ? <p>Effective date: <OwnerValue path="effectiveDate" />.</p>
+      : <p>Draft for legal review — effective date: <OwnerValue path="effectiveDate" />.</p>}
+  </div></div>
   <Breadcrumbs items={[{ label: 'Terms' }]} />
   <section style="padding-top:1rem"><div class="wrap prose">
     <h2>Information on this site</h2>
@@ -14,10 +24,24 @@ import { SITE } from '../../lib/site';
     <h2>Independence</h2>
     <p>{SITE.disclaimer}</p>
     <h2>Our services</h2>
-    <p>Starting an enquiry or application on this site is free. Any paid support service will be described in full — inclusions, exclusions, price, payment timing and refund terms — before you choose it, and separately from any university fee. [Service terms to be added when services are approved.]</p>
+    <p>Starting an enquiry or application on this site is free. Any paid support service will be described in full — inclusions, exclusions, price, payment timing and refund terms — before you choose it, and separately from any university fee.</p>
+    {paidServicesOffered && <p>Service terms: <OwnerValue path="paidServices.terms" /></p>}
     <h2>Acceptable use</h2>
     <p>You agree to provide accurate information and not to submit documents that are forged or that you are not entitled to use.</p>
+    <h2>Who we are</h2>
+    <ul>
+      <li>Legal entity: <OwnerValue path="entity.name" /></li>
+      <li>Legal form: <OwnerValue path="entity.type" /></li>
+      <li>Country of registration: <OwnerValue path="entity.country" /></li>
+      <li>Registration number: <OwnerValue path="entity.registrationNumber" /></li>
+      <li>Registered address: <OwnerValue path="entity.address" /></li>
+    </ul>
+    <h2>Law and disputes</h2>
+    <ul>
+      <li>Governing law: <OwnerValue path="governingLaw" /></li>
+      <li>Courts: <OwnerValue path="courts" /></li>
+    </ul>
     <h2>Contact</h2>
-    <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    <p><a href={`mailto:${email}`}>{email}</a></p>
   </div></section>
 </Base>
