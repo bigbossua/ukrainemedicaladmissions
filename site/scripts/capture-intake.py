@@ -33,11 +33,11 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 SLUG = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 TEXT_EXT = {'.html', '.htm', '.txt'}
 IMAGE_EXT = {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.tif', '.tiff', '.bmp'}
-CONTROL = re.compile(r'[\x00-\x08\x0b-\x1f\x7f-\x9f]')
+CONTROL = re.compile('[\x00-\x1f\x7f-\x9f\u2028\u2029]')  # line breaks too: every printed name or path stays on its own line
 
 
 def safe(s):
-    """Text from a capture or a file name, made safe to print in a terminal (no control characters)."""
+    """Text from a capture or a file name, made safe to print on one line of a terminal (no control characters or line breaks)."""
     return CONTROL.sub(' ', str(s))
 
 

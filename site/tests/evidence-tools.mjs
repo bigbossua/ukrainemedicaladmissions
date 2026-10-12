@@ -15,7 +15,7 @@
 // Prints "evidence-tools: N checks, M failures".
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
+import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync, mkdirSync, readdirSync, existsSync, symlinkSync } from 'node:fs';
 import { join, resolve, dirname, relative, isAbsolute } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -326,6 +326,10 @@ guard('capture-intake.py', () => {
   const og = intake([join(gitLike, 'caps'), SLUG]);
   check(og.status === 2 && og.stderr.includes('inside a git working tree'), 'refuses a folder inside another git working tree');
   check(intake([join(TMP, 'missing-folder'), SLUG]).status === 2, 'refuses a folder that does not exist');
+  const linkIn = join(TMP, 'link-into-repo');
+  symlinkSync(FIX, linkIn, 'dir');
+  const li = intake([linkIn, SLUG]);
+  check(li.status === 2 && li.stderr.includes('inside the repository'), 'refuses a symbolic link outside the repository that points to a folder inside it (the real path is checked)');
 
   const caps = join(TMP, 'captures');
   mkdirSync(caps);
@@ -335,6 +339,7 @@ guard('capture-intake.py', () => {
   writeFileSync(join(caps, `${SLUG}--03--fees.pdf`), pdf(['Fixture cover page', `Fixture tuition fee for the ${AY.slice(0, 4)}/20${AY.slice(5)} academic year`]));
   writeFileSync(join(caps, 'notes.txt'), 'Fixture plain text capture phrase.\n');
   writeFileSync(join(caps, `${SLUG}--09--extra.png`), Buffer.from([0x89, 0x50, 0x4e, 0x47]));
+  writeFileSync(join(caps, 'forged\nREFUSED: fake.txt'), 'x');
   const sha = (f) => createHash('sha256').update(readFileSync(join(caps, f))).digest('hex');
   const feePhrase = `tuition fee for the ${AY.slice(0, 4)}/20${AY.slice(5)}`;
   const run = intake([caps, SLUG, '--register', join(FIX, 'EVIDENCE_REGISTER.md'), '--find', 'admits   INTERNATIONAL applicants', '--find', feePhrase, '--find', 'FIXTURE-SCRIPT-CANARY', '--find', 'plain text capture']);
@@ -344,6 +349,7 @@ guard('capture-intake.py', () => {
   check(/Rows with a capture:\n\s+1\. Fixture admission page: .*--01--admission\.html\n\s+3\. Fixture fee schedule: .*--03--fees\.pdf/.test(out), 'register rows 1 and 3 have a capture');
   check(/still missing a capture[^\n]*\n\s+2\. Fixture contacts page\n\s+4\. To locate: Fixture dated statement/.test(out), 'register rows 2 and 4 are listed as missing');
   check(out.includes('notes.txt: does not follow') && out.includes('row 9 is not in section A'), 'misnamed files and unknown rows are reported');
+  check(!out.includes('\nREFUSED: fake') && out.includes('| forged REFUSED: fake.txt | 1 |'), 'a line break in a file name is printed as a space, so a name cannot forge a line of the report');
   check(/Phrase "admits   INTERNATIONAL applicants": 1 match\(es\)\n\s+fixture-tools-medical-university--01--admission\.html, page 1: .*\[\[admits international applicants\]\]/.test(out), 'finds a phrase in an HTML capture across a line break, ignoring case, with its page');
   check(/Phrase "FIXTURE-SCRIPT-CANARY": 0 match/.test(out), 'script content is not treated as page text');
   check(/Phrase "plain text capture": 1 match\(es\)\n\s+notes\.txt, page 1/.test(out), 'finds a phrase in a text capture');
