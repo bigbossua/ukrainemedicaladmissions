@@ -570,8 +570,15 @@ section('N24 (a) programme names');
   const offsite = withQuote('Medicine admits foreign citizens.', (x) => { const y = entry('programmes.medicine.internationalAdmission', true, { n: 2, sourceUrl: 'https://best-agent.example/medicine', quotation: 'CANARY Medicine admits foreign citizens.' }); x.entries.find((z) => z.claimPath === 'programmes.medicine.internationalAdmission').quotation = 'Admitted.'; x.entries.push(y); return x; });
   eq(listed(rec, offsite), '', 'a name found only in the quotation of an agent-site entry does not count');
   eq(listed(rec, withQuote('Foreign citizens are admitted.'), { PROGRAMME_NAME_REQUIRES_QUOTATION: false }), 'medicine', 'owner setting PROGRAMME_NAME_REQUIRES_QUOTATION=false lists the programme without the check');
+  // A name joined to another word by a hyphen is part of that word (review 2026-10-12).
+  eq(listed(rec, withQuote('The Pre-Medicine foundation year admits foreign citizens.')), '', 'a name found only inside a hyphenated word ("Medicine" in "Pre-Medicine") does not count');
+  eq(listed(rec, withQuote("Foreign citizens are admitted to 'Medicine' and to Pre-Medicine.")), 'medicine', 'positive control: a quoted name (in quotation marks) still counts');
   // containsPhrase
   check(containsPhrase('Kyiv, 1 Main Street', 'kyiv') && containsPhrase('a  b', 'A B') && !containsPhrase('Lvivska Street', 'Lviv') && !containsPhrase('x', '') && !containsPhrase(null, 'x') && containsPhrase('вул. Пирогова, Вінниця', 'вінниця') && !containsPhrase('Вінницька область', 'Вінниця'), 'containsPhrase: whole words, any letter case, Cyrillic included');
+  check(!containsPhrase('2 Halytska St, Ivano-Frankivsk', 'Ivano') && !containsPhrase('2 Halytska St, Ivano-Frankivsk', 'Frankivsk') && containsPhrase('2 Halytska St, Ivano-Frankivsk', 'ivano-frankivsk')
+    && !containsPhrase("1 Main St, Kam'ianets-Podilskyi", 'Kam') && !containsPhrase('1 Main St, Kam’ianets-Podilskyi', 'Kamianets') && !containsPhrase('Pre-Medicine', 'Medicine')
+    && containsPhrase('‘Medicine’ admits', 'Medicine') && containsPhrase('Lviv – 79010', 'Lviv') && containsPhrase('Lviv - 79010', 'Lviv') && containsPhrase('м.Вінниця', 'Вінниця'),
+  'containsPhrase: a hyphen or apostrophe between letters joins one word; quotation marks and spaced dashes still separate words');
 }
 
 section('N24 (a) city and region');
@@ -589,6 +596,8 @@ section('N24 (a) city and region');
   check(!('region' in p2) && p2.editorialWithheld.region === true && !JSON.stringify(p2).includes('CANARY'), 'a region that is not in the verified address is left out');
   const [r3, e3] = withAddress('1 Testvilleska Street');
   eq(toPublicRecord(r3, e3, { now: NOW }).city, 'To be confirmed', 'a city found only inside a longer word does not count');
+  const [r3b, e3b] = withAddress('1 Test Street, Testville-Podilskyi');
+  eq(toPublicRecord(r3b, e3b, { now: NOW }).city, 'To be confirmed', 'a city found only as part of a hyphenated place name ("Testville" in "Testville-Podilskyi") does not count');
   const [r4, e4] = withAddress('1 Test Street, Testville');
   e4.entries = e4.entries.filter((y) => y.claimPath !== 'address');
   const p4 = toPublicRecord(r4, e4, { now: NOW });

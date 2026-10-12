@@ -227,19 +227,29 @@ export const editorialTextHash = (text) => createHash('sha256').update(typeof te
 
 /** Unicode NFC, lower case, every run of white space one space, trimmed. @param {string} s */
 const normaliseText = (s) => s.normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim();
-const WORD_CHAR = /[\p{L}\p{N}]/u;
+const WORD_CHAR = /[\p{L}\p{N}\p{M}]/u;
+/** A hyphen or apostrophe between two word characters joins them into one word ("Ivano-Frankivsk", "Kam'ianets"). */
+const JOINER = /[-‐‑'’ʼ]/u;
+/** @param {string | undefined} c */
+const isWordChar = (c) => typeof c === 'string' && c.length > 0 && WORD_CHAR.test(c);
+/** @param {string | undefined} c */
+const isJoiner = (c) => typeof c === 'string' && c.length > 0 && JOINER.test(c);
 /**
- * True when `phrase` occurs in `text` as whole words, ignoring letter case and repeated white space: the characters
- * either side of the match are not letters or digits ("Lviv" is not found in "Lvivska Street"). An empty phrase is
- * never found. @param {unknown} text @param {unknown} phrase
+ * True when `phrase` occurs in `text` as whole words, ignoring letter case and repeated white space: the match is not
+ * joined to a letter or digit on either side, directly or through a hyphen or apostrophe ("Lviv" is not found in
+ * "Lvivska Street", "Ivano" or "Frankivsk" not in "Ivano-Frankivsk", "Medicine" not in "Pre-Medicine"; a quotation
+ * mark, or a dash with a space beside it, still separates words). An empty phrase is never found.
+ * @param {unknown} text @param {unknown} phrase
  */
 export function containsPhrase(text, phrase) {
   if (typeof text !== 'string' || typeof phrase !== 'string') return false;
   const t = normaliseText(text), p = normaliseText(phrase);
   if (!p) return false;
   for (let i = t.indexOf(p); i !== -1; i = t.indexOf(p, i + 1)) {
-    const before = i > 0 ? t[i - 1] : '', after = t[i + p.length] ?? '';
-    if (!(before && WORD_CHAR.test(before)) && !(after && WORD_CHAR.test(after))) return true;
+    const j = i + p.length;
+    const joinedBefore = isWordChar(t[i - 1]) || (isJoiner(t[i - 1]) && isWordChar(t[i - 2]));
+    const joinedAfter = isWordChar(t[j]) || (isJoiner(t[j]) && isWordChar(t[j + 1]));
+    if (!joinedBefore && !joinedAfter) return true;
   }
   return false;
 }
