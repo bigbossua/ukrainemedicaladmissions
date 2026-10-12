@@ -1,0 +1,1642 @@
+[
+ {
+  "slug": "bogomolets-national-medical-university",
+  "name": "Bogomolets National Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Kyiv",
+  "flags": "",
+  "aliases": [
+   "Kiev",
+   "NMU",
+   "O. O. Bogomolets",
+   "O.O. Bogomolets National Medical University",
+   "НМУ імені О.О. Богомольця",
+   "Національний медичний університет імені О.О. Богомольця"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 20,
+    "keyword": "bogomolets national medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 320,
+    "keyword": "bogomolets national medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 20,
+    "keyword": "bogomolets national medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 20,
+    "keyword": "bogomolets national medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 90,
+    "keyword": "bogomolets national medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   },
+   "za": {
+    "volume": 20,
+    "keyword": "bogomolets national medical university",
+    "file": "2026-10-11-P3-phrase_these-za-universities.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "bogomolets national medical university",
+    "volume": 320,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "bogomolets national medical university ukraine",
+    "volume": 320,
+    "file": "2026-10-10-phrase_fullsearch-in-ukraine-medical.csv"
+   },
+   {
+    "keyword": "bogomolets national medical university ukraine",
+    "volume": 320,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/bogomolets-national-medical-university/"
+  ],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "bukovinian-state-medical-university",
+  "name": "Bukovinian State Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Chernivtsi",
+  "flags": "",
+  "aliases": [
+   "BSMU",
+   "Bukovina",
+   "БДМУ",
+   "Буковинський державний медичний університет"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 40,
+    "keyword": "bukovinian state medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 480,
+    "keyword": "bukovinian state medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 30,
+    "keyword": "bukovinian state medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 30,
+    "keyword": "bukovinian state medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "bukovinian state medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   },
+   "za": {
+    "volume": 20,
+    "keyword": "bukovinian state medical university",
+    "file": "2026-10-11-P3-phrase_these-za-universities.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "bukovinian state medical university",
+    "volume": 480,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "bukovinian state medical university ukraine",
+    "volume": 20,
+    "file": "2026-10-10-phrase_fullsearch-uk-ukraine-medical.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/bukovinian-state-medical-university/"
+  ],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "danylo-halytsky-lviv-national-medical-university",
+  "name": "Danylo Halytsky Lviv National Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Lviv",
+  "flags": "",
+  "aliases": [
+   "LNMU",
+   "Lvov",
+   "ЛНМУ",
+   "Львівський національний медичний університет імені Данила Галицького"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 30,
+    "keyword": "lviv national medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 50,
+    "keyword": "lviv national medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 30,
+    "keyword": "lviv national medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 30,
+    "keyword": "lviv national medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "lviv national medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "danylo halytsky",
+    "volume": 110,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "danylo halytsky lviv national medical university",
+    "volume": 110,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "danylo halytsky medical university",
+    "volume": 110,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/danylo-halytsky-lviv-national-medical-university/"
+  ],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "dnipro-state-medical-university",
+  "name": "Dnipro State Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Dnipro",
+  "flags": "",
+  "aliases": [
+   "DSMU",
+   "Dnepr",
+   "Dnipropetrovsk Medical Academy (former name)",
+   "ДДМУ"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "dnipro state medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "dnipro state medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 0
+ },
+ {
+  "slug": "ivano-frankivsk-national-medical-university",
+  "name": "Ivano-Frankivsk National Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Ivano-Frankivsk",
+  "flags": "",
+  "aliases": [
+   "IFNMU",
+   "Ivano-Frankovsk",
+   "ІФНМУ",
+   "Івано-Франківський національний медичний університет"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 20,
+    "keyword": "ivano frankivsk national medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 210,
+    "keyword": "ivano frankivsk national medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 20,
+    "keyword": "ivano frankivsk national medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 20,
+    "keyword": "ivano frankivsk national medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "ivano frankivsk national medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "kharkiv-national-medical-university",
+  "name": "Kharkiv National Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Kharkiv",
+  "flags": "front-line region",
+  "aliases": [
+   "KhNMU",
+   "Kharkov",
+   "ХНМУ"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 10,
+    "keyword": "kharkiv national medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 390,
+    "keyword": "kharkiv national medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 10,
+    "keyword": "kharkiv national medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 10,
+    "keyword": "kharkiv national medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "kharkiv national medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   },
+   "za": {
+    "volume": 10,
+    "keyword": "kharkiv national medical university",
+    "file": "2026-10-11-P3-phrase_these-za-universities.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "odesa-national-medical-university",
+  "name": "Odesa National Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Odesa",
+  "flags": "",
+  "aliases": [
+   "ONMedU",
+   "Odessa",
+   "Odessa National Medical University",
+   "ОНМедУ",
+   "Одеський національний медичний університет"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 20,
+    "keyword": "odessa national medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 390,
+    "keyword": "odessa national medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 20,
+    "keyword": "odessa national medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 20,
+    "keyword": "odessa national medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "odessa national medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   },
+   "za": {
+    "volume": 20,
+    "keyword": "odessa national medical university",
+    "file": "2026-10-11-P3-phrase_these-za-universities.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "odessa medical university",
+    "volume": 320,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "odessa national medical university",
+    "volume": 320,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "odessa national medical university ukraine",
+    "volume": 20,
+    "file": "2026-10-11-P3-phrase_fullsearch-ng-ukraine-medical.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/odessa-state-medical-university/"
+  ],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "poltava-state-medical-university",
+  "name": "Poltava State Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Poltava",
+  "flags": "",
+  "aliases": [
+   "PDMU",
+   "PSMU",
+   "Ukrainian Medical Stomatological Academy (former name)",
+   "ПДМУ"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "poltava state medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "poltava state medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 2
+ },
+ {
+  "slug": "ternopil-national-medical-university",
+  "name": "I. Horbachevsky Ternopil National Medical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Ternopil",
+  "flags": "",
+  "aliases": [
+   "Ivan Horbachevsky Ternopil National Medical University",
+   "TDMU",
+   "TNMU",
+   "Ternopil State Medical University (former name)",
+   "Ternopol"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 20,
+    "keyword": "ternopil national medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 110,
+    "keyword": "ternopil national medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 20,
+    "keyword": "ternopil national medical university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 20,
+    "keyword": "ternopil national medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "ternopil national medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "vinnytsia-national-pirogov-memorial-medical-university",
+  "name": "National Pirogov Memorial Medical University, Vinnytsya",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Vinnytsia",
+  "flags": "",
+  "aliases": [
+   "National Pirogov Memorial Medical University, Vinnytsya",
+   "Pirogov",
+   "VNMU",
+   "Vinnitsa",
+   "Vinnytsia National Medical University",
+   "ВНМУ"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 390,
+    "keyword": "pirogov medical university ukraine",
+    "file": "2026-10-12-phrase_these-in-vinnytsia-zaporizhzhia-names.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "pirogov medical university ukraine",
+    "volume": 390,
+    "file": "2026-10-10-phrase_fullsearch-in-ukraine-medical.csv"
+   },
+   {
+    "keyword": "pirogov medical university ukraine",
+    "volume": 260,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   },
+   {
+    "keyword": "pirogov medical university ukraine",
+    "volume": 40,
+    "file": "2026-10-10-phrase_fullsearch-uk-ukraine-medical.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/national-pirogov-memorial-medical-university/"
+  ],
+  "recordPrograms": 3
+ },
+ {
+  "slug": "zaporizhzhia-state-medical-and-pharmaceutical-university",
+  "name": "Zaporizhzhia State Medical and Pharmaceutical University",
+  "group": "A",
+  "groupName": "Dedicated state medical universities (Ministry of Health)",
+  "city": "Zaporizhzhia",
+  "flags": "teaching location question (Berehove)",
+  "aliases": [
+   "ZSMPhU",
+   "ZSMU",
+   "ZSMU (former abbreviation)",
+   "Zaporizhzhia State Medical University (former name)",
+   "Zaporozhye State Medical University (former name)"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 20,
+    "keyword": "zaporizhzhia state medical university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 90,
+    "keyword": "zaporizhzhia state medical university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 20,
+    "keyword": "zaporizhzhia state medical university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "zaporizhzhia state medical university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "zaporozhye state medical university",
+    "volume": 170,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/zaporozhye-state-medical-university/"
+  ],
+  "recordPrograms": 5
+ },
+ {
+  "slug": "national-university-of-pharmacy",
+  "name": "National University of Pharmacy",
+  "group": "B",
+  "groupName": "State pharmacy university",
+  "city": "Kharkiv",
+  "flags": "front-line region",
+  "aliases": [
+   "NFaU",
+   "NFaU / НФаУ (Ukrainian abbreviation, shown as 'Національний фармацевтичний університет (НФаУ)' on third-party education.ua)",
+   "NUPh",
+   "National Pharmaceutical University",
+   "National Pharmaceutical University (alternative English rendering seen in discovery; not confirmed by an official page in this round)",
+   "Natsionalnyi farmatsevtychnyi universytet",
+   "НФаУ",
+   "Національний фармацевтичний університет",
+   "Національний фармацевтичний університет (Natsionalnyi farmatsevtychnyi universytet)"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": "NGP–",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 40,
+    "keyword": "national university of pharmacy",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "uzhhorod-national-university",
+  "name": "Uzhhorod National University",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Uzhhorod",
+  "flags": "",
+  "aliases": [
+   "DVNZ Uzhhorod National University",
+   "UzhNU",
+   "Uzhgorod",
+   "УжНУ",
+   "Ужгородський національний університет"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": null,
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "ae": {
+    "volume": 20,
+    "keyword": "uzhhorod national university",
+    "file": "2026-10-11-P3-phrase_these-ae-universities.csv"
+   },
+   "in": {
+    "volume": 140,
+    "keyword": "uzhhorod national university",
+    "file": "2026-10-11-R2-phrase_these-in-universities-cities.csv"
+   },
+   "ng": {
+    "volume": 20,
+    "keyword": "uzhhorod national university",
+    "file": "2026-10-11-R2-phrase_these-ng-universities-cities.csv"
+   },
+   "pk": {
+    "volume": 20,
+    "keyword": "uzhhorod national university",
+    "file": "2026-10-11-P3-phrase_these-pk-universities.csv"
+   },
+   "uk": {
+    "volume": 20,
+    "keyword": "uzhhorod national university",
+    "file": "2026-10-11-R2-phrase_these-uk-universities-cities.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "sumy-state-university",
+  "name": "Sumy State University (Medical Institute)",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Sumy",
+  "flags": "border region; reported strikes on campus",
+  "aliases": [
+   "Medical Institute of Sumy State University",
+   "SSU",
+   "SSU (abbreviation used on SumDU news pages)",
+   "SumDU",
+   "SumDU Medical Institute",
+   "Sumy State Medical University (agency name)",
+   "Sumy State Medical University (third-party agency name, moksh16.com; unresolved whether it means SumDU)",
+   "Sumy State University",
+   "Sumy State University (Medical Institute)",
+   "Sumy State University Academic and Research Medical Institute (unconfirmed form; not seen in this round's results)",
+   "Sumy State University Academic and Research Medical Institute (unconfirmed form; only a truncated official page title \"Academic and Research\" was seen)",
+   "Сумський державний університет",
+   "Сумський державний університет (Ukrainian name of the parent university, as in a zaxid.net headline)"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": "NGPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 110,
+    "keyword": "sumy state university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "sumy state medical university ukraine",
+    "volume": 20,
+    "file": "2026-10-11-P3-phrase_fullsearch-pk-ukraine-medical.csv"
+   }
+  ],
+  "demandNote": "\"sumy state medical university\" is an agency name, not the official one",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "taras-shevchenko-national-university-of-kyiv",
+  "name": "Taras Shevchenko National University of Kyiv (Institute of Biology and Medicine)",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Kyiv",
+  "flags": "",
+  "aliases": [
+   "ESC Institute of Biology and Medicine",
+   "Educational and Scientific Center \"Institute of Biology and Medicine\" (title of knu.ua/en/departments/bm/)",
+   "Educational and Scientific Center \"Institute of Biology and Medicine\" (unit of the university)",
+   "Institute of Biology and Medicine Department of Medicine of Taras Shevchenko National University of Kyiv (wording in a Karazin University news title)",
+   "KNU",
+   "KNU Institute of Biology and Medicine",
+   "Kiev National University",
+   "Kyiv National University Department of Medicine",
+   "Київський національний університет імені Тараса Шевченка",
+   "НАВЧАЛЬНО-НАУКОВИЙ ЦЕНТР \"ІНСТИТУТ БІОЛОГІЇ ТА МЕДИЦИНИ\" (title on biomed.knu.ua)",
+   "ННЦ \"Інститут біології та медицини\"",
+   "ННЦ \"Інститут біології та медицини\" (vstup.osvita.ua cards)",
+   "Навчально-науковий центр \"Інститут біології та медицини\""
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": "NGP–",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "taras shevchenko national university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "petro-mohyla-black-sea-national-university",
+  "name": "Petro Mohyla Black Sea National University",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Mykolaiv",
+  "flags": "",
+  "aliases": [
+   "Black Sea National University named after Petro Mohyla (SUCHO database title)",
+   "CHMNU",
+   "ChMNU",
+   "ChMNU / CHMNU",
+   "ChNU",
+   "Medical Institute of Petro Mohyla Black Sea National University (results show 'medical institute' / Медичний інститут as a unit; exact official English name unconfirmed)",
+   "Medical Institute of Petro Mohyla Black Sea National University (unit of the university; exact official English name unconfirmed)",
+   "Mykolayiv",
+   "Nikolaev",
+   "PMBSNU",
+   "Petro Mohyla Black Sea State University (Wikipedia title)",
+   "ЧНУ",
+   "ЧНУ / ЧНУ імені Петра Могили",
+   "ЧНУ імені Петра Могили",
+   "Чорноморський національний університет імені Петра Могили"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": "NGP–",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 30,
+    "keyword": "black sea national university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "bohdan-khmelnytsky-national-university-of-cherkasy",
+  "name": "Bohdan Khmelnytsky National University of Cherkasy",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Cherkasy",
+  "flags": "",
+  "aliases": [
+   "Bohdan Khmelnytsky Cherkasy National University",
+   "ChNU (abbreviation also used by Yuriy Fedkovych Chernivtsi National University, a different institution)",
+   "ChNU (abbreviation also used by Yuriy Fedkovych Chernivtsi National University, chnu.edu.ua, a different institution)",
+   "Cherkassy",
+   "Cherkasy National University",
+   "National University of Cherkasy (uniRank listing slug)",
+   "ЧНУ",
+   "Черкаський національний університет імені Богдана Хмельницького"
+  ],
+  "directory": "research preview (name only, noindex)",
+  "skepticChecks": "NGP–",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "cherkasy national university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": 1
+ },
+ {
+  "slug": "karazin-kharkiv-national-university",
+  "name": "V. N. Karazin Kharkiv National University (School of Medicine)",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Kharkiv",
+  "flags": "front-line region",
+  "aliases": [
+   "Karazin University",
+   "Kharkiv University imeni Karazina (zaxid.net headline: 'Харківський університет імені Каразіна')",
+   "Kharkov National University",
+   "School of Medicine, V. N. Karazin Kharkiv National University",
+   "V.N. Karazin Kharkiv National University",
+   "Каразінський Університет (Ukrainian title shown on cie.karazin.ua result)",
+   "Харківський національний університет імені В.Н. Каразіна (from unirank result URL slug)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "––PQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "kharkiv national university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "lesya-ukrainka-volyn-national-university",
+  "name": "Lesya Ukrainka Volyn National University",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Lutsk",
+  "flags": "no programme for foreigners shown",
+  "aliases": [
+   "Eastern European National University (former name)",
+   "Educational and Scientific Medical Institute (name of the medical unit 2020-2021, per university page; renamed Medical Faculty 30 Sept 2021)",
+   "LUVNU (abbreviation used on a university page)",
+   "Medical Faculty (current name of the medical unit per university pages)",
+   "Medical Institute / Faculty of medicine (alternate unit names appearing on separate vnu.edu.ua pages; inconsistency not resolved)",
+   "VNU",
+   "Volyn National University named after Lesya Ukrainka",
+   "Волинський національний університет імені Лесі Українки"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "NG––",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "zaporizhzhia-national-university",
+  "name": "Zaporizhzhia National University",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Zaporizhzhia",
+  "flags": "no medical programme shown",
+  "aliases": [
+   "ZNU",
+   "Запорізький національний університет (Ukrainian form used in the search; the slug 'запорізький-національний-університет' appears in a uniRank URL)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G–Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "zaporizhzhia national university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kherson-state-university",
+  "name": "Kherson State University",
+  "group": "C",
+  "groupName": "State multi-faculty universities with a medical faculty or institute (or claimed to have one)",
+  "city": "Kherson",
+  "flags": "reported relocated; no medical programme for foreigners shown",
+  "aliases": [
+   "KSU",
+   "KhSU",
+   "Kherson State University Medical Faculty",
+   "Medical Faculty (Archive) (page title shown for kspu.edu/About/Faculty/Medicine?culture=en)",
+   "Медичний факультет (faculty field on vstup.osvita.ua 2025 listing)",
+   "Факультет медицини, здоров'я та спорту (faculty name on vstup.osvita.ua 2026 Pharmacy listing, tool paraphrase)",
+   "Херсонський державний університет (ХДУ)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–––Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "donetsk-national-medical-university",
+  "name": "Donetsk National Medical University",
+  "group": "D",
+  "groupName": "Relocated state medical universities",
+  "city": "base unsettled (Kropyvnytskyi / Kramatorsk / Lyman reported)",
+  "flags": "reported relocated",
+  "aliases": [
+   "DNMU",
+   "DONETSK NATIONAL MEDICAL UNIVERSITY",
+   "Donetsk National Medical University (Kropyvnytskyi Campus)",
+   "Donetsk State Medical University",
+   "Донецький національний медичний університет (ДНМУ)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "NGPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 20,
+    "keyword": "donetsk national medical university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "luhansk-state-medical-university",
+  "name": "Luhansk State Medical University",
+  "group": "D",
+  "groupName": "Relocated state medical universities",
+  "city": "Rivne (reported, temporary)",
+  "flags": "reported relocated; name shared with the occupied-territory institution",
+  "aliases": [
+   "LSMU",
+   "Lugansk",
+   "Lugansk State Medical University",
+   "Luhansk State Medical University",
+   "SE \"LSMU\" (form used on lsmu.edu.ua pages)",
+   "Державний заклад \"Луганський державний медичний університет\"",
+   "ЛДМУ",
+   "Луганський державний медичний університет"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "NGP–",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 390,
+    "keyword": "lugansk state medical university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "lugansk medical university ukraine",
+    "volume": 20,
+    "file": "2026-10-11-P3-phrase_fullsearch-ng-ukraine-medical.csv"
+   }
+  ],
+  "demandNote": "the name is shared with the occupied-territory institution; the figure cannot be split",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "shupyk-national-healthcare-university",
+  "name": "Shupyk National Healthcare University of Ukraine",
+  "group": "E",
+  "groupName": "Postgraduate and military institutions (not a first-degree route for international applicants)",
+  "city": "Kyiv",
+  "flags": "postgraduate",
+  "aliases": [
+   "NMAPE / NMAPO (former abbreviations; former domain nmapo.edu.ua suggested only by the slug 'old-nmapo-edu-ua' on the current site, not verified)",
+   "NUOZU / НУОЗ України імені П. Л. Шупика",
+   "National Medical Academy of Postgraduate Education named after P.L. Shupyk (former name variant; used by Fulbright Scholars page and in a 2023 rector-candidate programme)",
+   "Natsionalnyi universytet okhorony zdorovia Ukrainy imeni P. L. Shupyka (Ukrainian: Національний університет охорони здоров'я України імені П. Л. Шупика)",
+   "P. L. Shupyk National Medical Academy of Postgraduate Education (former name)",
+   "P.L. Shupyk National Medical Academy of Postgraduate Education (former name, per MoH order No. 225 of 10 Feb 2021 as quoted on nuozu.edu.ua)",
+   "Shupyk NHU of Ukraine (self-abbreviation used on nuozu.edu.ua)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G––",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kharkiv-medical-academy-of-postgraduate-education",
+  "name": "Kharkiv Medical Academy of Postgraduate Education",
+  "group": "E",
+  "groupName": "Postgraduate and military institutions (not a first-degree route for international applicants)",
+  "city": "Kharkiv",
+  "flags": "postgraduate",
+  "aliases": [
+   "KhMAPE (abbreviation used in search-tool summary only; not confirmed from an official source)",
+   "Kharkiv Medical Academy of Post-graduate Education (Wikipedia article title)",
+   "Харківська медична академія післядипломної освіти (Ukrainian name, as quoted in a KhNMU repository result)",
+   "клінічний інститут удосконалення лікарів (former name per KhNMU repository result; tool paraphrase)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G–Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "ukrainian-military-medical-academy",
+  "name": "Ukrainian Military Medical Academy",
+  "group": "E",
+  "groupName": "Postgraduate and military institutions (not a first-degree route for international applicants)",
+  "city": "Kyiv (third-party lead)",
+  "flags": "Ministry of Defence; admission rules found target Ukrainian citizens and military entrants",
+  "aliases": [
+   "UMMA (abbreviation used in a third-party search summary, not confirmed from an official page)",
+   "UVMA",
+   "УВМА",
+   "Українська військово-медична академія"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kyiv-medical-university",
+  "name": "Kyiv Medical University",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Kyiv (branches reported)",
+  "flags": "licence and accreditation questions; Polish campus",
+  "aliases": [
+   "KMU",
+   "Kyiv Medical University of UAFM (former name)",
+   "Kyiv Medical University of UAFM (older name per Wikipedia article title and Findcourse listing; the expansion of UAFM is not stated in any result)",
+   "Київський медичний університет (КМУ)",
+   "ПВНЗ «Київський медичний університет» (rector's reports)",
+   "Приватний вищий навчальний заклад «Київський медичний університет» (uniRank URL slug)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "NGPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 140,
+    "keyword": "kyiv medical university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "kiev medical university ukraine",
+    "volume": 20,
+    "file": "2026-10-11-P3-phrase_fullsearch-ng-ukraine-medical.csv"
+   }
+  ],
+  "demandNote": "searchers may mean another Kyiv medical university (for example Bogomolets); the figure cannot be split",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "international-european-university",
+  "name": "International European University",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Kyiv",
+  "flags": "licence questions; Malta campus licence reported revoked",
+  "aliases": [
+   "European Medical School of International European University (IEU unit, medicine.ieu.edu.ua)",
+   "IEU",
+   "International European University, Malta (name used on IEU's Malta subdomains)",
+   "PRIVATE HIGHER EDUCATION INSTITUTION 'INTERNATIONAL EUROPEAN UNIVERSITY' (EDEBO English name, per tool paraphrase)",
+   "МЄУ",
+   "Міжнародний європейський університет",
+   "ПРИВАТНИЙ ЗАКЛАД ВИЩОЇ ОСВІТИ \"МІЖНАРОДНИЙ ЄВРОПЕЙСЬКИЙ УНІВЕРСИТЕТ\" (EDEBO registry title)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "NGPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 590,
+    "keyword": "international european university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [
+   {
+    "keyword": "ieu university",
+    "volume": 170,
+    "file": "2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv"
+   }
+  ],
+  "demandNote": "",
+  "competitorPages": [
+   "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/international-european-university/"
+  ],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kharkiv-international-medical-university",
+  "name": "Kharkiv International Medical University",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Kharkiv",
+  "flags": "accreditation found only to 2021",
+  "aliases": [
+   "KHIMU",
+   "KhIMU",
+   "Private Institution of Higher Education \"Kharkiv International Medical University\" (EQAR/DEQAR record title)",
+   "Приватний вищий навчальний заклад «Харківський міжнародний медичний університет» (education.ua directory title)",
+   "ХММУ (abbreviation used by search summariser; not confirmed from an official source)",
+   "Харківський міжнародний медичний університет"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "NGPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {
+   "in": {
+    "volume": 10,
+    "keyword": "kharkiv international medical university",
+    "file": "2026-10-12-phrase_these-in-new-university-names.csv"
+   }
+  },
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "odesa-international-medical-university",
+  "name": "Odesa International Medical University",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Odesa",
+  "flags": "domain unsettled",
+  "aliases": [
+   "OIMU",
+   "Odessa International Medical University",
+   "Одесский Международный Медицинский Университет",
+   "Одеський міжнародний медичний університет",
+   "Приватний заклад вищої освіти \"Одеський міжнародний медичний університет\""
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–GPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kyiv-international-university",
+  "name": "Kyiv International University",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Kyiv",
+  "flags": "no government listing found",
+  "aliases": [
+   "International Institute of Linguistics and Law (former name, per Wikipedia summary; renamed 2002)",
+   "KIU",
+   "KyIU",
+   "Kyiv International University",
+   "КиМУ",
+   "Київський міжнародний університет",
+   "Приватний заклад вищої освіти «Київський міжнародний університет»"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "N–P–",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "international-humanitarian-university",
+  "name": "International Humanitarian University (Odesa)",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Odesa",
+  "flags": "domain unsettled",
+  "aliases": [
+   "IHU",
+   "International Humanitarian University",
+   "Medical Professional College of the International Humanitarian University (Медичний фаховий коледж Міжнародного гуманітарного університету) – affiliated college, junior-specialist level",
+   "МГУ",
+   "Медичний фаховий коледж Міжнародного університету (college name as shown on education.ua; whether the parent was renamed 'Міжнародний університет' has not been confirmed)",
+   "Міжнародний гуманітарний університет"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G–Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "dnipro-medical-institute-of-conventional-and-alternative-medicine",
+  "name": "Dnipro Medical Institute of Conventional and Alternative Medicine",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Dnipro",
+  "flags": "domain unsettled; no government listing found",
+  "aliases": [
+   "Dnipro Medical Institute of Traditional and Non-Traditional Medicine (IAU-HESD / WHED listing name)",
+   "Dnipropetrovsk Medical Institute of Traditional & Nontraditional Medicine (earlier name, SUCHO archive listing)",
+   "Європейський медичний університет / European Medical University (title of the education.ua page that also shows ДМИ ТНМ; possible later name, NOT confirmed)",
+   "Днепровский медицинский институт традиционной и нетрадиционной медицины / ДМИ ТНМ (Russian name and abbreviation shown on education.ua)",
+   "Дніпровський медичний інститут традиційної і нетрадиційної медицини (Ukrainian name, osvita.ua and IAU-HESD)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–––Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "dnipro-institute-of-medicine-and-public-health",
+  "name": "Dnipro Institute of Medicine and Public Health",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Dnipro",
+  "flags": "relationship to Kyiv Medical University unexplained",
+  "aliases": [
+   "Dnipro Institute of Medicine and Public Health",
+   "ДІМЗ",
+   "Дніпровський інститут медицини та громадського здоров'я",
+   "ПЗВО \"Дніпровський інститут медицини та громадського здоров'я\"",
+   "Приватний заклад вищої освіти «Дніпровський інститут медицини та громадського здоров'я» (ДІМЗ)",
+   "Частное высшее учебное заведение «Днепровский институт медицины и общественного здоровья» (ДИМЗ)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–GPQ",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "lviv-medical-institute",
+  "name": "Lviv Medical University (private; formerly Lviv Medical Institute)",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Lviv",
+  "flags": "legal-form change and licence continuity unverified; easily confused with the state Lviv national medical university",
+  "aliases": [
+   "Lviv Medical Institute",
+   "Lviv Medical Institute (former name)",
+   "Lviv Medical University (private)",
+   "ВПНЗ \"Львівський медичний університет\"",
+   "Вищий приватний навчальний заклад \"Львівський медичний університет\"",
+   "ЛМУ (Львівський медичний університет)",
+   "Львівський медичний інститут"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–––Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kharkiv-institute-of-medicine-and-biomedical-sciences",
+  "name": "Kharkiv Institute of Medicine and Biomedical Sciences",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Kharkiv",
+  "flags": "reported renamed University of Medicine and Social Sciences; relationship to Kyiv Medical University unexplained; current programme accreditation unknown",
+  "aliases": [
+   "KhIM",
+   "KhIM / KHIM (abbreviation used in third-party listings and in the domain lead khim.edu.ua)",
+   "Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\" (directory form; unverified)",
+   "Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" (form shown in MON licence register search result)",
+   "Університет медицини та соціальних наук / University of Medicine and Social Sciences (reported new name after conversion to university status; osvita.ua news, MON licence register entry as of 05.05.2026)",
+   "Харківський інститут медицини та біомедичних наук"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G–Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "king-danylo-university",
+  "name": "King Danylo University",
+  "group": "F",
+  "groupName": "Private universities and institutes",
+  "city": "Ivano-Frankivsk",
+  "flags": "no medical programme shown",
+  "aliases": [
+   "KDU",
+   "King Daniel University",
+   "Universytet Korolia Danyla",
+   "Universytet Korolya Danyla (climate.biz URL slug)",
+   "Заклад вищої освіти \"Університет Короля Данила\" (form used in a NAQA document)",
+   "Університет Короля Данила"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "N–––",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "lviv-medical-academy-krupynskyi",
+  "name": "Lviv Medical Academy named after Andrei Krupynskyi",
+  "group": "G",
+  "groupName": "Colleges and communal medical academies and institutes (nursing and allied-health level)",
+  "city": "Lviv",
+  "flags": "communal (regional council); directory-title lead only",
+  "aliases": [
+   "Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\""
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "cherkasy-medical-academy",
+  "name": "Cherkasy Medical Academy",
+  "group": "G",
+  "groupName": "Colleges and communal medical academies and institutes (nursing and allied-health level)",
+  "city": "Cherkasy",
+  "flags": "communal (regional council); directory-title lead only",
+  "aliases": [
+   "Черкаська медична академія"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "kyiv-city-medical-college",
+  "name": "Kyiv medical college (Study in Ukraine portal entry)",
+  "group": "G",
+  "groupName": "Colleges and communal medical academies and institutes (nursing and allied-health level)",
+  "city": "Kyiv",
+  "flags": "identity unconfirmed; college level",
+  "aliases": [
+   "Higher Educational Institution \"The Kiev Medical College\"",
+   "Kiev Medical College",
+   "Kyiv City Medical College / Київський міський медичний коледж (KMMK). Candidate identity matched by address only",
+   "Kyiv Medical College",
+   "Заклад фахової передвищої освіти «Київський міський медичний фаховий коледж». Candidate identity matched by address only"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G–Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "zhytomyr-medical-institute",
+  "name": "Zhytomyr Medical Institute",
+  "group": "G",
+  "groupName": "Colleges and communal medical academies and institutes (nursing and allied-health level)",
+  "city": "Zhytomyr",
+  "flags": "communal; nursing-based; no programme for foreigners shown",
+  "aliases": [
+   "Volyn Paramedic School (historical origin, 1875, per FRSE directory)",
+   "Zhytomyr Institute of Nursing / Житомирський інститут медсестринства (predecessor name, per third-party summary and MON news title)",
+   "Zhytomyr Medical Institute of Zhytomyr Regional Council",
+   "Відокремлений структурний підрозділ фаховий коледж Житомирського медичного інституту (attached vocational college, separate unit)",
+   "Житомирський медичний інститут",
+   "Житомирський медичний інститут Житомирської обласної ради"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "–G––",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "odesa-mechnikov-national-university",
+  "name": "Odesa I. I. Mechnikov National University",
+  "group": "H",
+  "groupName": "Universities with pharmacy, nursing or allied-health programmes only (no medical degree found; deferred)",
+  "city": "Odesa",
+  "flags": "pharmacy programme lead only; no medicine programme found",
+  "aliases": [
+   "ONU",
+   "Odesa National University",
+   "Odessa I.I. Mechnikov National University",
+   "Odessa National University",
+   "ОНУ імені Мечникова",
+   "Одесский национальный университет имени И. И. Мечникова",
+   "Одеський національний університет імені І. І. Мечникова"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "oles-honchar-dnipro-national-university",
+  "name": "Oles Honchar Dnipro National University",
+  "group": "H",
+  "groupName": "Universities with pharmacy, nursing or allied-health programmes only (no medical degree found; deferred)",
+  "city": "Dnipro",
+  "flags": "nursing and allied-health programmes only; no route for foreign applicants found",
+  "aliases": [
+   "DNU",
+   "Faculty of Medical Technologies of Diagnostics and Rehabilitation (DNU unit; also rendered 'Faculty of Medical Technology, Diagnostics, and Rehabilitation')",
+   "ДНУ",
+   "Дніпровський національний університет імені Олеся Гончара"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "vasyl-stefanyk-carpathian-national-university",
+  "name": "Vasyl Stefanyk Precarpathian National University (reported renamed Carpathian National University, 2025)",
+  "group": "H",
+  "groupName": "Universities with pharmacy, nursing or allied-health programmes only (no medical degree found; deferred)",
+  "city": "Ivano-Frankivsk",
+  "flags": "physical-therapy programme lead only; hosts relocated Kherson State University units",
+  "aliases": [
+   "Carpathian National University (English rendering of the new name; official English form not confirmed)",
+   "PNU",
+   "PNU / ПНУ",
+   "Precarpathian National University",
+   "Prykarpatskyi National University",
+   "КНУ (abbreviation used on education.ua listing)",
+   "Карпатський національний університет імені Василя Стефаника (new name per MON order No. 565 of 14 April 2025, search lead)",
+   "Прикарпатський національний університет імені Василя Стефаника (former name, per MON order lead)"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "ukrainian-catholic-university",
+  "name": "Ukrainian Catholic University",
+  "group": "H",
+  "groupName": "Universities with pharmacy, nursing or allied-health programmes only (no medical degree found; deferred)",
+  "city": "Lviv",
+  "flags": "rehabilitation and allied-health programmes only; no medical faculty found",
+  "aliases": [
+   "Health Sciences Faculty / Faculty of Health Sciences (unit name in search results)",
+   "School of Rehabilitation Medicine (earlier unit name for the rehabilitation programmes, reported by uacrisis.org)",
+   "UCU",
+   "Ukrainische Katholische Universitaet (German partner-university document)",
+   "УКУ",
+   "Український католицький університет"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "ivan-franko-national-university-of-lviv",
+  "name": "Ivan Franko National University of Lviv",
+  "group": "H",
+  "groupName": "Universities with pharmacy, nursing or allied-health programmes only (no medical degree found; deferred)",
+  "city": "Lviv",
+  "flags": "no medical faculty found (one search)",
+  "aliases": [
+   "LNU"
+  ],
+  "directory": "private register only",
+  "skepticChecks": "not re-checked",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ },
+ {
+  "slug": "luhansk-st-luke-occupied",
+  "name": "Luhansk State Medical University named after St. Luke",
+  "group": "R",
+  "groupName": "Rejected (occupied territory)",
+  "city": "Luhansk (occupied territory)",
+  "flags": "described in results as Russian-run; no Ukrainian register listing",
+  "aliases": [
+   "LSMU named after St. Luke",
+   "Lugansk State Medical University named after St. Luke",
+   "St. Luke Luhansk State Medical University",
+   "Voroshilovgrad State Medical Institute (historical name at 1956 founding, per third-party encyclopedia result)",
+   "ГУ ЛНР «Луганский государственный медицинский университет им. Святителя Луки» (title on an older lgmu.ru PDF; LPR-era form)",
+   "ЛГМУ им. Святителя Луки",
+   "Луганский государственный медицинский университет имени Святителя Луки",
+   "ФГБОУ ВО ЛГМУ им. Свт. Луки Минздрава России (title on lgmu.ru pages)"
+  ],
+  "directory": "rejected",
+  "skepticChecks": "N––Q",
+  "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
+  "verifiedClaims": 0,
+  "demandExact": {},
+  "demandLeads": [],
+  "demandNote": "",
+  "competitorPages": [],
+  "recordPrograms": null
+ }
+]

@@ -1,0 +1,1931 @@
+{
+ "date": "2026-10-12",
+ "method": "Workflow inventory-gap-discovery (run wf_583bd8a4-d23): one authority-list researcher (8 searches), seven institution researchers (at most 5 searches each), and skeptic re-checks (at most 3 searches each). Then three single-query lead searches by the main session (entries with an \"origin\" field). Search-result summaries only; WebFetch was not used and no official page was opened.",
+ "limits": [
+  "No complete Ministry of Health roster or Ministry of Education list of universities with Medicine (222/I2), Dentistry (221), Pharmacy (226/I8) or Nursing (223/I5) programmes came back. The authoritative sources to enumerate are the full annexes of MoH order No. 1329 of 29.07.2024 and EDEBO (registry.edbo.gov.ua, in the 20-host request) filtered by specialty.",
+  "skeptic re-check not run: the verifier agent stopped on a usage limit (resets 2026-10-16 01:00 UTC); affects five of the seven researched institutions"
+ ],
+ "authorityLists": {
+  "institutions": [
+   {
+    "name": "Bogomolets National Medical University",
+    "altNames": [
+     "Національний медичний університет імені О. О. Богомольця",
+     "NMU",
+     "National Medical University named after O.O. Bogomolets"
+    ],
+    "city": "Kyiv (seat from the name; current teaching location not checked in this pass)",
+    "list": "MoH subordinate: KMU 2021 state-order news; MoH order No. 1329 of 29.07.2024 annexes; MoH order No. 1206 of 31.07.2025 (residency/postgraduate plan); Wikipedia list",
+    "evidence": [
+     {
+      "text": "KMU news: the MoH competition commission chose 17 higher and postgraduate institutions in the MoH's sphere of management to receive the 2021 state order. The returned summary names Bogomolets NMU among them; the full list of 17 was not in the snippet.",
+      "year": "2021",
+      "url": "https://www.kmu.gov.ua/news/moz-viznachiv-zakladi-vishchoyi-osviti-vikonavciv-derzhzamovlennya-u-2021-roci",
+      "sourceType": "government"
+     },
+     {
+      "text": "Annex to MoH order No. 1329 of 29.07.2024 (admission/graduation/intern plans for MoH higher education institutions). The summary says it lists institutions by name, including the National Medical University named after O.O. Bogomolets.",
+      "year": "2024",
+      "url": "https://moz.gov.ua/storage/uploads/9bb6e577-41ad-43d9-b0a2-3318103bdf3f/dn_1329_29072024_dod_3.pdf",
+      "sourceType": "government"
+     },
+     {
+      "text": "Plan for admitting postgraduate, doctoral and residency students to MoH higher education institutions, approved by MoH order No. 1206 of 31.07.2025. The visible first rows are Bogomolets NMU and Bukovinian SMU; the rest of the table was cut off. This copy of a MoH order is hosted on the Shupyk university domain.",
+      "year": "2025",
+      "url": "https://nuozu.edu.ua/zagruzka3/21_08_25-3.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "vstup.osvita.ua entry: the summary attributes it to Bogomolets NMU, master's 'Medicine', study period 01.09.2021-30.06.2027.",
+      "year": "2024",
+      "url": "https://vstup.osvita.ua/y2024/r27/149/851738/",
+      "sourceType": "third-party"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Bukovinian State Medical University",
+    "altNames": [
+     "Буковинський державний медичний університет",
+     "BSMU"
+    ],
+    "city": "Chernivtsi (seat; current location not checked in this pass)",
+    "list": "MoH subordinate: MoH order No. 1329 of 29.07.2024 annexes; MoH order No. 1206 of 31.07.2025; Wikipedia list",
+    "evidence": [
+     {
+      "text": "Annex to MoH order No. 1329 of 29.07.2024. The summary says the institutions it lists include Bukovinian State Medical University.",
+      "year": "2024",
+      "url": "https://moz.gov.ua/storage/uploads/9bb6e577-41ad-43d9-b0a2-3318103bdf3f/dn_1329_29072024_dod_3.pdf",
+      "sourceType": "government"
+     },
+     {
+      "text": "MoH order No. 1206 of 31.07.2025 (postgraduate/doctoral/residency admission plan for MoH institutions). Bukovinian SMU appears in the visible first rows.",
+      "year": "2025",
+      "url": "https://nuozu.edu.ua/zagruzka3/21_08_25-3.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "BSMU's own file of 2026 attestation results for graduates of its medical and medical-pharmaceutical faculties in 'Medicine'. Only the title was returned; no content was read.",
+      "year": "2026",
+      "url": "https://www.bsmu.edu.ua/wp-content/uploads/2026/07/rezultati-atestacziї-vipusknikiv-medichnogo-ta-mediko-farmaczevtichnogo-fakultetiv-mediczina-2026-rik.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "I. Horbachevsky Ternopil National Medical University",
+    "altNames": [
+     "Тернопільський національний медичний університет імені І. Я. Горбачевського",
+     "TNMU"
+    ],
+    "city": "Ternopil (seat; not checked in this pass)",
+    "list": "MoH subordinate: KMU 2021 state-order news",
+    "evidence": [
+     {
+      "text": "KMU news on the 17 MoH-sphere institutions that received the 2021 state order. The summary names Ternopil National Medical University named after I. Ya. Horbachevsky among them.",
+      "year": "2021",
+      "url": "https://www.kmu.gov.ua/news/moz-viznachiv-zakladi-vishchoyi-osviti-vikonavciv-derzhzamovlennya-u-2021-roci",
+      "sourceType": "government"
+     },
+     {
+      "text": "TNMU's own news says it ranked first among medical universities in the 2025 UniRank rating. This is a ranking claim, not accreditation or licensing.",
+      "year": "2025",
+      "url": "https://www.tdmu.edu.ua/en/blog/2025/06/06/tnmu-posiv-pershu-pozytsiyu-sered-medychnyh-vyshiv-u-rejtyngu-universytetiv-unirank/",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Shupyk National Healthcare University of Ukraine",
+    "altNames": [
+     "Національний університет охорони здоров'я України імені П. Л. Шупика",
+     "НУОЗ України імені П. Л. Шупика",
+     "NUOZU",
+     "formerly Shupyk National Medical Academy of Postgraduate Education"
+    ],
+    "city": "Kyiv (seat; not checked in this pass)",
+    "list": "MoH subordinate: KMU 2021 state-order news (postgraduate institution)",
+    "evidence": [
+     {
+      "text": "KMU 2021 news on MoH-sphere state-order institutions. The summary mentions NUOZ of Ukraine named after P. L. Shupyk and describes it as a postgraduate education institution.",
+      "year": "2021",
+      "url": "https://www.kmu.gov.ua/news/moz-viznachiv-zakladi-vishchoyi-osviti-vikonavciv-derzhzamovlennya-u-2021-roci",
+      "sourceType": "government"
+     },
+     {
+      "text": "The nuozu.edu.ua domain hosts copies of MoH admission-plan orders: No. 1329 of 2024 (annex 2) and No. 1206 of 2025. The returned snippets did not show Shupyk's own row.",
+      "year": "2025",
+      "url": "https://www.nuozu.edu.ua/zagruzka3/dn_1329_29072024_dod_2.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "National University of Pharmacy",
+    "altNames": [
+     "Національний фармацевтичний університет",
+     "NUPh"
+    ],
+    "city": "Kharkiv (seat; not checked in this pass)",
+    "list": "MoH subordinate: MoH order No. 1329 of 29.07.2024 (admission plan)",
+    "evidence": [
+     {
+      "text": "MoH order No. 1329 of 29.07.2024 admission plan for MoH higher education institutions. The summary names the National University of Pharmacy with 1,449 admission places (excluding postgraduate/doctoral study) against a total of 59,619 across MoH institutions. Treat these figures as a lead taken from the search summary.",
+      "year": "2024",
+      "url": "https://moz.gov.ua/storage/uploads/9bb6e577-41ad-43d9-b0a2-3318103bdf3f/dn_1329_29072024_dod.pdf",
+      "sourceType": "government"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Kharkiv National Medical University",
+    "altNames": [
+     "Харківський національний медичний університет",
+     "KhNMU"
+    ],
+    "city": "Kharkiv (seat; not checked in this pass)",
+    "list": "MoH subordinate: MoH order No. 1329 of 29.07.2024 annex 4 (state-order distribution); Wikipedia list",
+    "evidence": [
+     {
+      "text": "Annex 4 to MoH order No. 1329 (July 2024), which distributes state-order volumes among MoH institutions under CMU resolution No. 760 of 28.06.2024. The summary names Kharkiv National Medical University.",
+      "year": "2024",
+      "url": "https://moz.gov.ua/storage/uploads/9bb6e577-41ad-43d9-b0a2-3318103bdf3f/dn_1329_29072024_dod_4.pdf",
+      "sourceType": "government"
+     },
+     {
+      "text": "Letter from the Minister of Health (undated in the snippet) about moving nine NAMS institutions' property complexes into the MoH sphere to create a university hospital based at KhNMU. This is a letter, not a list of institutions.",
+      "year": "undated",
+      "url": "https://www.imiamn.org.ua/pages/LetterMOZ.pdf",
+      "sourceType": "third-party"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "National Pirogov Memorial Medical University, Vinnytsya",
+    "altNames": [
+     "Вінницький національний медичний університет імені М. І. Пирогова",
+     "VNMU"
+    ],
+    "city": "Vinnytsia (seat; not checked in this pass)",
+    "list": "MoH subordinate: MoH order No. 1329 of 29.07.2024 (plan for admitting listeners and interns)",
+    "evidence": [
+     {
+      "text": "2024 plan for admitting listeners and interns to MoH higher education institutions (MoH order No. 1329 of 29.07.2024). The summary says it contains a row for Vinnytsia National Medical University named after Pirogov.",
+      "year": "2024",
+      "url": "https://moz.gov.ua/storage/uploads/9bb6e577-41ad-43d9-b0a2-3318103bdf3f/dn_1329_29072024_dod_3.pdf",
+      "sourceType": "government"
+     },
+     {
+      "text": "VNMU's own file 'onp_med_221_2020'. The summary describes it as a 2020 doctoral-level educational-scientific programme in Medicine, but the specialty code in the file name is 221, not 222, so the code is unconfirmed.",
+      "year": "2020",
+      "url": "https://vnmu.edu.ua/downloads/pdf/onp_med_221_2020.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Zaporizhzhia State Medical and Pharmaceutical University",
+    "altNames": [
+     "Запорізький державний медико-фармацевтичний університет",
+     "ZSMPU",
+     "formed from Zaporizhzhia State Medical University and the State Institution 'Zaporizhzhia Medical Academy of Postgraduate Education of the MoH'"
+    ],
+    "city": "Zaporizhzhia (seat; current teaching format not checked)",
+    "list": "MoH subordinate: KMU decision supporting the MoH initiative to create it within the MoH sphere of management",
+    "evidence": [
+     {
+      "text": "KMU news (summary dates it 28.10.2022): the government supported the MoH initiative to form ZSMPU within the MoH sphere of management by reorganising the State Institution 'Zaporizhzhia Medical Academy of Postgraduate Education MoH' and Zaporizhzhia State Medical University.",
+      "year": "2022",
+      "url": "https://www.kmu.gov.ua/news/uryad-pidtrimav-iniciativu-moz-utvoriti-zaporizkij-derzhavnij-mediko-farmacevtichnij-universitet",
+      "sourceType": "government"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Luhansk State Medical University (State Institution)",
+    "altNames": [
+     "Державний заклад «Луганський державний медичний університет»",
+     "Lugansk State Medical University",
+     "ДЗ ЛДМУ"
+    ],
+    "city": "Not stated in results; location and relocation status not checked here. This is distinct from the occupied, rejected 'St. Luke' institution.",
+    "list": "Admissions database (vstup.osvita.ua) under 222 Medicine; education.ua 2025 budget-score note",
+    "evidence": [
+     {
+      "text": "vstup.osvita.ua 2022 entry for Luhansk State Medical University: specialty 222 Medicine, medical faculty, master's, licensed/contract volume of 25 according to the summary.",
+      "year": "2022",
+      "url": "https://vstup.osvita.ua/y2022/r13/13/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "vstup.osvita.ua 2023 page titled 'Державний заклад \"Луганський державний медичний університет\"', with similar figures for 222 Medicine.",
+      "year": "2023",
+      "url": "https://vstup.osvita.ua/y2023/r13/13/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "education.ua article on I2 (222) Medicine. In 2025 the minimum budget-admission score was 150.033, the score that secured admission to Luhansk State Medical University. The same article says 4,599 budget places were allocated for I2 Medicine master's in 2025.",
+      "year": "2024 article; 2025 figures quoted",
+      "url": "https://www.education.ua/news/2024/03/21/medytsyna-vse-pro-spetsialnist-222/",
+      "sourceType": "third-party"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Odesa National Medical University",
+    "altNames": [
+     "Одеський національний медичний університет",
+     "ONMedU"
+    ],
+    "city": "Odesa (seat; not checked in this pass)",
+    "list": "Admissions database (vstup.osvita.ua) under 222 Medicine",
+    "evidence": [
+     {
+      "text": "vstup.osvita.ua 2022 entry for Odesa National Medical University: master's Medicine, licensed volume 390 and contract volume 125 according to the summary, with average 2021 scores.",
+      "year": "2022",
+      "url": "https://vstup.osvita.ua/y2022/r16/188/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "vstup.osvita.ua 2020 page for the same institution (title only).",
+      "year": "2020",
+      "url": "https://vstup.osvita.ua/y2020/r16/188/",
+      "sourceType": "third-party"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Danylo Halytsky Lviv National Medical University",
+    "altNames": [
+     "Львівський національний медичний університет імені Данила Галицького",
+     "LNMU"
+    ],
+    "city": "Lviv (seat; not checked in this pass)",
+    "list": "Wikipedia 'List of medical universities in Ukraine'; own doctoral-programme PDF for 222",
+    "evidence": [
+     {
+      "text": "English Wikipedia 'List of medical universities in Ukraine' (community-maintained). The summary names Danylo Halytsky Lviv National Medical University.",
+      "year": "undated (seen 2026)",
+      "url": "https://en.wikipedia.org/wiki/List_of_medical_universities_in_Ukraine",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "LNMU's own PDF of a doctor of philosophy programme in specialty 222 Medicine (title/summary only).",
+      "year": "undated",
+      "url": "https://nauka.meduniv.lviv.ua/wp-content/uploads/programa-doktor-filosofiyi-medycyna-1.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Dnipro State Medical University",
+    "altNames": [
+     "Дніпровський державний медичний університет",
+     "formerly Dnipropetrovsk Medical Academy"
+    ],
+    "city": "Dnipro (seat; not checked in this pass)",
+    "list": "Wikipedia 'List of medical universities in Ukraine' only. A targeted query did NOT confirm it in a MoH list.",
+    "evidence": [
+     {
+      "text": "The summary of the Wikipedia 'List of medical universities in Ukraine' mentions 'Dnipro' entries. The exact entry name was not returned.",
+      "year": "undated (seen 2026)",
+      "url": "https://en.wikipedia.org/wiki/List_of_medical_universities_in_Ukraine",
+      "sourceType": "third-party"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Donetsk National Medical University",
+    "altNames": [
+     "Донецький національний медичний університет",
+     "DNMU"
+    ],
+    "city": "Not stated in results; relocation status not checked here",
+    "list": "Wikipedia 'List of medical universities in Ukraine'; own-domain PDF",
+    "evidence": [
+     {
+      "text": "The summary of the Wikipedia 'List of medical universities in Ukraine' mentions Donetsk entries.",
+      "year": "undated (seen 2026)",
+      "url": "https://en.wikipedia.org/wiki/List_of_medical_universities_in_Ukraine",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Own-domain PDF 'medyczyna_compressed' uploaded in 2023 (title only; content not described).",
+      "year": "2023",
+      "url": "https://dnmu.edu.ua/wp-content/uploads/2023/03/medyczyna_compressed.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Ivano-Frankivsk National Medical University",
+    "altNames": [
+     "Івано-Франківський національний медичний університет",
+     "IFNMU"
+    ],
+    "city": "Ivano-Frankivsk (seat; not checked in this pass)",
+    "list": "Wikipedia 'List of medical universities in Ukraine' only",
+    "evidence": [
+     {
+      "text": "The summary of the Wikipedia 'List of medical universities in Ukraine' mentions Ivano-Frankivsk entries.",
+      "year": "undated (seen 2026)",
+      "url": "https://en.wikipedia.org/wiki/List_of_medical_universities_in_Ukraine",
+      "sourceType": "third-party"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "V. N. Karazin Kharkiv National University",
+    "altNames": [
+     "Харківський національний університет імені В. Н. Каразіна",
+     "Karazin University",
+     "School of Medicine of Karazin University"
+    ],
+    "city": "Kharkiv (seat; current teaching format not checked)",
+    "list": "MoE university with a medical school: its own accreditation documents for 222 Medicine (master's and doctoral)",
+    "evidence": [
+     {
+      "text": "Karazin University's own accreditation working-group document for specialty 222 Medicine, master's and doctoral levels (summary only).",
+      "year": "undated",
+      "url": "https://karazin.ua/storage/documents/506_pYj3zgmc2OifzVgFSJ1XfsVOP.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "Old Karazin quality-assurance document on Medicine (title/summary only).",
+      "year": "undated",
+      "url": "https://old.karazin.ua/docs/quality/med.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "Old Karazin School of Medicine page. It says the school offers a master's in 222 Medicine over six years, taught in Ukrainian, Russian and English, with more than 3,700 students from 40 countries. These are the university's own claims, undated and on the old site.",
+      "year": "undated",
+      "url": "https://old.karazin.ua/en/departments/medicine",
+      "sourceType": "official"
+     }
+    ],
+    "alreadyKnown": true
+   },
+   {
+    "name": "Ukrainian Military Medical Academy",
+    "altNames": [
+     "Українська військово-медична академія",
+     "UVMA"
+    ],
+    "city": "Not stated in the result (Ministry of Defence domain)",
+    "list": "Other: a search result on a Ministry of Defence domain (not a MoH or MoE list)",
+    "evidence": [
+     {
+      "text": "A result for a 222 Medicine query: a self-assessment of the academy's educational-scientific programme (file 'samoocinkaONP_UVMA') under adjunct (postgraduate) studies on uvma.mil.gov.ua. Only the title was returned; the specialty, level and status are not confirmed by the snippet.",
+      "year": "undated",
+      "url": "https://uvma.mil.gov.ua/science/adjunct/files/samoocinkaONP_UVMA.pdf",
+      "sourceType": "government"
+     }
+    ],
+    "alreadyKnown": false
+   }
+  ],
+  "searchesUsed": 8,
+  "notes": "I used all 8 standard WebSearch calls and no WebFetch. The search summaries never returned a full roster. No current, complete MoH list of subordinate higher education institutions came back, and neither did an MoE/EDEBO/Study in Ukraine/NAQA list of MoE universities with 222/221/226 programmes. Treat both enumerations as incomplete. Gaps should be closed from the full annex PDFs of MoH orders No. 1329 (29.07.2024) and No. 1206 (31.07.2025), and from EDEBO/vstup.osvita.ua specialty filters for I2/I1/I8. Those sources are leads to open once official-site access is available.\n\nContext figures (leads, not verified):\n- KMU (2021): 17 higher and postgraduate institutions in the MoH sphere received the 2021 state order (https://www.kmu.gov.ua/news/moz-viznachiv-zakladi-vishchoyi-osviti-vikonavciv-derzhzamovlennya-u-2021-roci).\n- Medplatforma, citing MoH: 8,368 applicants entered 15 MoH-subordinate institutions in 2024 (https://medplatforma.com.ua/news/82872-moz-rozpovilo-pro-rezultati-vstupnoi-kampanii). Related KMU news: https://www.kmu.gov.ua/news/ponad-visim-tysiach-abituriientiv-vstupyly-tsohorich-do-zakladiv-vyshchoi-medychnoi-osvity-u-pidporiadkuvanni-moz\n- 2018 Medical Education Strategy analysis: 14 state and 5 private medical universities, plus 3 MoH postgraduate institutions; about 74,000 students in MoH universities against about 20,600 under other ministries (https://medprosvita.com.ua/wp-content/uploads/2018/09/Medical-Education-Strategy_Analytics_Final.pdf).\n- SSOAR study: 51 institutions were training PhDs in specialty 222 as of 01.11.2022 (https://www.ssoar.info/ssoar/handle/document/89457).\n- vstup.osvita.ua has a 2026 list of 36 competitive offers for 'Medicine' (https://vstup.osvita.ua/spec/7-640-1/0-0-2583-0-0-0/). The snippet named none of them, so it is the best next lead for MoE and private providers.\n\nKnown institutions NOT surfaced in any result (absence is an access or search limitation, not evidence): Poltava State Medical University, Uzhhorod National University, Sumy State University, Taras Shevchenko National University of Kyiv, Petro Mohyla Black Sea National University, Lesya Ukrainka Volyn National University, Kherson State University, Bohdan Khmelnytsky National University of Cherkasy, Zaporizhzhia National University, and all the private institutions on the known list. A targeted query explicitly did not confirm Poltava or Dnipro in a MoH list. A dspace.uzhnu.edu.ua article and a Kamianets-Podilskyi (kpnu.edu.ua) admissions-rules PDF appeared in results, but neither showed a medical faculty, so I did not record them as institutions.\n\nThe only new (not already known) lead is the Ukrainian Military Medical Academy. It comes from a Ministry of Defence domain, sits outside the MoH/MoE lists, and is a title-only result.\n\nThe city field gives the seat implied by the institution's name. Current teaching location, relocation and format were not checked for any institution. Every figure (place counts, volumes, scores) is quoted from search summaries and must be checked against the source documents before use. No licensing, NAQA accreditation or recognition status is established by these results."
+ },
+ "institutions": [
+  {
+   "record": {
+    "name": "Lviv Medical Institute / Higher Private Educational Institution \"Lviv Medical University\"",
+    "altNames": [
+     "Lviv Medical Institute",
+     "Lviv Medical University (private)",
+     "Львівський медичний інститут",
+     "Вищий приватний навчальний заклад \"Львівський медичний університет\"",
+     "ВПНЗ \"Львівський медичний університет\"",
+     "ЛМУ (Львівський медичний університет)",
+     "NOT the same as Danylo Halytsky Lviv National Medical University (state; meduniv.lviv.ua), which was historically also called Lviv (State) Medical Institute"
+    ],
+    "city": "Lviv",
+    "officialDomainLead": "medinstytut.lviv.ua (unconfirmed lead; seen only in third-party admissions-directory records, not opened, not confirmed by a government source)",
+    "officialDomainBasis": [
+     {
+      "text": "Search summary of vstup.osvita.ua record ID 1362 (2022 and 2023 admission years): name 'Вищий приватний навчальний заклад \"Львівський медичний університет\"', type 'Інститут', locality м. Львів, website medinstytut.lviv.ua. Third-party directory; the domain was not opened and did not appear in any search result itself.",
+      "year": "2022-2023",
+      "url": "https://vstup.osvita.ua/y2023/r14/1362/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Search for 'medinstytut.lviv.ua' returned no pages from that domain (access limitation / no index result, not evidence either way).",
+      "year": "2026",
+      "url": "https://www.education.ua/universities/324/",
+      "sourceType": "third-party"
+     }
+    ],
+    "kind": "Private higher education institution (вищий приватний навчальний заклад); directory lists institution type as 'Інститут' (institute) despite the 'університет' name",
+    "authorityListingLeads": [
+     {
+      "text": "vstup.osvita.ua lists the institution under ID 1362 as 'Львівський медичний інститут' for admission year 2020. Third-party directory that mirrors admissions data; not a government page.",
+      "year": "2020",
+      "url": "https://vstup.osvita.ua/y2020/r14/1362/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "The same ID 1362 appears as 'Вищий приватний навчальний заклад \"Львівський медичний університет\"' for 2022 (contract enrolment records shown) and 2023. Matching ID points to the same entity after a rename (my inference from the matching ID; no source states the rename directly).",
+      "year": "2022-2023",
+      "url": "https://vstup.osvita.ua/y2022/r14/1362/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "osvita.ua guide entry (search summary): lists training areas as pharmacy, physical therapy and rehabilitation, medicine, medical psychology and dentistry. No licence or accreditation data on that page per the summary.",
+      "year": "unknown",
+      "url": "https://osvita.ua/vnz/guide/330/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "education.ua listing 'Львівський медичний університет (ЛМУ), ВПНЗ': about 651 students and 107 teaching staff (undated). Search summary says the page refers to the EDEBO database but shows no licence or accreditation status.",
+      "year": "unknown",
+      "url": "https://www.education.ua/universities/324/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Uni2study aggregator claims Lviv Medical Institute is private, founded in 2004 and 'recognised by the Ministry of Education and Science of Ukraine'. Low-reliability aggregator with filler content (e.g. lists 'Economics' under Medicine). An aggregator claim, not authority evidence.",
+      "year": "unknown",
+      "url": "https://www.uni2study.com/universities/ukraine/lviv-medical-institute",
+      "sourceType": "third-party"
+     }
+    ],
+    "programmesForForeigners": [],
+    "accreditationLeads": [],
+    "operatingStatusLeads": [
+     {
+      "text": "Search summary: a 2026 admissions offer exists for 'Стоматологія' (Dentistry), 90 contract (fee-paying) places, study period 01.09.2026 to 30.06.2031 (shown as 4 years 9 months). Two summaries attributed this to different pages (education.ua and the vstup.osvita.ua site), and the exact specialty-page URL was not shown. Listing language and intake type are not stated. Not evidence of an offer for foreign applicants.",
+      "year": "2026",
+      "url": "https://www.education.ua/universities/324/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "2023 statistics (search summary of vstup.osvita.ua): licensed volume of 45 places for first-year bachelor students admitted on complete general secondary education (ПЗСО). Figure is out of date.",
+      "year": "2023",
+      "url": "https://vstup.osvita.ua/y2023/r14/1362/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "2022 contract enrolment records listed under ID 1362 (search summary).",
+      "year": "2022",
+      "url": "https://vstup.osvita.ua/y2022/r14/1362/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "No dated statement on relocation, campus location or teaching format (in-person, distance or mixed) was found in any search result.",
+      "year": "2026",
+      "url": "https://www.education.ua/universities/324/",
+      "sourceType": "third-party"
+     }
+    ],
+    "relevance": "medium",
+    "relevanceReason": "Third-party directories say this private Lviv institution trains in medicine and dentistry (plus pharmacy, physical therapy and rehabilitation, and medical psychology), and show a 2026 dentistry contract intake. However, no result shows English-taught programmes, intake of foreign students, a Study in Ukraine portal listing or a WDOMS entry. Its relevance to international medical applicants is unproven. It is also easily confused with the state Danylo Halytsky Lviv National Medical University, which holds most of the English-language search visibility for 'Lviv Medical University'.",
+    "status": "needs further verification",
+    "statusReason": "The entity appears to exist in admissions-directory data from 2020 to 2026 (ID 1362; renamed from 'Львівський медичний інститут' to ВПНЗ 'Львівський медичний університет', which is inferred). Every lead is third-party, though. No official-domain page, government registry (EDEBO, MES licence register) or NAQA accreditation record was found. There is no evidence of programmes for foreigners or of teaching language. Before it can be a research candidate, its identity, licence, programme accreditation and foreign-student admissions must be confirmed from official and government sources.",
+    "gaps": [
+     "The official domain medinstytut.lviv.ua is not confirmed. It never appeared in results and comes only from a third-party directory record.",
+     "No EDEBO registry entry was retrieved. Legal name, EDRPOU code, ownership form and licence status are all unverified.",
+     "No MES licence record (licensed specialties, licensed volumes) from a government source.",
+     "No NAQA accreditation record for any programme, including Medicine (222) and Dentistry (221). A targeted search returned nothing; that is an access or search limitation, not evidence of no accreditation.",
+     "No evidence of programmes for foreign students, English-medium teaching, a foreign-student department, or an MES authorisation to recruit foreigners.",
+     "Not checked: Study in Ukraine portal (studyinukraine.gov.ua) listing. A generic programmes page appeared in results but showed nothing about this institution.",
+     "Not checked: WDOMS (World Directory of Medical Schools) entry.",
+     "No destination-country recognition evidence (e.g. NMC India, other regulators). None was searched within the budget.",
+     "The rename date (institute to university) and its legal basis are unverified, and so is the 2004 founding year (only from a low-reliability aggregator).",
+     "The 2026 dentistry offer (90 contract places, 01.09.2026 to 30.06.2031) has no confirmed exact page URL. The two search summaries named different source sites.",
+     "No fees, durations for foreigners, deadlines or language of instruction were found from any source.",
+     "A Suspilne article mentioned 10 first-year foreign students and $5,000 a year tuition, but the results do not tie it to this institution (it may concern a Lviv state university). Do not attribute it.",
+     "No dated statement on location, relocation or teaching format during martial law."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://medinstytut.lviv.ua/",
+      "what": "Homepage of the candidate official domain. Confirm the full legal name, founding, licence/accreditation pages, contacts and any international/foreign-students section (paths unknown; do not assume)."
+     },
+     {
+      "url": "https://registry.edbo.gov.ua/",
+      "what": "EDEBO registry: search for ВПНЗ 'Львівський медичний університет' / 'Львівський медичний інститут'. Capture legal name, EDRPOU, status, licensed specialties and volumes, and any previous names."
+     },
+     {
+      "url": "https://naqa.gov.ua/",
+      "what": "NAQA accreditation records for this institution's programmes (Medicine, Dentistry, Pharmacy, etc.): accreditation decisions and validity dates."
+     },
+     {
+      "url": "https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/",
+      "what": "Study in Ukraine portal: check whether the institution and any programmes for foreigners are listed."
+     },
+     {
+      "url": "https://vstup.osvita.ua/y2023/r14/1362/",
+      "what": "Third-party admissions record (ID 1362) showing name, type, website and 2023 licensed-volume statistics. Use for cross-reference only."
+     },
+     {
+      "url": "https://vstup.osvita.ua/y2020/r14/1362/",
+      "what": "Third-party 2020 record under the earlier name 'Львівський медичний інститут'. Cross-reference for the rename."
+     },
+     {
+      "url": "https://www.education.ua/universities/324/",
+      "what": "Third-party listing (students and staff counts, 2026 dentistry offer). Cross-reference only; locate the exact 2026 specialty page."
+     },
+     {
+      "url": "https://osvita.ua/vnz/guide/330/",
+      "what": "Third-party guide listing training areas. Cross-reference only."
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": {
+    "name": "Lviv Medical Institute / Higher Private Educational Institution \"Lviv Medical University\" (ВПНЗ \"Львівський медичний університет\")",
+    "nameAndDomainConsistent": false,
+    "authorityListingFound": false,
+    "officialProgrammeForForeignersLead": false,
+    "unresolvedStatusQuestion": true,
+    "corrections": [
+     "Domain basis is narrower than it looks. The medinstytut.lviv.ua domain comes only from the osvita.ua publisher family: the guide at https://osvita.ua/vnz/guide/330/ (search summary names https://medinstytut.lviv.ua/ as the official site) and https://vstup.osvita.ua/y2023/r14/1362/. These are one publisher, not two independent sources. The education.ua listing (https://www.education.ua/universities/324/) matches the name, but no result showed it giving the domain. No page from medinstytut.lviv.ua appeared in any of 3 searches.",
+     "Rename lead upgraded from inference to a third-party statement. A search summary over education.ua and vstup.osvita.ua results says the institution was founded in 2004 as ТзОВ 'Львівський медичний інститут' and has been named ВПНЗ 'Львівський медичний університет' since November 2022. The exact source page was not pinned. This is a change of legal form (LLC to private HEI) as well as a rename, and it is unverified against EDEBO.",
+     "The 2004 founding year now appears in a second third-party summary, not only in uni2study. It is still not government-verified.",
+     "Licensed-volume figures are incomplete. Search summaries give a 2023 total licensed volume of 646 places with 37 offers, and a 2022 total of 550 places (https://vstup.osvita.ua/y2023/r14/1362/, https://vstup.osvita.ua/y2022/r14/1362/). The record's '45 places' should be labelled as the first-year bachelor (ПЗСО) sub-scope figure, not the institution total. These are admissions-campaign figures, not a licence number.",
+     "Missing year: 2024 admissions records exist under the same ID 1362 (e.g. https://vstup.osvita.ua/y2024/r14/1362/1328021/, /1392380/, /1432961/, /1391555/). A search summary says they include a Master's 'Лікар' programme in specialty 222 Medicine at 53,800 UAH per year (contract) for 2024 entry. This is a third-party domestic contract fee, not a foreign-student fee, and must not be shown as a fee for international applicants.",
+     "Institution type conflict: the record says the directory lists the type as 'Інститут'. A 2024-era search summary says the admissions directory describes it as a 'університет' with no subordinating body ('без підпорядкування'). The type label may differ by year, so record both with their years.",
+     "Address leads (third-party, undated, from the osvita.ua guide summary): Lviv, вул. Поліщука, 76; вул. Патона, 22а and 32. None is confirmed from an official or government source."
+    ],
+    "refutedLeads": [
+     "Test 1 (name and domain agree across two independent results) not established. The domain appears only in osvita.ua and vstup.osvita.ua, which share a publisher. No result came from medinstytut.lviv.ua itself.",
+     "Test 2 (government or authority listing) not established. A Ministry of Education licence-register page for Lviv oblast surfaced (https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/lvivska-oblast-2), but the returned snippet did not show this institution. No EDEBO or NAQA result appeared. This is a search or access limitation, not evidence of no licence.",
+     "Test 3 (official-domain programme open to foreign applicants) not established. The English foreign-admissions query returned only pages of the state Danylo Halytsky Lviv National Medical University (new.meduniv.lviv.ua foreign-student PDFs and its WHO/WDOMS/ECFMG claims). None of that applies to this private institution, and it must not be attributed to it.",
+     "The Suspilne item on 10 foreign first-year students at $5,000 a year stays unattributed. No search tied it to this institution."
+    ],
+    "statusRecommendation": "needs further verification",
+    "previewEligible": false,
+    "reason": "Tests 1 to 3 all fail. The name and the medinstytut.lviv.ua domain agree only within one third-party publisher family (osvita.ua and vstup.osvita.ua). No page from the official domain appeared. A Ministry of Education licence-register page for Lviv oblast came up, but its snippet did not list this institution, and there were no EDEBO or NAQA hits. No official-domain result shows any programme open to foreign applicants; English queries return only the separate state Danylo Halytsky university. Test 4 is unresolved: third-party summaries report a change of legal form from LLC 'Львівський медичний інститут' to private HEI 'Львівський медичний університет' from November 2022, and no government source confirms licence status or continuity after that change. Lviv is not occupied and nothing points to relocation or closure. Admissions-directory mirrors show the institution admitting for 2020 to 2024 and offering places for 2026 (dentistry, 90 contract places), but all of it is third-party. The record stays 'needs further verification' and is not preview-eligible. Next checks: an EDEBO registry entry (legal name, EDRPOU code, licence, previous names), NAQA decisions for programmes 222 and 221, the official domain's homepage and any foreign-students page, and the Study in Ukraine portal.",
+    "searchesUsed": 3
+   }
+  },
+  {
+   "record": {
+    "name": "Kharkiv Institute of Medicine and Biomedical Sciences",
+    "altNames": [
+     "Харківський інститут медицини та біомедичних наук",
+     "KhIM / KHIM (abbreviation used in third-party listings and in the domain lead khim.edu.ua)",
+     "Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\" (directory form; unverified)",
+     "Університет медицини та соціальних наук / University of Medicine and Social Sciences (reported new name after conversion to university status; osvita.ua news, MON licence register entry as of 05.05.2026)",
+     "Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" (form shown in MON licence register search result)",
+     "DO NOT CONFLATE: Kharkiv International Medical University (khimu.edu.ua) is a different institution in third-party listings; Kharkiv National Medical University (KhNMU, knmu.edu.ua) is a different state institution"
+    ],
+    "city": "Kharkiv",
+    "officialDomainLead": "khim.edu.ua (unverified lead; comes only from the third-party osvita.ua directory. No page from khim.edu.ua appeared in any search result. Whether the domain changed after the reported rename to \"University of Medicine and Social Sciences\" is unknown. Note: khimu.edu.ua belongs to a different institution, Kharkiv International Medical University, per third-party listings.)",
+    "officialDomainBasis": [
+     {
+      "text": "osvita.ua directory entry (search-result summary): the institute operates within PHEE \"Kyiv Medical University\"; address Kharkiv, vul. Lermontovska 27; website khim.edu.ua. Third-party source only; domain not confirmed from an official or government page.",
+      "year": "undated in search result",
+      "url": "https://osvita.ua/vnz/guide/37205/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "village.ai company listing uses the slug 'khim' and gives the name 'Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\"', founding year 2017. Thin directory listing; it does not confirm the domain.",
+      "year": "undated in search result",
+      "url": "https://village.ai/company/khim",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "A search for khim.edu.ua international/English pages returned no pages from khim.edu.ua. This is an access/coverage limitation, not evidence either way. Results instead showed khimu.edu.ua = 'Kharkiv International Medical University' (third-party selectyouruniversity.com), a different institution that must not be merged with this record.",
+      "year": "2026 (search date 2026-10-12)",
+      "url": "https://www.selectyouruniversity.com/university/kharkiv-international-medical-university/",
+      "sourceType": "third-party"
+     }
+    ],
+    "kind": "Private higher education institution (institute; per third-party directories a structural unit of PHEE \"Kyiv Medical University\"). Reportedly converted or renamed to a private university, \"University of Medicine and Social Sciences\". Whether it is now a separate legal entity is unverified.",
+    "authorityListingLeads": [
+     {
+      "text": "MON licence register page for Kharkiv oblast (higher education licensees). Search-result snippet: 'Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" | станом на 05.05.2026'. This is the reported new name, not yet tied to the old institute name on an official page. Licence details (number, scope, specialties) not seen.",
+      "year": "2026",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/kharkivska-oblast-2",
+      "sourceType": "government"
+     },
+     {
+      "text": "NAQA English-site entries returned for the institute name, covering the Medicine programme accreditation decisions (see accreditationLeads). These are listings of accreditation decisions, not state registration.",
+      "year": "2021-2025 (per search summary)",
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "sourceType": "government"
+     },
+     {
+      "text": "vstup.osvita.ua 2025 admissions-campaign page for 'Харківський інститут медицини та біомедичних наук' (institution ID 6449 on that site; data usually mirrors EDEBO, but this is not the EDEBO register itself). It still used the old name in 2025.",
+      "year": "2025",
+      "url": "https://vstup.osvita.ua/y2025/r21/6449/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "education.ua listing for 'Університет медицини та соціальних наук' (basic data only: student and teacher counts, rating). No explanation of the change seen.",
+      "year": "undated in search result",
+      "url": "https://www.education.ua/universities/886/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "No EDEBO register entry (registry.edbo.gov.ua) and no Study in Ukraine portal (studyinukraine.gov.ua) listing for this institution appeared in the results. A Study in Ukraine page (universities.studyinukraine.gov.ua/en/minedu/university/17) appeared in one result set, but nothing linked it to this institution, so it is not attributed.",
+      "year": "2026 (search date 2026-10-12)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/17",
+      "sourceType": "government"
+     }
+    ],
+    "programmesForForeigners": [
+     {
+      "title": "Unspecified programmes; English stated as a language of instruction",
+      "level": "not stated",
+      "language": "English (third-party claim only)",
+      "url": "https://mededatlas.lecturio.com/school/kharkiv-institute-of-medicine-and-biomedical-sciences",
+      "sourceType": "third-party",
+      "quote": "Search-result summary of the Lecturio MedEd Atlas listing (not verbatim page text): describes it as a private school that is currently operational, with English as a language of instruction; most admissions and fee fields are blank."
+     },
+     {
+      "title": "Admission of international students (entrance requirements)",
+      "level": "not stated",
+      "language": "Entrance language exam in Ukrainian or English. The teaching language is not stated.",
+      "url": "https://dimh.kmu.edu.ua/?p=368",
+      "sourceType": "official",
+      "quote": "Search-result summary (not verbatim): admission for international students is based on complete general secondary education and the results of two entrance exams, a language proficiency exam (Ukrainian or English) and a chemistry exam; the page calls KHIM a unit of Kyiv Medical University. Domain kmu.edu.ua belongs to the reported parent entity, Kyiv Medical University. That this subdomain relates to the Kharkiv institute is suggested by the summary but unverified; the search tool itself flagged the attribution as unresolved."
+     }
+    ],
+    "accreditationLeads": [
+     {
+      "text": "NAQA (national programme accreditation): the master's programme 'Medicine', specialty 222, is listed as accredited, with the accreditation carried out by the German agency AHPGS (NAQA recognising a foreign agency's result). The most recent entry found is from a NAQA board meeting on 14 October 2025: a one-year term running to 21 October 2026. That expiry is 9 days after the search date, so renewal status is unknown and must be checked. The search summary did not map dates to URLs; ?p=5910 is assumed to be the latest entry only from post-ID order (unverified).",
+      "year": "2025",
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "sourceType": "government"
+     },
+     {
+      "text": "NAQA: an earlier entry from 2021 shows the Medicine (222) master's programme first accredited in that period (search summary). Exact URL for the 2021 entry not confirmed; candidates are ?p=1676 and ?p=5033.",
+      "year": "2021",
+      "url": "https://en.naqa.gov.ua/?p=1676",
+      "sourceType": "government"
+     },
+     {
+      "text": "NAQA entry returned for the institute name; its content and date were not distinguished in the search summary.",
+      "year": "unknown",
+      "url": "https://en.naqa.gov.ua/?p=5033",
+      "sourceType": "government"
+     },
+     {
+      "text": "International accreditation lead: AHPGS (Akkreditierungsagentur im Bereich Gesundheit und Soziales, Germany) is named as the accrediting agency for the Medicine programme. Seen only through the NAQA search summary; there is no AHPGS-side record and its scope and dates are unverified. Keep separate from NAQA national accreditation.",
+      "year": "2021-2025 (per NAQA search summary)",
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "sourceType": "government"
+     },
+     {
+      "text": "Destination-country recognition: none found. No regulator (e.g. NMC India, MCI, GMC and others) and no WDOMS directory entry appeared in the results; WDOMS was not searched. Absence is not evidence.",
+      "year": "2026 (search date 2026-10-12)",
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "sourceType": "government"
+     }
+    ],
+    "operatingStatusLeads": [
+     {
+      "text": "osvita.ua news: 'Харківській інститут медицини та біомедичних наук стає Університетом медицини та соціальних наук'. University president Anton Smirnov says the change will not affect the educational process, and all educational programmes, documents and student rights stay unchanged. New bachelor programmes: Psychology, Management and Business Administration, Nursing. PhD training in Medicine. No exact date for the rename appeared in the results.",
+      "year": "undated in search result (likely 2025-2026; unconfirmed)",
+      "url": "https://osvita.ua/news/96051/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "MON licence register (Kharkiv oblast) lists 'Приватний заклад вищої освіти \"Університет медицини та соціальних наук\"' as of 05.05.2026. This suggests the new name was active in licensing data by May 2026; licence scope not seen.",
+      "year": "2026",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/kharkivska-oblast-2",
+      "sourceType": "government"
+     },
+     {
+      "text": "vstup.osvita.ua 2025 admissions data under the old name: Medicine master's, full-time, contract fee 34,000 UAH per year; some offer pages show study ending in 2031. This is domestic admission data; it does not state foreign-student fees.",
+      "year": "2025",
+      "url": "https://vstup.osvita.ua/y2025/r21/6449/1527973/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "osvita.ua directory: the institute operates within PHEE 'Kyiv Medical University'; address Kharkiv, vul. Lermontovska 27. There is no dated statement on relocation or teaching format (in-person, online or blended) in any result. Current in-person operation in Kharkiv is NOT established.",
+      "year": "undated in search result",
+      "url": "https://osvita.ua/vnz/guide/37205/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Lecturio MedEd Atlas describes the school as 'currently operational' (an undated third-party claim).",
+      "year": "undated in search result",
+      "url": "https://mededatlas.lecturio.com/school/kharkiv-institute-of-medicine-and-biomedical-sciences",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "village.ai listing gives founding year 2017 and parent PHEE 'Kyiv Medical University' (a thin listing; unverified).",
+      "year": "undated in search result",
+      "url": "https://village.ai/company/khim",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Frontiers Loop profile: Anton Smirnov, professor in the Department of Socio-Humanitarian and Biomedical Disciplines and a manager at the institute (personnel lead only).",
+      "year": "undated in search result",
+      "url": "https://loop.frontiersin.org/people/2866370/bio",
+      "sourceType": "third-party"
+     }
+    ],
+    "relevance": "medium",
+    "relevanceReason": "A private Kharkiv institution with a Medicine (222) master's programme that NAQA lists as accredited (via AHPGS), which is directly in scope for medical admissions. However, the only evidence of English-medium teaching for foreigners is a thin third-party listing (Lecturio) and an unresolved summary of a page on a kmu.edu.ua subdomain. The institution has also reportedly been renamed \"University of Medicine and Social Sciences\", and its NAQA accreditation term reportedly ends 21 October 2026.",
+    "status": "needs further verification",
+    "statusReason": "The leads show a real, government-listed entity: the MON licence register as of 05.05.2026 under the new name, and NAQA accreditation decisions for Medicine. But several core facts are unresolved. (1) The rename to \"University of Medicine and Social Sciences\" is undated, and it is unclear whether it is now a legal entity separate from PHEE \"Kyiv Medical University\". (2) The official domain (khim.edu.ua) rests on a third-party directory only and may have changed. (3) No official evidence of English-medium Medicine for international students. (4) The NAQA one-year accreditation term reportedly runs only to 21 Oct 2026, 9 days after the search date, so renewal is unknown. (5) No dated statement on location or teaching format under martial law. (6) A risk of conflation with Kharkiv International Medical University (khimu.edu.ua) and with KhNMU. The record should not be published until these are verified against official and government pages.",
+    "gaps": [
+     "Official domain not confirmed from any official or government page; khim.edu.ua is a third-party directory lead only. Possible new domain after the rename unknown.",
+     "Date and legal mechanism of the rename to 'Університет медицини та соціальних наук' not found. Whether it remains a structural unit of PHEE 'Kyiv Medical University' or is now an independent private HEI is unverified.",
+     "EDEBO register entry (legal identity, EDRPOU code, founder, legal address, current name) not seen.",
+     "MON licence details (licence decision, licensed specialties and volumes, including foreign-student training licence) not seen; only the register listing line as of 05.05.2026.",
+     "NAQA: renewal of the Medicine (222) master's accreditation after the reported 21 Oct 2026 expiry is unknown. The mapping of NAQA URLs (?p=1676, ?p=5033, ?p=5910) to specific decisions and dates is unconfirmed.",
+     "AHPGS-side accreditation record (scope, decision date, validity) not seen; AHPGS is named only via the NAQA summary.",
+     "No official evidence of programmes for foreign students: teaching language, duration, fees in USD, intake dates and admission requirements are all unverified. The Lecturio 'English' claim is third-party only.",
+     "The dimh.kmu.edu.ua/?p=368 page: whether it concerns the Kharkiv institute or another Kyiv Medical University unit is unresolved.",
+     "No dated statement on campus location, relocation or teaching format (in-person, online, blended) under martial law; current operation in Kharkiv not established.",
+     "Destination-country recognition: none found; WDOMS entry not searched. Any NMC, WHO or similar recognition claims must be checked with the regulator, not the university.",
+     "Study in Ukraine portal (studyinukraine.gov.ua) listing for this institution not found in the results.",
+     "2026 admissions data not seen; the only fee data is the 2025 domestic contract fee (34,000 UAH per year, Medicine master's) from vstup.osvita.ua."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://khim.edu.ua/",
+      "what": "Official home page (if reachable): current name, legal entity, parent body, address, any notice of the rename, and the current domain or redirect."
+     },
+     {
+      "url": "https://khim.edu.ua/en/",
+      "what": "English or international admissions section (URL unconfirmed): Medicine programme language, duration, fees, intake, foreign-student admission requirements, and any dated statement on teaching format or location."
+     },
+     {
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "what": "NAQA decision record: Medicine (222) master's accreditation via AHPGS, board meeting date (reported 14 Oct 2025), term (reported to 21 Oct 2026), and the exact institution name used."
+     },
+     {
+      "url": "https://en.naqa.gov.ua/?p=1676",
+      "what": "NAQA record: confirm whether this is the 2021 initial accreditation of the Medicine programme, and capture the date and terms."
+     },
+     {
+      "url": "https://en.naqa.gov.ua/?p=5033",
+      "what": "NAQA record: identify its content and date for the institution."
+     },
+     {
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/kharkivska-oblast-2",
+      "what": "MON licence register (Kharkiv oblast): the entry for 'Приватний заклад вищої освіти \"Університет медицини та соціальних наук\"' as of 05.05.2026, with licence scope and specialties, plus any link to the former institute name."
+     },
+     {
+      "url": "https://registry.edbo.gov.ua/",
+      "what": "EDEBO register entry (search by both names): legal identity, EDRPOU, founder, legal address, status, and the licence for training foreign citizens."
+     },
+     {
+      "url": "https://osvita.ua/news/96051/",
+      "what": "Rename news article: publication date, quoted statements by president Anton Smirnov, and the list of new programmes (third-party, for dating the rename)."
+     },
+     {
+      "url": "https://osvita.ua/vnz/guide/37205/",
+      "what": "Directory entry: parent-body statement, address and website (third-party corroboration of the domain lead)."
+     },
+     {
+      "url": "https://vstup.osvita.ua/y2025/r21/6449/",
+      "what": "2025 admissions data mirror (third-party): programme offers, fees, study form; check whether a 2026 page exists under the new name."
+     },
+     {
+      "url": "https://dimh.kmu.edu.ua/?p=368",
+      "what": "Kyiv Medical University subdomain page on admitting international students: confirm whether it refers to the Kharkiv institute, and capture the requirements and date."
+     },
+     {
+      "url": "https://studyinukraine.gov.ua/",
+      "what": "Study in Ukraine portal: check for a listing under either name (programmes in English, licence for foreign students)."
+     },
+     {
+      "url": "https://search.wdoms.org/",
+      "what": "WDOMS directory: check for an entry under either name (directory listing only, not recognition)."
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": {
+    "name": "Kharkiv Institute of Medicine and Biomedical Sciences (reported new name: University of Medicine and Social Sciences / Університет медицини та соціальних наук)",
+    "nameAndDomainConsistent": false,
+    "authorityListingFound": true,
+    "officialProgrammeForForeignersLead": false,
+    "unresolvedStatusQuestion": true,
+    "corrections": [
+     "ACCREDITATION ATTRIBUTION (correction): the record says a NAQA board decision of 14 October 2025 gave this institute's Medicine (222) master's programme a one-year term to 21 October 2026. A search on 2026-10-12 (summary of en.naqa.gov.ua results) attributes a 2025 NAQA entry with a one-year term 'until October 21, 2026' to a different institution, the Dnipro Institute of Medicine and Public Health. Remove that 2025 term from this record unless a NAQA page naming the Kharkiv institute or its new name is found.",
+     "ACCREDITATION HISTORY FOUND FOR KHARKIV (NAQA search summary, government source, URLs not mapped to individual entries): a 2021 entry shows the Medicine 222 master's programme accredited on the basis of a German AHPGS result for one year, to 21.10.2022. A later update says NAQA set the certificate's expiry at 1 July 2023 under wartime accreditation rules. No newer status was seen, so current NAQA accreditation of the programme is UNKNOWN. NAQA URLs returned: en.naqa.gov.ua/?p=5914, ?p=4508, ?p=1676, ?p=1680, ?p=2279, ?p=1353. The record's ?p=5910 did not appear, and the mapping of entries to URLs is unverified.",
+     "No search under the new name 'University of Medicine and Social Sciences' returned a NAQA accreditation entry. Absence is not evidence.",
+     "DOMAIN: khim.edu.ua still comes from only one source, the osvita.ua directory (osvita.ua/vnz/guide/37205/). No second independent result and no official or government page confirms it, and no page from khim.edu.ua appeared in any search. The village.ai slug 'khim' is not a domain confirmation.",
+     "CONTACT CONFLICT (minor, unverified): the osvita.ua directory gives phone (093) 333-05-33 and education.ua gives (073) 333-05-33. Do not publish either number.",
+     "NEW UNVERIFIED LEAD: a Kharkiv Oblast State Administration PDF listing private higher education institutions (kharkivoda.gov.ua/content/documents/149/14826/Attaches/spisok_privatnih_zakladiv_vischoyi_osviti.pdf) appeared in the name and domain search. Its content was not seen, and nothing yet ties it to this institution.",
+     "CONFLATION WARNING CONFIRMED: the search tool's own summary mixed this institute with Kharkiv International Medical University (it suggested checking khimu.edu.ua/en/). The consultancy figures it showed (English medium, 6 years, about USD 4,000 per year, NEET entrance exam, intakes Sept-Oct and Feb-Mar) come from selectyouruniversity.com pages for Kharkiv International Medical University. They must NOT be attached to this record.",
+     "The foreign-admission lead dimh.kmu.edu.ua/?p=368 is on the parent entity's domain (kmu.edu.ua), not on this institution's own domain. The search summary again flagged its provenance as unclear, so it does not meet the official-domain test for this institution."
+    ],
+    "refutedLeads": [
+     "NAQA 2025 one-year accreditation of this institute's Medicine programme running to 21 October 2026: not supported. The search summary attributes that term to the Dnipro Institute of Medicine and Public Health. The latest Kharkiv-specific status seen ran to 1 July 2023, under wartime rules.",
+     "Any foreign-student fee, duration, teaching language or entrance exam taken from selectyouruniversity.com (USD 4,000 per year, 6 years, NEET): these belong to Kharkiv International Medical University (khimu.edu.ua), not this institution."
+    ],
+    "statusRecommendation": "needs further verification",
+    "previewEligible": false,
+    "reason": "Test 1 fails: the name agrees across several results (osvita.ua directory and news, education.ua, the MON licence register under the new name), but the domain khim.edu.ua still rests on a single third-party directory and no page from that domain appeared. Test 2 holds, with caveats: NAQA government entries list the institute under its old name (2021 accreditation, later extended to 1 July 2023), and the MON licence register lists 'Приватний заклад вищої освіти \\\"Університет медицини та соціальних наук\\\"' as of 05.05.2026. The link between the old and new names is shown only by third-party osvita.ua news. Test 3 fails: no page on the institution's own domain shows a medical programme open to foreigners. The only near-official lead is on the parent's kmu.edu.ua subdomain, and its attribution is unresolved. Test 4 holds (an open question): it is unresolved whether the rename made it a separate legal entity, whether the domain changed, and whether the Medicine programme is currently accredited. The 2026 accreditation term in the record appears to belong to the Dnipro institute, and the last Kharkiv term seen ended 1 July 2023. No dated statement on in-person operation or teaching format in wartime Kharkiv was found. It is not rejected, because government licence and accreditation listings exist; it needs official-source checks before any preview.",
+    "searchesUsed": 3
+   }
+  },
+  {
+   "record": {
+    "name": "Ukrainian Catholic University (Faculty of Health Sciences; no medical faculty found)",
+    "altNames": [
+     "UCU",
+     "Український католицький університет",
+     "УКУ",
+     "Ukrainische Katholische Universitaet (German partner-university document)",
+     "Health Sciences Faculty / Faculty of Health Sciences (unit name in search results)",
+     "School of Rehabilitation Medicine (earlier unit name for the rehabilitation programmes, reported by uacrisis.org)"
+    ],
+    "city": "Lviv",
+    "officialDomainLead": "ucu.edu.ua",
+    "officialDomainBasis": [
+     {
+      "text": "A UCU page titled 'Communication and Cooperation: UCU Programs for Foreign Students' appears on ucu.edu.ua. According to the search summary, it gives the International Academic Relations Office contacts as international@ucu.edu.ua and https://international.ucu.edu.ua. The page is undated in the result.",
+      "year": "undated",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official"
+     },
+     {
+      "text": "A search result titled 'Ukrainian Catholic University' is hosted on ucu.edu.ua under /cmh/. Its content was not described in the result.",
+      "year": "undated",
+      "url": "https://ucu.edu.ua/cmh/?p=1444",
+      "sourceType": "official"
+     },
+     {
+      "text": "A UCU e-repository record (er.ucu.edu.ua) appeared for the health-sciences query. This is a subdomain of the same domain.",
+      "year": "undated",
+      "url": "https://er.ucu.edu.ua/handle/1/2928",
+      "sourceType": "official"
+     },
+     {
+      "text": "The Wikipedia article on Ukrainian Catholic University appeared in results. The search summary itself pointed to ucu.edu.ua as the official site. This is third-party corroboration only. The domain has NOT been checked against EDEBO or any Ministry registry.",
+      "year": "undated",
+      "url": "https://en.wikipedia.org/wiki/Ukrainian_Catholic_University",
+      "sourceType": "third-party"
+     }
+    ],
+    "kind": "Private university in Lviv. 'Private' comes from the task note and was not confirmed in these search results. The university is described as Catholic. Its health-related unit is a Faculty of Health Sciences covering physical therapy, occupational therapy, psychology, social work and clinical psychology. No medical faculty and no 222 Medicine / General Medicine (MD) programme was found in the search leads.",
+    "authorityListingLeads": [
+     {
+      "text": "A Lviv Regional State Administration news item, 'В Українському католицькому університеті відкрили Медичну клініку', says UCU opened a medical clinic in Lviv at вул. Панаса Мирного, 24а. The search summary says the clinic offers rehabilitation services. The item says nothing about licences or educational programmes. It is a news item, not a registry listing. Its date was not shown in the result.",
+      "year": "undated in search result",
+      "url": "https://loda.gov.ua/news/104953",
+      "sourceType": "government"
+     },
+     {
+      "text": "No EDEBO record, Ministry of Education licence-register entry or vstup.osvita.ua page for UCU appeared. A search for UCU together with specialty 222 Medicine and a licence returned results only for other institutions, such as Luhansk State Medical University and Kyiv Medical University. This is an access or search limitation, not evidence either way.",
+      "year": "2026 (search date)",
+      "url": "https://vstup.osvita.ua/y2023/r13/13/",
+      "sourceType": "third-party"
+     }
+    ],
+    "programmesForForeigners": [
+     {
+      "title": "Data Science Program (Faculty of Applied Sciences): the one English-language degree track named for foreign entrants. Not a medical programme.",
+      "level": "not stated in search result",
+      "language": "English",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official",
+      "quote": "Search-summary paraphrase of an undated UCU page: there are, in fact, not many educational programs at UCU in English; it names the Faculty of Applied Sciences and Data Science Program as an English-language degree track for foreign entrants."
+     },
+     {
+      "title": "Bachelor's programmes in psychology and social work (also culture studies, sociology, Ethics-Politics-Economics). Knowledge of Ukrainian is required.",
+      "level": "Bachelor",
+      "language": "Ukrainian (knowledge of Ukrainian required for admission)",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official",
+      "quote": "Search-summary paraphrase of an undated UCU page: several bachelor's programs in social work, culture studies, psychology, sociology, and Ethics-Politics-Economics require a knowledge of Ukrainian for admission."
+     },
+     {
+      "title": "Ukrainian-language certificate programme",
+      "level": "Certificate",
+      "language": "Ukrainian (language-learning programme)",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official",
+      "quote": "Search-summary paraphrase of an undated UCU page: a Ukrainian-language certificate program is also available."
+     },
+     {
+      "title": "Ecumenical studies, distance learning in English. Not health-related.",
+      "level": "not stated in search result",
+      "language": "English",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official",
+      "quote": "Search-summary paraphrase of an undated UCU page: separately mentions an English-language distance-learning program in ecumenical studies."
+     },
+     {
+      "title": "Physical Therapy, a new bachelor's programme in the Faculty of Health Sciences. Not stated to be open to foreign applicants.",
+      "level": "Bachelor",
+      "language": "not stated",
+      "url": "https://hromada.us/en/articles/2026/08/17/enrollment-is-open-for-the-new-bachelors-program-in-physical-therapy-at-ucu",
+      "sourceType": "third-party",
+      "quote": "On August 14, the Ukrainian Catholic University hosted a presentation of the new bachelor's program in physical therapy. Since 2018, UCU has been training specialists through master's programs in occupational therapy and physical therapy."
+     },
+     {
+      "title": "Master's programmes in Physical Therapy and Occupational Therapy (two-year, launched under the School of Rehabilitation Medicine). Not stated to be open to foreign applicants.",
+      "level": "Master",
+      "language": "not stated",
+      "url": "https://uacrisis.org/en/44770-uku-2",
+      "sourceType": "third-party",
+      "quote": "Search-summary paraphrase of the uacrisis.org article 'Ukrainian Catholic University to prepare students to become physical and occupational therapists – Ulana Suprun': two-year master's programmes designed to meet World Confederation for Physical Therapy and World Federation of Occupational Therapists requirements, each including 1000 hours of clinical practice across six medical institutions; rehabilitation programmes began in 2016 under the School of Rehabilitation Medicine."
+     }
+    ],
+    "accreditationLeads": [
+     {
+      "text": "A third-party article says the physical therapy and occupational therapy master's programmes were 'designed to meet' World Confederation for Physical Therapy (WCPT) and World Federation of Occupational Therapists (WFOT) requirements. This is a reported claim about how the programmes were designed. It is NOT accreditation by NAQA or any other body, and it is NOT recognition in any destination country.",
+      "year": "undated in search result",
+      "url": "https://uacrisis.org/en/44770-uku-2",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "No NAQA programme accreditation was found for any UCU health-sciences programme (physical therapy, occupational therapy, psychology, social work). No international accreditation and no destination-country recognition was found either. This is a gap, not a negative finding.",
+      "year": "2026 (search date)",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official"
+     }
+    ],
+    "operatingStatusLeads": [
+     {
+      "text": "Dated: hromada.us reports that UCU held a presentation of its new physical therapy bachelor's programme on 14 August, with enrolment open. The article URL is dated 2026-08-17. It names Svitlana Kohut as dean of the Faculty of Health Sciences and Andriy Hertsik as head of the physical therapy programme. It reports the dean's claim that over 90 percent of master's graduates work in their field. It suggests the faculty was active in Lviv in August 2026 but does not say how teaching is delivered.",
+      "year": "2026",
+      "url": "https://hromada.us/en/articles/2026/08/17/enrollment-is-open-for-the-new-bachelors-program-in-physical-therapy-at-ucu",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "A German partner-university document (KatHO NRW) profiles UCU. According to the search summary, it says the Health Sciences Faculty runs Bachelor and Master programmes in Social Work and Psychology, with a focus on clinical psychology. The document is undated in the result.",
+      "year": "undated",
+      "url": "https://katho-nrw.de/fileadmin/media/international/partnerhochschulen/Ukraine/UKRAINE_Ukrainische_Katholische_Universitaet.pdf",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "A UCU profile in the results lists six degree-granting faculties: Theology-Philosophy, Humanities, Health Sciences, Applied Sciences, Social Sciences, and the UCU Business School. The search summary did not say which result this came from (one of katho-nrw.de, uni2study.com or Wikipedia). Another profile mentions rehabilitation medicine among UCU's subjects, also without a stated source. Both are undated.",
+      "year": "undated",
+      "url": "https://www.uni2study.com/universities/ukraine/ukrainian-catholic-university",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "A government (Lviv Regional State Administration) news item reports that a UCU medical clinic opened in Lviv at Panasa Myrnoho St 24a, offering rehabilitation services. Its date was not shown.",
+      "year": "undated in search result",
+      "url": "https://loda.gov.ua/news/104953",
+      "sourceType": "government"
+     },
+     {
+      "text": "No dated statement was found about relocation, a wartime teaching format (online, blended or in-person) or suspension of operations. Current operation should not be assumed beyond what the dated August 2026 report above says.",
+      "year": "2026 (search date)",
+      "url": "https://ucu.edu.ua/?p=74383",
+      "sourceType": "official"
+     }
+    ],
+    "relevance": "low",
+    "relevanceReason": "The site's core audience is foreign applicants seeking medical degrees (MD / 222 Medicine). None of the search leads show a medical faculty or a Medicine programme at UCU. The search summary noted that medicine in Lviv is taught at a different institution, Danylo Halytsky Lviv National Medical University. UCU's Faculty of Health Sciences offers rehabilitation and allied-health programmes (physical therapy, occupational therapy), psychology and social work. Per an undated official page, few UCU programmes are taught in English, and the psychology and social work bachelor's programmes require Ukrainian. At most, UCU could matter for a future allied-health or physical-therapy topic, and only if official pages confirm an English-taught programme open to foreigners.",
+    "status": "defer",
+    "statusReason": "No medical degree programme was found, and the health-sciences programmes that were found appear to require Ukrainian or do not state a language. That makes UCU off-scope for the medical-admissions register for now. It is not rejected: the official site and registries could not be opened, and a missing search result is an access limitation, not evidence. Revisit only if the official ucu.edu.ua or international.ucu.edu.ua pages, or EDEBO and NAQA records, show a health programme open to foreign applicants. Keep it unpublished until it passes the evidence standard.",
+    "gaps": [
+     "No 222 Medicine / General Medicine / MD programme or medical faculty was found at UCU. This absence in search results is NOT proof that none exists. It needs confirming against the official faculty list and the EDEBO programme register.",
+     "No EDEBO registry record or Ministry of Education licence entry for UCU was found, so state registration and licensed specialties are unverified.",
+     "No NAQA accreditation was found for the physical therapy, occupational therapy, psychology or social work programmes.",
+     "The WCPT/WFOT 'designed to meet requirements' statement is a third-party report of a design claim. It is not accreditation or recognition.",
+     "Language of instruction for the Faculty of Health Sciences programmes (physical therapy bachelor's and master's, occupational therapy master's) is not stated. Eligibility for foreign applicants is not stated.",
+     "Unknown: duration of the new physical therapy bachelor's, fees, intake, deadlines and admission requirements for foreigners.",
+     "The official 'UCU Programs for Foreign Students' page is undated. Its English-programme list may be out of date.",
+     "The date of the loda.gov.ua clinic news item is not shown, and nothing is known about the clinic's licence or its role in teaching.",
+     "No dated statements were found on teaching format, wartime operation or relocation.",
+     "No destination-country recognition data was found. It would only be relevant if a regulated health degree is offered to foreigners.",
+     "nrat.ukrintei.ua records 2119U002400 and 2119U000843 appeared in results, but their content and connection to UCU were not described. They are not used.",
+     "The official domain ucu.edu.ua rests only on search results hosted on that domain plus third-party corroboration. It has not been checked against EDEBO.",
+     "The source of the 'six degree-granting faculties' list and the 'rehabilitation medicine' mention was not specified in the search summary."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://ucu.edu.ua/",
+      "what": "Official homepage: confirm the domain, the legal name, and the faculty list (check whether any medical faculty or 222 Medicine programme exists). Locate the Faculty of Health Sciences section; its exact URL was not found in search."
+     },
+     {
+      "url": "https://ucu.edu.ua/?p=74383",
+      "what": "'UCU Programs for Foreign Students' page: capture with date. Covers English-taught programmes, the Ukrainian-language requirement and the certificate programme."
+     },
+     {
+      "url": "https://international.ucu.edu.ua",
+      "what": "International Academic Relations Office: current admission requirements for foreign applicants, programmes open to foreigners, language of instruction, fees and deadlines."
+     },
+     {
+      "url": "https://ucu.edu.ua/cmh/?p=1444",
+      "what": "UCU page under /cmh/. Content unknown; capture it to see whether it relates to health sciences or mental health."
+     },
+     {
+      "url": "https://registry.edbo.gov.ua/",
+      "what": "EDEBO register: find UCU's record (registration, ownership form, licensed specialties, including whether 222 Medicine or 227 Physical Therapy are licensed). The exact record URL was not found."
+     },
+     {
+      "url": "https://naqa.gov.ua/",
+      "what": "NAQA: accreditation status of UCU's physical therapy, occupational therapy and psychology programmes. The exact record URL was not found."
+     },
+     {
+      "url": "https://loda.gov.ua/news/104953",
+      "what": "Lviv Regional State Administration news on the UCU Medical Clinic (Panasa Myrnoho 24a): capture with publication date."
+     },
+     {
+      "url": "https://hromada.us/en/articles/2026/08/17/enrollment-is-open-for-the-new-bachelors-program-in-physical-therapy-at-ucu",
+      "what": "Third-party, dated 2026-08-17: report on the new physical therapy bachelor's. Use as a lead to find the matching official UCU announcement."
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": null,
+   "verdictNote": "skeptic re-check not run: the verifier agent stopped on a usage limit (resets 2026-10-16 01:00 UTC); researcher leads only"
+  },
+  {
+   "record": {
+    "name": "Vasyl Stefanyk Precarpathian National University (renamed Vasyl Stefanyk Carpathian National University in 2025, per search leads)",
+    "altNames": [
+     "Prykarpatskyi National University",
+     "Precarpathian National University",
+     "PNU / ПНУ",
+     "Прикарпатський національний університет імені Василя Стефаника (former name, per MON order lead)",
+     "Карпатський національний університет імені Василя Стефаника (new name per MON order No. 565 of 14 April 2025, search lead)",
+     "КНУ (abbreviation used on education.ua listing)",
+     "Carpathian National University (English rendering of the new name; official English form not confirmed)",
+     "Identification code 02125266 (as quoted by osvita.ua from the MON order; not verified)"
+    ],
+    "city": "Ivano-Frankivsk",
+    "officialDomainLead": "cnu.edu.ua (new domain after the 2025 rename, per search leads); legacy domain pnu.edu.ua still appears in results, including admission.pnu.edu.ua. pu.if.ua was mentioned in one search summary only as an old site; not confirmed.",
+    "officialDomainBasis": [
+     {
+      "text": "MON page titled 'Pro pereimenuvannia Prykarpatskoho natsionalnoho universytetu imeni Vasylia Stefanyka ta yoho vidokremlenoho strukturnoho pidrozdilu' (renaming of the institution). Confirms the rename event, but the search result did not state the domain.",
+      "year": "2025",
+      "url": "https://mon.gov.ua/npa/pro-pereimenuvannia-prykarpatskoho-natsionalnoho-universytetu-imeni-vasylia-stefanyka-ta-ioho-vidokremlenoho-strukturnoho-pidrozdilu",
+      "sourceType": "government"
+     },
+     {
+      "text": "University 'General information' page on cnu.edu.ua. The search summary says it lists 11 faculties and 4 institutes.",
+      "year": "unknown",
+      "url": "https://cnu.edu.ua/?p=53276",
+      "sourceType": "official"
+     },
+     {
+      "text": "Faculty subdomain kea.cnu.edu.ua (Faculty of History, Political Science and International Relations) published a news item dated 18 December 2024 under the cnu.edu.ua domain.",
+      "year": "2024",
+      "url": "https://kea.cnu.edu.ua/en/2024/12/18/meeting-of-the-academic-and-teaching-staff-of-the-faculty-of-history-political-science-and-international-relations-with-history-colleagues-from-kherson-state-university/",
+      "sourceType": "official"
+     },
+     {
+      "text": "Legacy domain: admission subdomain 'ADMISSION OF FOREIGN CITIZENS' page on admission.pnu.edu.ua.",
+      "year": "2025",
+      "url": "https://admission.pnu.edu.ua/?p=20765",
+      "sourceType": "official"
+     },
+     {
+      "text": "Wikipedia article on the institution (third-party; confirms identity only).",
+      "year": "unknown",
+      "url": "https://en.wikipedia.org/wiki/Vasyl_Stefanyk_Precarpathian_National_University",
+      "sourceType": "third-party"
+     }
+    ],
+    "kind": "State national university, classical and multidisciplinary (subordinated to the Ministry of Education and Science per vstup.osvita.ua). Not a medical university. No medical faculty appears in any search result.",
+    "authorityListingLeads": [
+     {
+      "text": "MON order on renaming the institution and its separate structural subdivision. A secondary summary gives it as Order No. 565 of 14 April 2025, renaming it to Karpatskyi natsionalnyi universytet imeni Vasylia Stefanyka. The order number and date come from the search summary and need checking against the order text.",
+      "year": "2025",
+      "url": "https://mon.gov.ua/npa/pro-pereimenuvannia-prykarpatskoho-natsionalnoho-universytetu-imeni-vasylia-stefanyka-ta-ioho-vidokremlenoho-strukturnoho-pidrozdilu",
+      "sourceType": "government"
+     },
+     {
+      "text": "osvita.ua copy of the legislation, quoted as: 'Перейменувати Прикарпатський національний університет імені Василя Стефаника (ідентифікаційний код: 02125266) на Карпатський національний університет імені Василя Стефаника.'",
+      "year": "2025",
+      "url": "https://osvita.ua/legislation/Vishya_osvita/94523/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "vstup.osvita.ua admissions listing (an aggregator of admissions data, not EDEBO itself): 'Тип НЗ: Університет; Підпорядкування: Міністерство освіти і науки України'. It shows licensed intake for bachelor and junior specialist levels but gives no breakdown by specialty in the search result.",
+      "year": "2022",
+      "url": "https://vstup.osvita.ua/y2022/r10/341/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "News report (24tv.ua) that the Precarpathian university changed its name to Carpathian. Gives the reasons as recognition by EU/US partners and the historical link to Halych and the Galician-Volhynian state.",
+      "year": "2025",
+      "url": "https://24tv.ua/education/prikarpatskiy-universitet-zminiv-nazvu-teper-vin-karpatskiy_n2894806/amp",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "education.ua directory listing under the new name 'Карпатський національний університет імені Василя Стефаника (КНУ)'.",
+      "year": "unknown",
+      "url": "https://www.education.ua/universities/208/",
+      "sourceType": "third-party"
+     }
+    ],
+    "programmesForForeigners": [],
+    "accreditationLeads": [
+     {
+      "text": "The search summary, drawn from Wikipedia and Times Higher Education results, says the university 'is accredited by the highest IV level of accreditation'. That is the legacy Ukrainian institutional accreditation level, not NAQA programme accreditation, not international accreditation and not destination-country recognition. No NAQA accreditation of any health-care programme (including 227) was found.",
+      "year": "unknown",
+      "url": "https://en.wikipedia.org/wiki/Vasyl_Stefanyk_Precarpathian_National_University",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "PhD educational programme document for specialty 227 (Physical Therapy, Occupational Therapy), dated 2020, hosted on a university subdomain. Shows a 227 doctoral programme exists in documents only. Accreditation status not stated in the result.",
+      "year": "2020",
+      "url": "https://nmv.pnu.edu.ua/wp-content/uploads/sites/118/2023/03/227-osvitnia-prohrama-phd-2020.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "operatingStatusLeads": [
+     {
+      "text": "Kherson State University (KSU) fundraising page says KSU continues teaching and research despite its temporary move in 2022 to the buildings of the Precarpathian university in Ivano-Frankivsk. This is KSU's own domain, so it is official for KSU and third-party for PNU. The page is undated in the result.",
+      "year": "2022 (event); page date unknown",
+      "url": "https://kspu.edu/About/DepartmentAndServices/Fundraising?culture=en",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Faculty news item: PNU history faculty met Kherson State University historians. The dean referred to premises provided to KSU colleagues who had to relocate their activities to Ivano-Frankivsk.",
+      "year": "2024",
+      "url": "https://kea.cnu.edu.ua/en/2024/12/18/meeting-of-the-academic-and-teaching-staff-of-the-faculty-of-history-political-science-and-international-relations-with-history-colleagues-from-kherson-state-university/",
+      "sourceType": "official"
+     },
+     {
+      "text": "Adam Mickiewicz University 'Scientists for Scientists' campaign page says supervision of temporarily moved institutions was assigned to universities in western Ukraine, and that KSU was placed in Ivano-Frankivsk.",
+      "year": "unknown",
+      "url": "https://amu.edu.pl/en/news-and-events/news/the-scientists-for-scientists-campaign",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "University pages report KSU's 106th anniversary held at Precarpathian National University in a mixed format, with participants online from the KSU office in Kherson. They also report the opening of new KSU classrooms and laboratories temporarily allocated at PNU. Exact dates were not shown in the search result.",
+      "year": "unknown",
+      "url": "https://cnu.edu.ua/?p=52108",
+      "sourceType": "official"
+     },
+     {
+      "text": "The 'ADMISSION OF FOREIGN CITIZENS' page describes a 2025 admission process: entrance examinations in the form of an interview; documents required are the diploma with supplement, transcript where relevant, passport and digital photo. No medical programme is named in the result. It shows foreign admissions were active for the 2025 cycle only.",
+      "year": "2025",
+      "url": "https://admission.pnu.edu.ua/?p=20765",
+      "sourceType": "official"
+     },
+     {
+      "text": "Institution renamed to Carpathian National University named after Vasyl Stefanyk by MON order (April 2025 per secondary summary). This is a legal-identity change, not evidence of operating status.",
+      "year": "2025",
+      "url": "https://mon.gov.ua/npa/pro-pereimenuvannia-prykarpatskoho-natsionalnoho-universytetu-imeni-vasylia-stefanyka-ta-ioho-vidokremlenoho-strukturnoho-pidrozdilu",
+      "sourceType": "government"
+     }
+    ],
+    "relevance": "low",
+    "relevanceReason": "None of the 5 searches found a medical faculty or a 222 Medicine, 221 Dentistry or 228 Paediatrics programme, and no nursing programme turned up either. Official and aggregator faculty lists (11 or 12 faculties plus 4 institutes) include no medical faculty. The only health-care-field lead is specialty 227 Physical Therapy, Occupational Therapy: a bachelor programme in the Faculty of Physical Education and Sport (vstup.osvita.ua 2017/2020/2024 listings) plus a 2020 PhD programme document. Neither was confirmed as open to foreign applicants or taught in English. The institution's main relevance is as host of the relocated Kherson State University units in Ivano-Frankivsk. Note that not finding Medicine in search results does not prove it is absent; EDEBO confirmation is needed.",
+    "status": "defer",
+    "statusReason": "The search evidence points to a state, MON-subordinated, non-medical classical university, renamed in 2025 to Carpathian National University (cnu.edu.ua). No medical-degree programme was found, so it is low priority for a medical admissions register. It is not rejected because no search result proves Medicine is absent; that would need the EDEBO licence list for code 02125266. The 227 Physical Therapy lead is not a medical degree and is not confirmed for foreigners. Revisit only if EDEBO or the official admissions pages show a licensed health-care programme open to foreign citizens.",
+    "gaps": [
+     "EDEBO register entry for code 02125266: licensed specialties and intake, especially whether any of 222, 221, 228, 223 or 227 is licensed. No EDEBO URL was surfaced in searches.",
+     "Official text of MON order No. 565 of 14 April 2025: confirm the number, date and new name, and what the 'separate structural subdivision' is. The number and date come from a secondary summary only.",
+     "Official English form of the new name, and confirmation that cnu.edu.ua is now the primary official domain and pnu.edu.ua the legacy one.",
+     "Whether specialty 227 Physical Therapy, Occupational Therapy (bachelor/master/PhD) admits foreign citizens, its language of instruction, duration and NAQA accreditation status. None were found.",
+     "Current (2026) foreign-admissions page and programme list. The only admissions lead is dated 2025.",
+     "Current status of the Kherson State University relocated units at the Ivano-Frankivsk campus. Leads are from 2022 to 2024 only, and the KSU anniversary and labs pages are undated in the results.",
+     "Teaching format (in-person, blended or online) under martial law: no statement found.",
+     "No international accreditation, destination-country recognition or WDOMS entry was found. None would be expected for a non-medical university, but this is unverified.",
+     "Faculty count discrepancy (11 vs 12 faculties) between university pages in the search summary."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://mon.gov.ua/npa/pro-pereimenuvannia-prykarpatskoho-natsionalnoho-universytetu-imeni-vasylia-stefanyka-ta-ioho-vidokremlenoho-strukturnoho-pidrozdilu",
+      "what": "MON renaming order: number, date, old and new legal name, identification code, separate structural subdivision"
+     },
+     {
+      "url": "https://cnu.edu.ua/?p=53276",
+      "what": "Official 'General information' page: faculties and institutes list (check for any medical or health-care unit), legal name"
+     },
+     {
+      "url": "https://admission.pnu.edu.ua/?p=20765",
+      "what": "Admission of foreign citizens (2025): procedure, programme list, languages; check for a 2026 version"
+     },
+     {
+      "url": "https://pnu.edu.ua/?p=10668",
+      "what": "Legacy official page cited in search for the faculty list (12 faculties); compare with the cnu.edu.ua list"
+     },
+     {
+      "url": "https://nmv.pnu.edu.ua/wp-content/uploads/sites/118/2023/03/227-osvitnia-prohrama-phd-2020.pdf",
+      "what": "PhD programme 227 Physical Therapy, Occupational Therapy: programme owner, level, accreditation status if stated"
+     },
+     {
+      "url": "https://vstup.osvita.ua/y2024/r10/341/538925/",
+      "what": "Third-party admissions listing (2024) for the institution's 227 programme: faculty, level, entry basis; cross-check against EDEBO"
+     },
+     {
+      "url": "https://kea.cnu.edu.ua/en/2024/12/18/meeting-of-the-academic-and-teaching-staff-of-the-faculty-of-history-political-science-and-international-relations-with-history-colleagues-from-kherson-state-university/",
+      "what": "Dated (2024) official statement on hosting the relocated Kherson State University in Ivano-Frankivsk"
+     },
+     {
+      "url": "https://cnu.edu.ua/?p=52108",
+      "what": "Official news on the KSU anniversary and KSU classrooms and labs at the PNU campus; capture the publication date"
+     },
+     {
+      "url": "https://kspu.edu/About/DepartmentAndServices/Fundraising?culture=en",
+      "what": "KSU's own statement on its 2022 temporary relocation to PNU buildings (relocated institution's side)"
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": null,
+   "verdictNote": "skeptic re-check not run: the verifier agent stopped on a usage limit (resets 2026-10-16 01:00 UTC); researcher leads only"
+  },
+  {
+   "record": {
+    "name": "Oles Honchar Dnipro National University",
+    "altNames": [
+     "DNU",
+     "ДНУ",
+     "Дніпровський національний університет імені Олеся Гончара",
+     "Faculty of Medical Technologies of Diagnostics and Rehabilitation (DNU unit; also rendered 'Faculty of Medical Technology, Diagnostics, and Rehabilitation')"
+    ],
+    "city": "Dnipro",
+    "officialDomainLead": "dnu.dp.ua",
+    "officialDomainBasis": [
+     {
+      "text": "The faculty page sits on dnu.dp.ua. According to the search summary, it lists the Faculty of Medical Technologies of Diagnostics and Rehabilitation at D. Yavornitskiy avenue 35, Dnipro, with an acting dean named. The domain also hosts the international admissions pages and the NAQA and educational-programme documents.",
+      "year": "undated (page retrieved via search 2026-10-12)",
+      "url": "https://dnu.dp.ua/en/facult_of_medical_techonologies_of_diagnostics_and_rehabilitation",
+      "sourceType": "official"
+     },
+     {
+      "text": "'Admission of Foreigners to Study at Oles Honchar Dnipro National University' is on the same domain.",
+      "year": "undated",
+      "url": "https://www.dnu.dp.ua/en/admission_of_foreigners",
+      "sourceType": "official"
+     },
+     {
+      "text": "The government Study in Ukraine portal has an entry for the university at /minedu/university/126. It is a cross-reference from an authority portal; whether that entry links to dnu.dp.ua was not visible in the results.",
+      "year": "undated",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/126",
+      "sourceType": "government"
+     },
+     {
+      "text": "One search summary (Ukrainian-language query) named 'dnu.edu.ua' as the official site. No result URL on that domain came back. Treat it as an unverified possible alternate domain, not a basis.",
+      "year": "2026 (search summary)",
+      "url": "https://www.education.ua/universities/42/",
+      "sourceType": "third-party"
+     }
+    ],
+    "kind": "Classical multi-faculty university (state according to the task note; ownership and subordination not confirmed in these results). It is not a medical university. Its health-related offer comes from one allied-health faculty (nursing, medical diagnostics, physical therapy/rehabilitation, public health). No general medicine (MD) programme was found.",
+    "authorityListingLeads": [
+     {
+      "text": "Study in Ukraine portal (Ministry of Education and Science) has a university entry under ID 126.",
+      "year": "undated",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/126",
+      "sourceType": "government"
+     },
+     {
+      "text": "Study in Ukraine portal has a preparatory-department page for DNU. Snippet: '- implementation of analytical and prognostic activities to encourage foreigners to study at DNU;'",
+      "year": "undated",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/126/preparatory-department",
+      "sourceType": "government"
+     },
+     {
+      "text": "vstup.osvita.ua (third-party admissions aggregator) has a tuition page for the university (institution code r5/111). The search summary says it shows 2026 tuition prices. No figures were recorded.",
+      "year": "2026",
+      "url": "https://vstup.osvita.ua/r5/111/price.html",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "education.ua (third-party) lists the university. The search summary says the page shows full-time bachelor admission in 2026 with state-funded place counts, with no medical-specific detail.",
+      "year": "2026",
+      "url": "https://www.education.ua/universities/42/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "osvita.ua (third-party) has a university guide entry, ID 208.",
+      "year": "undated",
+      "url": "https://osvita.ua/vnz/guide/208/",
+      "sourceType": "third-party"
+     }
+    ],
+    "programmesForForeigners": [
+     {
+      "title": "Preparatory department for foreign citizens",
+      "level": "Preparatory (pre-degree, language/foundation)",
+      "language": "Ukrainian or Russian (per search summary; source page not pinpointed)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/126/preparatory-department",
+      "sourceType": "government",
+      "quote": "- implementation of analytical and prognostic activities to encourage foreigners to study at DNU;"
+     },
+     {
+      "title": "Admission routes for foreigners (preparatory faculty, language study, postgraduate and internship; in-person and/or remote admission)",
+      "level": "Various (preparatory, degree, postgraduate)",
+      "language": "not stated in results",
+      "url": "https://www.dnu.dp.ua/en/admission_of_foreigners",
+      "sourceType": "official",
+      "quote": "Search summary: foreigners may be admitted in person and/or remotely via the Unified System for Foreigners and Stateless Persons; an electronic invitation to study is valid for no more than six months; remote applicants need legalised/apostilled documents and remote entrance exams are video-recorded."
+     },
+     {
+      "title": "Nursing (specialty 223)",
+      "level": "Bachelor (3 years 10 months on a complete secondary certificate, per summary); a master's 'Medsestrynstvo' also referenced",
+      "language": "not stated; no evidence this programme is open to foreigners",
+      "url": "https://dnu.dp.ua/en/facult_of_medical_techonologies_of_diagnostics_and_rehabilitation",
+      "sourceType": "official",
+      "quote": "Search summary of the official faculty page: five specialties listed, Nursing (223), Medical Diagnostic and Treatment Technologies (224), Therapy and Rehabilitation (227), Public Health (229), Social Work (231); qualification 'Bachelor, Nursing, Nurse'."
+     },
+     {
+      "title": "Medical Diagnostic and Treatment Technologies (specialty 224)",
+      "level": "Bachelor / Master (master's 1 year 10 months for Health Protection field diploma holders, per summary)",
+      "language": "not stated; no evidence this programme is open to foreigners",
+      "url": "https://dnu.dp.ua/en/facult_of_medical_techonologies_of_diagnostics_and_rehabilitation",
+      "sourceType": "official",
+      "quote": "Search summary: official faculty page lists 'Medical Diagnostic and Treatment Technologies (224)'."
+     },
+     {
+      "title": "Therapy and Rehabilitation / Physical Therapy (specialty 227)",
+      "level": "Bachelor",
+      "language": "not stated; no evidence this programme is open to foreigners",
+      "url": "https://dnu.dp.ua/docs/osvitni_programy/2024/b_227_01_opp_FTE_2023.pdf",
+      "sourceType": "official",
+      "quote": "Result title: 'b 227 01 opp FTE 2023' (bachelor educational-professional programme file for 227)."
+     },
+     {
+      "title": "Public Health (specialty 229)",
+      "level": "not stated",
+      "language": "not stated; no evidence this programme is open to foreigners",
+      "url": "https://dnu.dp.ua/en/facult_of_medical_techonologies_of_diagnostics_and_rehabilitation",
+      "sourceType": "official",
+      "quote": "Search summary: official faculty page lists 'Public Health (229)'."
+     }
+    ],
+    "accreditationLeads": [
+     {
+      "text": "NAQA expert group report for bachelor programme 227 (Physical Therapy), dated 01.02.2022, hosted on dnu.dp.ua. Snippet: 'Освітня програма та освітня діяльність за цією програмою загалом відповідають визначеним критеріям з недоліками, що не є суттєвими.' This is the expert group's finding, not the NAQA accreditation decision. The certificate term was not found.",
+      "year": "2022",
+      "url": "https://www.dnu.dp.ua/docs/dnu/NAZIAVO/21_22/zvit/2022_zvit_EG_227_b_01_02_2022.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "NAQA expert group report for programme 223 Nursing ('b_2021_zvit_EG_223_Med'). Snippet: 'Дати візиту до ЗВО 30.03.2021 р. – 01.04.2021 р.' The filename suggests the bachelor programme. The accreditation outcome was not shown.",
+      "year": "2021",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/zvity/b_2021_zvit_EG_223_Med.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "According to the search summary, DNU data state that the master's programme 'Медсестринство' (223) holds a NAQA accreditation certificate: decision 01.03.2022, valid 'до 01.07.2027 р.'. The exact source document was not pinpointed; the likely candidate is the m_223 programme file. Verify on the NAQA register.",
+      "year": "2022 (decision); expiry 2027",
+      "url": "https://dnu.dp.ua/docs/osvitni_programy/redakcii_2021_2024/m_223_ONP_2022-2024.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "No NAQA certificate or expert report was found for 224 Medical Diagnostic and Treatment Technologies or 229 Public Health. No international accreditation was found. No destination-country recognition evidence was found; none exists for a general medicine programme because none was found.",
+      "year": "n/a",
+      "url": "https://dnu.dp.ua/en/facult_of_medical_techonologies_of_diagnostics_and_rehabilitation",
+      "sourceType": "official"
+     }
+    ],
+    "operatingStatusLeads": [
+     {
+      "text": "University news item 'DNU and Charles University: Strengthening Partnership' (dated 2025 per search summary) reports talks on medical-field cooperation with Charles University, Prague. These are discussions only, not a confirmed partnership. The item also notes graduates in these fields usually practise at the Mechnikov Regional Clinical Hospital.",
+      "year": "2025",
+      "url": "https://www.dnu.dp.ua/ennews/189",
+      "sourceType": "official"
+     },
+     {
+      "text": "Medical University of Bialystok news: 'Agreement with Oles Honchar Dnipro National University'. The search summary says a five-year cooperation agreement was signed in May 2025 and that the partner describes the faculty as offering nursing, public health, physiotherapy and medical diagnostics. This is the partner's statement.",
+      "year": "2025",
+      "url": "https://www.umb.edu.pl/en/international_cooperation/news/31015,Agreement_with_Oles_Honchar_Dnipro_National_University",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Educational-programme files exist under a 2026-2027 folder ('b_I7_01_opp_2026', 'b_I5_01_opp_2026'), which suggests programmes are being prepared for 2026-27 under new specialty codes. The programme names behind codes I5 and I7 were not shown and must not be inferred.",
+      "year": "2026",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2026-2027/17_07/b_I5_01_opp_2026.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "No dated statement on relocation or teaching format (in-person, blended or distance) was found. A Ukrainian-language search returned only general wartime context. Current campus operation in Dnipro and the teaching format remain unverified.",
+      "year": "n/a",
+      "url": "https://life.pravda.com.ua/society/vstupna-kampaniya-2026-de-universiteti-pracyuyut-ochno-a-u-de-distanciyno-316755/index.amp",
+      "sourceType": "third-party"
+     }
+    ],
+    "relevance": "low",
+    "relevanceReason": "Two research runs found no general medicine (MD/MBBS-equivalent), dentistry or pharmacy programme. The health offer is allied health only: nursing 223, medical diagnostic and treatment technologies 224, physical therapy/rehabilitation 227 and public health 229, in one faculty. Nothing shows these are taught in English or open to international degree applicants. 'General Medicine with a Course of Physical Therapy' is a department name, not a medical degree programme. A 1918 medical faculty mentioned in a search summary is historical only.",
+    "status": "defer",
+    "statusReason": "No medical degree programme was found in either run, and the allied-health programmes show no foreigner or English-taught availability. The institution falls outside the site's core medical-admissions scope for now. Some accreditation leads exist (227 expert report 2022; 223 master's certificate reportedly valid to 01.07.2027), but they cover allied health only. Reopen only if the 2026-27 programme files (codes I5/I7) or official foreigner admissions pages show a medicine programme or English-taught health programmes for international students.",
+    "gaps": [
+     "No evidence of any general medicine, dentistry or pharmacy degree programme. Two runs, no hit.",
+     "Programmes behind the 2026-2027 files 'b_I5_01_opp_2026' and 'b_I7_01_opp_2026' are not identified. The new specialty codes must be read from the documents themselves, not inferred.",
+     "Teaching language for the allied-health programmes is not stated, and nothing shows they are open to foreign applicants.",
+     "No official tuition for foreigners. Only third-party aggregator figures (uniRank, TopUniversities) appeared and were not recorded as facts.",
+     "No dated statement on campus location, relocation or teaching format during martial law.",
+     "State ownership and subordination are not confirmed in the results (the task note says state; the Study in Ukraine URL path '/minedu/' is only suggestive).",
+     "No EDEBO registry record or licence data was retrieved.",
+     "NAQA register confirmation is missing for all programmes. No certificate term for 227. No accreditation evidence for 224 or 229. The bachelor 223 outcome is not shown.",
+     "The 223 master's certificate claim (decision 01.03.2022, valid to 01.07.2027) has no pinpointed source document.",
+     "A possible alternate domain 'dnu.edu.ua' appeared only in a search summary and is unverified.",
+     "International student counts differ across sources (about 130 on Wikipedia; 166 in a DNU fact sheet; 'more than 20 countries' in a 2020 booklet), all undated or old.",
+     "Official destination-country recognition is not applicable, because no medical degree was found."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://dnu.dp.ua/en/facult_of_medical_techonologies_of_diagnostics_and_rehabilitation",
+      "what": "Official faculty page: specialties list (223, 224, 227, 229, 231), durations, qualifications, departments, dean, address"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/en/admission_of_foreigners",
+      "what": "Official foreigner admission rules: routes, remote admission, invitation validity, document legalisation; check for any medical or health programme open to foreigners and language of instruction"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/en/International_Students_Office",
+      "what": "International Students Office page: contacts and any programme or fee list for foreigners"
+     },
+     {
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/126",
+      "what": "Government Study in Ukraine portal entry: listed programmes, languages, fees, official domain link"
+     },
+     {
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/126/preparatory-department",
+      "what": "Government portal preparatory department entry for foreigners"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2026-2027/17_07/b_I5_01_opp_2026.pdf",
+      "what": "2026-27 bachelor programme document, code I5: identify specialty and programme name, language, duration"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2026-2027/17_07/b_I7_01_opp_2026.pdf",
+      "what": "2026-27 bachelor programme document, code I7: identify specialty and programme name, language, duration"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/docs/dnu/NAZIAVO/21_22/zvit/2022_zvit_EG_227_b_01_02_2022.pdf",
+      "what": "NAQA expert group report, bachelor 227 Physical Therapy (2022)"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/zvity/b_2021_zvit_EG_223_Med.pdf",
+      "what": "NAQA expert group report, 223 Nursing (visit 30.03-01.04.2021)"
+     },
+     {
+      "url": "https://dnu.dp.ua/docs/osvitni_programy/redakcii_2021_2024/m_223_ONP_2022-2024.pdf",
+      "what": "Master's 223 Nursing programme document: check the accreditation certificate reference (decision 01.03.2022, validity to 01.07.2027)"
+     },
+     {
+      "url": "https://dnu.dp.ua/docs/osvitni_programy/2024/b_227_01_opp_FTE_2023.pdf",
+      "what": "Bachelor 227 programme document (2023 edition)"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/ennews/189",
+      "what": "Official 2025 news on talks with Charles University in the medical field (discussions, not a confirmed partnership)"
+     },
+     {
+      "url": "https://www.dnu.dp.ua/docs/Megdunarodnoe/DNUFactSheet.pdf",
+      "what": "DNU fact sheet: international student figures, dated if possible"
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": null,
+   "verdictNote": "skeptic re-check not run: the verifier agent stopped on a usage limit (resets 2026-10-16 01:00 UTC); researcher leads only"
+  },
+  {
+   "record": {
+    "name": "Odesa I. I. Mechnikov National University",
+    "altNames": [
+     "Odessa National University",
+     "Odesa National University",
+     "ONU",
+     "Odessa I.I. Mechnikov National University",
+     "Одеський національний університет імені І. І. Мечникова",
+     "ОНУ імені Мечникова",
+     "Одесский национальный университет имени И. И. Мечникова"
+    ],
+    "city": "Odesa",
+    "officialDomainLead": "onu.edu.ua (subdomains: imo.onu.edu.ua for the Centre of International Education, vstup.onu.edu.ua for admissions)",
+    "officialDomainBasis": [
+     {
+      "text": "Search results returned an English home page titled 'Odessa National University' at onu.edu.ua/en/, plus a Faculties page and an Education page on the same domain.",
+      "year": "undated",
+      "url": "https://onu.edu.ua/en/",
+      "sourceType": "official"
+     },
+     {
+      "text": "The Centre of International Education site at imo.onu.edu.ua appeared in results with 'Rules of admission', 'About ONU' and 'Preparatory department' pages for international applicants.",
+      "year": "undated (the admission page reportedly says 2026-2027 academic year, but one result's metadata suggests an older page)",
+      "url": "https://imo.onu.edu.ua/en/",
+      "sourceType": "official"
+     },
+     {
+      "text": "Admissions documents, such as the professional college admission rules for 2025, are hosted on vstup.onu.edu.ua.",
+      "year": "2025",
+      "url": "https://vstup.onu.edu.ua/storage/files/vstupna_kompaniya/fahovyi_koledg/pravyla-pryiomu-fk-onu-2025.pdf",
+      "sourceType": "official"
+     }
+    ],
+    "kind": "State classical (multi-faculty) national university. It is not a medical university, and no Faculty of Medicine or Medicine programme (222 / I2) turned up in search results. Pharmacy (I8) seems to sit in the Faculty of Chemistry and Pharmacy.",
+    "authorityListingLeads": [
+     {
+      "text": "The vstup.osvita.ua admissions-registry page for ONU (institution id 28, Odesa region r16) reportedly gives the institution type as university and a licensed volume of 7,544 places. The search snippets showed no medicine programme. This portal is a third-party aggregator of EDEBO data, so it has not been checked against registry.edbo.gov.ua.",
+      "year": "2024",
+      "url": "https://vstup.osvita.ua/y2024/r16/28/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "The vstup.osvita.ua 2025 programme pages for ONU (institution 28) reportedly place pharmaceutical chemistry programmes under the 'Faculty of Chemistry and Pharmacy'. One bachelor's programme taken on the basis of a bachelor's degree lists a professional exam and a motivation letter, with applications from 04.08.2025 to 18.08.2025. Exactly which page holds which programme was not confirmed.",
+      "year": "2025",
+      "url": "https://vstup.osvita.ua/y2025/r16/28/1459428/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "There is a separate vstup.osvita.ua listing for the 'Professional College of Odesa I.I. Mechnikov National University', a separate structural unit. The snippets showed no medical programmes.",
+      "year": "2024",
+      "url": "https://vstup.osvita.ua/y2024/r16/1518/",
+      "sourceType": "third-party"
+     }
+    ],
+    "programmesForForeigners": [
+     {
+      "title": "Pharmacy (specialty I8 'Farmatsiya'), draft master's educational-professional programme for 2025. It is not confirmed that international applicants can take it.",
+      "level": "Second (master's) level, draft programme document",
+      "language": "unknown",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/ggf/navchalni_materialy/proekty/2025_proekt_opp_i8_farmaciya_mag.pdf",
+      "sourceType": "official",
+      "quote": "Програма розроблена на підставі Стандарту вищої освіти України другого (магістерського) рівня (search-result summary of the 2025 draft OPP for I8 Pharmacy, master's level)"
+     }
+    ],
+    "accreditationLeads": [
+     {
+      "text": "ONU hosts NAQA-style self-assessment documents ('vidomosti pro samootsinyuvannya') for programme accreditation under onu.edu.ua/pub/bank/userfiles/files/accredit/. One is for programme ID 30292, a master's file whose programme was not identified. Search results did not show the programme, its status or the outcome. Do not read this as accreditation of any medical programme.",
+      "year": "undated",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/accredit/akredit_OP/magistr/vidomosti_pro_samootsinyuvannya__30292.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "Another self-assessment document exists for 014 Secondary Education (Biology), which is not a medical programme. It shows only that accreditation files are published under this path.",
+      "year": "undated",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/accredit/vidomist_pro_samocinuvannya_014_Serednya_osvita(bio).pdf",
+      "sourceType": "official"
+     }
+    ],
+    "operatingStatusLeads": [
+     {
+      "text": "An official ONU news page is titled 'ONU Chinese students are in Odesa during the wartime'. The snippet showed no date, so it says nothing about current operation or teaching format.",
+      "year": "undated (wartime, i.e. 2022 or later)",
+      "url": "https://onu.edu.ua/en/international-cooperation/onu-chinese-students-are-in-odesa-during-the-wartime",
+      "sourceType": "official"
+     },
+     {
+      "text": "The Centre of International Education's admission rules page reportedly says ONU accepts foreigners and stateless persons who reside in Ukraine on legal grounds and meet education and language requirements. Required documents include an apostilled school transcript translated into Ukrainian and emergency medical insurance for the whole period of study. The page is reportedly labelled 2026-2027, but one result's metadata suggests an older page, so the current version needs checking.",
+      "year": "2026-2027 label (unconfirmed)",
+      "url": "https://imo.onu.edu.ua/en/rules-of-admission",
+      "sourceType": "official"
+     },
+     {
+      "text": "An undated 'About ONU' page states that 11,000 students study at the university, including 320 foreigners from 40 countries.",
+      "year": "undated",
+      "url": "https://imo.onu.edu.ua/en/about-onu",
+      "sourceType": "official"
+     },
+     {
+      "text": "Zaxid.net reports that ONU approved its 2025 tuition costs. The most expensive specialties, including 'Pharmacy', cost about 44,000-45,000 UAH per year for 2025-2026. This is most likely the domestic tuition rate, not a fee for foreigners.",
+      "year": "2025",
+      "url": "https://zaxid.net/odeskiy_universitet_imeni_mechnikova_zatverdiv_vartist_navchannya_dlya_vstupnikiv_u_2025_rotsi_n1613895",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "THE World University Rankings 2026 data put international students at about 3% of enrolment (as given in a search-result summary).",
+      "year": "2026",
+      "url": "https://www.timeshighereducation.com/world-university-rankings/odessa-iimechnikov-national-university-0",
+      "sourceType": "third-party"
+     }
+    ],
+    "relevance": "low",
+    "relevanceReason": "Five searches in English and Ukrainian (including a domain-restricted search on onu.edu.ua) found no Faculty of Medicine, Medical Institute or Medicine programme (222 / I2) at ONU. The faculties listed in third-party sources cover biology, chemistry, geology/geography, economics/law and other non-medical fields. The only health-related lead is Pharmacy (I8) and pharmaceutical chemistry in the Faculty of Chemistry and Pharmacy, and it is not confirmed that foreigners can take it. Medical training in Odesa takes place at a separate institution, Odesa National Medical University, so the two may have been confused. A missing search result does not prove that no medicine programme exists.",
+    "status": "defer",
+    "statusReason": "The institution seems to be a real state university with official domains (onu.edu.ua, imo.onu.edu.ua, vstup.onu.edu.ua). However, search results show no medicine programme, which is the site's core topic. The only health-related lead is a 2025 draft master's programme in Pharmacy (I8), and its language and availability to international applicants are unknown. Rejecting it would be premature, because the lack of results is not evidence. Defer until the EDEBO registry and the official faculty or admissions pages have been checked for any 222/I2 Medicine or I8 Pharmacy licence and for intake of foreign students. If nothing medical is confirmed, consider a narrow pharmacy-only research entry or rejection for medical scope. Possible confusion with Odesa National Medical University should also be handled.",
+    "gaps": [
+     "Whether ONU holds any licence for 222 / I2 Medicine, 221 Dentistry or other medical specialties: not established. This needs to be checked in registry.edbo.gov.ua (EDEBO), which could not be accessed.",
+     "The state registration and licence record in EDEBO has not been verified directly. The 7,544 licensed-places figure comes only from the third-party aggregator vstup.osvita.ua.",
+     "Pharmacy (I8): it is unclear whether the 2025 master's draft programme was approved and launched, whether a bachelor's or integrated pharmacy programme exists, which faculty runs it (the document sits under a 'ggf' path while registry pages cite the Faculty of Chemistry and Pharmacy), its language of instruction and whether foreigners are admitted.",
+     "No NAQA accreditation status was found for any health-related programme. The self-assessment file 30292 was not identified with a programme.",
+     "No international accreditation or destination-country recognition evidence was found. No regulator listings or WDOMS entry were searched or found.",
+     "Tuition for international students is not available. The 44,000-45,000 UAH figure is third-party (Zaxid.net) and most likely the domestic rate.",
+     "The source for the claim that a small number of master's and PhD programmes are taught in English (management, biology, international relations, economics, physics) was unclear in the search results, and none of these is medical.",
+     "Current operating status, teaching format (in-person, online or blended) and any wartime relocation have not been confirmed. The only wartime page found has no date.",
+     "The date and currency of the imo.onu.edu.ua admission rules page (the 2026-2027 label against older metadata) are unconfirmed.",
+     "Possible confusion with the separate Odesa National Medical University (onmedu.edu.ua per general knowledge, not verified here) needs to be resolved in the register."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://onu.edu.ua/en/faculties",
+      "what": "Official list of faculties, to check whether a medical faculty or institute exists and to confirm the Faculty of Chemistry and Pharmacy"
+     },
+     {
+      "url": "https://onu.edu.ua/en/education",
+      "what": "Official education and programme overview, including any health-related specialties"
+     },
+     {
+      "url": "https://imo.onu.edu.ua/en/rules-of-admission",
+      "what": "Admission rules for international applicants (eligibility, documents, academic year label and its currency)"
+     },
+     {
+      "url": "https://imo.onu.edu.ua/en/",
+      "what": "Centre of International Education home page: programmes open to foreigners and their languages"
+     },
+     {
+      "url": "https://imo.onu.edu.ua/en/about-onu",
+      "what": "Institutional statement on student numbers and foreign students, with any date"
+     },
+     {
+      "url": "https://imo.onu.edu.ua/en/preparatory-department",
+      "what": "Preparatory (pre-university) programme for foreigners"
+     },
+     {
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/ggf/navchalni_materialy/proekty/2025_proekt_opp_i8_farmaciya_mag.pdf",
+      "what": "2025 draft master's educational-professional programme for I8 Pharmacy (status, faculty, language)"
+     },
+     {
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/accredit/akredit_OP/magistr/vidomosti_pro_samootsinyuvannya__30292.pdf",
+      "what": "Accreditation self-assessment file 30292, to identify the programme and whether it is health-related"
+     },
+     {
+      "url": "https://onu.edu.ua/en/international-cooperation/onu-chinese-students-are-in-odesa-during-the-wartime",
+      "what": "Wartime statement on foreign students in Odesa: capture its publication date and teaching-format details"
+     },
+     {
+      "url": "https://vstup.onu.edu.ua/",
+      "what": "Official admissions committee site: current admission rules and the list of offered specialties (look for 222/I2 Medicine and I8 Pharmacy)"
+     },
+     {
+      "url": "https://registry.edbo.gov.ua/",
+      "what": "EDEBO registry entry for ONU: legal registration, licences by specialty and licensed volumes (government source to replace the third-party vstup.osvita.ua data)"
+     },
+     {
+      "url": "https://naqa.gov.ua/",
+      "what": "NAQA accreditation records for any ONU pharmacy or health-related programmes"
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": null,
+   "verdictNote": "skeptic re-check not run: the verifier agent stopped on a usage limit (resets 2026-10-16 01:00 UTC); researcher leads only"
+  },
+  {
+   "record": {
+    "name": "Ukrainian Military Medical Academy",
+    "altNames": [
+     "Українська військово-медична академія",
+     "УВМА",
+     "UVMA",
+     "UMMA (abbreviation used in a third-party search summary, not confirmed from an official page)"
+    ],
+    "city": "Kyiv (stated only in third-party search-result summaries, e.g. the osvita.ua directory context; not confirmed from an official page)",
+    "officialDomainLead": "uvma.mil.gov.ua (the institution's own subdomain under the Ministry of Defence domain mil.gov.ua; there is also a related subdomain vzp-sm.uvma.mil.gov.ua whose unit identity was not established)",
+    "officialDomainBasis": [
+     {
+      "text": "Search results show academy documents hosted on uvma.mil.gov.ua: the admission committee regulations of the Ukrainian Military Medical Academy (approved by the Academic Council in 2024, amended 2 June 2026) and a 'rules 2026' admission file under /entrants/military-doctors/.",
+      "year": "2026",
+      "url": "https://uvma.mil.gov.ua/entrants/military-doctors/files/admission_committee_regulations_02062026.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "Self-assessment file 'samoocinkaONP UVMA' for the PhD programme in Medicine (specialty 222) is hosted on uvma.mil.gov.ua; the search summary describes uvma.mil.gov.ua as the academy's official website.",
+      "year": "not stated in result",
+      "url": "https://uvma.mil.gov.ua/science/adjunct/files/samoocinkaONP_UVMA.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "The osvita.ua directory entry for the academy appears in the same search set; the search summary links the academy to uvma.mil.gov.ua. Third-party corroboration only.",
+      "year": "not stated in result",
+      "url": "https://osvita.ua/vnz/guide/37184/",
+      "sourceType": "third-party"
+     }
+    ],
+    "kind": "State higher military medical education institution under the Ministry of Defence of Ukraine (per the osvita.ua directory summary: it trains military doctors and also serves as a scientific and treatment centre for the Ministry of Defence). The admission documents found relate to a 'military doctors' entrant route and an adjunct (PhD) route, not to a standard civilian undergraduate route for international students.",
+    "authorityListingLeads": [
+     {
+      "text": "The institution's own pages sit on uvma.mil.gov.ua, a subdomain of the Ministry of Defence domain mil.gov.ua. This is the authority-domain basis noted in the task. It is the institution's own site, not a MoH or MoE list.",
+      "year": "2026",
+      "url": "https://uvma.mil.gov.ua/entrants/military-doctors/files/rules_2026.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "A Ministry of Defence explainer on how to become a cadet at a military higher education institution in 2026. It covers the general procedure: preliminary diagnostics, selection and the applicant's personal file go through the TCC/SP (territorial recruitment centres) by 10 June 2026. The summary does not show that UVMA is named.",
+      "year": "2026",
+      "url": "https://mod.gov.ua/explanation/yak-staty-kursantom-viiskovoho-vyshu-alhorytm-vstupu-v-2026-rotsi",
+      "sourceType": "government"
+     },
+     {
+      "text": "osvita.ua directory profile: a higher military medical institution with 'fourth accreditation level'. It names medicine, pharmacy and dentistry as training areas. This is a third-party directory, not an authority register.",
+      "year": "not stated in result",
+      "url": "https://osvita.ua/vnz/guide/37184/",
+      "sourceType": "third-party"
+     }
+    ],
+    "programmesForForeigners": [
+     {
+      "title": "General claim, not a listed programme: training and retraining of military doctors 'including foreign citizens'",
+      "level": "Specialist and master's levels (as stated in the search summary)",
+      "language": "Not stated",
+      "url": "https://osvita.ua/vnz/guide/37184/",
+      "sourceType": "third-party",
+      "quote": "у тому числі іноземних громадян. The search summary attributed this to 'an academy profile'. The URL is uncertain: the same result set held osvita.ua/vnz/guide/37184/ and vzp-sm.uvma.mil.gov.ua/assets/files/polozenyaVZPSM.pdf. No admission route, language, fee or eligibility for foreigners was shown."
+     }
+    ],
+    "accreditationLeads": [
+     {
+      "text": "Self-assessment for educational programme ID 48265 'Medicine' (PhD level, specialty 222). It says it forms part of the accreditation file submitted to the National Agency for Higher Education Quality Assurance (NAQA). This shows a submission. It is not an accreditation decision, and no NAQA decision or date was found.",
+      "year": "not stated in result",
+      "url": "https://uvma.mil.gov.ua/science/adjunct/files/samoocinkaONP_UVMA.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "2023 and 2024 versions of the PhD educational programme in Medicine (specialty 222) are published. The 2024 version lists the Ministry of Defence military education department among its approval signatories. These are programme documents, not accreditation evidence.",
+      "year": "2024",
+      "url": "https://uvma.mil.gov.ua/science/adjunct/files/ONP_222_medycyna_2024.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "osvita.ua says 'fourth accreditation level'. This is an institutional level label in a third-party directory. It is not NAQA programme accreditation, international accreditation or recognition.",
+      "year": "not stated in result",
+      "url": "https://osvita.ua/vnz/guide/37184/",
+      "sourceType": "third-party"
+     }
+    ],
+    "operatingStatusLeads": [
+     {
+      "text": "Admission committee regulations (approved 2024, amended 2 June 2026) are published on the academy domain. They indicate admission activity in 2026, but they do not show location or teaching format.",
+      "year": "2026",
+      "url": "https://uvma.mil.gov.ua/entrants/military-doctors/files/admission_committee_regulations_02062026.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "A 'rules 2026' admission file under the military-doctors entrant section contains a table of specialities, including medical ones. Only its opening was visible in the search result.",
+      "year": "2026",
+      "url": "https://uvma.mil.gov.ua/entrants/military-doctors/files/rules_2026.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "A 2026 regulation file for the FPPC department or faculty is hosted on the academy domain. Its content was not shown.",
+      "year": "2026",
+      "url": "https://uvma.mil.gov.ua/departments/fppc/files/polozhenny_fppc_2026.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "Army Inform, 20 May 2025: a tactical medicine centre is being formed on the basis of the academy.",
+      "year": "2025",
+      "url": "https://armyinform.com.ua/2025/05/20/na-bazi-umva-formuyut-czentr-taktychnoyi-medyczyny-detali/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "International European University news, 2023: cooperation meeting with UVMA. IEU medical students may receive additional military medical education at UVMA departments. This is IEU's claim on IEU's own domain and was not confirmed by UVMA.",
+      "year": "2023",
+      "url": "https://www.ieu.edu.ua/en/about-ieu/news/the-ukrainian-military-medical-academy-and-the-european-medical-school-held-the-meeting-with-senior-students-as-part-of-cooperation",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "2022 admission rules (pravilaUVMA2022): the faculty for training military doctors accepts 'громадяни України із вищою медичною освітою' (Ukrainian citizens with higher medical education).",
+      "year": "2022",
+      "url": "https://vzp-sm.uvma.mil.gov.ua/assets/files/pravilaUVMA2022.pdf",
+      "sourceType": "official"
+     },
+     {
+      "text": "Army Inform, 13 January 2022: the academy turned 29. That implies founding around 1993, which conflicts with a 1995 founding date in an academic article (jnos.donnu.edu.ua).",
+      "year": "2022",
+      "url": "https://armyinform.com.ua/2022/01/13/ukrayinskij-vijskovo-medychnij-akademiyi-vypovnylosya-29-rokiv/",
+      "sourceType": "third-party"
+     },
+     {
+      "text": "Army Inform, 17 July 2019: the academy's most pressing problem was the lack of its own clinical base.",
+      "year": "2019",
+      "url": "https://armyinform.com.ua/2019/07/17/najbolyuchisha-problema-ukrayinskoyi-vijskovo-medychnoyi-akademiyi-vidsutnist-vlasnoyi-klinichnoyi-bazy/",
+      "sourceType": "third-party"
+     }
+    ],
+    "relevance": "low",
+    "relevanceReason": "This is a Ministry of Defence military medical academy. The admission material found covers a 'military doctors' route, which the 2022 rules restrict to Ukrainian citizens who already hold higher medical education, plus adjunct (PhD) programmes, continuing education and a 2026 cadet-style military admission procedure. The only lead on foreigners is one general phrase, 'including foreign citizens', with uncertain attribution. No international-student admission route, language of instruction or fee information was found for the site's audience of international applicants to medicine.",
+    "status": "defer",
+    "statusReason": "The institution appears to exist and be active: official-domain admission documents are dated 2026, and Army Inform reported on it in 2025. But it is a military (MoD) institution, and every concrete admission rule found targets Ukrainian citizens or military entrants. No civilian programme open to international applicants was found. It is not rejected, because one profile statement mentions training foreign citizens. Defer until an official page shows a route open to foreign applicants. If one is found, move it to needs further verification.",
+    "gaps": [
+     "The official website could not be opened (access limitation). All facts here are search-result leads only.",
+     "City (Kyiv) appears only in third-party search summaries and is not confirmed from an official page.",
+     "No official statement was found on whether foreign civilians can apply, or by what route (for example intergovernmental agreements for foreign military personnel versus open admission).",
+     "The 'including foreign citizens' claim has uncertain attribution (osvita.ua or the vzp-sm.uvma.mil.gov.ua regulation PDF). Its level, language, eligibility and dates are unknown.",
+     "The content of rules_2026.pdf was not visible beyond its opening, so it is unknown whether 2026 rules allow foreign applicants or offer undergraduate (integrated) Medicine entry.",
+     "It is unclear whether the academy offers first-entry undergraduate Medicine at all. The evidence points to postgraduate military doctor training, adjunct/PhD programmes and continuing education. osvita.ua lists medicine, pharmacy and dentistry as areas.",
+     "No NAQA accreditation decision, registry entry or date was found. The self-assessment for PhD programme 48265 shows a submission only.",
+     "No EDEBO record, state registration or licence record was found.",
+     "No international accreditation or destination-country recognition evidence was found. No WDOMS entry was surfaced.",
+     "Language of instruction, fees, intake dates and deadlines were not found.",
+     "There is no dated statement on location, relocation or teaching format (in person, remote or blended) since 2022.",
+     "Founding date conflicts: 1995 in an academic article versus about 1993 implied by Army Inform's 2022 '29 years' report.",
+     "The identity and role of the vzp-sm.uvma.mil.gov.ua subdomain and of the 'FPPC' unit were not established.",
+     "The IEU cooperation (2023) is IEU's own claim and was not confirmed from a UVMA page."
+    ],
+    "pagesToCapture": [
+     {
+      "url": "https://uvma.mil.gov.ua/",
+      "what": "Official homepage: legal name, address and city, subordination to the MoD, any foreign-applicant section, and any dated statements on location or teaching format."
+     },
+     {
+      "url": "https://uvma.mil.gov.ua/entrants/military-doctors/files/rules_2026.pdf",
+      "what": "2026 admission rules: eligibility (citizenship), levels, specialities, any provision for foreign citizens, dates."
+     },
+     {
+      "url": "https://uvma.mil.gov.ua/entrants/military-doctors/files/admission_committee_regulations_02062026.pdf",
+      "what": "Admission committee regulations (amended 2 June 2026): any foreign-applicant procedures and the legal identity details of the institution."
+     },
+     {
+      "url": "https://uvma.mil.gov.ua/science/adjunct/files/samoocinkaONP_UVMA.pdf",
+      "what": "NAQA self-assessment for PhD programme 48265 Medicine (222): submission date and programme details. Cross-check against the NAQA registry for a decision."
+     },
+     {
+      "url": "https://uvma.mil.gov.ua/science/adjunct/files/ONP_222_medycyna_2024.pdf",
+      "what": "2024 PhD Medicine programme: approval details, language and duration if stated."
+     },
+     {
+      "url": "https://vzp-sm.uvma.mil.gov.ua/assets/files/pravilaUVMA2022.pdf",
+      "what": "2022 admission rules: confirm the 'Ukrainian citizens with higher medical education' eligibility wording and any foreign-citizen clause."
+     },
+     {
+      "url": "https://vzp-sm.uvma.mil.gov.ua/assets/files/polozenyaVZPSM.pdf",
+      "what": "Regulation of the vzp-sm unit: identify the unit and check whether it holds the 'including foreign citizens' training statement."
+     },
+     {
+      "url": "https://uvma.mil.gov.ua/departments/fppc/files/polozhenny_fppc_2026.pdf",
+      "what": "2026 FPPC regulation: identify the unit and any training of foreign citizens."
+     },
+     {
+      "url": "https://mod.gov.ua/explanation/yak-staty-kursantom-viiskovoho-vyshu-alhorytm-vstupu-v-2026-rotsi",
+      "what": "MoD 2026 admission algorithm for military higher education institutions: whether it applies to UVMA and whether it is citizens-only."
+     }
+    ],
+    "searchesUsed": 5
+   },
+   "verdict": null,
+   "verdictNote": "skeptic re-check not run: the verifier agent stopped on a usage limit (resets 2026-10-16 01:00 UTC); researcher leads only"
+  },
+  {
+   "record": {
+    "name": "Lviv Medical Academy named after Andrei Krupynskyi",
+    "altNames": [
+     "Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\""
+    ],
+    "city": "Lviv (from the name)",
+    "kind": "Communal higher education institution of the Lviv regional council (directory: type \"Academy\", subordination \"regional council\")",
+    "status": "needs further verification",
+    "statusReason": "Lead from directory titles only; nursing and allied-health level is likely but no programme, language or route for foreign applicants was seen.",
+    "sources": [
+     {
+      "text": "vstup.osvita.ua directory page titles (2023 and 2024) and a search summary: communal institution of the Lviv regional council, type Academy, licensed volume 611 places (third-party figure, unverified).",
+      "url": "https://vstup.osvita.ua/y2024/r14/627/",
+      "year": "2023-2024",
+      "sourceType": "third-party"
+     }
+    ],
+    "origin": "lead search by the main session, 2026-10-12 (WebSearch, one query)"
+   },
+   "verdict": null,
+   "verdictNote": "no skeptic re-check; directory title lead only"
+  },
+  {
+   "record": {
+    "name": "Cherkasy Medical Academy",
+    "altNames": [
+     "Черкаська медична академія"
+    ],
+    "city": "Cherkasy (from the name)",
+    "kind": "Communal institution subordinate to the regional council (directory summary)",
+    "status": "needs further verification",
+    "statusReason": "Lead from a directory title only; no programme, language or route for foreign applicants was seen.",
+    "sources": [
+     {
+      "text": "vstup.osvita.ua directory page title (2020) and a search summary: subordinate to the regional council; 42 offers (third-party figure, unverified).",
+      "url": "https://vstup.osvita.ua/y2020/r24/834/",
+      "year": "2020",
+      "sourceType": "third-party"
+     }
+    ],
+    "origin": "lead search by the main session, 2026-10-12 (WebSearch, one query)"
+   },
+   "verdict": null,
+   "verdictNote": "no skeptic re-check; directory title lead only"
+  },
+  {
+   "record": {
+    "name": "Ivan Franko National University of Lviv",
+    "altNames": [
+     "LNU"
+    ],
+    "city": "Lviv (from the name)",
+    "kind": "State classical university",
+    "status": "defer",
+    "statusReason": "One search for a Medicine (222) programme found only non-medical faculties (biology lists 091 and 101); no medical faculty seen. Absence of a result is not evidence; revisit from the official programme list when access exists.",
+    "sources": [
+     {
+      "text": "abitly.org listing of the Faculty of Biology specialities (third-party); no medical faculty in the results.",
+      "url": "https://abitly.org/en/universities/lnu-im-ivana-franka-282/faculties/faculty-of-biology-103/specialities",
+      "year": "undated",
+      "sourceType": "third-party"
+     }
+    ],
+    "origin": "lead search by the main session, 2026-10-12 (WebSearch, one query)"
+   },
+   "verdict": null,
+   "verdictNote": "no skeptic re-check; checked because it is a large Lviv university, not because a result named a medical faculty"
+  }
+ ]
+}
