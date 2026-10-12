@@ -442,6 +442,7 @@ export function run(argv) {
       const t = rawTargets(rawRecord, path)[0];
       if (!t) refuse(`--apply-to-record: the claim path ${path} was not found in the record file`);
       else if (t.deferred && /\.internationalAdmission$/.test(path) && value === true) refuse(`programme "${t.programme.id}" is in deferredProgrammes: move it to programmes[] first (rule R9), then apply this entry`);
+      else if (t.programme && !t.deferred && /^programmes\.[^.]+\.internationalAdmission$/.test(path) && value !== true) refuse(`programme "${t.programme.id}" is in programmes[], which holds only programmes open to international applicants (rule R9); an entry saying ${fmt(value)} means it moves to deferredProgrammes[] first (by hand, in its own commit), then apply this entry`);
       if (!result.refused.length) {
         const before = clone(t.obj);
         const err = applyToRaw(finalRaw, path, entry);

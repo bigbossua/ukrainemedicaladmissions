@@ -195,6 +195,11 @@ guard('--apply-to-record sets the claim and keeps R10', () => {
   check(snap(d) === before, 'refused conflicting apply: neither file changed');
   const df = tool(d, [...opts({ path: 'programmes.nursing.internationalAdmission', value: 'true', url: `${H}/admission`, tier: '1', type: 'web-page', 'academic-year': null, quote: 'Fixture: nursing admits foreign applicants.' }), '--write', '--apply-to-record']);
   check(df.code === 1 && refusedWith(df, 'deferredProgrammes'), 'applying international admission to a deferred programme is refused (R9: move it first)');
+  const closed = tool(d, [...opts({ path: 'programmes.medicine.internationalAdmission', value: 'false', url: `${H}/admission`, tier: '1', type: 'web-page', 'academic-year': null, quote: 'Fixture: medicine does not admit foreign applicants.' }), '--write', '--apply-to-record']);
+  check(closed.code === 1 && refusedWith(closed, 'moves to deferredProgrammes[] first'), `applying "not open" to a programme in programmes[] is refused (R9: programmes[] holds only open programmes) (got ${closed.code}: ${closed.j?.refused?.join(' | ')})`);
+  check(snap(d) === before, 'refused R9 applies: neither file changed');
+  const rec9 = readRec(d);
+  check(rec9.programmes.every((p) => p.internationalAdmission.value === true) && !rec9.deferredProgrammes.some((p) => p.internationalAdmission.status === 'verified' && p.internationalAdmission.value === true), 'R9 of tests/records-evidence.mjs still holds for the fixture record');
 });
 
 // ---------------------------------------------------------------------------------------------- 4. refusals
