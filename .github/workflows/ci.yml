@@ -38,6 +38,21 @@ jobs:
       - run: npm run test:preview
       - run: php -l public/api/enquiry.php
       - run: node tests/enquiry-php.mjs
+      - run: node tests/publish-workflow.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: ui-screenshots, path: site/tests/output, retention-days: 14 }
+
+  # Exercises the REAL publishing workflow (not only the app build) in its non-deploying "verify" mode: the same
+  # release gate a production publish runs. While the owner's legal details are missing (LEGAL_COMPLETION_CHECKLIST.md),
+  # the gate must REFUSE, so expect is "blocked"; change it to "pass" only when `npm run check:release` passes locally.
+  # The called workflow declares contents: write for its deploy targets; target verify never reaches its push step.
+  publish-workflow-verify:
+    needs: build-and-test
+    permissions:
+      contents: write
+    uses: ./.github/workflows/publish-production-branch.yml
+    with:
+      target: verify
+      expect: blocked
+

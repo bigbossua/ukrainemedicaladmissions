@@ -3,7 +3,12 @@
 #   target: staging    → branch `staging`    — STAGING build: every page noindex, no canonical/og:url/JSON-LD,
 #                        robots.txt lists no sitemap (crawling allowed so the noindex is seen), no sitemap
 #                        files, X-Robots-Tag header in .htaccess. For a password-protected staging subdomain.
-#   target: production → branch `production` — full test suite must pass; requires typing PUBLISH; tags a release.
+#   target: production → branch `production` — the RELEASE GATE (site/scripts/release-gate.mjs: full test suite, clean
+#                        production build, publication report, release-readiness check incl. owner legal details) must
+#                        pass; requires typing PUBLISH; tags a release.
+#   target: verify     → NO deploy branch, never pushes: runs exactly the production job's checks (the release gate)
+#                        and reports the result. CI calls this workflow with target verify (workflow_call) on every
+#                        push, so the real publishing workflow is exercised without deploying anything.
 #
 # TRIGGERS: (1) the "Run workflow" button (workflow_dispatch) — GitHub shows it only once this file is on the
 # default branch; (2) pushing a tag named publish-production-<stamp> or publish-staging-<stamp> to the commit
@@ -22,13 +27,23 @@ on:
       target:
         description: 'Deploy target'
         type: choice
-        options: [staging, production]
-        default: staging
+        options: [verify, staging, production]
+        default: verify
         required: true
       confirm:
         description: 'For production only: type PUBLISH to confirm SECURITY_AND_RELEASE_CHECKLIST.md is complete'
         required: false
         default: ''
+  workflow_call:
+    inputs:
+      target:
+        description: 'Only "verify" is accepted from a workflow call (never staging or production)'
+        type: string
+        default: verify
+      expect:
+        description: 'verify only: "blocked" (the gate must refuse, e.g. while owner legal details are missing) or "pass"'
+        type: string
+        default: blocked
   push:
     tags:
       - 'publish-production-*'
@@ -46,10 +61,17 @@ jobs:
     steps:
       - name: Resolve and validate target
         env:
-          INPUT_TARGET: ${{ github.event.inputs.target }}
-          INPUT_CONFIRM: ${{ github.event.inputs.confirm }}
+          INPUT_TARGET: ${{ inputs.target }}
+          INPUT_CONFIRM: ${{ inputs.confirm }}
+          INPUT_EXPECT: ${{ inputs.expect }}
         run: |
-          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+          if [ -n "$INPUT_TARGET" ] && [ "$GITHUB_EVENT_NAME" != "workflow_dispatch" ]; then
+            # workflow_call (from CI): only the non-deploying verify target is ever accepted.
+            if [ "$INPUT_TARGET" != "verify" ]; then echo "a workflow call may only run target verify, not '$INPUT_TARGET'"; exit 1; fi
+            case "$INPUT_EXPECT" in blocked|pass) ;; *) echo "expect must be blocked or pass, not '$INPUT_EXPECT'"; exit 1 ;; esac
+            TARGET=verify; CONFIRM=""
+            echo "EXPECT=$INPUT_EXPECT" >> "$GITHUB_ENV"
+          elif [ "$GITHUB_EVENT_NAME" = "push" ]; then
             case "$GITHUB_REF_NAME" in
               publish-production|publish-production-*) TARGET=production; CONFIRM=PUBLISH ;;
               publish-staging|publish-staging-*)       TARGET=staging; CONFIRM="" ;;
@@ -59,7 +81,7 @@ jobs:
             TARGET="$INPUT_TARGET"; CONFIRM="$INPUT_CONFIRM"
           fi
           case "$TARGET" in
-            staging) ;;
+            verify|staging) ;;
             production) if [ "$CONFIRM" != "PUBLISH" ]; then echo "production requires confirm=PUBLISH"; exit 1; fi ;;
             *) echo "invalid target: '$TARGET'"; exit 1 ;;
           esac
@@ -74,21 +96,38 @@ jobs:
         if: ${{ env.TARGET == 'staging' }}
         working-directory: site
         run: |
+          npm run test:records && npm run test:publication
           npm run build:staging
           node tests/staging-guard.mjs
           echo "OUT=site/dist-staging" >> "$GITHUB_ENV"
-      - name: Build and test (production — full suite)
+      - name: Install the browser for the UI, accessibility and performance tests
+        if: ${{ env.TARGET == 'production' || env.TARGET == 'verify' }}
+        working-directory: site
+        run: npx playwright install --with-deps chromium
+      - name: Release gate (production) — full suite, clean build, publication report, release readiness
         if: ${{ env.TARGET == 'production' }}
         working-directory: site
         run: |
-          npx astro check
-          npm run build
-          npm run test:links && npm run test:meta && npm run test:redirects
-          npx playwright install --with-deps chromium
-          npm run test:ui && npm run test:a11y && npm run test:perf && npm run test:release
-          php -l public/api/enquiry.php
+          node scripts/release-gate.mjs --json "$RUNNER_TEMP/release-gate.json"
           echo "OUT=site/dist" >> "$GITHUB_ENV"
+      - name: Release gate (verify) — the same checks, never deploys
+        id: verifygate
+        if: ${{ env.TARGET == 'verify' }}
+        continue-on-error: true
+        working-directory: site
+        run: node scripts/release-gate.mjs --json "$RUNNER_TEMP/release-gate.json"
+      - name: Verify outcome matches the expected release state
+        if: ${{ env.TARGET == 'verify' }}
+        env:
+          GATE_OUTCOME: ${{ steps.verifygate.outcome }}
+        run: |
+          echo "release gate outcome: $GATE_OUTCOME; expected: ${EXPECT:-blocked}"
+          if [ "${EXPECT:-blocked}" = "blocked" ] && [ "$GATE_OUTCOME" != "failure" ]; then
+            echo "The release gate PASSED but a refusal was expected (owner legal details are recorded as missing). Check the gate and update the expectation in ci.yml only when the blockers are genuinely resolved."; exit 1; fi
+          if [ "${EXPECT:-blocked}" = "pass" ] && [ "$GATE_OUTCOME" != "success" ]; then echo "The release gate FAILED: the candidate is not releasable."; exit 1; fi
+          echo "verify: outcome as expected; nothing was deployed."
       - name: Commit the built site onto the deploy branch (fast-forward, never force)
+        if: ${{ env.TARGET == 'staging' || env.TARGET == 'production' }}
         env:
           PUSH_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         run: |
