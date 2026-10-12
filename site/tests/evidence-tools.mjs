@@ -226,6 +226,11 @@ guard('refusals and "would not be shown" reasons', () => {
   check(emq.code === 1 && emq.j?.evaluation.ifApplied?.code === 'evidence-not-publishable' && refusedWith(emq, 'needs the exact quotation'), 'empty quotation with publish: evidence-not-publishable, refused');
   const silent = tool(d, opts({ value: 'null', quote: '', status: 'unverified', decision: 'withhold', 'withhold-reason': 'Fixture: the fee page read today does not state the fee.' }));
   check(silent.code === 0 && silent.j?.evaluation.ifApplied?.show === false, 'a silent page (value null, empty quotation, withhold) is accepted and not shown');
+  const itemPath = 'programmes.medicine.requirements.entrance-exam';
+  const inull = tool(d, [...opts({ path: itemPath, value: 'null', url: `${H}/admission`, tier: '1', type: 'web-page', quote: 'Fixture: entrance examination.' }), '--write']);
+  check(inull.code === 1 && refusedWith(inull, 'silent page, which is never published'), `a publish decision with value null for a requirement item is refused (got ${inull.code}: ${inull.j?.refused?.join(' | ')})`);
+  const isil = tool(d, opts({ path: itemPath, value: 'null', url: `${H}/admission`, tier: '1', type: 'web-page', quote: '', status: 'unverified', decision: 'withhold', 'withhold-reason': 'Fixture: the admission page read today does not state the examination.' }));
+  check(isil.code === 0, `a silent page for a requirement item (value null, withhold) is accepted (got ${isil.code}: ${isil.j?.refused?.join(' | ')})`);
   const nr = tool(d, opts({ 'next-review': null }));
   check(nr.code === 1 && nr.j?.evaluation.ifApplied?.code === 'stale-review', 'time-sensitive fee without next review: stale-review, refused');
   const past = tool(d, opts({ value: JSON.stringify(money(1000, AY_PREV)), 'academic-year': AY_PREV }));

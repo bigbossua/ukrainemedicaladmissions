@@ -421,7 +421,11 @@ export function run(argv) {
     // does the value fit the record field? (an entry whose value the record cannot hold can never match it)
     const hypRaw = clone(rawRecord);
     let hypRec = null;
-    if (value === null && rawTargets(rawRecord, path)[0]?.kind !== 'claim') { /* a silent page for an item: nothing to apply */ }
+    if (value === null && rawTargets(rawRecord, path)[0]?.kind !== 'claim') {
+      // A silent page for an item: nothing to apply, so the policy check below cannot run. A publish decision would be a
+      // verified "publish" entry holding nothing, which could later only withhold the item as a conflict.
+      if (o.decision === 'publish') refuse('--value null records a silent page, which is never published: use --decision withhold with a --withhold-reason (§5.1)');
+    }
     else {
       const err = applyToRaw(hypRaw, path, entry, { note: false });
       if (err) refuse(`--value: ${err}`);
