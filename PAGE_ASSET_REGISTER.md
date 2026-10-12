@@ -1,12 +1,13 @@
 # PAGE_ASSET_REGISTER.md
 
-Every published URL must justify itself here. SEMrush evidence column now cites measured rows (`KEYWORD_URL_MAP.md` §4); "unvalidated" where nothing was measured. Last updated 2026-10-11.
+Every published URL must justify itself here. SEMrush evidence column now cites measured rows (`KEYWORD_URL_MAP.md` §4); "unvalidated" where nothing was measured. Last updated 2026-10-12 (research previews).
 
 | URL | Target intent | SEMrush evidence | Audience | Unique applicant value | Official sources required | Conversion path | Key internal links | Status | Last verified | Maintainer |
 |---|---|---|---|---|---|---|---|---|---|---|
 | `/` | Brand / orientation (H1 no longer targets "study medicine in Ukraine") | brand query — not measured | All prospective applicants | Orientation + immediate application start | none (no facts) | Hero form → `/apply/` | universities, courses, admissions, fees | Built, indexable | 2026-10-10 | Owner |
 | `/universities/` | Medical universities/colleges in Ukraine, list, "best" | in: ukraine medical college 2,900 (kd 22); college list 210 (kd 11); best medical college 390 (kd 14); uk: best × 20 | Shortlisting applicants | Filterable, verification-flagged directory | per-university | Card → profile → apply | profiles, courses, fees | Built, indexable | 2026-10-10 | Owner |
-| `/universities/ternopil-national-medical-university/` | Named university admissions/fees | in: "ternopil national medical university" 110 (kd 16, navigational), fees 10; uk 20; ng 20 (R2, 2026-10-11); uk admission/fees phrasings 0 (2026-10-10) | Applicants considering TNMU | Per-programme verified facts with dates | tdmu.edu.ua official pages; EDEBO | Programme CTA → `/apply/?university=…&course=…` | courses, admissions, fees | Built, **noindex** until verified | — | Owner |
+| `/universities/ternopil-national-medical-university/` | Named university admissions/fees | in: "ternopil national medical university" 110 (kd 16, navigational), fees 10; uk 20; ng 20 (R2, 2026-10-11); uk admission/fees phrasings 0 (2026-10-10) | Applicants considering TNMU | Per-programme verified facts with dates | tdmu.edu.ua official pages; EDEBO | Programme CTA → `/apply/?university=…&course=…` | courses, admissions, fees | Built, **noindex** until verified; since 2026-10-12 served as a research preview (name only, "Not yet verified"; the 302 of 2026-10-11 removed) | — | Owner |
+| `/universities/<slug>/` (12 research previews, N25) | Named university, not yet verified | per-name rows in `KEYWORD_URL_MAP.md` §18.9 | Applicants considering that university | Name, the label "Not yet verified" and what to check before applying; only claims the evidence store verifies (none today) | per-university official pages | → `/apply/?university=<slug>` | universities, admissions, fees, faq | Built, **noindex, follow**, no structured data, not in sitemap (`PUBLICATION_POLICY_DECISIONS.md` (d)) | — | Owner |
 | `/courses/` | Course overview | unvalidated | Early-stage | Programme categories explained | none | → course pages | course pages | Built, indexable | 2026-10-10 | Owner |
 | `/courses/medicine/` | Study medicine / MBBS in Ukraine | in: mbbs in ukraine 260 (kd 18); uk: study medicine 30, mbbs 20; za 30; ru 90 (kd 15) | Medicine applicants | Which universities, what to check | per-university | → profile → apply | universities, admissions, fees | Built, indexable | 2026-10-10 | Owner |
 | `/courses/dentistry/` | Study dentistry in Ukraine | uk: 10; elsewhere not measured | Dentistry applicants | same | per-university | same | same | Built, indexable | 2026-10-10 | Owner |
@@ -24,7 +25,7 @@ Every published URL must justify itself here. SEMrush evidence column now cites 
 | `/complaints-policy/` · `/disclosure/` | Legal/trust (present in legacy footer) | n/a | All | Complaints procedure; independence, payment and no-ranking disclosure | legal entity details (D7) | — | contact | Built, indexable, **draft** | — | Owner / legal |
 | `/404` | — | n/a | — | Recovery links | — | — | universities, courses | Built, noindex | — | — |
 
-Rules: no page is added without a row here; no row without a distinct intent; city/country pages require SEMrush evidence + admissions feasibility; every university profile stays noindex until `publishable`.
+Rules: no page is added without a row here; no row without a distinct intent; city/country pages require SEMrush evidence + admissions feasibility; every university profile stays noindex until `publishable` (since 2026-10-12 an unpublished record that opts in is served only as a noindex research preview, never in the sitemap).
 
 
 ## Excluded intents — never build pages for these (evidence 2026-10-10)

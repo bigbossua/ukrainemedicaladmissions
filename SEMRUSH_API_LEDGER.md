@@ -197,3 +197,29 @@ The 130-unit discrepancy found earlier (published-price estimate 1,200 vs derive
 | 26 | `resource_organic` · in | https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/ | 30 → 20 | 200 | 200 | `2026-10-11-P3-resource_organic-in-rmcedu-mbbs-in-ukraine.csv` | B7 competitor keyword set of the top agency page: 20 keywords, est. traffic 701/month in total (SEMrush estimate), positions 1-6, kd 6-26 |
 
 **Programme 3 total: 3,270 units line-based; max-reading estimate 3,380 (3,270 + (330 − 220) for the parallel batch); conservative bound 3,850 (sum of the three parallel readings, 800, in place of their 220 line-based), still inside the 4,150 programme cap.** Cumulative consumption: 2,110 (DERIVED) + 850 (VERIFIED) + 3,270 = **6,230 line-based (max-reading estimate 6,340; conservative bound 6,810)**. **Expected balance: 47,890 − 850 − 3,270 = 43,770 (max-reading estimate 43,660; conservative bound 43,190)** — ESTIMATE until the owner's next reading of Subscription info → API units; any difference is recorded here and the per-line assumptions revisited. Programme cap headroom left: 880 line-based / 770 at the max-reading estimate / 300 at the conservative bound, deliberately unspent: every decision question was answered; the UAE broad-ceiling query was skipped (ng/pk/za ceilings of 20–40 and the existing ae exact/named files already settle the UAE question).
+
+## 2026-10-12 — Directory milestone: reconciliation and decision not to spend (0 units)
+
+**Owner's instruction (2026-10-12):** use SEMrush as the primary research engine; inspect the existing exports and reconcile the balance first; use existing data before spending; if justified, run a small number of targeted reports; no purchases or upgrades.
+
+**Reconciliation (no new reading available):**
+
+| Item | Figure | Label |
+|---|---|---|
+| Last verified owner reading | 47,890 (2026-10-11, before R1/R2) | VERIFIED (owner) |
+| Consumed since that reading | 850 (R1/R2) + 3,270 (programme 3, line-based) | VERIFIED + ESTIMATE |
+| Expected balance | 43,770 line-based · 43,660 max-reading · 43,190 conservative | ESTIMATE, **unverified** |
+| Programme-cap headroom (5,000 cap) | 880 · 770 · 300 | DERIVED |
+| Live balance | cannot be read from this environment (the MCP reports per-call usage only; the API Units page needs the owner's login) | — |
+
+**Inventory re-checked:** 42 exports (2026-10-10: 10; 2026-10-11: 32). By report: phrase_these 21, phrase_organic 8, phrase_fullsearch 5, phrase_questions 3, phrase_related 2, resource_organic 2, phrase_all 1. By database: in 21, uk 5, ng 4, pk 4, za 4, ae 3. All files well-formed; where one keyword and database appear in several files, the volumes agree.
+
+**Decision: no metered call (0 units).** Every question this milestone had to answer was answered by the existing exports (full analysis in the session notes, summarised in `EXECUTIVE_REPORT.md` §Q):
+- Strongest named-university demand (India exact, 2026-10-11 R2): Bukovinian 480, Odesa ("odessa…") 390, Kharkiv 390, Bogomolets 320, Ivano-Frankivsk 210, Uzhhorod 140, Ternopil 110; total 2,270 for the 12 names. Steady across 12 months except Vinnytsia and Lviv (single-month spikes).
+- Country priority: India exact 3,160 (≈6× the UK's 490; ae 310, ng 300, pk 290, za 150, mostly 10–30 minimum buckets).
+- Competitor reality: one agency hub (rmcedu) holds positions 1–6 on 20 India keywords for an estimated 701 visits/month in total; the MBBS, fees and "college" SERPs share 4–6 of 10 URLs (one intent).
+- New pages: no distinct exact intent justifies a country, eligibility, comparison, MBBS or city page now; university profiles are the only distinct steady demand and become indexable once verified.
+
+The gaps that remain (exact demand for "pirogov medical university ukraine", the Zaporizhzhia current name, the "for indian students" SERP, other universities) would not change what is built now. If the owner later wants them settled, the smallest batch is one `phrase_these` (in, 10 keywords, ≤100 units) plus one `phrase_organic` (in, "ukraine medical college fees for indian students", 100 units): ≤200 units, inside the 300-unit conservative headroom, and only after the owner's next API Units reading is recorded here.
+
+**Cumulative consumption unchanged: 6,230 line-based (6,340 max-reading; 6,810 conservative). Expected balance unchanged and unverified: 43,770 (43,660; 43,190).**

@@ -117,6 +117,15 @@ for (const r of previewed) {
   const office = r.internationalOffice?.value;
   if (office && pr.internationalOffice?.show !== true) { add('unverified office email', office.email); add('unverified office phone', office.phone); add('unverified office url', office.url); add('unverified office host', hostOf(office.url)); }
   if (pr.overview === undefined) add('withheld overview', r.overview);
+  if (pr.editorialWithheld?.city) add('withheld city', r.city);
+  if (typeof r.verification.reviewer === 'string') add('reviewer', r.verification.reviewer);
+  const evRaw = existsSync(join('data', 'evidence', `${r.slug}.json`)) ? JSON.parse(readFileSync(join('data', 'evidence', `${r.slug}.json`), 'utf8')) : null;
+  if (evRaw?.access?.note) add('evidence access note', evRaw.access.note);
+  for (const en of evRaw?.entries ?? []) { add('evidence quotation', en.quotation); add('evidence statement', en.statement); if (en.decision !== 'publish' || en.status !== 'verified') add('withheld evidence source', en.sourceUrl); }
+  // Deferred programme and route names (names of 12+ characters: short generic words such as "Dentistry" occur in our own copy).
+  for (const dp of r.deferredProgrammes ?? []) if (typeof dp.name === 'string' && dp.name.length >= 12) add('deferred programme name', dp.name);
+  // Unverified money, as any page would format it ("4,500 USD").
+  for (const prog of [...(r.programmes ?? []), ...(r.deferredProgrammes ?? [])]) { const m = prog.tuition?.value; if (m && typeof m.amount === 'number' && prog.tuition.status !== 'verified') add('unverified fee', `${m.amount.toLocaleString('en-GB')} ${m.currency}`); }
   if (pr.region === undefined) add('withheld region', r.region);
   for (const a of r.alternativeNames ?? []) add('alternative name', a);
   for (const q of r.verification.openQuestions ?? []) add('open question', q);
@@ -131,6 +140,12 @@ for (const r of previewed) {
   if (!new RegExp(`<option value="${r.slug}"[^>]*>[^<]*\\(not yet verified\\)</option>`).test(appliesPage)) fail(`/apply/: research preview ${r.slug} not offered, labelled "not yet verified"`);
   ok();
 }
+// Every built profile page is a published profile or a research preview; a hidden record's short name appears nowhere.
+for (const d of existsSync(join(DIST, 'universities')) ? readdirSync(join(DIST, 'universities')).filter((x) => existsSync(join(DIST, 'universities', x, 'index.html'))) : []) {
+  if (!published.some((r) => r.slug === d) && !previewed.some((r) => r.slug === d)) fail(`production build has /universities/${d}/, which is neither a published profile nor a research preview`);
+}
+for (const r of hidden) for (const { p, h } of prodHtml) if (r.shortName.length >= 6 && h.includes(r.shortName)) fail(`${p}: names hidden (unpublished, not previewed) record ${r.slug}`);
+ok();
 // Pages that list verified data must never list a preview: fees, courses, comparison table.
 for (const { p, h } of prodHtml.filter((x) => /^\/(tuition-fees|courses)\//.test(x.p))) for (const r of previewed) if (h.includes(`/universities/${r.slug}/`)) fail(`${p}: lists research preview ${r.slug}`);
 if (dirPage) for (const r of previewed) if (new RegExp(`<th scope="row"[^>]*><a href="/universities/${r.slug}/`).test(dirPage.h)) fail(`/universities/: research preview ${r.slug} in the comparison table`);

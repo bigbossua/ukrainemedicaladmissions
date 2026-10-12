@@ -1,7 +1,7 @@
 {
   "slug": "fixture-epsilon-preview-university",
   "officialName": {
-    "value": "POSCTRL-EPSILON-OFFICIAL-NAME University",
+    "value": "POSCTRL-EPSILON-OFFICIAL-NAME University </script><script>alert(1)</script>",
     "status": "verified",
     "source": "https://epsilon.fixture.example/about",
     "checked": "@today-3"
@@ -65,10 +65,11 @@
     "checked": null
   },
   "accommodation": {
-    "value": null,
-    "status": "not-published",
-    "source": null,
-    "checked": null
+    "value": "CANARY-EPSILON-ACCOMMODATION conflicting hostel price",
+    "status": "conflicting",
+    "source": "https://epsilon.fixture.example/hostel",
+    "checked": "@today-3",
+    "note": "CANARY-EPSILON-ACCOMMODATION-NOTE"
   },
   "programmes": [
     {
@@ -106,10 +107,13 @@
         "checked": null
       },
       "language": {
-        "value": null,
-        "status": "not-published",
+        "value": [
+          "English"
+        ],
+        "status": "conflicting",
         "source": null,
-        "checked": null
+        "checked": null,
+        "note": "CANARY-EPSILON-LANGUAGE-NOTE"
       },
       "format": {
         "value": null,
@@ -131,10 +135,16 @@
         "checked": null
       },
       "tuition": {
-        "value": null,
-        "status": "not-published",
+        "value": {
+          "amount": 77777,
+          "currency": "USD",
+          "per": "year",
+          "academicYear": "@ay"
+        },
+        "status": "unverified",
         "source": null,
-        "checked": null
+        "checked": null,
+        "note": "CANARY-EPSILON-FEE-NOTE"
       },
       "otherMandatoryCosts": [],
       "entryRequirements": {

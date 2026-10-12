@@ -141,7 +141,7 @@ export const record = z.object({
   faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
   images: z.array(z.object({ src: z.string(), alt: z.string(), credit: z.string(), licence: z.string(), source: z.string().url(), retrieved: z.string().date() })).default([]),
   verification: z.object({
-    publishable: z.boolean().default(false),            // false => NO page in production; preview-only build; never in the sitemap
+    publishable: z.boolean().default(false),            // false => no full profile in production (a research preview at most, below); never in the sitemap
     // Research preview (added 2026-10-12, N25; owner setting RESEARCH_PREVIEWS in src/lib/publication-config.mjs). true =>
     // while this record is NOT published, production lists it as a clearly labelled research preview with a noindex page
     // rendered only from the policy projection (shown claims and our own text under the published-profile rules; nothing

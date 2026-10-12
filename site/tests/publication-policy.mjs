@@ -752,6 +752,11 @@ section('N25 research previews');
   for (const c of ['CANARY', 'canary-host', '98765', 'Search-snippet', 'NOT verified']) check(!ls.includes(c), `N25 preview record leaks "${c}"`);
   eq(lp.previewRecord.city, CONFIG.WITHHELD_PLACE_TEXT, 'N25 preview: a city not in a verified address is withheld');
   check(lp.previewRecord.officialName.show === false && lp.previewRecord.website.show === false, 'N25 preview: unverified name and website are not shown');
+  // Opting in never turns a flagged, failing record into a quiet preview: a production build still stops.
+  const flaggedFailing = { ...opt(rec), officialName: U('Unit Test University') };
+  const ff = publicationDecision(flaggedFailing, e, { now: NOW });
+  check(ff.buildError === true && ff.published === false, 'N25 a flagged record that fails the policy is still a build error when it opts in to a preview');
+  check(publicationBuildError([ff]) !== null, 'N25 publicationBuildError still names a flagged, failing, opted-in record');
   // A preview shows exactly the claims that ARE verified (progressive): here status, statement and format still pass.
   check(lp.previewRecord.status.show === false, 'N25 preview: claims on the university\'s own pages are not shown while the website is withheld (N24 c)');
 }
@@ -787,9 +792,14 @@ section('static checks');
     if (/getResearchPreviews|previewRecord/.test(t)) { previewUsers++; check(PREVIEW_PAGES.has(r), `${r}: lists research previews — only ${[...PREVIEW_PAGES].join(', ')} may`); }
   }
   check(previewUsers === PREVIEW_PAGES.size, `N25 static check saw ${previewUsers} files using research previews, expected ${PREVIEW_PAGES.size}`);
+  // getResearchPreviews must hand pages the policy projection, never the raw record.
+  const rt = readFileSync(join(SRC, 'lib/records.ts'), 'utf8');
+  const grp = rt.slice(rt.indexOf('export async function getResearchPreviews'), rt.indexOf('}', rt.indexOf('export async function getResearchPreviews') + 10) + 200);
+  check(/x\.d\.previewRecord/.test(grp) && !/x\.raw/.test(grp), 'N25 records.ts getResearchPreviews maps previewRecord (the projection), never the raw record');
+  check(/if \(PREVIEW\) return \[\];/.test(grp), 'N25 records.ts getResearchPreviews returns nothing in PREVIEW builds (drafts are shown raw there instead)');
   for (const c of ['components/university/ResearchPreviewProfile.astro', 'components/university/ResearchPreviewCard.astro']) {
     const t = readFileSync(join(SRC, c), 'utf8');
-    check(!/\.note\b|researchReferences|alternativeNames|openQuestions|deferredProgrammes|failures|\.raw\b|faqs|editorialReview|reviewer/.test(t), `${c}: reads an internal record field`);
+    check(!/\.note\b|researchReferences|alternativeNames|openQuestions|deferredProgrammes|failures|\.raw\b|faqs|editorialReview|reviewer|Withheld|lastReview/.test(t.replace(/^\s*(\/\/|\*|\/\*\*).*$/gm, '')), `${c}: reads an internal record field, a withheld count or the review date`);
     check(!/set:html/.test(t), `${c}: renders raw HTML`);
   }
   // N24 (e): every fee display goes through formatMoney (which prints the schedule and year-by-year amounts).

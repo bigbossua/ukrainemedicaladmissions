@@ -66,6 +66,8 @@ const attr = (html, slug, name) => { const m = new RegExp(`<article[^>]*data-slu
 const CANARIES = [
   'CANARY',
   '98765', '98,765', '55501', '55,501', '55502', '55,502', '91919', '91,919', '81818', '81,818', '64646', '64,646',
+  // N25 epsilon (research preview): an unverified fee
+  '77777', '77,777',
   'NOT verified; read the official page', 'Search-snippet lead',
   '<script>alert(1)', '</script><script>', 'alert(1)</script>',
   TMP, 'data/evidence', 'tests/fixtures', 'UMA_EVIDENCE_DIR', 'UMA_UNIVERSITIES_DIR', SITE_DIR,
@@ -111,6 +113,8 @@ try {
     check(/Official website is not shown: no verified evidence entry on a Ukrainian government address/.test(prod.output), '(a) N24 the missing government listing is not explained');
     check(/Official website is not shown: the record or an evidence entry marks it conflicting/.test(prod.output), '(a) N24 the government listing of a different website is not reported as a conflict');
     check(!existsSync(join(OUT.fail, 'universities', 'fixture-flagged-no-evidence', 'index.html')), '(a) a failed production build still wrote the flagged profile');
+    // N25: opting in to a research preview never turns a flagged, failing record into a quiet preview: the build still stops.
+    check(prod.output.includes('fixture-flagged-preview-opt-in'), '(a) N25 a flagged, failing record that opts in to a research preview is not named by the build error');
 
     const prev = build('fail (preview)', { dirs, outDir: OUT.failPreview, preview: true, cacheDir: join(TMP, 'cache-fail-preview') });
     check(prev.status === 0, `(a) PREVIEW build of the same fixtures must succeed (exit ${prev.status})\n${prev.output.slice(-1500)}`);
@@ -150,7 +154,11 @@ try {
         check(ldBlocks(eps).length === 0, '(b) N25 epsilon: structured data on a research-preview page');
         check(!eps.includes('data-draft-banner') && !eps.includes('data-publication-failures') && !eps.includes('Verification queue'), '(b) N25 epsilon: draft banner or verification queue on a public preview');
         check(/<h1[^>]*>Fixture Epsilon Preview University<\/h1>/.test(eps), '(b) N25 epsilon: the short name is not the page heading');
-        for (const v of ['Research preview', 'Not yet verified', 'POSCTRL-EPSILON-OFFICIAL-NAME University', 'https://epsilon.fixture.example/', '2 facts verified so far', '/apply/?university=fixture-epsilon-preview-university', 'does not claim any partnership'])
+        // Breakout risk on a preview: the verified official name carries markup; it must appear only escaped.
+        check(eps.includes('POSCTRL-EPSILON-OFFICIAL-NAME University &lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;'), '(b) N25 epsilon: the verified name with markup is not rendered as escaped text');
+        check(!/<\/script><script>alert/i.test(eps), '(b) N25 epsilon: a raw script breakout appears on the preview page');
+        check(!eps.includes('ucard') && !eps.includes('Verified profile') && !eps.includes('admissions &amp; fees'), '(b) N25 epsilon: the preview page uses published-profile markup or wording');
+        for (const v of ['Research preview', 'Not yet verified', 'https://epsilon.fixture.example/', '2 facts verified so far', '/apply/?university=fixture-epsilon-preview-university', 'does not claim any partnership'])
           check(eps.includes(v), `(b) N25 epsilon: expected "${v}"`);
         check((eps.match(/badge-verified">Verified</g) ?? []).length === 2, `(b) N25 epsilon: ${(eps.match(/badge-verified">Verified</g) ?? []).length} Verified badges; exactly the two verified facts may carry one`);
         check(!/<dt>(Address|Operating status|Tuition|Recognition)<\/dt>/.test(eps), '(b) N25 epsilon: an unverified fact row is rendered on the preview page');
@@ -237,7 +245,7 @@ try {
       check(attr(dir, 'fixture-alpha-medical-university', 'data-status') === 'verified', '(b) N25 directory: a published card is not marked verified');
       for (const a of ['data-city', 'data-fields', 'data-levels', 'data-languages', 'data-intakes', 'data-prep']) check(attr(dir, 'fixture-epsilon-preview-university', a) === null, `(b) N25 directory: the preview card carries ${a}`);
       check(!/<th scope="row"[^>]*><a href="\/universities\/fixture-epsilon/.test(dir), '(b) N25 directory: a research preview is in the comparison table');
-      check(/<option value="preview"[^>]*>Research previews<\/option>/.test(dir), '(b) N25 directory: the status filter does not offer research previews');
+      check(/<option value="preview"[^>]*>Not yet verified only<\/option>/.test(dir), '(b) N25 directory: the status filter does not offer the not-yet-verified universities');
       check(!/<select name="level"[\s\S]*?value="bachelor"[\s\S]*?<\/select>/.test(dir), '(b) directory level filter offers an unverified level');
       check(!new RegExp(`<select name="intake"[\\s\\S]*?value="${academicYear(NOW, -1).replace('/', '\\/')}"`).test(dir.split('</form>')[0]), '(b) directory intake filter offers an unverified intake');
       const fees = page(OUT.pass, 'tuition-fees');

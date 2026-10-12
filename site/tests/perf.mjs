@@ -9,7 +9,11 @@ import { join, resolve, extname } from 'node:path';
 const DIST = resolve('dist');
 const OUT = resolve('tests/output'); mkdirSync(OUT, { recursive: true });
 // University profiles exist in production only once published (publication gate): audit whichever are built.
-const profilePages = existsSync('dist/universities') ? readdirSync('dist/universities').filter((d) => existsSync(`dist/universities/${d}/index.html`)).map((d) => `/universities/${d}/`) : [];
+// Published profiles all, research previews (N25) one sample: they share one template, and twelve Lighthouse runs of it add
+// minutes without new information.
+const profileDirs = existsSync('dist/universities') ? readdirSync('dist/universities').filter((d) => existsSync(`dist/universities/${d}/index.html`)) : [];
+const isPreviewPage = (d) => readFileSync(`dist/universities/${d}/index.html`, 'utf8').includes('data-research-preview');
+const profilePages = [...profileDirs.filter((d) => !isPreviewPage(d)), ...profileDirs.filter(isPreviewPage).slice(0, 1)].map((d) => `/universities/${d}/`);
 const PAGES = ['/', '/universities/', ...profilePages, '/tuition-fees/', '/apply/'];
 const BUDGET = { performance: 0.9, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 };
 

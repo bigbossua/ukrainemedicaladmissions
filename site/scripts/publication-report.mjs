@@ -10,7 +10,7 @@
 // Exit code 1 when a record is flagged publishable but fails the policy (a production build would stop), else 0.
 import { record as recordSchema } from '../src/content/schema.mjs';
 import { readRecordFiles, loadEvidence, universitiesDir, evidenceDir } from '../src/lib/evidence.mjs';
-import { publicationDecision, evaluatePublication, currentAcademicYear, editorialTextHash } from '../src/lib/publication.mjs';
+import { publicationDecision, evaluatePublication, currentAcademicYear, editorialTextHash, RESEARCH_PREVIEW_WORDS } from '../src/lib/publication.mjs';
 import * as SETTINGS from '../src/lib/publication-config.mjs';
 import { relative } from 'node:path';
 
@@ -46,7 +46,7 @@ console.log('A profile is published only when its "publishable" flag is set AND 
 const yn = (/** @type {boolean} */ b) => (b ? 'yes' : 'no');
 console.log(`Owner settings (src/lib/publication-config.mjs): overview needs an editorial review ${yn(SETTINGS.OVERVIEW_REQUIRES_EDITORIAL_REVIEW)}; programme name must appear in the admission quotation ${yn(SETTINGS.PROGRAMME_NAME_REQUIRES_QUOTATION)}; city and region must appear in the verified address ${yn(SETTINGS.CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS)}; website must be listed on a government page ${yn(SETTINGS.WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE)}; recognition authorities listed: ${SETTINGS.RECOGNITION_AUTHORITY_HOSTS.length ? SETTINGS.RECOGNITION_AUTHORITY_HOSTS.join(', ') : 'none (no recognition claim is shown)'}.\n`);
 
-let blocked = 0, published = 0;
+let blocked = 0, published = 0, previews = 0;
 for (const { file, data, error } of rows) {
   if (!data) { console.log(`${file}\n  This file does not match the record format, so the site cannot be built: ${error}\n`); blocked++; continue; }
   const evidence = loadEvidence(data.slug);
@@ -57,6 +57,8 @@ for (const { file, data, error } of rows) {
   if (d.buildError) blocked++;
   console.log(`${data.shortName} (${data.slug})`);
   console.log(`  Publishable flag: ${d.flagged ? 'yes' : 'no'} · Passes the publication policy: ${d.policyPasses ? 'yes' : 'no'} · Published: ${d.published ? 'YES' : 'NO'}`);
+  if (!d.published) console.log(`  Research preview (N25): ${d.researchPreview ? 'YES — listed by name, labelled "Not yet verified", noindex, showing only the facts counted below' : `no (${d.researchPreviewReasons.map((r) => RESEARCH_PREVIEW_WORDS[r] ?? r).join('; ')})`}`);
+  if (d.researchPreview) previews++;
   if (d.buildError) console.log('  ATTENTION: the flag is set but the checks fail, so a production build will stop until this is fixed (or the flag is set back to false).');
   console.log(`  Evidence file: ${evidence.state === 'ok' ? `${evidence.data.entries.length} entries (official sites ${evidence.data.access.status === 'open' ? 'reachable' : 'blocked'} when last checked, ${evidence.data.access.checked})` : evidence.state === 'missing' ? 'none yet, so nothing counts as verified' : 'present but INVALID, so nothing counts as verified'}`);
   console.log(`  Facts a public page would show today: ${t.shown}; withheld as "To be confirmed": ${t.withheld}.`);
@@ -73,5 +75,5 @@ for (const { file, data, error } of rows) {
   }
   console.log('');
 }
-console.log(`${rows.length} record${rows.length === 1 ? '' : 's'}: ${published} published, ${rows.length - published} not published${blocked ? `, ${blocked} blocking a production build` : ''}.`);
+console.log(`${rows.length} record${rows.length === 1 ? '' : 's'}: ${published} published, ${rows.length - published} not published (${previews} listed as research previews)${blocked ? `, ${blocked} blocking a production build` : ''}.`);
 process.exit(blocked ? 1 : 0);

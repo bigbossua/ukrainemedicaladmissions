@@ -14,6 +14,10 @@ import { assertPolicyCoverage, publicationBuildError, publicationDecision, viewC
  * production pages receive only the projection of published records (toPublicRecord): withheld claims carry no value,
  * and notes, research references, deferred programmes and every other internal field are absent.
  *
+ * Research previews (N25): getResearchPreviews() returns unpublished records that opt in, as the same projection, for the
+ * few pages that list them labelled "Not yet verified" (directory, profile route, home, apply). getListedUniversities()
+ * never includes them, so fee, course and comparison content cannot list one by accident.
+ *
  * Fail closed: in a production (non-PREVIEW) build, a record flagged publishable that fails the policy stops the build
  * with an error naming the record and each failure. In a PREVIEW_UNPUBLISHED=1 build such a record, like every other
  * unpublished record, is rendered RAW as a draft (banner, noindex, no canonical / JSON-LD / sitemap), with its

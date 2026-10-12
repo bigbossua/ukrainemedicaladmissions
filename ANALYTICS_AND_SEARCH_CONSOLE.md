@@ -39,7 +39,7 @@ Do not create `http://` or `www.` URL-prefix properties: those hosts only redire
 
 - Performance → Search results → search type Web → date range **Last 16 months** (the longest range Search Console offers; a newly added property may show less history: UNVERIFIED here). Export the **Queries, Pages, Countries and Devices** tabs (CSV or Google Sheets).
 - Indexing → Pages (indexed and not indexed, with reasons) and Sitemaps (submitted versus discovered).
-- The status of `/universities/ternopil-national-medical-university/` (served as `noindex` by the current release; becomes a 302 to `/universities/` after a release from the working branch).
+- The status of `/universities/ternopil-national-medical-university/` (served as `noindex` by the current release; after a release from the working branch it stays at the same URL as a labelled, `noindex` research preview, not a 302: `PUBLICATION_POLICY_DECISIONS.md` (d)). The 12 research-preview pages are `noindex` and not in the sitemap, so expect them among the pages not indexed because of `noindex`, never as indexed pages.
 - **Storage:** query exports are not personal data but are commercially sensitive, and the repository is public (`research/verification/README.md`). Keep the raw exports outside the repository until it is private (decision D8); commit only dated summaries. Label every figure from them **GSC** (first-party actual), never mixed with SEMrush estimates (`KEYWORD_URL_MAP.md` §5).
 
 ### A4. Review cadence (RECOMMENDATION)

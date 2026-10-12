@@ -4,7 +4,8 @@ export const STAGING = /^(1|true|yes)$/i.test((process.env.STAGING ?? '').trim()
 /**
  * True when built with PREVIEW_UNPUBLISHED=1: unpublished (unverified) university records and the
  * synthetic sample record are built for LOCAL REVIEW ONLY (noindex, no canonical, no structured data,
- * never in the sitemap). Production builds never set this flag, so unpublished records produce no page.
+ * never in the sitemap). Production builds never set this flag: there, an unpublished record produces no page, or, if it
+ * opts in to a research preview (N25), a labelled noindex page built from the policy projection only.
  */
 export const PREVIEW = /^(1|true|yes)$/i.test((process.env.PREVIEW_UNPUBLISHED ?? '').trim());
 

@@ -79,6 +79,7 @@ for (const [kind, dir] of Object.entries(dirs)) {
     if (synthetic) {
       if (!d.synthetic) fail(file, 'sample record must set synthetic: true');
       if (d.verification.publishable) fail(file, 'sample record must never be publishable');
+      if (d.verification.researchPreview) fail(file, 'sample record must never opt in to a research preview (N25)');
     } else if (d.synthetic) fail(file, 'real record must not be flagged synthetic');
     ok();
     // claims

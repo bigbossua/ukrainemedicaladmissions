@@ -33,6 +33,10 @@
 //   4. evaluatePublication() decides whether a record may have a public page at all. verification.publishable can only
 //      NARROW that decision: a record is published only when the flag is true AND the policy passes. A production build
 //      with a flagged record that fails the policy stops with an error naming the record and each failure.
+//   5. Research previews (N25, owner setting RESEARCH_PREVIEWS): an UNPUBLISHED real record that opts in
+//      (verification.researchPreview) with a safe slug and a plain short name may be listed by name, labelled "Not yet
+//      verified", on a noindex page without structured data. publicationDecision() hands such a record's page the SAME
+//      projection a published profile would get (previewRecord), never the raw record; opting in never clears a build error.
 import { createHash } from 'node:crypto';
 import { parseEvidence, isIsoDate, isHttpsUrl } from './evidence.mjs';
 import { PUBLICATION_SETTINGS, REVIEW_MAX_AGE_DAYS } from './publication-config.mjs';

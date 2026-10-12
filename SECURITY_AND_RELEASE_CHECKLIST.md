@@ -22,13 +22,13 @@ Complete every box before the **first** production write and before each later r
 ## B. Every release
 
 - [ ] CI green on the commit (record evidence rules, readiness logic, build, astro check, links, meta incl. JSON-LD and `security.txt` expiry, redirect safety, UI smoke, axe, Lighthouse, tooling self-test, staging guard, publication gate, preview UI, php -l, PHP handler tests (enquiry-php), publication policy and fixture builds (`test:publication`), publication report (`report:publication`)).
-- [ ] `npm run report:publication` shows the intended records as published and every other record as not published; no record is flagged publishable without its evidence file and an owner sign-off.
+- [ ] `npm run report:publication` shows the intended records as published and every other record as not published (and which of those are listed as research previews, N25: `PUBLICATION_POLICY_DECISIONS.md` (d)); no record is flagged publishable without its evidence file and an owner sign-off.
 - [ ] `npm run manifest` fingerprint recorded for the release; `.well-known/security.txt` Expires still in the future.
 - [ ] Screenshots from CI reviewed at mobile/tablet/desktop for the changed pages.
 - [ ] No new page without a `PAGE_ASSET_REGISTER.md` row; no university flipped to `publishable` without `SOURCE_VERIFICATION_REGISTER.md` entries.
-- [ ] Sitemap diff reviewed: no private or unverified URL added.
+- [ ] Sitemap diff reviewed: no private or unverified URL added (research-preview pages are `noindex` and must never appear in it).
 - [ ] Release tag created by the publish workflow; previous tag noted for rollback.
-- [ ] Post-deploy live checks: home 200, `/sitemap-index.xml` 200, `/robots.txt` 200, `/api/enquiry.php` GET → 405, `/apply/thank-you/` has noindex, www → non-www 301, HTTP → HTTPS 301, a synthetic enquiry arrives by email and in `uma-private/`.
+- [ ] Post-deploy live checks: home 200, `/sitemap-index.xml` 200, `/robots.txt` 200, `/api/enquiry.php` GET → 405, `/apply/thank-you/` has noindex, each research preview answers 200, labelled "Not yet verified", noindex and without JSON-LD (`npm run verify:live`), www → non-www 301, HTTP → HTTPS 301, a synthetic enquiry arrives by email and in `uma-private/`.
 - [ ] Rollback rehearsed at least once on staging.
 - [ ] `uma-private/config.php` on the host holds `ip_hash_key` (random, at least 32 bytes, never in Git); without it the enquiry handler stores no IP data (backlog N21).
 - [ ] Mobile menu, directory filters and the stepped `/apply/` form work on the live site with the production CSP (backlog N20); a synthetic candidate profile arrives in the business mailbox (backlog N4).

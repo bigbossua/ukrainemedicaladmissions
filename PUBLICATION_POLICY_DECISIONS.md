@@ -1,4 +1,4 @@
-# PUBLICATION_POLICY_DECISIONS.md — the three open publication-policy decisions (backlog N24 a–c)
+# PUBLICATION_POLICY_DECISIONS.md — the open publication-policy decisions (backlog N24 a–c, N25)
 
 **Date:** 2026-10-12 · **Branch:** `wip/policy` (from `e822e4e`) · **Status:** fail-closed defaults implemented and tested; **every one of them is an owner decision that is still open**. Nothing is published, nothing is deployed, and production (`b2ca3d6`) is unchanged.
 
@@ -15,6 +15,7 @@
 | (a) | Our own text (overview, programme names, city, region) printed without evidence | Overview only after an editorial review tied to the exact text; programme listed only if its name appears in the quotation that verifies its international admission; city and region only if the verified address contains them | `OVERVIEW_REQUIRES_EDITORIAL_REVIEW`, `PROGRAMME_NAME_REQUIRES_QUOTATION`, `CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS`, `WITHHELD_PLACE_TEXT` | **Confirm or change** |
 | (b) | Which hosts count as a recognition authority | None: the list is empty, so no recognition claim is shown | `RECOGNITION_AUTHORITY_HOSTS` | **Confirm or change** (choosing authorities is yours alone) |
 | (c) | The official website vouches for itself | The website needs a verified government (.gov.ua) entry listing exactly the same website; until then the university's own pages support nothing | `WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE`, `GOVERNMENT_HOST_SUFFIXES` | **Confirm or change** |
+| (d) | Research previews (N25, 2026-10-12): unpublished universities listed by name, labelled "Not yet verified" | On: names only, projection-only pages, noindex, no structured data, not in the sitemap, opt-in per record | `RESEARCH_PREVIEWS` (+ `verification.researchPreview` per record) | **Confirm or change** |
 
 ---
 
@@ -91,6 +92,29 @@
 **OWNER DECISION: confirm or change** (keep the government listing as a precondition, or allow the university's own pages alone).
 
 ---
+
+## (d) Research previews: listing unverified universities by name (N25, added 2026-10-12)
+
+**Owner instruction (2026-10-12):** "Keep unverified university claims out of public pages. However, do not let the absence of verified details prevent you from building a useful directory interface, navigation, search/filter components, page templates and clearly labelled research previews." and "Keep all 12 existing university records unpublished until their required evidence checks pass."
+
+**Before:** an unpublished record left no trace in a production build: no card, no page, no mention (the directory said "we do not list the university here, not even as pending"). With zero evidence entries recorded, the directory was empty and the live site still showed the old, unverified Ternopil card.
+
+**What the code does now (default ON).** A real record that is **not published** and **opts in** (`verification.researchPreview: true`, set on all 12 records) is listed as a *research preview*:
+- a directory card and a home-page entry with its short name and the label **"Not yet verified"**, and a choice in the apply and home forms labelled "(not yet verified)";
+- a page at `/universities/<slug>/` built **only** from the policy projection (`toPublicRecord`) — exactly what a published profile could print. Today that means the name and nothing else; each fact appears with its source and date only once its evidence passes the same rules as a published profile (so previews fill in progressively, starting with Vinnytsia once its sources can be read);
+- `noindex, follow`, no structured data, never in the sitemap; the page says it is not the university's website and claims no partnership; the apply route is `/apply/?university=<slug>`.
+
+**What stays the same.** The 12 records remain unpublished (the gate reports "0 published, 12 research previews"). Fee, course and comparison content never lists a preview (enforced by a static test). Synthetic samples and records that do not opt in never appear. A record flagged publishable that fails the policy still stops the build, whether or not it opts in.
+
+**Options and consequences.**
+
+| Option | For students | For the business | Risk |
+|---|---|---|---|
+| **On (default)** | Can see which universities the service covers, search them, read what to check before applying and start an application for a named university | A visible, honest directory; the pages earn trust now and become indexable profiles automatically once verified | Low: names only, clearly labelled; a name spelling may differ from the official title (the page says the official name is still to be confirmed) |
+| Off (`RESEARCH_PREVIEWS = false`) | Empty directory until the first profile is verified | Nothing to show visitors until official sources can be read | None from content; high commercial cost |
+| On and indexable (not implemented) | Same as On | Preview pages could appear in search results | Twelve near-identical "not yet verified" pages risk being judged thin; not recommended until each has verified facts |
+
+**Setting:** `RESEARCH_PREVIEWS` in `site/src/lib/publication-config.mjs`; per record, `verification.researchPreview` in the record file. **Owner: confirm** the default and the student-facing label "Not yet verified".
 
 ## Technical gaps fixed at the same time (no owner decision needed)
 

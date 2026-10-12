@@ -10,7 +10,7 @@
       "id": "fixture-epsilon-preview-university/officialName/1",
       "claimPath": "officialName",
       "statement": "CANARY-EVIDENCE-STATEMENT officialName",
-      "value": "POSCTRL-EPSILON-OFFICIAL-NAME University",
+      "value": "POSCTRL-EPSILON-OFFICIAL-NAME University </script><script>alert(1)</script>",
       "sourceUrl": "https://epsilon.fixture.example/about",
       "sourceOrganisation": "Fixture Epsilon (CANARY-SOURCE-ORG)",
       "sourceTier": 1,
