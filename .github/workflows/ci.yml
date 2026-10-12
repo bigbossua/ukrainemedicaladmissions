@@ -38,7 +38,10 @@ jobs:
       - run: npm run test:preview
       - run: php -l public/api/enquiry.php
       - run: node tests/enquiry-php.mjs
-      - run: node tests/publish-workflow.mjs
+      - run: npm run test:publish-workflow
+      - run: npm run test:release-readiness
+      - name: Release gate refuses a failed publication gate and missing legal details (simulations)
+        run: npm run test:release-gate
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: ui-screenshots, path: site/tests/output, retention-days: 14 }

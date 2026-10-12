@@ -17,7 +17,9 @@ const { entry } = Astro.props as { entry: ListedUniversity };
 const d = entry.d;
 const draft = entry.draft;
 const title = `${d.shortName}: admissions & fees`;
-const description = `${d.shortName}, ${d.city}: programmes for international students, language, fees and entry requirements — each marked verified or to be confirmed.`;
+// A withheld city (N24 a) is left out of the description rather than printed as "To be confirmed".
+const place = d.editorialWithheld?.city || !d.city ? '' : `, ${d.city}`;
+const description = `${d.shortName}${place}: programmes for international students, language, fees and entry requirements — each marked verified or to be confirmed.`;
 // Structured data only for a published profile, and only from values the publication policy shows.
 const jsonLd = draft ? [] : profileJsonLd(d);
 ---

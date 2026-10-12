@@ -4,13 +4,15 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { SITE, PREVIEW, formatDate } from '../../lib/site';
 import { getListedUniversities } from '../../lib/records';
-import { viewClaim } from '../../lib/publication.mjs';
+import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 
 // Publication gate (lib/records.ts): published records (projections) only; drafts only in PREVIEW builds.
 // A fee is printed only when the publication policy shows it (verified, evidenced, current academic year).
 const universities = await getListedUniversities();
 const rows = universities.flatMap((u) => u.d.programmes.map((p: any) => ({ u: u.d, p, fee: viewClaim(p.tuition, { preview: PREVIEW }) })));
-const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / ${m.per} (${m.academicYear})`;
+// Shown fees use the policy's formatter: amount, currency, basis and academic year, plus any year-by-year amounts and
+// payment schedule exactly as recorded (never converted, rounded or totalled).
+const money = (m: any) => formatMoney(m, { compact: true });
 ---
 <Base title="Medical college fees in Ukraine: tuition & cost of study" description="How Ukrainian medical universities publish tuition fees, what the cost of medical education includes, and how we verify a fee before listing it." suffix={false}>
   <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Medical university fees in Ukraine</h1><p>We publish a fee only when it comes from the university's official fee schedule, with the academic year, currency and the date we checked it.</p></div></div>
@@ -38,7 +40,7 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} / $
         <li><strong>The track</strong>: whether the fee is for the English-taught or the Ukrainian-taught stream, because a university may price them differently.</li>
         <li><strong>What is excluded</strong>: medical examination and insurance on arrival, invitation-letter or registration charges, hostel, and the fee for any preparatory course are usually separate lines or separate documents.</li>
       </ol>
-      <p>Every fee we publish will carry those five properties and a link to the official page, with the date we read it. Where a university's current schedule has not yet been read, the row below says “To be confirmed” rather than showing an estimate from a third-party website.</p>
+      <p>Every fee we publish will show its academic year, currency, payment basis and any year-by-year amounts or payment schedule exactly as the university states them, with a link to the official page and the date we read it; mandatory extras are listed separately where the university publishes them. Where a university's current schedule has not yet been read, the row below says “To be confirmed” rather than showing an estimate from a third-party website.</p>
       <h2 id="questions">Questions applicants ask about cost</h2>
       <details><summary>How much does it cost to study medicine in Ukraine?</summary><p>Only each university's official fee schedule can answer this for the current intake. We do not publish an estimate, an average or a figure copied from an agency website. As soon as a schedule has been read on the official page, the fee appears in the table below with its academic year, currency and payment basis, and on the university's profile.</p></details>
       <details><summary>What does the tuition fee not include?</summary><p>Typically: the preparatory course if you need one, hostel or private accommodation, medical insurance and the medical examination on arrival, visa and travel costs, translation and legalisation of your documents, and living costs. Each university lists its own additional charges; we show them on the profile only once read from the official page.</p></details>
