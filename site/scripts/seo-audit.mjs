@@ -7,7 +7,9 @@
 // content type, canonical, robots meta and X-Robots-Tag, robots.txt, the sitemap contract (indexable <=> in sitemap),
 // title, meta description, H1, heading outline, <main> word count, internal links out and in (orphans), near-duplicate
 // <main> text (5-word shingle Jaccard), JSON-LD (parses, @type, FAQPage and BreadcrumbList against the visible text,
-// Organization and WebSite fields, none on research previews), lang, viewport, Open Graph, images, security headers
+// Organization and WebSite fields, none on research previews), lang, viewport, Open Graph, images (alt, dimensions, format,
+// weight, oversizing, lazy loading), forms (honeypot, required fields), click depth from the home page, query-parameter
+// URLs (canonical to the clean URL), 410 rules, security headers
 // against the .htaccess; an exposure scan of EVERY output file; mobile checks with Playwright at 360 and 390 px (horizontal
 // overflow, tap targets >= 24 px with the WCAG 2.5.8 inline and spacing exceptions, < 44 px advisory); and Lighthouse
 // (mobile emulation, default throttling, as tests/perf.mjs) for every indexable URL plus one research-preview page.
@@ -45,6 +47,9 @@ const DUP_MEDIUM = 0.5; // highest 5-word-shingle Jaccard against another INDEXA
 const DUP_LOW = 0.3;
 const TITLE_IDEAL = 60, TITLE_MAX = 70, DESC_MIN = 50, DESC_MAX = 160;
 const TAP_MIN = 24, TAP_ADVISORY = 44;
+const IMG_MODERN_BYTES = 100 * 1024, IMG_HEAVY_BYTES = 300 * 1024, FOLD_PX = 900; // image checks (desktop 1280x900 extraction)
+const DEPTH_MAX = 3; // clicks from the home page to an indexable page
+const PARAM_PROBES = ['/universities/?q=odessa', '/?utm_source=audit&utm_medium=test', '/faq/?ref=audit']; // query parameters a visitor or campaign may add
 const LH_CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
 const SEVERITY_ORDER = { high: 0, medium: 1, low: 2 };
 
@@ -358,8 +363,8 @@ function extractDom() {
     headings: [...document.querySelectorAll('h1, h2, h3, h4, h5, h6')].map((h) => ({ level: Number(h.tagName[1]), text: n(h.textContent).slice(0, 90), inMain: !!h.closest('main') })),
     mainText: strip(main), bodyText: strip(document.body),
     links: [...document.querySelectorAll('a[href]')].map((a) => ({ href: a.getAttribute('href'), text: n(a.textContent).slice(0, 60) || a.getAttribute('aria-label') || '', inMain: !!a.closest('main') })),
-    forms: [...document.querySelectorAll('form')].map((f) => ({ action: f.getAttribute('action'), method: (f.getAttribute('method') ?? 'get').toLowerCase() })),
-    images: [...document.querySelectorAll('img')].map((i) => ({ src: i.getAttribute('src'), alt: i.getAttribute('alt'), width: i.getAttribute('width'), height: i.getAttribute('height') })),
+    forms: [...document.querySelectorAll('form')].map((f) => ({ action: f.getAttribute('action'), method: (f.getAttribute('method') ?? 'get').toLowerCase(), honeypot: !!f.querySelector('input[name="website"]'), required: f.querySelectorAll('[required]').length, fields: f.querySelectorAll('input:not([type="hidden"]), select, textarea').length })),
+    images: [...document.querySelectorAll('img')].map((i) => { const r = i.getBoundingClientRect(); return { src: i.getAttribute('src'), alt: i.getAttribute('alt'), width: i.getAttribute('width'), height: i.getAttribute('height'), loading: i.getAttribute('loading'), top: Math.round(r.top + window.scrollY), renderedWidth: Math.round(r.width), naturalWidth: i.naturalWidth }; }),
     jsonld: [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => s.textContent),
     breadcrumb: [...document.querySelectorAll('nav[aria-label="breadcrumb" i] li')].map((li) => ({ name: n(li.textContent), href: li.querySelector('a')?.getAttribute('href') ?? null })),
     ids: [...document.querySelectorAll('[id], a[name]')].map((e) => e.id || e.getAttribute('name')),
@@ -517,12 +522,29 @@ for (const rec of pageRecords) {
     }
   }
 
-  // images
+  // images: alt, dimensions, broken, format, weight, oversizing, lazy loading below the first screen
+  rec.imageDetails = [];
   for (const img of d.images) {
     if (img.alt === null) finding('img-alt', 'medium', U, `<img src="${img.src}"> has no alt attribute`, src ?? '');
     if (!img.width || !img.height) finding('img-dimensions', 'low', U, `<img src="${img.src}"> without width/height`, src ?? '');
     const t = linkTarget(img.src, rec.path);
-    if (t?.path) { const r = await get(t.path); if (r.status !== 200) finding('img-broken', 'medium', U, `<img src="${img.src}"> answers ${r.status}`, src ?? ''); }
+    if (!t?.path) continue;
+    const r = await get(t.path);
+    if (r.status !== 200) { finding('img-broken', 'medium', U, `<img src="${img.src}"> answers ${r.status}`, src ?? ''); continue; }
+    const type = contentType(r);
+    const bytes = r.body.length;
+    rec.imageDetails.push({ src: img.src, type, bytes, loading: img.loading, top: img.top, renderedWidth: img.renderedWidth, naturalWidth: img.naturalWidth });
+    if (/image\/(png|jpe?g|gif)/.test(type) && bytes > IMG_MODERN_BYTES) finding('img-format', 'low', U, `<img src="${img.src}"> ${type} ${Math.round(bytes / 1024)} KB (a WebP/AVIF version would be smaller)`, src ?? '');
+    if (bytes > IMG_HEAVY_BYTES) finding('img-weight', 'medium', U, `<img src="${img.src}"> ${Math.round(bytes / 1024)} KB`, src ?? '');
+    if (!/svg/.test(type) && img.naturalWidth && img.renderedWidth && img.naturalWidth > img.renderedWidth * 3) finding('img-oversized', 'low', U, `<img src="${img.src}"> ${img.naturalWidth}px wide shown at ${img.renderedWidth}px (desktop 1280)`, src ?? '');
+    if (img.top > FOLD_PX && img.loading !== 'lazy' && !/svg/.test(type)) note('img-loading', U, `<img src="${img.src}"> starts ${img.top}px down without loading="lazy"`);
+  }
+
+  // forms: spam protection and validation (the handler's own tests: tests/enquiry-php.mjs)
+  for (const f of d.forms) {
+    if (f.method !== 'post') continue;
+    if (!f.honeypot) finding('form-spam-protection', 'medium', U, `<form action="${f.action}" method="post"> has no honeypot field (name="website", checked by site/public/api/enquiry.php)`, src ?? '');
+    if (!f.required) finding('form-validation', 'low', U, `<form action="${f.action}" method="post"> marks no field as required`, src ?? '');
   }
 
   // CSP-blocked script, console errors
@@ -666,6 +688,61 @@ for (const r of pageRecords) {
   if (r.indexable && r.inbound === 0) finding('orphan', 'medium', r.path, 'indexable page with 0 inbound internal links from other pages', 'add a link from a related page (Header/Footer or a hub page)');
   else if (r.indexable && r.inboundFromMain === 0) note('inbound', r.path, `inbound links only from the header/footer (${r.inbound} pages); none from body text`);
 }
+// click depth from the home page (breadth-first over internal links that answer 200 without a redirect)
+{
+  const depth = new Map([['/', 0]]);
+  const queue = ['/'];
+  while (queue.length) {
+    const p = queue.shift();
+    const rec = pagesByPath.get(p);
+    if (!rec || isProbe404(rec)) continue;
+    for (const l of rec.linksOut) {
+      if (!l.key || l.form) continue;
+      const f = linkTargets.get(l.key);
+      if (f?.final?.status !== 200) continue;
+      const to = f.finalUrl.replace(/\?.*$/, '');
+      if (!depth.has(to) && pagesByPath.has(to)) { depth.set(to, depth.get(p) + 1); queue.push(to); }
+    }
+  }
+  for (const r of pageRecords) {
+    if (isProbe404(r)) { r.clickDepth = null; continue; }
+    r.clickDepth = depth.has(r.path) ? depth.get(r.path) : null;
+    if (r.indexable && r.clickDepth === null) finding('click-depth', 'medium', r.path, 'indexable page not reachable by links from the home page', 'link it from a hub page');
+    else if (r.indexable && r.clickDepth > DEPTH_MAX) finding('click-depth', 'low', r.path, `${r.clickDepth} clicks from the home page (> ${DEPTH_MAX})`, 'link it from the home page or a hub page');
+    else if (r.role === 'research preview' && r.clickDepth === null) note('click-depth', r.path, 'research preview not reachable from the home page');
+  }
+}
+
+// query-parameter URLs: internal links that carry parameters, plus typical visitor/campaign parameters
+const parameterUrls = [];
+{
+  const targets = new Set([...linkTargets.keys()].filter((k) => k.includes('?')));
+  for (const p of PARAM_PROBES) targets.add(p);
+  for (const key of [...targets].sort()) {
+    const path = key.replace(/\?.*$/, '');
+    const base = pagesByPath.get(path);
+    const r = await get(key);
+    const head = /<head\b[^>]*>([\s\S]*?)<\/head>/i.exec(r.body.toString('utf8'))?.[1] ?? '';
+    const canon = /<link\b[^>]*rel=["']?canonical["']?[^>]*href=["']([^"']*)["']/i.exec(head)?.[1] ?? null;
+    const robots = /<meta\b[^>]*name=["']?robots["']?[^>]*content=["']([^"']*)["']/i.exec(head)?.[1] ?? '';
+    const entry = { url: key, status: r.status, canonical: canon, robots, linkedInternally: linkTargets.has(key) };
+    parameterUrls.push(entry);
+    if (r.status !== 200) { finding('param-url', 'medium', key, `answers ${r.status}`, base?.src ?? ''); continue; }
+    const want = PRODUCTION + path;
+    if (/noindex/i.test(robots)) continue; // a noindex parameter URL cannot compete with the clean URL
+    if (!canon) finding('param-canonical', 'medium', key, `no canonical; the clean URL ${want} should be declared`, locate('src/layouts/Base.astro', /rel="canonical"/));
+    else if (canon !== want) finding('param-canonical', canon.includes('?') ? 'high' : 'medium', key, `canonical ${canon}, expected ${want}`, locate('src/layouts/Base.astro', /rel="canonical"/));
+  }
+  const inSitemapWithParams = [...sitemapUrls].filter((u) => u.includes('?'));
+  if (inSitemapWithParams.length) finding('sitemap-params', 'high', inSitemapWithParams.join(', '), 'sitemap lists URLs with query parameters', 'site/astro.config.mjs');
+}
+
+// 410 Gone: retired URLs
+{
+  const gone = HTACCESS.split('\n').filter((l) => /\bG\]|\[[^\]]*\bG\b|R=410|\bgone\b|Redirect\s+410/i.test(l) && !/^\s*#/.test(l));
+  note('gone-410', '.htaccess', gone.length ? `${gone.length} 410 rule(s): ${gone.map((l) => l.trim()).join(' | ').slice(0, 200)}` : `no 410 rules: retired legacy URLs are 301-redirected to their closest current page (${redirectRules.filter((r) => r.status >= 300 && r.status < 400).length} redirect rules) and unknown URLs answer 404`);
+}
+
 {
   const sh = new Map(pageRecords.map((r) => [r, shingles(r.dom.mainText)]));
   for (const a of pageRecords) {
@@ -979,6 +1056,7 @@ const pageRow = (r) => ({
   h1Count: r.h1Count, headingSkips: r.headingSkips, words: r.words, linksOut: r.linksOut.filter((l) => l.key && !l.form).length, inbound: r.inbound, inboundFromMain: r.inboundFromMain, inboundFromIndexable: r.inboundFromIndexable,
   duplicate: r.duplicate, jsonldTypes: r.jsonldTypes, faq: r.faq ?? null, organization: r.organization ?? null, lang: r.dom.lang, viewport: r.dom.viewport, og: r.dom.og, images: r.dom.images.length,
   headers: r.headers, consoleErrors: r.consoleErrors, mobile: r.mobile ?? null, lighthouse: r.lighthouse ?? null, source: r.src,
+  clickDepth: r.clickDepth ?? null, imageDetails: r.imageDetails ?? [], forms: r.dom.forms,
 });
 const report = {
   generatedAt: new Date().toISOString(),
@@ -988,7 +1066,7 @@ const report = {
     server: `php -S ${HOSTPORT} -t dist tests/fixtures/live-router.php (applies dist/.htaccess; redirects not followed automatically, each hop requested)`,
     browser: 'Playwright Chromium (desktop 1280x900 for DOM extraction; 360 and 390 px mobile contexts)',
     lighthouse: RUN_LH ? 'Lighthouse (default config: mobile emulation, simulated throttling) via chrome-launcher on Playwright Chromium' : 'skipped (--no-lighthouse)',
-    thresholds: { TITLE_IDEAL, TITLE_MAX, DESC_MIN, DESC_MAX, THIN_WORDS, DUP_MEDIUM, DUP_LOW, TAP_MIN, TAP_ADVISORY },
+    thresholds: { TITLE_IDEAL, TITLE_MAX, DESC_MIN, DESC_MAX, THIN_WORDS, DUP_MEDIUM, DUP_LOW, TAP_MIN, TAP_ADVISORY, IMG_MODERN_BYTES, IMG_HEAVY_BYTES, FOLD_PX, DEPTH_MAX },
     localLimits: [
       'No live host: TLS, the real Apache/LiteSpeed MIME table, compression and caching headers are not tested.',
       'The http->https and www->apex rules are shown with a Host header against the stand-in, which always reports HTTPS off; https://www cannot be shown.',
@@ -1012,6 +1090,8 @@ const report = {
   notes,
   pages: pageRecords.map(pageRow),
   urls: [...urls.values()].map((r) => ({ url: r.url, sources: r.sources, label: r.label, expect: r.expect, status: r.status, contentType: r.contentType, location: r.location, xRobotsTag: r.xRobotsTag, finalUrl: r.finalUrl, finalStatus: r.finalStatus, hops: r.hops, chain: r.chain })),
+  parameterUrls,
+  clickDepth: Object.fromEntries(pageRecords.filter((r) => !isProbe404(r)).map((r) => [r.path, r.clickDepth ?? null])),
   linkTargets: [...linkTargets].map(([k, f]) => ({ target: k, chain: f.chain, finalUrl: f.finalUrl, finalStatus: f.final?.status ?? null })),
   externalLinks: [...externalLinks].map(([href, n]) => ({ href, links: n })),
   sitemaps: Object.fromEntries([...sitemapFiles].map(([p, s]) => [p, s])),

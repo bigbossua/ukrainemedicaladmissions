@@ -245,3 +245,23 @@ The gaps that remain (exact demand for "pirogov medical university ukraine", the
 **Decision:** on steady exact demand, Vinnytsia (≈390) ranks with Odesa (390) and Kharkiv (390), behind Bukovinian (480). It is moved into the top verification group, and the capture request lists it with the other seven. Zaporizhzhia stays where it is (only its former name has demand, 90).
 
 **Cumulative consumption: 6,230 + 30 = 6,260 line-based (6,370 max-reading; 6,840 conservative). Expected balance: 43,740 (43,630; conservative 43,160) — ESTIMATE, unverified until the owner's next API Units reading. Programme-cap headroom left: 850 / 740 / 270.**
+
+## 2026-10-12 — Master task: competitor gap check (programme 4; 300 units so far)
+
+**Owner's instruction (2026-10-12, master task):** "Use the existing SEMrush subscription and units when necessary"; reuse existing exports first; confirm the balance through the account interface if accessible; for each further report record the question, database, report type, units and resulting decision; no purchases or upgrades. **Balance:** still not readable through the MCP (it reports per-call usage only). This programme's own working cap, set here because the instruction names none: **1,000 units**, each call justified by a question the 43 existing exports cannot answer.
+
+**Existing exports reused first:** demand for the 12 names (in, pk, ng, uk), programme and fee terms (R1), SERPs for eight head terms and the rmcedu hub page's keywords (programme 3). None of them shows which Ukraine pages of the leading competitor earn traffic beyond its hub page.
+
+| # | Call | Question | Requested → returned | `usage.api_units` | File | Decision supported |
+|---|---|---|---|---|---|---|
+| 1 | `resource_organic` · in · target `rmcedu.com` · filter URL contains "ukraine" · sort traffic desc · limit 30 · columns keyword, position, volume, url, traffic, keyword_difficulty, intent | Which Ukraine topics and page types bring the leading competitor organic traffic, and do any lack a page on our site? | 30 → 30 | 300 | `research/semrush/2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv` | See below |
+
+**Result (database in; volumes are SEMrush estimates):**
+- **Fees dominate.** About 85% of the estimated traffic to its Ukraine pages lands on one hub page and comes from cost and fee queries: "ukraine medical college fees for indian students" (2,900; position 2; kd 13), "ukraine medical college" (2,900), "ukraine medical fees" (720), "ukraine medical college fees" (590), "medical fees in ukraine" (480), "cost of medical education in ukraine" (320), "cost of mbbs in ukraine" (260), "ukraine me mbbs fees kitni hai" (260, Hindi), "cost of mbbs in ukraine for indian students" (210). Our matching page is `/tuition-fees/` (money page 1 in `KEYWORD_URL_MAP.md` §18.1; it already has a "Fees for Indian students" section, and its meta description now names "MBBS fees for Indian students"). This confirms its priority but does not justify a second fees page: one intent, one URL.
+- **University pages earn little for it** (positions 2–15): Danylo Halytsky (110 + 110), "pirogov medical university ukraine" (260), "ieu university" (170, International European University, Kyiv), Bogomolets (320), "odessa national medical university" (320), Bukovinian (480, position 10), "zaporozhye state medical university" (170; older spelling, position 15). Our directory search already maps "Zaporozhye", "Odessa" and the other old spellings.
+- **List and choice queries:** "ukraine mbbs college list" (140), "best mbbs college in ukraine" (110), "why students go to ukraine for mbbs" (140) → `/universities/` (list, plus the "no ranking" answer) and `/courses/medicine/`. No new page.
+- **New lead:** International European University ("ieu university" 170) is a private Kyiv institution not among our 12. It is passed to the research sweep; no page is created from demand alone.
+
+**Decision:** no new URL. `/tuition-fees/` stays the top money page; its meta description now carries the "MBBS fees for Indian students" phrasing that its existing section answers, with no fee figures. The university-name demand confirms the verification order already recorded. International European University enters the research register as a lead.
+
+**Cumulative consumption: 6,260 + 300 = 6,560 line-based (6,670 max-reading; 7,140 conservative). Expected balance: 43,440 (43,330; conservative 42,860): ESTIMATE, unverified. Programme 4 headroom: 700 of 1,000.**
