@@ -63,6 +63,25 @@ export async function getListedUniversities(): Promise<ListedUniversity[]> {
   return [...published, ...drafts].sort((a, b) => byShortName(a.d, b.d));
 }
 
+/**
+ * RESEARCH PREVIEWS (N25, src/lib/publication.mjs researchPreviewCheck): unpublished real records that opt in, as the
+ * policy PROJECTION (shown claims only, our own text under the published-profile rules), alphabetical. Production builds
+ * only: a PREVIEW_UNPUBLISHED=1 build shows every unpublished record raw as a draft instead, so this returns [] there.
+ * Pages render these labelled "Research preview — not yet verified", noindex, without structured data, never in the
+ * sitemap (astro.config.mjs lists only published profiles). Kept apart from getListedUniversities() on purpose: a page
+ * shows previews only where it asks for them, so fee, course and comparison pages can never list one by accident.
+ */
+export async function getResearchPreviews(): Promise<PublicUniversity[]> {
+  if (PREVIEW) return [];
+  return (await decide()).filter((x) => x.d.researchPreview && !x.d.published).map((x) => x.d.previewRecord as PublicUniversity).sort(byShortName);
+}
+
+/** Count of the claims a projection SHOWS (top-level facts plus listed programmes): what a preview page calls "verified so far". */
+export function shownFactCount(d: any): number {
+  const top = ['officialName', 'website', 'address', 'status', 'statusStatement', 'teachingFormat', 'founded', 'internationalOffice', 'accreditation', 'recognition', 'accommodation'];
+  return top.filter((k) => d?.[k]?.show === true).length + (Array.isArray(d?.programmes) ? d.programmes.length : 0);
+}
+
 /** Synthetic sample records (src/content/samples): PREVIEW builds only, never real, never published. */
 export async function getPreviewSamples(): Promise<any[]> {
   if (!PREVIEW) return [];

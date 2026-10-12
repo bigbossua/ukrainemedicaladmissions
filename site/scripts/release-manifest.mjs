@@ -24,7 +24,12 @@ try { generatedFrom = execSync('git rev-parse --short HEAD', { stdio: ['ignore',
 const fingerprint = sha(entries.map((e) => `${e.path} ${e.sha256}`).join('\n'));
 const totalBytes = entries.reduce((n, e) => n + e.bytes, 0);
 mkdirSync(dirname(OUT), { recursive: true });
-writeFileSync(OUT, JSON.stringify({ generatedFrom, fileCount: entries.length, totalBytes, fingerprint, files: entries }, null, 2) + '\n');
+// University profile pages, split into published profiles and research previews (N25: a preview page carries the
+// data-research-preview marker). scripts/verify-live.mjs checks each kind against the live site.
+const profilePages = entries.map((e) => /^universities\/([^/]+)\/index\.html$/.exec(e.path)?.[1]).filter(Boolean).sort();
+const researchPreviews = profilePages.filter((s) => readFileSync(join(DIST, 'universities', s, 'index.html'), 'utf8').includes('data-research-preview'));
+const publishedProfiles = profilePages.filter((s) => !researchPreviews.includes(s));
+writeFileSync(OUT, JSON.stringify({ generatedFrom, fileCount: entries.length, totalBytes, fingerprint, publishedProfiles, researchPreviews, files: entries }, null, 2) + '\n');
 
 const top = new Map();
 for (const e of entries) {
@@ -35,4 +40,5 @@ for (const e of entries) {
 console.log('| Entry | Type | Files | Bytes |\n|---|---|---|---|');
 for (const t of [...top.values()].sort((a, b) => (a.name < b.name ? -1 : 1))) console.log(`| \`${t.name}\` | ${t.type} | ${t.count} | ${t.bytes.toLocaleString('en-GB')} |`);
 console.log(`\nrelease-manifest: ${entries.length} files, ${totalBytes.toLocaleString('en-GB')} bytes, build ${generatedFrom}, fingerprint ${fingerprint}`);
+console.log(`profiles: ${publishedProfiles.length} published, ${researchPreviews.length} research previews`);
 console.log(`written ${relative(process.cwd(), OUT)}`);

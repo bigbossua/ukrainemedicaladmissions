@@ -3,28 +3,48 @@ import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import DraftBanner from '../../components/university/DraftBanner.astro';
 import UniversityProfile from '../../components/university/UniversityProfile.astro';
-import { getListedUniversities, type ListedUniversity } from '../../lib/records';
+import ResearchPreviewProfile from '../../components/university/ResearchPreviewProfile.astro';
+import { getListedUniversities, getResearchPreviews, type ListedUniversity } from '../../lib/records';
 import { profileJsonLd } from '../../lib/publication.mjs';
+
+type Entry = { kind: 'listed'; entry: ListedUniversity } | { kind: 'preview'; d: any };
 
 export async function getStaticPaths() {
   // PUBLICATION GATE (src/lib/records.ts, src/lib/publication.mjs): a production build gets a page only for a PUBLISHED
   // record (flag true AND the publication policy passes), rendered from its projection. A record flagged publishable that
   // fails the policy stops the build. A PREVIEW_UNPUBLISHED=1 build also renders every unpublished record RAW as a draft
   // for internal review (noindex, no canonical, no JSON-LD, no sitemap).
-  return (await getListedUniversities()).map((entry) => ({ params: { slug: entry.d.slug }, props: { entry } }));
+  // RESEARCH PREVIEWS (N25, production only): an unpublished record that opts in gets a labelled page rendered from its
+  // PROJECTION only (noindex, follow; no JSON-LD; never in the sitemap). getResearchPreviews() is empty in PREVIEW builds.
+  const listed = (await getListedUniversities()).map((entry) => ({ params: { slug: entry.d.slug }, props: { kind: 'listed', entry } as Entry }));
+  const taken = new Set(listed.map((x) => x.params.slug));
+  const previews = (await getResearchPreviews()).filter((d) => !taken.has(d.slug)).map((d) => ({ params: { slug: d.slug }, props: { kind: 'preview', d } as Entry }));
+  return [...listed, ...previews];
 }
-const { entry } = Astro.props as { entry: ListedUniversity };
-const d = entry.d;
-const draft = entry.draft;
-const title = `${d.shortName}: admissions & fees`;
+const props = Astro.props as Entry;
+const entry = props.kind === 'listed' ? props.entry : null;
+const d = props.kind === 'listed' ? props.entry.d : props.d;
+const draft = entry?.draft ?? false;
 // A withheld city (N24 a) is left out of the description rather than printed as "To be confirmed".
 const place = d.editorialWithheld?.city || !d.city ? '' : `, ${d.city}`;
-const description = `${d.shortName}${place}: programmes for international students, language, fees and entry requirements — each marked verified or to be confirmed.`;
-// Structured data only for a published profile, and only from values the publication policy shows.
-const jsonLd = draft ? [] : profileJsonLd(d);
+// Titles stay within 70 characters (tests/check-meta.mjs): the longest short names take the shorter preview suffix.
+const previewTitle = `${d.shortName}: not yet verified`.length <= 70 ? `${d.shortName}: not yet verified` : `${d.shortName}: unverified`;
+const title = entry ? `${d.shortName}: admissions & fees` : previewTitle;
+const description = entry
+  ? `${d.shortName}${place}: programmes for international students, language, fees and entry requirements — each marked verified or to be confirmed.`
+  : `${d.shortName}: what is verified so far, what is not, and what to check before you apply.`;
+// Structured data only for a published profile, and only from values the publication policy shows. Never for a preview.
+const jsonLd = entry && !draft ? profileJsonLd(d) : [];
 ---
-<Base title={title} description={description} noindex={draft} draft={draft} jsonLd={jsonLd} suffix={false}>
-  {draft && <DraftBanner kind="unpublished" />}
-  <UniversityProfile d={d} publishable={!draft} draft={draft} failures={entry.failures} notListed={entry.notListed} flagged={entry.flagged} crumbs={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} />
-  <CtaBand title={`Ready to apply to ${d.shortName}?`} text="Begin online — it takes a few minutes and nothing is sent to the university until you confirm." />
-</Base>
+{entry ? (
+  <Base title={title} description={description} noindex={draft} draft={draft} jsonLd={jsonLd} suffix={false}>
+    {draft && <DraftBanner kind="unpublished" />}
+    <UniversityProfile d={d} publishable={!draft} draft={draft} failures={entry.failures} notListed={entry.notListed} flagged={entry.flagged} crumbs={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} />
+    <CtaBand title={`Ready to apply to ${d.shortName}?`} text="Begin online — it takes a few minutes and nothing is sent to the university until you confirm." />
+  </Base>
+) : (
+  <Base title={title} description={description} noindex follow suffix={false}>
+    <ResearchPreviewProfile d={d} />
+    <CtaBand title="Not sure which university to choose?" text="Start your candidate profile with your course, country and qualifications. We reply by email, and nothing is sent to a university." />
+  </Base>
+)}

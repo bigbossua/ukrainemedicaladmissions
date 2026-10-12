@@ -1,0 +1,189 @@
+{
+  "slug": "fixture-epsilon-preview-university",
+  "officialName": {
+    "value": "POSCTRL-EPSILON-OFFICIAL-NAME University",
+    "status": "verified",
+    "source": "https://epsilon.fixture.example/about",
+    "checked": "@today-3"
+  },
+  "shortName": "Fixture Epsilon Preview University",
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "CANARY-NOTE-EPSILON-STATUS"
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "city": "CANARY-EPSILON-CITY",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "website": {
+    "value": "https://epsilon.fixture.example/",
+    "status": "verified",
+    "source": "https://epsilon.fixture.example/",
+    "checked": "@today-3"
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "overview": "CANARY-EPSILON-OVERVIEW",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "CANARY-EPSILON-MEDICINE",
+      "field": "medicine",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "CANARY-NOTE-EPSILON-INTL"
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "reviewer": "CANARY-EPSILON-REVIEWER",
+    "openQuestions": [
+      "CANARY-EPSILON-OPEN-QUESTION"
+    ]
+  },
+  "region": "CANARY-EPSILON-REGION",
+  "alternativeNames": [
+    "CANARY-EPSILON-ALT-NAME"
+  ],
+  "researchReferences": [
+    {
+      "label": "CANARY-EPSILON-REF-LABEL",
+      "url": "https://epsilon-refs.fixture.example/canary",
+      "purpose": "CANARY-EPSILON-REF-PURPOSE",
+      "note": "CANARY-EPSILON-REF-NOTE"
+    }
+  ]
+}

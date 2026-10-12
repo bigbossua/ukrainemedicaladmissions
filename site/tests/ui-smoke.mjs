@@ -44,30 +44,50 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       if (links < 6) fail(`mobile menu shows ${links} links`);
     }
     if (name === 'desktop' && path === '/universities/') {
-      // Data-driven: the directory may list zero universities in production (publication gate), so derive
-      // expectations from the cards' own data attributes instead of hard-coding a university.
-      const total = await page.$$eval('[data-list] > article', (a) => a.length);
+      // Data-driven: the directory lists published profiles and, since N25, research previews ("not yet verified"), so
+      // expectations are derived from the cards' own data attributes instead of hard-coding a university.
+      const total = await page.$$eval('[data-list] article', (a) => a.length);
+      const visible = () => page.$$eval('[data-list] article', (a) => a.filter((el) => el.offsetParent !== null).length);
       const count = Number(await page.textContent('[data-count]'));
       if (count !== total) fail(`directory count ${count} ≠ ${total} cards`);
+      const previews = await page.$$eval('[data-list] article[data-status="preview"]', (a) => a.map((el) => ({ name: el.dataset.name ?? '', facts: ['city', 'fields', 'levels', 'languages', 'intakes', 'prep'].filter((k) => k in el.dataset) })));
+      for (const p of previews) if (p.facts.length) fail(`directory: not-yet-verified card "${p.name}" carries fact attributes ${p.facts.join(', ')}`);
       if (total === 0) {
-        if (await page.$eval('[data-empty]', (el) => el.hidden)) fail('directory empty state hidden with zero universities');
-        if (await page.$('[data-list] a[href^="/universities/"]')) fail('directory lists a profile link with zero published records');
+        if (!(await page.$('[data-empty-state]'))) fail('directory empty state missing with zero universities');
+        if (await page.$('[data-list] a[href^="/universities/"]')) fail('directory lists a profile link with zero universities');
       } else {
+        // Name search: a word from the first card, a spelling variant, and a query that matches nothing.
+        const names = await page.$$eval('[data-list] article', (a) => a.map((el) => el.dataset.name ?? ''));
+        const word = (names[0].split(/\s+/).find((w) => w.length > 5) ?? names[0]).replace(/[^a-z-]/g, '');
+        await page.fill('[data-search]', word.toUpperCase());
+        const expected = names.filter((n) => n.includes(word.toLowerCase())).length;
+        if ((await visible()) !== expected || Number(await page.textContent('[data-count]')) !== expected) fail(`directory search "${word}": shows ${await visible()}, expected ${expected}`);
+        if (names.some((n) => n.includes('odesa'))) {
+          await page.fill('[data-search]', 'Odessa');
+          if ((await visible()) !== names.filter((n) => n.includes('odesa')).length) fail('directory search: the spelling "Odessa" does not find Odesa');
+        }
+        await page.fill('[data-search]', 'zzqx university');
+        if ((await visible()) !== 0 || (await page.textContent('[data-count]')) !== '0') fail('directory search for a non-existent name still shows cards');
+        if (await page.$eval('[data-no-match]', (el) => el.hidden)) fail('directory: no-match message hidden with zero results');
+        if ((await page.$$eval('[data-tier]', (t) => t.filter((x) => !x.hidden).length)) !== 0) fail('directory: an empty tier heading is still shown');
+        await page.click('[data-reset]');
+        await page.waitForTimeout(50);
+        if ((await visible()) !== total) fail('directory: Clear did not restore every card');
         const fields = await page.$$eval('[data-filter="field"] option', (o) => o.map((x) => x.value).filter(Boolean));
         for (const f of fields.slice(0, 2)) {
           await page.selectOption('[data-filter="field"]', f);
-          const predicted = await page.$$eval('[data-list] > article', (a, f) => a.filter((el) => (el.dataset.fields ?? '').split(' ').includes(f)).length, f);
+          const predicted = await page.$$eval('[data-list] article', (a, f) => a.filter((el) => (el.dataset.fields ?? '').split(' ').includes(f)).length, f);
           if (Number(await page.textContent('[data-count]')) !== predicted) fail(`directory filter field=${f} count mismatch`);
           await page.selectOption('[data-filter="field"]', '');
         }
-        // A city combined with a language none of its cards offers must show the empty state (when such a pair exists).
-        const cards = await page.$$eval('[data-list] > article', (a) => a.map((el) => ({ city: el.dataset.city, langs: (el.dataset.languages ?? '').split(' ') })));
+        // A city combined with a language none of its cards offers must show the no-match message (when such a pair exists).
+        const cards = await page.$$eval('[data-list] article[data-city]', (a) => a.map((el) => ({ city: el.dataset.city, langs: (el.dataset.languages ?? '').split(' ') })));
         const langs = await page.$$eval('[data-filter="language"] option', (o) => o.map((x) => x.value).filter(Boolean));
         const pair = cards.flatMap((c) => langs.filter((l) => !cards.some((x) => x.city === c.city && x.langs.includes(l))).map((l) => [c.city, l]))[0];
         if (pair) {
           await page.selectOption('[data-filter="city"]', pair[0]); await page.selectOption('[data-filter="language"]', pair[1]);
           if ((await page.textContent('[data-count]')) !== '0') fail(`directory filter ${pair.join('+')} should yield 0`);
-          if (await page.$eval('[data-empty]', (el) => el.hidden)) fail('empty-state message not shown');
+          if (await page.$eval('[data-no-match]', (el) => el.hidden)) fail('no-match message not shown');
         }
       }
     }

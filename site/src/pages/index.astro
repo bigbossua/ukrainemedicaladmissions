@@ -4,12 +4,15 @@ import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/illustrations/Icon.astro';
 import HeroIllustration from '../components/illustrations/HeroIllustration.astro';
 import ApplicationJourney from '../components/illustrations/ApplicationJourney.astro';
-import { getListedUniversities } from '../lib/records';
+import { getListedUniversities, getResearchPreviews } from '../lib/records';
 import { SITE } from '../lib/site';
 import { COURSES, type CourseSlug } from '../lib/courses';
 
 // Publication gate (lib/records.ts): only published records (projections) appear on the home page; drafts only in PREVIEW builds.
 const universities = await getListedUniversities();
+// Research previews (N25): unpublished records that opt in, as projections; labelled "not yet verified", name only.
+const previews = await getResearchPreviews();
+const total = universities.length + previews.length;
 // Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact.
 const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary }));
 const jsonLd = [{
@@ -27,21 +30,21 @@ const jsonLd = [{
   url: SITE.url,
 }];
 ---
-<Base title={SITE.name} description={SITE.description} jsonLd={jsonLd}>
+<Base title="Ukraine Medical Admissions: independent admissions help" description="Free, independent help applying to medical universities in Ukraine. Browse the universities we are researching and start your application online." suffix={false} jsonLd={jsonLd}>
   <section class="hero on-dark">
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">International medical admissions</span>
-        <h1>Independent, verified admissions support for medical universities in Ukraine.</h1>
-        <p>Start a free online enquiry today. University profiles, entry requirements and fees appear here only once each has been checked against the university's official source.</p>
+        <h1>Independent help applying to medical universities in Ukraine.</h1>
+        <p>Tell us what you want to study and the qualifications you have, and we reply by email with your next steps. Entry requirements and fees appear here only once checked against the university's official source.</p>
         <div class="cta-row">
           <a class="btn btn-on-dark" href={SITE.ctaHref}>{SITE.cta}</a>
           <a class="btn btn-ghost" href="/universities/">Browse universities</a>
         </div>
         <div class="trust">
-          <div><b>Every published fact dated</b>, with its official source</div>
-          <div><b>Medicine · Dentistry · Pharmacy · Nursing</b> listed only once verified</div>
-          <div><b>Four clear stages</b> from enquiry to official submission</div>
+          <div><b>Free to start</b>: a short online form, no documents</div>
+          <div><b>We reply by email</b> with answers and next steps</div>
+          <div><b>Nothing goes to a university</b> without your confirmation</div>
         </div>
       </div>
       <div class="hero-visual">
@@ -59,6 +62,7 @@ const jsonLd = [{
               <select name="university">
                 <option value="">Help me choose</option>
                 {universities.map((u) => <option value={u.d.slug}>{u.d.shortName}</option>)}
+                {previews.map((u) => <option value={u.slug}>{u.shortName} (not yet verified)</option>)}
                 <option value="unlisted">A university not listed here</option>
               </select>
             </label>
@@ -73,40 +77,47 @@ const jsonLd = [{
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Why students use us</span>
-        <h2>Independent guidance. Facts published only once checked.</h2>
+        <span class="eyebrow">What you get here</span>
+        <h2>Independent guidance you can check</h2>
       </div>
       <div class="grid grid-3">
-        <div class="card card-link"><div class="ico"><Icon name="dated" /></div><h3>Official sources, dated</h3><p>We publish a fee, deadline or programme detail only after checking it against the university's official source, and we show the date we checked it. Anything not yet checked is marked as awaiting confirmation.</p><a class="more" href="/about/#verification">How we verify →</a></div>
-        <div class="card card-link"><div class="ico"><Icon name="compare" /></div><h3>Compare side by side</h3><p>As profiles pass verification, their programmes, languages, entry requirements, tuition and application windows appear side by side in one comparison table.</p><a class="more" href="/universities/">Compare universities →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="dated" /></div><h3>Fees explained before figures</h3><p>Learn how to read a university fee schedule, what “per year” leaves out and which charges to ask about. A fee appears here only with its academic year and the date we checked it.</p><a class="more" href="/tuition-fees/">Tuition fees guide →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="compare" /></div><h3>Know what to check</h3><p>Each university page lists what to confirm before you apply: the programme, teaching language, fee and academic year, entry requirements and recognition at home. Verified profiles add the facts side by side.</p><a class="more" href="/universities/">See the universities →</a></div>
         <div class="card card-link"><div class="ico"><Icon name="journey" /></div><h3>One application journey</h3><p>Four clear stages, from your first enquiry to official submission through the university's own procedure. A document checklist and status updates are planned.</p><a class="more" href="/admissions/#stages">See the process →</a></div>
       </div>
     </div>
   </section>
 
-  <section class="alt">
+  <section class="alt" id="universities">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Universities</span>
-        <h2>Medical universities in Ukraine</h2>
-        <p>Our directory grows one verified profile at a time. A profile is published only after its core facts have been checked against the university's own website; <a href="/about/#verification">see how we verify</a>.</p>
+        <h2>{universities.length > 0 ? 'Medical universities in Ukraine' : 'Universities we are researching'}</h2>
+        <p>{previews.length > 0 ? 'Names only for now: we show fees, programmes and requirements once each is checked on the university’s official website. Open a university to see what to check before you apply.' : 'A university appears here once its core facts have been checked against its official website.'} <a href="/about/#verification">How we verify</a>.</p>
       </div>
-      {universities.length === 0 && <p class="note">No university profile has completed verification yet. The first profiles are queued for verification against official sources; each will appear here, dated, as soon as it passes.</p>}
-      <div class="grid grid-3">
-        {universities.map((u) => (
-          <article class="card">
-            <h3><a href={`/universities/${u.d.slug}/`}>{u.d.shortName}</a></h3>
-            <div class="chips">
-              <span>{u.d.city}</span>
-              {/* A projection lists only programmes the policy shows as open to international applicants. */}
-              {u.d.programmes.filter((p: any) => !u.draft || p.internationalAdmission.value !== false).map((p: any) => <span>{p.name}</span>)}
-              {u.draft && <span class="badge badge-pending">Verification in progress</span>}
-            </div>
-            <a class="more" href={`/universities/${u.d.slug}/`}>View profile →</a>
-          </article>
-        ))}
-      </div>
-      <p class="after-grid"><a class="btn btn-secondary" href="/universities/">All universities</a></p>
+      {total === 0 && <p class="note">No university profile has completed verification yet. Each will appear here, dated, as soon as it passes.</p>}
+      {universities.length > 0 && (
+        <div class="grid grid-3">
+          {universities.map((u) => (
+            <article class="card">
+              <h3><a href={`/universities/${u.d.slug}/`}>{u.d.shortName}</a></h3>
+              <div class="chips">
+                <span>{u.d.editorialWithheld?.city ? 'City to be confirmed' : u.d.city}</span>
+                {/* A projection lists only programmes the policy shows as open to international applicants. */}
+                {u.d.programmes.filter((p: any) => !u.draft || p.internationalAdmission.value !== false).map((p: any) => <span>{p.name}</span>)}
+                {u.draft ? <span class="badge badge-pending">Draft — verification in progress</span> : <span class="badge badge-verified">Verified profile</span>}
+              </div>
+              <a class="more" href={`/universities/${u.d.slug}/`}>View profile →</a>
+            </article>
+          ))}
+        </div>
+      )}
+      {previews.length > 0 && (
+        <ul class="research-list" aria-label="Universities we are researching (not yet verified), alphabetical">
+          {previews.map((u) => <li><a href={`/universities/${u.slug}/`}>{u.shortName}</a> <span class="badge badge-pending">Not yet verified</span></li>)}
+        </ul>
+      )}
+      <p class="after-grid"><a class="btn btn-secondary" href="/universities/">{total > 0 ? `Search the directory (${total})` : 'Browse universities'}</a></p>
     </div>
   </section>
 
@@ -148,6 +159,12 @@ const jsonLd = [{
     .hero-art { display: block; position: absolute; z-index: 0; inset: -110px -40px -130px -60px; pointer-events: none; }
   }
   .after-grid { margin: 1.5rem 0 0; }
+  .research-list { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .5rem 1rem; }
+  @media (min-width: 640px) { .research-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .research-list { grid-template-columns: repeat(3, 1fr); } }
+  .research-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .75rem; padding: .65rem .9rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
+  .research-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); }
+  .research-list a:hover { text-decoration: underline; }
   /* Stack the intro above the course cards until there is room for both side by side. */
   .courses-split { align-items: start; grid-template-columns: 1fr; }
   @media (min-width: 1000px) { .courses-split { grid-template-columns: 1fr 1.35fr; gap: 2.5rem; } }

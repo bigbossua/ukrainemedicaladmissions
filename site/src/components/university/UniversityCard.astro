@@ -23,8 +23,11 @@ const initials = u.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)
 const cityText = u.editorialWithheld?.city ? 'City to be confirmed' : u.city;
 const place = [cityText, u.region].filter((x) => typeof x === 'string' && x.trim()).join(', ');
 const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 0) % 40;
+// Search key for the directory filter. Astro escapes & and " in attributes but not < >, so markup characters are removed
+// (a short name with markup is still shown escaped as text; tests/publication-build.mjs carries such a name).
+const searchName = u.shortName.toLowerCase().replace(/[<>]/g, '');
 ---
-<article class="ucard" data-slug={u.slug} data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={prepState} data-intakes={intakes.join(' ')} data-publishable={draft ? 'no' : 'yes'}>
+<article class="ucard" data-slug={u.slug} data-status={draft ? 'draft' : 'verified'} data-name={searchName} data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={prepState} data-intakes={intakes.join(' ')} data-publishable={draft ? 'no' : 'yes'}>
   <a class="tile" href={href} aria-hidden="true" tabindex="-1" style={`--h:${hue}`}><span>{initials}</span><span class="city">{cityText}</span></a>
   <div class="body">
     <h2><a href={href}>{u.shortName}</a></h2>

@@ -1,0 +1,123 @@
+---
+/**
+ * RESEARCH-PREVIEW profile body (N25) for /universities/<slug>/ while a record is NOT published. `d` is the policy
+ * PROJECTION (src/lib/records.ts getResearchPreviews → publicationDecision().previewRecord), never the raw record: a
+ * claim prints a value only when the evidence store verifies it (Fact.astro / ProgrammeCard.astro go through viewClaim),
+ * and our own text follows the published-profile rules (overview only after editorial review). Everything else on the
+ * page is fixed, general guidance that states nothing about this university. The page itself is noindex, carries no
+ * structured data and is not in the sitemap ([slug].astro, astro.config.mjs).
+ * Order (content audit 2026-10-12): what the student can do first, then what we will confirm. "Not yet verified" is
+ * said once, in the header; the verified section appears only when the policy shows at least one fact.
+ */
+import Breadcrumbs from '../Breadcrumbs.astro';
+import Fact from '../Fact.astro';
+import ProgrammeCard from './ProgrammeCard.astro';
+import { SITE } from '../../lib/site';
+import { TEACHING_FORMATS } from '../../lib/fields';
+import { officeText, shownFactCount } from '../../lib/records';
+
+interface Props { d: any }
+const { d } = Astro.props;
+const shown = (k: string) => d?.[k]?.show === true;
+const FACTS: [string, string, ((v: any) => string)?][] = [
+  ['officialName', 'Official name'], ['website', 'Official website'], ['address', 'Address'], ['status', 'Operating status'],
+  ['statusStatement', "The university's own statement for the current academic year"],
+  ['teachingFormat', 'Teaching format', (v) => (TEACHING_FORMATS as any)[v] ?? v],
+  ['internationalOffice', 'International office', officeText], ['founded', 'Founded'], ['accreditation', 'Accreditation'],
+  ['recognition', 'Recognition'], ['accommodation', 'Accommodation'],
+];
+const verifiedFacts = FACTS.filter(([k]) => shown(k));
+const programmes: any[] = Array.isArray(d.programmes) ? d.programmes : [];
+const count = shownFactCount(d);
+// What we will confirm before a full profile, in the order a student needs it. An item disappears once verified.
+const noProgrammes = programmes.length === 0;
+const pending = [
+  [noProgrammes, 'Which programmes are open to international applicants, with the qualification awarded, duration and intake'],
+  [noProgrammes, 'The teaching language of each programme'],
+  [noProgrammes, 'The tuition fee, with its academic year, payment schedule and other mandatory charges'],
+  [noProgrammes, 'Entry requirements and the documents the university asks for'],
+  [noProgrammes, 'Application deadlines for the next intake'],
+  [!shown('status') || !shown('statusStatement') || !shown('teachingFormat'), "The university's own statement on whether, where and how it is teaching this academic year"],
+  [!shown('officialName') || !shown('website') || !shown('address'), 'Its official name, official website and address'],
+  [!shown('internationalOffice'), 'How to contact its international office'],
+  [!shown('accreditation'), 'Accreditation'],
+  [!shown('recognition'), 'Recognition (the regulator in the country where you plan to work decides what it accepts)'],
+].filter(([open]) => open).map(([, label]) => label as string);
+const applyHref = `/apply/?university=${d.slug}`;
+const showOverview = typeof d.overview === 'string' && d.overview.trim().length > 0;
+---
+<div class="page-head preview-head" data-research-preview>
+  <div class="wrap">
+    <span class="eyebrow">Research preview</span>
+    <h1>{d.shortName}</h1>
+    <p class="state"><span class="badge badge-pending"><span aria-hidden="true">◔ </span>Not yet verified</span>{count > 0 && <span class="count">{count} {count === 1 ? 'fact' : 'facts'} verified so far</span>}</p>
+    <p>We are researching this university. {count === 0 ? 'We have not yet confirmed any information about it from its official website or a Ukrainian government register, so this page shows no fees, programmes, dates or entry requirements.' : 'Only the facts listed under “Verified so far” have been confirmed from an official source; nothing else about it is shown.'} The name above is the commonly used English name; the official name is among the facts we will confirm.</p>
+  </div>
+</div>
+<Breadcrumbs items={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} structuredData={false} />
+
+<section style="padding-top:1rem">
+  <div class="wrap layout">
+    <div>
+      {showOverview && <p class="prose">{d.overview}</p>}
+      {count > 0 && (
+        <>
+          <h2 id="verified">Verified so far</h2>
+          {verifiedFacts.length > 0 && <dl>{verifiedFacts.map(([k, label, format]) => <Fact label={label} claim={d[k]} format={format} />)}</dl>}
+          {programmes.map((p: any) => <ProgrammeCard p={p} slug={d.slug} />)}
+        </>
+      )}
+
+      <h2 id="before-you-apply" style={count > 0 ? 'margin-top:2.25rem' : undefined}>What to check before you apply</h2>
+      <ol class="prose steps">
+        <li><strong>Find the official website from an official source.</strong> Use a Ukrainian government register or the domain the university itself publishes, not an advert, a social-media page or an agency's copy of its site. <a href="/admissions/#official-sites">How to recognise official channels</a>.</li>
+        <li><strong>Confirm that your programme is open to international applicants for your intake</strong>, and the language it is taught in. If the website is unclear, ask the university's international office in writing.</li>
+        <li><strong>Get the tuition fee from the university, with its academic year.</strong> Ask for the payment schedule and every other mandatory charge, for example registration, accommodation or insurance. <a href="/tuition-fees/">How to read a fee schedule</a>.</li>
+        <li><strong>Compare the entry requirements with your qualifications:</strong> the school-leaving subjects and grades, any entrance test or interview, and the language level. <a href="/admissions/#readiness">How entry requirements are compared</a>.</li>
+        <li><strong>Check recognition with your home regulator before you pay.</strong> Whether you can practise after graduating is decided by the medical regulator in the country where you plan to work, not by the university or by us.</li>
+        <li><strong>Read the university's current statement on how it is teaching</strong> this academic year: in person, at a distance or both, and from which city.</li>
+        <li><strong>Pay and send documents only through the university's own procedure.</strong> Never send money or original documents to anyone who cannot show you the university's written instructions.</li>
+      </ol>
+
+      <h2 id="help" style="margin-top:2.25rem">How we can help</h2>
+      <p class="prose">Tell us you are interested in {d.shortName} when you start your candidate profile. We reply by email with answers to your questions and the next steps we suggest, and we tell you plainly what has not yet been verified. Starting a profile is free.</p>
+      <p><a class="btn btn-primary" href={applyHref}>{SITE.cta}</a></p>
+
+      <h2 id="to-verify" style="margin-top:2.25rem">What we will confirm before publishing a full profile</h2>
+      <ul class="prose pending-list">
+        {pending.map((label) => <li>{label}</li>)}
+      </ul>
+      <p class="note">This page is not the university's website, and Ukraine Medical Admissions does not claim any partnership with {d.shortName}: we are an independent service, and admission decisions are made solely by the university.</p>
+    </div>
+
+    <aside class="side">
+      <div class="card">
+        <h2 class="side-h">Interested in this university?</h2>
+        <p style="font-size:.9rem">Start your candidate profile with your course, country and qualifications. Documents are not requested at this stage, and nothing is sent to a university.</p>
+        <a class="btn btn-primary" href={applyHref}>{SITE.cta}</a>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h2 class="side-h">Keep reading</h2>
+        <ul class="links">
+          <li><a href="/universities/">All universities in the directory</a></li>
+          <li><a href="/admissions/">How to apply</a></li>
+          <li><a href="/tuition-fees/">How to read tuition fees</a></li>
+          <li><a href="/faq/">Student FAQ</a></li>
+          <li><a href="/about/#verification">How we verify</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .preview-head .state { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 0 0 .9rem; }
+  .preview-head .count { color: #CFDAEC; font-size: .95rem; }
+  .layout { display: grid; gap: 2rem; }
+  @media (min-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; } .side { position: sticky; top: 90px; } }
+  .steps li { margin-bottom: .7rem; }
+  .pending-list li { margin-bottom: .3rem; }
+  .side-h { font-size: 1.05rem; margin: 0; }
+  .links { padding-left: 1.1rem; margin: 0; font-size: .95rem; }
+  dl { margin: 0; }
+</style>

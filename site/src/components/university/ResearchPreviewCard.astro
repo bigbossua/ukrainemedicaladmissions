@@ -1,0 +1,31 @@
+---
+/**
+ * Directory card for a RESEARCH PREVIEW (N25): an unpublished record shown by its short name only, labelled
+ * "Not yet verified". `u` is the policy projection (src/lib/records.ts getResearchPreviews), never a raw record, so a
+ * verified fact can appear here only once the evidence store verifies it. The card prints no city, programme, fee or
+ * other claim; when the projection shows facts it counts them. data-* attributes feed the directory search and status
+ * filter only (name and status: no claim). Compact by design: the caveat is said once per page, not on every card.
+ */
+import { shownFactCount } from '../../lib/records';
+interface Props { u: any; headingLevel?: 'h2' | 'h3' }
+const { u, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const href = `/universities/${u.slug}/`;
+const verified = shownFactCount(u);
+// Search key for the directory filter. Astro escapes & and " in attributes but not < >, so markup characters are removed
+// (the policy refuses such a short name for a preview anyway; tests/publication-build.mjs covers published names).
+const searchName = u.shortName.toLowerCase().replace(/[<>]/g, '');
+---
+<article class="pcard card-link" data-slug={u.slug} data-status="preview" data-name={searchName}>
+  <Heading class="name">{u.shortName}</Heading>
+  <p class="tag"><span class="badge badge-pending"><span aria-hidden="true">◔ </span>Not yet verified</span>{verified > 0 && <span class="facts"> {verified} {verified === 1 ? 'fact' : 'facts'} verified</span>}</p>
+  <a class="more" href={href}>What to check before you apply<span class="visually-hidden">: {u.shortName}</span> →</a>
+</article>
+<style>
+  .pcard { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); padding: .9rem 1.1rem; display: flex; flex-direction: column; gap: .45rem; min-height: 48px; }
+  .pcard[hidden] { display: none; } /* the directory filter sets [hidden]; display:flex above would otherwise keep the card visible */
+  .name { font-size: 1.05rem; margin: 0; line-height: 1.3; color: var(--navy-900); }
+  .tag { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+  .facts { font-size: .85rem; color: var(--slate); }
+  .more { margin-top: auto; font-weight: 600; text-decoration: none; font-size: .95rem; }
+</style>

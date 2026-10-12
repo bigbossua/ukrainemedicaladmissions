@@ -45,12 +45,12 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
 
     // Directory filters: data-driven against the cards' own attributes.
     if (name === 'desktop' && path === '/universities/') {
-      const total = await page.$$eval('[data-list] > article', (a) => a.length);
+      const total = await page.$$eval('[data-list] article', (a) => a.length);
       const expect = async (label) => {
-        const shown = await page.$$eval('[data-list] > article', (a) => a.filter((el) => el.offsetParent !== null).length); // actually visible, not just [hidden] unset
+        const shown = await page.$$eval('[data-list] article', (a) => a.filter((el) => el.offsetParent !== null).length); // actually visible, not just [hidden] unset
         const count = Number(await page.textContent('[data-count]'));
         if (shown !== count) fail(`directory ${label}: count ${count} ≠ visible cards ${shown}`);
-        const emptyHidden = await page.$eval('[data-empty]', (el) => el.hidden);
+        const emptyHidden = await page.$eval('[data-no-match]', (el) => el.hidden);
         if ((shown === 0) === emptyHidden) fail(`directory ${label}: empty state ${emptyHidden ? 'hidden' : 'shown'} with ${shown} cards`);
         return shown;
       };
@@ -59,13 +59,13 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
         for (const value of options) {
           await page.selectOption(`[data-filter="${key}"]`, value);
           const shown = await expect(`${key}=${value}`);
-          const predicted = await page.$$eval('[data-list] > article', (a, [attr, mode, value]) => a.filter((el) => mode === 'exact' ? el.dataset[attr] === value : (el.dataset[attr] ?? '').split(' ').includes(value)).length, [attr, mode, value]);
+          const predicted = await page.$$eval('[data-list] article', (a, [attr, mode, value]) => a.filter((el) => mode === 'exact' ? el.dataset[attr] === value : (el.dataset[attr] ?? '').split(' ').includes(value)).length, [attr, mode, value]);
           if (shown !== predicted) fail(`directory ${key}=${value}: shows ${shown}, data says ${predicted}`);
           await page.selectOption(`[data-filter="${key}"]`, '');
         }
       }
       // Combination that cannot match: a city plus a field that city does not offer (if any such pair exists).
-      const cards = await page.$$eval('[data-list] > article', (a) => a.map((el) => ({ city: el.dataset.city, fields: (el.dataset.fields ?? '').split(' ').filter(Boolean) })));
+      const cards = await page.$$eval('[data-list] article', (a) => a.map((el) => ({ city: el.dataset.city, fields: (el.dataset.fields ?? '').split(' ').filter(Boolean) })));
       const allFields = [...new Set(cards.flatMap((c) => c.fields))];
       outer: for (const c of cards) for (const f of allFields) if (!cards.some((x) => x.city === c.city && x.fields.includes(f))) {
         await page.selectOption('[data-filter="city"]', c.city); await page.selectOption('[data-filter="field"]', f);

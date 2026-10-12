@@ -79,6 +79,19 @@ export const WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE = true;
  */
 export const GOVERNMENT_HOST_SUFFIXES = Object.freeze(['gov.ua']);
 
+// ------------------------------------------------------------------------------------------- (d) research previews (N25)
+/**
+ * true (default, owner instruction of 2026-10-12: "clearly labelled research previews"): a real record that is NOT
+ * published and opts in (verification.researchPreview: true) is listed in the directory as a RESEARCH PREVIEW and gets a
+ * page at /universities/<slug>/. That page is built ONLY from the policy projection (toPublicRecord), exactly what a
+ * published profile could print: claims the evidence store verifies (none until evidence is recorded) and our own text
+ * under the N24 (a) rules. It is labelled "Research preview — not yet verified" on every card and page, carries
+ * noindex, has no structured data and is never in the sitemap. The short name and the slug are the only record values
+ * it needs. Synthetic samples, published records and records that do not opt in never become previews.
+ * false: unpublished records leave no trace in production (the behaviour before 2026-10-12): no card, no page.
+ */
+export const RESEARCH_PREVIEWS = true;
+
 // ------------------------------------------------------------------------------------------- review age
 /** A profile is published only when its last full review (verification.lastReview) is at most this many days old. */
 export const REVIEW_MAX_AGE_DAYS = 180;
@@ -95,5 +108,6 @@ export const PUBLICATION_SETTINGS = Object.freeze({
   RECOGNITION_AUTHORITY_HOSTS,
   WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE,
   GOVERNMENT_HOST_SUFFIXES,
+  RESEARCH_PREVIEWS,
   REVIEW_MAX_AGE_DAYS,
 });

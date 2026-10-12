@@ -4,18 +4,25 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import DraftBanner from '../../components/university/DraftBanner.astro';
 import UniversityCard from '../../components/university/UniversityCard.astro';
+import ResearchPreviewCard from '../../components/university/ResearchPreviewCard.astro';
 import CompareTable from '../../components/university/CompareTable.astro';
 import { SITE, PREVIEW } from '../../lib/site';
 import { FIELDS, LEVELS } from '../../lib/fields';
-import { getListedUniversities, fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
+import { getListedUniversities, getResearchPreviews, fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
 
-// Publication gate (lib/records.ts): production lists only published records, as projections built by the publication
-// policy; unpublished records are listed only in PREVIEW builds, raw, as drafts.
-// Copy rule: this page names no university and states no university-specific fact. Everything it says
-// about a university comes from the records, and only verified values are shown as fact.
+// Publication gate (lib/records.ts): production lists published records, as projections built by the publication policy,
+// and RESEARCH PREVIEWS (N25): unpublished records that opt in, also as projections, labelled "not yet verified", with no
+// filter data. PREVIEW builds list unpublished records raw, as drafts, instead of previews.
+// Copy rule: this page states no university-specific fact. Everything it says about a university comes from the
+// projections, and only verified values are shown as fact.
 const universities = await getListedUniversities();
+const previews = await getResearchPreviews();
 const records = universities.map((u) => u.d);
 const drafts = universities.filter((u) => u.draft).length;
+const verifiedCount = universities.length - drafts;
+const total = universities.length + previews.length;
+// Filters are built from published profiles (and drafts in PREVIEW builds) only: a preview carries no city, programme,
+// level, language or intake, so it never feeds or matches those filters.
 const allProgrammes = records.flatMap((d) => d.programmes);
 const cities = [...new Set(records.map((d) => d.city))].sort();
 const fields = fieldsOf(allProgrammes);
@@ -23,75 +30,95 @@ const levels = levelsOf(allProgrammes);
 const languages = languagesOf(allProgrammes);
 const intakes = intakesOf(allProgrammes);
 const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
+const factFilters = records.length > 0;
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+const summary = [plural(total, 'university', 'universities'), `${verifiedCount} verified`, previews.length ? `${previews.length} not yet verified` : '', drafts ? plural(drafts, 'draft', 'drafts') : '', 'alphabetical, not ranked'].filter(Boolean).join(' · ');
 ---
-<Base title="Medical universities in Ukraine: list of medical colleges" description="Directory of Ukrainian medical universities (medical colleges) for international students: profiles listed only once verified, compared but never ranked." suffix={false}>
+<Base title="Medical universities in Ukraine: list of medical colleges" description={`${total} Ukrainian medical universities (medical colleges) for international students, each marked verified or not yet verified. Compared on facts, never ranked.`} suffix={false}>
   {PREVIEW && drafts > 0 && <DraftBanner kind="unpublished" text={`Preview build: this directory includes ${drafts} draft ${drafts === 1 ? 'record' : 'records'} that ${drafts === 1 ? 'is' : 'are'} not on the public site. Values marked “pending” are research leads, not verified facts.`} />}
   <div class="page-head">
     <div class="wrap">
       <span class="eyebrow">Directory</span>
       <h1>Medical universities in Ukraine</h1>
-      <p>A directory of Ukrainian medical universities for international students. A university is listed only after its profile has been checked against official sources. Applicants from India often call these institutions medical colleges, and in the UK they are often called medical schools. We use each university's official name.</p>
+      <p>Ukrainian universities for international applicants in medicine and related subjects, in one list. A <strong>verified profile</strong> shows facts checked against official sources, each dated. A university marked <strong>not yet verified</strong> is one we are still researching: we show its name and what to check before you apply, never unconfirmed fees, programmes or dates. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
+      <p class="head-summary" data-summary>{summary}</p>
     </div>
   </div>
   <Breadcrumbs items={[{ label: 'Universities' }]} />
 
   <section style="padding-top:1rem">
     <div class="wrap">
-      <div class="how">
-        <h2 id="how-to-use">How to use this directory</h2>
-        <ol>
-          <li><strong>Filter the list.</strong> Choose a city, programme family, qualification level, teaching language, preparatory route or intake. The filters are built from the profiles listed, so they grow as profiles are added.</li>
-          <li><strong>Open a profile.</strong> Every fact on a profile is marked. A verified fact links to the official page and shows the date we checked it. Anything not yet confirmed is marked as pending or “to be confirmed”. We never guess.</li>
-          <li><strong>Compare side by side.</strong> When profiles are listed, a table below the list compares their verified facts. Universities appear in alphabetical order.</li>
-          <li><strong>Check cost and entry requirements.</strong> Read <a href="/tuition-fees/">how tuition fees are published</a>, <a href="/admissions/#readiness">how entry requirements are compared with your qualifications</a>, what to check for <a href="/courses/medicine/">medicine (often searched as MBBS)</a>, and the <a href="/faq/">answers to common questions</a>.</li>
-          <li><strong>Start your candidate profile.</strong> Use <a href={SITE.ctaHref}>{SITE.cta}</a> to tell us your course, country and qualifications. Nothing is sent to a university.</li>
-        </ol>
-      </div>
-
-      <form class="filters" data-filters aria-label="Filter universities">
-        <label class="field">City
-          <select name="city" data-filter="city"><option value="">All cities</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
+      <form class="filters" data-filters aria-label="Search the directory" role="search">
+        <label class="field search">Search by university name
+          <input type="search" name="q" data-search placeholder="For example: Odesa, Kharkiv, Bogomolets" autocomplete="off" />
         </label>
-        <label class="field">Programme family
-          <select name="field" data-filter="field"><option value="">All programmes</option>{fields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
-        </label>
-        <label class="field">Qualification level
-          <select name="level" data-filter="level"><option value="">Any level</option>{levels.map((k) => <option value={k}>{(LEVELS as any)[k]}</option>)}</select>
-        </label>
-        <label class="field">Teaching language
-          <select name="language" data-filter="language"><option value="">Any language</option>{languages.map((l) => <option value={l}>{l}</option>)}</select>
-        </label>
-        <label class="field">Preparatory route
-          <select name="prep" data-filter="prep"><option value="">Either</option>{hasPrep && <option value="yes">Offers a preparatory route</option>}<option value="no">No preparatory route recorded</option></select>
-        </label>
-        <label class="field">Intake
-          <select name="intake" data-filter="intake"><option value="">Any intake</option>{intakes.map((i) => <option value={i}>{i}</option>)}</select>
-        </label>
-        <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Reset filters</button></p>
+        {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
+          <label class="field">Show
+            <select name="status" data-filter="status">
+              <option value="">All universities</option>
+              <option value="verified">Verified profiles only</option>
+              {previews.length > 0 && <option value="preview">Not yet verified only</option>}
+              {drafts > 0 && <option value="draft">Drafts (preview build)</option>}
+            </select>
+          </label>
+        )}
+        {factFilters && (
+          <>
+            <label class="field">City
+              <select name="city" data-filter="city"><option value="">All cities</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
+            </label>
+            <label class="field">Programme family
+              <select name="field" data-filter="field"><option value="">All programmes</option>{fields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
+            </label>
+            <label class="field">Qualification level
+              <select name="level" data-filter="level"><option value="">Any level</option>{levels.map((k) => <option value={k}>{(LEVELS as any)[k]}</option>)}</select>
+            </label>
+            <label class="field">Teaching language
+              <select name="language" data-filter="language"><option value="">Any language</option>{languages.map((l) => <option value={l}>{l}</option>)}</select>
+            </label>
+            <label class="field">Preparatory route
+              <select name="prep" data-filter="prep"><option value="">Either</option>{hasPrep && <option value="yes">Offers a preparatory route</option>}<option value="no">No preparatory route recorded</option></select>
+            </label>
+            <label class="field">Intake
+              <select name="intake" data-filter="intake"><option value="">Any intake</option>{intakes.map((i) => <option value={i}>{i}</option>)}</select>
+            </label>
+          </>
+        )}
+        <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Clear</button></p>
       </form>
-      <p class="count" aria-live="polite"><span data-count>{universities.length}</span> <span data-noun>{universities.length === 1 ? 'university' : 'universities'}</span> listed. {PREVIEW ? 'Preview build: level, language and intake filters use reported values for drafts; a profile marks each as verified or pending.' : 'Level, language and intake filters use verified values only.'}</p>
+      <p class="count" aria-live="polite">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' City, programme, level, language and intake filters use verified facts only, so universities not yet verified do not match them.')}</p>
 
-      <div class="grid grid-3" data-list>
-        {universities.map((u) => <UniversityCard u={u.d} draft={u.draft} />)}
+      <div data-list>
+        {universities.length > 0 && (
+          <div class="tier" role="region" aria-labelledby="verified-h" data-tier>
+            <h2 id="verified-h">{PREVIEW && drafts ? 'Profiles and drafts' : 'Verified profiles'}</h2>
+            <div class="grid grid-3">{universities.map((u) => <UniversityCard u={u.d} draft={u.draft} />)}</div>
+          </div>
+        )}
+        {previews.length > 0 && (
+          <div class="tier" role="region" aria-labelledby="research-h" data-tier>
+            <h2 id="research-h">List of universities we are researching</h2>
+            {verifiedCount === 0 && <p class="lead-note" data-empty-state><strong>No university profile has completed verification yet.</strong> We have not yet confirmed any facts about these universities from their official websites, so we show names only: no fees, programmes, dates or rankings. We have not yet verified whether, where or how each one is teaching this academic year.</p>}
+            {verifiedCount > 0 && <p class="lead-note">We have not yet confirmed facts about these universities from their official websites, so we show names only.</p>}
+            <details class="meaning">
+              <summary>What “not yet verified” means</summary>
+              <ul>
+                <li>We have not yet read the university's facts on its own website or a Ukrainian government register.</li>
+                <li>It is not a judgement about the university. It may or may not be admitting students for your intake; we simply have not confirmed it yet.</li>
+                <li>A university moves to “Verified profiles” once its official name, website, address, current teaching statement and at least one programme open to international applicants, with its language, duration, intake and fee page, have been checked.</li>
+              </ul>
+            </details>
+            <div class="grid grid-3 previews">{previews.map((u) => <ResearchPreviewCard u={u} />)}</div>
+          </div>
+        )}
       </div>
-      {universities.length === 0 ? (
-        <div class="empty" data-empty>
-          <p class="lead"><strong>No university profile has completed verification yet.</strong> We publish profiles one at a time, and only after the core facts below have been checked against the university's own official pages.</p>
-          <h2 id="what-we-check">What we check before a profile is published</h2>
-          <ul>
-            <li>The university's official name, website and address, from its own website.</li>
-            <li>A dated statement from the university that it is operating this academic year, and how it is teaching.</li>
-            <li>Which programmes the university says are open to international applicants. Only those programmes are listed.</li>
-            <li>For each listed programme: the qualification level, the teaching language, the duration and the intake.</li>
-            <li>The tuition fee with its academic year, or a note that the university does not publish one, after we have read its fee page. Deadlines only where the university prints the year.</li>
-          </ul>
-          <p>Until a profile passes these checks we do not list the university here, not even as “pending”. Other details, such as entry requirements, documents and preparatory routes, are marked on each published profile as verified, pending or “to be confirmed”. We do not fill the gaps with figures from agency or other third-party websites.</p>
-          <p>You do not have to wait for the list. Start your candidate profile now: tell us your course, your country and the qualifications you have so far, and we will reply by email. There is no account or document upload yet, and nothing is sent to a university.</p>
-          <p><a class="btn btn-primary" href={SITE.ctaHref}>{SITE.cta}</a></p>
-        </div>
-      ) : (
-        <p class="note" data-empty hidden>No universities match these filters. Reset the filters to see every listed university; the directory expands as each institution is verified.</p>
-      )}
+      <p class="note" data-no-match hidden>No university matches “<span data-query></span>”. Check the spelling, or <button type="button" class="linkish" data-reset-link>show all universities</button>. If the university is not in the list, choose “A university not listed here” when you <a href={SITE.ctaHref}>start your profile</a>.</p>
+      {total === 0 && <p class="note" data-empty-state><strong>No university profile has completed verification yet.</strong> <a href={SITE.ctaHref}>{SITE.cta}</a> and tell us which university you are considering.</p>}
+
+      <div class="cta-inline">
+        <p><strong>University not in the list, or not sure which to choose?</strong> Start your candidate profile with your course, country and qualifications, and choose “A university not listed here” if you need to. We reply by email.</p>
+        <a class="btn btn-primary" href={SITE.ctaHref}>{SITE.cta}</a>
+      </div>
 
       {universities.length > 0 && (
         <>
@@ -103,61 +130,69 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
 
       <div class="prose">
         <h2 style="margin-top:2.5rem" id="best">Which is the best medical university in Ukraine?</h2>
-        <p>There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. The right university depends on you: the programme you want, your school-leaving qualification, your budget, the language you want to study in and the country where you plan to work.</p>
-        <h3 id="no-ranking">Why we do not rank universities</h3>
-        <ul>
-          <li><strong>A ranking hides its choices.</strong> It turns many different facts into one order, and the publisher decides how much each fact counts. Those choices rarely match what matters to you.</li>
-          <li><strong>A league table may measure something else.</strong> Check what a table measures before you rely on it. Some measure research output, not how international students are taught on a particular programme.</li>
-          <li><strong>A list can be old or unsourced.</strong> Check who publishes it, whether it names its sources and the year they describe, and whether the publisher is paid when students enrol. Fees, intakes and teaching arrangements change from year to year.</li>
-          <li><strong>Your home rules matter more than a position in a list.</strong> Whether you can practise after graduating is decided by the regulator in the country where you want to work.</li>
-        </ul>
+        <p>There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. The right choice depends on you: the programme you want, your school-leaving qualification, your budget, the teaching language and the country where you plan to work.</p>
         <h3 id="compare-instead">What to compare instead</h3>
-        <p>Compare facts you can check on each profile: whether your programme is open to applicants from your country this intake, the teaching language, the qualification title awarded, the tuition fee with its academic year and payment schedule, other mandatory charges, and the entry requirements and documents. Where a fact has not yet been confirmed from an official source, the profile says so. The <a href="/tuition-fees/">medical college fees in Ukraine</a> guide explains how costs are published.</p>
+        <ul>
+          <li>Is your programme open to applicants from your country for your intake, and in which language is it taught?</li>
+          <li>What qualification title is awarded, and does the regulator where you plan to work accept it?</li>
+          <li>What is the tuition fee, for which academic year, with which payment schedule and other mandatory charges? <a href="/tuition-fees/">How to read a fee schedule</a>.</li>
+          <li>What are the entry requirements and documents? <a href="/admissions/#readiness">How requirements are compared</a>.</li>
+        </ul>
+        <h3 id="no-ranking">Why a ranking can mislead</h3>
+        <p>A league table turns many facts into one order chosen by its publisher, may measure research output rather than teaching, and can be old, unsourced or paid for by universities or agents. Check who publishes a list, what it measures and the year it describes.</p>
 
         <h2 id="official-websites">Check the official website before you send anything</h2>
-        <p>Some third-party websites are made to look like a university's own site. They may use the university's name in the web address, or copy its logo and colours. Before you send documents, personal details or money:</p>
-        <ul>
-          <li>check that the web address matches the university's official domain (each published profile shows the official website, with the date we checked it);</li>
-          <li>follow only the admission procedure the university publishes on its own website.</li>
-        </ul>
-        <p>Read more in <a href="/admissions/#official-sites">apply through official channels only</a>.</p>
+        <p>Some third-party websites are made to look like a university's own site, with the university's name in the address or a copy of its logo. Before you send documents, personal details or money, check that the address matches the university's official domain (a verified profile shows it, with the date we checked it) and follow only the admission procedure the university publishes on its own website. <a href="/admissions/#official-sites">Apply through official channels only</a>.</p>
       </div>
-      <p class="note">Only filters supported by recorded data are offered. Fee-range and deadline filters are not offered until official fee schedules have been verified. {SITE.disclaimer}</p>
+      <p class="note">{SITE.disclaimer}</p>
     </div>
   </section>
   <CtaBand title="Not sure which university?" text="Start your candidate profile with your course, country and qualifications. We reply by email, and nothing is sent to a university." />
 </Base>
 
 <style>
-  .how { background: var(--blue-50); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; max-width: 72ch; }
-  .how h2 { font-size: 1.2rem; margin: 0 0 .5rem; }
-  .how ol { margin: 0; padding-left: 1.25rem; }
-  .how li { margin-bottom: .4rem; }
-  .filters { display: grid; gap: 1rem; margin-bottom: 1rem; }
-  @media (min-width: 700px) { .filters { grid-template-columns: repeat(3, 1fr); } }
-  .filter-actions { margin: 0; align-self: end; }
-  .count { font-size: .9rem; color: var(--slate); }
-  .empty { border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); background: #fff; padding: 1.25rem 1.5rem; margin: 1rem 0; max-width: 72ch; }
-  .empty[hidden] { display: none; }
-  .empty .lead { margin-top: 0; }
-  .empty h2 { font-size: 1.1rem; margin: 1rem 0 .5rem; }
-  .empty ul { padding-left: 1.25rem; }
-  .empty li { margin-bottom: .35rem; }
-  .empty p:last-child { margin-bottom: 0; }
+  .head-summary { margin-top: .75rem !important; font-weight: 600; color: var(--yellow-400); }
+  .filters { display: grid; gap: 0 1rem; margin-bottom: .25rem; align-items: end; }
+  @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]) { grid-template-columns: repeat(3, 1fr); } }
+  .filter-actions { margin: 0 0 1rem; }
+  .count { font-size: .9rem; color: var(--slate); margin-top: 0; }
+  .tier { margin-top: 1.5rem; }
+  .tier[hidden] { display: none; }
+  .tier > h2 { font-size: 1.35rem; margin-bottom: .5rem; }
+  .lead-note { max-width: 80ch; margin: 0 0 .75rem; }
+  .meaning { max-width: 80ch; margin: 0 0 1.25rem; }
+  .meaning summary { cursor: pointer; font-weight: 600; color: var(--navy-900); }
+  .meaning ul { padding-left: 1.25rem; margin: .6rem 0 0; }
+  .meaning li { margin-bottom: .35rem; }
+  .previews { gap: .75rem; }
+  .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--blue-600); text-decoration: underline; cursor: pointer; }
+  .cta-inline { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; background: var(--blue-50); border-radius: var(--radius); padding: 1.1rem 1.4rem; margin: 2rem 0 0; }
+  .cta-inline p { margin: 0; max-width: 62ch; }
 </style>
 
 <script>
-  // Client-side filtering over data attributes written by UniversityCard. Exact-match keys: city, prep. List keys: fields, levels, languages, intakes.
-  const MAP: Record<string, [string, 'exact' | 'list']> = { city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
+  // Client-side search and filters over data attributes written by UniversityCard and ResearchPreviewCard.
+  // name: substring search, accent- and case-insensitive, with spelling variants of words IN the names only (never a
+  // location a name does not contain). status: verified | preview | draft. Exact-match keys: city, prep. List keys:
+  // fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
+  const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
+  const VARIANTS: [RegExp, string][] = [[/\bodessa\b/g, 'odesa'], [/\bkiev\b/g, 'kyiv'], [/\bkharkov\b/g, 'kharkiv'], [/\blvov\b/g, 'lviv'], [/\blwow\b/g, 'lviv'], [/\bvinn?[iy]t?s(?:i|y)?a\b/g, 'vinnytsia'], [/\bvinnytsya\b/g, 'vinnytsia'], [/\bzaporo(?:zh|j)(?:y|i)e\b/g, 'zaporizhzhia'], [/\bzaporizhia\b/g, 'zaporizhzhia'], [/\buzhgorod\b/g, 'uzhhorod'], [/\bternopol\b/g, 'ternopil'], [/\bfrankovsk\b/g, 'frankivsk'], [/\bdnepr\b/g, 'dnipro'], [/\bpirogova?\b/g, 'pirogov'], [/\bbukovina\b/g, 'bukovinian'], [/\bbogomolec\b/g, 'bogomolets']];
+  const form = document.querySelector<HTMLFormElement>('[data-filters]');
+  const search = document.querySelector<HTMLInputElement>('[data-search]');
   const selects = document.querySelectorAll<HTMLSelectElement>('[data-filter]');
-  const cards = document.querySelectorAll<HTMLElement>('[data-list] > article');
+  const cards = document.querySelectorAll<HTMLElement>('[data-list] article');
+  const tiers = document.querySelectorAll<HTMLElement>('[data-tier]');
   const count = document.querySelector('[data-count]');
   const noun = document.querySelector('[data-noun]');
-  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  const noMatch = document.querySelector<HTMLElement>('[data-no-match]');
+  const query = document.querySelector('[data-query]');
+  const norm = (s: string) => { let x = s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); for (const [re, to] of VARIANTS) x = x.replace(re, to); return x; };
   function apply() {
+    const q = norm(search?.value ?? '');
     let n = 0;
     cards.forEach((c) => {
-      let ok = true;
+      const name = norm(c.dataset.name ?? '');
+      let ok = !q || q.split(' ').every((w) => name.includes(w));
       selects.forEach((s) => {
         if (!ok || !s.value) return;
         const [attr, mode] = MAP[s.dataset.filter!];
@@ -166,10 +201,15 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
       });
       c.hidden = !ok; if (ok) n++;
     });
+    tiers.forEach((t) => { t.hidden = !t.querySelector('article:not([hidden])'); });
     if (count) count.textContent = String(n);
-    if (noun) noun.textContent = n === 1 ? 'university' : 'universities';
-    if (empty) empty.hidden = n > 0;
+    if (noun) noun.textContent = cards.length === 1 ? 'university' : 'universities';
+    if (query) query.textContent = search?.value ?? '';
+    if (noMatch) noMatch.hidden = n > 0 || cards.length === 0;
   }
   selects.forEach((s) => s.addEventListener('change', apply));
-  document.querySelector('[data-reset]')?.addEventListener('click', () => setTimeout(apply, 0));
+  search?.addEventListener('input', apply);
+  form?.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+  form?.addEventListener('reset', () => setTimeout(apply, 0));
+  document.querySelector('[data-reset-link]')?.addEventListener('click', () => { form?.reset(); setTimeout(() => { apply(); search?.focus(); }, 0); });
 </script>

@@ -66,7 +66,7 @@ export const FIELD_POLICY = Object.freeze({
     preparatoryRoutes: 'public', researchReferences: 'internal', faqs: 'internal', images: 'internal', verification: 'editorial-public',
   }),
   // editorialReview (N24 a): internal; its only effect is whether the overview may be printed.
-  verification: Object.freeze({ publishable: 'internal', lastReview: 'editorial-public', reviewer: 'internal', openQuestions: 'internal', editorialReview: 'internal' }),
+  verification: Object.freeze({ publishable: 'internal', researchPreview: 'internal', lastReview: 'editorial-public', reviewer: 'internal', openQuestions: 'internal', editorialReview: 'internal' }),
   claim: Object.freeze({ value: 'public', status: 'internal', source: 'public', checked: 'public', note: 'internal' }),
   internationalOffice: Object.freeze({ email: 'public', phone: 'public', url: 'public' }),
   programme: Object.freeze({
@@ -822,7 +822,45 @@ export function publicationDecision(record, evidence, { now = new Date(), previe
   const flagged = record?.verification?.publishable === true;
   const r = evaluatePublication(record, evidence, { now, settings });
   const published = flagged && r.publishable;
-  return { slug: typeof record?.slug === 'string' ? record.slug : '?', flagged, policyPasses: r.publishable, published, draft: !published, buildError: flagged && !r.publishable && !preview, failures: r.failures, notListed: r.notListed, publicRecord: published ? r.publicRecord : null };
+  const rp = researchPreviewCheck(record, published, resolveSettings(settings));
+  return {
+    slug: typeof record?.slug === 'string' ? record.slug : '?', flagged, policyPasses: r.publishable, published, draft: !published,
+    buildError: flagged && !r.publishable && !preview, failures: r.failures, notListed: r.notListed, publicRecord: published ? r.publicRecord : null,
+    // Research preview (N25): the SAME projection a published profile would get, never the raw record.
+    researchPreview: rp.ok, researchPreviewReasons: rp.reasons, previewRecord: rp.ok ? r.publicRecord : null,
+  };
+}
+
+// ------------------------------------------------------------------------------------------------ research previews (N25)
+
+/** Plain-words reasons a record is not a research preview (publication report, tests). */
+export const RESEARCH_PREVIEW_WORDS = Object.freeze({
+  'setting-off': 'research previews are switched off (RESEARCH_PREVIEWS in src/lib/publication-config.mjs)',
+  published: 'the record is published, so it has its full profile instead',
+  synthetic: 'synthetic sample records are never shown on the public site',
+  'not-opted-in': 'verification.researchPreview is not true',
+  'unsafe-slug': 'the slug must use only lower-case letters, digits and single hyphens',
+  'short-name': 'the short name must be plain text of 3 to 120 characters, without markup or wording from a research note',
+});
+
+/**
+ * May an UNPUBLISHED record be listed as a research preview? Only when the owner setting is on, the record is real, it
+ * opts in, it is not published, its slug is safe and its short name is usable (3-120 characters, no "<" or ">", no line
+ * breaks, no research-note wording such as "not verified" or "search snippet"). The preview page receives only the
+ * projection (toPublicRecord), so this check decides WHETHER a record is listed, never WHAT may be printed about it.
+ * @param {any} record @param {boolean} published @param {PublicationSettings} settings
+ * @returns {{ ok: boolean, reasons: (keyof typeof RESEARCH_PREVIEW_WORDS)[] }}
+ */
+function researchPreviewCheck(record, published, settings) {
+  /** @type {(keyof typeof RESEARCH_PREVIEW_WORDS)[]} */ const reasons = [];
+  if (settings.RESEARCH_PREVIEWS !== true) reasons.push('setting-off');
+  if (published) reasons.push('published');
+  if (record?.synthetic !== false) reasons.push('synthetic');
+  if (record?.verification?.researchPreview !== true) reasons.push('not-opted-in');
+  if (typeof record?.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(record.slug) || record.slug.length > 80) reasons.push('unsafe-slug');
+  const n = record?.shortName;
+  if (typeof n !== 'string' || n.trim().length < 3 || n.length > 120 || /[<>\r\n\u2028\u2029]/.test(n) || hasInternalWording(n)) reasons.push('short-name');
+  return { ok: reasons.length === 0, reasons };
 }
 
 /**

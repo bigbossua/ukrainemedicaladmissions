@@ -139,6 +139,27 @@ try {
       check(!existsSync(join(OUT.pass, 'universities', 'fixture-gamma-draft-university')), '(b) the unflagged draft got a production page');
       // N24 (f): a flagged record in a subdirectory is never built (and so cannot stop the build either).
       check(!existsSync(join(OUT.pass, 'universities', 'fixture-nested-record')), '(b) N24 a record in a subdirectory of the records directory got a page');
+      // N25 research previews: epsilon (unpublished, opts in) gets a labelled noindex page built from its PROJECTION only.
+      // Its two verified facts are positive controls; every unverified value, note, reference, open question, city, region
+      // and overview carries "CANARY" and is caught by scan() above. Zeta opts in but its short name carries research-note
+      // wording, and gamma does not opt in: neither may leave any trace (not even the slug).
+      const eps = page(OUT.pass, 'universities/fixture-epsilon-preview-university');
+      if (check(eps, '(b) N25 epsilon: research-preview page was not built')) {
+        check(eps.includes('data-research-preview'), '(b) N25 epsilon: research-preview marker missing');
+        check(/<meta name="robots" content="noindex, follow"/.test(eps), '(b) N25 epsilon: the preview page is not "noindex, follow"');
+        check(ldBlocks(eps).length === 0, '(b) N25 epsilon: structured data on a research-preview page');
+        check(!eps.includes('data-draft-banner') && !eps.includes('data-publication-failures') && !eps.includes('Verification queue'), '(b) N25 epsilon: draft banner or verification queue on a public preview');
+        check(/<h1[^>]*>Fixture Epsilon Preview University<\/h1>/.test(eps), '(b) N25 epsilon: the short name is not the page heading');
+        for (const v of ['Research preview', 'Not yet verified', 'POSCTRL-EPSILON-OFFICIAL-NAME University', 'https://epsilon.fixture.example/', '2 facts verified so far', '/apply/?university=fixture-epsilon-preview-university', 'does not claim any partnership'])
+          check(eps.includes(v), `(b) N25 epsilon: expected "${v}"`);
+        check((eps.match(/badge-verified">Verified</g) ?? []).length === 2, `(b) N25 epsilon: ${(eps.match(/badge-verified">Verified</g) ?? []).length} Verified badges; exactly the two verified facts may carry one`);
+        check(!/<dt>(Address|Operating status|Tuition|Recognition)<\/dt>/.test(eps), '(b) N25 epsilon: an unverified fact row is rendered on the preview page');
+      }
+      for (const slug of ['fixture-gamma-draft-university', 'fixture-zeta-preview-refused']) {
+        check(!existsSync(join(OUT.pass, 'universities', slug)), `(b) N25 ${slug} got a production page`);
+        const hits = outputFiles(OUT.pass).filter((f) => f.text.includes(slug)).map((f) => f.rel);
+        check(hits.length === 0, `(b) N25 ${slug} appears in ${hits.slice(0, 5).join(', ')}`);
+      }
       // Positive controls: verified values with matching evidence must be shown.
       for (const v of ['POSCTRL-ALPHA-OFFICIAL-NAME Medical University', 'POSCTRL-ALPHA-STATEMENT: teaching this academic year is in person.', 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville, Alpha Oblast',
         // N24 (a): reviewed overview, city and region found in the verified address; (e): schedule and year-by-year amounts.
@@ -211,6 +232,12 @@ try {
       check(betaRow && !betaRow.includes('None listed'), '(b) directory comparison: a withheld route is shown as "None listed"');
       check(/Preparatory route<\/dt>\s*<dd[^>]*>\s*<span class="muted"[^>]*>To be confirmed</.test(beta) && !beta.includes('None recorded'), '(b) beta profile: a withheld preparatory route is not shown as "To be confirmed"');
       check(dir.includes('7,123 USD/year'), '(b) directory comparison table: verified tuition missing');
+      // N25: the preview card is listed, labelled, and carries no fact filter data; it is never in the comparison table.
+      check(attr(dir, 'fixture-epsilon-preview-university', 'data-status') === 'preview', `(b) N25 directory: epsilon data-status = ${attr(dir, 'fixture-epsilon-preview-university', 'data-status')}, expected preview`);
+      check(attr(dir, 'fixture-alpha-medical-university', 'data-status') === 'verified', '(b) N25 directory: a published card is not marked verified');
+      for (const a of ['data-city', 'data-fields', 'data-levels', 'data-languages', 'data-intakes', 'data-prep']) check(attr(dir, 'fixture-epsilon-preview-university', a) === null, `(b) N25 directory: the preview card carries ${a}`);
+      check(!/<th scope="row"[^>]*><a href="\/universities\/fixture-epsilon/.test(dir), '(b) N25 directory: a research preview is in the comparison table');
+      check(/<option value="preview"[^>]*>Research previews<\/option>/.test(dir), '(b) N25 directory: the status filter does not offer research previews');
       check(!/<select name="level"[\s\S]*?value="bachelor"[\s\S]*?<\/select>/.test(dir), '(b) directory level filter offers an unverified level');
       check(!new RegExp(`<select name="intake"[\\s\\S]*?value="${academicYear(NOW, -1).replace('/', '\\/')}"`).test(dir.split('</form>')[0]), '(b) directory intake filter offers an unverified intake');
       const fees = page(OUT.pass, 'tuition-fees');
@@ -219,12 +246,17 @@ try {
       check(home.includes('value="fixture-alpha-medical-university"') && home.includes('value="fixture-beta-medical-university"'), '(b) home: published records missing from the start form');
       const apply = page(OUT.pass, 'apply');
       check(apply.includes('value="fixture-alpha-medical-university"'), '(b) /apply/: published record missing from the university select');
+      const previewOption = /<option value="fixture-epsilon-preview-university"[^>]*>Fixture Epsilon Preview University \(not yet verified\)<\/option>/;
+      check(previewOption.test(apply), '(b) N25 /apply/: the research preview is not offered, labelled "not yet verified"');
+      check(previewOption.test(home), '(b) N25 home: the research preview is not offered in the start form, labelled');
+      for (const pth of ['tuition-fees', 'courses/medicine', 'courses']) check(!page(OUT.pass, pth).includes('fixture-epsilon'), `(b) N25 /${pth}/ lists the research preview`);
       check(!page(OUT.pass, 'courses/dentistry').includes('fixture-alpha'), '(b) /courses/dentistry/: an unlisted programme produced a card');
       check(page(OUT.pass, 'courses/medicine').includes('/universities/fixture-alpha-medical-university/#medicine'), '(b) /courses/medicine/: listed programme missing');
       // Sitemap: verified profiles only, and only URLs that exist.
       const sitemap = existsSync(join(OUT.pass, 'sitemap-0.xml')) ? readFileSync(join(OUT.pass, 'sitemap-0.xml'), 'utf8') : '';
       check(sitemap.includes('/universities/fixture-alpha-medical-university/') && sitemap.includes('/universities/fixture-beta-medical-university/') && sitemap.includes('/universities/fixture-delta-medical-university/'), '(b) sitemap: published profiles missing');
       check(!sitemap.includes('fixture-gamma'), '(b) sitemap lists the draft');
+      check(!sitemap.includes('fixture-epsilon'), '(b) N25 sitemap lists the research preview');
       check(!sitemap.includes('fixture-nested'), '(b) N24 sitemap lists the record in a subdirectory');
       for (const [, loc] of sitemap.matchAll(/<loc>https:\/\/ukrainemedicaladmissions\.com([^<]*)<\/loc>/g)) check(existsSync(join(OUT.pass, loc, 'index.html')), `(b) sitemap lists ${loc}, which was not built`);
       check(!/fixture/.test(readFileSync(join(OUT.pass, 'robots.txt'), 'utf8')), '(b) robots.txt mentions a fixture');
@@ -238,6 +270,8 @@ try {
         for (const c of ['CANARY', '98,765', '55,501', 'NOT verified; read the official page', '<script>alert(1)']) check(!h.includes(c), `(b) preview: published ${slug} shows "${c}" (preview builds must use the same projection for published records)`);
       }
       check(page(OUT.passPreview, 'universities/fixture-gamma-draft-university').includes('data-draft-banner'), '(b) preview: the draft is not rendered as a draft');
+      const epsPrev = page(OUT.passPreview, 'universities/fixture-epsilon-preview-university');
+      check(epsPrev.includes('data-draft-banner') && !epsPrev.includes('data-research-preview'), '(b) N25 preview build: an opted-in record must render as a raw draft (with its queue), not as a research preview');
       check(!existsSync(join(OUT.passPreview, 'universities', 'fixture-nested-record')), '(b) N24 preview: a record in a subdirectory was built');
     }
   }

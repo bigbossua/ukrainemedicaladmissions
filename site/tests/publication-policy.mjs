@@ -20,7 +20,7 @@ import { parseEvidence, loadEvidence, evidenceFile } from '../src/lib/evidence.m
 import {
   FIELD_POLICY, policyCoverage, assertPolicyCoverage, evaluateClaim, allowedTiers, toPublicRecord, evaluatePublication, publicationDecision,
   publicationBuildError, viewClaim, viewItems, serializeJsonLd, profileJsonLd, currentAcademicYear, listClaims, PUBLIC_REASONS,
-  editorialTextHash, containsPhrase, editorialReviewMatches, formatMoney, CODE_WORDS, NOT_LISTED_WORDS,
+  editorialTextHash, containsPhrase, editorialReviewMatches, formatMoney, CODE_WORDS, NOT_LISTED_WORDS, RESEARCH_PREVIEW_WORDS,
 } from '../src/lib/publication.mjs';
 import * as CONFIG from '../src/lib/publication-config.mjs';
 import { readFixture, FIXTURE_ROOT, academicYear } from './fixtures/publication/materialise.mjs';
@@ -710,6 +710,52 @@ section('N24 (e) fee display');
   check(shownFee.show && shownFee.value.schedule === m.schedule && shownFee.value.variesByYear === m.variesByYear, 'a shown fee carries its schedule and year-by-year amounts to the page');
 }
 
+// ------------------------------------------------------------------------------------------------ N25 research previews
+section('N25 research previews');
+{
+  const { rec, ev: e } = passing();
+  const opt = (r, v = true) => ({ ...clone(r), verification: { ...clone(r.verification), researchPreview: v } });
+  const unpub = (r) => ({ ...clone(r), verification: { ...clone(r.verification), publishable: false } });
+  eq(CONFIG.RESEARCH_PREVIEWS, true, 'N25 default: research previews on (owner instruction 2026-10-12)');
+  eq(CONFIG.PUBLICATION_SETTINGS.RESEARCH_PREVIEWS, true, 'N25 setting is part of PUBLICATION_SETTINGS');
+  eq(FIELD_POLICY.verification.researchPreview, 'internal', 'N25 verification.researchPreview is internal');
+  eq(record.parse({ ...clone(rec), verification: { publishable: false, lastReview: null, openQuestions: [] } }).verification.researchPreview, false, 'N25 schema default: not opted in');
+  // An unpublished record that opts in: a preview whose record is EXACTLY the projection.
+  const d = publicationDecision(opt(unpub(rec)), e, { now: NOW });
+  eq([d.published, d.researchPreview, d.researchPreviewReasons], [false, true, []], 'N25 unpublished + opted in = research preview');
+  eq(d.previewRecord, toPublicRecord(opt(unpub(rec)), e, { now: NOW }), 'N25 the preview record is exactly toPublicRecord()');
+  check(d.publicRecord === null, 'N25 a research preview has no publicRecord (it is not published)');
+  check(!deepKeys(d.previewRecord).has('researchPreview') && !deepKeys(d.previewRecord).has('publishable') && !deepKeys(d.previewRecord).has('note'), 'N25 the preview record carries no internal key');
+  // Published records are never previews; flags and settings each refuse on their own.
+  const pub = publicationDecision(opt(rec), e, { now: NOW });
+  eq([pub.published, pub.researchPreview, pub.previewRecord], [true, false, null], 'N25 a published record is not a preview');
+  check(pub.researchPreviewReasons.includes('published'), 'N25 reason: published');
+  const reasonsOf = (r, o = {}) => publicationDecision(r, e, { now: NOW, ...o }).researchPreviewReasons;
+  check(reasonsOf(unpub(rec)).includes('not-opted-in'), 'N25 a record that does not opt in is not a preview');
+  check(reasonsOf(opt(unpub(rec), 'yes')).includes('not-opted-in'), 'N25 only the boolean true opts in');
+  check(reasonsOf(opt(unpub(rec)), { settings: { RESEARCH_PREVIEWS: false } }).includes('setting-off'), 'N25 setting off: no previews');
+  check(reasonsOf({ ...opt(unpub(rec)), synthetic: true }).includes('synthetic'), 'N25 a synthetic sample is never a preview');
+  check(reasonsOf((() => { const r = opt(unpub(rec)); delete r.synthetic; return r; })()).includes('synthetic'), 'N25 a record without synthetic:false (unparsed) is refused (fail closed)');
+  for (const slug of ['Unit-Test', 'unit--test', '../unit', 'unit test', 'a'.repeat(81)]) check(reasonsOf({ ...opt(unpub(rec)), slug }).includes('unsafe-slug'), `N25 unsafe slug "${slug.slice(0, 20)}" refused`);
+  for (const shortName of ['', 'ab', '   ', 'x'.repeat(121), 'Unit <b>Test</b>', 'Unit\nTest', 'Unit Test University (not verified)', 'Search snippet: Unit Test', 'Unit Test University TBC', 'Unit Test \u2028 University'])
+    check(reasonsOf({ ...opt(unpub(rec)), shortName }).includes('short-name'), `N25 short name ${JSON.stringify(shortName.slice(0, 30))} refused`);
+  for (const k of Object.keys(RESEARCH_PREVIEW_WORDS)) check(typeof RESEARCH_PREVIEW_WORDS[k] === 'string' && RESEARCH_PREVIEW_WORDS[k].length > 20, `N25 reason ${k} has plain words`);
+  // Unverified, noted, conflicting values never reach the preview record (it is the same projection a published page gets).
+  const leaky = opt(unpub(rec));
+  leaky.officialName = U('CANARY-OFFICIAL-NAME'); leaky.website = U('https://canary-host.example/'); leaky.address = U('CANARY-ADDRESS');
+  leaky.overview = 'CANARY-OVERVIEW'; leaky.region = 'CANARY-REGION'; leaky.alternativeNames = ['CANARY-ALT'];
+  leaky.researchReferences = [{ label: 'CANARY-REF', url: 'https://canary-ref.example/', purpose: 'CANARY-PURPOSE' }];
+  leaky.programmes[0].tuition = U(money(98765));
+  const lp = publicationDecision(record.parse(leaky), e, { now: NOW });
+  check(lp.researchPreview, 'N25 a record full of unverified values can still be a preview (name only)');
+  const ls = JSON.stringify(lp.previewRecord);
+  for (const c of ['CANARY', 'canary-host', '98765', 'Search-snippet', 'NOT verified']) check(!ls.includes(c), `N25 preview record leaks "${c}"`);
+  eq(lp.previewRecord.city, CONFIG.WITHHELD_PLACE_TEXT, 'N25 preview: a city not in a verified address is withheld');
+  check(lp.previewRecord.officialName.show === false && lp.previewRecord.website.show === false, 'N25 preview: unverified name and website are not shown');
+  // A preview shows exactly the claims that ARE verified (progressive): here status, statement and format still pass.
+  check(lp.previewRecord.status.show === false, 'N25 preview: claims on the university\'s own pages are not shown while the website is withheld (N24 c)');
+}
+
 // ------------------------------------------------------------------------------------------------ static checks over src/
 section('static checks');
 {
@@ -733,6 +779,19 @@ section('static checks');
     if (r !== 'lib/publication.mjs' && r !== 'lib/publication-config.mjs') check(!/\bsettings\s*:/.test(t) || !/publicationDecision|evaluatePublication|toPublicRecord|evaluateClaim/.test(t), `${r}: passes settings to the publication policy — the build must use the defaults in publication-config.mjs`);
   }
   check(!/\bsettings\s*:/.test(readFileSync(resolve('astro.config.mjs'), 'utf8')), 'astro.config.mjs passes settings to the publication policy');
+  // N25: research previews are listed only where a page asks for them; the preview components never touch internal fields.
+  const PREVIEW_PAGES = new Set(['lib/publication.mjs', 'lib/records.ts', 'pages/index.astro', 'pages/universities/index.astro', 'pages/universities/[slug].astro', 'pages/apply/index.astro']);
+  let previewUsers = 0;
+  for (const c of files) {
+    const r = rel(c), t = readFileSync(c, 'utf8').replace(/^\s*(\/\/|\*|\/\*\*).*$/gm, '');
+    if (/getResearchPreviews|previewRecord/.test(t)) { previewUsers++; check(PREVIEW_PAGES.has(r), `${r}: lists research previews — only ${[...PREVIEW_PAGES].join(', ')} may`); }
+  }
+  check(previewUsers === PREVIEW_PAGES.size, `N25 static check saw ${previewUsers} files using research previews, expected ${PREVIEW_PAGES.size}`);
+  for (const c of ['components/university/ResearchPreviewProfile.astro', 'components/university/ResearchPreviewCard.astro']) {
+    const t = readFileSync(join(SRC, c), 'utf8');
+    check(!/\.note\b|researchReferences|alternativeNames|openQuestions|deferredProgrammes|failures|\.raw\b|faqs|editorialReview|reviewer/.test(t), `${c}: reads an internal record field`);
+    check(!/set:html/.test(t), `${c}: renders raw HTML`);
+  }
   // N24 (e): every fee display goes through formatMoney (which prints the schedule and year-by-year amounts).
   for (const c of ['components/university/ProgrammeCard.astro', 'components/university/PreparatoryRoute.astro', 'components/university/CompareTable.astro']) {
     const t = readFileSync(join(SRC, c), 'utf8');

@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { getListedUniversities } from '../../lib/records';
+import { getListedUniversities, getResearchPreviews } from '../../lib/records';
 import { FIELDS, LEVELS } from '../../lib/fields';
 import { SITE, PREVIEW } from '../../lib/site';
 
@@ -11,6 +11,8 @@ import { SITE, PREVIEW } from '../../lib/site';
 
 // Publication gate (lib/records.ts): only published records are offered as options; drafts only in PREVIEW builds.
 const universities = (await getListedUniversities()).map((u) => u.d);
+// Research previews (N25): offered as a choice, labelled "not yet verified"; choosing one records interest only.
+const previews = await getResearchPreviews();
 
 const STEPS = ['Your plan', 'Your education', 'Your documents', 'About you', 'Review and send'];
 const fieldOptions = [...Object.entries(FIELDS).map(([value, f]) => ({ value, label: f.label })), { value: 'undecided', label: 'Not decided yet' }];
@@ -109,7 +111,7 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
         <fieldset class="group">
           <legend>Preferred universities <span class="hint">(optional, up to three)</span></legend>
           <p class="hint" id="universities-hint">
-            {PREVIEW ? 'Preview build: unverified draft records are listed here for local review only.' : 'Only universities whose profile we have verified are listed.'}{universities.length === 0 && ' None has completed verification yet, so for now choose “A university not listed here” and type its name below.'}
+            {PREVIEW ? 'Preview build: unverified draft records are listed here for local review only.' : previews.length ? 'Universities marked “not yet verified” are research previews: we have not yet checked their details against official sources. Choosing one tells us your interest; it is not an application to the university.' : 'Only universities whose profile we have verified are listed.'}{universities.length + previews.length === 0 && ' None has completed verification yet, so for now choose “A university not listed here” and type its name below.'}
           </p>
           <div class="uni-grid">
             {universityChoices.map((c) => (
@@ -118,6 +120,7 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
                 <select id={`f-${c.name}`} name={c.name} aria-describedby="universities-hint" data-review={`University, ${c.label.toLowerCase()}`}>
                   <option value="">Not decided yet</option>
                   {universities.map((u) => <option value={u.slug}>{u.shortName}</option>)}
+                  {previews.map((u) => <option value={u.slug}>{u.shortName} (not yet verified)</option>)}
                   <option value="unlisted">A university not listed here</option>
                 </select>
               </div>

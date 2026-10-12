@@ -4,6 +4,12 @@
 //                  with the publication policy's failures in the verification queue
 // "Published" is decided exactly as the build decides it (src/lib/publication.mjs): verification.publishable AND the
 // publication policy passes against the record's evidence file (data/evidence/<slug>.json).
+// Research previews (N25, 2026-10-12): an unpublished record that opts in (verification.researchPreview) and passes
+// researchPreviewCheck is listed in production as a labelled research preview with a noindex page built from its
+// projection. For those records this test proves the page is labelled, noindex, free of structured data and absent from
+// the sitemap, and that NOTHING from the record except its slug, its short name and the claims the policy shows reaches
+// any production file (notes, research references and their hosts, unverified values, overview, region, alternative
+// names, failure messages). Every other unpublished record must stay entirely absent, as before.
 // Fails on any leak. Run after `npm run build` and `npm run build:preview`. Fixture builds: tests/publication-build.mjs.
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -27,6 +33,9 @@ const decision = new Map(real.map((r) => [r.slug, publicationDecision(recordSche
 const isPublished = (r) => decision.get(r.slug).published;
 const unpublished = real.filter((r) => !isPublished(r));
 const published = real.filter(isPublished);
+const isPreview = (r) => decision.get(r.slug).researchPreview === true;
+const previewed = unpublished.filter(isPreview);
+const hidden = unpublished.filter((r) => !isPreview(r));
 // Every note string in a record (claims, items, routes, references): internal, never on a public page.
 function notesOf(obj, out = []) {
   if (Array.isArray(obj)) obj.forEach((x) => notesOf(x, out));
@@ -54,15 +63,15 @@ for (const slug of LIVE_BEFORE_GATE) {
   const rule = new RegExp(`^RedirectMatch\\s+302\\s+\\^/universities/${slug}/\\?\\$\\s+/universities/\\s*$`, 'm');
   const anyRule = new RegExp(`^Redirect(Match)?\\s+.*${slug}`, 'm');
   if (!rec) fail(`LIVE_BEFORE_GATE slug ${slug} has no record`);
-  else if (!isPublished(rec) && !rule.test(htaccess)) fail(`.htaccess: unpublished ${slug} (live before the gate) needs "RedirectMatch 302 ^/universities/${slug}/?$ /universities/"`);
-  else if (isPublished(rec) && anyRule.test(htaccess)) fail(`.htaccess: ${slug} is publishable — remove its redirect rule so the page is served`);
+  else if (!isPublished(rec) && !isPreview(rec) && !rule.test(htaccess)) fail(`.htaccess: unpublished ${slug} (live before the gate, not a research preview) needs "RedirectMatch 302 ^/universities/${slug}/?$ /universities/"`);
+  else if ((isPublished(rec) || isPreview(rec)) && anyRule.test(htaccess)) fail(`.htaccess: ${slug} has a page (${isPublished(rec) ? 'published' : 'research preview'}) — remove its redirect rule so the page is served`);
   ok();
 }
 const sitemap = existsSync(join(DIST, 'sitemap-0.xml')) ? readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8') : '';
 if (!sitemap) fail('production sitemap-0.xml missing');
 if (existsSync(join(DIST, 'preview'))) fail('production build contains /preview/'); ok();
 
-for (const r of unpublished) {
+for (const r of hidden) {
   const dir = join(DIST, 'universities', r.slug);
   if (existsSync(dir)) fail(`production build contains a page for unpublished record ${r.slug}`); ok();
   if (sitemap.includes(`/universities/${r.slug}/`)) fail(`sitemap lists unpublished record ${r.slug}`); ok();
@@ -73,6 +82,60 @@ for (const r of unpublished) {
     ok();
   }
 }
+// ---- research previews (N25)
+const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return null; } };
+const prodText = (() => { const out = []; (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : /\.(html|xml|txt|js|css|json|webmanifest)$/.test(f) && out.push({ p: p.replace(DIST, ''), h: readFileSync(p, 'utf8') }); } })(DIST); return out; })();
+const dirPage = prodHtml.find((x) => x.p === '/universities/index.html');
+const appliesPage = prodHtml.find((x) => x.p === '/apply/index.html')?.h ?? '';
+const shownCount = (d) => ['officialName', 'website', 'address', 'status', 'statusStatement', 'teachingFormat', 'founded', 'internationalOffice', 'accreditation', 'recognition', 'accommodation'].filter((k) => d?.[k]?.show === true).length + (d?.programmes?.length ?? 0);
+for (const r of previewed) {
+  const dec = decision.get(r.slug);
+  const pr = dec.previewRecord;
+  const file = join(DIST, 'universities', r.slug, 'index.html');
+  if (!existsSync(file)) { fail(`research preview ${r.slug} has no production page`); continue; }
+  const h = readFileSync(file, 'utf8');
+  if (!h.includes('data-research-preview')) fail(`preview ${r.slug}: research-preview marker missing`);
+  if (!/<meta name="robots" content="noindex, follow"/.test(h)) fail(`preview ${r.slug}: not "noindex, follow"`);
+  if (ldBlocks(h).length) fail(`preview ${r.slug}: structured data on a research-preview page`);
+  if (h.includes('data-draft-banner') || h.includes('data-publication-failures')) fail(`preview ${r.slug}: draft banner or verification queue in production`);
+  if (!h.includes('Research preview') || !h.includes('Not yet verified')) fail(`preview ${r.slug}: the "Research preview" / "Not yet verified" labels are missing`);
+  if (!h.includes(`/apply/?university=${r.slug}`)) fail(`preview ${r.slug}: no application route with the university preselected`);
+  if (!h.includes('does not claim any partnership')) fail(`preview ${r.slug}: the no-partnership statement is missing`);
+  const verifiedBadges = (h.match(/badge-verified">Verified</g) ?? []).length;
+  if (shownCount(pr) === 0 && verifiedBadges) fail(`preview ${r.slug}: ${verifiedBadges} "Verified" badge(s) although the policy shows no claim`);
+  if (sitemap.includes(`/universities/${r.slug}/`)) fail(`sitemap lists research preview ${r.slug}`);
+  ok();
+  // Nothing from the record beyond slug, short name and SHOWN claims may reach any production file.
+  const shownValues = new Set(Object.values(pr).filter((v) => v && typeof v === 'object' && v.show === true).flatMap((v) => [v.value, v.source]).filter((x) => typeof x === 'string'));
+  const forbidden = [];
+  const add = (label, v) => { if (typeof v === 'string' && v.trim().length >= 4 && !r.shortName.includes(v) && !shownValues.has(v)) forbidden.push([label, v]); };
+  for (const n of notesOf(r)) add('internal note', n);
+  // Reference labels are generic ("Tuition fee"); their addresses and hosts are what must never appear.
+  for (const ref of r.researchReferences ?? []) { add('research reference', ref.url); add('research reference host', hostOf(ref.url)); }
+  for (const k of ['officialName', 'website', 'address', 'statusStatement']) { const c = r[k]; if (c && typeof c.value === 'string' && pr[k]?.show !== true) add(`unverified ${k}`, c.value); }
+  if (r.website?.value && pr.website?.show !== true) add('unverified website host', hostOf(r.website.value));
+  const office = r.internationalOffice?.value;
+  if (office && pr.internationalOffice?.show !== true) { add('unverified office email', office.email); add('unverified office phone', office.phone); add('unverified office url', office.url); add('unverified office host', hostOf(office.url)); }
+  if (pr.overview === undefined) add('withheld overview', r.overview);
+  if (pr.region === undefined) add('withheld region', r.region);
+  for (const a of r.alternativeNames ?? []) add('alternative name', a);
+  for (const q of r.verification.openQuestions ?? []) add('open question', q);
+  for (const f of dec.failures) add('publication failure message', f.message);
+  for (const { p, h: text } of prodText) for (const [label, v] of forbidden) {
+    if (text.includes(v) || text.includes(escapeHtml(v))) fail(`${p}: ${label} of research preview ${r.slug} leaked: "${v.slice(0, 70)}"`);
+  }
+  ok();
+  for (const { p, h: html } of prodHtml) for (const ld of ldBlocks(html)) if (ld.includes(r.shortName) || (r.officialName.value && pr.officialName?.show !== true && ld.includes(r.officialName.value))) fail(`${p}: JSON-LD names research preview ${r.slug}`);
+  ok();
+  if (dirPage && (!dirPage.h.includes(`/universities/${r.slug}/`) || !new RegExp(`<article[^>]*data-slug="${r.slug}"[^>]*data-status="preview"`).test(dirPage.h))) fail(`/universities/: research preview ${r.slug} not listed as a preview card`);
+  if (!new RegExp(`<option value="${r.slug}"[^>]*>[^<]*\\(not yet verified\\)</option>`).test(appliesPage)) fail(`/apply/: research preview ${r.slug} not offered, labelled "not yet verified"`);
+  ok();
+}
+// Pages that list verified data must never list a preview: fees, courses, comparison table.
+for (const { p, h } of prodHtml.filter((x) => /^\/(tuition-fees|courses)\//.test(x.p))) for (const r of previewed) if (h.includes(`/universities/${r.slug}/`)) fail(`${p}: lists research preview ${r.slug}`);
+if (dirPage) for (const r of previewed) if (new RegExp(`<th scope="row"[^>]*><a href="/universities/${r.slug}/`).test(dirPage.h)) fail(`/universities/: research preview ${r.slug} in the comparison table`);
+ok();
+
 for (const s of samples) {
   for (const { p, h } of prodHtml) if (h.includes(s.slug) || h.includes(s.shortName)) fail(`${p}: production build mentions synthetic sample ${s.slug}`);
   ok();
@@ -91,7 +154,6 @@ for (const r of published) {
 for (const { p, h } of prodHtml) if (h.includes('data-publication-failures') || h.includes('Verification queue')) fail(`${p}: verification queue in a production page`);
 ok();
 // The directory must not be empty of meaning: with no published records it must show the explicit empty state.
-const dirPage = prodHtml.find((x) => x.p === '/universities/index.html');
 if (!dirPage) fail('production /universities/ missing');
 else if (published.length === 0 && !/No university profile has completed verification yet/.test(dirPage.h)) fail('/universities/: empty-state copy missing with zero published records');
 ok();
@@ -159,5 +221,5 @@ for (const r of unpublished) {
   ok();
 }
 
-console.log(`publication-gate: ${unpublished.length} unpublished, ${published.length} published, ${samples.length} samples; ${checks} checks, ${failures} failures`);
+console.log(`publication-gate: ${unpublished.length} unpublished (${previewed.length} research previews, ${hidden.length} hidden), ${published.length} published, ${samples.length} samples; ${checks} checks, ${failures} failures`);
 process.exit(failures ? 1 : 0);

@@ -17,9 +17,13 @@ interface Props {
   suffix?: boolean;
   /** Draft (preview-only) page: noindex, no canonical, no og:url, no structured data, no sitemap link. */
   draft?: boolean;
+  /** With noindex: let crawlers follow the page's links ("noindex, follow"). Research-preview profiles (N25) use it so the
+   *  directory and apply links stay crawlable. Ignored in staging and on drafts, which are always "noindex, nofollow". */
+  follow?: boolean;
 }
-const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true, draft = false } = Astro.props;
+const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true, draft = false, follow = false } = Astro.props;
 const noindex = noindexProp || STAGING || draft;
+const robotsNoindex = follow && !STAGING && !draft ? 'noindex, follow' : 'noindex, nofollow';
 const bare = STAGING || draft; // omit every signal that could point a crawler at this URL
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = title === SITE.name || !suffix ? title : `${title} | ${SITE.name}`;
@@ -38,7 +42,7 @@ const metaDescription = attrText(description);
   <title>{fullTitle}</title>
   <meta name="description" content={metaDescription} />
   {!bare && <link rel="canonical" href={canonical} />}
-  {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
+  {noindex ? <meta name="robots" content={robotsNoindex} /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:title" content={metaTitle} />

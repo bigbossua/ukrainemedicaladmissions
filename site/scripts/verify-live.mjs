@@ -129,6 +129,12 @@ function inlineProblems(h) {
   if (jsUrls) out.push(['javascript: URL', `${jsUrls} javascript: URL(s) in markup`]);
   return out;
 }
+// ---- university choices offered in forms (home start form, /apply/): option values of the university selects
+function universityOptions(h) {
+  const out = new Set();
+  for (const m of h.matchAll(/<select\b[^>]*\bname="university\d?"[^>]*>([\s\S]*?)<\/select>/gi)) for (const o of m[1].matchAll(/<option\b[^>]*\bvalue="([^"]*)"/gi)) { const v = o[1].trim().toLowerCase(); if (v && v !== 'unlisted') out.add(v); }
+  return [...out];
+}
 // ---- links to university profiles: same-site href values whose path is /universities/<slug>/
 function profileLinks(h, hosts) {
   const out = new Set();
@@ -152,8 +158,13 @@ console.log(`live verification of ${BASE}${BASE === SITE ? '' : ` (production or
 let manifest = null;
 if (existsSync(MANIFEST)) { try { manifest = JSON.parse(readFileSync(MANIFEST, 'utf8')); } catch (e) { WARN('release manifest', MANIFEST, `unreadable: ${String(e).slice(0, 80)}`, 'valid JSON from npm run manifest', 'run "npm run build && npm run manifest" for the commit being checked'); } }
 else WARN('release manifest', MANIFEST, 'not found', 'tests/output/release-manifest.json for the deployed commit', 'run "npm run build && npm run manifest" on the released commit first; until then the profile checks assume the release publishes no profile');
-const releaseProfiles = (manifest?.files ?? []).map((f) => /^universities\/([^/]+)\/index\.html$/.exec(f.path)?.[1]).filter(Boolean).sort();
-PASS('release profiles', MANIFEST, manifest ? `${releaseProfiles.length} profile(s) in the release manifest${releaseProfiles.length ? `: ${releaseProfiles.join(', ')}` : ''}` : 'no manifest: none assumed');
+// N25: a manifest from release-manifest.mjs lists research previews separately; a profile page not listed as a preview
+// counts as published (an older manifest without the list therefore treats every profile page as published).
+const releasePages = (manifest?.files ?? []).map((f) => /^universities\/([^/]+)\/index\.html$/.exec(f.path)?.[1]).filter(Boolean).sort();
+const releasePreviews = (Array.isArray(manifest?.researchPreviews) ? manifest.researchPreviews : []).filter((s) => releasePages.includes(s)).sort();
+const releaseProfiles = releasePages.filter((s) => !releasePreviews.includes(s));
+const releaseListed = [...releaseProfiles, ...releasePreviews];
+PASS('release profiles', MANIFEST, manifest ? `${releaseProfiles.length} published profile(s)${releaseProfiles.length ? `: ${releaseProfiles.join(', ')}` : ''}; ${releasePreviews.length} research preview(s)` : 'no manifest: none assumed');
 
 // ---- 1/2. robots.txt and sitemap
 const robots = http(`${BASE}/robots.txt`);
@@ -211,9 +222,11 @@ for (const url of pageUrls) {
   else draftFree++;
   // a link to a profile the release does not publish, or (while unpublished) the old Ternopil slug anywhere on the page,
   // e.g. as a card, a select option or JSON-LD: the page comes from a pre-gate or preview build
-  const strayLinks = profileLinks(h, siteHosts).filter((s) => !releaseProfiles.includes(s));
-  if (!releaseProfiles.includes(TERNOPIL) && h.toLowerCase().includes(TERNOPIL) && !strayLinks.includes(TERNOPIL)) strayLinks.push(TERNOPIL);
-  if (strayLinks.length) FAIL('unpublished profile referenced', url, strayLinks.map((s) => `/universities/${s}/`).join(' '), 'no link to, option for or mention of a profile the release does not publish', 'a pre-gate or preview build is deployed: publish the production build of the released commit');
+  // (research previews of the release are listed, labelled pages: linking to them is expected)
+  const strayLinks = profileLinks(h, siteHosts).filter((s) => !releaseListed.includes(s));
+  for (const s of universityOptions(h)) if (!releaseListed.includes(s) && !strayLinks.includes(s)) strayLinks.push(s);
+  if (!releaseListed.includes(TERNOPIL) && h.toLowerCase().includes(TERNOPIL) && !strayLinks.includes(TERNOPIL)) strayLinks.push(TERNOPIL);
+  if (strayLinks.length) FAIL('unpublished profile referenced', url, strayLinks.map((s) => `/universities/${s}/`).join(' '), 'no link to, option for or mention of a profile the release neither publishes nor lists as a research preview', 'a pre-gate or preview build is deployed: publish the production build of the released commit');
   else profileClean++;
   for (const m of h.matchAll(/\b(?:href|src)="([^"#]+)"/g)) { const v = m[1]; if (/^(mailto:|tel:|javascript:|data:)/i.test(v) || isOffSite(v)) continue; addAsset(v, r.url); }
   for (const m of h.matchAll(/<link[^>]+rel="[^"]*(?:preload|icon|manifest|apple-touch-icon)[^"]*"[^>]+href="([^"]+)"/g)) addAsset(m[1], r.url);
@@ -236,11 +249,17 @@ if (home.status === 200 && !/Apply Online Now/.test(text(home))) FAIL('home cont
   else {
     const h = text(r);
     if (!pages[url] && /verification in progress/i.test(h)) FAIL('unverified draft shown', url, '"Verification in progress" card', 'no draft card', 'publish the production build of the released commit');
+    // every card in the list: a research preview of this release (data-status="preview") or a published profile
+    const list = h.split('data-list')[1]?.split('data-no-match')[0] ?? '';
+    const cards = [...list.matchAll(/<article\b([^>]*)>/gi)].map((m) => ({ slug: /data-slug="([^"]*)"/.exec(m[1])?.[1] ?? '', status: /data-status="([^"]*)"/.exec(m[1])?.[1] ?? '' }));
+    const badCards = cards.filter((c) => !(c.status === 'preview' && releasePreviews.includes(c.slug)) && !(c.status === 'verified' && releaseProfiles.includes(c.slug)));
+    const unlistedPreviews = releasePreviews.filter((s) => !cards.some((c) => c.slug === s && c.status === 'preview'));
+    if (unlistedPreviews.length) FAIL('directory lists research previews', url, `no "not yet verified" card for ${unlistedPreviews.join(', ')}`, 'a labelled card for every research preview of the release', 'stale directory page: redeploy');
+    else if (releasePreviews.length) PASS('directory lists research previews', url, `${releasePreviews.length} research preview card(s), each labelled`);
     if (releaseProfiles.length === 0) {
-      const list = h.split('data-list')[1]?.split('data-empty')[0] ?? '';
       if (!h.includes(EMPTY_STATE)) FAIL('directory empty state', url, 'empty-state sentence not found', `"${EMPTY_STATE}"`, 'the release publishes no profile, so the directory must say so: deploy the production build of the released commit');
-      else if (/<article\b/i.test(list)) FAIL('directory empty state', url, 'a card is listed although the release publishes no profile', 'no card', 'deploy the production build of the released commit');
-      else PASS('directory empty state', url, 'no profile published; empty-state sentence shown');
+      else if (badCards.length) FAIL('directory empty state', url, `a card is listed that is neither a research preview of this release nor a published profile (${badCards.map((c) => c.slug || c.status || 'unmarked').join(', ')})`, 'only research-preview cards', 'deploy the production build of the released commit');
+      else PASS('directory empty state', url, `no profile published; empty-state sentence shown${releasePreviews.length ? `, ${releasePreviews.length} research preview card(s)` : ''}`);
     } else {
       const missing = releaseProfiles.filter((s) => !h.includes(`href="/universities/${s}/"`));
       if (h.includes(EMPTY_STATE)) FAIL('directory empty state', url, 'empty-state sentence shown although the release publishes profiles', 'the published profiles listed', 'stale directory page: redeploy');
@@ -250,11 +269,33 @@ if (home.status === 200 && !/Apply Online Now/.test(text(home))) FAIL('home cont
   }
 }
 
-// ---- the old Ternopil profile URL: 302 to the directory while unpublished, never a page
+// ---- research previews (N25): each is served, labelled, noindex and without structured data
+const previewProblems = (h) => [
+  !h.includes('data-research-preview') && 'research-preview marker missing',
+  !/<meta name="robots" content="noindex[^"]*"/.test(h) && 'not noindex',
+  /application\/ld\+json/i.test(h) && 'structured data present',
+  !/Not yet verified/.test(h) && '"Not yet verified" label missing',
+].filter(Boolean);
+for (const s of releasePreviews) {
+  const url = `${BASE}/universities/${s}/`; const r = http(url);
+  if (r.status !== 200) { FAIL('research preview page', url, `HTTP ${r.status}${r.redirect ? ` → ${r.redirect}` : ''}`, '200: the labelled research-preview page', 'deploy the production build of the released commit; .htaccess must not redirect a research preview'); continue; }
+  const probs = previewProblems(text(r));
+  if (probs.length) FAIL('research preview page', url, probs.join('; '), 'labelled "Not yet verified", noindex, no structured data', 'a wrong build is deployed: publish the production build of the released commit');
+  else PASS('research preview page', url, 'labelled, noindex, no structured data');
+}
+
+// ---- the old Ternopil profile URL: the published profile, its research preview, or a 302 to the directory; never an
+// unlabelled page
 for (const p of [`/universities/${TERNOPIL}/`, `/universities/${TERNOPIL}`]) {
   const url = `${BASE}${p}`; const r = http(url);
   const loc = r.redirect ? new URL(r.redirect, url).href : '';
-  if (releaseProfiles.includes(TERNOPIL)) {
+  if (releasePreviews.includes(TERNOPIL)) {
+    const f = follow(url, 3);
+    const probs = f.final && f.final.status === 200 ? previewProblems(text(f.final)) : [];
+    if (!f.final || f.final.status !== 200 || f.hops[f.hops.length - 1].url !== `${BASE}/universities/${TERNOPIL}/`) FAIL('Ternopil profile URL', url, f.hops.map((h) => `${h.url} [${h.status}]`).join(' → '), 'the research-preview page (200)', 'the release lists Ternopil as a research preview: .htaccess must not redirect it (tests/publication-gate.mjs)');
+    else if (probs.length) FAIL('Ternopil profile URL', url, `HTTP 200 but ${probs.join('; ')}`, 'the labelled, noindex research-preview page', 'a wrong build is deployed: publish the production build of the released commit');
+    else PASS('Ternopil profile URL', url, 'research-preview page served (labelled, noindex)');
+  } else if (releaseProfiles.includes(TERNOPIL)) {
     const f = follow(url, 3);
     if (!f.final || f.final.status !== 200 || f.hops[f.hops.length - 1].url !== `${BASE}/universities/${TERNOPIL}/`) FAIL('Ternopil profile URL', url, f.hops.map((h) => `${h.url} [${h.status}]`).join(' → '), 'the published profile (200)', 'the release publishes this profile: the .htaccess 302 rule must be gone (tests/publication-gate.mjs)');
     else PASS('Ternopil profile URL', url, 'published profile served (the release lists it)');

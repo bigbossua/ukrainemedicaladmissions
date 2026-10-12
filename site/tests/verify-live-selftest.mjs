@@ -10,11 +10,12 @@
 //    --no-browser is given) and requires: no FAIL at all, and "not checked" (SKIP) only for the checks in LOCAL_LIMITS,
 //    which are impossible without the production DNS and certificate.
 // 4. Mutates copies of the served output (inline script, also behind data-src, inline handler, javascript: URL, missing
-//    or weakened CSP, CSP only on success, Ternopil page answering 200 or 301 or redirecting elsewhere, a draft card, a link
-//    or select option for the unpublished Ternopil profile, a link to another unpublished profile, a missing empty state,
-//    a stray profile in the sitemap, the handler answering 200 to GET, private storage reachable, a directory listing,
-//    staging URLs, legal placeholders) and requires verify-live to report each one; a positive control (a release that
-//    genuinely publishes the Ternopil profile) must pass the profile checks.
+//    or weakened CSP, CSP only on success, research previews (N25) replaced by an unlabelled page, made indexable, given
+//    structured data, redirected away by the old 302 rule or missing from the directory, a draft card, a link or select
+//    option for a profile the release does not list, a missing empty state, a research preview in the sitemap, the
+//    handler answering 200 to GET, private storage reachable, a directory listing, staging URLs, legal placeholders) and
+//    requires verify-live to report each one; a positive control (a release that genuinely publishes the Ternopil
+//    profile) must pass the profile checks.
 // 5. Checks that no run stored a record in the temporary private directory (verify-live's POSTs store nothing).
 // Prints "verify-live-selftest: N checks, M failures"; exit code 1 on any failure. Run after "npm run build".
 // Usage (from site/): node tests/verify-live-selftest.mjs [--no-browser] [--dist <built site>]   (default dist/)
@@ -145,6 +146,9 @@ if (base) {
   const got = base.skips.map(key).sort(), want = LOCAL_LIMITS.map((l) => `${l.check} ${l.url}`).sort();
   check(JSON.stringify(got) === JSON.stringify(want), 'baseline: "not checked" only for the listed local limits', `got ${got.join('; ')}`);
   const passed = (name, n = 1) => check(base.passes.filter((p) => p.check === name).length >= n, `baseline: "${name}" checked and passed${n > 1 ? ` (${n}×)` : ''}`);
+  const previewCount = JSON.parse(readFileSync(baseManifest, 'utf8')).researchPreviews?.length ?? 0;
+  check(previewCount > 0 || !existsSync(join(DIST, 'universities', TERNOPIL)), 'baseline: the manifest lists the research previews of the build');
+  if (previewCount) { passed('research preview page', previewCount); passed('directory lists research previews', 1); }
   for (const [name, n] of [['Ternopil profile URL', 2], ['directory empty state', 1], ['sitemap profiles', 1], ['CSP header', 1], ['CSP on 404 response', 1], ['inline script', 1], ['unverified draft shown', 1], ['unpublished profile referenced', 1], ['enquiry GET', 1], ['enquiry honeypot POST', 1], ['private storage', 3], ['release integrity', 1], ['robots.txt', 1], ['sitemap', 1], ['404', 1]]) passed(name, n);
   const sitemapLocs = (readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8').match(/<loc>/g) ?? []).length;
   check(base.pages === sitemapLocs, `baseline: every sitemap URL of the build was fetched (${sitemapLocs})`, `${base.pages}`);
@@ -176,18 +180,22 @@ const MUTATIONS = [
   { name: "CSP re-enables inline handlers through script-src-attr 'unsafe-inline'", apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace("script-src 'self';", "script-src 'self'; script-src-attr 'unsafe-inline';")), fails: ['CSP header', 'CSP on 404 response'] },
   // failsAt: [check, URL suffix, observed pattern]: the FAIL must name that URL and that observation, so a mutation cannot
   // count as caught through a side effect (here the no-slash URL's DirectorySlash 301 would hide a lost "never 200" check).
-  { name: 'Ternopil page answers 200', manifest: 'original', apply: (d, n) => { edit(d, n, '.htaccess', dropLine(/ternopil-national-medical-university/)); edit(d, n, `universities/${TERNOPIL}/index.html`, () => profilePage(d)); }, fails: ['Ternopil profile URL'], failsAt: [['Ternopil profile URL', `/universities/${TERNOPIL}/`, /^HTTP 200\b/]] },
-  { name: 'Ternopil answers 301 instead of 302', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace(`RedirectMatch 302 ^/universities/${TERNOPIL}`, `RedirectMatch 301 ^/universities/${TERNOPIL}`)), fails: ['Ternopil profile URL'] },
-  { name: 'Ternopil 302 goes to the home page, not /universities/', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace(`${TERNOPIL}/?$ /universities/`, `${TERNOPIL}/?$ /`)), fails: ['Ternopil profile URL'], failsAt: [['Ternopil profile URL', `/universities/${TERNOPIL}/`, /^HTTP 302 → https?:\/\/[^/]+\/$/], ['Ternopil profile URL', `/universities/${TERNOPIL}`, /^HTTP 302 → https?:\/\/[^/]+\/$/]] },
+  // N25: Ternopil is a research preview of this release. The manifest of the ORIGINAL build is used, so the release still
+  // says "research preview" while the served page is wrong.
+  { name: 'Ternopil preview replaced by an unlabelled, indexable page', manifest: 'original', apply: (d, n) => edit(d, n, `universities/${TERNOPIL}/index.html`, () => profilePage(d)), fails: ['Ternopil profile URL', 'research preview page'], failsAt: [['research preview page', `/universities/${TERNOPIL}/`, /research-preview marker missing/]] },
+  { name: 'old Ternopil 302 rule restored (the preview is hidden)', manifest: 'original', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace('# Private form storage', `RedirectMatch 302 ^/universities/${TERNOPIL}/?$ /universities/\n# Private form storage`)), fails: ['Ternopil profile URL', 'research preview page'], failsAt: [['research preview page', `/universities/${TERNOPIL}/`, /^HTTP 302\b/]] },
+  { name: 'a research preview made indexable', manifest: 'original', apply: (d, n) => edit(d, n, 'universities/odesa-national-medical-university/index.html', (s) => s.replace(/<meta name="robots" content="[^"]*"/, '<meta name="robots" content="index, follow"')), fails: ['research preview page'], failsAt: [['research preview page', '/universities/odesa-national-medical-university/', /not noindex/]] },
+  { name: 'a research preview given structured data', manifest: 'original', apply: (d, n) => edit(d, n, 'universities/kharkiv-national-medical-university/index.html', (s) => s.replace('</head>', '<script type="application/ld+json">{"@type":"CollegeOrUniversity","name":"x"}</script></head>')), fails: ['research preview page'], failsAt: [['research preview page', '/universities/kharkiv-national-medical-university/', /structured data present/]] },
+  { name: 'a research preview missing from the directory', manifest: 'original', apply: (d, n) => edit(d, n, 'universities/index.html', (s) => s.replace(/<article class="pcard[^"]*"[^>]*data-slug="poltava-state-medical-university"[\s\S]*?<\/article>/, '')), fails: ['directory lists research previews'] },
   { name: '"Verification in progress" card on /universities/', apply: (d, n) => edit(d, n, 'universities/index.html', (s) => s.replace(/(data-list[^>]*>)/, '$1<article class="card"><span class="badge badge-pending">Draft — verification in progress</span></article>')), fails: ['unverified draft shown', 'directory empty state'] },
   { name: '"Verification in progress" badge on the home page', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', '<span class="badge badge-pending">Verification in progress</span></main>')), fails: ['unverified draft shown'] },
-  { name: 'home page links to the unpublished Ternopil profile', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', `<p><a href="${PRODUCTION}/universities/${TERNOPIL}/">Ternopil</a></p></main>`)), fails: ['unpublished profile referenced'] },
+  { name: 'home page links to a profile the release does not list (absolute link)', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', `<p><a href="${PRODUCTION}/universities/unlisted-absolute-test-university/">Test</a></p></main>`)), fails: ['unpublished profile referenced'] },
   // a relative link to a profile the release does not publish, with a slug other than Ternopil's: only the link check can
   // catch it (the Ternopil name check cannot)
   { name: 'home page links to another unpublished profile (relative link)', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', '<p><a href="/universities/unpublished-test-university/">Test</a></p></main>')), fails: ['unpublished profile referenced'], failsAt: [['unpublished profile referenced', `${PRODUCTION}/`, /^\/universities\/unpublished-test-university\/$/]] },
-  { name: '/apply/ offers the unpublished Ternopil university', apply: (d, n) => edit(d, n, 'apply/index.html', (s) => s.replace(/(<select\b[^>]*>)/, `$1<option value="${TERNOPIL}">Ternopil</option>`)), fails: ['unpublished profile referenced'] },
+  { name: '/apply/ offers a university the release does not list', apply: (d, n) => edit(d, n, 'apply/index.html', (s) => s.replace(/(<select\b[^>]*name="university"[^>]*>)/, '$1<option value="unlisted-option-test-university">Test</option>')), fails: ['unpublished profile referenced'], failsAt: [['unpublished profile referenced', `${PRODUCTION}/apply/`, /unlisted-option-test-university/]] },
   { name: 'empty-state sentence missing', apply: (d, n) => edit(d, n, 'universities/index.html', (s) => s.replace(EMPTY_STATE, 'Profiles are coming soon.')), fails: ['directory empty state'] },
-  { name: 'unpublished profile in the sitemap', apply: (d, n) => edit(d, n, 'sitemap-0.xml', (s) => s.replace('</urlset>', `<url><loc>${PRODUCTION}/universities/${TERNOPIL}/</loc></url></urlset>`)), fails: ['sitemap profile not in release'] },
+  { name: 'research preview in the sitemap', apply: (d, n) => edit(d, n, 'sitemap-0.xml', (s) => s.replace('</urlset>', `<url><loc>${PRODUCTION}/universities/${TERNOPIL}/</loc></url></urlset>`)), fails: ['sitemap profile not in release', 'robots meta'] },
   { name: 'GET /api/enquiry.php answers 200', apply: (d, n) => edit(d, n, 'api/enquiry.php', () => "<?php echo 'ok';\n"), fails: ['enquiry GET'] },
   { name: 'uma-private reachable over HTTP', apply: (d, n) => { edit(d, n, '.htaccess', dropLine(/uma-private/)); edit(d, n, 'uma-private/index.html', () => '<p>private</p>'); edit(d, n, 'uma-private/config.php', () => "<?php return [];\n"); edit(d, n, 'uma-private/enquiries/index.html', () => '<p>records</p>'); }, fails: ['private storage exposed'] },
   { name: 'directory listing enabled', apply: (d, n) => edit(d, n, '.htaccess', dropLine(/^\s*Options\s+-Indexes/)), fails: ['directory listing'] },
@@ -200,10 +208,9 @@ const MUTATIONS = [
   {
     name: 'positive control: a release that publishes the Ternopil profile',
     apply: (d, n) => {
-      edit(d, n, '.htaccess', dropLine(/ternopil-national-medical-university/));
       edit(d, n, `universities/${TERNOPIL}/index.html`, () => profilePage(d));
       edit(d, n, 'sitemap-0.xml', (s) => s.replace('</urlset>', `<url><loc>${PRODUCTION}/universities/${TERNOPIL}/</loc></url></urlset>`));
-      edit(d, n, 'universities/index.html', (s) => s.replace(EMPTY_STATE, 'One profile is listed.').replace(/(data-list[^>]*>)/, `$1<article class="card"><a href="/universities/${TERNOPIL}/">Ternopil test profile</a></article>`));
+      edit(d, n, 'universities/index.html', (s) => s.replace(EMPTY_STATE, 'One profile is listed.').replace(/<article class="pcard[^"]*"[^>]*data-slug="ternopil-national-medical-university"[\s\S]*?<\/article>/, '').replace(/(data-list[^>]*>)/, `$1<article class="card" data-slug="${TERNOPIL}" data-status="verified"><a href="/universities/${TERNOPIL}/">Ternopil test profile</a></article>`));
     },
     fails: [], noFailsAtAll: true, passes: ['Ternopil profile URL', 'sitemap profiles', 'directory lists published profiles', 'unpublished profile referenced'],
   },

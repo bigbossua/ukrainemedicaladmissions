@@ -1087,6 +1087,7 @@
   "images": [],
   "verification": {
     "publishable": false,
+    "researchPreview": true,
     "lastReview": null,
     "openQuestions": [
       "Current (2026) application deadlines and fee table for foreign citizens (only 2025 found).",
