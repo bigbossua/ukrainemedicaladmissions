@@ -107,7 +107,7 @@ const applyHref = `/apply/?university=${d.slug}`;
       <p class="prose">Facts on this page are checked against the university's official website and, where relevant, Ukrainian government registers. Each row shows its status; verified rows also show the source and check date.
         {d.verification.lastReview ? ` Last full review: ${formatDate(d.verification.lastReview)}.` : ' A full review has not yet been completed.'}</p>
       {PREVIEW && draft && <ResearchReferences refs={d.researchReferences ?? []} openQuestions={d.verification.openQuestions ?? []} deferred={d.deferredProgrammes ?? []} failures={failures} notListed={notListed} flagged={flagged} />}
-      <p class="note">{SITE.disclaimer} University fees are charged by the university; any fee for our own services is shown separately and only after you have applied.</p>
+      <p class="note">{SITE.disclaimer} University fees are charged by the university; any fee for our own services is shown separately, in full, before you choose any paid service.</p>
     </div>
 
     <aside class="side">

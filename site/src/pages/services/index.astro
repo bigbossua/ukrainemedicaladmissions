@@ -2,34 +2,36 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { SITE } from '../../lib/site';
 // This URL exists on the legacy site (/services) and is the only one search engines currently index for the
 // domain, so it is kept rather than redirected. Describes what the service does — no prices, no guarantees.
+// "Today" and "Planned" are split exactly from what this page already stated; add nothing here without a decision.
 ---
 <Base title="Our services" description="What we do today for applicants to Ukrainian medical universities, and what is planned: a free enquiry, guidance and facts checked against official sources.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Services</span><h1>Admissions support, step by step</h1><p>Independent help with choosing a university, preparing a complete application and understanding each stage, using information we publish only after checking official sources.</p></div></div>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Services</span><h1>What we do for applicants</h1><p>Independent help for international students applying to medical universities in Ukraine. Below: what we do for you today, and what is planned but not available yet.</p></div></div>
   <Breadcrumbs items={[{ label: 'Services' }]} />
   <section style="padding-top:1rem"><div class="wrap">
-    <div class="grid grid-3">
-      <div class="card"><div class="ico" aria-hidden="true">1</div><h2 style="font-size:1.15rem">University and course selection</h2><p>We help you compare programmes on facts you can check on each profile: whether your course is open to applicants from your country this intake, language of instruction, qualification title, published fees and entry requirements.</p><a class="more" href="/universities/">Browse the directory →</a></div>
-      <div class="card"><div class="ico" aria-hidden="true">2</div><h2 style="font-size:1.15rem">Application preparation and document review</h2><p>Today the Apply Online form lets you mark each document as have, need or not sure, and we answer document questions by e-mail, including on translations, notarisation and legalisation. Planned: a checklist built from the university's verified document list and a review of what you upload, once secure uploads exist.</p><a class="more" href="/admissions/#documents">Document guidance →</a></div>
-      <div class="card"><div class="ico" aria-hidden="true">3</div><h2 style="font-size:1.15rem">Application status and next steps</h2><p>We tell you by e-mail what has happened and what comes next at each stage (an online status view is planned, not built yet), with an explanation of what happens at each stage — including the invitation letter and visa steps that the university and authorities control.</p><a class="more" href="/admissions/#stages">The four stages →</a></div>
+    <h2 id="today">What we do today (free)</h2>
+    <div class="grid grid-2">
+      <div class="card"><div class="ico" aria-hidden="true">1</div><h3>Answers by email</h3><p>Tell us your course, preferred universities and background in a short online profile. We read it and reply by email with answers to your questions and the next steps we suggest. Where a university's requirements have not yet been verified from its official pages, we say so.</p><a class="more" href="/apply/">Start your profile →</a></div>
+      <div class="card"><div class="ico" aria-hidden="true">2</div><h3>Document questions</h3><p>The Apply Online form lets you mark each document as have, need or not sure. We answer document questions by email, including on translations, notarisation and legalisation.</p><a class="more" href="/admissions/#documents">Document guidance →</a></div>
+      <div class="card"><div class="ico" aria-hidden="true">3</div><h3>Choosing a university and course</h3><p>We help you work out what to compare: whether your course is open to applicants from your country this intake, the language of instruction, the qualification title, the published fee and the entry requirements. Each fact appears on a university's profile once it has been verified.</p><a class="more" href="/universities/">See the universities we are researching →</a></div>
+      <div class="card"><div class="ico" aria-hidden="true">4</div><h3>What comes next</h3><p>We explain by email what comes next at each stage, including the invitation letter and visa steps that the university and the authorities control.</p><a class="more" href="/admissions/#stages">The four stages →</a></div>
     </div>
 
     <div class="prose" style="margin-top:2.5rem">
-      <h2>How it works</h2>
-      <ol>
-        <li><strong>Start online</strong> — tell us your course, preferred universities and background. Free, non-binding, nothing is sent to a university.</li>
-        <li><strong>We read your candidate profile</strong> and reply by e-mail with answers to your questions and the next steps we suggest. Where a university's requirements have not yet been verified from its official pages, we say so.</li>
-        <li><strong>You prepare and upload</strong> your documents through the secure application dashboard when it is available; we review and advise.</li>
-        <li><strong>You confirm</strong> — only then is an application submitted through the university's authorised procedure.</li>
-      </ol>
-      <h2>What we charge</h2>
-      <p>Starting an application is free. Where we offer paid support services, every option is described in full — inclusions, exclusions, price, when payment is due and the refund terms — before you choose it, and always separately from university fees, which are paid to the university. No paid service is offered at present; if one is introduced, its terms will be shown in full before you choose it.</p>
-      <h2>What we never promise</h2>
-      <p>Admission, a visa, recognition of a qualification in any country, scholarships or employment. Admission decisions are made solely by the university; visa decisions by the relevant authorities. {SITE.disclaimer}</p>
+      <h2 id="planned">Planned (not available yet)</h2>
+      <ul>
+        <li><strong>A document checklist</strong> built from the university's verified document list.</li>
+        <li><strong>Secure uploads</strong>: you upload your documents through a secure application dashboard, and we review them and advise.</li>
+        <li><strong>An online status view</strong> of what has happened and what comes next.</li>
+        <li><strong>Official submission</strong>: an application is submitted through the university's authorised procedure, and only after you confirm.</li>
+      </ul>
+      <h2 id="limits">What we never promise</h2>
+      <p>Admission, a visa, recognition of a qualification in any country, scholarships or employment. Admission decisions are made solely by the university, visa decisions by the relevant authorities, and recognition by the regulator in the country where you plan to work. See our <a href="/disclosure/">independence and referral disclosure</a>.</p>
+      <h2 id="cost">What it costs</h2>
+      <p>No paid service is offered at present, and starting an application is free. If a paid service is introduced, every option will be described in full before you choose it: inclusions, exclusions, price, when payment is due and the refund terms. Any fee of ours will always be shown separately from university fees, which are paid to the university.</p>
       <p>Questions first? See the <a href="/faq/">FAQ</a> or <a href="/contact/">contact us</a>.</p>
     </div>
   </div></section>
-  <CtaBand />
+  <CtaBand title="Start with a free enquiry" text="Tell us your course and your questions. We reply by email, and nothing is sent to a university until you confirm." />
 </Base>

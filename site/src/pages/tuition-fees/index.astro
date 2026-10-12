@@ -2,53 +2,84 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { SITE, PREVIEW, formatDate } from '../../lib/site';
+import { PREVIEW, formatDate } from '../../lib/site';
 import { getListedUniversities } from '../../lib/records';
 import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 
 // Publication gate (lib/records.ts): published records (projections) only; drafts only in PREVIEW builds.
 // A fee is printed only when the publication policy shows it (verified, evidenced, current academic year).
+// Research previews (getResearchPreviews) are never listed on this page: a fee row would imply a verified programme.
 const universities = await getListedUniversities();
 const rows = universities.flatMap((u) => u.d.programmes.map((p: any) => ({ u: u.d, p, fee: viewClaim(p.tuition, { preview: PREVIEW }) })));
 // Shown fees use the policy's formatter: amount, currency, basis and academic year, plus any year-by-year amounts and
 // payment schedule exactly as recorded (never converted, rounded or totalled).
 const money = (m: any) => formatMoney(m, { compact: true });
+const withheld = rows.some(({ fee }) => fee.state !== 'verified');
 ---
-<Base title="Medical college fees in Ukraine: tuition & cost of study" description="How Ukrainian medical universities publish tuition fees, what the cost of medical education includes, and how we verify a fee before listing it." suffix={false}>
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Medical university fees in Ukraine</h1><p>We publish a fee only when it comes from the university's official fee schedule, with the academic year, currency and the date we checked it.</p></div></div>
+<Base title="MBBS and medical college fees in Ukraine: how to compare costs" description="How to read and compare a Ukrainian medical university's fee schedule, what to ask about MBBS fees and the total cost, and how we check a fee before listing it." suffix={false}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Tuition &amp; fees</span><h1>Medical college and university fees in Ukraine</h1><p>Fees are set by each university. This guide shows you how to read an official fee schedule, what to ask the university and how to compare like with like. We list a fee only after checking it on the university's own schedule, with the date.</p></div></div>
   <Breadcrumbs items={[{ label: 'Tuition & fees' }]} />
   <section style="padding-top:1rem"><div class="wrap">
     <div class="prose">
-      <h2>How fees are published</h2>
-      <p>Each university sets its own tuition fee per programme and academic year, with its own currency and payment basis. Fees can change between intakes. For that reason every fee on this site will carry the academic year it applies to and the date it was verified. Fees from different years or currencies are never combined into a single figure.</p>
-      <h2>MBBS fees in Ukraine</h2>
-      <p>Many applicants search for “MBBS fees in Ukraine”. Ukrainian universities do not award an MBBS; the equivalent programme is <a href="/courses/medicine/">Medicine</a>, and each university publishes its own duration and fee for it. The table below lists the medicine fee per university as soon as it has been verified from the official schedule.</p>
-      <h2>Cost of medical education in Ukraine: what a total includes</h2>
-      <ul>
-        <li><strong>University charges</strong> — e.g. application or registration fees, invitation-letter processing, medical insurance arranged by the university. Listed per university where published.</li>
-        <li><strong>Accommodation</strong> — university hostels or private rental; prices shown only where a current official source exists.</li>
-        <li><strong>Living costs, visa fees, travel, document translation and legalisation</strong> — vary by person and country; we do not publish estimates we cannot source.</li>
-        <li><strong>Our service fee</strong> — charged by Ukraine Medical Admissions, not the university, and stated in writing before you choose any paid service. No service fee is charged to start an application.</li>
-      </ul>
-      <p>Any “total cost” we show in future will list its components, sources and dates. An estimate is never a guaranteed total.</p>
-      <h2 id="reading-a-fee-schedule">How to read a Ukrainian university fee schedule</h2>
-      <p>Official schedules are usually published as a table or a signed order on the university's own website, often in its international-students section. Before you compare two universities, check that each figure has the same five properties:</p>
+      <h2 id="reading-a-fee-schedule">How to read and compare a fee schedule</h2>
+      <p>Look for the fee table or signed fee order on the university's own website, for example in its section for international students. Before you compare two universities, check that each figure states the same five basics:</p>
       <ol>
-        <li><strong>The academic year</strong> it applies to (for example 2026/27). A table from an earlier year is not the current fee.</li>
-        <li><strong>The currency</strong> and the payment basis: which currency the fee is quoted in, which currency it is collected in, and at what exchange rate and on which day.</li>
-        <li><strong>The period</strong>: per year, per semester or for the whole programme, and whether the amount changes between years of study.</li>
-        <li><strong>The track</strong>: whether the fee is for the English-taught or the Ukrainian-taught stream, because a university may price them differently.</li>
-        <li><strong>What is excluded</strong>: medical examination and insurance on arrival, invitation-letter or registration charges, hostel, and the fee for any preparatory course are usually separate lines or separate documents.</li>
+        <li><strong>Academic year</strong>: the year it applies to, for example 2026/27. A table from an earlier year is not the current fee.</li>
+        <li><strong>Currency</strong>: the one the fee is quoted in and the one it is collected in. If they differ, ask which exchange rate applies, and on which day.</li>
+        <li><strong>Period</strong>: per year, per semester or for the whole programme, and whether the amount changes between years of study.</li>
+        <li><strong>Teaching language</strong>: if the programme is taught in more than one language, which stream the fee is for.</li>
+        <li><strong>Exclusions</strong>: what the fee does not cover and is charged separately.</li>
       </ol>
-      <p>Every fee we publish will show its academic year, currency, payment basis and any year-by-year amounts or payment schedule exactly as the university states them, with a link to the official page and the date we read it; mandatory extras are listed separately where the university publishes them. Where a university's current schedule has not yet been read, the row below says “To be confirmed” rather than showing an estimate from a third-party website.</p>
+      <p>Compare two figures only when all five basics match. A fee for a different year, currency or period is not comparable, even if the numbers look close.</p>
+      <p>When we list a fee, it shows the five basics exactly as the university states them, with any year-by-year amounts or payment schedule, a link to the official page and the date we read it. We never convert or average fees, and we never copy a figure from an agency or other third-party website.</p>
+
+      <h2 id="questions-to-ask">Questions to ask the university about fees</h2>
+      <p>Copy these into your email to the university, or print this page and tick each one off as you get an answer. Ask for the answers in writing.</p>
+      <ul class="checklist">
+        <li><strong>The five basics above.</strong> Ask for any that the schedule does not state.</li>
+        <li>Is this the current fee schedule for my intake, and where is it published on your website?</li>
+        <li>Does the fee depend on my nationality or citizenship?</li>
+        <li>What is charged separately? For example: a preparatory course, hostel, medical insurance, a medical examination, an invitation letter or registration.</li>
+        <li>Can the fee change in later years of study? If so, how and when will I be told?</li>
+        <li>Is there a payment schedule? How much is due, and when?</li>
+        <li>How do I pay, and to which account? Is that account named in your own official documents?</li>
+        <li>What happens to fees already paid if I withdraw, or if my visa is refused?</li>
+      </ul>
+
+      <h2 id="mbbs-fees">MBBS fees in Ukraine</h2>
+      <p>“MBBS” is how many applicants search. In Ukraine, <a href="/courses/medicine/">medicine</a> is taught under each university's own programme and qualification title, which we show on its profile once verified. Whether it is accepted in place of an MBBS is decided by your home regulator.</p>
+      <h3>How much does it cost to do MBBS in Ukraine?</h3>
+      <p>It depends on the university, the programme and your intake, so ask for the figure that applies to you. To get one you can rely on:</p>
+      <ol>
+        <li>Find the medicine programme on the university's own website.</li>
+        <li>Open the fee schedule for your intake and check the <a href="#reading-a-fee-schedule">five basics</a>.</li>
+        <li>Send the university the <a href="#questions-to-ask">questions above</a> about anything the schedule leaves out.</li>
+        <li>Add the costs that tuition does not cover (<a href="#total-cost">see below</a>) before you compare universities.</li>
+      </ol>
+      <p>When we verify a university's fee, we add it to the <a href="#by-university">table below</a>.</p>
+
+      <h2 id="total-cost">Cost of medical education in Ukraine: what a total includes</h2>
+      <p>Tuition is only part of the cost. When you budget, ask about or allow for:</p>
+      <ul>
+        <li><strong>University charges</strong>: anything the university lists besides tuition, for example application or registration fees, invitation-letter processing, or medical insurance if the university arranges it. Ask for the full list.</li>
+        <li><strong>Accommodation</strong>: ask whether the university offers hostel places and at what price, or budget for private rental.</li>
+        <li><strong>Living costs, visa fees, travel, document translation and legalisation</strong>: these vary by person and country.</li>
+        <li><strong>Any fee for our services</strong>: charged by Ukraine Medical Admissions, not the university, and stated in writing before you choose any paid service. No service fee is charged to start an application.</li>
+      </ul>
+      <p>Any total cost we show in future will list its parts, sources and dates. An estimate is never a guaranteed total.</p>
+
       <h2 id="questions">Questions applicants ask about cost</h2>
-      <details><summary>How much does it cost to study medicine in Ukraine?</summary><p>Only each university's official fee schedule can answer this for the current intake. We do not publish an estimate, an average or a figure copied from an agency website. As soon as a schedule has been read on the official page, the fee appears in the table below with its academic year, currency and payment basis, and on the university's profile.</p></details>
-      <details><summary>What does the tuition fee not include?</summary><p>Typically: the preparatory course if you need one, hostel or private accommodation, medical insurance and the medical examination on arrival, visa and travel costs, translation and legalisation of your documents, and living costs. Each university lists its own additional charges; we show them on the profile only once read from the official page.</p></details>
-      <details><summary>Can fees be paid in instalments?</summary><p>Some universities publish a payment schedule (for example per semester). We record the schedule exactly as published and never promise an arrangement the university has not published.</p></details>
-      <details><summary>Do fees change after you enrol?</summary><p>Universities publish fees per academic year and may revise them for later years. A schedule that states year-by-year amounts is recorded as such; where it does not, the profile says so.</p></details>
-      <p>Questions about how long the programme lasts, eligibility and whether a degree is accepted in your country are answered in the <a href="/faq/#eligibility-duration-and-recognition">FAQ on eligibility, duration and recognition</a>.</p>
+      <details><summary>What is the fee for MBBS in Ukraine at a specific university?</summary><p>Look for the university in the <a href="#by-university">table below</a>. If it is not there, we have not verified its fee yet: ask the university for its current schedule, using the questions above.</p></details>
+      <details><summary>What does the tuition fee not include?</summary><p>Ask the university what is charged separately, and budget for the costs listed under <a href="#total-cost">what a total includes</a>.</p></details>
+      <details><summary>Can fees be paid in instalments?</summary><p>Ask whether the university publishes a payment schedule, for example per semester, and get it in writing. We never promise an arrangement the university has not published.</p></details>
+      <details><summary>Do fees change after you enrol?</summary><p>Ask whether the schedule gives an amount for each year of study, and whether the fee can be revised for later years.</p></details>
+      <p>For how long the programme lasts, eligibility and whether a degree is accepted in your country, see the <a href="/faq/#eligibility-duration-and-recognition">FAQ on eligibility, duration and recognition</a>.</p>
+
       <h2 id="indian-students">Fees for Indian students</h2>
-      <p>We are often asked whether Ukrainian universities charge Indian students a different fee. We will state that only from each university's official fee schedule: if a schedule prices by nationality, the profile will say so with the currency, academic year, payment schedule and source. Recognition of a Ukrainian medical degree in India is governed by the National Medical Commission's current regulations for foreign medical graduates — check the NMC's own published rules before you apply; we do not advise on them.</p>
+      <h3>Cost of MBBS in Ukraine for Indian students</h3>
+      <p>The fee that applies to you is the one in the university's official schedule for your programme and intake. Ask the university whether its fee depends on nationality or citizenship; if a schedule we verify prices by nationality, the university's profile will say so. Then compare universities using the <a href="#reading-a-fee-schedule">five basics</a> and the <a href="#questions-to-ask">questions to ask</a>.</p>
+      <h3>Recognition in India</h3>
+      <p>Recognition and the right to practise are decided by the regulator in the country where you plan to work, not by any university or by us. In India this is decided by the National Medical Commission (NMC). Read its current rules on its own website before you apply.</p>
     </div>
 
     <h2 style="margin-top:2rem" id="by-university">Medical college fees in Ukraine, by university</h2>
@@ -56,7 +87,7 @@ const money = (m: any) => formatMoney(m, { compact: true });
       <table>
         <thead><tr><th>University</th><th>Programme</th><th>Tuition fee</th><th>Status</th><th>Checked</th></tr></thead>
         <tbody>
-          {rows.length === 0 && <tr><td colspan="5"><span class="badge badge-pending">No fee verified yet</span> No university's official fee schedule has been verified yet. Rows appear here as each university profile completes verification.</td></tr>}
+          {rows.length === 0 && <tr><td colspan="5"><span class="badge badge-pending">No fee verified yet</span> No university's fee schedule has been verified yet. Rows appear here, dated, as each one is verified. See the <a href="/universities/">universities we are researching</a>.</td></tr>}
           {rows.map(({ u, p, fee }) => (
             <tr>
               <td><a href={`/universities/${u.slug}/#${p.id}`}>{u.shortName}</a></td>
@@ -69,9 +100,14 @@ const money = (m: any) => formatMoney(m, { compact: true });
         </tbody>
       </table>
     </div>
-    <p class="note">Fees shown as “to be confirmed” have not yet been verified from the university's official schedule and are deliberately withheld. The first universities' official schedules are queued for verification; each row will show its source and date as soon as it passes. {SITE.disclaimer}</p>
-    <p class="prose">Not sure whether you meet the entry requirements or which documents you still need? <a href="/admissions/#readiness">See how the readiness check works</a>, then <a href="/apply/">start your candidate profile</a>. It is free and nothing is sent to a university.</p>
-    <p class="prose">University profiles in the <a href="/universities/">directory</a> will show full programme details once verified. Meanwhile read the <a href="/admissions/">admissions guide</a>.</p>
+    {withheld && <p class="note">A fee shown as “To be confirmed” has not yet been verified from the university's official schedule, so we do not show it.</p>}
+    <p class="prose">Not sure you qualify? See <a href="/admissions/#readiness">what decides eligibility</a> in the admissions guide.</p>
   </div></section>
-  <CtaBand title="Questions about cost?" text="Start your free candidate profile and ask us. We will tell you what we have been able to check, and nothing is sent to a university." />
+  <CtaBand title="Questions about cost?" text="Start your free candidate profile and ask us. We reply by email with what we have been able to check, and nothing is sent to a university." />
 </Base>
+<style>
+  .prose .checklist { list-style: none; padding: 0; margin: 0 0 1.5rem; border-top: 1px solid var(--line); }
+  .prose .checklist li { position: relative; margin: 0; padding: .65rem 0 .65rem 2.1rem; border-bottom: 1px solid var(--line); }
+  .prose .checklist li::before { content: ""; position: absolute; left: 0; top: .85rem; width: 1.05rem; height: 1.05rem; border: 2px solid var(--slate); border-radius: 4px; }
+  @media print { .prose .checklist li { break-inside: avoid; } }
+</style>

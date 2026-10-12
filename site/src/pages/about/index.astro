@@ -3,24 +3,27 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { SITE } from '../../lib/site';
+// Who runs the service (names, roles, business identity) is owner input that has not been supplied: say nothing about it
+// here until it is. The independence disclaimer is in the footer on every page; this page links the disclosure instead.
 ---
-<Base title="About Ukraine Medical Admissions" description="Independent admissions support for international students applying to medical universities in Ukraine, publishing a fact only after checking an official source.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">About</span><h1>Independent, evidence-based admissions support</h1><p>We exist to make applying to a Ukrainian medical university clear, honest and manageable.</p></div></div>
+<Base title="About us" description="Independent admissions support for international students applying to medical universities in Ukraine, publishing a fact only after checking an official source.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">About</span><h1>About Ukraine Medical Admissions</h1><p>We exist to make applying to a Ukrainian medical university clear, honest and manageable.</p></div></div>
   <Breadcrumbs items={[{ label: 'About' }]} />
   <section style="padding-top:1rem"><div class="wrap prose">
     <h2>What we do</h2>
-    <p>Ukraine Medical Admissions helps international students understand their options at Ukrainian medical universities and, as later stages open, prepare complete, accurate applications. We are building a directory of universities and programmes in which every verified fact (fee, deadline, language, requirement) shows its official source and the date we checked it; anything not yet checked is marked pending or to be confirmed.</p>
+    <p>Ukraine Medical Admissions helps international students understand their options at Ukrainian medical universities. Today you can send us a short candidate profile, and we reply by email with answers to your questions and the next steps we suggest. Help with preparing a complete, accurate application is planned as later stages open. See <a href="/services/">what we do today and what is planned</a>.</p>
+    <p>We are also building a directory of universities and programmes. Each verified fact (fee, deadline, language, requirement) will show its official source and the date we checked it, and anything not yet checked is clearly marked. See the <a href="/universities/">universities we are researching</a>.</p>
     <h2 id="verification">How we verify information</h2>
     <ol>
-      <li>We record each fact from the university's official website, fee schedule or admissions document, or from a Ukrainian government register, and store the source URL with each verified fact.</li>
-      <li>Each fact is marked <strong>verified</strong> only once it has been checked against that source; otherwise it is shown as <strong>pending</strong> or <strong>to be confirmed</strong>.</li>
-      <li>We date every check and review profiles before each intake. Outdated facts are flagged rather than silently left in place.</li>
+      <li>We record each fact from the university's official website, fee schedule or admissions document, or from a Ukrainian government register, and keep the source address with it.</li>
+      <li>A fact is marked <strong>verified</strong> only once it has been checked against that source. Until then it is shown as <strong>pending</strong> or <strong>to be confirmed</strong>.</li>
+      <li>Every profile we publish shows the date of each check and is reviewed before each intake. Outdated facts are flagged rather than silently left in place.</li>
       <li>We do not publish rankings, student numbers, success rates or testimonials we cannot evidence.</li>
     </ol>
     <h2>Our independence</h2>
-    <p>{SITE.disclaimer} University fees are paid to the university. Any fee for our own services is explained in full — inclusions, exclusions and refund terms — before you choose it.</p>
+    <p>How we are paid, and our policy on referrals, advertising and rankings, are set out in our <a href="/disclosure/">independence and referral disclosure</a>. University fees are paid to the university. Any fee for our own services is explained in full (inclusions, exclusions and refund terms) before you choose it.</p>
     <h2>Contact</h2>
     <p>Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or use the <a href="/contact/">contact form</a>.</p>
   </div></section>
-  <CtaBand />
+  <CtaBand title="Have a question about applying?" text="Start with a short online enquiry. It costs nothing, and nothing is sent to a university until you confirm." />
 </Base>
