@@ -116,6 +116,21 @@
 
 **Setting:** `RESEARCH_PREVIEWS` in `site/src/lib/publication-config.mjs`; per record, `verification.researchPreview` in the record file. **Owner: confirm** the default and the student-facing label "Not yet verified".
 
+## (e) Which newly found institutions become research previews (N26, proposed 2026-10-12)
+
+**Question.** The landscape sweep (`UNIVERSITY_DATA_REGISTER.md` §12) found 26 institutions beyond the 12 records. Which of them may appear in the public directory as "Not yet verified" research previews (name only, noindex, no claim shown) before any official page has been read?
+
+**Default now (proposed; the owner may change it).** A new institution is listed only when an independent skeptic's re-check of the search-result leads finds all three of:
+- the official name and domain agreeing across two independent results;
+- a government or authority result listing the institution;
+- an official-domain result showing a medical, dental, pharmacy or nursing programme open to foreign applicants.
+
+It must also have no open relocation, occupation, closure, merger or licence question. A border or front-line city without a reported relocation is treated as the 12 existing previews are, because the preview page already says that whether, where and how teaching takes place is not verified. Relocated institutions need a dated official notice of their current base first (§9 of the register).
+
+**Applied.** Five institutions are listed: Sumy State University, National University of Pharmacy, Taras Shevchenko National University of Kyiv, Petro Mohyla Black Sea National University and Bohdan Khmelnytsky National University of Cherkasy (records in `site/src/content/universities/`, all claims unverified, `researchPreview: true`). Not listed: International European University and Kyiv Medical University (licence questions), Luhansk State Medical University and Donetsk National Medical University (reported in the search results as relocated), Karazin Kharkiv National University (no government listing found yet), the other private and out-of-scope institutions, and the institution in occupied Luhansk that the results describe as Russian-run, which is rejected outright.
+
+**Owner choices.** (1) Keep this rule. (2) List only institutions with a verified government register entry, which today removes all five. (3) Exclude Sumy, whose skeptic flagged reports of strikes on the campus (2023, 2025) and no official teaching statement since 2022. Switch a record off with `verification.researchPreview: false`; nothing else changes.
+
 ## Technical gaps fixed at the same time (no owner decision needed)
 
 | Backlog wording (N24) | What the code does now |

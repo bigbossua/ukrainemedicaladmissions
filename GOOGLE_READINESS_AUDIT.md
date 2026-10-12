@@ -191,3 +191,19 @@ The audit builds nothing. It exits 2 if `dist/` is missing or older than `src/`,
 Lighthouse (mobile emulation, default throttling), 18 indexable pages: performance 98–100, accessibility 100, best practices 100, SEO 100; LCP 1,800–2,251 ms; CLS 0–0.043; TBT 0 ms. The research-preview page scores SEO 69 only because it is deliberately noindex.
 
 **Not proven by any of this:** what the live host serves (TLS, compression, caching, real headers), whether Google crawls or indexes the pages, field Core Web Vitals, Search Console coverage. Those need the release, `npm run verify:live` and a Search Console property.
+
+## Re-run with the extended checks and 17 research previews (2026-10-12, later)
+
+`npm run test:seo` (the audit without Lighthouse) on the production build that includes the five research previews added on 2026-10-12 found **0 high, 0 medium and 3 low issues** (the same three accepted lows as above).
+- **Scope:** 106 URLs requested, 37 pages analysed: 18 indexable, all 18 in the sitemap, 17 noindex research previews, the thank-you page and the 404 page. 57 internal link targets, all answering 200 with no redirect.
+- **Previews:** the 17 previews are 90.6–94.2% alike (one template, no verified facts). They are noindex and outside the sitemap, so they are not an indexing problem.
+- **Checks added to the audit since the first run:**
+  - Click depth from the home page: every page is within one click.
+  - Query-parameter URLs: 24 in all, the 21 internal links with parameters (`?university=`, `?course=`) plus 3 typical visitor or campaign parameters (`?q=`, `utm_`, `?ref=`). All answer 200 with the canonical of the clean URL.
+  - Images: format, weight, oversizing and lazy loading. Only two SVG logos are used.
+  - POST forms: both carry the honeypot field the handler checks, and required fields.
+  - 410 rules: none. Retired legacy URLs are 301-redirected and unknown URLs answer 404.
+- **Proof the new checks work:** mutation tests show a FAQ canonical carrying `?ref=` is caught as high and a removed honeypot as medium.
+
+The directory search box's example text is now "e.g. Bukovinian, Pirogov". These are name words with measured India demand ("bukovinian state medical university" 480, "pirogov medical university ukraine" 390), and the example no longer shows a bare city name, which the publication gate would otherwise read as another record's withheld city.
+

@@ -1,0 +1,345 @@
+{
+  "slug": "bohdan-khmelnytsky-national-university-of-cherkasy",
+  "synthetic": false,
+  "officialName": {
+    "value": "Bohdan Khmelnytsky National University of Cherkasy",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain and EDEBO register, 2026-10-12) — NOT verified; read the official page before publishing. Snippets (search-tool summaries): the EDEBO register entry (government, registry.edbo.gov.ua/university/101) is titled «Черкаський національний університет імені Богдана Хмельницького» and, per the tool's paraphrase, gives the English name \"Bohdan Khmelnytsky National University of Cherkasy\"; official pages on cdu.edu.ua carry the title prefix \"The Bohdan Khmelnytsky National University of Cherkasy\". Other names in use: \"Cherkasy National University\" (Wikipedia title, THIRD-PARTY) and \"National University of Cherkasy\" (uniRank listing slug, THIRD-PARTY). Name collisions: the abbreviation ChNU is also used by Yuriy Fedkovych Chernivtsi National University (chnu.edu.ua), and Cherkasy State Technological University (chdtu.edu.ua) and Cherkasy Medical Academy are separate institutions; never attribute their pages to this university. Confirm the full official name, in English and Ukrainian, on the official homepage and the EDEBO entry."
+  },
+  "shortName": "Bohdan Khmelnytsky National University of Cherkasy",
+  "alternativeNames": [
+    "Черкаський національний університет імені Богдана Хмельницького",
+    "ЧНУ",
+    "Cherkasy National University",
+    "Bohdan Khmelnytsky Cherkasy National University",
+    "National University of Cherkasy (uniRank listing slug)",
+    "ChNU (abbreviation also used by Yuriy Fedkovych Chernivtsi National University, a different institution)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (EDEBO register and NAQA, government, 2026-10-12) — NOT verified; read the official page before publishing. Leads: the EDEBO register entry (registry.edbo.gov.ua/university/101; search-tool paraphrase, no registry date returned) lists the university as state-owned under the Ministry of Education and Science, with a military department and taking part in the state grant programme; a NAQA page (en.naqa.gov.ua/?p=5860, government) reports a regional seminar on the higher-education quality assurance system held at the university in Cherkasy on 4 November 2025 (date per the search tool); vstup.osvita.ua (THIRD-PARTY aggregator) has a 2025 admission card for the university (y2025/r24/101). No relocation, occupation, closure or merger lead appeared; Cherkasy is the stated location. None of these says anything about teaching format. No official statement for 2025–26 or 2026–27 found."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found: no dated statement on where or how teaching takes place (in person, blended or online) was returned by any search. The only related official wording is in the admission rules for foreigners (page labelled 2022, URL slug says 2020; search-tool paraphrase): \"admission of foreigners may be carried out in person and/or remotely\", which concerns admission, not teaching, and is out of date. Quote the current official statement verbatim with its date."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year. No statement on teaching format (in person, blended or distance) was found for any year; the NAQA seminar held in Cherkasy on 4 November 2025 and the 2025 admission card show activity, not a teaching format."
+  },
+  "city": "Cherkasy",
+  "address": {
+    "value": "81 Shevchenko Blvd., Cherkasy",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool paraphrase of the official contact page for international applicants (cdu.edu.ua/en/information/for-international-applicants/contact-us.html, undated): the Center of International Education is at 81 Shevchenko Blvd., Cherkasy. This is the international centre's address as paraphrased by the tool, not a verbatim postal address, and it is not confirmed as the university's main address. Record the university's postal address from the official contacts page."
+  },
+  "website": {
+    "value": "https://cdu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain and EDEBO register, 2026-10-12) — NOT verified; read the official page before publishing. Leads: the EDEBO register entry (government, registry.edbo.gov.ua/university/101; search-tool paraphrase) gives the website cdu.edu.ua; pages on cdu.edu.ua (Medical Institute, Educational Program, Application Instructions, Contact us) were returned as official pages, and official cdu.edu.ua page titles carry the prefix \"The Bohdan Khmelnytsky National University of Cherkasy\" (for example \"The Bohdan Khmelnytsky National University of Cherkasy - Medical Institute\"); vstup.osvita.ua (THIRD-PARTY) gives https://cdu.edu.ua and Wikipedia (THIRD-PARTY) lists www.cdu.edu.ua. A Ministry \"Study in Ukraine\" portal profile (university 52) reportedly gives https://www.cdu.edu.ua/, but no Study in Ukraine page was reproduced on re-check. Discarded tool artefact: one search summary wrongly called cdu.edu.ua the site of the Chernivtsi university (whose domain is chnu.edu.ua). Confirm the canonical domain (with or without www) on the official site."
+  },
+  "internationalOffice": {
+    "value": {
+      "phone": "+38 (0472) 54 13 45",
+      "url": "https://cdu.edu.ua/en/information/for-international-applicants/contact-us.html"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool paraphrase of the official contact page for international applicants (undated): the Center of International Education, 81 Shevchenko Blvd., Cherkasy, tel. +38 (0472) 54 13 45. A Ministry \"Study in Ukraine\" portal page (not reproduced on re-check) names an Educational-Scientific Center \"Institute of International Education\"; whether this is the same unit is not established. The admissions committee phones on vstup.osvita.ua (THIRD-PARTY; (0472) 37-21-42 and (0472) 35-44-63) are general admissions lines and are not recorded. No international office e-mail found. Record contacts only as printed on the current official page."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Not recorded: no official source returned. Leads (THIRD-PARTY, not checked): Wikipedia and the Encyclopedia of Ukraine say the university began in 1921 as an institute of people's education; they disagree on when it gained national status (Wikipedia: 2003, by presidential decree; Encyclopedia of Ukraine: 1998). An Indian-market agency page also claims 1921. Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. A state-owned classical national university in Cherkasy, Ukraine (EDEBO register lead). Search-tool summaries of undated pages on its official website describe a Medical Institute with a Master's-level Medicine programme (Doctor of Medicine) that admits foreign nationals and is taught in Ukrainian or English. Draft record built from search-result leads on 2026-10-12. No licence record for Medicine, no NAQA accreditation and no dated official statement on teaching format were found, so whether, where and how foreign students are taught in 2026–27 is an open question. No fee, deadline or intake date is recorded. Every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate. Nothing recorded. Kept strictly separate: (1) State registration (EDEBO): an EDEBO register entry was returned (registry.edbo.gov.ua/university/101, government; search-tool paraphrase): Ukrainian and English names, state ownership under the Ministry of Education and Science, a military department, participation in the state grant programme, acting rector Yevhenii Kyryliuk and website cdu.edu.ua; no registry date returned. Registration is not a licence and not accreditation. (2) Programme licence: no Ministry licence-register or EDEBO licence record for Medicine (222 under the old classifier or its current-classifier equivalent) or for any health specialty was returned. vstup.osvita.ua (THIRD-PARTY aggregator) shows licensed volumes by year (2025, 2020 and 2017 cards), but the returned snippets showed only Automation and Software Engineering; Medicine was not shown, which is a search limitation, not evidence either way. A licence is permission to admit, not accreditation. (3) National programme accreditation (NAQA): none returned for any programme. The NAQA page about a regional seminar held at the university on 4 November 2025 is an event report, not an accreditation. (4) International accreditation (for example by a WFME-aligned agency): none returned."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator (for example India's National Medical Commission). Record it only from a tier-4 page on a recognition-authority host the owner has listed (N24 b; none listed yet), quoting what that page says, with its date. A World Directory of Medical Schools (WDOMS) listing is a directory entry, not recognition; a university's own claim of WHO, NMC or ECFMG recognition is not recognition; an international accreditation is not recognition; institutional registration (EDEBO), programme licence and programme accreditation (NAQA) are separate claims. Claim seen, not recorded: an Indian-market agency page (THIRD-PARTY; exact wording not captured, not searched again on re-check) claims approval from the NMC and the WHO; WHO does not accredit universities, and this is an agency's wording, not a decision by a destination-country regulator. No WDOMS listing was returned (either way). Never imply a right to practise in any country."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details (availability, price, year). No hostel or accommodation information for foreign students was found."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool summary of the official Educational Program page of the Medical Institute (cdu.edu.ua/en/departments/medical-institute/educational-program.html, undated): a Medicine programme at Master's level (Doctor of Medicine). Whether the university classifies it as a single-cycle (integrated) master's is not stated. An Indian-market agency page (THIRD-PARTY) markets it as \"MBBS\", a term the official page does not use. Read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No specialty code in the returned official text. Medicine is specialty 222 under the old classifier, but no official page, licence record or vstup.osvita.ua snippet returned for this university showed it (the vstup.osvita.ua snippets showed only Automation and Software Engineering, a search limitation, not evidence of absence). Record the code as the university publishes it, and check the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Lead (search-tool summary of the official Educational Program page, undated): \"Doctor of Medicine\"; not recorded because the returned text does not show it as the award title. Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in the returned official text. An Indian-market agency page claims six years (THIRD-PARTY, not searched again on re-check); not recorded. Record whole years only if the official programme page states them."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it on the official programme page (no official duration found)."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Snippet (official Educational Program page of the Medical Institute, undated, as quoted by the search tool): \"Language of Instruction is Ukrainian or English as per the choice of the Student\". Confirm that both language tracks are open to foreign applicants for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement (none found for any year)."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool summary of the official Medical Institute and Educational Program pages (cdu.edu.ua/en/departments/medical-institute.html and /medical-institute/educational-program.html, undated): the Medical Institute admits citizens of Ukraine, foreign nationals and stateless persons who have completed secondary education, to a Medicine programme taught in Ukrainian or English. The page carries no year, and no licence record for Medicine was seen. Confirm against the current admission rules for foreigners and the licence register."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "The programme page carries no year and the only admission rules for foreigners found are labelled 2022. Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded. No official figure was returned: the Ministry of Education's \"Study in Ukraine\" portal reportedly has a cost section for university 52 (figures not returned; no portal page was reproduced on re-check), and the vstup.osvita.ua card (THIRD-PARTY) links to costs without amounts. THIRD-PARTY figure, not recorded: an Indian-market agency page lists a total of USD 37,200 for a six-year \"MBBS\" (year not stated; not searched again on re-check). Publish a fee only after reading a dated official fee schedule (amount, currency, academic year, payment schedule)."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Leads only, not recorded: per the search-tool summary of the official programme page, the Medical Institute admits applicants who have completed secondary education; the official admission rules for foreigners (page labelled 2022, URL slug says 2020; search-tool paraphrase) say foreigners not on state-funded places are enrolled by interview and contract, dated 2022 and possibly stale. The NEET and NMC eligibility rules on an agency page are agency claims, not official requirements. Read the current admission rules for foreign applicants (school subjects, grades, language proficiency, entrance test or interview)."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded. Lead (official Application Instructions page, undated, search-tool paraphrase): original prior-education certificate and a copy (translated into Ukrainian, notarised, legalised), health certificate, medical insurance and photos, for foreign applicants generally, not specifically Medicine. A Ministry \"Study in Ukraine\" portal documents page (not reproduced on re-check) reportedly lists an invitation to study, a passport copy and the education certificate with Ukrainian translation and legalisation. Record documents only from the current official rules."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded. Lead (Ministry \"Study in Ukraine\" portal profile for university 52, search-tool paraphrase; not reproduced on re-check): application windows ending 28 February and 31 October, with no year and no programme or intake stated. Record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Homepage",
+      "url": "https://www.cdu.edu.ua/",
+      "purpose": "Official name and canonical domain, list of faculties and institutes (including the Medical Institute), current notices on teaching format",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Medical Institute",
+      "url": "https://cdu.edu.ua/en/departments/medical-institute.html",
+      "purpose": "Exact name and place of the Medical Institute in the university's structure; admission of foreign nationals and stateless persons",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "Medical Institute: Educational Program",
+      "url": "https://cdu.edu.ua/en/departments/medical-institute/educational-program.html",
+      "purpose": "Medicine: level, award title (\"Doctor of Medicine\" per search summary), specialty code, duration, language of instruction, eligibility of foreign nationals",
+      "snippetDate": "2026-10-12",
+      "note": "Undated; duration, fees, specialty code, licence and accreditation were not in the returned text"
+    },
+    {
+      "label": "Application Instructions (international applicants)",
+      "url": "https://cdu.edu.ua/en/information/for-international-applicants/application-instructions.html",
+      "purpose": "Required documents for foreign applicants (education certificate, translation, notarisation, legalisation, health certificate, insurance, photos)",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "Contact us (international applicants)",
+      "url": "https://cdu.edu.ua/en/information/for-international-applicants/contact-us.html",
+      "purpose": "Center of International Education address and phone; international office e-mail",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "EDEBO register entry (university 101)",
+      "url": "https://registry.edbo.gov.ua/university/101",
+      "purpose": "State registration: official names (Ukrainian and English), ownership, website; then the licensed specialties (whether Medicine, 222 or its current-classifier equivalent, is licensed)",
+      "snippetDate": "2026-10-12",
+      "note": "Registration is not a licence or accreditation; no registry date returned"
+    },
+    {
+      "label": "NAQA",
+      "url": "https://naqa.gov.ua/",
+      "purpose": "NAQA accreditation records for the Medicine programme and any other programme",
+      "snippetDate": "2026-10-12",
+      "note": "Exact register URL not known; find the university's entries"
+    },
+    {
+      "label": "NAQA news: regional seminar in Cherkasy",
+      "url": "https://en.naqa.gov.ua/?p=5860",
+      "purpose": "Dated activity at the university in Cherkasy (4 November 2025 per search summary); not a teaching-format or accreditation statement",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Ministry portal: profile (university 52)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/52",
+      "purpose": "Cross-check only (government portal): confirm that entry 52 is this university; ownership, levels, languages, specialty list, application windows (28 February / 31 October) with their year",
+      "snippetDate": "2026-10-12",
+      "note": "Not reproduced on re-check (a government-restricted search returned no Study in Ukraine page and no code 52); an access or search limitation, not a refutation"
+    },
+    {
+      "label": "Ministry portal: cost (university 52)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/52/cost",
+      "purpose": "Government-listed tuition for foreigners; check for any Medicine line (read before any fee is recorded)",
+      "snippetDate": "2026-10-12",
+      "note": "Figures not returned. Not reproduced on re-check (a government-restricted search returned no Study in Ukraine page and no code 52); an access or search limitation, not a refutation"
+    },
+    {
+      "label": "Ministry portal: documents (university 52)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/52/documents",
+      "purpose": "Application documents for foreign applicants",
+      "snippetDate": "2026-10-12",
+      "note": "Not reproduced on re-check (a government-restricted search returned no Study in Ukraine page and no code 52); an access or search limitation, not a refutation"
+    },
+    {
+      "label": "Ministry portal: preparatory department (university 52)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/52/preparatory-department",
+      "purpose": "Whether a preparatory department for foreigners exists; its fields (\"economic, biological\" per discovery summary), its parent unit (\"Institute of International Education\"), language and duration",
+      "snippetDate": "2026-10-12",
+      "note": "Not reproduced on re-check (a government-restricted search returned no Study in Ukraine page and no code 52); an access or search limitation, not a refutation"
+    },
+    {
+      "label": "vstup.osvita.ua 2025 card",
+      "url": "https://vstup.osvita.ua/y2025/r24/101/",
+      "purpose": "Cross-check only (THIRD-PARTY aggregator): 2025 specialty list and licensed volumes; check whether Medicine (222) appears; compare against the EDEBO register",
+      "snippetDate": "2026-10-12",
+      "note": "Third-party; no figures recorded"
+    },
+    {
+      "label": "Agency page: MBBS (rmcedu.com)",
+      "url": "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/cherkasy-national-university/",
+      "purpose": "Capture only (THIRD-PARTY agency, Indian market): the \"MBBS\", USD 37,200 total, six-year and NMC/WHO approval claims as stated, for comparison against official records; never evidence",
+      "snippetDate": "2026-10-12",
+      "note": "Agency claims; not searched again on re-check; none recorded"
+    },
+    {
+      "label": "Agency page: university profile (rmcedu.com)",
+      "url": "https://www.rmcedu.com/bohdan-khmelnytsky-national-university-cherkasy.html",
+      "purpose": "Capture only (THIRD-PARTY agency): claims as stated; never evidence",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Wikipedia: Cherkasy National University",
+      "url": "https://en.wikipedia.org/wiki/Cherkasy_National_University",
+      "purpose": "Cross-check only (THIRD-PARTY): website (www.cdu.edu.ua), origin in 1921, national-status year (2003; the Encyclopedia of Ukraine says 1998), structure (8 institutes and two faculties)",
+      "snippetDate": "2026-10-12",
+      "note": "Third-party; never evidence"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Dated official statement for 2026–27 on whether, where and how foreign students are taught (in person in Cherkasy, blended or distance). No statement on teaching format was found for any year; the only related official wording is the 2022 admission rule that admission of foreigners \"may be carried out in person and/or remotely\".",
+      "Licence: whether Medicine (222 under the old classifier or its current-classifier equivalent) is licensed for this university, with the licensed volume, from the Ministry or EDEBO licence register. The EDEBO register entry (university 101) records registration only; no licence record for any health specialty was returned.",
+      "NAQA accreditation of the Medicine programme from the NAQA register or the official certificate (none returned); international accreditation (for example by a WFME-aligned agency) kept separate from NAQA accreditation and from recognition (none returned).",
+      "Medicine programme: confirm on the official Educational Program page (undated) the level (Master's per search summary), whether it is a single-cycle (integrated) master's, the exact award title (\"Doctor of Medicine\" per search summary), the specialty code and the duration as printed; the agency's \"MBBS\" and six-year claims are not recorded.",
+      "FEES: Medicine tuition for foreign students for 2026/27 (amount, currency, per-period, payment schedule) from a dated official fee schedule. No official figure was returned (the Ministry portal cost section for university 52 was not reproduced); the agency's USD 37,200 total is not recorded.",
+      "Language of instruction: confirm that both the Ukrainian and the English Medicine tracks (\"Ukrainian or English as per the choice of the Student\") are open to foreign applicants for the current intake.",
+      "Admission rules for foreign applicants for the 2026 intake, including the requirements for Medicine (school subjects, grades, language proficiency, entrance test or interview); the official rules found are labelled 2022 (URL slug says 2020) and describe enrolment by interview and contract.",
+      "Required documents for foreign applicants under the current rules (the official Application Instructions page is undated and paraphrased only).",
+      "Application windows and intake dates for foreign applicants: the Ministry portal lead (28 February and 31 October, not reproduced on re-check) gives no year and no programme or intake.",
+      "Official name in English and Ukrainian, canonical website (cdu.edu.ua or www.cdu.edu.ua) and founding year (third-party sources: origin in 1921 as an institute of people's education; national status 2003 per Wikipedia, 1998 per the Encyclopedia of Ukraine).",
+      "Official postal address (the only lead is the Center of International Education address, 81 Shevchenko Blvd., Cherkasy, as paraphrased) and current international office contacts, including whether the \"Center of International Education\" and the \"Institute of International Education\" named on the Ministry portal are the same unit.",
+      "Whether Ministry \"Study in Ukraine\" portal entry 52 is this university (its profile, cost, documents, preparatory and summer-school pages were not reproduced on re-check).",
+      "Preparatory department for foreigners (lead from the Ministry portal only, not reproduced): existence, fields (\"economic, biological\"), language of instruction, English track, duration, fee with year, certificate and progression wording verbatim.",
+      "Structure: the exact official name of the Medical Institute and its place in the university (Wikipedia: 8 institutes and two faculties; a \"10 faculties\" claim was not reproduced).",
+      "Accommodation: hostel availability and published prices with year (no information found).",
+      "Recognition: evidence-backed statements from destination-country regulators only. The agency's NMC and WHO approval claim is not recognition; no WDOMS listing was returned (either way).",
+      "Name collisions: never attribute pages of Yuriy Fedkovych Chernivtsi National University (also abbreviated ChNU, chnu.edu.ua), Cherkasy State Technological University (chdtu.edu.ua) or Cherkasy Medical Academy to this university."
+    ]
+  }
+}

@@ -84,6 +84,9 @@ for (const r of hidden) {
 }
 // ---- research previews (N25)
 const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return null; } };
+// Short names of every listed university (published or research preview), longest first, as text and HTML-escaped.
+const listedNames = [...published, ...previewed].map((x) => x.shortName).filter((x) => typeof x === 'string' && x.length >= 6).sort((a, b) => b.length - a.length);
+const withoutListedNames = (t) => listedNames.reduce((acc, n) => acc.split(n).join(' ').split(escapeHtml(n)).join(' '), t);
 const prodText = (() => { const out = []; (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : /\.(html|xml|txt|js|css|json|webmanifest)$/.test(f) && out.push({ p: p.replace(DIST, ''), h: readFileSync(p, 'utf8') }); } })(DIST); return out; })();
 const dirPage = prodHtml.find((x) => x.p === '/universities/index.html');
 const appliesPage = prodHtml.find((x) => x.p === '/apply/index.html')?.h ?? '';
@@ -130,8 +133,12 @@ for (const r of previewed) {
   for (const a of r.alternativeNames ?? []) add('alternative name', a);
   for (const q of r.verification.openQuestions ?? []) add('open question', q);
   for (const f of dec.failures) add('publication failure message', f.message);
-  for (const { p, h: text } of prodText) for (const [label, v] of forbidden) {
-    if (text.includes(v) || text.includes(escapeHtml(v))) fail(`${p}: ${label} of research preview ${r.slug} leaked: "${v.slice(0, 70)}"`);
+  // A listed university's displayed name may contain another record's withheld city ("Kyiv" in "Taras Shevchenko National
+  // University of Kyiv"); that name is public by design, so occurrences inside listed names are removed before searching.
+  // Anything outside a listed name still fails (proved below with a planted sentence).
+  for (const { p, h: text } of prodText) {
+    const rest = withoutListedNames(text);
+    for (const [label, v] of forbidden) if (rest.includes(v) || rest.includes(escapeHtml(v))) fail(`${p}: ${label} of research preview ${r.slug} leaked: "${v.slice(0, 70)}"`);
   }
   ok();
   for (const { p, h: html } of prodHtml) for (const ld of ldBlocks(html)) if (ld.includes(r.shortName) || (r.officialName.value && pr.officialName?.show !== true && ld.includes(r.officialName.value))) fail(`${p}: JSON-LD names research preview ${r.slug}`);
@@ -139,6 +146,16 @@ for (const r of previewed) {
   if (dirPage && (!dirPage.h.includes(`/universities/${r.slug}/`) || !new RegExp(`<article[^>]*data-slug="${r.slug}"[^>]*data-status="preview"`).test(dirPage.h))) fail(`/universities/: research preview ${r.slug} not listed as a preview card`);
   if (!new RegExp(`<option value="${r.slug}"[^>]*>[^<]*\\(not yet verified\\)</option>`).test(appliesPage)) fail(`/apply/: research preview ${r.slug} not offered, labelled "not yet verified"`);
   ok();
+}
+// Control for the listed-name exemption: a withheld city in an ordinary sentence is still found, and only inside a name is not.
+{
+  const longNamed = previewed.find((x) => listedNames.some((n) => n !== x.shortName && typeof x.city === 'string' && x.city.length >= 4 && n.includes(x.city)));
+  if (longNamed) {
+    const city = longNamed.city;
+    const host = listedNames.find((n) => n !== longNamed.shortName && n.includes(city));
+    if (!withoutListedNames(`Study at ${host}.`).includes(city) && withoutListedNames(`Our office is in ${city}.`).includes(city)) ok();
+    else fail(`listed-name exemption control: "${city}" handled wrongly (inside "${host}" or in a plain sentence)`);
+  }
 }
 // Every built profile page is a published profile or a research preview; a hidden record's short name appears nowhere.
 for (const d of existsSync(join(DIST, 'universities')) ? readdirSync(join(DIST, 'universities')).filter((x) => existsSync(join(DIST, 'universities', x, 'index.html'))) : []) {

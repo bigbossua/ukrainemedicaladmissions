@@ -1,0 +1,692 @@
+{
+  "slug": "sumy-state-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Sumy State University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Snippets (search-tool summaries): the name \"Sumy State University\" (SumDU; \"SSU\" on SumDU news pages) is used consistently on official sumdu.edu.ua subdomains (med., int., study., job.), and the Ministry of Education's \"Study in Ukraine\" portal (government) lists Sumy State University as entry ID 74 with \"Ownership: State\". The Ukrainian name «Сумський державний університет» appeared only in a THIRD-PARTY headline (zaxid.net). Medical teaching sits in the university's Medical Institute, a unit of the university and not a separate university; the institute's full official name is unconfirmed (the med.sumdu.edu.ua/en homepage title was truncated to \"Academic and Research ...\"). An agency site (moksh16.com, THIRD-PARTY) uses \"Sumy State Medical University\"; whether it means SumDU is unresolved. Confirm the full official name, in English and Ukrainian, on the official homepage."
+  },
+  "shortName": "Sumy State University",
+  "alternativeNames": [
+    "SumDU",
+    "SSU",
+    "Сумський державний університет",
+    "Medical Institute of Sumy State University",
+    "SumDU Medical Institute",
+    "Sumy State University Academic and Research Medical Institute (unconfirmed form; only a truncated official page title \"Academic and Research\" was seen)",
+    "Sumy State Medical University (third-party agency name, moksh16.com; unresolved whether it means SumDU)"
+  ],
+  "status": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Not recorded: whether and how the university operates for foreign students in 2026–27 is unresolved (adversarial re-check, 2026-10-12). Leads: an official 2022 rector interview says teaching resumed on 1 April 2022 in remote format, deans and institute directors decide the format (online or mixed) depending on where students are, there are eight shelters across the campuses, and subjects such as medicine and dentistry are scheduled near a safe place; a SumDU department page announces an international conference in Sumy on 12 May 2026 (institutional activity, nothing about teaching). THIRD-PARTY reports (thepienews.com, censor.net, komersant.ua; paraphrase): in 2022 about 1,700 international students were evacuated via Poltava to western Ukraine and teaching moved online; the campus was reportedly hit in September 2023, April 2025 and August 2025, and a strike on 20 September (year not stated, likely 2025) damaged the main building. No relocation statement found. Record the status only from a dated official statement."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found: no result gave a dated 2025–26 or 2026–27 statement on where or how the Medical Institute teaches (in person, blended or distance) or on any relocation. The official wording found dates from 2022 (rector interview: remote teaching from 1 April 2022; March 2022 news on foreign students in the dormitories) or is undated (Academic Council item on activity under martial law, likely 2022, date and content not returned) — out of date. An undated SumDU department page (\"the department switches to distance learning\" under martial law; attribution uncertain) is not specific to the Medical Institute. A November 2025 \"blended learning during martial law\" result concerns Sumy National Agrarian University, a different institution, and must not be attributed to SumDU. Quote the current official statement verbatim with its date."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year. The latest official evidence is from 2022 (remote teaching from 1 April 2022; online or mixed depending on where students are); no 2025–26 or 2026–27 statement found."
+  },
+  "city": "Sumy",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "CONFLICT — nothing recorded. Leads differ: the Ministry of Education's \"Study in Ukraine\" portal (government, entry ID 74, search-tool paraphrase) gives a Sumy address on Rymskoho-Korsakova Street, ZIP 40007; the IAU database (THIRD-PARTY) gives \"Mykoly Sumtsova Street, 2\"; job.sumdu.edu.ua (official subdomain, undated, paraphrase) gives the Medical Institute's address as 9 Academichna Street, Sumy. Record the university's postal address from the official contacts page."
+  },
+  "website": {
+    "value": "https://sumdu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Snippets: many results on sumdu.edu.ua and its subdomains (int., study., med., inter.med., news., t1., job.) carry SumDU institutional content, and the rector interview is mirrored at sumdu.edu.ua/en/news/. Consistent, but not proof of domain ownership: the Ministry portal contacts page and the DEQAR record did not quote a website address. Confirm the canonical domain on the official site and, if possible, on a government listing."
+  },
+  "internationalOffice": {
+    "value": {
+      "email": "info@study.sumdu.edu.ua",
+      "url": "https://study.sumdu.edu.ua/en/about-us/about-the-department.html"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Snippets (search-tool summaries, undated): the international office's admission page (int.sumdu.edu.ua) says applicants send a letter to info@study.sumdu.edu.ua or use \"Apply On-Line\"; the Department of International Education (study.sumdu.edu.ua) oversees the preparatory programme and a Linguistic Center. Phone leads not recorded (2022 news item, may be out of date): International Students Office +38 0542 337114, International Relations Office +38 0542 665093. Foreign-student affairs contact on the residences page: 7 Zamostyanska Street, Residence No. 3, Room 104. Record contacts only as printed on the current official page."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "The university's founding year is not in any snippet. Lead for the medical unit only (official history page, quoted by the search tool): \"Sumy Medical Institute was founded in 1992 as the Medical Faculty of Sumy State University\" and \"In autumn 2005, the Medical Institute of SumDU was established on the basis of the Medical Faculty\". These date the Medical Institute, not the university. Record the university's founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. A multi-field state university in Sumy, Ukraine, whose Medical Institute (a unit of the university, not a separate university) has taught foreign students; undated official-page leads say Medicine is taught in English and Ukrainian. Draft record built from search-snippet leads on 2026-10-12. Sumy is war-affected and the latest official statement found on teaching format dates from 2022, so whether, where and how foreign students are taught in 2026–27 is an open question. No fee, deadline or intake date is recorded. Every field below is awaiting verification against the official pages listed under research references and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate. Nothing recorded. Kept strictly separate: (1) State registration (EDEBO): no register entry surfaced (access limitation, not evidence). (2) Programme licence: no licence document or EDEBO licence record surfaced. (3) National programme accreditation (NAQA): no NAQA decision for Medicine (222) or Dentistry (221) found; NAQA's note on the NAQA–IAAR pilot project says both agencies would reach separate decisions under their own national rules, and SumDU news says the January 26–28, 2022 expert visit had NAQA assess compliance with Ukrainian rules. (4) International accreditation: a university-hosted certificate (search-tool summary) records an accreditation of the Medicine (222) Master's programme by the Independent Agency for Accreditation and Rating (IAAR), Kazakhstan, dated 22 April 2022 and valid through 21 April 2027, also listed in EQAR/DEQAR (THIRD-PARTY European register) as a voluntary programme accreditation; not checked at IAAR, evidenced for the Medicine Master's only (none found for Dentistry or Preventive Medicine), and is NOT NAQA accreditation and NOT recognition. (5) A THIRD-PARTY listing (PhDportal, older) says the State Accreditation Committee gave the university \"level IV\" accreditation — a legacy institutional status, not a licence or programme accreditation; dated and unverified."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator (for example India's National Medical Commission). Record it only from a tier-4 page on a recognition-authority host the owner has listed (N24 b; none listed yet), quoting what that page says, with its date. A World Directory of Medical Schools (WDOMS) listing is a directory entry, not recognition; a university's own claim of WHO, NMC or ECFMG recognition is not recognition; an international accreditation (here IAAR) is not recognition; institutional registration (EDEBO) and programme accreditation (NAQA) are separate claims. Claims seen, none recorded: the university-hosted IAAR certificate says \"Recognised by the World Federation of Medical Education (WFME)\" (most likely IAAR's own status as an agency; not checked at WFME); an official history page says that in 2009 the Medical Institute \"was included to the list of universities database of the World Health Organization\" (a directory-listing claim); another result, not identified, claims its graduate programmes are \"accredited by the Educational Commission for Foreign Medical Graduates (USA)\"; the university says the accreditation \"proves that the Institute offers high-quality training of specialists at European standards\" (self-description); SumDU news gives the NAQA–IAAR pilot's aim as accrediting programmes \"in order to recognize them not only in Ukraine but also abroad\" (an aim, not recognition by any regulator); an agency site (THIRD-PARTY) lists \"WHO, NMC, ECFMG and FAIMER recognition\" — promotional, not evidence. No WDOMS listing was checked and no destination-country regulator statement was found. Never imply a right to practise in any country."
+  },
+  "accommodation": {
+    "value": "Foreign students live in residences No. 3, 4 and 5.",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Snippet (residences page, undated, search-tool paraphrase): foreign students live in residences No. 3, 4 and 5; residence administration in the Main Building, Room 413. No fees or dates. The page is undated, so it may predate the reported 2023–2025 strikes on the campus; confirm which residences are in use now. A THIRD-PARTY agency figure for accommodation is not recorded. Record only published hostel details (availability, price, year)."
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine / General Medicine (specialty 222)",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool summaries: the int.sumdu.edu.ua Medical Institute page lists Medicine among Master's programmes; the 2023-2024 foreigners' price list on study.sumdu.edu.ua lists the medical field at Master level (the only part of that PDF the re-check supported). Whether the university classifies it as a single-cycle (integrated) master's is not stated; read the programme page."
+      },
+      "specialtyCode": {
+        "value": "222",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool summaries: Medicine / General Medicine, specialty 222; a 2024 Medical Institute invitation page on a department sub-site (physiology.med.sumdu.edu.ua) lists first-year specialty 222 Medicine; the IAAR certificate covers the Medicine (222) Master's."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Award title not in any snippet. Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term. An agency page says \"6-year MBBS\"; that is not the university's term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded: a first-round summary of the med.sumdu.edu.ua \"Our specialties\" page described a six-year General Medicine programme, but the re-check did not reproduce it (only an agency page stated \"6-year MBBS\"). Record whole years only if the official programme page states them."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded: the six-year lead from the med.sumdu.edu.ua \"Our specialties\" page was not reproduced on re-check. Record the duration exactly as the university prints it on the official programme page."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool summaries (paraphrase, undated): the int.sumdu.edu.ua Medical Institute page says the academic process is held in Ukrainian and English and lists English-taught levels; the study.sumdu.edu.ua Medical Institute page says Master's students in Medicine are grouped by chosen language. A THIRD-PARTY profile (DevelopmentAid, updated May 2025) says Medicine is taught in English. Confirm that both tracks are open to foreign applicants for the current intake."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement. The latest official lead is the 2022 rector interview (remote teaching from 1 April 2022, format decided by deans and institute directors depending on where students are) — out of date."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Leads (search-tool summaries): the 2023-2024 foreigners' price list (study.sumdu.edu.ua) has a medicine row at Master level (figure not returned); the international office's undated admission page for foreign applicants (int.sumdu.edu.ua, Master's) describes how foreign citizens are enrolled; the Medical Institute page on study.sumdu.edu.ua says admission to the Master's in Medicine follows conclusion of a contract. None is dated for the 2026 intake and no official 2025 or 2026 admission rules for foreigners were found; confirm against the current rules."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No dated admission rules for foreign applicants found: the admission page is undated and cites MES order No. 1541 of 01.11.2013; the 2024 Medical Institute invitation page refers to Ukrainian NMT scores (which may apply to domestic applicants only). Record the intake from the current official rules."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded. The official foreigners' price list for 2023-2024 (study.sumdu.edu.ua) is out of date and its medicine figure was not returned; an official 2015-2016 list is outdated. THIRD-PARTY figures are unverified, undated and conflict: Shiksha \"USD 4,300\" first year and an unattributed agency \"Total MBBS Fees | USD: $7,500\" (per year or whole programme not stated; neither reproduced on re-check); selectyouruniversity.com \"USD 4,000 and USD 4,500 per year\". None is recorded. A 2025 zaxid.net headline says the university approved tuition for 2025 entrants (no figures; likely domestic). Publish a fee only after reading a dated official fee schedule (amount, currency, academic year, payment schedule)."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Leads only, not recorded (international office admission page, undated; it cites MES order No. 1541 of 01.11.2013, so it may be out of date; search-tool summary): language skills \"at a level sufficient for learning the material\"; \"foreign citizens are enrolled on the interview results\". No current entrance test, English-proficiency evidence or minimum grade found. Read the current admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Leads only, not recorded (same undated admission page; search-tool summary): application form; originals and copies of prior education documents; birth certificate; passport copy; a medical certificate \"issued within two months before entering Ukraine\" that \"must be affirmed by an official health authority of the country from which the foreign citizen came\". Record documents only from the current official rules."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No application deadline found. The only timing lead is an undated entry window on the admission page (\"foreign citizens should enter the country from 15 September till 15 November\"), which is not an application deadline and may not apply to the current intake. No date is recorded; record windows only from the current official rules, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "dentistry",
+      "name": "Dentistry / Stomatology (specialty 221)",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Search-tool summary (paraphrase, undated): the int.sumdu.edu.ua Medical Institute page lists Dentistry among Master's programmes. Whether the university classifies it as a single-cycle (integrated) master's must be read on the programme page."
+      },
+      "specialtyCode": {
+        "value": "221",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (official domain, 2026-10-12) — NOT verified; read the official page before publishing. Snippet: a 2024 Medical Institute invitation page (physiology.med.sumdu.edu.ua) lists first-year specialty 221 Dentistry."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded: the int.sumdu.edu.ua Medical Institute page says the academic process is held in Ukrainian and English (paraphrase), but the language of this programme was not separately confirmed."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement. The latest official lead is the 2022 rector interview (remote teaching from 1 April 2022, format decided by deans and institute directors depending on where students are) — out of date."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No admission lead specific to foreign applicants for Dentistry: the int.sumdu.edu.ua Medical Institute page (international office site) lists Dentistry among Master's programmes (paraphrase), and a 2024 invitation page lists 221 Dentistry with Ukrainian NMT conditions (which may apply to domestic applicants only). No fee line or admission statement for foreign applicants to Dentistry was returned, and the IAAR accreditation is evidenced for Medicine only. Read the official pages before moving it to programmes[]."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    },
+    {
+      "id": "preventive-medicine",
+      "name": "Preventive Medicine (Prophylactic Medicine)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in any snippet; read it from the official programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Specialty code not stated in any snippet; read it from the official programme page."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Confirm the exact award title from the official programme page or diploma supplement. Never \"MBBS\", \"BSN\" or \"MSN\" unless the university itself uses the term."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Duration not stated in any snippet; read it from the official programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as the university prints it (e.g. \"5 years 10 months\")."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement. The latest official lead is the 2022 rector interview (remote teaching from 1 April 2022, format decided by deans and institute directors depending on where students are) — out of date."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Only listed among the Medical Institute's specialties (\"General Medicine, Preventive Medicine, Dentistry (Stomatology)\") on med.sumdu.edu.ua (search-tool summary). Level, specialty code, language and availability to foreign applicants are not stated."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the intake the programme-level claims refer to once an official dated page has been read."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No official fee figure is recorded. Publish a fee only after reading the official fee page: amount, currency, academic year, payment schedule."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No deadline is recorded. Record deadlines only from the official admissions page for the current intake, with the year."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "preparatory-department",
+      "name": "Preparatory department (Department of International Education)",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated in any snippet."
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No snippet states an English-language preparatory track."
+      },
+      "durationText": {
+        "value": "10 months",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (Ministry of Education \"Study in Ukraine\" portal, a government source, 2026-10-12) — NOT verified; read the official page before publishing. Undated portal page (entry ID 74; search-tool paraphrase): a \"10-month\" programme. Not yet seen on the university's own page."
+      },
+      "subjects": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Subject list not stated in any snippet."
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated. The Ministry portal (undated, paraphrase) says completers receive a \"state-recognised certificate\" for admission to Ukrainian universities; the certificate name must be read on the official page."
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No verbatim progression wording found. Paraphrase only (Ministry portal, undated): completers receive a state-recognised certificate for admission to Ukrainian universities. Quote the official wording verbatim after reading the page."
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not stated."
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No start date found."
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee snippet found. Record a fee only from the official fee page, with the academic year."
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the official eligibility wording verbatim."
+      },
+      "note": "Location leads: the Ministry portal (undated) places the preparatory department in dormitory No. 3, 7 Zamostyanska Street (this matches SumDU's own residences page, which supports portal entry 74 being SumDU); the official preparatory page (study.sumdu.edu.ua, undated) gives Building K-2, Room 115 and says the Department of International Education oversees the programme and a Linguistic Center."
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Homepage",
+      "url": "https://sumdu.edu.ua/",
+      "purpose": "Canonical domain, official name, contacts, current notices on teaching format",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Admission for foreign applicants (international office)",
+      "url": "https://int.sumdu.edu.ua/en/study/251-master.html",
+      "purpose": "Admission requirements, documents, entry window and application route for foreigners (check date and currency)",
+      "snippetDate": "2026-10-12",
+      "note": "Undated; cites MES order No. 1541 of 01.11.2013"
+    },
+    {
+      "label": "Foreigners' price list 2023-2024 (PDF)",
+      "url": "https://study.sumdu.edu.ua/images/Prices%202023-2024/Prices_Eng_2023-2024.pdf",
+      "purpose": "Medicine line for foreigners; also find the 2025-2026 / 2026-2027 equivalent on study.sumdu.edu.ua — read before any fee is recorded",
+      "snippetDate": "2026-10-12",
+      "note": "2023-2024 — out of date; the medicine figure was not returned; no figure recorded"
+    },
+    {
+      "label": "Medical Institute (Department of International Education site)",
+      "url": "https://study.sumdu.edu.ua/en/study/institutes-and-faculties/med.html",
+      "purpose": "Medical Institute programmes for foreigners, contract-based admission, language groups, international accreditation note",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "Medical Institute (international office site)",
+      "url": "https://int.sumdu.edu.ua/en/welcome-to-sumdu/academic-structure/53-medical-institute.html",
+      "purpose": "Official Medical Institute description, programme list by level and language, foreign student numbers (with date)",
+      "snippetDate": "2026-10-12",
+      "note": "Undated; the first-round reading that Nursing and Public Health bachelor programmes are listed here was not reproduced"
+    },
+    {
+      "label": "Medical Institute: our specialties",
+      "url": "https://med.sumdu.edu.ua/en/our-specialties/",
+      "purpose": "Specialties and durations (General Medicine, Preventive Medicine, Dentistry)",
+      "snippetDate": "2026-10-12",
+      "note": "The six-year duration lead was not reproduced on re-check"
+    },
+    {
+      "label": "Medical Institute English homepage",
+      "url": "https://med.sumdu.edu.ua/en",
+      "purpose": "Full official name of the Medical Institute (page title seen only truncated: \"Academic and Research ...\")",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Medical Institute history",
+      "url": "https://med.sumdu.edu.ua/en/history-of-institute-and-development/",
+      "purpose": "Medical Faculty 1992, Medical Institute 2005; the 2009 WHO-database claim (a directory claim, not recognition)",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Medical Institute contacts (job.sumdu.edu.ua)",
+      "url": "https://job.sumdu.edu.ua/en/documents/medical-institute/",
+      "purpose": "Medical Institute address and phone",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "International accreditation expertise",
+      "url": "https://med.sumdu.edu.ua/en/international-accreditation-expertise/",
+      "purpose": "University's account of the IAAR/NAQA pilot accreditation",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "IAAR certificate for the Medicine Master's (PDF, university-hosted)",
+      "url": "https://inter.med.sumdu.edu.ua/wp-content/uploads/2022/09/sumdu_master_medicine_certificate-international-accreditation.pdf",
+      "purpose": "IAAR certificate: issue date, validity, scope (Medicine 222 Master's), WFME wording",
+      "snippetDate": "2026-10-12",
+      "note": "International accreditation — not NAQA accreditation and not recognition; check at IAAR"
+    },
+    {
+      "label": "News: NAQA–IAAR pilot accreditation completed",
+      "url": "https://news.sumdu.edu.ua/en/en-news/12371-accreditation-assessment-of-the-educational-program-of-the-medical-specialty-according-to-the-pilot-project-of-the-independent-international-agency-national-agency-for-quality-assurance-in-higher-education-and-sumdu-is-completed.html",
+      "purpose": "Pilot project details, expert visit January 26-28, 2022",
+      "snippetDate": "2026-10-12",
+      "note": "2022"
+    },
+    {
+      "label": "EQAR record of the IAAR decision",
+      "url": "https://www.eqar.eu/qa-results/search/by-report/report/?id=77762",
+      "purpose": "Cross-check only: EQAR/DEQAR record of the IAAR programme accreditation decision (22/04/2022)",
+      "snippetDate": "2026-10-12",
+      "note": "European register (third-party), not a Ukrainian authority and not a recognition body"
+    },
+    {
+      "label": "DEQAR institution record",
+      "url": "https://data.deqar.eu/institution/3364",
+      "purpose": "Cross-check only: DEQAR institution record (identifier UA-national 168, list of accreditation reports)",
+      "snippetDate": "2026-10-12",
+      "note": "Third-party register; not re-checked in the second round"
+    },
+    {
+      "label": "NAQA note on the NAQA–IAAR pilot",
+      "url": "https://en.naqa.gov.ua/?p=1739",
+      "purpose": "NAQA statement on the pilot; find any NAQA accreditation decision for SumDU 222 and 221",
+      "snippetDate": "2026-10-12"
+    },
+    {
+      "label": "Ministry portal: contacts (university 74)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/74/contacts",
+      "purpose": "Government listing: ownership, official name, website, international department contacts, address",
+      "snippetDate": "2026-10-12",
+      "note": "Undated; its address (Rymskoho-Korsakova Street, 40007) conflicts with other leads; no website address quoted"
+    },
+    {
+      "label": "Ministry portal: preparatory department (university 74)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/74/preparatory-department",
+      "purpose": "Government portal: preparatory department duration, certificate, address",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "Ministry portal: university 150",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/150",
+      "purpose": "Resolve which institution this entry is (also /university/150/contacts)",
+      "snippetDate": "2026-10-12",
+      "note": "Unresolved; do not treat it as SumDU"
+    },
+    {
+      "label": "Residences for foreign students",
+      "url": "https://int.sumdu.edu.ua/en/life-ssu/student-campus/residences3",
+      "purpose": "Residences for foreign students (No. 3, 4, 5), contacts; look for fees",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "Preparatory department",
+      "url": "https://study.sumdu.edu.ua/en/preparatory-department.html",
+      "purpose": "Preparatory department and Department of International Education details",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "About the Department of International Education",
+      "url": "https://study.sumdu.edu.ua/en/about-us/about-the-department.html",
+      "purpose": "International department role and contacts; foreign student numbers (\"About 1000 foreign citizens from 50 countries\")",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    },
+    {
+      "label": "News: rector interview on wartime operation",
+      "url": "https://news.sumdu.edu.ua/en/en-news/12464-sumdu-is-consolidated-and-aimed-at-further-development-rector-vasyl-karpusha.html",
+      "purpose": "Wartime teaching format (remote from 1 April 2022, shelters, medicine and dentistry near shelters)",
+      "snippetDate": "2026-10-12",
+      "note": "2022 — out of date"
+    },
+    {
+      "label": "News: Academic Council on activity under martial law",
+      "url": "https://news.sumdu.edu.ua/en/en-news/12492-the-academic-council-of-sumdu-has-considered-the-issue-of-university-activities-in-terms-of-martial-law.html",
+      "purpose": "Academic Council decision on martial-law operation (date and content)",
+      "snippetDate": "2026-10-12",
+      "note": "Likely 2022; content not returned"
+    },
+    {
+      "label": "News: how foreign students live in war",
+      "url": "https://med.sumdu.edu.ua/en/how-foreign-students-live-in-war/",
+      "purpose": "Foreign-student wartime situation (as of 5 March 2022)",
+      "snippetDate": "2026-10-12",
+      "note": "2022 — out of date"
+    },
+    {
+      "label": "University hospital",
+      "url": "https://study.sumdu.edu.ua/en/students-life/university-hospital.html",
+      "purpose": "Clinical base statement",
+      "snippetDate": "2026-10-12",
+      "note": "Undated"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Dated official statement for 2026–27 on whether, where and how foreign students are taught (in person in Sumy, blended or distance), including any relocation. The latest official teaching-format evidence is the 2022 rector interview (remote from 1 April 2022); third-party reports describe the 2022 evacuation of international students and strikes on the campus in 2023 and 2025.",
+      "Admission rules for foreign applicants for the 2026 intake: programmes open to foreigners, entrance test or interview, English-proficiency evidence, minimum grades (the admission page found is undated and cites MES order No. 1541 of 01.11.2013; no official 2025 or 2026 rules for foreigners were found).",
+      "Official name in English and Ukrainian (the Ukrainian name was seen only in a third-party headline), the Medical Institute's full official name, and the canonical website (no government source quotes the domain).",
+      "Official postal address: the Ministry portal (Rymskoho-Korsakova Street, 40007), IAU (Mykoly Sumtsova Street, 2) and job.sumdu.edu.ua for the Medical Institute (9 Academichna Street) differ.",
+      "Current international office contacts (the phone numbers found date from 2022).",
+      "FEES: current tuition for foreign Medicine and Dentistry students for 2026/27 (amount, currency, per-period, payment schedule); the medicine figure of the official 2023-2024 list was not returned and third-party figures conflict.",
+      "Application windows and intake dates for foreign applicants for the current year (only an undated \"15 September till 15 November\" entry window found).",
+      "Required documents for foreign applicants under the current rules (the list found is undated).",
+      "Medicine: exact award title, whether it is a single-cycle (integrated) master's, duration as printed (the six-year lead was not reproduced) and the language tracks open to foreigners for the current intake.",
+      "Registration and licence: EDEBO register entry and licensed specialties (222 Medicine, 221 Dentistry) — none surfaced.",
+      "NAQA accreditation of Medicine (222) and Dentistry (221) from the NAQA register (none found). The IAAR accreditation of the Medicine Master's (22 April 2022 to 21 April 2027 per a search summary of the university-hosted certificate) is an international accreditation: check it at IAAR and keep it separate from NAQA accreditation and from recognition.",
+      "Dentistry: whether foreign applicants are admitted, in which language, duration and award title.",
+      "Preventive Medicine: level, specialty code, language and eligibility of foreign applicants.",
+      "Nursing and Public Health bachelor programmes: a first-round summary listed them among English-taught levels on the int.sumdu Medical Institute page, but the re-check did not reproduce it; confirm whether they exist and admit foreign applicants.",
+      "Preparatory department: language of instruction, English track, subjects, certificate name, progression wording verbatim, start date, fee with year (the 10-month duration rests on the Ministry portal only).",
+      "Accommodation: which residences for foreign students are in use after the reported campus strikes, and published prices with year.",
+      "Number of foreign students is inconsistent and mostly undated (official pages, undated: about 800 from 56 countries and about 1,000 from 50 countries; official, as of March 2022: about 1,700 in the dormitories; third-party: about 1,300 to 1,900, including about 1,400 in a profile updated May 2025).",
+      "Whether the agency name \"Sumy State Medical University\" refers to SumDU, and which institution Ministry portal entry 150 is.",
+      "IAAR's WFME recognition status (check on WFME's own site); evidence-backed recognition statements only."
+    ]
+  }
+}

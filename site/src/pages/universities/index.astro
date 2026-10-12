@@ -51,7 +51,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
       {/* Hidden until the directory script runs: without JavaScript every university is listed anyway. */}
       <form class="filters" data-filters aria-label="Search the directory" role="search" hidden>
         <label class="field search">Search by university name
-          <input type="search" name="q" data-search placeholder="e.g. Odesa, Kharkiv" autocomplete="off" />
+          <input type="search" name="q" data-search placeholder="e.g. Bukovinian, Pirogov" autocomplete="off" />
         </label>
         {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
           <label class="field">Show
