@@ -10,11 +10,11 @@
 //    --no-browser is given) and requires: no FAIL at all, and "not checked" (SKIP) only for the checks in LOCAL_LIMITS,
 //    which are impossible without the production DNS and certificate.
 // 4. Mutates copies of the served output (inline script, also behind data-src, inline handler, javascript: URL, missing
-//    or weakened CSP, CSP only on success, Ternopil page answering 200 or 301, a draft card, a link or select option for
-//    the unpublished Ternopil profile, a missing empty state, a stray profile in the sitemap, the handler answering 200
-//    to GET, private storage reachable, a directory listing, staging URLs, legal placeholders) and requires
-//    verify-live to report each one; a positive control (a release that genuinely publishes the Ternopil profile) must
-//    pass the profile checks.
+//    or weakened CSP, CSP only on success, Ternopil page answering 200 or 301 or redirecting elsewhere, a draft card, a link
+//    or select option for the unpublished Ternopil profile, a link to another unpublished profile, a missing empty state,
+//    a stray profile in the sitemap, the handler answering 200 to GET, private storage reachable, a directory listing,
+//    staging URLs, legal placeholders) and requires verify-live to report each one; a positive control (a release that
+//    genuinely publishes the Ternopil profile) must pass the profile checks.
 // 5. Checks that no run stored a record in the temporary private directory (verify-live's POSTs store nothing).
 // Prints "verify-live-selftest: N checks, M failures"; exit code 1 on any failure. Run after "npm run build".
 // Usage (from site/): node tests/verify-live-selftest.mjs [--no-browser] [--dist <built site>]   (default dist/)
@@ -170,14 +170,20 @@ const MUTATIONS = [
   { name: 'inline script hidden behind a data-src attribute', apply: (d, n) => edit(d, n, 'services/index.html', (s) => s.replace('</body>', '<script data-src="/_astro/x.js" data-type="application/ld+json">void 0</script></body>')), fails: ['inline script'] },
   { name: 'inline event handler', apply: (d, n) => edit(d, n, 'contact/index.html', (s) => s.replace('<a ', '<a onclick="return false" ')), fails: ['inline event handler'] },
   { name: 'javascript: URL', apply: (d, n) => edit(d, n, 'faq/index.html', (s) => s.replace('<a href="/', '<a href="javascript:void(0)" data-x="/')), fails: ['javascript: URL'] },
-  { name: 'CSP header missing', apply: (d, n) => edit(d, n, '.htaccess', dropLine(/Content-Security-Policy/)), fails: ['CSP header', 'CSP on 404 response', 'security header'] },
+  { name: 'CSP header missing', apply: (d, n) => edit(d, n, '.htaccess', dropLine(/Content-Security-Policy/)), fails: ['CSP header', 'CSP on 404 response', 'CSP on handler response', 'security header'] },
   { name: 'CSP sent only on success (Header set, not always)', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace('Header always set Content-Security-Policy', 'Header set Content-Security-Policy')), fails: ['CSP on 404 response'], notFails: ['CSP header'] },
   { name: "CSP weakened with 'unsafe-inline'", apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace("script-src 'self'", "script-src 'self' 'unsafe-inline'")), fails: ['CSP header', 'CSP on 404 response'] },
-  { name: 'Ternopil page answers 200', manifest: 'original', apply: (d, n) => { edit(d, n, '.htaccess', dropLine(/ternopil-national-medical-university/)); edit(d, n, `universities/${TERNOPIL}/index.html`, () => profilePage(d)); }, fails: ['Ternopil profile URL'] },
+  // failsAt: [check, URL suffix, observed pattern]: the FAIL must name that URL and that observation, so a mutation cannot
+  // count as caught through a side effect (here the no-slash URL's DirectorySlash 301 would hide a lost "never 200" check).
+  { name: 'Ternopil page answers 200', manifest: 'original', apply: (d, n) => { edit(d, n, '.htaccess', dropLine(/ternopil-national-medical-university/)); edit(d, n, `universities/${TERNOPIL}/index.html`, () => profilePage(d)); }, fails: ['Ternopil profile URL'], failsAt: [['Ternopil profile URL', `/universities/${TERNOPIL}/`, /^HTTP 200\b/]] },
   { name: 'Ternopil answers 301 instead of 302', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace(`RedirectMatch 302 ^/universities/${TERNOPIL}`, `RedirectMatch 301 ^/universities/${TERNOPIL}`)), fails: ['Ternopil profile URL'] },
+  { name: 'Ternopil 302 goes to the home page, not /universities/', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace(`${TERNOPIL}/?$ /universities/`, `${TERNOPIL}/?$ /`)), fails: ['Ternopil profile URL'], failsAt: [['Ternopil profile URL', `/universities/${TERNOPIL}/`, /^HTTP 302 → https?:\/\/[^/]+\/$/], ['Ternopil profile URL', `/universities/${TERNOPIL}`, /^HTTP 302 → https?:\/\/[^/]+\/$/]] },
   { name: '"Verification in progress" card on /universities/', apply: (d, n) => edit(d, n, 'universities/index.html', (s) => s.replace(/(data-list[^>]*>)/, '$1<article class="card"><span class="badge badge-pending">Draft — verification in progress</span></article>')), fails: ['unverified draft shown', 'directory empty state'] },
   { name: '"Verification in progress" badge on the home page', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', '<span class="badge badge-pending">Verification in progress</span></main>')), fails: ['unverified draft shown'] },
   { name: 'home page links to the unpublished Ternopil profile', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', `<p><a href="${PRODUCTION}/universities/${TERNOPIL}/">Ternopil</a></p></main>`)), fails: ['unpublished profile referenced'] },
+  // a relative link to a profile the release does not publish, with a slug other than Ternopil's: only the link check can
+  // catch it (the Ternopil name check cannot)
+  { name: 'home page links to another unpublished profile (relative link)', apply: (d, n) => edit(d, n, 'index.html', (s) => s.replace('</main>', '<p><a href="/universities/unpublished-test-university/">Test</a></p></main>')), fails: ['unpublished profile referenced'], failsAt: [['unpublished profile referenced', `${PRODUCTION}/`, /^\/universities\/unpublished-test-university\/$/]] },
   { name: '/apply/ offers the unpublished Ternopil university', apply: (d, n) => edit(d, n, 'apply/index.html', (s) => s.replace(/(<select\b[^>]*>)/, `$1<option value="${TERNOPIL}">Ternopil</option>`)), fails: ['unpublished profile referenced'] },
   { name: 'empty-state sentence missing', apply: (d, n) => edit(d, n, 'universities/index.html', (s) => s.replace(EMPTY_STATE, 'Profiles are coming soon.')), fails: ['directory empty state'] },
   { name: 'unpublished profile in the sitemap', apply: (d, n) => edit(d, n, 'sitemap-0.xml', (s) => s.replace('</urlset>', `<url><loc>${PRODUCTION}/universities/${TERNOPIL}/</loc></url></urlset>`)), fails: ['sitemap profile not in release'] },
@@ -215,6 +221,7 @@ for (const [i, m] of MUTATIONS.entries()) {
   const failed = new Set(rep.fails.map((f) => f.check));
   let ok = true;
   for (const c of m.fails) ok = check(failed.has(c), `mutation "${m.name}": verify-live reports FAIL "${c}"`, `FAILs: ${[...failed].join(', ') || 'none'}`) && ok;
+  for (const [c, suffix, re] of m.failsAt ?? []) ok = check(rep.fails.some((f) => f.check === c && f.url.endsWith(suffix) && re.test(String(f.observed))), `mutation "${m.name}": FAIL "${c}" for …${suffix} matching ${re}`, rep.fails.filter((f) => f.check === c).map((f) => `${f.url}: ${f.observed}`).join(' | ') || 'none') && ok;
   for (const c of m.notFails ?? []) ok = check(!failed.has(c), `mutation "${m.name}": no FAIL "${c}" (the check is precise)`, rep.fails.filter((f) => f.check === c).map((f) => f.url).join(' ')) && ok;
   for (const [c, url] of m.warns ?? []) ok = check(rep.warns.some((w) => w.check === c && w.url === url), `mutation "${m.name}": verify-live reports WARN "${c}" for ${url}`) && ok;
   if (m.exactWarns) ok = check(rep.warns.filter((w) => w.check === m.exactWarns).length === (m.warns ?? []).length, `mutation "${m.name}": no other "${m.exactWarns}" warning (no false positive)`, rep.warns.filter((w) => w.check === m.exactWarns).map((w) => w.url).join(' ')) && ok;
