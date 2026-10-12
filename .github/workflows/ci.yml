@@ -23,6 +23,8 @@ jobs:
       - name: Publication gate (twelve adversarial scenarios, JSON-LD breakout regressions, fixture production builds)
         run: npm run test:publication
       - run: npm run test:evidence-tools
+      - name: Allowlist consistency (20 hosts = capture request = owner action sheet; offline)
+        run: npm run test:allowlist
       - name: Publication report (fails if a flagged record fails the policy)
         run: npm run report:publication
       - run: npm run build

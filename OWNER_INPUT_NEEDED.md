@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-12 · **Branch:** `claude/university-profile-pipeline` · Not legal advice. Nothing below has been filled in for you.
 
+**Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the 38 gate items numbered exactly as the gate prints them with a reply template, and the Search Console steps (domain property now, sitemap after the release).
+
 Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **38 blocking items**: 22 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages. Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
 
 **How to give a legal answer:** in `site/src/lib/legal.mjs`, replace `null` or `proposed(...)` with plain text in quotes. Write dates as `'YYYY-MM-DD'` and yes/no answers as `true` or `false`. "TBC", "???" or anything in square brackets counts as not supplied. Or send the answers and Claude will enter them word for word.
@@ -104,7 +106,7 @@ Other open questions, not needed for the first release, are listed in `PUBLICATI
 | [ ] | Vinnytsia National Pirogov Memorial Medical University (listed separately: added to this group on 2026-10-12 after a demand check; it has the most 2026/27 documents) | No address lead; no 2026/27 teaching order (only a 2025 order was found, and it has not been read) |
 
 **Two routes (either one works, and both are free):**
-- [ ] **A. Allow the hosts.** In the session title bar, open the cloud environment menu → Edit → Network access → add the hosts under Allowed domains. Keep "Allow package managers" ticked. Steps: https://code.claude.com/docs/en/cloud-environments#network-access. The hosts are listed in `research/verification/CAPTURE_REQUEST_2026-10-12.md`.
+- [ ] **A. Allow the hosts.** In the session title bar, open the cloud environment menu → Edit → Network access → add the hosts under Allowed domains. Keep "Allow package managers" ticked. Steps: https://code.claude.com/docs/en/cloud-environments#network-access. The 20 hosts are in `OWNER_ACTION_SHEET.md` §1 (also `research/verification/ALLOWLIST_P1.txt`); then run `npm run probe:access` from `site/` to confirm which answer.
 - [ ] **B. Send captures.** Save each page listed in `research/verification/CAPTURE_REQUEST_2026-10-12.md` as a PDF that shows the URL and the date. Keep captures outside the repository while it is public. "Not found" or "silent" counts as a valid answer.
 
 ## 5. Tests that can only be completed after a release

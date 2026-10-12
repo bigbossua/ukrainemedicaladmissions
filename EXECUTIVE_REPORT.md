@@ -533,3 +533,12 @@ See `OWNER_INPUT_NEEDED.md` (rewritten 2026-10-12 into five sections: informatio
   - **GA4:** not installed. It would need consent, a CSP change and a privacy-notice update; the recommended alternative is in the same document.
 - **Owner checklist:** `OWNER_INPUT_NEEDED.md` has five sections: information only the owner can provide, approvals, work Claude can do, official evidence, and tests possible only after release.
 - **Preview for the owner:** a private Artifact copy of the production build, with forms disabled.
+
+## S. Owner action sheet, access probe and Search Console order (2026-10-12; branch `claude/university-profile-pipeline`; nothing deployed)
+
+- **Access:** all 20 priority hosts still refused by the network policy (403 to CONNECT; re-tested 10:07 and 10:12 UTC). No captures received, so no university fact is verified and official-source research has not started. All 12 records stay unpublished and noindex.
+- **`OWNER_ACTION_SHEET.md`** (new, one page): the 20 hosts as a copy-paste block with the exact settings path; the 38 release-gate items numbered exactly as `scripts/release-readiness.mjs` prints them (22 missing, 9 proposals, 3 review fields, 4 banners that clear on their own), with a reply template; Search Console steps; SEMrush position; milestones M1 (first evidence pack, Bukovinian) and M2 (release).
+- **`npm run probe:access`** (`site/scripts/probe-access.mjs`, new): probes the hosts in `research/verification/ALLOWLIST_P1.txt` through the session proxy and classifies each as OPEN, BLOCKED (policy), DNS, TIMEOUT, TLS or ERROR. Checked both ways: api.github.com and registry.npmjs.org OPEN, example.com BLOCKED. `npm run test:allowlist` (in `npm test`, CI and therefore the release gate; offline) keeps the list, the capture request's "Start here" line and the sheet identical, checks that all 16 hosts used by official addresses in the capture request §2 are covered, and proves the classification rules (13 cases) and catches 10 file mutations.
+- **Search Console:** Domain property now (a DNS TXT record the owner adds; no site change). Sitemap submission only after the release, because the live home page and `/universities/` (production `b2ca3d6`, `index, follow`) still show the old unverified Ternopil card. `ANALYTICS_AND_SEARCH_CONSOLE.md` A2 updated. Nothing verified, submitted or indexed is claimed.
+- **SEMrush:** no call made (0 units). One possible later call (about 50–100 units, after a university's first facts are verified) is described in the sheet and needs the owner's yes.
+

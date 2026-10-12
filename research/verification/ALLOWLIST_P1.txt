@@ -1,0 +1,26 @@
+# The 20 hosts to add under Allowed domains (cloud environment → Edit → Network access).
+# Single source for OWNER_ACTION_SHEET.md, CAPTURE_REQUEST_2026-10-12.md ("Start here") and
+# site/scripts/probe-access.mjs. They cover every official web address in CAPTURE_REQUEST §2 (P1, P2 and P3).
+# One host per line; lines starting with # are ignored. Do not add hosts here without updating the capture request.
+# Universities (18)
+www.bsmu.edu.ua
+bsmu.edu.ua
+vstup.bsmu.edu.ua
+onmedu.edu.ua
+knmu.edu.ua
+nmuofficial.com
+www.nmuofficial.com
+www.ifnmu.edu.ua
+ifnmu.edu.ua
+www.uzhnu.edu.ua
+uzhnu.edu.ua
+www.tdmu.edu.ua
+tdmu.edu.ua
+junior.tdmu.edu.ua
+www.vnmu.edu.ua
+vnmu.edu.ua
+foreign.vnmu.edu.ua
+new.vnmu.edu.ua
+# Ukrainian government registers (2)
+registry.edbo.gov.ua
+universities.studyinukraine.gov.ua

@@ -20,6 +20,8 @@
 
 **Start here (Route A): the 20 hosts that cover all P1 work** — university: `www.bsmu.edu.ua`, `bsmu.edu.ua`, `vstup.bsmu.edu.ua`, `onmedu.edu.ua`, `knmu.edu.ua`, `nmuofficial.com`, `www.nmuofficial.com`, `www.ifnmu.edu.ua`, `ifnmu.edu.ua`, `www.uzhnu.edu.ua`, `uzhnu.edu.ua`, `www.tdmu.edu.ua`, `tdmu.edu.ua`, `junior.tdmu.edu.ua`, `www.vnmu.edu.ua`, `vnmu.edu.ua`, `foreign.vnmu.edu.ua`, `new.vnmu.edu.ua`; government: `registry.edbo.gov.ua`, `universities.studyinukraine.gov.ua`. Add them in the cloud environment menu (session title bar → Edit → Network access → Allowed domains, keeping "Allow package managers" ticked; https://code.claude.com/docs/en/cloud-environments#network-access). §1 lists the optional P2 and post-release hosts.
 
+The same 20 hosts, one per line: `research/verification/ALLOWLIST_P1.txt` (the owner copy is `OWNER_ACTION_SHEET.md` §1; `npm run test:allowlist` keeps the three identical and checks that every address in §2 is on one of them). After the owner allows them, `npm run probe:access` from `site/` reports which answer.
+
 **Priorities.**
 
 - **P1** — needed for a first publishable profile under the policy's mandatory list: official name; website and the government page that lists it; address; operating status with a dated 2026/27 statement and the teaching format; and at least one programme (Medicine as the floor) with international admission, level, language, duration, intake year, and its fee page read (`DIRECTORY_VERIFICATION_PLAN.md` §5, "Minimum viable profile"; `publication.mjs`, programme listing rules).
@@ -1325,3 +1327,4 @@ Found while preparing this request. None is a fact about a university; each is a
 ## Change log
 
 - 2026-10-12 — first version. Host list (18 university hosts plus 1 conditional; 6 government hosts plus 4 conditional; 4 optional destination-country and directory hosts; 2 production hosts), 164 pages requested across eight universities (P1 80, P2 54, P3 30), capture instructions matched to `capture-intake.py` and `evidence-entry.mjs`, and an evidence register in which every row is NOT ACCESSED. Nothing verified; no record or evidence file changed.
+- 2026-10-12 (later) — the 20 "Start here" hosts also kept as `research/verification/ALLOWLIST_P1.txt` and in `OWNER_ACTION_SHEET.md` §1; `npm run test:allowlist` keeps them identical and covering every §2 address; `npm run probe:access` reports which answer. Re-test 10:12 UTC: all 20 refused by the network policy (403 to CONNECT); no captures received.
