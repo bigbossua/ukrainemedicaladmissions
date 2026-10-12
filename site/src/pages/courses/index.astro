@@ -7,8 +7,8 @@ import { COURSES, type CourseSlug } from '../../lib/courses';
 
 const courses = Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][];
 ---
-<Base title="Courses for international students" description="Medicine, dentistry, nursing and pharmacy at Ukrainian universities for international students: what each involves, what to check, and how we verify programmes.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Courses</span><h1>Courses for international students</h1><p>Choose a programme to see what it involves and what to check. Universities appear under a programme only once we have verified it from their official pages.</p></div></div>
+<Base title="Medical and health courses in Ukraine" description="Medicine (MBBS), dentistry, nursing and pharmacy in Ukraine for international students: what to check for each course, plus guides to universities and fees.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Courses</span><h1>Medical and health courses in Ukraine</h1><p>Choose a course to see the questions to ask before you apply. A university appears under a course only once we have verified that programme on its official pages.</p></div></div>
   <Breadcrumbs items={[{ label: 'Courses' }]} />
   <section class="courses"><div class="wrap">
     <div class="grid grid-2">
@@ -17,18 +17,26 @@ const courses = Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseS
           <div class="ico"><Icon name={slug} /></div>
           <h2>{c.name}</h2>
           <p>{c.summary}</p>
-          <a class="more" href={`/courses/${slug}/`}>Universities offering {c.name.toLowerCase()} →</a>
+          <a class="more" href={`/courses/${slug}/`}>{c.cardLink}</a>
         </article>
       ))}
     </div>
-    <p class="note">Duration, entry requirements and qualification titles are specific to each programme. We show them on a university's profile only once they have been read from its official pages.</p>
+    <div class="prose next">
+      <h2>Before you choose</h2>
+      <ul>
+        <li><a href="/universities/">See the universities we are researching</a></li>
+        <li><a href="/admissions/">How to apply and check your eligibility</a></li>
+        <li><a href="/tuition-fees/">How to read a university fee schedule</a></li>
+      </ul>
+    </div>
   </div></section>
-  <CtaBand />
+  <CtaBand title="Not sure which course to choose?" text="Tell us what you want to study and the grades you have so far. It is free to start, and nothing is sent to a university until you confirm." />
 </Base>
 
 <style>
   .courses { padding-top: 1rem; }
   .course-card h2 { font-size: 1.25rem; margin: .5rem 0 0; }
   .course-card p { margin: 0 0 .75rem; }
-  .note { margin-top: 2rem; }
+  .next { margin-top: 2rem; }
+  .next h2 { margin-top: 0; font-size: 1.25rem; }
 </style>

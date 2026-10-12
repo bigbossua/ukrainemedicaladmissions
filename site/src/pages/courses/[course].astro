@@ -14,7 +14,9 @@ export function getStaticPaths() {
 }
 const course = Astro.params.course as CourseSlug;
 const c = COURSES[course];
+const lower = c.name.toLowerCase();
 // Publication gate (lib/records.ts): published records (projections) only; drafts only in PREVIEW builds.
+// Research previews are never listed here: a course list implies the programme exists (tests/publication-gate.mjs).
 const universities = (await getListedUniversities())
   .map((u) => ({ u, progs: u.d.programmes.filter((p: any) => p.field === course) }))
   .filter((x) => x.progs.length > 0);
@@ -24,50 +26,54 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per
 <Base title={c.title} description={c.description}>
   <div class="page-head"><div class="wrap course-head">
     <span class="head-ico" aria-hidden="true"><Icon name={course} size={32} /></span>
-    <div><span class="eyebrow">Course</span><h1>{c.title}</h1><p>{c.description}</p></div>
+    <div><span class="eyebrow">Course</span><h1>{c.h1}</h1><p>{c.lead}</p></div>
   </div></div>
   <Breadcrumbs items={[{ label: 'Courses', href: '/courses/' }, { label: c.name }]} />
   <section style="padding-top:1rem"><div class="wrap">
-    <p class="prose">{c.intro}</p>
-    {'searchTermNote' in c && (
-      <>
-        <h2>{c.searchTermNote.heading}</h2>
-        <p class="prose">{c.searchTermNote.text}</p>
-        <p class="prose">See the <a href="/universities/">directory of medical universities in Ukraine</a> and how <a href="/tuition-fees/">MBBS fees in Ukraine</a> are published.</p>
-      </>
+    <div class="prose">
+      {c.sections.map((s) => (
+        <>
+          <h2 id={s.id}>{s.heading}</h2>
+          {s.paragraphs?.map((para) => <p>{para.map((part) => (typeof part === 'string' ? part : <a href={part.href}>{part.text}</a>))}</p>)}
+          {s.checks && <ul class="checks">{s.checks.map((item) => <li>{item.map((part) => (typeof part === 'string' ? part : <a href={part.href}>{part.text}</a>))}</li>)}</ul>}
+          {s.after?.map((para) => <p>{para.map((part) => (typeof part === 'string' ? part : <a href={part.href}>{part.text}</a>))}</p>)}
+        </>
+      ))}
+      <h2 id="universities">Universities verified for {lower}</h2>
+      {universities.length === 0 && <p>No university has been verified for this course yet. <a href="/universities/">See the universities we are researching</a>: we have not yet confirmed which courses each one offers.</p>}
+    </div>
+    {universities.length > 0 && (
+      <div class="grid grid-2">
+        {universities.map(({ u, progs }) => progs.map((p: any) => (
+          <article class="card">
+            <h3><a href={`/universities/${u.d.slug}/#${p.id}`}>{u.d.shortName}</a></h3>
+            <p style="font-size:.9rem;color:var(--slate);margin:0">{u.d.city}{u.draft && ' · '}{u.draft && <span class="badge badge-pending">Verification in progress</span>}</p>
+            <dl style="margin:0">
+              <Fact label="Duration" claim={duration(p)} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
+              <Fact label="Language" claim={p.language} />
+              <Fact label="Tuition" claim={p.tuition} format={money} />
+            </dl>
+            <a class="more" href={`/universities/${u.d.slug}/#${p.id}`}>Full programme details →</a>
+          </article>
+        )))}
+      </div>
     )}
-    <h2>Universities offering {c.name.toLowerCase()}</h2>
-    {universities.length === 0 && <p class="note">No university has yet been verified for this programme. Profiles are added as each is confirmed from official sources.</p>}
-    <div class="grid grid-2">
-      {universities.map(({ u, progs }) => progs.map((p: any) => (
-        <article class="card">
-          <h3><a href={`/universities/${u.d.slug}/#${p.id}`}>{u.d.shortName}</a></h3>
-          <p style="font-size:.9rem;color:var(--slate);margin:0">{u.d.city}{u.draft && ' · '}{u.draft && <span class="badge badge-pending">Verification in progress</span>}</p>
-          <dl style="margin:0">
-            <Fact label="Duration" claim={duration(p)} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
-            <Fact label="Language" claim={p.language} />
-            <Fact label="Tuition" claim={p.tuition} format={money} />
-          </dl>
-          <a class="more" href={`/universities/${u.d.slug}/#${p.id}`}>Full programme details →</a>
-        </article>
-      )))}
-    </div>
-    <h2 style="margin-top:2.5rem">What to check before you apply</h2>
-    <ul class="prose">{c.whatToCheck.map((t) => <li>{t}</li>)}</ul>
     <div class="card qualify">
-      <h3>Not sure whether you qualify yet?</h3>
-      <p style="margin:0 0 .75rem">Tell us your course and the subjects and grades you have so far in a short, free enquiry. A readiness check is planned: once a programme's published requirements have been verified, it will compare them with your record and show what is met, what is missing and which documents you still need. It will not be an admission decision. <a href="/admissions/#readiness">How the readiness check will work</a>.</p>
-      <a class="btn btn-primary btn-sm" href={`/apply/?course=${course}`}>{SITE.cta}</a>
+      <h2>Not sure you qualify? Send us your grades</h2>
+      <p>Tell us the course you want and the subjects and grades you have so far, and we will reply by email with suggested next steps.</p>
+      <a class="btn btn-primary btn-sm" href={`${SITE.ctaHref}?course=${course}`}>{SITE.cta}</a>
     </div>
-    <p class="note">Apply only through the university's official procedure. Some websites use a university's name in their address without being the university; every published profile here links the university's official domain, so check the address before you send anything.</p>
-    <p class="prose">See the <a href="/admissions/">admissions guide</a> for the application process and the <a href="/tuition-fees/">tuition fees guide</a> for how costs are published and verified.</p>
-    <p class="note">{SITE.disclaimer}</p>
+    <p class="note">Before you send documents or money, read <a href="/admissions/#official-sites">how to check you are on the university’s official website</a>.</p>
+    {universities.length > 0 && <p class="note">{SITE.disclaimer}</p>}
   </div></section>
-  <CtaBand title={`Apply for ${c.name.toLowerCase()}`} text="Start with a short online enquiry and tell us your preferred universities. Nothing is sent to a university until you confirm." />
+  <CtaBand title={`Planning to study ${lower}?`} text="Tell us your grades and the universities you are considering. It is free to start, and nothing is sent to a university until you confirm." />
 </Base>
 
 <style>
-  .qualify { margin: 1.5rem 0; max-width: 820px; }
+  .checks li::marker { color: var(--blue-600); }
+  .qualify { margin: 2rem 0 1.5rem; max-width: 820px; }
+  .qualify h2 { font-size: 1.2rem; margin: 0; }
+  .qualify p { margin: 0 0 .75rem; }
   .qualify .btn { align-self: flex-start; }
   .course-head { display: grid; gap: 1rem; align-items: start; }
   .head-ico {
