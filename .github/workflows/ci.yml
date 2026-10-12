@@ -39,6 +39,8 @@ jobs:
       - run: npm run test:preview
       - run: php -l public/api/enquiry.php
       - run: node tests/enquiry-php.mjs
+      - name: Live smoke checks self-test (production build behind a local stand-in for the server, production .htaccess, defect mutations)
+        run: npm run test:verify-live
       - run: npm run test:publish-workflow
       - run: npm run test:release-readiness
       - name: Release gate refuses a failed publication gate and missing legal details (simulations)

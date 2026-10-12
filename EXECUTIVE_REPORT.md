@@ -421,3 +421,49 @@ N4 mail delivery unverified; A10/D7 legal pages are drafts (release blocker); N2
 3. Decide N24 (a)–(c) and the evidence standard's §13 items before the first profile is published.
 4. Insert the legal entity and retention periods (A10/D7) before any release.
 5. Approve a release when ready: only a release removes the unverified Ternopil card from the live site.
+
+## P. SEMrush-led execution and release candidate (2026-10-12; branch `claude/university-profile-pipeline`; nothing deployed)
+
+### P.1 Work completed
+
+- **Publication policy (backlog N24):** fail-closed defaults for the three owner decisions, every setting in `site/src/lib/publication-config.mjs`, memo `PUBLICATION_POLICY_DECISIONS.md` (exact backlog wording, consequences, "OWNER DECISION: confirm or change"); gaps (d)–(f) fixed; two review bypasses closed (hyphenated words, past dates with extra text).
+- **Legal readiness:** the four legal pages read owner details from `site/src/lib/legal.mjs` with visible markers; `npm run check:release` refuses while anything is missing (placeholders such as "TBC" count as missing); `LEGAL_COMPLETION_CHECKLIST.md`.
+- **Release safety:** `site/scripts/release-gate.mjs` is the production publish gate; the publish workflow runs it before its only push and has a non-deploying `verify` target; CI calls the real publish workflow in `verify` mode and runs simulations proving the gate refuses a failed publication gate and missing legal details; `EMAIL_DELIVERY_VERIFICATION.md`, `RELEASE_CHECKLIST_PROPOSED.md`, `RELEASE_CANDIDATE.md`; `verify-live.mjs` gains the Ternopil, empty-state, sitemap, CSP, inline-script, handler and private-storage checks, self-tested against the production build with 24 defect mutations.
+- **Evidence tooling:** `npm run evidence:add` (validates one entry, dry-runs it through the policy's own context, writes only on request, keeps record and evidence in step) and `capture-intake.py` for owner captures; register page hints for the five drafts.
+- **SEMrush-backed page improvements:** FAQ anchors and cross-links for the measured question phrasings; "Ukraine MBBS college" phrasing on `/courses/medicine/` (`09a5a59`). No page was added.
+
+### P.2 SEMrush status (MEASURED from `research/semrush/` and `SEMRUSH_API_LEDGER.md`)
+
+**Last used:** 2026-10-11, research programme 3 (26 calls; the last, call 26, a `resource_organic` export of the top agency page). No call since.
+
+**Balance: UNVERIFIED.** The last owner reading was 47,890 units on 2026-10-11, before the R1/R2 batch. Estimates since then: consumed 6,230 line-based (max-reading 6,340; conservative 6,810); remaining 43,770 (43,660; 43,190). Headroom under the 5,000-unit programme cap: 880 line-based, 300 conservative. No unit is spent until the owner's API Units reading is reconciled in the ledger.
+
+**Inventory: 42 raw exports.**
+
+| Dimension | Count |
+|---|---|
+| Dates | 2026-10-10: 10 (pilot and follow-up) · 2026-10-11: 32 (1 probe, R1 6, R2 3, programme 3: 22) |
+| Report types | `phrase_these` 21 (exact phrase overview) · `phrase_organic` 8 (top-10 SERPs) · `phrase_fullsearch` 5 (broad-match containers) · `phrase_questions` 3 · `phrase_related` 2 · `resource_organic` 2 (a competitor page's keywords) · `phrase_all` 1 (one phrase across databases) |
+| Databases | India `in` 21 · United Kingdom `uk` 5 · Nigeria `ng` 4 · Pakistan `pk` 4 · South Africa `za` 4 · UAE `ae` 3 (plus `phrase_all` across many) |
+
+Broad-match (`phrase_fullsearch`) rows are containers that overlap: they are never added together and never treated as exact demand. "Ukraine medical college" 2,900 is such a container.
+
+**Strongest evidence-backed clusters and the URL for each (India database unless stated; exact phrase volumes per month as exported):**
+
+| Cluster | Evidence | Competition | Target URL | Status |
+|---|---|---|---|---|
+| Fees and cost | ukraine medical fees 720 (kd 18); ukraine medical college fees 590 (kd 12); medical fees in ukraine 480 (kd 12); ukraine mbbs fees 260 (kd 7); cost of mbbs in ukraine 260 (kd 11) | every top-10 result is an agency page; no official source ranks | `/tuition-fees/` | exists; needs a verified fee schedule to answer the query |
+| Named universities | bukovinian state medical university 480 (kd 30); odessa national medical university 390 (kd 16); kharkiv national medical university 390 (kd 34); bogomolets 320 (kd 25); ivano frankivsk 210 (kd 29); uzhhorod 140 (kd 30); ternopil 110 (kd 16); pirogov medical university ukraine 390 (broad) | official sites hold the top results; look-alike domains outrank Vinnytsia's official site | `/universities/<slug>/` per verified profile | no profile verified |
+| MBBS phrasing | ukraine mbbs college 480 (kd 7, the lowest in the cluster); mbbs in ukraine 260 (kd 18) | agencies | `/courses/medicine/` | exists; phrasing added in `09a5a59` |
+| Directory / list | ukraine medical college list 210 (kd 11); best medical college in ukraine 390 (kd 14); ukraine medical college 2,900 (broad container, kd 22) | Wikipedia's list and rankings sites | `/universities/` | exists; lists nothing until ≥3 profiles verify |
+| Eligibility and questions | mbbs in ukraine eligibility 30; is ukraine mbbs valid in india 20; questions: cost 40/20/20, duration 30, validity in India 30+20+10+10, NEET 20 | not measured | `/admissions/#readiness`, `/faq/` | exists; FAQ anchors and cross-links added in `09a5a59` |
+
+**Pages to improve, consolidate or remove.** Improve: the five URLs above (done where no verified facts are needed). Consolidate if no verified English-taught programme exists by the next review: `/courses/pharmacy/` (uk 0; unproven). Keep without new pages: `/courses/nursing/` (uk 20 only; never BSN/MSN wording), `/courses/dentistry/` (in 30, uk 10). Remove: the live unverified Ternopil profile (already a 302 to `/universities/` on the branch; removed from the live site only by the next approved release).
+
+**Proposed pages that lack evidence (not built):** country pages for India, Nigeria, Pakistan, South Africa or the UAE (exact demand 10–30; the India 2,900 figure is a broad container); city pages (no city phrase returned in India); a separate MBBS page (same intent as `/courses/medicine/`); public health, physiotherapy, sport, preparatory-course and BSN/MSN pages (not returned in any database); a "best universities" ranking page (we do not rank).
+
+**Smallest justified research batch (only after the balance is reconciled):** none is needed now: every proven cluster waits on verified official data, not on more keyword data. If the owner wants one batch, the smallest with decision value is two `phrase_organic` SERPs in India for "mbbs in ukraine eligibility" and "is ukraine mbbs valid in india" (2 calls × 10 lines × 10 units = 200 units, inside the 300-unit conservative headroom), to learn whether the question phrasings are winnable from `/admissions/` and `/faq/`.
+
+### P.3 Release candidate
+
+See `RELEASE_CANDIDATE.md`: status, changes against production, the safeguard, blockers in four categories, release instructions and rollback. Status: not safe to release until the owner's legal details are complete; every other check passes.

@@ -214,7 +214,7 @@ try {
       check(!/<select name="level"[\s\S]*?value="bachelor"[\s\S]*?<\/select>/.test(dir), '(b) directory level filter offers an unverified level');
       check(!new RegExp(`<select name="intake"[\\s\\S]*?value="${academicYear(NOW, -1).replace('/', '\\/')}"`).test(dir.split('</form>')[0]), '(b) directory intake filter offers an unverified intake');
       const fees = page(OUT.pass, 'tuition-fees');
-      check(fees.includes('7,123 USD / year'), '(b) /tuition-fees/: verified tuition missing');
+      check(fees.includes('7,123 USD/year'), '(b) /tuition-fees/: verified tuition missing');
       const home = page(OUT.pass, '');
       check(home.includes('value="fixture-alpha-medical-university"') && home.includes('value="fixture-beta-medical-university"'), '(b) home: published records missing from the start form');
       const apply = page(OUT.pass, 'apply');
@@ -261,7 +261,7 @@ try {
     r = build('stale #2 (same outDir, same cache)', { dirs, outDir: OUT.stale, cacheDir });
     check(r.status === 0, `(c) second build failed\n${r.output.slice(-1500)}`);
     check(page(OUT.stale, 'universities/fixture-alpha-medical-university').includes('7,456 USD per year'), '(c) second build: the new value 7,456 is missing from the profile');
-    check(page(OUT.stale, 'tuition-fees').includes('7,456 USD / year'), '(c) second build: the new value 7,456 is missing from /tuition-fees/');
+    check(page(OUT.stale, 'tuition-fees').includes('7,456 USD/year'), '(c) second build: the new value 7,456 is missing from /tuition-fees/');
     const old = everywhere('7,123').concat(everywhere('7123'));
     check(old.length === 0, `(c) second build: the old value 7,123 is still present in ${old.join(', ')}`);
 
