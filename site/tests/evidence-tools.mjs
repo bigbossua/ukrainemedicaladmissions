@@ -274,6 +274,20 @@ guard('refusals and "would not be shown" reasons', () => {
   const bom = tool(fresh(), [...opts({ quote: null, 'quote-file': qf }), '--write']);
   check(bom.code === 0 && bom.j?.entry?.quotation === `Fixture tuition 1000 USD\nper year, ${AY}`, `a quote file loses its byte-order mark, CRLF becomes LF and trailing line breaks go (got ${JSON.stringify(bom.j?.entry?.quotation)})`);
 
+  const badv = tool(d, [...opts({ value: '{"amount": 1000,' }), '--write']);
+  check(badv.code === 1 && refusedWith(badv, '--value is not valid JSON'), 'a --value that is not valid JSON is refused');
+  check(snap(d) === before, 'after the malformed --value: files byte-identical');
+  for (const [which, text] of [['ev', '{"slug": "fixture-tools-medical-university", "access": '], ['rec', '{"slug": "fixture-tools-medical-university"']]) {
+    const m = fresh();
+    writeFileSync(paths(m)[which], text);
+    const mb = snap(m);
+    const r = tool(m, [...opts(), '--write', '--apply-to-record']);
+    const name = which === 'ev' ? 'evidence' : 'record';
+    check(r.code === 1 && refusedWith(r, `the ${name} file is not valid JSON`) && snap(m) === mb, `a malformed ${name} file is refused and left as it is`);
+    // Without --json the reason must be printed too (an early refusal once printed nothing at all).
+    const h = spawnSync(process.execPath, [TOOL, '--records-dir', join(m, 'records'), '--evidence-dir', join(m, 'evidence'), '--slug', SLUG, ...opts()], { encoding: 'utf8', cwd: SITE, env: cleanEnv() });
+    check(h.status === 1 && h.stdout.includes(`REFUSED: the ${name} file is not valid JSON`) && h.stdout.includes('Nothing was written.'), `without --json, the refusal of a malformed ${name} file is printed`);
+  }
   const b = fresh({ access: 'blocked' });
   const bb = snap(b);
   const blk = tool(b, [...opts(), '--write']);

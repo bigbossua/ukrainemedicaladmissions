@@ -284,7 +284,7 @@ export function run(argv) {
     if ((MULTI_LINE_OPTS.has(k) ? CONTROL_TEXT : CONTROL_LINE).test(v)) refuse(`${optName(k)} contains a control character (${controlsIn(v)}${MULTI_LINE_OPTS.has(k) ? '; only tabs and line feeds are kept in free text' : ''}): retype it, or copy it again from the source`);
   }
   if (result.refused.length) return report(finish(1), out);
-  if (!SLUG.test(o.slug)) { refuse(`the slug "${o.slug}" is not a lower-case slug`); return finish(1); }
+  if (!SLUG.test(o.slug)) { refuse(`the slug "${o.slug}" is not a lower-case slug`); return report(finish(1), out); }
 
   const recordsDir = resolve(o.recordsDir ?? process.env.UMA_UNIVERSITIES_DIR ?? join(SITE, 'src/content/universities'));
   const evDir = resolve(o.evidenceDir ?? process.env.UMA_EVIDENCE_DIR ?? join(SITE, 'data/evidence'));
@@ -292,25 +292,25 @@ export function run(argv) {
   const evFile = join(evDir, `${o.slug}.json`);
 
   // ---- the record
-  if (!existsSync(recordFile)) { refuse(`no record file ${recordFile}`); return finish(1); }
+  if (!existsSync(recordFile)) { refuse(`no record file ${recordFile}`); return report(finish(1), out); }
   const recordText = readFileSync(recordFile, 'utf8');
   let rawRecord;
-  try { rawRecord = JSON.parse(recordText); } catch (e) { refuse(`the record file is not valid JSON: ${/** @type {Error} */ (e).message}`); return finish(1); }
+  try { rawRecord = JSON.parse(recordText); } catch (e) { refuse(`the record file is not valid JSON: ${/** @type {Error} */ (e).message}`); return report(finish(1), out); }
   const parsedRecord = recordSchema.safeParse(rawRecord);
-  if (!parsedRecord.success) { refuse(`the record file does not match the record format: ${parsedRecord.error.issues.slice(0, 5).map((i) => `${i.path.join('.')}: ${i.message}`).join(' | ')}`); return finish(1); }
+  if (!parsedRecord.success) { refuse(`the record file does not match the record format: ${parsedRecord.error.issues.slice(0, 5).map((i) => `${i.path.join('.')}: ${i.message}`).join(' | ')}`); return report(finish(1), out); }
   const rec = parsedRecord.data;
-  if (rec.slug !== o.slug) { refuse(`the record file ${o.slug}.json carries the slug "${rec.slug}"`); return finish(1); }
+  if (rec.slug !== o.slug) { refuse(`the record file ${o.slug}.json carries the slug "${rec.slug}"`); return report(finish(1), out); }
 
   // ---- the evidence file
-  if (!existsSync(evFile)) { refuse(`no evidence file ${evFile}: create it with its access block first (UNIVERSITY_EVIDENCE_STANDARD.md §3); this tool never invents an access block`); return finish(1); }
+  if (!existsSync(evFile)) { refuse(`no evidence file ${evFile}: create it with its access block first (UNIVERSITY_EVIDENCE_STANDARD.md §3); this tool never invents an access block`); return report(finish(1), out); }
   const evText = readFileSync(evFile, 'utf8');
   let evRaw;
-  try { evRaw = JSON.parse(evText); } catch (e) { refuse(`the evidence file is not valid JSON: ${/** @type {Error} */ (e).message}`); return finish(1); }
+  try { evRaw = JSON.parse(evText); } catch (e) { refuse(`the evidence file is not valid JSON: ${/** @type {Error} */ (e).message}`); return report(finish(1), out); }
   const evParsed = parseEvidence(evRaw);
-  if (evParsed.state !== 'ok') { refuse(`the evidence file does not match the evidence format; fix it first: ${evParsed.errors.slice(0, 5).join(' | ')}`); return finish(1); }
-  if (evParsed.data.slug !== o.slug) { refuse(`the evidence file ${o.slug}.json carries the slug "${evParsed.data.slug}"`); return finish(1); }
-  if (stable(evRaw) !== evText) { refuse('the evidence file is not in the standard JSON layout (2-space indent, trailing newline); writing would reformat it, so reformat it in a separate change first'); return finish(1); }
-  if (o.apply && stable(rawRecord) !== recordText) { refuse('the record file is not in the standard JSON layout (2-space indent, trailing newline); writing would reformat it, so reformat it in a separate change first'); return finish(1); }
+  if (evParsed.state !== 'ok') { refuse(`the evidence file does not match the evidence format; fix it first: ${evParsed.errors.slice(0, 5).join(' | ')}`); return report(finish(1), out); }
+  if (evParsed.data.slug !== o.slug) { refuse(`the evidence file ${o.slug}.json carries the slug "${evParsed.data.slug}"`); return report(finish(1), out); }
+  if (stable(evRaw) !== evText) { refuse('the evidence file is not in the standard JSON layout (2-space indent, trailing newline); writing would reformat it, so reformat it in a separate change first'); return report(finish(1), out); }
+  if (o.apply && stable(rawRecord) !== recordText) { refuse('the record file is not in the standard JSON layout (2-space indent, trailing newline); writing would reformat it, so reformat it in a separate change first'); return report(finish(1), out); }
   const oldEntries = evParsed.data.entries;
   const access = evParsed.data.access;
   result.r10.before = r10Failures(rec, oldEntries);
