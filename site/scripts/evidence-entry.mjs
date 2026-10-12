@@ -107,6 +107,17 @@ const fmt = (/** @type {any} */ v) => JSON.stringify(v ?? null);
 const stable = (/** @type {any} */ obj) => `${JSON.stringify(obj, null, 2)}\n`;
 const words = (/** @type {string} */ code) => CODE_WORDS[/** @type {keyof typeof CODE_WORDS} */ (code)] ?? code;
 
+// Control characters (C0, DEL and C1) are never part of a passage, name or address copied from a page, and they can
+// rewrite a terminal. Free text (quotation, statement, method, reasons, string values) may hold tabs and line feeds;
+// every other option is one line. A carriage return is refused (a --quote-file has CRLF turned into LF first).
+const CONTROL_TEXT = /[\u0000-\u0008\u000b-\u001f\u007f-\u009f]/;
+const CONTROL_LINE = /[\u0000-\u001f\u007f-\u009f]/;
+const MULTI_LINE_OPTS = new Set(['quote', 'statement', 'method', 'withholdReason', 'outdatedReason']);
+/** The control characters in a string, written U+XXXX. @param {string} s */
+const controlsIn = (s) => [...new Set([...s].filter((c) => CONTROL_LINE.test(c)).map((c) => `U+${c.codePointAt(0)?.toString(16).toUpperCase().padStart(4, '0')}`))].join(', ');
+/** Every string in a JSON value, object keys included. @param {any} v @returns {string[]} */
+const textLeaves = (v) => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(textLeaves) : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => [k, ...textLeaves(x)]) : []);
+
 // The same host rules as the policy's own hostsOf (src/lib/publication.mjs, not exported): the official host is the
 // record's website value; university hosts add every host a tier 1 or 2 entry cites. Cross-checked below against
 // toPublicRecord for every claim the projection exposes, so a drift between the two is reported, never hidden.
@@ -268,6 +279,11 @@ export function run(argv) {
   const entryOnly = ENTRY_OPTS.filter((k) => o[k] !== undefined);
   if (!o.path && entryOnly.length) return usage(`${entryOnly.map(optName).join(', ')} only make${entryOnly.length === 1 ? 's' : ''} sense with --path (a new entry)`);
   result.dryRun = !o.write;
+  for (const [k, v] of Object.entries(o)) {
+    if (typeof v !== 'string' || k === 'value') continue; // --value is JSON: its strings are checked once it is parsed
+    if ((MULTI_LINE_OPTS.has(k) ? CONTROL_TEXT : CONTROL_LINE).test(v)) refuse(`${optName(k)} contains a control character (${controlsIn(v)}${MULTI_LINE_OPTS.has(k) ? '; only tabs and line feeds are kept in free text' : ''}): retype it, or copy it again from the source`);
+  }
+  if (result.refused.length) return report(finish(1), out);
   if (!SLUG.test(o.slug)) { refuse(`the slug "${o.slug}" is not a lower-case slug`); return finish(1); }
 
   const recordsDir = resolve(o.recordsDir ?? process.env.UMA_UNIVERSITIES_DIR ?? join(SITE, 'src/content/universities'));
@@ -348,9 +364,13 @@ export function run(argv) {
     if (o.quote !== undefined && o.quoteFile !== undefined) { refuse('give --quote or --quote-file, not both'); return report(finish(1), out); }
     let value;
     try { value = JSON.parse(o.value); } catch { refuse(`--value is not valid JSON: ${o.value}. Strings need double quotes inside the shell quotes, e.g. --value '"12 semesters"'; use null for a silent page`); return report(finish(1), out); }
+    const badLeaf = textLeaves(value).find((s) => CONTROL_TEXT.test(s));
+    if (badLeaf !== undefined) { refuse(`--value contains a control character (${controlsIn(badLeaf)}): retype it, or copy it again from the source`); return report(finish(1), out); }
     let quotation = o.quote;
     if (o.quoteFile !== undefined) {
-      try { quotation = readFileSync(resolve(o.quoteFile), 'utf8').replace(/[\r\n]+$/, ''); } catch (e) { refuse(`cannot read --quote-file: ${/** @type {Error} */ (e).message}`); return report(finish(1), out); }
+      // A byte-order mark and Windows line endings come from the editor, not the source: drop the mark, CRLF -> LF.
+      try { quotation = readFileSync(resolve(o.quoteFile), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').replace(/\n+$/, ''); } catch (e) { refuse(`cannot read --quote-file: ${/** @type {Error} */ (e).message}`); return report(finish(1), out); }
+      if (CONTROL_TEXT.test(quotation)) { refuse(`--quote-file contains a control character (${controlsIn(quotation)}; only tabs and line feeds are kept): copy the passage again from the capture`); return report(finish(1), out); }
     }
     if (!/^[1-5]$/.test(String(o.tier))) { refuse('--tier must be 1, 2, 3, 4 or 5 (UNIVERSITY_EVIDENCE_STANDARD.md §6)'); return report(finish(1), out); }
     const contradicts = o.contradicts === undefined ? [] : String(o.contradicts).split(',').map((s) => s.trim()).filter(Boolean);

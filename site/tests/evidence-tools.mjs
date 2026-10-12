@@ -249,7 +249,25 @@ guard('refusals and "would not be shown" reasons', () => {
   check(tool(d, ['--bogus', 'x']).code === 2, 'unknown option is a usage error');
   check(tool(d, ['--apply-to-record', '--mark-outdated', `${SLUG}/officialName/1`]).code === 2, '--apply-to-record without a new entry is a usage error');
   check(tool(d, ['--value', '1', '--mark-outdated', `${SLUG}/officialName/1`]).code === 2, 'entry options without --path are a usage error');
+  const esc = tool(d, [...opts({ quote: `Fixture tuition 1000 USD per year, ${AY}\u001b[2J\u0007` }), '--write']);
+  check(esc.code === 1 && refusedWith(esc, '--quote contains a control character (U+001B, U+0007'), `a quotation with terminal control characters is refused (got ${esc.code}: ${esc.j?.refused?.join(' | ')})`);
+  const c1 = tool(d, [...opts({ org: 'Fixture Tools\u009b Medical University' }), '--write']);
+  check(c1.code === 1 && refusedWith(c1, '--org contains a control character (U+009B)'), 'a C1 control character in a one-line option is refused');
+  const nl = tool(d, [...opts({ url: `${H}/fees\n.pdf` }), '--write']);
+  check(nl.code === 1 && refusedWith(nl, '--url contains a control character (U+000A)'), 'a line break inside the URL is refused (the URL parser would silently drop it)');
+  const cv = tool(d, [...opts({ path: 'officialName', value: JSON.stringify('Fixture Tools\u0008 Medical University'), tier: '1', type: 'web-page', url: `${H}/about`, 'academic-year': null, quote: 'Fixture Tools Medical University' }), '--write']);
+  check(cv.code === 1 && refusedWith(cv, '--value contains a control character (U+0008)'), 'a control character inside a --value string is refused');
+  const qbad = join(TMP, 'quote-bell.txt');
+  writeFileSync(qbad, 'Fixture tuition\u0007 1000 USD\n');
+  const qb = tool(d, [...opts({ quote: null, 'quote-file': qbad }), '--write']);
+  check(qb.code === 1 && refusedWith(qb, '--quote-file contains a control character (U+0007'), 'a quote file with a control character is refused');
   check(snap(d) === before, 'after every refusal: files byte-identical');
+  const ml = tool(d, opts({ quote: `Fixture tuition\t1000 USD\nper year, ${AY}` }));
+  check(ml.code === 0 && ml.j?.entry?.quotation === `Fixture tuition\t1000 USD\nper year, ${AY}`, 'tabs and line feeds in a quotation are kept');
+  const qf = join(TMP, 'quote-bom-crlf.txt');
+  writeFileSync(qf, `\uFEFFFixture tuition 1000 USD\r\nper year, ${AY}\r\n\r\n`);
+  const bom = tool(fresh(), [...opts({ quote: null, 'quote-file': qf }), '--write']);
+  check(bom.code === 0 && bom.j?.entry?.quotation === `Fixture tuition 1000 USD\nper year, ${AY}`, `a quote file loses its byte-order mark, CRLF becomes LF and trailing line breaks go (got ${JSON.stringify(bom.j?.entry?.quotation)})`);
 
   const b = fresh({ access: 'blocked' });
   const bb = snap(b);
