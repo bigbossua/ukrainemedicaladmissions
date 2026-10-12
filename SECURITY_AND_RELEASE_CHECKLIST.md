@@ -32,6 +32,7 @@ Complete every box before the **first** production write and before each later r
 - [ ] Rollback rehearsed at least once on staging.
 - [ ] `uma-private/config.php` on the host holds `ip_hash_key` (random, at least 32 bytes, never in Git); without it the enquiry handler stores no IP data (backlog N21).
 - [ ] Mobile menu, directory filters and the stepped `/apply/` form work on the live site with the production CSP (backlog N20); a synthetic candidate profile arrives in the business mailbox (backlog N4).
+- [ ] First release from `claude/university-profile-pipeline`: work through `RELEASE_CHECKLIST_PROPOSED.md` (proposed 2026-10-12, not approved); the mail test and its evidence line follow `EMAIL_DELIVERY_VERIFICATION.md` (delivery unverified until it passes on the real host).
 
 ## C. Application system (Stage 2+) — additional gates (refreshed 2026-10-11)
 
