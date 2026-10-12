@@ -15,9 +15,9 @@
 //      conflicting entry, declared contradiction or verified entry with another value withholds the claim. An entry past
 //      its next-review date, or naming an academic year that has ended, no longer counts; time-sensitive claims must have
 //      a next-review date; fees need an academic year that has not ended (and the evidence must name it); a deadline that
-//      has passed is never shown; a value carrying research-note wording is never shown. A preparatory start date written
-//      YYYY-MM-DD that has passed, and a free-text intake or start date naming a year before the current academic year,
-//      are never shown.
+//      has passed is never shown; a value carrying research-note wording is never shown. A preparatory start date or a
+//      free-text intake that contains a date written YYYY-MM-DD that has passed (on its own or inside the text), or that
+//      names a year before the current academic year, is never shown.
 //      Owner settings (src/lib/publication-config.mjs, backlog N24): recognition is shown only from a tier-4 page on a
 //      listed recognition authority host (the list is empty by default, so none is shown); the official website is shown
 //      only when a verified tier-3 government entry carries exactly the same website, and until it is shown the
@@ -281,6 +281,8 @@ const START_DATE_PATH = /^preparatoryRoutes\.[^.]+\.startDate$/;
 const INTAKE_TEXT_PATH = /^programmes\.[^.]+\.intake$/;
 /** Four-digit years 1900-2099 written as a number of their own (not part of a longer number). */
 const YEAR_IN_TEXT = /(?<!\d)(?:19|20)\d{2}(?!\d)/g;
+/** Dates written YYYY-MM-DD anywhere in a text ("2026-09-01", "2026-09-01 (orientation)", "2026-09-01T09:00"). */
+const ISO_DATE_IN_TEXT = /(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)/g;
 /** @param {string} path */ export const isTimeSensitive = (path) => TIME_SENSITIVE_PATH.some((r) => r.test(path));
 /** @param {string} path */ export const isMoneyPath = (path) => MONEY_PATH.some((r) => r.test(path));
 /**
@@ -382,8 +384,8 @@ export const CODE_WORDS = Object.freeze({
   'source-not-official': "its evidence page is not on the address its tier requires (tier 1 and 2: the university's official website, as recorded in the website field and only once that website is itself shown as verified; tier 3: a Ukrainian government address ending .gov.ua)",
   'website-not-government-listed': 'no verified evidence entry on a Ukrainian government address (tier 3, ending .gov.ua: for example a Ministry or EDEBO page) carries exactly the same website; until one does, the university\'s own pages support nothing (owner setting WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE in src/lib/publication-config.mjs)',
   'recognition-authority-not-listed': 'its tier 4 evidence is not on the address of a recognition authority the owner has listed (RECOGNITION_AUTHORITY_HOSTS in src/lib/publication-config.mjs is empty by default, so no recognition claim is shown)',
-  'start-date-passed': 'its start date has passed',
-  'start-date-unparseable': 'its start date is written like YYYY-MM-DD but is not a real date',
+  'start-date-passed': 'a date in it written YYYY-MM-DD (a start or intake date) has passed',
+  'start-date-unparseable': 'a date in it is written like YYYY-MM-DD but is not a real date',
   'past-year-named': 'its wording names a year before the current academic year',
   'no-capture': 'its evidence is an owner capture with no capture file named',
   'evidence-year-ended': 'its evidence names an academic year that has ended',
@@ -514,13 +516,16 @@ function evaluateClaimDetailed(path, claim, evidenceEntries, { now = new Date(),
     if (!Array.isArray(value) || value.some((d) => !d || !isIsoDate(d.date))) return withheld('under-review', 'deadline-unparseable');
     if (value.some((d) => d.date < today)) return withheld('under-review', 'deadline-passed');
   }
-  // N24 (d): a preparatory start date written YYYY-MM-DD that has passed, and a free-text intake or start date that names
-  // a year before the current academic year (e.g. "September 2025" during 2026/27), are withheld whatever the evidence says.
-  if (START_DATE_PATH.test(path) && typeof value === 'string' && /^\s*\d{4}-\d{2}-\d{2}\s*$/.test(value)) {
-    if (!isIsoDate(value.trim())) return withheld('under-review', 'start-date-unparseable');
-    if (value.trim() < today) return withheld('under-review', 'start-date-passed');
+  // N24 (d): in a preparatory start date or a free-text intake, any date written YYYY-MM-DD (on its own or inside the
+  // text, e.g. "2026-09-01 (orientation)", "2026-09-01T09:00" or one of two dates) must be a real date that has not
+  // passed, and the text must not name a year before the current academic year (e.g. "September 2025" during 2026/27).
+  // Otherwise it is withheld whatever the evidence says.
+  if ((START_DATE_PATH.test(path) || INTAKE_TEXT_PATH.test(path)) && typeof value === 'string') {
+    const isoDates = [...value.matchAll(ISO_DATE_IN_TEXT)].map((m) => m[0]);
+    if (isoDates.some((d) => !isIsoDate(d))) return withheld('under-review', 'start-date-unparseable');
+    if (isoDates.some((d) => d < today)) return withheld('under-review', 'start-date-passed');
+    if ([...value.matchAll(YEAR_IN_TEXT)].some((m) => Number(m[0]) < currentAcademicYearStart(now))) return withheld('under-review', 'past-year-named');
   }
-  if ((START_DATE_PATH.test(path) || INTAKE_TEXT_PATH.test(path)) && typeof value === 'string' && [...value.matchAll(YEAR_IN_TEXT)].some((m) => Number(m[0]) < currentAcademicYearStart(now))) return withheld('under-review', 'past-year-named');
   // N24 (c): the official website also needs a verified government (tier 3) entry carrying exactly the same website.
   if (path === 'website' && S.WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE) {
     const listed = entries.some((e) => isUsableEntry(e, now) && e.sourceTier === 3 && onHost(e.sourceUrl, S.GOVERNMENT_HOST_SUFFIXES) && deepEqual(e.value, claim.value));

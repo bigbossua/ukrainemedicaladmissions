@@ -683,6 +683,14 @@ section('N24 (d) start dates and intake text');
   eq(it(`${AY} intake`).show, true, 'positive control: an intake naming the current academic year');
   eq(it('Applications from 10 000 students').show, true, 'a number that is not a year is not read as one');
   eq(it('September 2019 and September 2027').code, 'past-year-named', 'any past year in the text withholds it');
+  // A YYYY-MM-DD date inside the text counts too (review 2026-10-12): with words, with a time, or one of two dates.
+  eq(sd(`${day(-1)} (orientation week)`).code, 'start-date-passed', 'a passed YYYY-MM-DD start date followed by words');
+  eq(sd(`${day(-1)}T09:00`).code, 'start-date-passed', 'a passed YYYY-MM-DD start date with a time');
+  eq(sd(`${day(-1)} or ${day(60)}`).code, 'start-date-passed', 'two start dates, one of which has passed');
+  eq(sd(`Classes begin ${thisYear}-02-30`).code, 'start-date-unparseable', 'an impossible YYYY-MM-DD date inside the text');
+  eq(sd(`${day(10)} (orientation week)`).show, true, 'positive control: a future YYYY-MM-DD start date followed by words');
+  eq(it(`Classes start ${day(-1)}`).code, 'start-date-passed', 'a free-text intake containing a YYYY-MM-DD date that has passed');
+  eq(it(`Classes start ${day(20)}`).show, true, 'positive control: a free-text intake containing a future YYYY-MM-DD date');
 }
 
 section('N24 (e) fee display');
