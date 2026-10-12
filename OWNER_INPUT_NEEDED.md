@@ -2,11 +2,11 @@
 
 **Date:** 2026-10-12 · **Branch:** `claude/university-profile-pipeline` · Not legal advice. Nothing below has been filled in for you.
 
-**Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the 38 gate items numbered exactly as the gate prints them with a reply template, and the Search Console steps (domain property now, sitemap after the release).
+**Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the 38 release-check items in the order the check lists them, with a reply template, the Search Console steps (domain property now; sitemap submission recommended right after the release) and the release steps in order.
 
 Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **38 blocking items**: 22 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages. Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
 
-**How to give a legal answer:** in `site/src/lib/legal.mjs`, replace `null` or `proposed(...)` with plain text in quotes. Write dates as `'YYYY-MM-DD'` and yes/no answers as `true` or `false`. "TBC", "???" or anything in square brackets counts as not supplied. Or send the answers and Claude will enter them word for word.
+**How to give a legal answer:** in `site/src/lib/legal.mjs`, replace `null` or `proposed(...)` with plain text in quotes. Write dates as `'YYYY-MM-DD'` and yes/no answers as `true` or `false`. "TBC", "???" or anything in square brackets counts as not supplied. Or send the answers and Claude will enter them word for word. **The repository is public:** whatever is entered in `legal.mjs` is readable on GitHub as soon as it is pushed, before any release or review, and stays in its history (items 1–31 also appear on the legal pages after a release; the reviewer's name is stored in the repository). Send only what you are willing to publish now, or make the repository private first (§2, D8).
 
 **Already recorded, so not asked again:** the business e-mail (info@ukrainemedicaladmissions.com); hosting by Hostinger; no analytics installed; nothing sold; no referral fees or partnerships; no documents taken at Stage 1; what each form submission stores.
 
@@ -106,7 +106,7 @@ Other open questions, not needed for the first release, are listed in `PUBLICATI
 | [ ] | Vinnytsia National Pirogov Memorial Medical University (listed separately: added to this group on 2026-10-12 after a demand check; it has the most 2026/27 documents) | No address lead; no 2026/27 teaching order (only a 2025 order was found, and it has not been read) |
 
 **Two routes (either one works, and both are free):**
-- [ ] **A. Allow the hosts.** In the session title bar, open the cloud environment menu → Edit → Network access → add the hosts under Allowed domains. Keep "Allow package managers" ticked. Steps: https://code.claude.com/docs/en/cloud-environments#network-access. The 20 hosts are in `OWNER_ACTION_SHEET.md` §1 (also `research/verification/ALLOWLIST_P1.txt`); then run `npm run probe:access` from `site/` to confirm which answer.
+- [ ] **A. Allow the hosts.** In the session title bar, open the cloud environment menu → Edit → Network access → add the hosts under Allowed domains. Keep "Allow package managers" ticked. Steps: https://code.claude.com/docs/en/cloud-environments#network-access. The 20 hosts are in `OWNER_ACTION_SHEET.md` §1 (also `research/verification/ALLOWLIST_P1.txt`); then tell Claude "hosts added" and Claude runs `npm run probe:access` in the session to confirm which answer (running it on your own computer would test your connection, not the cloud environment).
 - [ ] **B. Send captures.** Save each page listed in `research/verification/CAPTURE_REQUEST_2026-10-12.md` as a PDF that shows the URL and the date. Keep captures outside the repository while it is public. "Not found" or "silent" counts as a valid answer.
 
 ## 5. Tests that can only be completed after a release
@@ -117,7 +117,7 @@ Other open questions, not needed for the first release, are listed in `PUBLICATI
 | [ ] | Run `npm run verify:live` from a computer that can reach the site (or from here, once `ukrainemedicaladmissions.com` and `www.ukrainemedicaladmissions.com` are allowed) | `RELEASE_CANDIDATE.md`, step 4 |
 | [ ] | Real e-mail delivery test: one synthetic submission, checks C1–C11 | `EMAIL_DELIVERY_VERIFICATION.md` §4–§7 |
 | [ ] | Search Console: verify the property, submit `sitemap-index.xml`, and inspect `/`, `/universities/` and `/tuition-fees/` | `ANALYTICS_AND_SEARCH_CONSOLE.md` §A2 |
-| [ ] | First Search Console baseline export, repeated 28 days later. Store it outside the repository until the repository is private | `ANALYTICS_AND_SEARCH_CONSOLE.md` §A3 |
+| [ ] | First Search Console baseline export on the day the property is verified (this can be before the release), repeated 28 days after the release. Store it outside the repository until the repository is private | `ANALYTICS_AND_SEARCH_CONSOLE.md` §A3 |
 | [ ] | Live Core Web Vitals: Search Console's Core Web Vitals report or PageSpeed Insights on the live pages (the local Lighthouse test only gives lab results) | — |
 
 **You are done when** `cd site && npm run build && node scripts/release-readiness.mjs` prints READY. Then change `expect: blocked` to `expect: pass` in `.github/workflows/ci.yml`.

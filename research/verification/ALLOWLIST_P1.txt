@@ -1,6 +1,9 @@
 # The 20 hosts to add under Allowed domains (cloud environment → Edit → Network access).
 # Single source for OWNER_ACTION_SHEET.md, CAPTURE_REQUEST_2026-10-12.md ("Start here") and
-# site/scripts/probe-access.mjs. They cover every official web address in CAPTURE_REQUEST §2 (P1, P2 and P3).
+# site/scripts/probe-access.mjs. They cover every http(s) address in the CAPTURE_REQUEST §2 page tables (all P1 work).
+# Not on this list (CAPTURE_REQUEST §1): the conditional and fallback hosts (nmu.ua, info.edbo.gov.ua, nauka.gov.ua,
+# mon.gov.ua, zakon.rada.gov.ua, apply.studyinukraine.gov.ua), the P2 hosts (naqa.gov.ua, public.naqa.gov.ua,
+# studyinukraine.gov.ua) and the production hosts; each is requested only when a claim needs it.
 # One host per line; lines starting with # are ignored. Do not add hosts here without updating the capture request.
 # Universities (18)
 www.bsmu.edu.ua

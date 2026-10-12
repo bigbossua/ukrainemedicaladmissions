@@ -5,8 +5,12 @@
 // 2. Mutations of those files are caught (a dropped host, an extra host, a duplicate, an uncovered address, a sheet that
 //    drifts, a missing block).
 // 3. classify() turns curl results into OPEN / BLOCKED / DNS / TIMEOUT / TLS / ERROR as the probe reports them; a proxy
-//    refusal is never reported as OPEN.
-import { readFileSync } from 'node:fs';
+//    refusal is never reported as OPEN, and a proxy 405 (configuration problem) is not reported as the allowlist.
+// 4. Usage errors, unreadable files and an empty or malformed list exit 2 before any host is contacted.
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { PATHS, checkAllowlist, classify, parseList, captureSection2Hosts } from '../scripts/probe-access.mjs';
 
 let checks = 0;
@@ -41,7 +45,7 @@ ok(hosts.every((h) => !checkAllowlist(real).some((p) => p.includes(h))), 'no rea
 
 const cases = [
   [[56, '000', 'curl: (56) CONNECT tunnel failed, response 403'], 'BLOCKED'],
-  [[56, '000', 'curl: (56) CONNECT tunnel failed, response 405'], 'BLOCKED'],
+  [[56, '000', 'curl: (56) CONNECT tunnel failed, response 405'], 'ERROR'],
   [[56, '000', 'curl: (56) CONNECT tunnel failed, response 407'], 'BLOCKED'],
   [[0, '200', ''], 'OPEN'],
   [[0, '301', ''], 'OPEN'],
@@ -58,6 +62,28 @@ for (const [[status, out, err], want] of cases) {
   const got = classify(status, out, err).result;
   ok(got === want, `classify(${status}, "${out}", "${err}") = ${got}, expected ${want}`);
 }
+
+const tmp = mkdtempSync(join(tmpdir(), 'allowlist-'));
+writeFileSync(join(tmp, 'empty.txt'), '# only a comment\n\n');
+writeFileSync(join(tmp, 'bad.txt'), 'https://www.bsmu.edu.ua/\n');
+const script = new URL('../scripts/probe-access.mjs', import.meta.url).pathname;
+const usageCases = [
+  [['--bogus'], 'unknown option'],
+  [['check'], 'positional argument'],
+  [['-c'], 'single-dash argument'],
+  [['--list'], '--list without a value'],
+  [['--json', '--list', 'x'], '--json followed by another option'],
+  [['--list', join(tmp, 'missing.txt'), '--check'], 'missing list file'],
+  [['--list', join(tmp, 'empty.txt')], 'list with no hosts (probe mode)'],
+  [['--list', join(tmp, 'bad.txt')], 'list with a URL instead of a host (probe mode)'],
+];
+for (const [argv, what] of usageCases) {
+  const r = spawnSync(process.execPath, [script, ...argv], { encoding: 'utf8', timeout: 20000 });
+  ok(r.status === 2 && /probe-access: /.test(r.stderr) && !/access probe,/.test(r.stdout), `usage error not reported with exit 2 (${what}): exit ${r.status}, ${r.stderr.trim() || r.stdout.trim()}`);
+}
+const checkRun = spawnSync(process.execPath, [script, '--check'], { encoding: 'utf8', timeout: 20000 });
+ok(checkRun.status === 0 && /0 problem\(s\)/.test(checkRun.stdout), `--check on the real files: exit ${checkRun.status}, ${checkRun.stdout.trim()}`);
+rmSync(tmp, { recursive: true, force: true });
 
 for (const f of failures) console.log(`FAIL  ${f}`);
 console.log(`allowlist: ${checks} checks, ${failures.length} failures`);

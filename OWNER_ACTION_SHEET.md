@@ -4,19 +4,19 @@
 
 | | Today |
 |---|---|
-| Official sources | **Blocked.** All 20 hosts below refused by the network policy (re-tested 10:07 UTC) |
+| Official sources | **Blocked.** All 20 hosts below refused by the network policy (latest probe 10:12 UTC: 403 to CONNECT for all 20) |
 | Evidence received | **None.** No captures, no access, no verified fact |
-| Release gate | **NOT READY:** the 38 items in §2 |
-| Google | Nothing verified, submitted or indexed |
+| Release | **NOT READY:** the 38 items in §2, then the release steps in §5 |
+| Google | Nothing verified or submitted by us. Index status unknown (no Search Console access; the live site is public and crawlable) |
 
 Background and every other open question: `OWNER_INPUT_NEEDED.md`. Pages to capture if you cannot allow the hosts: `research/verification/CAPTURE_REQUEST_2026-10-12.md` §2–§3.
 
 ## 1. Allow 20 hosts (unlocks university verification)
 
 1. In the session title bar, open the cloud environment menu → **Edit**.
-2. **Network access** → **Allowed domains** (shown under the *Limited* level; older apps show it under *Custom*). Keep **Allow package managers** ticked.
-3. Paste the 20 hosts below, one per line, and save. Docs: https://code.claude.com/docs/en/cloud-environments#network-access
-4. Tell me "hosts added". I run `npm run probe:access` (from `site/`). If this session still reports them blocked, start a new session on this branch; whether a running session picks up the change is not confirmed.
+2. **Network access** → **Allowed domains** (shown under the *Limited* level). Keep **Allow package managers** ticked. On an older app, Allowed domains is under *Custom*: there, tick the box that includes the default list of package managers.
+3. Add all 20 hosts below exactly as written: no `https://`, no path, both the `www.` and bare forms, one per line. A parent domain does not cover its subdomains. Save. Docs: https://code.claude.com/docs/en/cloud-environments#network-access
+4. Send "hosts added" in this chat. I run `npm run probe:access` here and tell you what answers. If I still see them blocked, start a new Claude Code session on this repository with **the same cloud environment** and the branch `claude/university-profile-pipeline`, and send: "Read OWNER_ACTION_SHEET.md, run npm run probe:access in site/ and report." Whether a running session picks up the change is not confirmed.
 
 <!-- allowlist:start -->
 ```
@@ -43,15 +43,44 @@ universities.studyinukraine.gov.ua
 ```
 <!-- allowlist:end -->
 
-These cover every official address in the capture request (tested by `npm run test:allowlist`). Not needed yet: the NAQA and EDEBO-info hosts (programme accreditation, a later claim) and the two production hosts (live checks after a release); both are in the capture request §1.
+These 20 cover every web address in the capture request's §2 page tables, which is all P1 work (checked by `npm run test:allowlist`). They are not everything the capture request may need. I will ask for one more host only when a claim needs it:
+- `info.edbo.gov.ua`, `nauka.gov.ua`: if the register card does not print the website.
+- `nmu.ua`: if the register lists it as Bogomolets' website.
+- `naqa.gov.ua`, `public.naqa.gov.ua`: programme accreditation, P2.
+- `studyinukraine.gov.ua`, `apply.studyinukraine.gov.ua`, `mon.gov.ua`, `zakon.rada.gov.ua`: national rules.
+- The two production hosts: live checks after a release.
 
-**What I do once the hosts answer.** Order: Bukovinian, Odesa, Kharkiv, Bogomolets, Ivano-Frankivsk, Uzhhorod, Ternopil, then Vinnytsia (research priority from search demand, not a statement that any of them is admitting). For each, P1 pages first: the government register card, official name and contacts, a dated 2026/27 teaching statement, the Medicine admission rule for foreign applicants, the fee page. Each reading is one evidence entry: address, the exact passage, the document's date, the access date and a status (verified, silent, not found, conflict). Ukrainian registration, programme accreditation and recognition abroad stay separate claims. Profiles stay noindex and unpublished until the publication gate passes and you approve a release.
+All are described in the capture request §1.
 
-## 2. The 38 items the release gate lists
+**What I do once the hosts answer.**
+- **Order** (search demand, `SEMRUSH_API_LEDGER.md` 2026-10-12): Bukovinian first; then Odesa, Kharkiv and Vinnytsia; then Bogomolets, Ivano-Frankivsk, Uzhhorod and Ternopil. This is a research priority only, not a statement that any of them is admitting.
+- **P1 pages first** for each university: the government register card, official name and contacts, a dated 2026/27 teaching statement, the Medicine admission rule for foreign applicants, and the fee page.
+- **Each reading becomes one evidence entry.** It records the address, the exact passage, the document's date, the access date and a status from the evidence standard: verified, partially verified, conflicting, unverified, outdated or not applicable.
+  - A page that is silent on the point is still captured and recorded as silent.
+  - A page that cannot be found is reported NOT FOUND.
+- **Separate claims:** Ukrainian registration (EDEBO), programme accreditation (NAQA) and recognition abroad (each country's regulator) are never merged.
+- **Visibility:** profiles stay noindex and unpublished until the publication gate passes and you approve a release.
 
-Numbered exactly as `node scripts/release-readiness.mjs` prints them. **R** = a qualified legal reviewer must check the answer. Fill in the reply template (§2.5) and send it; I enter the answers word for word. Or edit `site/src/lib/legal.mjs` yourself. "TBC", "???" or anything in square brackets counts as not supplied.
+## 2. The 38 items the release check lists
 
-**Order:** item 3 (country) first, because it decides 7–11, 20 and 21. Then 1–2 and 4–5, 19 (mailbox provider), the reviewer items, the timescales (23–31), the date and version (12–13) last, and the review (32–34) at the very end.
+In the order `node scripts/release-readiness.mjs` lists them. The check prints bullets and lists only what is still open; the numbers below are this sheet's own. `LEGAL_COMPLETION_CHECKLIST.md` numbers the same fields differently, so always keep the field name next to an answer, as the template does. **R** = a qualified legal reviewer must check the answer.
+
+**Before you send anything: the repository is public.**
+- What I enter in `site/src/lib/legal.mjs` is readable on GitHub as soon as it is pushed. That happens before any release and before the review, and it stays in the repository's history.
+- After a release, items 1–31 also appear on the public legal pages.
+- The reviewer's name and date (33–34) appear on no page, but they are stored in the repository and printed in the CI logs. Ask the reviewer first, or give a firm name.
+- Send only what you are willing to publish now. Otherwise, make the repository private first (decision D8), or tell me to keep your answers out of commits until you decide.
+
+**How to reply.** Fill in what you know in the template (§2.5) and send it. Partial replies are fine: leave a line blank if you do not have the answer yet. Agree the R lines with your reviewer before sending them. Send 32–34 only after the review. I enter the answers word for word. You can also edit `legal.mjs` yourself. "TBC", "???" or anything in square brackets counts as not supplied.
+
+**Allowed answers.** Only items 4 and 11 accept `not applicable`; on any other item it is rejected and the item stays open. Items 15 and 18 concern the application dashboard, which is not built yet. Give an answer, or decide with the reviewer whether that paragraph should stay in the privacy notice. Removing it is a code change for you to approve.
+
+**Order.**
+1. Item 3 (country) first: with the reviewer, it decides 6–11 and bears on 21.
+2. Then 1–2, 4–5, and 19–20. Read 19–20 from your mailbox and Hostinger accounts, not from your country of registration.
+3. Then the other R items (14–18, 22) with your reviewer.
+4. Then 23–31: approve or replace. 23–27 also need the reviewer.
+5. 12–13 last, and 32–34 after the review.
 
 ### 2.1 Missing details (22)
 
@@ -63,7 +92,7 @@ Numbered exactly as `node scripts/release-readiness.mjs` prints them. **R** = a 
 | 4 | `entity.registrationNumber` | Registration number, or `not applicable` | |
 | 5 | `entity.address` | Registered or business postal address | |
 | 6 | `controller.name` | Name of the data controller | R |
-| 7 | `representative.needed` | `true` or `false`: is a UK or EU representative required? If `true`, also send `representative.details` (name and postal address), which becomes a 39th item | R |
+| 7 | `representative.needed` | `true` or `false`: is a UK or EU representative required? If `true`, also send `representative.details` (name and postal address). The check then lists it in place of item 7 until it is supplied | R |
 | 8 | `governingLaw` | Law that governs the terms | R |
 | 9 | `courts` | Courts that decide disputes | R |
 | 10 | `privacyAuthority` | Data-protection authority people can complain to, with its web address | R |
@@ -82,7 +111,7 @@ Numbered exactly as `node scripts/release-readiness.mjs` prints them. **R** = a 
 
 ### 2.2 Draft wording to approve or replace (9)
 
-Write `approve` to keep the draft exactly, or give your own wording.
+Write `approve` to adopt the draft wording as your choice, or give your own. This is not legal approval: R items still need the reviewer before item 32.
 
 | # | Field | Draft today | R |
 |---|---|---|---|
@@ -98,30 +127,30 @@ Write `approve` to keep the draft exactly, or give your own wording.
 
 ### 2.3 Legal review (3)
 
-After the reviewer has read the four built pages with your answers in place:
+When 1–31 are in, I rebuild the four legal pages with your answers and send you a private preview copy for the reviewer. Do not use the live pages for the review: they are the older draft and do not contain your answers.
 
 | # | Field | Send |
 |---|---|---|
 | 32 | `legalReviewCompleted` | `true`, only once the review is done |
-| 33 | `reviewedBy` | Reviewer's name |
-| 34 | `reviewDate` | Review date, `YYYY-MM-DD` |
+| 33 | `reviewedBy` | Reviewer's name (see the public-repository note above) |
+| 34 | `reviewDate` | Review date, `YYYY-MM-DD`, not in the future |
 
 ### 2.4 Draft banner on the four legal pages (4): nothing to send
 
 | # | Page | Clears when |
 |---|---|---|
-| 35 | `/privacy/` | Items 1–34 are complete. The banner and the "[to be supplied by the owner: …]" markers then disappear on their own |
+| 35 | `/privacy/` | Items 1–34 (plus `representative.details` if 7 is `true`) are supplied in a valid form and the site is rebuilt. The banner, the "[to be supplied by the owner: …]" markers and the word "draft" then go. The live pages change only after a release you approve |
 | 36 | `/terms/` | as above |
 | 37 | `/disclosure/` | as above |
 | 38 | `/complaints-policy/` | as above |
 
-### 2.5 Reply template (copy, fill in, send)
+### 2.5 Reply template (copy, fill in what you know, send)
 
 ```
 1  entity.name:
 2  entity.type:
 3  entity.country:
-4  entity.registrationNumber:
+4  entity.registrationNumber:      (or not applicable)
 5  entity.address:
 6  controller.name:
 7  representative.needed:          (true/false)
@@ -129,7 +158,7 @@ After the reviewer has read the four built pages with your answers in place:
 8  governingLaw:
 9  courts:
 10 privacyAuthority:
-11 complaintsBody:
+11 complaintsBody:                 (or not applicable)
 12 effectiveDate:                  (YYYY-MM-DD)
 13 noticeVersion:
 14 retention.backups:
@@ -162,35 +191,57 @@ Menu names are from general product knowledge, not checked against Google's help
 **Now (no release needed):**
 
 1. Open Search Console → **Add property** → **Domain** → enter `ukrainemedicaladmissions.com`.
-2. Google shows a TXT value starting `google-site-verification=`. At the company that runs the domain's DNS, add a **new** TXT record: host `@` (or blank, as that provider asks), value exactly as shown, default TTL. Do not edit or delete existing records (MX, SPF, A, CNAME). This is a DNS change only you make. It changes neither the website nor e-mail routing.
-3. Back in Search Console, press **Verify**. If it fails, DNS may not have updated yet: wait and press Verify again.
-4. **Settings → Users and permissions:** stay Owner; add anyone else as Restricted (read-only).
-5. **Do not submit the sitemap yet.** The live home page and `/universities/` (both indexable) still show the old unverified Ternopil card (city, four programmes, "English (pending)"). Submitting now asks Google to crawl that version. The release replaces it.
+2. Google shows a TXT value starting `google-site-verification=`. Add it at the DNS provider your domain's nameservers point to. Your domain registrar shows the nameservers; if you are not sure which company that is, send me a screenshot of that setting first.
+   - **Adding the record:** a new TXT record, host `@` (or blank, as the provider asks), value exactly as shown, default TTL. If the provider keeps all TXT values at `@` as one record, add Google's value as an extra value. Never replace or remove the value that starts `v=spf1`.
+   - **Leave everything else alone:** existing MX, A, CNAME and TXT records (SPF, DKIM, DMARC). Do not change the nameservers, and do not use any "connect", "point" or "transfer domain" option: those can replace every record, including e-mail.
+   - This is a DNS change only you make. Done this way, it changes neither the website nor e-mail.
+3. Back in Search Console, press **Verify**. If it fails, DNS may not have updated yet: wait and try again. If it still fails the next day, change nothing else and send me screenshots of Google's message and of the record. Once verified, keep the TXT record permanently: removing it un-verifies the property.
+4. **Settings → Users and permissions:** stay Owner. Add anyone else as Restricted (read-only).
+5. **First baseline, on the day of verification:**
+   - Export Performance → Search results (last 16 months; Queries, Pages, Countries, Devices) and Indexing → Pages.
+   - Use URL inspection on `/` and `/universities/` to see what Google holds today. Inspect only; do not press Request indexing.
+   - Keep the files outside the repository while it is public and send them to me (`ANALYTICS_AND_SEARCH_CONSOLE.md` §A3).
+6. **Sitemap: your choice; I recommend right after the release.** The live home page and `/universities/` (both indexable) show the old unverified Ternopil card: city, four programmes and "Verification in progress", and on `/universities/` also "English (pending)".
+   - Not submitting does not keep that card out of Google: the live robots.txt already points Google to the same sitemap.
+   - Waiting only avoids asking for a fresh crawl of the old version. Only a release you approve removes the card.
+   - If you submit now, submit again after the release.
 
 **After a release you approve:**
 
-6. **Sitemaps** → submit `sitemap-index.xml` (`https://ukrainemedicaladmissions.com/sitemap-index.xml`). The release lists 18 pages and no university preview pages.
-7. **URL inspection** → `/`, `/universities/`, `/tuition-fees/` → **Request indexing** for each.
-8. A few days later, **Indexing → Pages**: the 12 university preview pages should be reported as excluded by the noindex tag.
-9. Baseline export: Performance (last 16 months), Pages and Sitemaps (`ANALYTICS_AND_SEARCH_CONSOLE.md` §A3). Keep exports outside the repository while it is public.
+7. **Sitemaps** → submit `sitemap-index.xml` (`https://ukrainemedicaladmissions.com/sitemap-index.xml`). The release lists 18 pages and no university preview pages.
+8. **URL inspection** → `/`, `/universities/`, `/tuition-fees/` → **Request indexing** for each.
+9. A few days later, check **Indexing → Pages**: the 12 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
 
-I can report verification, sitemap status or indexing only from screenshots or exports you send. There is no Search Console connector here. For a URL-prefix property instead, send only the token's `content` value. That route needs a release.
+I can report verification, sitemap status or indexing only from screenshots or exports you send; there is no Search Console connector here. If you would rather use a URL-prefix property, send only the token's `content` value; that route needs a release.
 
 ## 4. SEMrush: no calls planned
 
-I am reusing the 42 exports and the 2026-10-12 check (30 units; balance estimate 43,740, not confirmed). No metered call is needed for the work above. The only call I would propose, with your yes first: after a university's first facts are verified, about 5–10 keyword lines (roughly 50–100 units) for that university's programme and fee searches, to choose wording for its title and description. Not before. Sending the balance from Semrush's subscription page costs nothing.
+I am reusing the 42 exports and the 2026-10-12 check: 30 units, with a balance estimate of 43,740 (not confirmed). No metered call is needed for the work above.
 
-## 5. Next verifiable milestone
+The only call I would propose comes after a university's first facts are verified: about 5–10 keyword lines (roughly 50–100 units) for that university's programme and fee searches, to choose wording for its title and description. Before that call I need two things from you:
+- your balance reading (Semrush Subscription info → API units, with the date; it costs nothing, and the ledger's standing rule requires it);
+- your yes.
+
+## 5. Milestones
 
 **M1: first evidence pack (Bukovinian).**
-
-- `npm run probe:access` shows the 20 hosts OPEN.
-- Every Bukovinian P1 claim has an entry with address, passage, document date, access date and status.
+- `npm run probe:access` shows the Bukovinian hosts (`www.bsmu.edu.ua`, `bsmu.edu.ua`, `vstup.bsmu.edu.ua`) and the two government hosts OPEN.
+- Every Bukovinian P1 claim has an evidence entry with address, passage, document date, access date and status.
 - `npm test` passes, and the publication report shows exactly which claims would be shown.
 - A preview is rebuilt for you to inspect.
 
 M1 needs §1 (or captures). It needs no release.
 
-**M2: release.** Items 1–34 done → `npm run check:release` prints READY → you approve → `publish-production` moves → post-release checks (`OWNER_INPUT_NEEDED.md` §5) → §3 steps 6–9.
+**M2: release (each step needs the one before).**
+1. Items 1–34 are supplied (§2).
+2. I rebuild. `npm run check:release` prints READY, and the full `npm run release:gate` passes (all tests, a clean build, the publication report, then that check). READY covers the legal pages and the university records only.
+3. CI is changed to `expect: pass` and is green on that exact commit.
+4. **Before anything is published:**
+   - You take a dated backup of the live document root.
+   - You create `uma-private/config.php` on the host (`OWNER_INPUT_NEEDED.md` §5, first row).
+   - You complete the items in `SECURITY_AND_RELEASE_CHECKLIST.md` §A that apply.
+5. You approve that exact commit.
+6. `publish-production` moves. The workflow re-runs the release gate, then the host deploys.
+7. Post-release checks follow: the live checks and the e-mail test (`OWNER_INPUT_NEEDED.md` §5, remaining rows), then §3 steps 7–9.
 
 No deployment, DNS change, publication-gate bypass or move of the publishing pointer happens without your explicit approval.

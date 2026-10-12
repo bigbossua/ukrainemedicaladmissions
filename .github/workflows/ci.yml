@@ -2,9 +2,9 @@ name: Site CI
 
 on:
   push:
-    paths: ['site/**', '.github/workflows/ci.yml']
+    paths: ['site/**', '.github/workflows/ci.yml', 'research/verification/ALLOWLIST_P1.txt', 'research/verification/CAPTURE_REQUEST_2026-10-12.md', 'OWNER_ACTION_SHEET.md']
   pull_request:
-    paths: ['site/**']
+    paths: ['site/**', 'research/verification/ALLOWLIST_P1.txt', 'research/verification/CAPTURE_REQUEST_2026-10-12.md', 'OWNER_ACTION_SHEET.md']
   workflow_dispatch:
 
 jobs:
