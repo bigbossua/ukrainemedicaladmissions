@@ -11,7 +11,8 @@
 //   E. The release check end to end, as a child process: it fails on today's data; it passes with a complete synthetic
 //      legal object (UMA_LEGAL_MODULE, a temporary file), clean synthetic legal pages (UMA_DIST_DIR) and the real
 //      records; it fails again for a page still carrying draft text, for a missing build and for a record flagged
-//      publishable without evidence (the publication "fail" fixture).
+//      publishable without evidence (the publication "fail" fixture) and for a records directory that does not exist;
+//      a result produced with these test overrides says so.
 //   F. When dist/ exists (after npm run build): every built legal page still shows the draft banner and the visible
 //      markers, because today's data is incomplete.
 //
@@ -185,9 +186,12 @@ const realRecords = { UMA_UNIVERSITIES_DIR: undefined, UMA_EVIDENCE_DIR: undefin
   check(/NOT READY/.test(today.out) && today.out.includes('the legal name of the person or company that runs this service [entity.name'), 'E: today\'s output must name the missing entity name');
   check(/draft says "up to 12 months after our last contact"/.test(today.out), 'E: today\'s output must list the 12-month retention as a proposal, not a fact');
   check(/legal review is not recorded as completed/.test(today.out), 'E: today\'s output must report the review flag');
+  const plainToday = run({ UMA_LEGAL_MODULE: undefined, UMA_DIST_DIR: undefined, ...realRecords });
+  check(!/TEST INPUTS IN USE/.test(plainToday.out), 'E: a run without overrides must not carry the test-input notice');
 
   const pass = run({ UMA_LEGAL_MODULE: completeModule, UMA_DIST_DIR: clean, ...realRecords });
   check(pass.status === 0 && /READY: no owner detail is missing/.test(pass.out), `E: complete synthetic data, clean pages and today's records must pass (exit ${pass.status})\n${pass.out}`);
+  check((pass.out.match(/TEST INPUTS IN USE \(UMA_LEGAL_MODULE=/g) ?? []).length === 2, 'E: a READY produced with test overrides must say so at the top and after the verdict');
 
   for (const [label, page, html, expect] of [
     ['the draft banner', 'terms', '<p>Draft for legal review — effective date: x.</p>', /\/terms\/ \(terms of use\): "Draft for legal review" banner shown/],
@@ -214,6 +218,9 @@ const realRecords = { UMA_UNIVERSITIES_DIR: undefined, UMA_EVIDENCE_DIR: undefin
   const dirs = materialise('fail', join(TMP, 'records-fail'), NOW);
   const flagged = run({ UMA_LEGAL_MODULE: completeModule, UMA_DIST_DIR: clean, UMA_UNIVERSITIES_DIR: dirs.universities, UMA_EVIDENCE_DIR: dirs.evidence });
   check(flagged.status === 1 && /\(fixture-flagged-no-evidence\) is flagged publishable but fails the publication policy/.test(flagged.out), `E: a record flagged publishable without evidence must fail the check (exit ${flagged.status})\n${flagged.out}`);
+
+  const noRecords = run({ UMA_LEGAL_MODULE: completeModule, UMA_DIST_DIR: clean, UMA_UNIVERSITIES_DIR: join(TMP, 'no-such-records'), UMA_EVIDENCE_DIR: undefined });
+  check(noRecords.status === 1 && /does not exist, so no record could be checked/.test(noRecords.out), `E: a records directory that does not exist must fail the check (exit ${noRecords.status})`);
 
   const broken = join(TMP, 'legal-broken.mjs'); writeFileSync(broken, 'export const NOTHING = 1;\n');
   check(run({ UMA_LEGAL_MODULE: broken, UMA_DIST_DIR: clean, ...realRecords }).status === 2, 'E: a legal module without LEGAL must stop the check with exit 2');

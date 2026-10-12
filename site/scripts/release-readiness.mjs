@@ -14,7 +14,8 @@
 //
 // Test overrides (tests/release-readiness.mjs; never needed in normal use): UMA_LEGAL_MODULE = path of a module exporting
 // LEGAL in place of src/lib/legal.mjs (the item list and the rules always come from src/lib/legal.mjs); UMA_DIST_DIR =
-// built site directory in place of dist/; UMA_UNIVERSITIES_DIR / UMA_EVIDENCE_DIR as for the build.
+// built site directory in place of dist/; UMA_UNIVERSITIES_DIR / UMA_EVIDENCE_DIR as for the build. A run with any of
+// them set prints "TEST INPUTS IN USE" before and after the verdict, so its result is never mistaken for the site's.
 import { existsSync, readFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -44,6 +45,11 @@ const block = (/** @type {string} */ m) => { blockers.push(m); };
 
 console.log(`Release readiness check, ${now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}`);
 console.log('Lists everything that still blocks a release. This is preparation, not legal advice.\n');
+// A result produced with the test overrides describes those inputs, not this repository: say so at the top and in the
+// verdict, so a READY from a test run can never be read as the site's own result.
+const overrides = ['UMA_LEGAL_MODULE', 'UMA_DIST_DIR', 'UMA_UNIVERSITIES_DIR', 'UMA_EVIDENCE_DIR'].filter((k) => process.env[k]);
+const overrideNote = overrides.length ? `TEST INPUTS IN USE (${overrides.map((k) => `${k}=${process.env[k]}`).join(', ')}): this result describes those inputs, not the site's own files.` : '';
+if (overrideNote) console.log(`${overrideNote}\n`);
 
 // ---- 1. Owner details --------------------------------------------------------------------------------------------
 const status = legalStatus(LEGAL, { now });
@@ -107,6 +113,8 @@ console.log('');
 
 // ---- 3. University records ---------------------------------------------------------------------------------------
 console.log(`3. University records (${show(universitiesDir())}; evidence in ${show(evidenceDir())})`);
+// A records directory that does not exist reads as "no records", which would pass this section without checking anything.
+if (!existsSync(universitiesDir())) { console.log(`   The records directory ${show(universitiesDir())} does not exist, so no record could be checked.`); block('records directory not found'); }
 const rows = readRecordFiles(recordSchema, { dir: universitiesDir() });
 let flagged = 0, published = 0;
 for (const { file, data, error } of rows) {
@@ -129,3 +137,4 @@ if (blockers.length) {
 }
 console.log('READY: no owner detail is missing, the legal review is recorded, the built legal pages carry no draft text, and no flagged record fails the publication policy.');
 console.log('This check does not cover the other release steps (SECURITY_AND_RELEASE_CHECKLIST.md), such as live mail delivery or headers.');
+if (overrideNote) console.log(overrideNote);
