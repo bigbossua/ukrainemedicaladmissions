@@ -246,7 +246,7 @@ The gaps that remain (exact demand for "pirogov medical university ukraine", the
 
 **Cumulative consumption: 6,230 + 30 = 6,260 line-based (6,370 max-reading; 6,840 conservative). Expected balance: 43,740 (43,630; conservative 43,160) — ESTIMATE, unverified until the owner's next API Units reading. Programme-cap headroom left: 850 / 740 / 270.**
 
-## 2026-10-12 — Master task: competitor gap check (programme 4; 300 units so far)
+## 2026-10-12 — Master task: competitor gap check and new-name demand (programme 4; 450 units)
 
 **Owner's instruction (2026-10-12, master task):** "Use the existing SEMrush subscription and units when necessary"; reuse existing exports first; confirm the balance through the account interface if accessible; for each further report record the question, database, report type, units and resulting decision; no purchases or upgrades. **Balance:** still not readable through the MCP (it reports per-call usage only). This programme's own working cap, set here because the instruction names none: **1,000 units**, each call justified by a question the 43 existing exports cannot answer.
 
@@ -265,3 +265,17 @@ The gaps that remain (exact demand for "pirogov medical university ukraine", the
 **Decision:** no new URL. `/tuition-fees/` stays the top money page; its meta description now carries the "MBBS fees for Indian students" phrasing that its existing section answers, with no fee figures. The university-name demand confirms the verification order already recorded. International European University enters the research register as a lead.
 
 **Cumulative consumption: 6,260 + 300 = 6,560 line-based (6,670 max-reading; 7,140 conservative). Expected balance: 43,440 (43,330; conservative 42,860): ESTIMATE, unverified. Programme 4 headroom: 700 of 1,000.**
+
+| # | Call | Question | Requested → returned | `usage.api_units` | File | Decision supported |
+|---|---|---|---|---|---|---|
+| 2 | `phrase_these` · in · 18 name variants of the institutions found by the research sweep (columns keyword, volume, competitive_density, results, trend, intent, keyword_difficulty) | Which of the newly found institutions carry measurable India search demand, so that verification effort goes to them first? None of the 44 earlier exports covers these names | 18 → 15 (3 not returned, not billed: "luhansk state medical university", "odessa international medical university", "lesya ukrainka volyn national university") | 150 | `research/semrush/2026-10-12-phrase_these-in-new-university-names.csv` | Verification order for the new institutions |
+
+**Result (exact, database in; typical month judged from the 12-month trend):**
+- **International European University (Kyiv, private): 590**, kd 19, steady but declining over the year. Highest of all new names, and higher than any of our 12 (the highest of those is Bukovinian, 480). Searches may also concern its former Malta campus, whose licence the research sweep found revoked on 13 August 2025 (MFHEA, third-party report of a government announcement).
+- **"lugansk state medical university": 390**, kd 20, steady. The name is ambiguous: the Ukrainian state university relocated to Rivne and the Russian-run university in occupied Luhansk ("named after St. Luke") share it. The figure cannot be split between them.
+- **Kyiv Medical University (private): 140**, kd 20, steady. **Sumy State University: 110**, kd 24, steady ("sumy state medical university", an agency name, 40).
+- All others 10–40 (Karazin, Taras Shevchenko, Petro Mohyla / "black sea national university", Cherkasy, National University of Pharmacy, Donetsk NMU, Kharkiv International MU, Zaporizhzhia National University).
+
+**Decision:** demand does not decide what is listed; evidence does. International European University and Luhansk State Medical University (Rivne) go to the top of the verification queue for the new institutions, because each has demand and an open status question that official or government pages can settle (IEU: current licence and the Malta campus; LSMU: dated official notice of the Rivne base and a clear distinction from the occupied-territory institution). They stay out of the public directory until then. Kyiv Medical University (licence and branch questions) follows. Sumy State University is listed as a research preview (its evidence meets the preview criteria); the low-demand state universities that meet the criteria are listed too, because a complete directory helps applicants who already have a university in mind.
+
+**Cumulative consumption: 6,560 + 150 = 6,710 line-based (6,820 max-reading; 7,290 conservative). Expected balance: 43,290 (43,180; conservative 42,710): ESTIMATE, unverified. Programme 4 headroom: 550 of 1,000.**
