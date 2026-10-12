@@ -18,11 +18,12 @@
 // allowlist; see /root/.ccr/README.md). A BLOCKED host says nothing about the website itself: it is an
 // access limitation, never evidence (UNIVERSITY_EVIDENCE_STANDARD.md). An OPEN host proves only that it answers; each
 // fact still needs its own capture and register entry.
-// Exit code: probe 0 all OPEN, 1 any host not OPEN; --check 0 consistent, 1 not; 2 usage error, unreadable file or a list
-// with no valid hosts.
+// Exit code: probe 0 all OPEN, 1 any host not OPEN; --check 0 consistent, 1 not (an empty or malformed list is a problem);
+// 2 usage error, unreadable file, unwritable --json path, or (probe mode) a list that is empty or has a line that is not a
+// plain host name.
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { accessSync, constants, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const SITE = resolve(new URL('..', import.meta.url).pathname);
@@ -125,6 +126,8 @@ function main() {
     values[a] = v;
     i++;
   }
+  const jsonPath = values['--json'] ? resolve(process.cwd(), values['--json']) : null;
+  if (jsonPath) { try { accessSync(dirname(jsonPath), constants.W_OK); } catch (e) { usage(`cannot write ${jsonPath} (${e.code ?? e.message})`); } }
   const read = (path) => { try { return readFileSync(path, 'utf8'); } catch (e) { return usage(`cannot read ${path} (${e.code ?? e.message})`); } };
   const listPath = values['--list'] ? resolve(process.cwd(), values['--list']) : PATHS.list;
   const listText = read(listPath);
@@ -151,11 +154,11 @@ function main() {
   const open = counts.OPEN ?? 0;
   console.log(`\n${open} of ${hosts.length} OPEN; ${Object.entries(counts).filter(([k]) => k !== 'OPEN').map(([k, v]) => `${v} ${k}`).join(', ') || 'none refused'}`);
   console.log(open === hosts.length
-    ? 'All hosts answer. Next: capture P1 pages in CAPTURE_REQUEST_2026-10-12.md §2 order (Bukovinian first) and record each reading with scripts/evidence-entry.mjs.'
+    ? 'All hosts answer. Next: capture P1 pages in the order of OWNER_ACTION_SHEET.md §1 (Bukovinian; then Odesa, Kharkiv and Vinnytsia; then the rest) and record each reading with scripts/evidence-entry.mjs.'
     : open
       ? 'Some hosts answer. Work only on universities whose hosts are all OPEN; record the others as blocked (an access limitation, not evidence).'
       : 'No host answers. Official-source research cannot start here: see OWNER_ACTION_SHEET.md §1 (allow the hosts) or send captures (CAPTURE_REQUEST §2).');
-  if (values['--json']) writeFileSync(resolve(process.cwd(), values['--json']), `${JSON.stringify({ checked: when, results }, null, 2)}\n`);
+  if (jsonPath) writeFileSync(jsonPath, `${JSON.stringify({ checked: when, results }, null, 2)}\n`);
   process.exit(open === hosts.length ? 0 : 1);
 }
 

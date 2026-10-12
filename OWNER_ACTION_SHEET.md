@@ -15,7 +15,7 @@ Background and every other open question: `OWNER_INPUT_NEEDED.md`. Pages to capt
 
 1. In the session title bar, open the cloud environment menu → **Edit**.
 2. **Network access** → **Allowed domains** (shown under the *Limited* level). Keep **Allow package managers** ticked. On an older app, Allowed domains is under *Custom*: there, tick the box that includes the default list of package managers.
-3. Add all 20 hosts below exactly as written: no `https://`, no path, both the `www.` and bare forms, one per line. A parent domain does not cover its subdomains. Save. Docs: https://code.claude.com/docs/en/cloud-environments#network-access
+3. Add all 20 hosts below exactly as written: no `https://`, no path, both the `www.` and bare forms, each one separately (one per line, or one per entry if the box takes them one at a time). A parent domain does not cover its subdomains. Save. Docs: https://code.claude.com/docs/en/cloud-environments#network-access
 4. Send "hosts added" in this chat. I run `npm run probe:access` here and tell you what answers. If I still see them blocked, start a new Claude Code session on this repository with **the same cloud environment** and the branch `claude/university-profile-pipeline`, and send: "Read OWNER_ACTION_SHEET.md, run npm run probe:access in site/ and report." Whether a running session picks up the change is not confirmed.
 
 <!-- allowlist:start -->
@@ -43,21 +43,20 @@ universities.studyinukraine.gov.ua
 ```
 <!-- allowlist:end -->
 
-These 20 cover every web address in the capture request's §2 page tables, which is all P1 work (checked by `npm run test:allowlist`). They are not everything the capture request may need. I will ask for one more host only when a claim needs it:
+These 20 cover every full page address (`https://…`) in the capture request's §2 tables, including every P1 page (checked by `npm run test:allowlist`). Some checks, a few P1 ones included, may need one more host; I will ask only when a claim needs it:
 - `info.edbo.gov.ua`, `nauka.gov.ua`: if the register card does not print the website.
 - `nmu.ua`: if the register lists it as Bogomolets' website.
+- `tnmu.edu.ua`: if the register lists it as Ternopil's website (open domain question).
 - `naqa.gov.ua`, `public.naqa.gov.ua`: programme accreditation, P2.
 - `studyinukraine.gov.ua`, `apply.studyinukraine.gov.ua`, `mon.gov.ua`, `zakon.rada.gov.ua`: national rules.
 - The two production hosts: live checks after a release.
 
-All are described in the capture request §1.
+All but `tnmu.edu.ua` are described in the capture request §1.
 
 **What I do once the hosts answer.**
 - **Order** (search demand, `SEMRUSH_API_LEDGER.md` 2026-10-12): Bukovinian first; then Odesa, Kharkiv and Vinnytsia; then Bogomolets, Ivano-Frankivsk, Uzhhorod and Ternopil. This is a research priority only, not a statement that any of them is admitting.
 - **P1 pages first** for each university: the government register card, official name and contacts, a dated 2026/27 teaching statement, the Medicine admission rule for foreign applicants, and the fee page.
-- **Each reading becomes one evidence entry.** It records the address, the exact passage, the document's date, the access date and a status from the evidence standard: verified, partially verified, conflicting, unverified, outdated or not applicable.
-  - A page that is silent on the point is still captured and recorded as silent.
-  - A page that cannot be found is reported NOT FOUND.
+- **Each reading becomes one dated evidence entry** with the address and the exact passage. Silent and not-found pages are recorded too.
 - **Separate claims:** Ukrainian registration (EDEBO), programme accreditation (NAQA) and recognition abroad (each country's regulator) are never merged.
 - **Visibility:** profiles stay noindex and unpublished until the publication gate passes and you approve a release.
 
@@ -71,14 +70,14 @@ In the order `node scripts/release-readiness.mjs` lists them. The check prints b
 - The reviewer's name and date (33–34) appear on no page, but they are stored in the repository and printed in the CI logs. Ask the reviewer first, or give a firm name.
 - Send only what you are willing to publish now. Otherwise, make the repository private first (decision D8), or tell me to keep your answers out of commits until you decide.
 
-**How to reply.** Fill in what you know in the template (§2.5) and send it. Partial replies are fine: leave a line blank if you do not have the answer yet. Agree the R lines with your reviewer before sending them. Send 32–34 only after the review. I enter the answers word for word. You can also edit `legal.mjs` yourself. "TBC", "???" or anything in square brackets counts as not supplied.
+**How to reply.** Fill in what you know in the template (§2.5) and send it. Partial replies are fine: leave a line blank if you do not have the answer yet. Agree the R lines with your reviewer before sending them. I enter the answers word for word. You can also edit `legal.mjs` yourself. "TBC", "???" or anything in square brackets counts as not supplied.
 
 **Allowed answers.** Only items 4 and 11 accept `not applicable`; on any other item it is rejected and the item stays open. Items 15 and 18 concern the application dashboard, which is not built yet. Give an answer, or decide with the reviewer whether that paragraph should stay in the privacy notice. Removing it is a code change for you to approve.
 
 **Order.**
 1. Item 3 (country) first: with the reviewer, it decides 6–11 and bears on 21.
 2. Then 1–2, 4–5, and 19–20. Read 19–20 from your mailbox and Hostinger accounts, not from your country of registration.
-3. Then the other R items (14–18, 22) with your reviewer.
+3. Then the other R items (14–18, 21–22) with your reviewer.
 4. Then 23–31: approve or replace. 23–27 also need the reviewer.
 5. 12–13 last, and 32–34 after the review.
 
@@ -201,8 +200,8 @@ Menu names are from general product knowledge, not checked against Google's help
    - Export Performance → Search results (last 16 months; Queries, Pages, Countries, Devices) and Indexing → Pages.
    - Use URL inspection on `/` and `/universities/` to see what Google holds today. Inspect only; do not press Request indexing.
    - Keep the files outside the repository while it is public and send them to me (`ANALYTICS_AND_SEARCH_CONSOLE.md` §A3).
-6. **Sitemap: your choice; I recommend right after the release.** The live home page and `/universities/` (both indexable) show the old unverified Ternopil card: city, four programmes and "Verification in progress", and on `/universities/` also "English (pending)".
-   - Not submitting does not keep that card out of Google: the live robots.txt already points Google to the same sitemap.
+6. **Sitemap: your choice; I recommend right after the release.** The live home page and `/universities/` show the old unverified Ternopil card: city, four programmes and "Verification in progress", and on `/universities/` also "English (pending)". Both pages are indexable. This is the `b2ca3d6` release you reported as deployed; I cannot open the live site from here.
+   - Not submitting does not keep that card out of Google: that release's robots.txt already points Google to the same sitemap.
    - Waiting only avoids asking for a fresh crawl of the old version. Only a release you approve removes the card.
    - If you submit now, submit again after the release.
 

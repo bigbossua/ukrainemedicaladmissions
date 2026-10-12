@@ -6,7 +6,8 @@
 //    drifts, a missing block).
 // 3. classify() turns curl results into OPEN / BLOCKED / DNS / TIMEOUT / TLS / ERROR as the probe reports them; a proxy
 //    refusal is never reported as OPEN, and a proxy 405 (configuration problem) is not reported as the allowlist.
-// 4. Usage errors, unreadable files and an empty or malformed list exit 2 before any host is contacted.
+// 4. Usage errors, unreadable files, an unwritable --json path and an empty or malformed list exit 2 before any host is
+//    contacted.
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
@@ -76,6 +77,7 @@ const usageCases = [
   [['--list', join(tmp, 'missing.txt'), '--check'], 'missing list file'],
   [['--list', join(tmp, 'empty.txt')], 'list with no hosts (probe mode)'],
   [['--list', join(tmp, 'bad.txt')], 'list with a URL instead of a host (probe mode)'],
+  [['--json', join(tmp, 'no-such-dir', 'out.json')], 'unwritable --json path'],
 ];
 for (const [argv, what] of usageCases) {
   const r = spawnSync(process.execPath, [script, ...argv], { encoding: 'utf8', timeout: 20000 });
