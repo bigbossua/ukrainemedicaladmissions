@@ -282,6 +282,11 @@ for (const s of releasePreviews) {
   const probs = previewProblems(text(r));
   if (probs.length) FAIL('research preview page', url, probs.join('; '), 'labelled "Not yet verified", noindex, no structured data', 'a wrong build is deployed: publish the production build of the released commit');
   else PASS('research preview page', url, 'labelled, noindex, no structured data');
+  // Preview pages are not in the sitemap, so the sitemap pass above never reaches them: check CSP, inline code and draft markers here.
+  const csp = cspProblem(r);
+  if (csp) (csp.severity === 'FAIL' ? FAIL : WARN)('CSP header', url, csp.observed, CSP_EXPECTED, CSP_FIX);
+  checkInline(url, text(r));
+  if (/verification in progress|data-draft-banner/i.test(text(r))) FAIL('unverified draft shown', url, 'draft marker on a research-preview page', 'the labelled research preview only', 'a preview build is deployed: publish the production build of the released commit');
 }
 
 // ---- the old Ternopil profile URL: the published profile, its research preview, or a 302 to the directory; never an

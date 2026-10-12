@@ -467,3 +467,50 @@ Broad-match (`phrase_fullsearch`) rows are containers that overlap: they are nev
 ### P.3 Release candidate
 
 See `RELEASE_CANDIDATE.md`: status, changes against production, the safeguard, blockers in four categories, release instructions and rollback. Status: not safe to release until the owner's legal details are complete; every other check passes.
+
+## Q. University directory made visible — research previews, page rewrites, SEMrush priorities (2026-10-12; branch `claude/university-profile-pipeline`; nothing deployed)
+
+### Q.1 Why the universities were not visible (diagnosis)
+
+- **Live site (`b2ca3d6`):** shows one card, Ternopil, from before the publication gate. That card was never verified.
+- **Working branch, before this milestone:** none of the 12 records is published. Each needs evidence entries for its facts, and every evidence file has **0 entries** because every official university and government host is refused by this environment's network policy. The directory then rendered its deliberate empty state ("we do not list the university here, not even as pending"). The 12 records produced no card, no page and no mention.
+- **Release:** the release gate refuses because the owner's legal details are missing, so nothing from the branch reaches the live site. The publish workflow and CI are behaving as designed.
+- **Not the cause:** routes, templates, navigation, links and deployment configuration. The main navigation already led with "Universities", the homepage linked the directory, and `/universities/` and `/universities/[slug]/` existed. The blank directory came from the publication rules plus the lack of evidence, and the release block kept the fix off the live site.
+
+### Q.2 What was built
+
+- **Research previews (N25):** owner setting `RESEARCH_PREVIEWS`, opt-in per record; see `PUBLICATION_POLICY_DECISIONS.md` (d).
+  - The 12 universities are listed by name, labelled "Not yet verified", in the directory and on the home page.
+  - Each has a page at `/universities/<slug>/`, built only from the policy projection. It shows no facts today. It lists what to check before applying and what is still unverified, gives an Apply Online Now route with the university preselected, and states that it is not the university's website and claims no partnership.
+  - Preview pages are noindex/follow, carry no structured data and are never in the sitemap.
+  - Records stay unpublished: 0 published, 12 previews.
+- **Directory:** verified and not-yet-verified tiers, and alphabetical name search that ignores filler words and accepts spelling variants (Odessa, Kharkov, Lvov, Vinnitsa, Zaporozhye, Uzhgorod, Ternopol, Dnepr, Pirogov). Facet filters appear only when verified data exists. The caveat is said once, and the cards are compact on mobile.
+- **Home:** new H1, true trust points, and the full list of 12 universities.
+- **Forms:** `/apply/` and the home start form offer each preview labelled "(not yet verified)".
+- **Ternopil URL:** served as its preview page (the 302 was removed; the gate enforces the rule both ways).
+- **Page rewrites:**
+  - `/courses/medicine/`: rebuilt as the medicine (MBBS) hub, with an H2 on programme length that gives no figure.
+  - Dentistry, nursing and pharmacy: course-specific checks replace a 169-word shared block.
+  - `/admissions/`: task-led, with the eligibility wording and one "Coming later" box.
+  - `/faq/`: eligibility, cost and duration first; India recognition split from other countries; new questions on "not yet verified" and what we do today. The unverified "Study in Ukraine portal" claim was removed.
+  - `/tuition-fees/`: the fee-schedule guide leads, followed by a printable list of questions to ask; the MBBS and "equivalent" claims are fixed.
+  - `/about/`, `/contact/`, `/services/`, `/404`, `/apply/` and `/apply/thank-you/`: titles, structure and duplicate lines fixed.
+- **New indexable pages: none.** The SEMrush evidence rejected country, eligibility, comparison, standalone MBBS and city pages for this round (Q.3). University profiles become indexable automatically once verified.
+
+### Q.3 SEMrush (existing 42 exports; 0 units spent; balance unverified)
+
+| Question | Answer from existing exports (exact demand unless labelled) |
+|---|---|
+| Strongest university demand (India, exact) | Bukovinian 480 · Odesa ("odessa…") 390 · Kharkiv 390 · Bogomolets 320 · Ivano-Frankivsk 210 · Uzhhorod 140 · Ternopil 110 · Zaporizhzhia (former name) 90 · Lviv 50 · Vinnytsia 50 (Pirogov 390 is broad only) · Poltava 20 · Dnipro 20. Total 2,270; steady across 12 months. |
+| Strongest countries | India 3,160 exact; UK 490; UAE 310; Nigeria 300; Pakistan 290; South Africa 150. |
+| Competitor pages with traffic | One agency hub (rmcedu "MBBS in Ukraine") holds positions 1–6 on 20 India keywords for an estimated 701 visits/month in total; the MBBS, fees and "college" SERPs share 4–6 of 10 URLs. |
+| Pages to rewrite or expand | `/universities/` (list intent: "ukraine medical college list" 210, broad), `/courses/medicine/` (MBBS hub: "mbbs in ukraine" 260 exact), `/tuition-fees/` ("mbbs in ukraine fees" 260 exact), `/admissions/` (eligibility 30), `/faq/` (question rows 10–40). Done. |
+| Merge or remove | `/courses/pharmacy/`: zero measured demand (uk 0). Kept and improved for now; merging changes a URL, so it is an owner decision. |
+| New pages justified | None now. Country pages (India exact 20), an eligibility page (30, already served by `/admissions/`), fee and university comparison pages (need verified data; same intent as existing pages), a standalone MBBS page and city pages are all rejected. |
+| Further research | No batch needed. Optional later batch of ≤200 units, only after a fresh balance reading (ledger 2026-10-12). |
+
+**Correction to §P.2:** some figures in that table are broad or related-keyword rows, not exact demand: ukraine medical fees 720, ukraine medical college fees 590, medical fees in ukraine 480, ukraine mbbs fees 260, cost of mbbs in ukraine 260, ukraine mbbs college 480, ukraine medical college list 210 and best medical college in ukraine 390. Several fee rows are also spikes: 94–99% of their searches fall in the last two months. Only the exact figures above should be used for planning.
+
+### Q.4 What the owner needs to do
+
+See `OWNER_INPUT_NEEDED.md`: 32 legal and owner details (A–F) and the other decisions (G). These cover confirming N25 and the "Not yet verified" label, the N24 defaults, access to official sources, a SEMrush reading, the backup and `config.php`, release approval, and the email test after release.

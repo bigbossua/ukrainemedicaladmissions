@@ -163,7 +163,10 @@ const jsonLd = [{
   @media (min-width: 640px) { .research-list { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1000px) { .research-list { grid-template-columns: repeat(3, 1fr); } }
   .research-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .75rem; padding: .65rem .9rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
+  .research-list li { position: relative; }
+  .research-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
   .research-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); }
+  .research-list a::after { content: ""; position: absolute; inset: 0; }
   .research-list a:hover { text-decoration: underline; }
   /* Stack the intro above the course cards until there is room for both side by side. */
   .courses-split { align-items: start; grid-template-columns: 1fr; }

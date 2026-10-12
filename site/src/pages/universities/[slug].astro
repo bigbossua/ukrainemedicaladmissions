@@ -32,7 +32,7 @@ const previewTitle = `${d.shortName}: not yet verified`.length <= 70 ? `${d.shor
 const title = entry ? `${d.shortName}: admissions & fees` : previewTitle;
 const description = entry
   ? `${d.shortName}${place}: programmes for international students, language, fees and entry requirements — each marked verified or to be confirmed.`
-  : `${d.shortName}: what is verified so far, what is not, and what to check before you apply.`;
+  : `${d.shortName}: not yet verified. What to check before you apply, and how to start your application online.`;
 // Structured data only for a published profile, and only from values the publication policy shows. Never for a preview.
 const jsonLd = entry && !draft ? profileJsonLd(d) : [];
 ---

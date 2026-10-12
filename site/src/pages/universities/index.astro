@@ -34,13 +34,13 @@ const factFilters = records.length > 0;
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 const summary = [plural(total, 'university', 'universities'), `${verifiedCount} verified`, previews.length ? `${previews.length} not yet verified` : '', drafts ? plural(drafts, 'draft', 'drafts') : '', 'alphabetical, not ranked'].filter(Boolean).join(' · ');
 ---
-<Base title="Medical universities in Ukraine: list of medical colleges" description={`${total} Ukrainian medical universities (medical colleges) for international students, each marked verified or not yet verified. Compared on facts, never ranked.`} suffix={false}>
+<Base title="Medical universities in Ukraine: list of medical colleges" description={`${total} Ukrainian universities in one directory, each marked verified or not yet verified. We show a fact only once checked, and we never rank universities.`} suffix={false}>
   {PREVIEW && drafts > 0 && <DraftBanner kind="unpublished" text={`Preview build: this directory includes ${drafts} draft ${drafts === 1 ? 'record' : 'records'} that ${drafts === 1 ? 'is' : 'are'} not on the public site. Values marked “pending” are research leads, not verified facts.`} />}
   <div class="page-head">
     <div class="wrap">
       <span class="eyebrow">Directory</span>
       <h1>Medical universities in Ukraine</h1>
-      <p>Ukrainian universities for international applicants in medicine and related subjects, in one list. A <strong>verified profile</strong> shows facts checked against official sources, each dated. A university marked <strong>not yet verified</strong> is one we are still researching: we show its name and what to check before you apply, never unconfirmed fees, programmes or dates. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
+      <p>The Ukrainian universities in our directory, in one list. A <strong>verified profile</strong> shows facts checked against official sources, each dated. A university marked <strong>not yet verified</strong> is one we are still researching: we show its name and what to check before you apply, never unconfirmed fees, programmes or dates. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
       <p class="head-summary" data-summary>{summary}</p>
     </div>
   </div>
@@ -48,9 +48,10 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
 
   <section style="padding-top:1rem">
     <div class="wrap">
-      <form class="filters" data-filters aria-label="Search the directory" role="search">
+      {/* Hidden until the directory script runs: without JavaScript every university is listed anyway. */}
+      <form class="filters" data-filters aria-label="Search the directory" role="search" hidden>
         <label class="field search">Search by university name
-          <input type="search" name="q" data-search placeholder="For example: Odesa, Kharkiv, Bogomolets" autocomplete="off" />
+          <input type="search" name="q" data-search placeholder="e.g. Odesa, Kharkiv" autocomplete="off" />
         </label>
         {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
           <label class="field">Show
@@ -86,7 +87,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
         )}
         <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Clear</button></p>
       </form>
-      <p class="count" aria-live="polite">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' City, programme, level, language and intake filters use verified facts only, so universities not yet verified do not match them.')}</p>
+      <p class="count" aria-live="polite" aria-atomic="true">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' City, programme, level, language and intake filters use verified facts only, so universities not yet verified do not match them.')}</p>
 
       <div data-list>
         {universities.length > 0 && (
@@ -112,7 +113,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
           </div>
         )}
       </div>
-      <p class="note" data-no-match hidden>No university matches “<span data-query></span>”. Check the spelling, or <button type="button" class="linkish" data-reset-link>show all universities</button>. If the university is not in the list, choose “A university not listed here” when you <a href={SITE.ctaHref}>start your profile</a>.</p>
+      <p class="note" data-no-match role="status" hidden>No university name matches “<span data-query></span>”. We search university names only. Check the spelling, or <button type="button" class="linkish" data-reset-link>show all universities</button>. If the university is not in the list, choose “A university not listed here” when you <a href={SITE.ctaHref}>start your profile</a>.</p>
       {total === 0 && <p class="note" data-empty-state><strong>No university profile has completed verification yet.</strong> <a href={SITE.ctaHref}>{SITE.cta}</a> and tell us which university you are considering.</p>}
 
       <div class="cta-inline">
@@ -155,13 +156,16 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   .filters { display: grid; gap: 0 1rem; margin-bottom: .25rem; align-items: end; }
   @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]) { grid-template-columns: repeat(3, 1fr); } }
   .filter-actions { margin: 0 0 1rem; }
+  .filter-actions .btn { min-height: 44px; }
+  .filters[hidden] { display: none; }
+  .filters input::placeholder { color: var(--slate); opacity: 1; }
   .count { font-size: .9rem; color: var(--slate); margin-top: 0; }
   .tier { margin-top: 1.5rem; }
   .tier[hidden] { display: none; }
   .tier > h2 { font-size: 1.35rem; margin-bottom: .5rem; }
   .lead-note { max-width: 80ch; margin: 0 0 .75rem; }
   .meaning { max-width: 80ch; margin: 0 0 1.25rem; }
-  .meaning summary { cursor: pointer; font-weight: 600; color: var(--navy-900); }
+  .meaning summary { cursor: pointer; font-weight: 600; color: var(--navy-900); padding: .65rem 0; min-height: 44px; }
   .meaning ul { padding-left: 1.25rem; margin: .6rem 0 0; }
   .meaning li { margin-bottom: .35rem; }
   .previews { gap: .75rem; }
@@ -177,7 +181,10 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   // fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
   const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
   const VARIANTS: [RegExp, string][] = [[/\bodessa\b/g, 'odesa'], [/\bkiev\b/g, 'kyiv'], [/\bkharkov\b/g, 'kharkiv'], [/\blvov\b/g, 'lviv'], [/\blwow\b/g, 'lviv'], [/\bvinn?[iy]t?s(?:i|y)?a\b/g, 'vinnytsia'], [/\bvinnytsya\b/g, 'vinnytsia'], [/\bzaporo(?:zh|j)(?:y|i)e\b/g, 'zaporizhzhia'], [/\bzaporizhia\b/g, 'zaporizhzhia'], [/\buzhgorod\b/g, 'uzhhorod'], [/\bternopol\b/g, 'ternopil'], [/\bfrankovsk\b/g, 'frankivsk'], [/\bdnepr\b/g, 'dnipro'], [/\bpirogova?\b/g, 'pirogov'], [/\bbukovina\b/g, 'bukovinian'], [/\bbogomolec\b/g, 'bogomolets']];
+  // Words people add to a name search that the names themselves may not contain ("Kharkiv medical university Ukraine").
+  const STOP = new Set(['of', 'the', 'in', 'at', 'and', 'for', 'ukraine', 'ukrainian', 'college', 'mbbs', 'medical', 'university', 'uni', 'national', 'state']);
   const form = document.querySelector<HTMLFormElement>('[data-filters]');
+  if (form) form.hidden = false;
   const search = document.querySelector<HTMLInputElement>('[data-search]');
   const selects = document.querySelectorAll<HTMLSelectElement>('[data-filter]');
   const cards = document.querySelectorAll<HTMLElement>('[data-list] article');
@@ -192,7 +199,8 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
     let n = 0;
     cards.forEach((c) => {
       const name = norm(c.dataset.name ?? '');
-      let ok = !q || q.split(' ').every((w) => name.includes(w));
+      const words = q.split(' ').filter((w) => w && !STOP.has(w));
+      let ok = words.length === 0 || words.every((w) => name.includes(w));
       selects.forEach((s) => {
         if (!ok || !s.value) return;
         const [attr, mode] = MAP[s.dataset.filter!];
@@ -209,6 +217,9 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   }
   selects.forEach((s) => s.addEventListener('change', apply));
   search?.addEventListener('input', apply);
+  // A shared or reloaded link such as /universities/?q=odessa opens with the search applied.
+  const initial = new URLSearchParams(location.search).get('q');
+  if (search && initial) { search.value = initial.slice(0, 80); apply(); }
   form?.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
   form?.addEventListener('reset', () => setTimeout(apply, 0));
   document.querySelector('[data-reset-link]')?.addEventListener('click', () => { form?.reset(); setTimeout(() => { apply(); search?.focus(); }, 0); });

@@ -70,12 +70,12 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
 
       <h2 id="before-you-apply" style={count > 0 ? 'margin-top:2.25rem' : undefined}>What to check before you apply</h2>
       <ol class="prose steps">
-        <li><strong>Find the official website from an official source.</strong> Use a Ukrainian government register or the domain the university itself publishes, not an advert, a social-media page or an agency's copy of its site. <a href="/admissions/#official-sites">How to recognise official channels</a>.</li>
+        <li><strong>Find the official website from an official source.</strong> Look the university up in a Ukrainian government register rather than trusting an advert, a social-media page or an agency's copy of its site; if you found a website through a search, check its address against that register. <a href="/admissions/#official-sites">How to recognise official channels</a>.</li>
         <li><strong>Confirm that your programme is open to international applicants for your intake</strong>, and the language it is taught in. If the website is unclear, ask the university's international office in writing.</li>
         <li><strong>Get the tuition fee from the university, with its academic year.</strong> Ask for the payment schedule and every other mandatory charge, for example registration, accommodation or insurance. <a href="/tuition-fees/">How to read a fee schedule</a>.</li>
         <li><strong>Compare the entry requirements with your qualifications:</strong> the school-leaving subjects and grades, any entrance test or interview, and the language level. <a href="/admissions/#readiness">How entry requirements are compared</a>.</li>
         <li><strong>Check recognition with your home regulator before you pay.</strong> Whether you can practise after graduating is decided by the medical regulator in the country where you plan to work, not by the university or by us.</li>
-        <li><strong>Read the university's current statement on how it is teaching</strong> this academic year: in person, at a distance or both, and from which city.</li>
+        <li><strong>Look for the university's own statement for this academic year</strong> on whether, how and from which city it is teaching: in person, at a distance or both.</li>
         <li><strong>Pay and send documents only through the university's own procedure.</strong> Never send money or original documents to anyone who cannot show you the university's written instructions.</li>
       </ol>
 
@@ -83,10 +83,12 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
       <p class="prose">Tell us you are interested in {d.shortName} when you start your candidate profile. We reply by email with answers to your questions and the next steps we suggest, and we tell you plainly what has not yet been verified. Starting a profile is free.</p>
       <p><a class="btn btn-primary" href={applyHref}>{SITE.cta}</a></p>
 
-      <h2 id="to-verify" style="margin-top:2.25rem">What we will confirm before publishing a full profile</h2>
+      <h2 id="to-verify" style="margin-top:2.25rem">Not yet verified</h2>
+      <p class="prose">We have not yet confirmed any of these from an official source, so none of them is shown here:</p>
       <ul class="prose pending-list">
         {pending.map((label) => <li>{label}</li>)}
       </ul>
+      <p class="prose">A full profile is published once the core facts are confirmed: the official name, website and address, the university's statement for the current year and at least one programme open to international applicants. Other facts, such as recognition, appear only if and when they are verified.</p>
       <p class="note">This page is not the university's website, and Ukraine Medical Admissions does not claim any partnership with {d.shortName}: we are an independent service, and admission decisions are made solely by the university.</p>
     </div>
 
@@ -119,5 +121,7 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
   .pending-list li { margin-bottom: .3rem; }
   .side-h { font-size: 1.05rem; margin: 0; }
   .links { padding-left: 1.1rem; margin: 0; font-size: .95rem; }
+  .links li { margin: 0; }
+  .links a { display: inline-block; padding: .55rem 0; }
   dl { margin: 0; }
 </style>
