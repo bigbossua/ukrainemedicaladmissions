@@ -1,0 +1,390 @@
+{
+  "slug": "fixture-tools-medical-university",
+  "synthetic": true,
+  "officialName": {
+    "value": "Fixture Tools Medical University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+  },
+  "shortName": "Fixture Tools Medical University",
+  "alternativeNames": [],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "city": "Fixture City",
+  "region": "Fixture Region",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "website": {
+    "value": "https://www.tools.fixture.example/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "overview": "Fixture record used only by tests/evidence-tools.mjs. It describes no real university.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null
+  },
+  "programmes": [
+    {
+      "id": "medicine",
+      "name": "Medicine (fixture)",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": "12 semesters",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+      },
+      "language": {
+        "value": [
+          "English"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+      },
+      "intakeYear": {
+        "value": "2026/27",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "otherMandatoryCosts": [
+        {
+          "label": "Fixture registration charge",
+          "cost": {
+            "value": null,
+            "status": "not-published",
+            "source": null,
+            "checked": null
+          }
+        }
+      ],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [
+        {
+          "id": "entrance-exam",
+          "type": "exam",
+          "summary": "Fixture entrance examination in Biology.",
+          "subject": "Biology",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+        }
+      ],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [
+        {
+          "id": "passport",
+          "name": "Passport (fixture)",
+          "status": "unverified",
+          "source": null,
+          "checked": null,
+          "note": "Fixture lead for tests/evidence-tools.mjs. This is not a real university and nothing here is a fact."
+        }
+      ],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "nursing",
+      "name": "Nursing (fixture)",
+      "field": "nursing",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "preparatoryRoutes": [
+    {
+      "id": "prep",
+      "name": "Preparatory course (fixture)",
+      "languageOfInstruction": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "englishTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "subjects": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "certificateName": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "progressionText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "appliesToEnglishDegreeTrack": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "startDate": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "fee": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      },
+      "eligibilityText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null
+      }
+    }
+  ],
+  "researchReferences": [
+    {
+      "label": "Fixture admission page",
+      "url": "https://tools.fixture.example/admission",
+      "purpose": "Fixture: programmes and admission"
+    },
+    {
+      "label": "Fixture fee schedule",
+      "url": "https://tools.fixture.example/fees.pdf",
+      "purpose": "Fixture: tuition"
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "lastReview": null,
+    "openQuestions": [
+      "Fixture question: every claim is a fixture lead."
+    ]
+  }
+}
