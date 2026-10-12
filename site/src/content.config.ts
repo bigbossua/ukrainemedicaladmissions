@@ -16,14 +16,18 @@ export { FIELD_KEYS, LEVEL_KEYS } from './content/schema.mjs';
  */
 const universitiesDir = process.env.UMA_UNIVERSITIES_DIR ? resolve(process.env.UMA_UNIVERSITIES_DIR) : './src/content/universities';
 
+// TOP-LEVEL *.json FILES ONLY (backlog N24 f): the record tests (tests/records-evidence.mjs R1-R11), the sitemap filter
+// (astro.config.mjs) and the publication report read only the top level of the directory, so a record in a subdirectory
+// would be built without being checked. tests/records-evidence.mjs also fails if a subdirectory or a non-JSON file exists
+// there, and tests/publication-policy.mjs fails if this pattern changes.
 const universities = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: universitiesDir }),
+  loader: glob({ pattern: '*.json', base: universitiesDir }),
   schema: record,
 });
 
 /** Synthetic sample records for local UI demonstrations only. Built solely in PREVIEW_UNPUBLISHED builds under /preview/. */
 const samples = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/samples' }),
+  loader: glob({ pattern: '*.json', base: './src/content/samples' }),
   schema: record,
 });
 

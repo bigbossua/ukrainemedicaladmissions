@@ -62,7 +62,8 @@ const applyHref = `/apply/?university=${d.slug}`;
       </section>
 
       <h2>Overview</h2>
-      <p class="prose">{d.overview}</p>
+      {/* Our own description: a published profile carries it only after an editorial review of exactly this text (N24 a). */}
+      {typeof d.overview === 'string' && d.overview.trim() && <p class="prose">{d.overview}</p>}
       <dl>
         <Fact label="Official name" claim={d.officialName} />
         <Fact label="Operating status" claim={d.status} />

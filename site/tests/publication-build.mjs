@@ -9,6 +9,12 @@
 //         POSITIVE CONTROLS: the build must succeed; then EVERY output file (HTML, XML, sitemap, robots, JS, CSS, JSON) is
 //         scanned for every canary; positive controls must appear; the malicious value may appear only escaped; the sitemap
 //         and JSON-LD carry only verified data. A PREVIEW build of the same fixtures must keep the published profiles clean.
+//       Backlog N24 (2026-10-12): the fail set also holds two flagged records whose website has no government listing or a
+//       government listing with a different website (the build must stop and name both); the pass set holds a beta whose
+//       overview is unreviewed, whose city and region are not in its address and whose third programme's name is not in
+//       its quotation; a delta whose overview was edited after review, whose recognition is on an unlisted authority host,
+//       whose intake names a past year and whose preparatory start date has passed; and a flagged record in a
+//       subdirectory, which must never be built (content collection: top-level *.json only).
 //   (c) stale data — build, change a verified tuition value in both the record and its evidence, rebuild into the SAME
 //         outDir with the SAME content cache (nothing cleared): the new value must be present and the old one absent; then
 //         withdraw the evidence (mark it conflicting) and rebuild again: the value must disappear.
@@ -68,6 +74,9 @@ const CANARIES = [
   // value does not match.
   'google.com/search', 'best-agent.fixture.example', 'directory.fixture.example', 'alpha.fixture.example/prep-rules', 'beta.fixture.example/fees-2',
   'http://beta.fixture.example', 'register.fixture.example',
+  // N24: the government register pages behind the website claims (evidence, never printed), the unlisted recognition
+  // authority, and the past-year intake.
+  'register.fixture.gov.ua/universities', 'recognition-authority.fixture.example', 'September 2019',
 ];
 // A numeric canary matches only as a whole number (not inside a longer number, a decimal or an asset hash).
 const matcher = (c) => (/^\d[\d,]*$/.test(c) ? ((t) => new RegExp(`(?<![\\w.,])${c}(?![\\w,]|\\.\\d)`).test(t)) : (t) => t.includes(c));
@@ -91,6 +100,16 @@ try {
     check(prod.output.includes('fixture-flagged-no-evidence'), '(a) build error does not name the record fixture-flagged-no-evidence');
     check(/no evidence file/i.test(prod.output), '(a) build error does not list the missing evidence file as a failure');
     check(/open verification question/i.test(prod.output), '(a) build error does not list the open question as a failure');
+    // N24 (c): the website needs a government listing of exactly the same website; without it nothing read on the
+    // university's own pages counts, so the official name is withheld too.
+    for (const slug of ['fixture-website-no-government', 'fixture-website-government-differs']) {
+      const block = (prod.output.split(`  ${slug}:`)[1] ?? '').split(/\n  [a-z0-9-]+:\n/)[0];
+      check(block.length > 0, `(a) N24 build error does not name ${slug}`);
+      check(/Official website is not shown/.test(block), `(a) N24 ${slug}: the build error does not say the official website is not shown`);
+      check(/Official name is not shown: its evidence page is not on the address its tier requires/.test(block), `(a) N24 ${slug}: the official name (read on the university's own page) is not withheld with the website`);
+    }
+    check(/Official website is not shown: no verified evidence entry on a Ukrainian government address/.test(prod.output), '(a) N24 the missing government listing is not explained');
+    check(/Official website is not shown: the record or an evidence entry marks it conflicting/.test(prod.output), '(a) N24 the government listing of a different website is not reported as a conflict');
     check(!existsSync(join(OUT.fail, 'universities', 'fixture-flagged-no-evidence', 'index.html')), '(a) a failed production build still wrote the flagged profile');
 
     const prev = build('fail (preview)', { dirs, outDir: OUT.failPreview, preview: true, cacheDir: join(TMP, 'cache-fail-preview') });
@@ -104,6 +123,8 @@ try {
       check(h.includes('data-publication-failures'), '(a) preview: publication failures not listed in the verification queue');
       check(/No evidence file/i.test(h), '(a) preview: the missing evidence file is not listed as a failure');
     }
+    const hw = page(OUT.failPreview, 'universities/fixture-website-no-government');
+    check(hw.includes('data-draft-banner') && /Official website is not shown/.test(hw), '(a) N24 preview: the record without a government listing is not a draft listing the website failure');
   }
 
   // ------------------------------------------------------------------ (b) pass fixtures
@@ -116,20 +137,42 @@ try {
       const beta = page(OUT.pass, 'universities/fixture-beta-medical-university');
       check(alpha && beta, '(b) a publishable fixture profile was not built');
       check(!existsSync(join(OUT.pass, 'universities', 'fixture-gamma-draft-university')), '(b) the unflagged draft got a production page');
+      // N24 (f): a flagged record in a subdirectory is never built (and so cannot stop the build either).
+      check(!existsSync(join(OUT.pass, 'universities', 'fixture-nested-record')), '(b) N24 a record in a subdirectory of the records directory got a page');
       // Positive controls: verified values with matching evidence must be shown.
-      for (const v of ['POSCTRL-ALPHA-OFFICIAL-NAME Medical University', 'POSCTRL-ALPHA-STATEMENT: teaching this academic year is in person.', 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville',
+      for (const v of ['POSCTRL-ALPHA-OFFICIAL-NAME Medical University', 'POSCTRL-ALPHA-STATEMENT: teaching this academic year is in person.', 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville, Alpha Oblast',
+        // N24 (a): reviewed overview, city and region found in the verified address; (e): schedule and year-by-year amounts.
+        'payment schedule, as published: POSCTRL-ALPHA-SCHEDULE per semester', 'year by year, as published: POSCTRL-ALPHA-VARIES-BY-YEAR',
         '7,123 USD per year', `(${AY})`, 'POSCTRL-ALPHA-COST-LABEL', '345 USD per year', 'POSCTRL-ALPHA-REQ-BIOLOGY', 'POSCTRL-ALPHA-DOC-PASSPORT', 'POSCTRL-ALPHA-PREP-ROUTE',
         'POSCTRL-ALPHA-PREP-DURATION', 'POSCTRL-ALPHA-ACCREDITATION', 'https://register.fixture.gov.ua/alpha', 'POSCTRL-222', 'posctrl-office@alpha.fixture.example', 'POSCTRL-ALPHA-MEDICINE', 'POSCTRL-ALPHA-OVERVIEW', '1901',
         'https://alpha.fixture.example/fees', 'Verified', 'To be confirmed', 'still being confirmed', 'Some other mandatory costs have not yet been verified'])
         check(alpha.includes(v), `(b) alpha profile: positive control "${v}" missing`);
+      const eyebrow = (h) => (/<span class="eyebrow"[^>]*>([^<]*)<\/span>/.exec(h) ?? [])[1];
+      check(eyebrow(alpha) === 'Alphaville, Alpha Oblast', `(b) N24 alpha: city and region found in the verified address not shown (eyebrow "${eyebrow(alpha)}")`);
+      check(eyebrow(beta) === 'City to be confirmed', `(b) N24 beta: a city that is not in the verified address is not withheld (eyebrow "${eyebrow(beta)}")`);
       for (const v of ['POSCTRL-BETA-OFFICIAL-NAME', 'POSCTRL-BETA-STATEMENT', 'POSCTRL-BETA-MEDICINE', 'POSCTRL-BETA-PHARMACY', 'POSCTRL-BETA-DEADLINE', 'POSCTRL-BETA-DURATION 6 years', 'relocated', 'To be confirmed'])
         check(beta.includes(v), `(b) beta profile: positive control "${v}" missing`);
+      const overviewPara = (h) => /<h2[^>]*>Overview<\/h2>\s*<p class="prose"/.test(h);
+      check(overviewPara(alpha), '(b) N24 alpha: the reviewed overview paragraph is missing (positive control for the overview check)');
+      check(!overviewPara(beta), '(b) N24 beta: an unreviewed overview paragraph was printed');
+      // N24 delta: published, with its traps withheld.
+      const delta = page(OUT.pass, 'universities/fixture-delta-medical-university');
+      if (check(delta, '(b) N24 delta profile was not built')) {
+        for (const v of ['POSCTRL-DELTA-OFFICIAL-NAME', 'POSCTRL-DELTA-MEDICINE', 'POSCTRL-DELTA-PREP-ROUTE', 'POSCTRL-DELTA-PREP-DURATION', `6,789 EUR per semester (${AY})`])
+          check(delta.includes(v), `(b) N24 delta profile: positive control "${v}" missing`);
+        check(eyebrow(delta) === 'Deltaburg', `(b) N24 delta: city found in the verified address not shown (eyebrow "${eyebrow(delta)}")`);
+        const pastStart = new Date(NOW.getTime() - 30 * 86400000).toISOString().slice(0, 10);
+        check(!delta.includes(pastStart), `(b) N24 delta: the preparatory start date ${pastStart}, which has passed, is shown`);
+        check(/<dt>Start<\/dt>\s*<dd>\s*<span class="badge badge-pending">To be confirmed/.test(delta), '(b) N24 delta: the passed start date is not shown as "To be confirmed"');
+        check(/<dt>Recognition<\/dt>\s*<dd>\s*<span class="badge badge-pending">To be confirmed/.test(delta), '(b) N24 delta: recognition on an unlisted authority host is not "To be confirmed"');
+        check(!overviewPara(delta), '(b) N24 delta: an overview edited after its review was printed');
+      }
       // The attack string: present only escaped, in HTML text and in JSON-LD.
       check(alpha.includes('POSCTRL-ALPHA-HOSTEL &lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt; &amp; co'), '(b) alpha: verified value with markup not rendered as escaped text');
       check(beta.includes('POSCTRL-BETA-ADDRESS &lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;'), '(b) beta: verified address with markup not rendered as escaped text');
       // JSON-LD: only verified values; escaped; parses back to the exact value.
       for (const [slug, h, exp] of [
-        ['fixture-alpha-medical-university', alpha, { name: 'POSCTRL-ALPHA-OFFICIAL-NAME Medical University', url: 'https://alpha.fixture.example/', address: 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville' }],
+        ['fixture-alpha-medical-university', alpha, { name: 'POSCTRL-ALPHA-OFFICIAL-NAME Medical University', url: 'https://alpha.fixture.example/', address: 'POSCTRL-ALPHA-ADDRESS 1 Alpha Street, Alphaville, Alpha Oblast' }],
         ['fixture-beta-medical-university', beta, { name: 'POSCTRL-BETA-OFFICIAL-NAME', url: 'https://beta.fixture.example/', address: 'POSCTRL-BETA-ADDRESS </script><script>alert(1)</script>' }],
       ]) {
         const blocks = ldBlocks(h);
@@ -156,6 +199,10 @@ try {
       check(attr(dir, 'fixture-alpha-medical-university', 'data-intakes') === AY, `(b) directory alpha data-intakes = ${attr(dir, 'fixture-alpha-medical-university', 'data-intakes')}`);
       check(attr(dir, 'fixture-alpha-medical-university', 'data-fields') === 'medicine', `(b) directory alpha data-fields = ${attr(dir, 'fixture-alpha-medical-university', 'data-fields')} (unlisted programmes leaked)`);
       check(attr(dir, 'fixture-alpha-medical-university', 'data-prep') === 'yes', '(b) directory alpha: preparatory route with a verified claim not flagged');
+      // N24 (a): a city found in the verified address is the filter value; a withheld city is "To be confirmed", never a guess.
+      check(attr(dir, 'fixture-alpha-medical-university', 'data-city') === 'Alphaville', `(b) N24 directory alpha data-city = ${attr(dir, 'fixture-alpha-medical-university', 'data-city')}`);
+      check(attr(dir, 'fixture-beta-medical-university', 'data-city') === 'To be confirmed', `(b) N24 directory beta data-city = ${attr(dir, 'fixture-beta-medical-university', 'data-city')}, expected "To be confirmed"`);
+      check(/<select[^>]*data-filter="city"[^>]*>(?:(?!<\/select>)[\s\S])*<option value="To be confirmed"[^>]*>To be confirmed<\/option>/.test(dir), '(b) N24 directory: the city filter does not offer "To be confirmed" for the withheld city');
       check(attr(dir, 'fixture-beta-medical-university', 'data-languages') === 'English Ukrainian', `(b) directory beta data-languages = ${attr(dir, 'fixture-beta-medical-university', 'data-languages')}`);
       check(attr(dir, 'fixture-beta-medical-university', 'data-fields') === 'medicine pharmacy', `(b) directory beta data-fields = ${attr(dir, 'fixture-beta-medical-university', 'data-fields')}`);
       // Beta's only preparatory route is withheld: neither "yes" nor "no" (the "no route recorded" filter must not claim it).
@@ -176,20 +223,22 @@ try {
       check(page(OUT.pass, 'courses/medicine').includes('/universities/fixture-alpha-medical-university/#medicine'), '(b) /courses/medicine/: listed programme missing');
       // Sitemap: verified profiles only, and only URLs that exist.
       const sitemap = existsSync(join(OUT.pass, 'sitemap-0.xml')) ? readFileSync(join(OUT.pass, 'sitemap-0.xml'), 'utf8') : '';
-      check(sitemap.includes('/universities/fixture-alpha-medical-university/') && sitemap.includes('/universities/fixture-beta-medical-university/'), '(b) sitemap: published profiles missing');
+      check(sitemap.includes('/universities/fixture-alpha-medical-university/') && sitemap.includes('/universities/fixture-beta-medical-university/') && sitemap.includes('/universities/fixture-delta-medical-university/'), '(b) sitemap: published profiles missing');
       check(!sitemap.includes('fixture-gamma'), '(b) sitemap lists the draft');
+      check(!sitemap.includes('fixture-nested'), '(b) N24 sitemap lists the record in a subdirectory');
       for (const [, loc] of sitemap.matchAll(/<loc>https:\/\/ukrainemedicaladmissions\.com([^<]*)<\/loc>/g)) check(existsSync(join(OUT.pass, loc, 'index.html')), `(b) sitemap lists ${loc}, which was not built`);
       check(!/fixture/.test(readFileSync(join(OUT.pass, 'robots.txt'), 'utf8')), '(b) robots.txt mentions a fixture');
     }
 
     const prev = build('pass (preview)', { dirs, outDir: OUT.passPreview, preview: true, cacheDir: join(TMP, 'cache-pass-preview') });
     if (check(prev.status === 0, `(b) PREVIEW build of the pass fixtures failed\n${prev.output.slice(-1500)}`)) {
-      for (const slug of ['fixture-alpha-medical-university', 'fixture-beta-medical-university']) {
+      for (const slug of ['fixture-alpha-medical-university', 'fixture-beta-medical-university', 'fixture-delta-medical-university']) {
         const h = page(OUT.passPreview, `universities/${slug}`);
         check(h && !h.includes('data-draft-banner'), `(b) preview: published ${slug} rendered as a draft`);
         for (const c of ['CANARY', '98,765', '55,501', 'NOT verified; read the official page', '<script>alert(1)']) check(!h.includes(c), `(b) preview: published ${slug} shows "${c}" (preview builds must use the same projection for published records)`);
       }
       check(page(OUT.passPreview, 'universities/fixture-gamma-draft-university').includes('data-draft-banner'), '(b) preview: the draft is not rendered as a draft');
+      check(!existsSync(join(OUT.passPreview, 'universities', 'fixture-nested-record')), '(b) N24 preview: a record in a subdirectory was built');
     }
   }
 

@@ -20,7 +20,9 @@ import { parseEvidence, loadEvidence, evidenceFile } from '../src/lib/evidence.m
 import {
   FIELD_POLICY, policyCoverage, assertPolicyCoverage, evaluateClaim, allowedTiers, toPublicRecord, evaluatePublication, publicationDecision,
   publicationBuildError, viewClaim, viewItems, serializeJsonLd, profileJsonLd, currentAcademicYear, listClaims, PUBLIC_REASONS,
+  editorialTextHash, containsPhrase, editorialReviewMatches, formatMoney, CODE_WORDS, NOT_LISTED_WORDS,
 } from '../src/lib/publication.mjs';
+import * as CONFIG from '../src/lib/publication-config.mjs';
 import { readFixture, FIXTURE_ROOT, academicYear } from './fixtures/publication/materialise.mjs';
 
 let checks = 0, failures = 0;
@@ -45,6 +47,8 @@ const entry = (claimPath, value, o = {}) => ({
 });
 const evidence = (entries) => ({ slug: SLUG, access: { status: 'open', checked: day(-2), note: 'unit test' }, entries });
 const ev = (claimPath, value, o) => [entry(claimPath, value, o)];
+// A Ukrainian government register page listing the university's website (N24 c).
+const GOV_WEBSITE_PAGE = 'https://register.unit-test.gov.ua/universities/1';
 // The university's official website host is unit.example (tier 1 and 2 evidence must be on it).
 const C = (path, claim, entries, opts = {}) => evaluateClaim(path, claim, entries, { now: NOW, officialHosts: ['unit.example'], ...opts });
 
@@ -64,8 +68,12 @@ function passing() {
   const entries = [
     entry('officialName', 'Unit Test University'), entry('status', 'operating'), entry('statusStatement', 'Teaching is in person this year.', { academicYear: AY }),
     entry('teachingFormat', 'in-person'), entry('address', '1 Test Street'), entry('website', `${H}/`),
+    // N24 (c): a government register (tier 3, .gov.ua) lists exactly the same website.
+    entry('website', `${H}/`, { n: 2, sourceTier: 3, sourceUrl: GOV_WEBSITE_PAGE, quotation: `Register entry. Website: ${H}/` }),
     entry('programmes.medicine.level', 'integrated_master'), entry('programmes.medicine.durationYears', 6), entry('programmes.medicine.language', ['English']),
-    entry('programmes.medicine.internationalAdmission', true), entry('programmes.medicine.intakeYear', AY), entry('programmes.medicine.tuition', money(5000), { academicYear: AY }),
+    // N24 (a): the quotation that verifies international admission names the programme as the record does.
+    entry('programmes.medicine.internationalAdmission', true, { quotation: 'Foreign citizens are admitted to Medicine for this intake.' }),
+    entry('programmes.medicine.intakeYear', AY), entry('programmes.medicine.tuition', money(5000), { academicYear: AY }),
   ];
   return { rec, ev: evidence(entries) };
 }
@@ -79,7 +87,7 @@ section('field policy');
   eq(cov, { missing: [], stale: [] }, 'every schema key is classified and every policy entry exists in the schema');
   const classes = new Set(Object.values(FIELD_POLICY).flatMap((p) => Object.values(p)));
   check([...classes].every((c) => ['public', 'editorial-public', 'internal'].includes(c)), `only the three classes are used: ${[...classes]}`);
-  for (const [shape, key] of [['claim', 'note'], ['record', 'researchReferences'], ['verification', 'openQuestions'], ['verification', 'reviewer'], ['record', 'deferredProgrammes'], ['record', 'faqs'], ['record', 'images'], ['record', 'synthetic'], ['requirement', 'note'], ['documentRequirement', 'note'], ['preparatoryRoute', 'note'], ['claim', 'status'], ['record', 'alternativeNames'], ['programme', 'gradingNote']])
+  for (const [shape, key] of [['claim', 'note'], ['record', 'researchReferences'], ['verification', 'openQuestions'], ['verification', 'reviewer'], ['verification', 'editorialReview'], ['record', 'deferredProgrammes'], ['record', 'faqs'], ['record', 'images'], ['record', 'synthetic'], ['requirement', 'note'], ['documentRequirement', 'note'], ['preparatoryRoute', 'note'], ['claim', 'status'], ['record', 'alternativeNames'], ['programme', 'gradingNote']])
     check(FIELD_POLICY[shape][key] === 'internal', `${shape}.${key} must be internal`);
   for (const [shape, key] of [['record', 'slug'], ['record', 'shortName'], ['record', 'city'], ['record', 'overview']]) check(FIELD_POLICY[shape][key] === 'editorial-public', `${shape}.${key} must be editorial-public`);
   // (10) a new schema field without a policy entry
@@ -136,7 +144,10 @@ section('evaluateClaim');
   const recog = ['Listed by the destination regulator'];
   for (const tier of [1, 2, 3]) hidden(C('recognition', V(recog, `${H}/recognition`), ev('recognition', recog, { sourceTier: tier, sourceUrl: `${H}/recognition` })), 'under-review', 'tier-not-allowed', `(6) recognition backed by a tier-${tier} source (the university's own page)`);
   hidden(C('recognition', V(recog, 'https://www.unit.example/recognition'), ev('recognition', recog, { sourceTier: 4, sourceUrl: 'https://www.unit.example/recognition' }), { officialHosts: ['unit.example'] }), 'under-review', 'recognition-from-university', '(6) "tier 4" recognition evidence hosted on the university website');
-  check(C('recognition', V(recog, 'https://regulator.example/list'), ev('recognition', recog, { sourceTier: 4, sourceUrl: 'https://regulator.example/list' }), { officialHosts: ['unit.example'] }).show, 'recognition from a tier-4 authority is shown');
+  // N24 (b): only from a recognition authority the owner has listed. The list is empty by default, so even a genuine
+  // tier-4 page is withheld until the owner lists its host; a listed host is shown (settings passed by the test only).
+  hidden(C('recognition', V(recog, 'https://regulator.example/list'), ev('recognition', recog, { sourceTier: 4, sourceUrl: 'https://regulator.example/list' })), 'under-review', 'recognition-authority-not-listed', '(6) recognition from a tier-4 authority the owner has not listed');
+  check(C('recognition', V(recog, 'https://regulator.example/list'), ev('recognition', recog, { sourceTier: 4, sourceUrl: 'https://regulator.example/list' }), { settings: { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] } }).show, 'recognition from a listed tier-4 authority is shown');
   // Fees: tiers 1-2 only (the university's own pages or fee schedule); a government page never supports a fee (standard §7).
   hidden(C('programmes.medicine.tuition', V(money(5000), 'https://portal.unit-test.gov.ua/fees'), ev('programmes.medicine.tuition', money(5000), { academicYear: AY, sourceTier: 3, sourceUrl: 'https://portal.unit-test.gov.ua/fees' })), 'under-review', 'tier-not-allowed', 'fee backed only by a tier-3 government page');
   check(JSON.stringify(allowedTiers('programmes.medicine.tuition')) === '[1,2]' && JSON.stringify(allowedTiers('preparatoryRoutes.p.fee')) === '[1,2]' && JSON.stringify(allowedTiers('programmes.m.otherMandatoryCosts.0')) === '[1,2]', 'fee paths allow tiers 1-2 only');
@@ -191,10 +202,10 @@ section('toPublicRecord');
   check(!s.includes('CANARY'), `(5) projection of the trap fixture contains a canary: ${(s.match(/CANARY[-A-Z0-9]*/g) ?? []).slice(0, 5)}`);
   check(!s.includes('NOT verified'), '(5) projection contains research-note wording');
   const keys = deepKeys(pub);
-  for (const k of ['note', 'researchReferences', 'deferredProgrammes', 'openQuestions', 'reviewer', 'faqs', 'images', 'synthetic', 'alternativeNames', 'gradingNote', 'entryRequirements', 'requiredDocuments', 'status' + 'Internal', 'publishable', 'code'])
+  for (const k of ['note', 'researchReferences', 'deferredProgrammes', 'openQuestions', 'reviewer', 'faqs', 'images', 'synthetic', 'alternativeNames', 'gradingNote', 'entryRequirements', 'requiredDocuments', 'status' + 'Internal', 'publishable', 'code', 'editorialReview', 'overviewSha256'])
     check(!keys.has(k), `(5) projection carries the internal key "${k}"`);
   // Only public / editorial-public keys (plus the withheld counters) at record level
-  const allowed = new Set([...Object.entries(FIELD_POLICY.record).filter(([, c]) => c !== 'internal').map(([k]) => k), 'programmesWithheld', 'routesWithheld']);
+  const allowed = new Set([...Object.entries(FIELD_POLICY.record).filter(([, c]) => c !== 'internal').map(([k]) => k), 'programmesWithheld', 'routesWithheld', 'editorialWithheld']);
   check(Object.keys(pub).every((k) => allowed.has(k)), `projection record keys ${Object.keys(pub).filter((k) => !allowed.has(k))}`);
   eq(pub.programmes.map((p) => p.id), ['medicine'], 'only the listable programme is projected');
   eq([pub.programmesWithheld, pub.routesWithheld], [2, 1], 'withheld programmes and routes are counted');
@@ -286,7 +297,7 @@ section('evaluatePublication');
   const nl = evaluatePublication(noProg, e, { now: NOW }).notListed;
   check(nl.length === 1 && /international admission/.test(nl[0].message), 'the programme that cannot be listed is explained');
   // The trap fixtures pass the policy (their traps are withheld, not failures)
-  for (const slug of ['fixture-alpha-medical-university', 'fixture-beta-medical-university']) {
+  for (const slug of ['fixture-alpha-medical-university', 'fixture-beta-medical-university', 'fixture-delta-medical-university']) {
     const r = record.parse(readFixture(join(FIXTURE_ROOT, `pass/universities/${slug}.json`), NOW));
     const res = evaluatePublication(r, readFixture(join(FIXTURE_ROOT, `pass/evidence/${slug}.json`), NOW), { now: NOW });
     eq(res.failures.map((f) => f.message), [], `pass fixture ${slug} passes`);
@@ -300,7 +311,7 @@ section('evidence schema');
 {
   const { ev: e } = passing();
   eq(parseEvidence(e).state, 'ok', 'a valid evidence file parses');
-  for (const slug of ['fixture-alpha-medical-university', 'fixture-beta-medical-university']) eq(parseEvidence(readFixture(join(FIXTURE_ROOT, `pass/evidence/${slug}.json`), NOW)).state, 'ok', `fixture evidence ${slug} parses`);
+  for (const slug of ['fixture-alpha-medical-university', 'fixture-beta-medical-university', 'fixture-delta-medical-university']) eq(parseEvidence(readFixture(join(FIXTURE_ROOT, `pass/evidence/${slug}.json`), NOW)).state, 'ok', `fixture evidence ${slug} parses`);
   const bad = (mut, msg) => { const x = clone(e); mut(x); check(parseEvidence(x).state === 'invalid', `invalid evidence accepted: ${msg}`); };
   bad((x) => { delete x.entries[0].value; }, 'entry without a value key');
   bad((x) => { x.entries[0].decision = 'withhold'; x.entries[0].withholdReason = null; }, 'withheld entry without a reason');
@@ -381,7 +392,7 @@ section('adversarial review');
   // An expired next-review date retires the entry for every claim, not only time-sensitive ones.
   hidden(C('officialName', V('Name'), ev('officialName', 'Name', { nextReview: day(-1) })), 'stale-review', 'expired nextReview on the official name');
   hidden(C('programmes.medicine.language', V(['English']), ev('programmes.medicine.language', ['English'], { nextReview: day(-1) })), 'stale-review', 'expired nextReview on a programme language');
-  hidden(C('recognition', V(['Listed'], 'https://regulator.example/list'), ev('recognition', ['Listed'], { sourceTier: 4, sourceUrl: 'https://regulator.example/list', nextReview: day(-30) })), 'stale-review', 'expired nextReview on recognition');
+  hidden(C('recognition', V(['Listed'], 'https://regulator.example/list'), ev('recognition', ['Listed'], { sourceTier: 4, sourceUrl: 'https://regulator.example/list', nextReview: day(-30) }), { settings: { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] } }), 'stale-review', 'expired nextReview on recognition (listed authority)');
   // Evidence that names an academic year which has ended (2025/26 when the current year is 2026/27).
   const last = academicYear(NOW, -1);
   eq(last, '2025/26', 'the previous academic year');
@@ -484,6 +495,221 @@ section('adversarial review');
   eq(evaluatePublication(rec, e, { now: NOW }).failures.map((x) => x.code), [], 'positive control: the minimal record still passes');
 }
 
+// ------------------------------------------------------------------------------------------------ N24 owner decisions and gaps
+// Backlog N24 (a)-(f), 2026-10-12: fail-closed defaults for the three owner decisions (src/lib/publication-config.mjs)
+// and the three technical gaps. Each rule has adversarial cases, a positive control, and a check of the owner setting.
+section('N24 settings');
+{
+  // The defaults the owner has not yet confirmed (PUBLICATION_POLICY_DECISIONS.md). If the owner changes one, record the
+  // decision in that memo and update the matching check here.
+  eq([CONFIG.OVERVIEW_REQUIRES_EDITORIAL_REVIEW, CONFIG.PROGRAMME_NAME_REQUIRES_QUOTATION, CONFIG.CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS, CONFIG.WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE], [true, true, true, true], 'N24 fail-closed defaults (a) and (c) are on');
+  eq([...CONFIG.RECOGNITION_AUTHORITY_HOSTS], [], 'N24 (b) RECOGNITION_AUTHORITY_HOSTS is empty by default (choosing authorities is the owner\'s decision; record it in PUBLICATION_POLICY_DECISIONS.md and update this check)');
+  check(CONFIG.RECOGNITION_AUTHORITY_HOSTS.every((h) => typeof h === 'string' && /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(h)), 'every recognition authority host is a bare lower-case host name (no scheme, no path)');
+  eq([...CONFIG.GOVERNMENT_HOST_SUFFIXES], ['gov.ua'], 'tier 3 government addresses end .gov.ua');
+  eq(CONFIG.WITHHELD_PLACE_TEXT, 'To be confirmed', 'a withheld city reads "To be confirmed"');
+  check(Object.isFrozen(CONFIG.PUBLICATION_SETTINGS) && Object.isFrozen(CONFIG.RECOGNITION_AUTHORITY_HOSTS), 'the settings cannot be changed at run time');
+  eq(Object.keys(CONFIG.PUBLICATION_SETTINGS).sort(), Object.keys(CONFIG).filter((k) => k !== 'PUBLICATION_SETTINGS').sort(), 'PUBLICATION_SETTINGS carries every setting in publication-config.mjs');
+  for (const code of ['website-not-government-listed', 'recognition-authority-not-listed', 'start-date-passed', 'start-date-unparseable', 'past-year-named']) check(typeof CODE_WORDS[code] === 'string', `CODE_WORDS explains ${code}`);
+  check(typeof NOT_LISTED_WORDS['programme-name'] === 'string', 'NOT_LISTED_WORDS explains programme-name');
+}
+
+section('N24 (a) overview');
+{
+  const { rec, ev: e } = passing();
+  const reviewed = (r, o = {}) => { const x = clone(r); x.verification.editorialReview = { reviewer: 'editor (role)', date: day(-1), overviewSha256: editorialTextHash(x.overview), ...o }; return x; };
+  eq(editorialTextHash('abc'), 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad', 'editorialTextHash is SHA-256 of the exact UTF-8 text');
+  check(editorialTextHash('Overview.') !== editorialTextHash('Overview. '), 'a trailing space changes the hash');
+  const p0 = toPublicRecord(rec, e, { now: NOW });
+  check(!('overview' in p0) && p0.editorialWithheld.overview === true, 'an overview with no editorial review is withheld (key absent)');
+  check(evaluatePublication(rec, e, { now: NOW }).publishable, 'a withheld overview does not by itself block publication');
+  const ok = reviewed(rec);
+  const p1 = toPublicRecord(ok, e, { now: NOW });
+  check(p1.overview === rec.overview && p1.editorialWithheld.overview === false, 'positive control: an overview whose review hash matches the current text is shown');
+  check(!JSON.stringify(p1).includes('editor (role)') && !JSON.stringify(p1).includes(editorialTextHash(rec.overview)), 'the editorial review (reviewer, hash) never reaches the projection');
+  const edited = clone(ok); edited.overview = `${rec.overview} CANARY-EDITED-AFTER-REVIEW`;
+  const p2 = toPublicRecord(edited, e, { now: NOW });
+  check(!('overview' in p2) && !JSON.stringify(p2).includes('CANARY'), 'an overview edited after its review is withheld until re-reviewed');
+  const ws = clone(ok); ws.overview = `${rec.overview} `;
+  check(!('overview' in toPublicRecord(ws, e, { now: NOW })), 'even a one-space edit hides the overview');
+  check(!('overview' in toPublicRecord(reviewed(rec, { date: day(1) }), e, { now: NOW })), 'a review dated in the future does not count');
+  check(!('overview' in toPublicRecord(reviewed(rec, { reviewer: '  ' }), e, { now: NOW })), 'a review without a reviewer does not count');
+  check(!('overview' in toPublicRecord(reviewed(rec, { date: '2026-02-30' }), e, { now: NOW })), 'a review with an impossible date does not count');
+  check(!('overview' in toPublicRecord(reviewed(rec, { overviewSha256: editorialTextHash('another text') }), e, { now: NOW })), 'a review of other text does not count');
+  check(!editorialReviewMatches({ overview: 'x', verification: {} }, day(0)) && editorialReviewMatches(reviewed({ ...clone(rec), overview: 'x' }), day(0)), 'editorialReviewMatches: no review / matching review');
+  const noted = reviewed({ ...clone(rec), overview: `Overview. ${NOTE}` });
+  const pn = toPublicRecord(noted, e, { now: NOW });
+  check(!('overview' in pn) && !evaluatePublication(noted, e, { now: NOW }).publishable, 'a reviewed overview carrying research-note wording is withheld and blocks publication');
+  check(toPublicRecord(rec, e, { now: NOW, settings: { OVERVIEW_REQUIRES_EDITORIAL_REVIEW: false } }).overview === rec.overview, 'owner setting OVERVIEW_REQUIRES_EDITORIAL_REVIEW=false prints the overview without a review');
+  // Schema: optional, additive, strict, and the hash must look like a SHA-256.
+  check(record.safeParse(clone(rec)).success, 'a record without editorialReview still parses (additive change)');
+  check(record.safeParse(reviewed(rec)).success, 'a record with a well-formed editorialReview parses');
+  check(!record.safeParse(reviewed(rec, { overviewSha256: 'abc' })).success, 'the schema rejects a malformed hash');
+  check(!record.safeParse(reviewed(rec, { approvedBy: 'x' })).success, 'the schema rejects an unknown editorialReview key');
+}
+
+section('N24 (a) programme names');
+{
+  const { rec, ev: e } = passing();
+  const withQuote = (q, mut = (x) => x) => { const x = clone(e); x.entries.find((y) => y.claimPath === 'programmes.medicine.internationalAdmission').quotation = q; return mut(x); };
+  const listed = (r, evd, settings) => toPublicRecord(r, evd, { now: NOW, settings }).programmes.map((p) => p.id).join();
+  eq(listed(rec, e), 'medicine', 'positive control: the name appears in the quotation that verifies international admission');
+  eq(listed(rec, withQuote('Foreign citizens are admitted to the programme for this intake.')), '', 'a programme whose name is absent from the quotation is not listed');
+  const res = evaluatePublication(rec, withQuote('Foreign citizens are admitted to the programme.'), { now: NOW });
+  check(!res.publishable && res.failures.some((f) => f.code === 'no-listed-programme') && res.notListed.some((n) => n.reasons.includes('programme-name')), 'the unlisted programme blocks a profile with no other programme and is explained as programme-name');
+  eq(listed(rec, withQuote('FOREIGN CITIZENS ARE ADMITTED TO   MEDICINE.')), 'medicine', 'the match ignores letter case and repeated spaces');
+  const r2 = clone(rec); r2.programmes[0].name = 'Medic';
+  eq(listed(r2, e), '', 'a name found only inside a longer word ("Medic" in "Medicine") does not count');
+  const r3 = clone(rec); r3.programmes[0].name = 'Medicine CANARY-NAME-NOT-QUOTED';
+  const p3 = toPublicRecord(r3, e, { now: NOW });
+  check(p3.programmes.length === 0 && !JSON.stringify(p3).includes('CANARY'), 'a programme name that is not quoted never reaches the projection');
+  // Only the quotation of an entry that actually supports the claim counts.
+  const other = withQuote('Foreign citizens are admitted to the programme.', (x) => { x.entries.push(entry('programmes.medicine.internationalAdmission', true, { n: 2, status: 'unverified', decision: 'withhold', withholdReason: 'x', quotation: 'Medicine is open to foreign citizens.' })); return x; });
+  eq(listed(rec, other), '', 'a name found only in the quotation of an unverified entry does not count');
+  const elsewhere = withQuote('Foreign citizens are admitted.', (x) => { x.entries.find((y) => y.claimPath === 'programmes.medicine.level').quotation = 'Medicine: integrated master'; return x; });
+  eq(listed(rec, elsewhere), '', 'a name found only in the quotation for another claim does not count');
+  const offsite = withQuote('Medicine admits foreign citizens.', (x) => { const y = entry('programmes.medicine.internationalAdmission', true, { n: 2, sourceUrl: 'https://best-agent.example/medicine', quotation: 'CANARY Medicine admits foreign citizens.' }); x.entries.find((z) => z.claimPath === 'programmes.medicine.internationalAdmission').quotation = 'Admitted.'; x.entries.push(y); return x; });
+  eq(listed(rec, offsite), '', 'a name found only in the quotation of an agent-site entry does not count');
+  eq(listed(rec, withQuote('Foreign citizens are admitted.'), { PROGRAMME_NAME_REQUIRES_QUOTATION: false }), 'medicine', 'owner setting PROGRAMME_NAME_REQUIRES_QUOTATION=false lists the programme without the check');
+  // A name joined to another word by a hyphen is part of that word (review 2026-10-12).
+  eq(listed(rec, withQuote('The Pre-Medicine foundation year admits foreign citizens.')), '', 'a name found only inside a hyphenated word ("Medicine" in "Pre-Medicine") does not count');
+  eq(listed(rec, withQuote("Foreign citizens are admitted to 'Medicine' and to Pre-Medicine.")), 'medicine', 'positive control: a quoted name (in quotation marks) still counts');
+  // containsPhrase
+  check(containsPhrase('Kyiv, 1 Main Street', 'kyiv') && containsPhrase('a  b', 'A B') && !containsPhrase('Lvivska Street', 'Lviv') && !containsPhrase('x', '') && !containsPhrase(null, 'x') && containsPhrase('вул. Пирогова, Вінниця', 'вінниця') && !containsPhrase('Вінницька область', 'Вінниця'), 'containsPhrase: whole words, any letter case, Cyrillic included');
+  check(!containsPhrase('2 Halytska St, Ivano-Frankivsk', 'Ivano') && !containsPhrase('2 Halytska St, Ivano-Frankivsk', 'Frankivsk') && containsPhrase('2 Halytska St, Ivano-Frankivsk', 'ivano-frankivsk')
+    && !containsPhrase("1 Main St, Kam'ianets-Podilskyi", 'Kam') && !containsPhrase('1 Main St, Kam’ianets-Podilskyi', 'Kamianets') && !containsPhrase('Pre-Medicine', 'Medicine')
+    && containsPhrase('‘Medicine’ admits', 'Medicine') && containsPhrase('Lviv – 79010', 'Lviv') && containsPhrase('Lviv - 79010', 'Lviv') && containsPhrase('м.Вінниця', 'Вінниця'),
+  'containsPhrase: a hyphen or apostrophe between letters joins one word; quotation marks and spaced dashes still separate words');
+}
+
+section('N24 (a) city and region');
+{
+  const { rec, ev: e } = passing();
+  const withAddress = (addr) => { const r = clone(rec); r.address = V(addr); const x = clone(e); x.entries.find((y) => y.claimPath === 'address').value = addr; return [r, x]; };
+  const p0 = toPublicRecord(rec, e, { now: NOW });
+  check(p0.city === 'To be confirmed' && p0.editorialWithheld.city === true && !('region' in p0), 'a city that is not in the verified address reads "To be confirmed" (never a guess)');
+  const [r1, e1] = withAddress('1 Test Street, TESTVILLE, Test Oblast');
+  r1.region = 'Test Oblast';
+  const p1 = toPublicRecord(r1, e1, { now: NOW });
+  check(p1.city === 'Testville' && p1.region === 'Test Oblast' && !p1.editorialWithheld.city && !p1.editorialWithheld.region, 'positive control: city and region contained in the verified address are shown');
+  const r2 = clone(r1); r2.region = 'CANARY-REGION Oblast';
+  const p2 = toPublicRecord(r2, e1, { now: NOW });
+  check(!('region' in p2) && p2.editorialWithheld.region === true && !JSON.stringify(p2).includes('CANARY'), 'a region that is not in the verified address is left out');
+  const [r3, e3] = withAddress('1 Testvilleska Street');
+  eq(toPublicRecord(r3, e3, { now: NOW }).city, 'To be confirmed', 'a city found only inside a longer word does not count');
+  const [r3b, e3b] = withAddress('1 Test Street, Testville-Podilskyi');
+  eq(toPublicRecord(r3b, e3b, { now: NOW }).city, 'To be confirmed', 'a city found only as part of a hyphenated place name ("Testville" in "Testville-Podilskyi") does not count');
+  const [r4, e4] = withAddress('1 Test Street, Testville');
+  e4.entries = e4.entries.filter((y) => y.claimPath !== 'address');
+  const p4 = toPublicRecord(r4, e4, { now: NOW });
+  check(p4.address.show === false && p4.city === 'To be confirmed', 'when the address itself is withheld, the city is withheld even if the raw address contains it');
+  const r5 = clone(rec); r5.city = 'CANARY-CITY';
+  const p5 = toPublicRecord(r5, e, { now: NOW });
+  check(!JSON.stringify(p5).includes('CANARY') && evaluatePublication(r5, e, { now: NOW }).publishable, 'a withheld city never reaches the projection and does not by itself block publication');
+  check(toPublicRecord(rec, e, { now: NOW, settings: { CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS: false } }).city === 'Testville', 'owner setting CITY_AND_REGION_REQUIRE_VERIFIED_ADDRESS=false prints the city as recorded');
+}
+
+section('N24 (b) recognition authorities');
+{
+  const recog = ['Listed by the destination regulator'];
+  const page = 'https://www.regulator.example/foreign-schools';
+  const R = (url, settings) => C('recognition', V(recog, url), ev('recognition', recog, { sourceTier: 4, sourceUrl: url }), settings ? { settings } : {});
+  const hiddenR = (r, code, msg) => { check(!r.show && r.value === null && r.source === null, `${msg}: must be withheld`); eq(r.code, code, `${msg} code`); };
+  hiddenR(R(page), 'recognition-authority-not-listed', 'default (empty list): a tier-4 page on any host');
+  check(R(page, { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] }).show, 'positive control: a listed authority host ("www." ignored)');
+  check(R('https://lists.regulator.example/page', { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] }).show, 'a subdomain of a listed authority host');
+  hiddenR(R('https://regulator.example.attacker.example/page', { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] }), 'recognition-authority-not-listed', 'a look-alike of a listed host');
+  hiddenR(R('https://other-regulator.example/page', { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] }), 'recognition-authority-not-listed', 'a host that is not listed while another is');
+  hiddenR(R('https://www.unit.example/recognition', { RECOGNITION_AUTHORITY_HOSTS: ['unit.example'] }), 'recognition-from-university', 'the university\'s own site, even if listed by mistake');
+  hiddenR(R('https://wdoms.org/school/1', { RECOGNITION_AUTHORITY_HOSTS: ['wdoms.org'] }), 'source-not-evidence', 'a directory, even if listed by mistake');
+  const { rec, ev: e } = passing();
+  const rr = clone(rec); rr.recognition = V(['CANARY-RECOGNITION'], 'https://regulator.example/list');
+  const er = clone(e); er.entries.push(entry('recognition', ['CANARY-RECOGNITION'], { sourceTier: 4, sourceUrl: 'https://regulator.example/list' }));
+  check(!JSON.stringify(toPublicRecord(rr, er, { now: NOW })).includes('CANARY'), 'by default no recognition claim reaches the projection');
+  check(toPublicRecord(rr, er, { now: NOW, settings: { RECOGNITION_AUTHORITY_HOSTS: ['regulator.example'] } }).recognition.show, 'with the authority listed, the same claim is shown');
+}
+
+section('N24 (c) official website and government evidence');
+{
+  const { rec, ev: e } = passing();
+  const W = (entries, settings) => C('website', V(`${H}/`, `${H}/`), entries, settings ? { settings } : {});
+  const tier1 = entry('website', `${H}/`, { sourceUrl: `${H}/` });
+  const gov = (o = {}) => entry('website', `${H}/`, { n: 2, sourceTier: 3, sourceUrl: GOV_WEBSITE_PAGE, ...o });
+  const rv = V(`${H}/`, `${H}/`);
+  eq(W([tier1, gov()]).show, true, 'positive control: the university\'s page and a government register list the same website');
+  eq(W([tier1]).code, 'website-not-government-listed', 'the university\'s own page alone does not establish its official website');
+  eq(W([tier1, gov({ value: 'https://other.example/' })]).code, 'conflict', 'a verified government entry listing a different website is a conflict');
+  eq(W([tier1, gov({ value: `${H}` })]).code, 'conflict', 'a government entry differing only by the trailing slash is a conflict (exactly the same value is required)');
+  eq(W([tier1, gov({ sourceUrl: 'https://register.example/universities/1' })]).code, 'website-not-government-listed', 'a tier-3 entry not on a .gov.ua address does not count');
+  eq(W([tier1, gov({ sourceUrl: 'https://register.gov.ua.attacker.example/1' })]).code, 'website-not-government-listed', 'a look-alike of .gov.ua does not count');
+  eq(W([tier1, gov({ status: 'unverified', decision: 'withhold', withholdReason: 'x' })]).code, 'website-not-government-listed', 'an unverified government entry does not count');
+  eq(W([tier1, gov({ nextReview: day(-1) })]).code, 'website-not-government-listed', 'a government entry past its next review does not count');
+  eq(W([tier1, gov({ quotation: '' })]).code, 'website-not-government-listed', 'a government entry without a quotation does not count');
+  eq(W([tier1, gov({ method: 'copied from a search snippet' })]).code, 'website-not-government-listed', 'a government entry read from a search snippet does not count');
+  eq(W([tier1, gov({ sourceTier: 2 })]).code, 'website-not-government-listed', 'a .gov.ua entry not marked tier 3 does not count');
+  eq(W([tier1], { WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE: false }).show, true, 'owner setting WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE=false: the university\'s page alone is enough');
+  eq(C('website', V(`${H}/`, GOV_WEBSITE_PAGE), [gov()]).show, true, 'the government register page may itself be the website\'s source');
+  check(rv.status === 'verified', 'record claim fixture');
+  // Profile level: without the government entry nothing that depends on the official host is shown.
+  const noGov = clone(e); noGov.entries = noGov.entries.filter((x) => x.sourceTier !== 3);
+  const p = toPublicRecord(rec, noGov, { now: NOW });
+  check(!p.website.show && !p.officialName.show && !p.address.show && p.programmes.length === 0, 'no government entry: website, name, address and programmes (all read on the university\'s own pages) are withheld');
+  const res = evaluatePublication(rec, noGov, { now: NOW });
+  check(!res.publishable && res.failures.some((f) => f.field === 'website' && f.code === 'not-shown:website-not-government-listed'), 'no government entry: the profile cannot be published and the failure says why');
+  check(publicationDecision(rec, noGov, { now: NOW }).buildError, 'a flagged record without the government entry stops a production build');
+  const differs = clone(e); differs.entries.find((x) => x.sourceTier === 3).value = 'https://unit-other.example/';
+  const pd = toPublicRecord(rec, differs, { now: NOW });
+  check(pd.website.publicState === 'withheld-conflict' && !pd.officialName.show && pd.programmes.length === 0, 'government entry with a different website: conflict, and everything that depends on the official host is withheld');
+  // Tier-3 evidence for other claims does not depend on the official host.
+  const ra = clone(rec); ra.accreditation = V('Cert 1', 'https://register.unit-test.gov.ua/accreditation/1');
+  const ea = clone(noGov); ea.entries.push(entry('accreditation', 'Cert 1', { sourceTier: 3, sourceUrl: 'https://register.unit-test.gov.ua/accreditation/1' }));
+  check(toPublicRecord(ra, ea, { now: NOW }).accreditation.show, 'a government-register fact is still evaluated on its own when the website is withheld');
+  check(evaluatePublication(rec, noGov, { now: NOW, settings: { WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE: false } }).publishable, 'owner setting off: the same record publishes on the university\'s own pages');
+}
+
+section('N24 (d) start dates and intake text');
+{
+  const sd = (value, o = {}) => C('preparatoryRoutes.prep.startDate', V(value), ev('preparatoryRoutes.prep.startDate', value, o));
+  const it = (value) => C('programmes.medicine.intake', V(value), ev('programmes.medicine.intake', value));
+  const lastYear = String(NOW.getUTCFullYear() - 1), thisYear = String(NOW.getUTCFullYear());
+  eq(sd(day(-1)).code, 'start-date-passed', 'a preparatory start date written YYYY-MM-DD that has passed');
+  eq(sd(day(0)).show, true, 'a start date of today is still shown');
+  eq(sd(day(30)).show, true, 'positive control: a future start date');
+  eq(sd('2026-02-30').code, 'start-date-unparseable', 'an impossible YYYY-MM-DD start date');
+  eq(sd(`1 November ${lastYear}`).code, 'past-year-named', 'a free-text start date naming a year before the current academic year');
+  eq(sd(`1 November ${thisYear}`).show, true, 'positive control: a free-text start date in the current academic year');
+  eq(it(`September ${lastYear}`).code, 'past-year-named', 'a free-text intake naming last year');
+  eq(it(`${academicYear(NOW, -1)} intake`).code, 'past-year-named', 'a free-text intake naming the previous academic year');
+  eq(it(`Classes start in September ${thisYear}`).show, true, 'positive control: an intake in the current academic year');
+  eq(it(`${AY} intake`).show, true, 'positive control: an intake naming the current academic year');
+  eq(it('Applications from 10 000 students').show, true, 'a number that is not a year is not read as one');
+  eq(it('September 2019 and September 2027').code, 'past-year-named', 'any past year in the text withholds it');
+  // A YYYY-MM-DD date inside the text counts too (review 2026-10-12): with words, with a time, or one of two dates.
+  eq(sd(`${day(-1)} (orientation week)`).code, 'start-date-passed', 'a passed YYYY-MM-DD start date followed by words');
+  eq(sd(`${day(-1)}T09:00`).code, 'start-date-passed', 'a passed YYYY-MM-DD start date with a time');
+  eq(sd(`${day(-1)} or ${day(60)}`).code, 'start-date-passed', 'two start dates, one of which has passed');
+  eq(sd(`Classes begin ${thisYear}-02-30`).code, 'start-date-unparseable', 'an impossible YYYY-MM-DD date inside the text');
+  eq(sd(`${day(10)} (orientation week)`).show, true, 'positive control: a future YYYY-MM-DD start date followed by words');
+  eq(it(`Classes start ${day(-1)}`).code, 'start-date-passed', 'a free-text intake containing a YYYY-MM-DD date that has passed');
+  eq(it(`Classes start ${day(20)}`).show, true, 'positive control: a free-text intake containing a future YYYY-MM-DD date');
+}
+
+section('N24 (e) fee display');
+{
+  const m = { amount: 4100, currency: 'USD', per: 'year', academicYear: AY, schedule: 'two instalments, by 1 September and 1 February', variesByYear: 'year 1: 3,500; years 2-6: 4,100' };
+  const t = formatMoney(m);
+  check(t.startsWith(`4,100 USD per year (${AY})`) && t.includes('payment schedule, as published: two instalments, by 1 September and 1 February') && t.includes('year by year, as published: year 1: 3,500; years 2-6: 4,100'), `formatMoney prints the schedule and year-by-year amounts the verified fee carries: ${t}`);
+  eq(formatMoney({ amount: 5000, currency: 'EUR', per: 'semester', academicYear: AY }), `5,000 EUR per semester (${AY})`, 'formatMoney without schedule');
+  eq(formatMoney({ amount: 9000, currency: 'EUR', per: 'programme', academicYear: AY }), `9,000 EUR for the whole programme (${AY})`, 'formatMoney for a whole-programme fee');
+  eq(formatMoney({ amount: 200, currency: 'UAH', per: 'once', academicYear: AY }), `200 UAH one-off (${AY})`, 'formatMoney for a one-off charge');
+  check(formatMoney(m, { compact: true }).startsWith(`4,100 USD/year (${AY})`) && formatMoney(m, { compact: true }).includes('year by year, as published'), 'compact form keeps the year-by-year amounts');
+  eq([formatMoney(null), formatMoney({ amount: 'x' })], ['', ''], 'formatMoney of something that is not a fee is empty');
+  const { rec, ev: e } = passing();
+  const r = clone(rec); r.programmes[0].tuition = V(m);
+  const x = clone(e); x.entries.find((y) => y.claimPath === 'programmes.medicine.tuition').value = m;
+  const shownFee = toPublicRecord(r, x, { now: NOW }).programmes[0].tuition;
+  check(shownFee.show && shownFee.value.schedule === m.schedule && shownFee.value.variesByYear === m.variesByYear, 'a shown fee carries its schedule and year-by-year amounts to the page');
+}
+
 // ------------------------------------------------------------------------------------------------ static checks over src/
 section('static checks');
 {
@@ -500,6 +726,25 @@ section('static checks');
     for (const m of t.matchAll(/<script[^>]*application\/ld\+json[^>]*>/g)) check(/set:html=\{serializeJsonLd\(/.test(m[0]), `${r}: a JSON-LD block not written through serializeJsonLd: ${m[0]}`);
   }
   check(files.some((f) => rel(f) === 'layouts/Base.astro') && files.some((f) => rel(f) === 'components/Breadcrumbs.astro'), 'static checks saw Base.astro and Breadcrumbs.astro');
+  // N24: the owner settings are read only by the policy, and nothing in the build passes other settings.
+  for (const f of files) {
+    const r = rel(f), t = readFileSync(f, 'utf8').replace(/^\s*(\/\/|\*|\/\*\*).*$/gm, '');
+    if (r !== 'lib/publication.mjs') check(!/publication-config/.test(t), `${r}: imports publication-config.mjs — only src/lib/publication.mjs may read the owner settings`);
+    if (r !== 'lib/publication.mjs' && r !== 'lib/publication-config.mjs') check(!/\bsettings\s*:/.test(t) || !/publicationDecision|evaluatePublication|toPublicRecord|evaluateClaim/.test(t), `${r}: passes settings to the publication policy — the build must use the defaults in publication-config.mjs`);
+  }
+  check(!/\bsettings\s*:/.test(readFileSync(resolve('astro.config.mjs'), 'utf8')), 'astro.config.mjs passes settings to the publication policy');
+  // N24 (e): every fee display goes through formatMoney (which prints the schedule and year-by-year amounts).
+  for (const c of ['components/university/ProgrammeCard.astro', 'components/university/PreparatoryRoute.astro', 'components/university/CompareTable.astro']) {
+    const t = readFileSync(join(SRC, c), 'utf8');
+    check(/formatMoney\(/.test(t) && !/\.amount\.toLocaleString/.test(t), `${c}: formats a fee by hand instead of formatMoney (the schedule and year-by-year amounts would be dropped)`);
+  }
+  check(!/payment schedule and the date we read it/.test(readFileSync(join(SRC, 'components/university/ProgrammeCard.astro'), 'utf8')), 'ProgrammeCard: the old tuition explanation (promising a schedule unconditionally) is back');
+  // N24 (f): the universities and samples collections read top-level *.json files only.
+  const cc = readFileSync(join(SRC, 'content.config.ts'), 'utf8');
+  for (const [name, base] of [['universities', 'universitiesDir'], ['samples', "'./src/content/samples'"]]) {
+    const m = new RegExp(`const ${name} = defineCollection\\(\\{\\s*loader: glob\\(\\{ pattern: '([^']*)', base: ${base.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')} \\}\\)`).exec(cc);
+    check(m && m[1] === '*.json', `content.config.ts: the ${name} collection must read top-level *.json files only (found ${m ? m[1] : 'no matching loader'})`);
+  }
 }
 
 console.log(`publication-policy: ${checks} checks, ${failures} failures`);

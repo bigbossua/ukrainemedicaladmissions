@@ -145,5 +145,14 @@ export const record = z.object({
     lastReview: z.string().date().nullable().default(null),
     reviewer: z.string().optional(),
     openQuestions: z.array(z.string()).default([]),
+    // Editorial review of `overview` (added 2026-10-12, backlog N24 a; optional). The overview is our own text, so a
+    // published profile prints it only when this records who reviewed it, when (not in the future), and the SHA-256 of
+    // the overview EXACTLY as reviewed (lower-case hex; `node scripts/publication-report.mjs --overview-hash <slug>`).
+    // Any later edit to the overview no longer matches, which hides it again until it is re-reviewed. Internal: never shown.
+    editorialReview: z.object({
+      reviewer: z.string().min(1),
+      date: z.string().date(),
+      overviewSha256: z.string().regex(/^[0-9a-f]{64}$/, 'must be the lower-case hex SHA-256 of the overview text'),
+    }).strict().optional(),
   }),
 });

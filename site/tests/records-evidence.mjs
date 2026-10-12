@@ -22,6 +22,9 @@
 //  R11 every file in data/evidence parses against the evidence schema (src/lib/evidence.mjs), its slug matches its file
 //      name and a real record, every entry's claimPath resolves to a claim in that record, and every `contradicts` id
 //      names an entry in the same file. A missing evidence file is allowed: it means "nothing verified".
+//  R12 (backlog N24 f) src/content/universities and src/content/samples hold only top-level *.json files: no
+//      subdirectory and no other file. The collections read top-level *.json only (src/content.config.ts) and so do R1-R11,
+//      the sitemap filter and the publication report; a record anywhere else would be checked by none of them.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve, basename } from 'node:path';
 import { record } from '../src/content/schema.mjs';
@@ -46,6 +49,15 @@ const isMoney = (v) => v && typeof v === 'object' && 'amount' in v && 'currency'
 const isDeadlines = (path) => /(^|\.)deadlines$/.test(path);
 const httpsUrl = (u) => typeof u === 'string' && /^https:\/\//.test(u);
 const host = (u) => { try { return new URL(u).host; } catch { return ''; } };
+
+// R12 nothing but top-level *.json files in the record directories
+for (const [kind, dir] of Object.entries(dirs)) {
+  for (const f of readdirSync(dir, { withFileTypes: true })) {
+    if (f.isDirectory()) fail(`${kind}/${f.name}/`, 'R12 subdirectory in the record directory: records live only as top-level *.json files (move the record up, or delete the directory)');
+    else if (!f.isFile() || !f.name.endsWith('.json')) fail(`${kind}/${f.name}`, 'R12 file that is not a top-level *.json record in the record directory (remove it)');
+    ok();
+  }
+}
 
 const slugs = new Map();
 const realClaims = new Map(); // slug -> claim paths (R11)

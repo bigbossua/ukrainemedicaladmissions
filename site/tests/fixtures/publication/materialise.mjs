@@ -40,16 +40,24 @@ export const readFixture = (file, now) => resolveTokens(JSON.parse(readFileSync(
 
 /**
  * Write fixture set `name` ("pass" or "fail") into `dest`/universities and `dest`/evidence with the tokens resolved.
- * The evidence directory is always created (an empty one means "no evidence file for any record").
+ * Subdirectories are copied too (the "pass" set carries a record in universities/nested/, which the build must ignore:
+ * backlog N24 f). The evidence directory is always created (an empty one means "no evidence file for any record").
  * @param {string} name @param {string} dest @param {Date} now
  */
 export function materialise(name, dest, now) {
   const out = { universities: join(dest, 'universities'), evidence: join(dest, 'evidence') };
+  /** @param {string} src @param {string} to */
+  const copy = (src, to) => {
+    mkdirSync(to, { recursive: true });
+    for (const f of readdirSync(src, { withFileTypes: true })) {
+      if (f.isDirectory()) copy(join(src, f.name), join(to, f.name));
+      else if (f.name.endsWith('.json')) writeFileSync(join(to, f.name), JSON.stringify(readFixture(join(src, f.name), now), null, 2));
+    }
+  };
   for (const kind of /** @type {const} */ (['universities', 'evidence'])) {
     mkdirSync(out[kind], { recursive: true });
     const src = join(FIXTURE_ROOT, name, kind);
-    if (!existsSync(src)) continue;
-    for (const f of readdirSync(src).filter((x) => x.endsWith('.json'))) writeFileSync(join(out[kind], f), JSON.stringify(readFixture(join(src, f), now), null, 2));
+    if (existsSync(src)) copy(src, out[kind]);
   }
   return out;
 }

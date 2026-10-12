@@ -4,16 +4,19 @@ import RequirementList from './RequirementList.astro';
 import DocumentList from './DocumentList.astro';
 import { SITE, PREVIEW } from '../../lib/site';
 import { FIELDS, LEVELS } from '../../lib/fields';
-import { viewClaim } from '../../lib/publication.mjs';
+import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 interface Props { p: any; slug: string }
 const { p, slug } = Astro.props;
 const view = (c: unknown) => viewClaim(c, { preview: PREVIEW });
 const field = (FIELDS as any)[p.field] ?? FIELDS.other;
-const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})${m.variesByYear ? ` — ${m.variesByYear}` : ''}`;
+// Amount, currency, basis and academic year, plus the year-by-year amounts and payment schedule exactly as recorded when
+// the verified fee carries them (N24 e: the explanation below promises nothing the display does not print).
+const money = (m: any) => formatMoney(m);
 const level = view(p.level);
 const levelLabel = level.state !== 'tbc' && typeof level.value === 'string' ? (LEVELS as any)[level.value] ?? level.value : null;
 const intl = view(p.internationalAdmission);
 const intakeYear = view(p.intakeYear);
+const intakeLabel = intakeYear.state !== 'tbc' && typeof intakeYear.value === 'string' ? intakeYear.value : 'current';
 const duration = view(p.durationText).state !== 'tbc' ? p.durationText : p.durationYears;
 // Projections (published profiles) carry withheld counts; raw drafts (PREVIEW only) list every item with its status.
 const reqWithheld = typeof p.requirementsWithheld === 'number' ? p.requirementsWithheld : 0;
@@ -38,7 +41,7 @@ const costWithheld = typeof p.otherCostsWithheld === 'number' ? p.otherCostsWith
     <Fact label="Language" claim={p.language} />
     <Fact label="Format" claim={p.format} />
     <Fact label="Intake these facts refer to" claim={p.intakeYear} />
-    <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee schedule for the ${intakeYear.state !== 'tbc' && typeof intakeYear.value === 'string' ? intakeYear.value : 'current'} intake has not yet been verified. We publish a fee only with its academic year, currency, payment schedule and the date we read it on the official page — never an estimate.`} />
+    <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee for the ${intakeLabel} intake has not yet been verified. We publish a fee only as the university states it on its own website: the amount, the currency, what it is charged per (year, semester or whole programme) and the academic year, with the payment schedule and any year-by-year amounts where the university states them, and the date we read it. Never an estimate.`} />
     {p.otherMandatoryCosts.filter((c: any) => PREVIEW || view(c.cost).state === 'verified').map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}
     {costWithheld > 0 && <Fact label="Other mandatory costs" claim={null} tbcText="Some other mandatory costs have not yet been verified against the university's official pages, so they are not listed here yet." />}
     <Fact label="Application window" claim={p.deadlines} format={(v) => v.map((x: any) => `${x.label}: ${x.date}`).join('; ')} tbcText="The university's application dates for this intake have not yet been verified. We publish dates only as printed on the official admissions page, with the year." />

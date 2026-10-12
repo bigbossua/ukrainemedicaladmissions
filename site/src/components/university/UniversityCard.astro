@@ -19,13 +19,16 @@ const hasPrep = u.preparatoryRoutes.length > 0;
 // Routes withheld by the publication policy are neither "yes" nor "no": the "no route recorded" filter must not claim them.
 const prepState = hasPrep ? 'yes' : typeof u.routesWithheld === 'number' && u.routesWithheld > 0 ? 'tbc' : 'no';
 const initials = u.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
+// A withheld city (N24 a) reads "To be confirmed" in the projection (data-city keeps that value so the city filter matches).
+const cityText = u.editorialWithheld?.city ? 'City to be confirmed' : u.city;
+const place = [cityText, u.region].filter((x) => typeof x === 'string' && x.trim()).join(', ');
 const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 0) % 40;
 ---
 <article class="ucard" data-slug={u.slug} data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={prepState} data-intakes={intakes.join(' ')} data-publishable={draft ? 'no' : 'yes'}>
-  <a class="tile" href={href} aria-hidden="true" tabindex="-1" style={`--h:${hue}`}><span>{initials}</span><span class="city">{u.city}</span></a>
+  <a class="tile" href={href} aria-hidden="true" tabindex="-1" style={`--h:${hue}`}><span>{initials}</span><span class="city">{cityText}</span></a>
   <div class="body">
     <h2><a href={href}>{u.shortName}</a></h2>
-    <p class="loc">{u.city}{u.region && `, ${u.region}`}</p>
+    <p class="loc">{place}</p>
     <div class="chips">
       {fields.map((f) => <span>{((FIELDS as any)[f] ?? FIELDS.other).short}</span>)}
       {levels.map((l) => <span class="lvl">{(LEVELS as any)[l] ?? l}</span>)}
