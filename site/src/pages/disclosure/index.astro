@@ -1,21 +1,34 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import OwnerValue from '../../components/OwnerValue.astro';
 import { SITE } from '../../lib/site';
+// Owner details come from ONE file, src/lib/legal.mjs (completion guide: LEGAL_COMPLETION_CHECKLIST.md).
+import { documented, legalPagesComplete } from '../../lib/legal.mjs';
+const complete = legalPagesComplete();
+const email: string = documented('contact.email');
+// Documented today: no referral fee, commission or partnership exists (SERVICE_TIERS_SPEC.md; see legal.mjs).
+const referral = documented('referralArrangements');
 ---
 <Base title="Independence and referral disclosure" description="How Ukraine Medical Admissions is paid, its relationship to universities, and its policy on referrals, advertising and rankings.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Independence and referral disclosure</h1><p>Draft for legal review — effective date to be set before publication.</p></div></div>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Independence and referral disclosure</h1>
+    {complete
+      ? <p>Effective date: <OwnerValue path="effectiveDate" />.</p>
+      : <p>Draft for legal review — effective date: <OwnerValue path="effectiveDate" />.</p>}
+  </div></div>
   <Breadcrumbs items={[{ label: 'Disclosure' }]} />
   <section style="padding-top:1rem"><div class="wrap prose">
     <h2>Our relationship with universities</h2>
     <p>{SITE.disclaimer} We do not hold, and do not claim, any official partnership or agent status with any university unless a written agreement exists and is stated on the relevant university profile with its date.</p>
     <h2>How we are paid</h2>
-    <p>We currently charge nothing and receive no payment from applicants, universities or anyone else. If paid support services are introduced, their terms will be shown in full before purchase. If we ever receive a referral fee, commission or other payment from a university or third party in connection with an applicant, we will state so here and on the relevant page before the applicant decides. [No such arrangement exists at the date of this draft.]</p>
+    <p>We currently charge nothing and receive no payment from applicants, universities or anyone else. If paid support services are introduced, their terms will be shown in full before purchase. If we ever receive a referral fee, commission or other payment from a university or third party in connection with an applicant, we will state so here and on the relevant page before the applicant decides.{referral === false && (complete ? ' No such arrangement exists.' : ' No such arrangement exists at the date of this draft.')}</p>
+    {referral === true && <p>Referral payments: <OwnerValue path="referralDetails" /></p>}
     <h2>Rankings and recommendations</h2>
     <p>We do not publish rankings or call any institution "the best". Any comparison we publish will use only facts verified from official sources, with a link to each source. No university pays for placement, ordering or wording on this site.</p>
     <h2>Advertising</h2>
     <p>We do not run paid advertising for this site and do not sell advertising space. We do not use messaging-app marketing.</p>
     <h2>Contact</h2>
-    <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    <p>Legal entity: <OwnerValue path="entity.name" /></p>
+    <p><a href={`mailto:${email}`}>{email}</a></p>
   </div></section>
 </Base>

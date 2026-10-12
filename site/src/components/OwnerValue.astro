@@ -1,0 +1,26 @@
+---
+/**
+ * One owner-supplied legal detail from src/lib/legal.mjs, by its path (for example "entity.name").
+ *  - supplied by the owner: the value as plain text (dates as "1 November 2026");
+ *  - proposed (wording in today's draft with no recorded owner approval): the wording followed by a visible
+ *    "[proposed in the draft, not yet approved by the owner]" marker;
+ *  - missing or invalid: a visible marker "[to be supplied by the owner: <what>]" (plain text, so screen readers read
+ *    it too; never a hidden comment);
+ *  - not applicable: "not applicable"; not required (a condition in LEGAL_ITEMS is false): nothing.
+ * Every marker carries data-owner-value, which scripts/release-readiness.mjs looks for in the built pages.
+ */
+import { LEGAL, legalItem, itemState, formatLegalDate } from '../lib/legal.mjs';
+interface Props {
+  /** A path listed in LEGAL_ITEMS (src/lib/legal.mjs). An unknown path stops the build. */
+  path: string;
+}
+const { path } = Astro.props;
+const item = legalItem(path);
+const s = itemState(LEGAL, item);
+const text = (v: unknown): string => (item.kind === 'date' ? formatLegalDate(String(v)) : item.kind === 'boolean' ? (v ? 'yes' : 'no') : String(v));
+---
+{s.state === 'supplied' ? text(s.value)
+  : s.state === 'not-applicable' ? 'not applicable'
+  : s.state === 'not-required' ? null
+  : s.state === 'proposed' ? <span data-owner-value="proposed">{text(s.value)}{' '}<span class="tbc">[proposed in the draft, not yet approved by the owner]</span></span>
+  : <span class="tbc" data-owner-value={s.state}>[to be supplied by the owner: {item.what}]</span>}

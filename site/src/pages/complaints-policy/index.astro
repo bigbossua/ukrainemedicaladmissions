@@ -1,25 +1,40 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { SITE } from '../../lib/site';
+import OwnerValue from '../../components/OwnerValue.astro';
+// Owner details come from ONE file, src/lib/legal.mjs (completion guide: LEGAL_COMPLETION_CHECKLIST.md). The timescales
+// below are the draft's wording, shown as proposals until the owner approves them there.
+import { documented, legalPagesComplete, ownerState } from '../../lib/legal.mjs';
+const complete = legalPagesComplete();
+const email: string = documented('contact.email');
+const showComplaintsBody = ownerState('complaintsBody') !== 'not-applicable';
 ---
 <Base title="Complaints policy" description="How to raise a complaint about Ukraine Medical Admissions, how it is handled, and the timescales we work to.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Complaints policy</h1><p>Draft for legal review — effective date to be set before publication.</p></div></div>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Complaints policy</h1>
+    {complete
+      ? <p>Effective date: <OwnerValue path="effectiveDate" />.</p>
+      : <p>Draft for legal review — effective date: <OwnerValue path="effectiveDate" />.</p>}
+  </div></div>
   <Breadcrumbs items={[{ label: 'Complaints policy' }]} />
   <section style="padding-top:1rem"><div class="wrap prose">
     <h2>How to complain</h2>
-    <p>Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with "Complaint" in the subject line, your name, the email address you used with us, what went wrong, and what you would like us to do.</p>
+    <p>Email <a href={`mailto:${email}`}>{email}</a> with "Complaint" in the subject line, your name, the email address you used with us, what went wrong, and what you would like us to do.</p>
     <h2>What happens next</h2>
     <ol>
-      <li>We acknowledge your complaint within <strong>3 working days</strong>.</li>
-      <li>We investigate and reply with our findings and any remedy within <strong>15 working days</strong>; if we need longer we tell you why and when to expect our answer.</li>
-      <li>If you are not satisfied, you can ask for the complaint to be reviewed by the business owner, who replies within a further 10 working days.</li>
+      <li>We acknowledge your complaint within <strong><OwnerValue path="complaints.acknowledge" /></strong>.</li>
+      <li>We investigate and reply with our findings and any remedy within <strong><OwnerValue path="complaints.reply" /></strong>; if we need longer we tell you why and when to expect our answer.</li>
+      <li>If you are not satisfied, you can ask for the complaint to be reviewed by <OwnerValue path="complaints.reviewer" />, who replies within <OwnerValue path="complaints.review" />.</li>
     </ol>
     <h2>Refunds and remedies</h2>
     <p>Where a paid service was not delivered as described, the remedy follows the refund terms shown when you chose that service. University fees are paid to the university and are subject to the university's own rules.</p>
     <h2>What we cannot change</h2>
     <p>We cannot overturn a university's admission decision or an authority's visa decision; complaints about those decisions must be directed to the body that made them.</p>
     <h2>Records</h2>
-    <p>We keep a record of each complaint and its outcome, and use them to improve the service. [Legal entity name, registered address and applicable consumer-protection body to be inserted.]</p>
+    <p>We keep a record of each complaint and its outcome, and use them to improve the service. How long complaint records are kept: <OwnerValue path="retention.complaints" />.</p>
+    <ul>
+      <li>Legal entity: <OwnerValue path="entity.name" /></li>
+      <li>Registered address: <OwnerValue path="entity.address" /></li>
+      {showComplaintsBody && <li>Outside body for complaints we cannot resolve: <OwnerValue path="complaintsBody" /></li>}
+    </ul>
   </div></section>
 </Base>

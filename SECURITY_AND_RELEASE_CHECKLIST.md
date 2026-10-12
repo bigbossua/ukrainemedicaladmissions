@@ -4,7 +4,7 @@ Complete every box before the **first** production write and before each later r
 
 ## A. Before the first production deployment (one-time)
 
-- [ ] **A0 BLOCKER — draft legal pages and live forms** (added 2026-10-11): the legal pages (privacy, terms, disclosure, complaints policy) carry "Draft for legal review" banners and bracketed placeholders and are in the production build and sitemap; the forms collect personal data under the draft privacy notice. Complete D7 and the legal review, or keep the forms disabled, before any deployment (with A10, C11.1).
+- [ ] **A0 BLOCKER — draft legal pages and live forms** (added 2026-10-11): the legal pages (privacy, terms, disclosure, complaints policy) carry "Draft for legal review" banners and visible "[to be supplied by the owner: …]" markers and are in the production build and sitemap; the forms collect personal data under the draft privacy notice. Complete D7 and the legal review, or keep the forms disabled, before any deployment (with A10, C11.1). Every owner detail, its current state and the order to supply it: `LEGAL_COMPLETION_CHECKLIST.md` (values go in `site/src/lib/legal.mjs` only); `node scripts/release-readiness.mjs` (from `site/`; to be wired as `npm run check:release`) must exit 0 (updated 2026-10-12).
 - [ ] **A1 Document root confirmed** for `ukrainemedicaladmissions.com` in hPanel — the FTP Accounts path plus the website entry's platform/connection status (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §10.1); exact path recorded there. Not assumed from File Manager (owner's 2026-10-10 view: empty `public_html`, mapping unconfirmed).
 - [ ] **A2 Backup** of that directory downloaded and dated (or dated evidence that it is empty); any database linked to the domain exported. Stored off-server, not in Git. SHA-256 of the archive and the release-manifest fingerprint (`npm run manifest`) recorded in the assessment §9.
 - [ ] **A3 Old URLs** inventoried from the backup with `npm run compare:backup -- <dir>` (plus sitemap/Search Console export if available); every legacy URL KEPT or REDIRECTED, no UNCOVERED row left unreviewed; the resulting rules pass `npm run test:redirects` (backlog N1).
@@ -15,7 +15,7 @@ Complete every box before the **first** production write and before each later r
 - [ ] **A7 Email**: `mail()` from the handler delivers to the business inbox from staging; SPF/DKIM set for the sending address.
 - [ ] **A8 Private storage**: `uma-private/` exists beside the document root, mode 0700, owned by the hosting user; a test record lands there and is not web-accessible (direct URL returns 403/404).
 - [ ] **A9 Secrets**: `git grep -i -E 'password|secret|api[_-]?key'` run and its matches reviewed: no credential values committed (prose matches listed in the release record); `config.php` lives only in `uma-private/`.
-- [ ] **A10 Legal**: privacy notice and terms reviewed; entity details inserted (D7); cookie/analytics statement matches what is actually installed (since 2026-10-11 the notice says no analytics is installed; options and the CSP change each needs: `ANALYTICS_AND_SEARCH_CONSOLE.md` §B).
+- [ ] **A10 Legal**: privacy notice and terms reviewed; entity details inserted (D7) in `site/src/lib/legal.mjs` as listed in `LEGAL_COMPLETION_CHECKLIST.md`, with `legalReviewCompleted`, `reviewedBy` and `reviewDate` set; the release check (`node scripts/release-readiness.mjs`) exits 0; cookie/analytics statement matches what is actually installed (since 2026-10-11 the notice says no analytics is installed; options and the CSP change each needs: `ANALYTICS_AND_SEARCH_CONSOLE.md` §B).
 - [ ] **A11 Search Console** property verified for the non-www HTTPS host; baseline exported (steps and what to export: `ANALYTICS_AND_SEARCH_CONSOLE.md` §A).
 - [ ] **A12 Owner approval** recorded (date, scope of change).
 
@@ -97,8 +97,8 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 - [ ] C10.2 T-RET-1 to T-RET-3 pass.
 
 **C11 Privacy, consent and legal** §11 gate 6
-- [ ] C11.1 Legal entity details inserted (D7); lawful basis stated; privacy notice and consent texts reviewed for the applicable law (with A10).
-- [ ] C11.2 Rule for candidates under 18 decided after legal review (§14.12).
+- [ ] C11.1 Legal entity details inserted (D7); lawful basis stated; privacy notice and consent texts reviewed for the applicable law (with A10). Owner items and reviewer questions: `LEGAL_COMPLETION_CHECKLIST.md` (§2 items 6–28, §3).
+- [ ] C11.2 Rule for candidates under 18 decided after legal review (§14.12); entered as `under18Policy` in `site/src/lib/legal.mjs` (`LEGAL_COMPLETION_CHECKLIST.md` item 28).
 - [ ] C11.3 T-CONS-1 and T-CONS-2 pass; consent texts loaded into `consent_texts` with their hashes.
 
 **C12 Migration and indexing** §14.14 · §14.15
