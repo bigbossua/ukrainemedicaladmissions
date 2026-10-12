@@ -14,7 +14,7 @@
 //      publishable without evidence (the publication "fail" fixture) and for a records directory that does not exist;
 //      a result produced with these test overrides says so.
 //   F. When dist/ exists (after npm run build): every built legal page still shows the draft banner and the visible
-//      markers, because today's data is incomplete.
+//      markers, because today's data is incomplete. Locally a missing dist/ skips F with a note; in CI it fails.
 //
 // The real src/lib/legal.mjs is never written: synthetic data lives in a temporary directory, and the test checks the
 // file's hash before and after.
@@ -238,7 +238,8 @@ if (existsSync('dist/privacy/index.html')) {
   check(/up to 12 months after our last contact <span class="tbc">\[proposed in the draft, not yet approved by the owner\]<\/span>/.test(privacy), 'F: the 12-month retention must be shown as a proposal, not as a fact');
   const real = run({ UMA_LEGAL_MODULE: undefined, UMA_DIST_DIR: undefined, ...realRecords });
   check(real.status === 1 && /\/privacy\/ \(privacy notice\): "Draft for legal review" banner shown/.test(real.out), 'F: the check must fail on today\'s real build');
-} else console.log('NOTE: dist/ not built, so part F (the real built pages) was not run. Run npm run build first for the full test.');
+} else if (process.env.CI) check(false, 'F: dist/ is missing in CI, so the real built legal pages were not checked. Run npm run build before this test.');
+else console.log('NOTE: dist/ not built, so part F (the real built pages) was not run. Run npm run build first for the full test (in CI a missing build fails).');
 
 // ---- Clean-up and result ----------------------------------------------------------------------------------------
 check(hash(LEGAL_FILE) === legalHashBefore, 'the real src/lib/legal.mjs must not be changed by the test');
