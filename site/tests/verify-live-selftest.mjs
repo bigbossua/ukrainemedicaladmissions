@@ -173,6 +173,7 @@ const MUTATIONS = [
   { name: 'CSP header missing', apply: (d, n) => edit(d, n, '.htaccess', dropLine(/Content-Security-Policy/)), fails: ['CSP header', 'CSP on 404 response', 'CSP on handler response', 'security header'] },
   { name: 'CSP sent only on success (Header set, not always)', apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace('Header always set Content-Security-Policy', 'Header set Content-Security-Policy')), fails: ['CSP on 404 response'], notFails: ['CSP header'] },
   { name: "CSP weakened with 'unsafe-inline'", apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace("script-src 'self'", "script-src 'self' 'unsafe-inline'")), fails: ['CSP header', 'CSP on 404 response'] },
+  { name: "CSP re-enables inline handlers through script-src-attr 'unsafe-inline'", apply: (d, n) => edit(d, n, '.htaccess', (s) => s.replace("script-src 'self';", "script-src 'self'; script-src-attr 'unsafe-inline';")), fails: ['CSP header', 'CSP on 404 response'] },
   // failsAt: [check, URL suffix, observed pattern]: the FAIL must name that URL and that observation, so a mutation cannot
   // count as caught through a side effect (here the no-slash URL's DirectorySlash 301 would hide a lost "never 200" check).
   { name: 'Ternopil page answers 200', manifest: 'original', apply: (d, n) => { edit(d, n, '.htaccess', dropLine(/ternopil-national-medical-university/)); edit(d, n, `universities/${TERNOPIL}/index.html`, () => profilePage(d)); }, fails: ['Ternopil profile URL'], failsAt: [['Ternopil profile URL', `/universities/${TERNOPIL}/`, /^HTTP 200\b/]] },

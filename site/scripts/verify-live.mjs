@@ -88,9 +88,16 @@ function cspProblem(r) {
   const ss = dirs['script-src'];
   if (!ss) return { severity: 'FAIL', observed: `no script-src directive: ${csp.slice(0, 120)}` };
   if (!ss.includes("'self'")) return { severity: 'FAIL', observed: `script-src ${ss.join(' ')}` };
-  const weak = ss.filter((v) => /^'unsafe-(inline|eval|hashes)'$|^'wasm-unsafe-eval'$|^\*$|^(data|blob|https?):?$/i.test(v));
+  const isWeak = (v) => /^'unsafe-(inline|eval|hashes)'$|^'wasm-unsafe-eval'$|^\*$|^(data|blob|https?):?$/i.test(v);
+  const weak = ss.filter(isWeak);
   if (weak.length) return { severity: 'FAIL', observed: `script-src ${ss.join(' ')} (weakened by ${weak.join(' ')})` };
+  // script-src-elem and script-src-attr override script-src for script elements and event-handler attributes
+  for (const k of ['script-src-elem', 'script-src-attr']) {
+    const w = (dirs[k] ?? []).filter(isWeak);
+    if (w.length) return { severity: 'FAIL', observed: `${k} ${dirs[k].join(' ')} (weakened by ${w.join(' ')})` };
+  }
   if (ss.length > 1) return { severity: 'WARN', observed: `script-src ${ss.join(' ')} (extra source)` };
+  for (const k of ['script-src-elem', 'script-src-attr']) if (dirs[k] && dirs[k].some((v) => v.toLowerCase() !== "'self'" && v.toLowerCase() !== "'none'")) return { severity: 'WARN', observed: `${k} ${dirs[k].join(' ')} (extra source)` };
   return null;
 }
 const CSP_EXPECTED = "Content-Security-Policy with script-src 'self' only";
