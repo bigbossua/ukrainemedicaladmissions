@@ -1,0 +1,29 @@
+# Second host list (optional; after ALLOWLIST_P1.txt). Unlocks the five research previews added under N26
+# (Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla, Cherkasy), the national registers and
+# NAQA accreditation pages, and India's National Medical Commission for the India questions on the FAQ.
+# Source: research/verification/CAPTURE_REQUEST_WAVE2_2026-10-12.md (rows 4-8); hosts already in P1 are not repeated.
+sumdu.edu.ua
+int.sumdu.edu.ua
+study.sumdu.edu.ua
+med.sumdu.edu.ua
+inter.med.sumdu.edu.ua
+news.sumdu.edu.ua
+nuph.edu.ua
+en.nuph.edu.ua
+pat.nuph.edu.ua
+knu.ua
+biomed.knu.ua
+pdis.knu.ua
+chmnu.edu.ua
+cdu.edu.ua
+www.cdu.edu.ua
+edbo.gov.ua
+vstup.edbo.gov.ua
+naqa.gov.ua
+en.naqa.gov.ua
+public.naqa.gov.ua
+mon.gov.ua
+moz.gov.ua
+studyinukraine.gov.ua
+nmc.org.in
+www.nmc.org.in

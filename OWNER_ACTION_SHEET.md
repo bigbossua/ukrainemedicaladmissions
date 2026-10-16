@@ -43,6 +43,40 @@ universities.studyinukraine.gov.ua
 ```
 <!-- allowlist:end -->
 
+**Latest check:** 2026-10-16 03:23 UTC, 0 of 20 open (proxy 403 to CONNECT on every host).
+
+**Second list (optional, after the first 20).** The five previews added under N26 (Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla, Cherkasy), the national registers, NAQA accreditation pages, and India's National Medical Commission (for the India questions on the FAQ). The list is in `research/verification/ALLOWLIST_P2.txt` (25 hosts, the same steps; it covers every page address for those five in `CAPTURE_REQUEST_WAVE2_2026-10-12.md`). Checked 2026-10-16: 0 of 25 open. After adding it, I run `npm run probe:access -- --list ../research/verification/ALLOWLIST_P2.txt`.
+
+```
+sumdu.edu.ua
+int.sumdu.edu.ua
+study.sumdu.edu.ua
+med.sumdu.edu.ua
+inter.med.sumdu.edu.ua
+news.sumdu.edu.ua
+nuph.edu.ua
+en.nuph.edu.ua
+pat.nuph.edu.ua
+knu.ua
+biomed.knu.ua
+pdis.knu.ua
+chmnu.edu.ua
+cdu.edu.ua
+www.cdu.edu.ua
+edbo.gov.ua
+vstup.edbo.gov.ua
+naqa.gov.ua
+en.naqa.gov.ua
+public.naqa.gov.ua
+mon.gov.ua
+moz.gov.ua
+studyinukraine.gov.ua
+nmc.org.in
+www.nmc.org.in
+```
+
+**If you would rather not change the network settings:** save each page in the capture requests as a PDF (with the address and date visible) and send them; I record each as dated evidence the same way. Either route keeps every university fact unverified until its page has actually been read.
+
 These 20 cover every full page address (`https://…`) in the capture request's §2 tables, including every P1 page (checked by `npm run test:allowlist`). Some checks, a few P1 ones included, may need one more host; I will ask only when a claim needs it:
 - `info.edbo.gov.ua`, `nauka.gov.ua`: if the register card does not print the website.
 - `nmu.ua`: if the register lists it as Bogomolets' website.
@@ -63,6 +97,58 @@ All but `tnmu.edu.ua` are described in the capture request §1.
 ## 2. The 38 items the release check lists
 
 In the order `node scripts/release-readiness.mjs` lists them. The check prints bullets and lists only what is still open; the numbers below are this sheet's own. `LEGAL_COMPLETION_CHECKLIST.md` numbers the same fields differently, so always keep the field name next to an answer, as the template does. **R** = a qualified legal reviewer must check the answer.
+
+### 2.0 At a glance: the 38 blockers in three groups
+
+Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the draft banner on the four legal pages) clear by themselves once 1–34 are in and I rebuild.
+
+**A. Facts only you can supply (11).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off).
+
+| # | Item | Where to find it |
+|---|---|---|
+| 1 | Legal name of the person or company running the service | registration certificate or ID |
+| 2 | Legal form (sole trader, limited company …) | registration certificate |
+| 3 | Country of registration (send first: it decides 7–11 and bears on 21) | registration certificate |
+| 4 | Registration number, or `not applicable` | registration certificate |
+| 5 | Postal address for formal requests | registration or business address |
+| 6 | Data controller (normally the same as 1; your reviewer confirms) | — |
+| 12 | Date the legal pages take effect (`YYYY-MM-DD`; send last) | your choice |
+| 13 | Privacy notice version (for example `1.0`) | your choice |
+| 14 | Whether host backups contain form submissions, and how long backups are kept | Hostinger plan / backup settings |
+| 19 | Company that provides the info@ mailbox | mailbox account (Hostinger Email, Google Workspace, Zoho …) |
+| 20 | Countries where Hostinger and the mailbox provider store data | each provider's data-centre setting or terms |
+
+**B. Proposed wording to approve or replace (9).** Answer "approved" or give your own value.
+
+| # | Item | Proposed |
+|---|---|---|
+| 23 | How long contact-form enquiries are kept | "up to 12 months after our last contact" |
+| 24 | How long candidate profiles are kept | "up to 12 months after our last contact" |
+| 25 | How long the e-mail copies in the mailbox are kept | "the same period as the stored record" |
+| 26 | Lawful basis for replying to enquiries (reviewer to confirm) | "your consent and steps taken at your request before any contract" |
+| 27 | Lawful basis for candidate profiles (reviewer to confirm) | same as 26 |
+| 28 | Complaint acknowledged within | "3 working days" |
+| 29 | Full reply within | "15 working days" |
+| 30 | Second-stage reviewer | "the business owner" (if the owner also handles the first stage, the review is not independent: name someone else if you can) |
+| 31 | Second-stage reply within | "a further 10 working days" |
+
+**C. Needs a qualified legal reviewer (14).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
+
+| # | Item |
+|---|---|
+| 7 | Whether a UK or EU representative is required (and, if yes, their name and address) |
+| 8–9 | Governing law and courts for the terms |
+| 10 | The data-protection authority people can complain to, with its web address |
+| 11 | The outside complaints body, or `not applicable` |
+| 15 | Retention of application records (future dashboard), or remove that paragraph |
+| 16 | Retention of complaint records |
+| 17 | Lawful basis for abuse detection (submission time and keyed IP code) |
+| 18 | Lawful basis for application documents (future dashboard), or remove that paragraph |
+| 21 | International transfers and the safeguard used |
+| 22 | The rule for applicants under 18 (the forms are built for school-leavers) |
+| 32–34 | Review completed, reviewer's name, review date (set only after the review) |
+
+**Reviewer brief (not gate items, but raised by the 2026-10-16 review, `SITE_GAP_ANALYSIS.md` §6):** the consent wording ("agree to the privacy notice"); rights and authorities for applicants outside the UK and EU (India, Nigeria, Pakistan, UAE); missing rights (objection, portability, whether giving data is required, automated decisions); server and mail logs; the notice's commitments about the unbuilt dashboard; the brevity of the terms.
 
 **Before you send anything: the repository is public.**
 - What I enter in `site/src/lib/legal.mjs` is readable on GitHub as soon as it is pushed. That happens before any release and before the review, and it stays in the repository's history.
@@ -244,3 +330,46 @@ M1 needs §1 (or captures). It needs no release.
 7. Post-release checks follow: the live checks and the e-mail test (`OWNER_INPUT_NEEDED.md` §5, remaining rows), then §3 steps 7–9.
 
 No deployment, DNS change, publication-gate bypass or move of the publishing pointer happens without your explicit approval.
+
+## 6. Live site: form privacy risk (assessment 2026-10-16; nothing on the live site was changed)
+
+**What the live release (11 October, `b2ca3d6`) does, read from its files:**
+- The application and contact forms collect name, e-mail, country, course, university, qualification, start year and a free-text message, with a consent tick. No file upload exists, although the home page step says "Upload securely against a clear checklist".
+- Each submission is stored as a file in `uma-private` (outside the web root if the host is set up as documented) and e-mailed to info@.
+- The handler also stores `sha256(IP address + month)` with no secret key. With few enough IPv4 addresses to try them all, that hash can be reversed, so it is personal data, and the privacy notice does not mention it.
+- The privacy notice shown is the old draft. It names no legal entity or data controller ("[Legal entity name … to be inserted.]"); it says aggregated analytics run (none is installed); it promises access records ("records of who accessed what") that do not exist; retention periods are "[to be confirmed]".
+- The home page says "Verified & dated university information" and "Every fee, deadline and programme is checked against official university sources", although no university fact is verified.
+
+**Assessment.** Any personal data collected now is collected without a named controller, under a notice that is inaccurate in three places, with an undisclosed reversible IP code, and possibly from applicants under 18. The release candidate fixes all of this except the owner and legal items, but it cannot go live until they are supplied. How serious the exposure is depends on how many people have actually submitted, which only you can see.
+
+**Options (your decision; I change nothing on the live site):**
+
+| Option | Effect | Trade-off |
+|---|---|---|
+| 1. **Pause the forms now (recommended)** | Collection stops at once; no personal data is stored or e-mailed until the release | Applicants are asked to e-mail instead; about five minutes in hPanel; fully reversible |
+| 2. Release sooner | Fixes everything | Needs all of §2 first, so it is not immediate |
+| 3. Leave as is | No work | Collection continues under the issues above |
+
+**Option 1, step by step (hPanel File Manager, menu names unverified):**
+1. Open `public_html/api/` and download `enquiry.php` (your copy).
+2. Rename it to `enquiry.php.original`.
+3. Upload `ops/pause-forms/enquiry.php` from this repository into the same folder. It reads and stores nothing, sends no e-mail, and answers every submission with a short page asking people to write to info@ (HTTP 503, noindex). Checked here: `php -l` passes, and a test submission returned 503 and left no file behind.
+4. Test: submit the contact form on the live site; you should see "Our online forms are paused".
+5. **To undo:** delete the pause file and rename `enquiry.php.original` back to `enquiry.php`.
+
+**Either way, also do this now:**
+- Look in `uma-private/enquiries/` on the host and in the info@ mailbox for real submissions. Reply to anyone waiting, and with your reviewer decide what to keep. The `ip_hash` field in those files is the reversible code: deleting that field (or the files you do not need) reduces the risk.
+- The release will replace the handler with the keyed version (no IP code at all without `ip_hash_key`), the accurate notice and pages without the unverified claims.
+
+## 7. Release steps for your approval (only after §2 is complete)
+
+Prepared now so that nothing waits once your answers arrive. Each step needs the one before; I do 1–3 and stop for your approval.
+
+1. **I enter your answers** in `site/src/lib/legal.mjs` exactly as sent, run `npm run check:release` (must print READY, exit 0) and the full `npm run release:gate`.
+2. **I switch CI to expect a pass** and push. CI must be green on that exact commit.
+3. **I send you the release candidate:** commit, CI link, and the publication report (0 published universities; 17 previews, noindex).
+4. **You take the backup** (`RELEASE_CHECKLIST_PROPOSED.md` 9.1). In hPanel, download a full archive of `public_html` and of `uma-private` (if it exists), store it off the server and never in Git, and record its SHA-256 (`shasum -a 256 <archive>` on macOS, `sha256sum <archive>` on Linux, `Get-FileHash <archive>` in PowerShell). Send me the date and the hash.
+5. **You create the private configuration** (`EMAIL_DELIVERY_VERIFICATION.md` P3). Generate the key on your own computer (`openssl rand -hex 32`, or the PowerShell line in P3). Then, one level above `public_html`, create `uma-private/config.php` returning `notify_to`, `from`, `send_mail => true` and `ip_hash_key`, with permissions 600 for the file and 700 for the folder. Never send me the key; tell me only that it is done.
+6. **You approve that exact commit.** Only then does the publishing pointer move: the publish workflow re-runs the release gate before the host deploys. No DNS change is needed or made.
+7. **After the deploy:** the e-mail delivery test for both forms (`EMAIL_DELIVERY_VERIFICATION.md` §4–7), `npm run verify:live`, and Search Console (§3). If anything fails, restore the step 4 backup (`RELEASE_CHECKLIST_PROPOSED.md` 11.4).
+
