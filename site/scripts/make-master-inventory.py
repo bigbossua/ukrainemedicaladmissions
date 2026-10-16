@@ -2,7 +2,7 @@
 """Build the reconciled master inventory of Ukrainian institutions (research/universities/MASTER_INVENTORY.{json,md}).
 
 Inputs (all already in the repository): the university records (site/src/content/universities/*.json), the landscape
-sweep files (research/universities/2026-10-12-landscape-sweep-wave*.json and any *-gap-discovery.json), and the SEMrush
+sweep files (research/universities/2026-10-12-landscape-sweep-wave*.json, *gap-discovery*.json and *recheck-and-discovery*.json), and the SEMrush
 exports (research/semrush/*.csv). Nothing is fetched and nothing is verified here: every location, ownership or programme
 statement is a search-result lead unless an evidence file says otherwise (none does today).
 Usage (repository root): python3 site/scripts/make-master-inventory.py
@@ -50,9 +50,16 @@ INST = [
  ('dnipro-institute-of-medicine-and-public-health', 'Dnipro Institute of Medicine and Public Health', 'F', 'Dnipro', 'relationship to Kyiv Medical University unexplained', r'institute of medicine and public health', []),
  ('lviv-medical-institute', 'Lviv Medical University (private; formerly Lviv Medical Institute)', 'F', 'Lviv', 'legal-form change and licence continuity unverified; easily confused with the state Lviv national medical university', r'lviv medical institute|lviv medical university', ['Lviv Medical Institute (former name)']),
  ('kharkiv-institute-of-medicine-and-biomedical-sciences', 'Kharkiv Institute of Medicine and Biomedical Sciences', 'F', 'Kharkiv', 'reported renamed University of Medicine and Social Sciences; relationship to Kyiv Medical University unexplained; current programme accreditation unknown', r'kharkiv institute of medicine', ['KhIM']),
+ ('international-academy-of-ecology-and-medicine', 'International Academy of Ecology and Medicine', 'F', 'Kyiv (lead)', 'domain from one publisher family; no programme for foreign applicants found', r'academy of ecology', ['MAEM']),
+ ('medical-natural-university', 'Medical-Natural University (private)', 'F', 'Mykolaiv (lead)', 'nursing and public health only; no programme for foreign applicants found', r'medical natural university', []),
  ('king-danylo-university', 'King Danylo University', 'F', 'Ivano-Frankivsk', 'no medical programme shown', r'king danylo', []),
  ('lviv-medical-academy-krupynskyi', 'Lviv Medical Academy named after Andrei Krupynskyi', 'G', 'Lviv', 'communal (regional council); directory-title lead only', r'krupynsk', []),
  ('cherkasy-medical-academy', 'Cherkasy Medical Academy', 'G', 'Cherkasy', 'communal (regional council); directory-title lead only', r'cherkas+y medical academy', []),
+ ('rivne-medical-academy', 'Rivne Medical Academy', 'G', 'Rivne', 'communal or state ownership unresolved; domestic nursing offers only', r'rivne medical academy', []),
+ ('volyn-medical-institute', 'Volyn Medical Institute', 'G', 'Lutsk', 'communal (regional council); nursing only; domestic intake', r'volyn medical institute', []),
+ ('kherson-basic-medical-college', 'Kherson Basic Medical Professional College', 'G', 'Kherson (lead)', 'communal college; professional junior bachelor level only', r'kherson.*medical college', []),
+ ('nikopol-medical-college', 'Nikopol Medical College', 'G', 'Nikopol', 'communal college; professional junior bachelor level only', r'nikopol', []),
+ ('bakhmut-medical-college', 'Bakhmut Medical Professional College', 'G', 'base not confirmed', 'communal college; current base not confirmed', r'bakhmut', []),
  ('kyiv-city-medical-college', 'Kyiv medical college (Study in Ukraine portal entry)', 'G', 'Kyiv', 'identity unconfirmed; college level', r'kiev medical college|kyiv medical college', []),
  ('zhytomyr-medical-institute', 'Zhytomyr Medical Institute', 'G', 'Zhytomyr', 'communal; nursing-based; no programme for foreigners shown', r'zhytomyr', []),
  ('odesa-mechnikov-national-university', 'Odesa I. I. Mechnikov National University', 'H', 'Odesa', 'pharmacy programme lead only; no medicine programme found', r'mechnikov|odess?a national university', ['Odessa National University', 'ONU']),
@@ -60,6 +67,12 @@ INST = [
  ('vasyl-stefanyk-carpathian-national-university', 'Vasyl Stefanyk Precarpathian National University (reported renamed Carpathian National University, 2025)', 'H', 'Ivano-Frankivsk', 'physical-therapy programme lead only; hosts relocated Kherson State University units', r'precarpath|carpathian national', ['Precarpathian National University', 'PNU']),
  ('ukrainian-catholic-university', 'Ukrainian Catholic University', 'H', 'Lviv', 'rehabilitation and allied-health programmes only; no medical faculty found', r'catholic university', ['UCU']),
  ('ivan-franko-national-university-of-lviv', 'Ivan Franko National University of Lviv', 'H', 'Lviv', 'no medical faculty found (one search)', r'ivan franko|lviv national university', ['LNU']),
+ ('kharkiv-polytechnic-institute', 'National Technical University "Kharkiv Polytechnic Institute"', 'H', 'Kharkiv', 'industrial pharmacy programme lead; its medical institute is reported as postgraduate only', r'kharkiv polytechnic', ['NTU KhPI']),
+ ('lviv-polytechnic-national-university', 'Lviv Polytechnic National University', 'H', 'Lviv', 'industrial pharmacy programme lead', r'lviv polytechnic', ['LPNU']),
+ ('kyiv-national-university-of-technologies-and-design', 'Kyiv National University of Technologies and Design', 'H', 'Kyiv', 'industrial pharmacy programme lead', r'technologies and design', ['KNUTD']),
+ ('ukrainian-state-university-of-science-and-technologies', 'Ukrainian State University of Science and Technologies', 'H', 'Dnipro', 'pharmacy programme lead (through a merged chemical-technology university)', r'science and technologies', ['USUST']),
+ ('donetsk-gorky-occupied', 'Donetsk State Medical University named after M. Gorky (occupied Donetsk)', 'R', 'Donetsk (occupied territory)', 'described in the results as run by the occupying authorities; not a Ukrainian study option', r'gorky', []),
+ ('crimea-georgievsky-occupied', 'Medical Academy named after S. I. Georgievsky (occupied Crimea)', 'R', 'Simferopol (occupied Crimea)', 'described in the results as run by the occupying authorities; the Ukrainian legal entity was reportedly merged into Odesa National Medical University in 2019', r'georgievsk', ['Crimea State Medical University named after S. I. Georgievsky (pre-2014 Ukrainian name)']),
  ('luhansk-st-luke-occupied', 'Luhansk State Medical University named after St. Luke', 'R', 'Luhansk (occupied territory)', 'described in results as Russian-run; no Ukrainian register listing', r'st\.? luke', []),
 ]
 GROUPS = {
@@ -70,15 +83,15 @@ GROUPS = {
  'E': 'Postgraduate and military institutions (not a first-degree route for international applicants)',
  'F': 'Private universities and institutes',
  'G': 'Colleges and communal medical academies and institutes (nursing and allied-health level)',
- 'H': 'Universities with pharmacy, nursing or allied-health programmes only (no medical degree found; deferred)',
- 'R': 'Rejected (occupied territory)',
+ 'H': 'Universities with pharmacy, nursing or allied-health programmes only (no medical degree found)',
+ 'R': 'Rejected (institutions in occupied territory)',
 }
 
 recs = {}
 for f in glob.glob(J('site', 'src', 'content', 'universities', '*.json')):
     d = json.load(open(f)); recs[d['slug']] = d
 land = []
-for f in sorted(glob.glob(J('research', 'universities', '2026-10-12-landscape-sweep-wave*.json'))) + sorted(glob.glob(J('research', 'universities', '*gap-discovery*.json'))):
+for f in sorted(glob.glob(J('research', 'universities', '2026-10-12-landscape-sweep-wave*.json'))) + sorted(glob.glob(J('research', 'universities', '*gap-discovery*.json'))) + sorted(glob.glob(J('research', 'universities', '*recheck-and-discovery*.json'))):
     land += json.load(open(f)).get('institutions', [])
 # Explicit slug -> landscape record (name prefix as recorded); the original 12 were listed under N25 before any skeptic check.
 LAND_NAME = {
@@ -97,6 +110,12 @@ LAND_NAME = {
  'lviv-medical-academy-krupynskyi': 'Lviv Medical Academy named after', 'cherkasy-medical-academy': 'Cherkasy Medical Academy',
  'odesa-mechnikov-national-university': 'Odesa I. I. Mechnikov', 'oles-honchar-dnipro-national-university': 'Oles Honchar Dnipro', 'vasyl-stefanyk-carpathian-national-university': 'Vasyl Stefanyk',
  'ukrainian-catholic-university': 'Ukrainian Catholic University', 'ivan-franko-national-university-of-lviv': 'Ivan Franko National University of Lviv',
+ 'rivne-medical-academy': 'Rivnenska medychna akademiia', 'volyn-medical-institute': 'Komunalnyi zaklad vyshchoi osvity "Volynskyi', 'kherson-basic-medical-college': 'Komunalnyi zaklad "Khersonskyi',
+ 'nikopol-medical-college': 'Komunalnyi vyshchyi navchalnyi zaklad "Nikopolskyi', 'bakhmut-medical-college': 'Bakhmut Medical Professional College',
+ 'international-academy-of-ecology-and-medicine': 'International Academy of Ecology and Medicine', 'medical-natural-university': 'Medyko-Pryrodnychyi Universytet',
+ 'kharkiv-polytechnic-institute': 'National Technical University "Kharkiv Polytechnic', 'lviv-polytechnic-national-university': 'Lviv Polytechnic National University',
+ 'kyiv-national-university-of-technologies-and-design': 'Kyiv National University of Technologies and Design', 'ukrainian-state-university-of-science-and-technologies': 'Ukrainian State University of Science and Technologies',
+ 'donetsk-gorky-occupied': 'Donetsk State Medical University named after M. Gorky', 'crimea-georgievsky-occupied': 'Medical Academy named after S. I. Georgievsky',
 }
 def verdict_for(slug):
     pre = LAND_NAME.get(slug)
@@ -166,7 +185,7 @@ L = []
 L.append('# Master inventory of Ukrainian institutions (reconciled)\n')
 L.append(f'**Generated by** `site/scripts/make-master-inventory.py` from the university records, the landscape and gap-discovery files in `research/universities/` and the SEMrush exports in `research/semrush/`. **Machine-readable copy:** `research/universities/MASTER_INVENTORY.json`.\n')
 n_prev = sum(1 for o in out if o['directory'].startswith('research preview'))
-L.append(f'**Totals:** {len(out)} institutions; {n_prev} listed in the working directory as "Not yet verified" research previews (names only, noindex, outside the sitemap); {sum(1 for o in out if o["directory"] == "private register only")} in the private register only; {sum(1 for o in out if o["group"] == "R")} rejected. **Verified claims: 0.** Every city, ownership, programme and status statement below is a search-result lead: no official page has been read, because the official hosts are refused by the network policy.\n')
+L.append(f'**Totals:** {len(out)} institutions; {n_prev} listed in the working directory as "Not yet verified" research previews (names only, noindex, outside the sitemap); {sum(1 for o in out if o["directory"] == "private register only")} in the private register only; {sum(1 for o in out if o["group"] == "R")} rejected. **Verified institutions: 0; verified claims: 0.** All 17 listed universities are unverified research previews and every other entry is an unverified candidate in the private register. Every city, ownership, programme and status statement below is a search-result lead: no official page has been read, because the official hosts are refused by the network policy.\n')
 L.append('**How institutions were deduplicated:** by official name, then former names and transliterations (Odessa/Odesa, Kharkov/Kharkiv, Kiev/Kyiv, Lvov/Lviv, Zaporozhye/Zaporizhzhia, Vinnitsa/Vinnytsia, Uzhgorod/Uzhhorod, Lugansk/Luhansk, Cherkassy/Cherkasy), then official domain. Two names that look alike but are different institutions stay separate: Kharkiv National Medical University and V. N. Karazin Kharkiv National University; Zaporizhzhia State Medical and Pharmaceutical University and Zaporizhzhia National University; Kyiv Medical University (private), Bogomolets National Medical University and Taras Shevchenko National University of Kyiv; the Ukrainian Luhansk State Medical University (reported in Rivne) and the institution in occupied Luhansk; the private Lviv Medical University (formerly Lviv Medical Institute) and Danylo Halytsky Lviv National Medical University; Kharkiv Institute of Medicine and Biomedical Sciences and Kharkiv International Medical University; Odesa I. I. Mechnikov National University ("Odesa National University") and Odesa National Medical University; Oles Honchar Dnipro National University and Dnipro State Medical University.\n')
 L.append('**Checks** (an independent skeptic\'s re-check of the leads, where one was done): **N** name and domain agree across two independent results; **G** a government or authority result lists it; **P** an official page shows a programme for foreign applicants; **Q** an unresolved relocation, occupation, closure, merger or licence question. "listed earlier" = one of the original 12, listed under N25 before checks existed; "not re-checked" = researched, but the skeptic re-check did not run (verifier usage limit) or the entry is a single directory-title lead. **Demand:** SEMrush exact match (`phrase_these`), highest variant per database (in = India, uk, ng, pk, ae, za); not additive across spellings.\n')
 for g, gname in GROUPS.items():
@@ -178,7 +197,7 @@ for g, gname in GROUPS.items():
     for o in items:
         L.append('| ' + ' | '.join(str(x).replace('|', '/') for x in [o['name'], '; '.join(o['aliases'][:6]) or '—', o['city'], o['flags'] or '—', o['directory'], o['skepticChecks'] or ('listed earlier' if o['group'] in 'ABC' and o['directory'].startswith('research') else '—'), demand(o), 'yes' if o['competitorPages'] else '—', next_action(o)]) + ' |')
     L.append('')
-L.append('**Coverage limits.** This inventory is as complete as search results allow, not a full register extract. No complete Ministry of Health roster or Ministry of Education list of institutions licensed for Medicine (222/I2), Dentistry (221), Pharmacy (226/I8) or Nursing (223/I5) came back from search; group G in particular holds only the communal academies that surfaced, and there are more. The authoritative enumeration is EDEBO (`registry.edbo.gov.ua`, already in the 20-host access request) filtered by specialty, cross-checked with the annexes of MoH order No. 1329 of 29.07.2024. Search results summarise pages; no official page was opened.\n')
+L.append('**Coverage limits.** This inventory is as complete as search results allow, not a full register extract. No complete Ministry of Health roster or Ministry of Education list of institutions licensed for Medicine (222/I2), Dentistry (221), Pharmacy (226/I8) or Nursing (223/I5) came back from search; group G in particular holds only the communal academies that surfaced, and there are more. The authoritative enumeration is EDEBO (`registry.edbo.gov.ua`, already in the 20-host access request) filtered by specialty, cross-checked with the annexes of MoH order No. 1329 of 29.07.2024. A second discovery pass on 2026-10-16 (six angles: nursing, dentistry, pharmacy, the Study in Ukraine portal, agency lists, relocated and occupied-territory institutions; `research/universities/2026-10-16-recheck-and-discovery.json`) added 13 institutions and re-checked eight; four further candidates were not researched in that pass (listed in the file). Search results summarise pages; no official page was opened.\n')
 L.append('**Competitor page** = the leading competitor (rmcedu.com) has a university page that ranks for the name in the India database (`research/semrush/2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv`, `2026-10-11-P3-resource_organic-in-rmcedu-mbbs-in-ukraine.csv`).\n')
 open(J('research', 'universities', 'MASTER_INVENTORY.md'), 'w').write('\n'.join(L))
 print('wrote MASTER_INVENTORY.md')

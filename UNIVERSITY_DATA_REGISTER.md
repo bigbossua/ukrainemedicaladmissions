@@ -374,3 +374,14 @@ Fee, course and comparison content never lists a preview. A record flagged `publ
 
 **Luhansk State Medical University** (reported in Rivne) passes N, G and P but stays unlisted: the relocated-institution rule needs a dated official notice of its current base first (§12).
 
+### 13.1 Second pass (2026-10-16): re-checks and a six-angle discovery sweep
+
+**File:** `research/universities/2026-10-16-recheck-and-discovery.json` (workflow run wf_19e519e9-7e0, 42 agents, search-result summaries only; official hosts still refused, probe 2026-10-16 03:23 UTC: 0 of 20 open). **Inventory now 60:** 17 research previews, 40 unverified candidates in this register, 3 rejected; **verified institutions: 0**.
+
+- **Re-checked (independent skeptic, none preview-eligible):** Ukrainian Catholic University NG––, Vasyl Stefanyk Precarpathian NG–Q, Oles Honchar Dnipro NG–Q, Odesa Mechnikov NG–Q, Ukrainian Military Medical Academy NG––, Lviv Medical Academy (Krupynskyi) ––––, Cherkasy Medical Academy NG–Q, Ivan Franko Lviv –––Q.
+- **Added, private:** International Academy of Ecology and Medicine (Kyiv; dentistry and medicine leads; –G–Q) and Medical-Natural University (Mykolaiv; nursing and public health; –G–Q).
+- **Added, communal academies and colleges (nursing level):** Rivne Medical Academy, Volyn Medical Institute (NG–Q), Kherson Basic Medical Professional College, Nikopol Medical College and Bakhmut Medical Professional College (current base not confirmed).
+- **Added, pharmacy at non-medical universities:** National Technical University "Kharkiv Polytechnic Institute", Lviv Polytechnic National University, Kyiv National University of Technologies and Design and Ukrainian State University of Science and Technologies (pharmacy or industrial pharmacy leads; no official page showing a programme for foreign applicants).
+- **Rejected (occupied territory):** Donetsk State Medical University named after M. Gorky and the Medical Academy named after S. I. Georgievsky in Simferopol (two discovery records of one institution, merged), both described in the results as run by the occupying authorities. They are different from the relocated Ukrainian Donetsk National Medical University, which stays in group D.
+- **Not researched in this pass:** Sumy National Agrarian University, and an unidentified private medical institute in Dnipro and an unidentified Zhytomyr nursing provider seen in Study in Ukraine portal results (possibly institutions already listed).
+
