@@ -11,7 +11,9 @@
 export type Control = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 export interface Problem { el: Control; message: string }
 
-const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+// Close to PHP's FILTER_VALIDATE_EMAIL (the server check in enquiry.php): no leading, trailing or doubled dot in the
+// local part, ASCII domain labels without underscores, and a top-level domain of letters.
+const EMAIL = /^(?!\.)(?!.*\.\.)[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+(?<!\.)@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
 
 /** The controls in a container that carry a validation rule. */
 export function rulesIn(root: ParentNode): Control[] {
@@ -33,6 +35,11 @@ export function problemWith(el: Control): string | null {
   }
   if (el instanceof HTMLInputElement && el.pattern && !new RegExp(`^(?:${el.pattern})$`).test(value)) {
     return el.dataset.msgFormat ?? 'Check the format of this answer';
+  }
+  // data-year-range="1950:+6": a four-digit year from 1950 to this year + 6, the window the server accepts.
+  const range = el.dataset.yearRange?.match(/^(\d{4}):\+(\d+)$/);
+  if (range && (Number(value) < Number(range[1]) || Number(value) > new Date().getFullYear() + Number(range[2]))) {
+    return el.dataset.msgFormat ?? 'Check the year';
   }
   return null;
 }
@@ -89,15 +96,26 @@ export function hideSummary(summary: HTMLElement | null) {
   summary.querySelector('[data-error-list]')?.replaceChildren();
 }
 
+/** After a valid submit: disable the submit button so a double click or a repeated Enter cannot post twice. */
+export function lockSubmit(form: HTMLFormElement) {
+  form.querySelectorAll<HTMLButtonElement>('button[type="submit"]').forEach((b) => { b.disabled = true; b.setAttribute('aria-disabled', 'true'); });
+}
+
 // Simple forms: validate everything on submit (behaviour of the contact page).
 document.querySelectorAll<HTMLFormElement>('form[data-form]:not([data-steps])').forEach((form) => {
   const summary = form.querySelector<HTMLElement>('[data-form-error]');
+  const ts = form.querySelector<HTMLInputElement>('input[name="ts"]');
+  const started = performance.now();
   form.addEventListener('submit', (e) => {
     const problems = validate(rulesIn(form));
     if (problems.length) {
       e.preventDefault();
       if (summary) { summary.hidden = false; summary.textContent = 'Please complete the highlighted fields.'; }
       problems[0].el.focus();
-    } else if (summary) summary.hidden = true;
+      return;
+    }
+    if (summary) summary.hidden = true;
+    if (ts) ts.value = String(Math.round(performance.now() - started));
+    lockSubmit(form);
   });
 });

@@ -21,6 +21,13 @@ const path = Astro.url.pathname;
     </nav>
     <a class="btn btn-primary btn-sm header-cta" href={SITE.ctaHref}>{SITE.cta}</a>
   </div>
+  {/* Without JavaScript the burger cannot open the menu below 900px: show the links as a plain row instead. */}
+  <noscript>
+    <nav class="wrap noscript-nav" aria-label="Main (without JavaScript)">
+      {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a class="btn btn-primary btn-sm" href={SITE.ctaHref}>{SITE.cta}</a>
+    </nav>
+  </noscript>
 </header>
 
 <style>
@@ -37,8 +44,12 @@ const path = Astro.url.pathname;
   @media (max-width: 899px) {
     ul[data-open] { display: grid; position: absolute; left: 0; right: 0; top: 72px; background: #fff; border-bottom: 1px solid var(--line); padding: 1rem var(--gutter) 1.25rem; gap: .9rem; }
     ul[data-open] .menu-cta { display: block; }
-    .header-cta { display: none; }
   }
+  /* The primary call to action stays in the header on tablets; phones get it inside the menu. */
+  @media (max-width: 599px) { .header-cta { display: none; } }
+  .noscript-nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; padding-bottom: .75rem; }
+  .noscript-nav a:not(.btn) { color: var(--navy-900); font-weight: 500; display: inline-block; padding: .5rem 0; }
+  @media (min-width: 900px) { .noscript-nav { display: none; } }
   @media (max-width: 480px) { .brand img { height: 34px; } }
   @media (min-width: 900px) { ul { display: flex; } .burger { display: none; } }
 </style>
@@ -46,9 +57,17 @@ const path = Astro.url.pathname;
 <script>
   const btn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const menu = document.querySelector<HTMLUListElement>('[data-menu]');
-  btn?.addEventListener('click', () => {
-    const open = menu!.hasAttribute('data-open');
-    if (open) menu!.removeAttribute('data-open'); else menu!.setAttribute('data-open', '');
-    btn.setAttribute('aria-expanded', String(!open));
+  const setOpen = (open: boolean) => {
+    if (open) menu!.setAttribute('data-open', ''); else menu!.removeAttribute('data-open');
+    btn!.setAttribute('aria-expanded', String(open));
+  };
+  btn?.addEventListener('click', () => setOpen(!menu!.hasAttribute('data-open')));
+  // The open menu closes with Escape (focus returns to the button) and when focus moves out of the navigation.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu?.hasAttribute('data-open')) { setOpen(false); btn?.focus(); }
+  });
+  btn?.closest('nav')?.addEventListener('focusout', (e) => {
+    const next = (e as FocusEvent).relatedTarget as Node | null;
+    if (menu?.hasAttribute('data-open') && next && !btn.closest('nav')!.contains(next)) setOpen(false);
   });
 </script>

@@ -32,6 +32,7 @@ import { SITE } from '../../lib/site';
       <p>If something has gone wrong, see our <a href="/complaints-policy/">complaints policy</a>.</p>
     </div>
     <form class="card" method="post" action="/api/enquiry.php" data-form novalidate>
+      <input type="hidden" name="ts" value="" />
       <h2 style="font-size:1.25rem">Send an enquiry</h2>
       <input type="hidden" name="type" value="enquiry" />
       <label class="field">Your name<input name="name" type="text" required maxlength="120" autocomplete="name" /></label>
@@ -43,6 +44,7 @@ import { SITE } from '../../lib/site';
       <p class="err" data-form-error role="alert" hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
     </form>
   </div></section>
+<script src="../../scripts/form-validate.ts"></script>
 </Base>
 <style>.hp{position:absolute;left:-9999px}</style>
-<script src="../../scripts/form-validate.ts"></script>
+

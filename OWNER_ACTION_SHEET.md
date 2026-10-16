@@ -209,7 +209,7 @@ Menu names are from general product knowledge, not checked against Google's help
 
 7. **Sitemaps** → submit `sitemap-index.xml` (`https://ukrainemedicaladmissions.com/sitemap-index.xml`). The release lists 18 pages and no university preview pages.
 8. **URL inspection** → `/`, `/universities/`, `/tuition-fees/` → **Request indexing** for each.
-9. A few days later, check **Indexing → Pages**: the 12 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
+9. A few days later, check **Indexing → Pages**: the 17 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
 
 I can report verification, sitemap status or indexing only from screenshots or exports you send; there is no Search Console connector here. If you would rather use a URL-prefix property, send only the token's `content` value; that route needs a release.
 

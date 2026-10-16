@@ -204,7 +204,7 @@ Only fields with `status = verified` are compared; anything else is shown as "no
 | Tuition (per year, currency, academic year) | exact figures with year and source | never converted, never averaged, never "from $" |
 | Application window / deadlines | dates with the intake year | verified for the current cycle only |
 | Location and current status | city; operating / relocated / blended; last official notice date | from official notices; undated snippets are not status evidence |
-| Recognition / listing | "listed in the World Directory of Medical Schools: yes/no (date)"; regulator statements only as quotations with source | never "recognised in country X" as our claim |
+| Recognition | regulator statements only, from the destination-country regulator's own source, with date (a World Directory of Medical Schools listing is a directory entry, not evidence of recognition, and is not shown: `source-not-evidence`) | never "recognised in country X" as our claim |
 | Last verified | date | shown on every card and profile |
 
 Words the site never uses about a university: best, top, safest, cheapest, most recognised, guaranteed, partner (unless a written agreement exists and is cited).

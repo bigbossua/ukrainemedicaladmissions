@@ -29,5 +29,9 @@ export const LEVELS = {
 export type LevelKey = keyof typeof LEVELS;
 
 export const TEACHING_FORMATS = { 'in-person': 'In person', blended: 'Blended (in person and online)', distance: 'Distance', unknown: 'Not stated' } as const;
+/** Display labels for the record enums (schema.mjs), so a verified value never prints as a raw key. */
+export const OPERATING_STATUS = { operating: 'Operating', relocated: 'Relocated', merged: 'Merged', suspended: 'Suspended', unknown: 'Not stated' } as const;
+export const PROGRAMME_FORMATS = { 'on-campus': 'On campus', distance: 'Distance', blended: 'Blended (on campus and online)' } as const;
+export const label = (map: Record<string, string>, v: unknown) => (typeof v === 'string' && v in map ? map[v] : String(v));
 
 export const REQUIREMENT_TYPES = { subject: 'Subject', grade: 'Minimum grade', exam: 'Entrance examination', language: 'Language', age: 'Age', document: 'Document', other: 'Other' } as const;

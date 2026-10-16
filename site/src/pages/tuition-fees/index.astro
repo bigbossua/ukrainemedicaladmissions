@@ -31,7 +31,7 @@ const withheld = rows.some(({ fee }) => fee.state !== 'verified');
         <li><strong>Exclusions</strong>: what the fee does not cover and is charged separately.</li>
       </ol>
       <p>Compare two figures only when all five basics match. A fee for a different year, currency or period is not comparable, even if the numbers look close.</p>
-      <p>When we list a fee, it shows the five basics exactly as the university states them, with any year-by-year amounts or payment schedule, a link to the official page and the date we read it. We never convert or average fees, and we never copy a figure from an agency or other third-party website.</p>
+      <p>When we list a fee, it shows the amount, currency, period and academic year exactly as the university states them, with any year-by-year amounts or payment schedule and the date we checked it; the university's profile names the official source. Ask the university about the teaching language and the exclusions, because a fee table rarely states them. We never convert or average fees, and we never copy a figure from an agency or other third-party website.</p>
 
       <h2 id="questions-to-ask">Questions to ask the university about fees</h2>
       <p>Copy these into your email to the university, or print this page and tick each one off as you get an answer. Ask for the answers in writing.</p>
@@ -79,15 +79,15 @@ const withheld = rows.some(({ fee }) => fee.state !== 'verified');
       <h3>Cost of MBBS in Ukraine for Indian students</h3>
       <p>The fee that applies to you is the one in the university's official schedule for your programme and intake. Ask the university whether its fee depends on nationality or citizenship; if a schedule we verify prices by nationality, the university's profile will say so. Then compare universities using the <a href="#reading-a-fee-schedule">five basics</a> and the <a href="#questions-to-ask">questions to ask</a>.</p>
       <h3>Recognition in India</h3>
-      <p>Recognition and the right to practise are decided by the regulator in the country where you plan to work, not by any university or by us. In India this is decided by the National Medical Commission (NMC). Read its current rules on its own website before you apply.</p>
+      <p>Whether you can practise after graduating is decided by the authorities in the country where you plan to work, not by any university or by us. In India, the National Medical Commission (NMC) sets the rules that doctors who studied abroad must meet; registration to practise is a separate step under those rules. Read the NMC's current rules on its own website before you apply.</p>
     </div>
 
     <h2 style="margin-top:2rem" id="by-university">Medical college fees in Ukraine, by university</h2>
-    <div class="table-wrap" role="region" aria-label="Fees by university" tabindex="0">
+    {rows.length === 0 && <p class="note"><span class="badge badge-pending">No fee verified yet</span> No university's fee schedule has been verified yet. Rows appear here, dated, as each one is verified. See the <a href="/universities/">universities we are researching</a>.</p>}
+    {rows.length > 0 && <div class="table-wrap" role="region" aria-label="Fees by university" tabindex="0">
       <table>
         <thead><tr><th>University</th><th>Programme</th><th>Tuition fee</th><th>Status</th><th>Checked</th></tr></thead>
         <tbody>
-          {rows.length === 0 && <tr><td colspan="5"><span class="badge badge-pending">No fee verified yet</span> No university's fee schedule has been verified yet. Rows appear here, dated, as each one is verified. See the <a href="/universities/">universities we are researching</a>.</td></tr>}
           {rows.map(({ u, p, fee }) => (
             <tr>
               <td><a href={`/universities/${u.slug}/#${p.id}`}>{u.shortName}</a></td>
@@ -99,7 +99,7 @@ const withheld = rows.some(({ fee }) => fee.state !== 'verified');
           ))}
         </tbody>
       </table>
-    </div>
+    </div>}
     {withheld && <p class="note">A fee shown as “To be confirmed” has not yet been verified from the university's official schedule, so we do not show it.</p>}
     <p class="prose">Not sure you qualify? See <a href="/admissions/#readiness">what decides eligibility</a> in the admissions guide.</p>
   </div></section>

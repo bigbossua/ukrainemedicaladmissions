@@ -168,7 +168,7 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
           <label for="f-qual-year">Year of the qualification</label>
           <span class="hint" id="f-qual-year-hint">Four digits, for example 2025.</span>
           <span class="err" id="f-qual-year-error" hidden></span>
-          <input id="f-qual-year" class="short" name="qual_year" type="text" inputmode="numeric" maxlength="4" pattern="(19|20)[0-9]{2}" aria-describedby="f-qual-year-hint" data-msg-format="Enter the year of your qualification as four digits, for example 2025" data-review="Year" />
+          <input id="f-qual-year" class="short" name="qual_year" type="text" inputmode="numeric" maxlength="4" pattern="(19|20)[0-9]{2}" data-year-range="1950:+6" aria-describedby="f-qual-year-hint" data-msg-format="Enter the year of your qualification as four digits, for example 2025" data-review="Year" />
         </div>
         <fieldset class="group" data-review="Results">
           <legend>Do you have the results yet?</legend>
@@ -324,6 +324,7 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
       </div>
     </aside>
   </div></section>
+<script src="../../scripts/apply-steps.ts"></script>
 </Base>
 <style>
   .apply-section { padding-top: 1rem; }
@@ -410,4 +411,4 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
   .side-card { margin-top: 1rem; }
   .side-card p { font-size: .9rem; margin: 0; }
 </style>
-<script src="../../scripts/apply-steps.ts"></script>
+

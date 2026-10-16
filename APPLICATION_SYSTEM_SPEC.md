@@ -19,7 +19,7 @@ Status copy shown to applicants is generated from the state machine; free-text c
 
 - Forms: application-start (course, university, start year, name, email, certificate country, qualification, message, consent) and enquiry (name, email, message, consent). Client-side accessible validation; server-side validation authoritative.
 - Anti-abuse: honeypot field; method check (405); input length caps; email validation; IP stored only as a monthly-rotating keyed hash (HMAC-SHA256 with a private key since 2026-10-11; a plain SHA-256 of an IPv4 address could be reversed).
-- Storage: JSON record per submission in `<document-root-parent>/uma-private/enquiries/` (configurable via `UMA_PRIVATE_DIR`), directory mode 0700. **Never inside the web root; never in Git** (`private/` ignored).
+- Storage: JSON record per submission in `<document-root-parent>/uma-private/enquiries/` (configurable via `UMA_PRIVATE_DIR`), directory mode 0700. **Never inside the web root; never in Git** (`uma-private/` and `private/` ignored in `site/.gitignore`).
 - Notification: plain-text email to the business address (no documents, no card data). Deliverability **untested** on Hostinger (backlog N4).
 - Applicants are told explicitly not to send passport/certificate scans at this stage.
 - Thank-you page is noindex and states that nothing has been sent to a university.
@@ -373,7 +373,7 @@ None of these has been checked on the plan. Each stays UNVERIFIED until the owne
 
 **CSRF.** One synchroniser token per session (`sessions.csrf_secret`), sent as a hidden field in every form and compared with `hash_equals`. Every POST route requires it, including sign-in and link confirmation (anonymous sessions have a token too). As a second check, a POST whose `Origin` header is present and is not `https://ukrainemedicaladmissions.com` is refused. A test walks the route table, so a new POST route without the check fails CI.
 
-**Rate limits.** Table-backed (`rate_limits`), fixed windows, one atomic `INSERT … ON DUPLICATE KEY UPDATE hits = hits + 1` per check. Buckets are HMAC-SHA256 values of the IP address, e-mail address or account id under a secret key, so raw addresses are not stored. Over the limit → 429 with `Retry-After` and no side effect (no e-mail sent, nothing stored). Note on Stage 1: it stores `sha256(ip + month)` (VERIFIED-IN-REPO, `enquiry.php`). Because there are few enough IPv4 addresses to try them all, that hash can be reversed. Stage 2 uses a keyed HMAC instead.
+**Rate limits.** Table-backed (`rate_limits`), fixed windows, one atomic `INSERT … ON DUPLICATE KEY UPDATE hits = hits + 1` per check. Buckets are HMAC-SHA256 values of the IP address, e-mail address or account id under a secret key, so raw addresses are not stored. Over the limit → 429 with `Retry-After` and no side effect (no e-mail sent, nothing stored). Note on Stage 1 (VERIFIED-IN-REPO, `enquiry.php`, 2026-10-16): it stores an HMAC-SHA256 of the IP address and month under the secret `ip_hash_key` (nothing about the IP without that key), and applies two limits with 429 and `Retry-After`: a total per hour (`max_per_hour`, counted from the record file names) and, only with the key, a per-keyed-IP limit (`per_ip_per_hour`, counters in `<storage>/ratelimit` for one hour).
 
 **Input validation** (server-side is authoritative):
 
@@ -391,7 +391,7 @@ None of these has been checked on the plan. Each stays UNVERIFIED until the owne
 
 **Output encoding.** Every value goes through `e()` = `htmlspecialchars($v, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8')`; attributes are always quoted; URL parts use `rawurlencode`; no user data inside `<script>` or `<style>`; JSON uses `JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT`. E-mail bodies are plain text and only validated addresses go into headers, with CR and LF removed. SQL uses PDO with `ATTR_EMULATE_PREPARES = false`, `ERRMODE_EXCEPTION`, `charset=utf8mb4` in the DSN, strict SQL mode and a UTC session time zone.
 
-**Security headers.** The site's `.htaccess` sends today (VERIFIED-IN-REPO, `site/public/.htaccess`): `X-Content-Type-Options: nosniff`; `X-Frame-Options: SAMEORIGIN`; `Referrer-Policy: strict-origin-when-cross-origin`; `Permissions-Policy: camera=(), microphone=(), geolocation=()`; `Strict-Transport-Security: max-age=31536000; includeSubDomains`; and `Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'`. The CSP uses `Header set`, not `Header always set`, so it may be missing from error responses. The app keeps these, tightens them, and sets all of them from PHP on every response:
+**Security headers.** The site's `.htaccess` sends today (VERIFIED-IN-REPO, `site/public/.htaccess`): `X-Content-Type-Options: nosniff`; `X-Frame-Options: SAMEORIGIN`; `Referrer-Policy: strict-origin-when-cross-origin`; `Permissions-Policy: camera=(), microphone=(), geolocation=()`; `Strict-Transport-Security: max-age=31536000; includeSubDomains`; and `Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'`, all with `Header always set`, so error responses carry them too. The app keeps these, tightens them, and sets all of them from PHP on every response:
 
 | Header | App value |
 |---|---|
@@ -880,7 +880,7 @@ CREATE TABLE deletion_requests (
 
 ### 14.12 Retention, deletion, export and data minimisation
 
-Periods come from §3 and the draft privacy notice (`site/src/pages/privacy/index.astro`, VERIFIED-IN-REPO: "Enquiries: up to 12 months after our last contact. Application records and documents: for the duration of the application process and a limited period afterwards … [Exact periods to be confirmed.]"). Nothing below is final until the owner confirms it and the privacy notice says the same.
+Periods come from §3 and the draft privacy notice (`site/src/pages/privacy/index.astro`, values in `site/src/lib/legal.mjs`): the enquiry, candidate-profile and mailbox periods are proposed and marked "not approved"; the backup, application-record and complaint periods are owner markers (checked 2026-10-16). Nothing below is final until the owner confirms it and the privacy notice says the same.
 
 | Data | Rule | Basis | Status |
 |---|---|---|---|

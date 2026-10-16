@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, STAGING, SEARCH_CONSOLE_VERIFICATION } from '../lib/site';
+import { SITE, STAGING, PREVIEW, SEARCH_CONSOLE_VERIFICATION } from '../lib/site';
 import { serializeJsonLd } from '../lib/publication.mjs';
 
 interface Props {
@@ -24,8 +24,9 @@ interface Props {
   canonical?: boolean;
 }
 const { title, description, noindex: noindexProp = false, jsonLd = [], ogImage = '/og-default.png', suffix = true, draft = false, follow = false, canonical: withCanonical = true } = Astro.props;
-const noindex = noindexProp || STAGING || draft;
-const robotsNoindex = follow && !STAGING && !draft ? 'noindex, follow' : 'noindex, nofollow';
+// A PREVIEW_UNPUBLISHED build lists draft records with unverified values on every page: none of it may be indexed.
+const noindex = noindexProp || STAGING || draft || PREVIEW;
+const robotsNoindex = follow && !STAGING && !draft && !PREVIEW ? 'noindex, follow' : 'noindex, nofollow';
 const bare = STAGING || draft; // omit every signal that could point a crawler at this URL
 const showCanonical = !bare && withCanonical;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;

@@ -8,10 +8,12 @@
   --gutter: clamp(16px, 4vw, 40px); --max: 1200px;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
-  --focus: 3px solid var(--yellow-400);
+  --focus: 3px solid var(--navy-900);
+  --focus-on-dark: var(--yellow-400);
+  --control-line: #7A879B;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; font-family: var(--font-body); color: var(--ink); background: var(--white); line-height: 1.55; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--navy-900); letter-spacing: -0.02em; line-height: 1.12; margin: 0 0 0.5em; }
 h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; }
@@ -20,7 +22,9 @@ h3 { font-size: 1.125rem; font-weight: 600; }
 h4 { font-size: 1rem; font-weight: 600; }
 p { margin: 0 0 1em; }
 a { color: var(--blue-600); }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: var(--focus); outline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: var(--focus); outline-offset: 2px; }
+/* Dark surfaces: the navy ring would vanish, so the focus ring turns yellow (contrast > 9:1 on navy). */
+:is(.hero, .page-head, .cta-band, .site-footer, .on-dark) :focus-visible { outline-color: var(--focus-on-dark); }
 img, svg { max-width: 100%; height: auto; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--navy-900); color: #fff; padding: .5rem 1rem; border-radius: 8px; z-index: 100; }
 .skip-link:focus { left: 8px; }
@@ -66,7 +70,7 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 .card-link h3, .card-link h2 { margin-bottom: .1rem; }
 .card a.more { margin-top: auto; font-weight: 600; text-decoration: none; }
 .chips { display: flex; flex-wrap: wrap; gap: .4rem; font-size: .78rem; }
-.chips span { background: var(--mist); border-radius: 999px; padding: .25rem .6rem; color: var(--slate); }
+.chips span:where(:not(.badge)) { background: var(--mist); border-radius: 999px; padding: .25rem .6rem; color: var(--slate); }
 
 /* Verification states (see UNIVERSITY_DATA_REGISTER.md) */
 .tbc { color: var(--navy-900); background: var(--yellow-100); border-radius: 4px; padding: 0 .3em; font-weight: 600; }
@@ -105,10 +109,12 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 
 /* Forms */
 .field { display: grid; gap: .35rem; margin-bottom: 1rem; font-size: .9rem; font-weight: 500; color: var(--slate); }
-.field input, .field select, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: .75rem .9rem; background: var(--mist); width: 100%; }
+.field input, .field select, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); border: 1px solid var(--control-line); border-radius: var(--radius-sm); padding: .75rem .9rem; background: var(--mist); width: 100%; }
 .field input:focus, .field select:focus, .field textarea:focus { background: #fff; border-color: var(--blue-600); }
 .field .hint { font-weight: 400; font-size: .8rem; }
-.field.error input, .field.error select { border-color: #B91C1C; }
+.field.error input, .field.error select, .field.error textarea { border-color: #B91C1C; border-width: 2px; }
+.checkbox.error { color: #B91C1C; }
+.checkbox.error input { outline: 2px solid #B91C1C; outline-offset: 2px; }
 .field .err { color: #B91C1C; font-size: .8rem; font-weight: 500; }
 .checkbox { display: flex; gap: .6rem; align-items: flex-start; font-size: .9rem; color: var(--ink); margin-bottom: 1rem; }
 .checkbox input { margin-top: .25rem; }
@@ -129,7 +135,7 @@ main > section:not(.alt) + section.cta-section { padding-top: 0; }
 /* Breadcrumbs */
 /* Vertical padding only: the element is also .wrap, whose side gutters must survive (alignment and the 390 px edge). */
 .crumbs { font-size: .85rem; color: var(--slate); padding-top: .4rem; padding-bottom: .4rem; }
-.crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
 .crumbs li + li::before { content: "›"; margin-right: .4rem; color: var(--slate); }
 .crumbs a { color: var(--slate); text-decoration: none; display: inline-block; padding: .5rem 0; }
 .crumbs a:hover { color: var(--blue-600); text-decoration: underline; }

@@ -11,7 +11,12 @@
  *   unknown value is dropped (stored as an empty string), never stored as typed.
  * - Single-line fields have control characters (CR, LF, tab, NUL ...) removed, so nothing can break a mail header.
  * - Bot checks: honeypot field "website"; optional timing field "ts" (milliseconds the page was open, set by the
- *   page script). A submission is treated as a bot only when ts is present and below 3 seconds.
+ *   page script on both forms). A submission is treated as a bot only when ts is present and below 3 seconds.
+ * - Rate limits (429): at most max_per_hour stored submissions in the current and previous clock hour in total
+ *   (counted from the record file names; nothing extra is stored), and, only when ip_hash_key is configured, at most
+ *   per_ip_per_hour per keyed IP code (the code and submission times sit in <storage>/ratelimit for one hour).
+ * - The notification e-mail is base64-encoded with a folded RFC 2047 subject; when the mail system does not accept
+ *   it, the failure is written to error_log and to the stored record ("notification": "failed").
  * - Stores each record as JSON OUTSIDE the web root (never inside public_html) and e-mails a plain-text notification
  *   to the business address. No documents are accepted at this stage.
  * - Every record is state 1 ("enquiry"). This handler never records a submission to a university.
@@ -34,7 +39,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
 // ---- Storage location: a sibling of the document root, not inside it. ----
 $docRoot = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? __DIR__ . '/..'), '/');
 $storage = getenv('UMA_PRIVATE_DIR') ?: dirname($docRoot) . '/uma-private';
-$config  = ['notify_to' => 'info@ukrainemedicaladmissions.com', 'from' => 'no-reply@ukrainemedicaladmissions.com', 'send_mail' => true];
+$config  = ['notify_to' => 'info@ukrainemedicaladmissions.com', 'from' => 'no-reply@ukrainemedicaladmissions.com', 'send_mail' => true, 'max_per_hour' => 100, 'per_ip_per_hour' => 5];
 if (is_file($storage . '/config.php')) {
     $override = include $storage . '/config.php';
     if (is_array($override)) $config = array_merge($config, $override);
@@ -200,6 +205,32 @@ if ($errors) {
     exit;
 }
 
+// ---- Rate limits (after validation, before anything is stored or sent) ----
+$tooMany = static function (): never {
+    http_response_code(429);
+    header('Retry-After: 3600');
+    header('Content-Type: text/plain; charset=utf-8');
+    exit('Too many submissions in the last hour. Please try again later, or email info@ukrainemedicaladmissions.com.');
+};
+$recent = 0;
+foreach ([gmdate('Ymd-H'), gmdate('Ymd-H', time() - 3600)] as $hourPrefix) {
+    $recent += count(glob($storage . '/enquiries/' . $hourPrefix . '*.json') ?: []);
+}
+if ($recent >= (int)$config['max_per_hour']) $tooMany();
+$ipKey = !empty($config['ip_hash_key']) ? hash_hmac('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . date('Y-m'), (string)$config['ip_hash_key']) : null;
+if ($ipKey !== null) {
+    $rlDir = $storage . '/ratelimit';
+    if (is_dir($rlDir) || @mkdir($rlDir, 0700, true)) {
+        $rlFile = $rlDir . '/' . $ipKey . '.json';
+        $times = is_file($rlFile) ? (json_decode((string)file_get_contents($rlFile), true) ?: []) : [];
+        $times = array_values(array_filter(is_array($times) ? $times : [], static fn($t): bool => is_int($t) && $t > time() - 3600));
+        if (count($times) >= (int)$config['per_ip_per_hour']) $tooMany();
+        $times[] = time();
+        @file_put_contents($rlFile, json_encode($times), LOCK_EX);
+        @chmod($rlFile, 0600);
+    }
+}
+
 // ---- Persist (outside web root) ---------------------------------------
 $record = [
     'id'          => bin2hex(random_bytes(8)),
@@ -218,7 +249,7 @@ $record = [
         : 'Stored to reply by email, as described in the privacy notice.',
     // Keyed hash (HMAC) so the IP cannot be recovered by hashing every IPv4 address; rotates monthly. Without a
     // secret 'ip_hash_key' in the private config.php nothing about the IP is stored.
-    'ip_hash'     => !empty($config['ip_hash_key']) ? hash_hmac('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . date('Y-m'), (string)$config['ip_hash_key']) : null,
+    'ip_hash'     => !empty($config['ip_hash_key']) ? $ipKey : null,   // nothing about the IP without the secret key
 ];
 if ($profile !== null) $record['profile'] = $profile;
 
@@ -268,9 +299,23 @@ if (!empty($config['send_mail'])) {
     $lines[] = $message;
     $lines[] = '';
     $lines[] = 'Record: ' . $record['id'] . ' (stage: enquiry; nothing has been sent to any university)';
-    $subject = '=?UTF-8?B?' . base64_encode('[UMA] New ' . $type . ' from ' . $name) . '?=';
-    $headers = 'From: ' . line((string)$config['from'], 200) . "\r\nReply-To: $email\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: 8bit";
-    @mail(line((string)$config['notify_to'], 200), $subject, implode("\n", $lines), $headers);
+    // RFC 2047: each encoded word at most 75 characters (45 bytes of UTF-8 per word, never split inside a character),
+    // folded onto continuation lines. RFC 5322: body lines at most 998 bytes, so the body is base64 in 76-character lines.
+    $words = [];
+    foreach (preg_split('//u', '[UMA] New ' . $type . ' from ' . $name, -1, PREG_SPLIT_NO_EMPTY) ?: [] as $ch) {
+        $last = count($words) - 1;
+        if ($last < 0 || strlen($words[$last] . $ch) > 45) $words[] = $ch; else $words[$last] .= $ch;
+    }
+    $subject = implode("\r\n ", array_map(static fn(string $w): string => '=?UTF-8?B?' . base64_encode($w) . '?=', $words));
+    $headers = 'From: ' . line((string)$config['from'], 200) . "\r\nReply-To: $email\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: base64";
+    $sent = @mail(line((string)$config['notify_to'], 200), $subject, rtrim(chunk_split(base64_encode(implode("\r\n", $lines)), 76, "\r\n")), $headers);
+    if (!$sent) {
+        // The record is stored, so the person still sees the thank-you page; the failure must not go unnoticed.
+        error_log('UMA enquiry: the notification e-mail for record ' . $record['id'] . ' was not accepted by the mail system');
+        $record['notification'] = 'failed';
+        $json = json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_INVALID_UTF8_SUBSTITUTE);
+        if ($json !== false) @file_put_contents($file, $json, LOCK_EX);
+    }
 }
 
 header('Location: /apply/thank-you/', true, 303);

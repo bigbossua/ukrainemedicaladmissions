@@ -336,7 +336,7 @@ for (const u of [...assets].filter((u) => u.endsWith('/') && !pageFetch.includes
 if (manifest) {
   const m = manifest; let same = 0; const diff = [];
   for (const f of m.files) {
-    if (f.path === '.htaccess' || f.path === 'api/enquiry.php') continue;
+    if (f.path === '.htaccess' || f.path.endsWith('/.htaccess') || f.path === 'api/enquiry.php') continue; // server rules are never served
     const r = http(`${BASE}/${f.path}`);
     if (r.status !== 200) { diff.push(`${f.path} HTTP ${r.status}`); continue; }
     if (sha(r.body) === f.sha256) same++; else diff.push(`${f.path} sha differs (${r.size}B vs ${f.bytes}B)`);
@@ -377,7 +377,7 @@ else { PASS('404', nf.url, '404 with custom page'); checkInline(nf.url, text(nf)
   else PASS('CSP on 404 response', nf.url, "script-src 'self'");
 }
 const nfh = http(`${BASE}/no-such-file-${Date.now()}.html`); if (nfh.status !== 404) FAIL('404 (file)', nfh.url, `HTTP ${nfh.status}`, '404', 'check ErrorDocument');
-for (const [p, expect] of [['/.git/config', 'blocked'], ['/.git/HEAD', 'blocked'], ['/.htaccess', 'blocked'], ['/.env', 'blocked'], ['/api/', 'no listing'], ['/fonts/', 'no listing'], ['/_astro/', 'no listing'], ['/brand/', 'no listing'], ['/.well-known/', 'no listing']]) {
+for (const [p, expect] of [['/.git/config', 'blocked'], ['/.git/HEAD', 'blocked'], ['/.htaccess', 'blocked'], ['/_astro/.htaccess', 'blocked'], ['/.env', 'blocked'], ['/api/', 'no listing'], ['/fonts/', 'no listing'], ['/_astro/', 'no listing'], ['/brand/', 'no listing'], ['/.well-known/', 'no listing']]) {
   const r = http(`${BASE}${p}`); const body = text(r);
   const listing = r.status === 200 && /Index of|<title>Index/i.test(body);
   if (expect === 'blocked') { if (r.status === 200) FAIL('sensitive path exposed', r.url, `HTTP 200 (${r.size}B)`, '403/404', 'deny rule in .htaccess'); else PASS('sensitive path', r.url, `HTTP ${r.status}`); }

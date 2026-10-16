@@ -1,5 +1,7 @@
 # Google readiness audit (local, production build)
 
+> **Current state (2026-10-16):** the latest runs (addenda at the end and `SITE_GAP_ANALYSIS.md` §4 and §6) give 0 high, 0 medium and 3 accepted low issues, with 17 research previews (noindex, outside the sitemap). The header and verdict below describe the first run of 12 October and are kept as the record of that run; several of its points (robots.txt blocking the thank-you page, 12 previews) no longer apply.
+
 - **Date:** 12 October 2026 (run finished 09:11 UTC)
 - **Commit audited:** `f86363c0a48459407cdbd4851f6f4efd79cf7a1d` on `claude/university-profile-pipeline`
 - **Build audited:** a clean production build of that commit (`git archive f86363c site`, then `astro build` with no staging or preview flags). It is byte-identical (`diff -r`) to `site/dist` as built at 08:59 UTC.

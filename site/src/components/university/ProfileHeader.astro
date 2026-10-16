@@ -1,7 +1,7 @@
 ---
 import ClaimChip from './ClaimChip.astro';
 import { formatDate, PREVIEW } from '../../lib/site';
-import { TEACHING_FORMATS } from '../../lib/fields';
+import { TEACHING_FORMATS, OPERATING_STATUS, label } from '../../lib/fields';
 import { viewClaim } from '../../lib/publication.mjs';
 interface Props { d: any; publishable: boolean }
 const { d, publishable } = Astro.props;
@@ -21,7 +21,7 @@ const initials = d.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)
       <h1>{d.shortName}</h1>
       <p class="official">{name.state !== 'tbc' && name.value}{name.state !== 'verified' && <span class="badge badge-pending" style={name.state === 'tbc' ? undefined : 'margin-left:.5rem'}>{name.state === 'tbc' ? 'official name to be confirmed' : 'name pending verification'}</span>}</p>
       <div class="chips">
-        <ClaimChip label="Status" claim={d.status} />
+        <ClaimChip label="Status" claim={d.status} format={(v) => label(OPERATING_STATUS, v)} />
         <ClaimChip label="Teaching" claim={d.teachingFormat} format={(v) => (TEACHING_FORMATS as any)[v] ?? v} />
         <span class="chip"><span class="chip-label">Verified programmes open to internationals</span> {openIntl}</span>
         <span class="chip"><span class="chip-label">English-taught (verified)</span> {english}</span>

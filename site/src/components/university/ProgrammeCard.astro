@@ -3,7 +3,7 @@ import Fact from '../Fact.astro';
 import RequirementList from './RequirementList.astro';
 import DocumentList from './DocumentList.astro';
 import { SITE, PREVIEW } from '../../lib/site';
-import { FIELDS, LEVELS } from '../../lib/fields';
+import { FIELDS, LEVELS, PROGRAMME_FORMATS, label } from '../../lib/fields';
 import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 interface Props { p: any; slug: string }
 const { p, slug } = Astro.props;
@@ -39,7 +39,7 @@ const costWithheld = typeof p.otherCostsWithheld === 'number' ? p.otherCostsWith
     <Fact label="Specialty code" claim={p.specialtyCode} />
     <Fact label="Duration" claim={duration} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
     <Fact label="Language" claim={p.language} />
-    <Fact label="Format" claim={p.format} />
+    <Fact label="Format" claim={p.format} format={(v) => label(PROGRAMME_FORMATS, v)} />
     <Fact label="Intake these facts refer to" claim={p.intakeYear} />
     <Fact label="Tuition fee" claim={p.tuition} format={money} tbcText={`The university's fee for the ${intakeLabel} intake has not yet been verified. We publish a fee only as the university states it on its own website: the amount, the currency, what it is charged per (year, semester or whole programme) and the academic year, with the payment schedule and any year-by-year amounts where the university states them, and the date we read it. Never an estimate.`} />
     {p.otherMandatoryCosts.filter((c: any) => PREVIEW || view(c.cost).state === 'verified').map((c: any) => <Fact label={c.label} claim={c.cost} format={money} />)}

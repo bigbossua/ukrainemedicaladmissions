@@ -13,7 +13,7 @@ import ProgrammeCard from './ProgrammeCard.astro';
 import PreparatoryRoute from './PreparatoryRoute.astro';
 import ResearchReferences from './ResearchReferences.astro';
 import { SITE, PREVIEW, formatDate } from '../../lib/site';
-import { FIELDS, LEVELS, TEACHING_FORMATS } from '../../lib/fields';
+import { FIELDS, LEVELS, TEACHING_FORMATS, OPERATING_STATUS, label } from '../../lib/fields';
 import { fieldsOf, levelsOf, languagesOf, officeText } from '../../lib/records';
 import { viewClaim } from '../../lib/publication.mjs';
 
@@ -66,7 +66,7 @@ const applyHref = `/apply/?university=${d.slug}`;
       {typeof d.overview === 'string' && d.overview.trim() && <p class="prose">{d.overview}</p>}
       <dl>
         <Fact label="Official name" claim={d.officialName} />
-        <Fact label="Operating status" claim={d.status} />
+        <Fact label="Operating status" claim={d.status} format={(v) => label(OPERATING_STATUS, v)} />
         <Fact label="University's own statement (current year)" claim={d.statusStatement} />
         <Fact label="Teaching format" claim={d.teachingFormat} format={(v) => (TEACHING_FORMATS as any)[v] ?? v} />
         <Fact label="Founded" claim={d.founded} />
@@ -77,6 +77,8 @@ const applyHref = `/apply/?university=${d.slug}`;
         <Fact label="Recognition" claim={d.recognition} />
         <Fact label="Accommodation" claim={d.accommodation} />
       </dl>
+      {/* UNIVERSITY_EVIDENCE_STANDARD.md §9.2: the regulator statement accompanies any recognition row. */}
+      <p class="note">Whether you can practise after graduating is decided by the regulator for your profession in the country where you plan to work, not by the university or by us. Registration, programme accreditation and recognition abroad are separate things: check that regulator's current rules before you apply.</p>
 
       <h2 id="programmes" style="margin-top:2.5rem">Programmes</h2>
       <p class="prose">Only programmes for which the university's own pages state that international applicants are admitted are listed here; other programmes the university runs are kept unpublished until that is verified. Each card lists the facts the university publishes for the intake named on it: qualification, duration, language, fee, entry requirements and documents. A fact is shown as verified only once it has been read on an official page, with the date.</p>

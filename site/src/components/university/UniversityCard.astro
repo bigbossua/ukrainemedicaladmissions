@@ -30,7 +30,7 @@ const searchName = u.shortName.toLowerCase().replace(/[<>]/g, '');
 <article class="ucard" data-slug={u.slug} data-status={draft ? 'draft' : 'verified'} data-name={searchName} data-city={u.city} data-fields={fields.join(' ')} data-levels={levels.join(' ')} data-languages={langs.join(' ')} data-prep={prepState} data-intakes={intakes.join(' ')} data-publishable={draft ? 'no' : 'yes'}>
   <a class="tile" href={href} aria-hidden="true" tabindex="-1" style={`--h:${hue}`}><span>{initials}</span><span class="city">{cityText}</span></a>
   <div class="body">
-    <h2><a href={href}>{u.shortName}</a></h2>
+    <h3><a href={href}>{u.shortName}</a></h3>
     <p class="loc">{place}</p>
     <div class="chips">
       {fields.map((f) => <span>{((FIELDS as any)[f] ?? FIELDS.other).short}</span>)}
@@ -42,7 +42,7 @@ const searchName = u.shortName.toLowerCase().replace(/[<>]/g, '');
       {!draft ? <span class="badge badge-verified">Verified profile</span> : <span class="badge badge-pending">Draft — verification in progress</span>}
       {u.verification.lastReview && <small> · reviewed {formatDate(u.verification.lastReview)}</small>}
     </p>
-    <a class="more" href={href}>View profile →</a>
+    <a class="more" href={href}>View profile<span class="visually-hidden">: {u.shortName}</span> →</a>
   </div>
 </article>
 <style>
@@ -52,9 +52,9 @@ const searchName = u.shortName.toLowerCase().replace(/[<>]/g, '');
   .tile span:first-child { font-size: 1.6rem; font-weight: 700; letter-spacing: .02em; }
   .tile .city { font-size: .8rem; opacity: .85; }
   .body { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
-  h2 { font-size: 1.15rem; margin: 0; }
-  h2 a { color: var(--navy-900); text-decoration: none; }
-  h2 a:hover { text-decoration: underline; }
+  h3 { font-size: 1.15rem; margin: 0; }
+  h3 a { color: var(--navy-900); text-decoration: none; }
+  h3 a:hover { text-decoration: underline; }
   .loc { margin: 0; font-size: .9rem; color: var(--slate); }
   .lvl { background: var(--blue-50) !important; color: var(--navy-800) !important; }
   .status { margin: 0; font-size: .85rem; }

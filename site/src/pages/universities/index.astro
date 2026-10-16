@@ -40,7 +40,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
     <div class="wrap">
       <span class="eyebrow">Directory</span>
       <h1>Medical universities in Ukraine</h1>
-      <p>The Ukrainian universities in our directory, in one list. A <strong>verified profile</strong> shows facts checked against official sources, each dated. A university marked <strong>not yet verified</strong> is one we are still researching: we show its name and what to check before you apply, never unconfirmed fees, programmes or dates. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
+      <p>The Ukrainian universities in our directory, in one list. A <strong>verified profile</strong> shows facts checked against official sources, each dated. A university marked <strong>not yet verified</strong> is one we are still researching: we show its name and what to check before you apply, never unconfirmed fees, programmes or dates. The list includes dedicated medical universities and multi-faculty universities; which medical, dental, pharmacy or nursing programmes each one offers is among the facts we confirm. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
       <p class="head-summary" data-summary>{summary}</p>
     </div>
   </div>
@@ -150,32 +150,6 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
     </div>
   </section>
   <CtaBand title="Not sure which university?" text="Start your candidate profile with your course, country and qualifications. We reply by email, and nothing is sent to a university." />
-</Base>
-
-<style>
-  .head-summary { margin-top: .75rem !important; font-weight: 600; color: var(--yellow-400); }
-  .filters { display: grid; gap: 0 1rem; margin-bottom: .25rem; align-items: end; }
-  @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]) { grid-template-columns: repeat(3, 1fr); } }
-  .filter-actions { margin: 0 0 1rem; }
-  .filter-actions .btn { min-height: 44px; }
-  .filters[hidden] { display: none; }
-  .filters input::placeholder { color: var(--slate); opacity: 1; }
-  .count { font-size: .9rem; color: var(--slate); margin-top: 0; }
-  .near-note { margin: 0 0 .75rem; max-width: 80ch; }
-  .tier { margin-top: 1.5rem; }
-  .tier[hidden] { display: none; }
-  .tier > h2 { font-size: 1.35rem; margin-bottom: .5rem; }
-  .lead-note { max-width: 80ch; margin: 0 0 .75rem; }
-  .meaning { max-width: 80ch; margin: 0 0 1.25rem; }
-  .meaning summary { cursor: pointer; font-weight: 600; color: var(--navy-900); padding: .65rem 0; min-height: 44px; }
-  .meaning ul { padding-left: 1.25rem; margin: .6rem 0 0; }
-  .meaning li { margin-bottom: .35rem; }
-  .previews { gap: .75rem; }
-  .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--blue-600); text-decoration: underline; cursor: pointer; }
-  .cta-inline { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; background: var(--blue-50); border-radius: var(--radius); padding: 1.1rem 1.4rem; margin: 2rem 0 0; }
-  .cta-inline p { margin: 0; max-width: 62ch; }
-</style>
-
 <script>
   // Client-side search and filters over data attributes written by UniversityCard and ResearchPreviewCard.
   // name: src/lib/name-search.mjs (full matches, or near matches under a caution so that separate institutions with
@@ -224,3 +198,29 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   form?.addEventListener('reset', () => setTimeout(apply, 0));
   document.querySelector('[data-reset-link]')?.addEventListener('click', () => { form?.reset(); setTimeout(() => { apply(); search?.focus(); }, 0); });
 </script>
+</Base>
+
+<style>
+  .head-summary { margin-top: .75rem !important; font-weight: 600; color: var(--yellow-400); }
+  .filters { display: grid; gap: 0 1rem; margin-bottom: .25rem; align-items: end; }
+  @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]) { grid-template-columns: repeat(3, 1fr); } }
+  .filter-actions { margin: 0 0 1rem; }
+  .filter-actions .btn { min-height: 44px; }
+  .filters[hidden] { display: none; }
+  .filters input::placeholder { color: var(--slate); opacity: 1; }
+  .count { font-size: .9rem; color: var(--slate); margin-top: 0; }
+  .near-note { margin: 0 0 .75rem; max-width: 80ch; }
+  .tier { margin-top: 1.5rem; }
+  .tier[hidden] { display: none; }
+  .tier > h2 { font-size: 1.35rem; margin-bottom: .5rem; }
+  .lead-note { max-width: 80ch; margin: 0 0 .75rem; }
+  .meaning { max-width: 80ch; margin: 0 0 1.25rem; }
+  .meaning summary { cursor: pointer; font-weight: 600; color: var(--navy-900); padding: .65rem 0; min-height: 44px; }
+  .meaning ul { padding-left: 1.25rem; margin: .6rem 0 0; }
+  .meaning li { margin-bottom: .35rem; }
+  .previews { gap: .75rem; }
+  .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--blue-600); text-decoration: underline; cursor: pointer; }
+  .cta-inline { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; background: var(--blue-50); border-radius: var(--radius); padding: 1.1rem 1.4rem; margin: 2rem 0 0; }
+  .cta-inline p { margin: 0; max-width: 62ch; }
+</style>
+

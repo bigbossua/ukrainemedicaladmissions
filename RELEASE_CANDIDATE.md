@@ -7,7 +7,7 @@
 ## What the release changes on the live site (versus `b2ca3d6`)
 
 - **University directory (2026-10-12, N25):**
-  - The unverified Ternopil card is replaced by a directory of **12 universities listed by name**, each labelled "Not yet verified". There is a name search, and verified profiles will appear above the list as they pass.
+  - The unverified Ternopil card is replaced by a directory of **17 universities listed by name**, each labelled "Not yet verified". There is a name search, and verified profiles will appear above the list as they pass.
   - Each university has a page at `/universities/<slug>/`. It shows no unverified fact. It says what to check before applying and what is still unverified, gives Apply Online Now with the university preselected, and says that no partnership is claimed. These pages are noindex/follow, have no structured data and are not in the sitemap.
   - The old Ternopil URL now shows its research-preview page (200, noindex) instead of the old profile. There is no redirect.
   - The home page lists all 12. `/apply/` and the home form offer them labelled "(not yet verified)".
@@ -17,7 +17,7 @@
 - **Page rewrites (2026-10-12):** medicine (MBBS) hub; course-specific checks for dentistry, nursing and pharmacy; a task-led admissions guide; FAQ reordered (eligibility, cost, duration first) with India recognition split out; the fees guide led by how to read a fee schedule and questions to ask; about, contact, services, 404 and thank-you pages tidied. No unverified claims; unverified "Study in Ukraine portal", "MBBS equivalent" and NMC-rule wording removed.
 - **Google readiness (2026-10-12):** `/contact/` and `/courses/` gain practical guidance (no new claims); titles carry the brand suffix only within 60 characters; the 404 page no longer declares a canonical; robots.txt no longer blocks `/apply/thank-you/` (it stays noindex); course pages link to each other. A URL-by-URL audit (`npm run audit:seo`, report `GOOGLE_READINESS_AUDIT.md`) now runs in `npm test`, CI and the release gate and fails on any high issue: today 0 high, 0 medium, 3 accepted low. A Search Console verification tag can be switched on by setting one value (`SEARCH_CONSOLE_VERIFICATION` in `site/src/lib/site.ts`); it is off.
 - **Legal pages:** they read the owner's details from `site/src/lib/legal.mjs`. Until those are complete they show visible "[to be supplied by the owner: …]" markers and the draft banner, which is why the gate refuses.
-- **Sitemap:** indexable pages only. The 12 research previews are excluded; each university becomes indexable automatically once its profile is verified.
+- **Sitemap:** indexable pages only. The 17 research previews are excluded; each university becomes indexable automatically once its profile is verified.
 
 ## The safeguard
 
@@ -31,7 +31,7 @@
 | **2. Publishable only after evidence verification** | Any university fact: names as official, websites, addresses, teaching statements, programmes, languages, durations, fees, requirements, deadlines, accreditation, recognition. Fee rows, university comparisons, indexable profiles. Vinnytsia first, then Odesa and Bukovinian, once the 32 refused official hosts can be read or captures are supplied (`DIRECTORY_VERIFICATION_PLAN.md` §10) | Owner (network access or source documents), then evidence entry |
 | **3. Legal, privacy and owner decisions** | The legal and owner details and the reviewer's sign-off (`OWNER_INPUT_NEEDED.md` §1; the gate counts 38 blocking items). Decisions in §2. Confirm N25 research previews and the "Not yet verified" label, and the N24 defaults (`PUBLICATION_POLICY_DECISIONS.md`). Whether to merge `/courses/pharmacy/`. Whether to run the optional ≤200-unit SEMrush batch after a balance reading | Owner (and a qualified reviewer for the items marked) |
 | **4. Needs explicit release approval** | Backup of the live document root; `uma-private/config.php` with `notify_to`, `from`, `send_mail` and a random `ip_hash_key`; moving `publish-production` to the approved SHA | Owner |
-| **Must verify at launch (cannot be tested here)** | Email delivery from the host, live headers and CSP, redirects, the 12 preview pages and the Ternopil preview, release integrity: `EMAIL_DELIVERY_VERIFICATION.md` and `npm run verify:live` (checklist §10) | Owner (from a computer that can reach the site) |
+| **Must verify at launch (cannot be tested here)** | Email delivery from the host, live headers and CSP, redirects, the 17 preview pages (Ternopil included), release integrity: `EMAIL_DELIVERY_VERIFICATION.md` and `npm run verify:live` (checklist §10) | Owner (from a computer that can reach the site) |
 | **Blocked by external access** | Every official university and government source (32 hosts), the production host and Search Console | Owner (network access settings, or captures) |
 
 ## Release instructions (only after the "must fix" items and the owner's approval)

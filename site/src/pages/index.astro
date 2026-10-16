@@ -19,15 +19,16 @@ const jsonLd = [{
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: SITE.name,
-  url: SITE.url,
+  url: `${SITE.url}/`,
   email: SITE.email,
-  logo: `${SITE.url}/brand/uma-emblem-light.svg`,
+  // Google asks for an Organization logo of at least 112 x 112 px: the 512 px emblem, not the 64 px SVG.
+  logo: `${SITE.url}/android-chrome-512x512.png`,
   description: SITE.description,
 }, {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: SITE.name,
-  url: SITE.url,
+  url: `${SITE.url}/`,
 }];
 ---
 <Base title="Ukraine Medical Admissions: independent admissions help" description="Free, independent help applying to medical universities in Ukraine. Browse the universities we are researching and start your application online." suffix={false} jsonLd={jsonLd}>
@@ -42,7 +43,7 @@ const jsonLd = [{
           <a class="btn btn-ghost" href="/universities/">Browse universities</a>
         </div>
         <div class="trust">
-          <div><b>Free to start</b>: a short online form, no documents</div>
+          <div><b>Free to start</b> a short online form, no documents</div>
           <div><b>We reply by email</b> with answers and next steps</div>
           <div><b>Nothing goes to a university</b> without your confirmation</div>
         </div>
@@ -107,7 +108,7 @@ const jsonLd = [{
                 {u.d.programmes.filter((p: any) => !u.draft || p.internationalAdmission.value !== false).map((p: any) => <span>{p.name}</span>)}
                 {u.draft ? <span class="badge badge-pending">Draft — verification in progress</span> : <span class="badge badge-verified">Verified profile</span>}
               </div>
-              <a class="more" href={`/universities/${u.d.slug}/`}>View profile →</a>
+              <a class="more" href={`/universities/${u.d.slug}/`}>View profile<span class="visually-hidden">: {u.d.shortName}</span> →</a>
             </article>
           ))}
         </div>

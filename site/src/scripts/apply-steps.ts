@@ -7,7 +7,7 @@
  * review of the answers with "Edit" links. Nothing is stored in the browser and nothing is sent until the final
  * submit. Also handles ?course=&university= prefill and the soft timing field "ts" read by public/api/enquiry.php.
  */
-import { validate, rulesIn, showSummary, hideSummary, type Control } from './form-validate';
+import { validate, rulesIn, showSummary, hideSummary, lockSubmit, type Control } from './form-validate';
 
 const form = document.querySelector<HTMLFormElement>('form[data-steps]');
 if (form) enhance(form);
@@ -168,6 +168,7 @@ function enhance(form: HTMLFormElement) {
     }
     hideSummary(summary);
     if (ts) ts.value = String(Math.round(performance.now() - started));
+    lockSubmit(form);
   });
 
   // Once a field has been flagged, re-check it as the person corrects it, and drop it from the error summary.

@@ -5,6 +5,7 @@
  */
 import { formatDate, PREVIEW } from '../../lib/site';
 import { viewClaim, viewItems, formatMoney } from '../../lib/publication.mjs';
+import { OPERATING_STATUS, TEACHING_FORMATS, label } from '../../lib/fields';
 interface Props { records: any[]; hrefFor?: (u: any) => string }
 const { records, hrefFor = (u: any) => `/universities/${u.slug}/` } = Astro.props;
 // Published projections: only values the publication policy shows. Raw drafts and samples (PREVIEW only): verified values.
@@ -21,7 +22,8 @@ const rows = records.map((u) => {
   const tuition = fees.length ? fees.map((x: any) => `${x.p.name}: ${formatMoney(x.t, { compact: true })}`).join('; ') : null;
   const windows = u.programmes.map((p: any) => verifiedOnly(p.deadlines)).filter(Boolean).flat();
   const window = windows.length ? windows.map((w: any) => `${w.label}: ${w.date}`).join('; ') : null;
-  const status = verifiedOnly(u.status); const fmt = verifiedOnly(u.teachingFormat);
+  const st = verifiedOnly(u.status); const tf = verifiedOnly(u.teachingFormat);
+  const status = st === null ? null : label(OPERATING_STATUS, st); const fmt = tf === null ? null : label(TEACHING_FORMATS, tf);
   return { u, programmes: cell(programmes), languages: cell(languages), reqs: reqs ? { text: `${reqs} verified`, pending: false } : { text: 'None verified yet', pending: true }, prep: cell(prep), tuition: cell(tuition, 'Not published'), window: cell(window), status: cell(status && fmt ? `${status}; ${fmt}` : status ?? null), review: u.verification.lastReview ? formatDate(u.verification.lastReview) : null };
 });
 ---

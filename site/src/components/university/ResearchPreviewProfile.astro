@@ -13,14 +13,14 @@ import Breadcrumbs from '../Breadcrumbs.astro';
 import Fact from '../Fact.astro';
 import ProgrammeCard from './ProgrammeCard.astro';
 import { SITE } from '../../lib/site';
-import { TEACHING_FORMATS } from '../../lib/fields';
+import { TEACHING_FORMATS, OPERATING_STATUS, label } from '../../lib/fields';
 import { officeText, shownFactCount } from '../../lib/records';
 
 interface Props { d: any }
 const { d } = Astro.props;
 const shown = (k: string) => d?.[k]?.show === true;
 const FACTS: [string, string, ((v: any) => string)?][] = [
-  ['officialName', 'Official name'], ['website', 'Official website'], ['address', 'Address'], ['status', 'Operating status'],
+  ['officialName', 'Official name'], ['website', 'Official website'], ['address', 'Address'], ['status', 'Operating status', (v) => label(OPERATING_STATUS, v)],
   ['statusStatement', "The university's own statement for the current academic year"],
   ['teachingFormat', 'Teaching format', (v) => (TEACHING_FORMATS as any)[v] ?? v],
   ['internationalOffice', 'International office', officeText], ['founded', 'Founded'], ['accreditation', 'Accreditation'],
@@ -51,7 +51,7 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
     <span class="eyebrow">Research preview</span>
     <h1>{d.shortName}</h1>
     <p class="state"><span class="badge badge-pending"><span aria-hidden="true">◔ </span>Not yet verified</span>{count > 0 && <span class="count">{count} {count === 1 ? 'fact' : 'facts'} verified so far</span>}</p>
-    <p>We are researching this university. {count === 0 ? 'We have not yet confirmed any information about it from its official website or a Ukrainian government register, so this page shows no fees, programmes, dates or entry requirements.' : 'Only the facts listed under “Verified so far” have been confirmed from an official source; nothing else about it is shown.'} The name above is the commonly used English name; the official name is among the facts we will confirm.</p>
+    <p>We are researching this university. {count === 0 ? 'We have not yet confirmed any information about it from its official website or a Ukrainian government register, so this page shows no fees, programmes, dates or entry requirements.' : 'Only the facts listed under “Verified so far” have been confirmed from an official source; nothing else about it is shown.'}{shown('officialName') ? '' : ' The name above is the commonly used English name; the official name is among the facts we will confirm.'}</p>
   </div>
 </div>
 <Breadcrumbs items={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} structuredData={false} />
@@ -74,7 +74,7 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
         <li><strong>Confirm that your programme is open to international applicants for your intake</strong>, and the language it is taught in. If the website is unclear, ask the university's international office in writing.</li>
         <li><strong>Get the tuition fee from the university, with its academic year.</strong> Ask for the payment schedule and every other mandatory charge, for example registration, accommodation or insurance. <a href="/tuition-fees/">How to read a fee schedule</a>.</li>
         <li><strong>Compare the entry requirements with your qualifications:</strong> the school-leaving subjects and grades, any entrance test or interview, and the language level. <a href="/admissions/#readiness">How entry requirements are compared</a>.</li>
-        <li><strong>Check recognition with your home regulator before you pay.</strong> Whether you can practise after graduating is decided by the medical regulator in the country where you plan to work, not by the university or by us.</li>
+        <li><strong>Check recognition with your home regulator before you pay.</strong> Whether you can practise after graduating is decided by the regulator for your profession (medicine, dentistry, pharmacy or nursing) in the country where you plan to work, not by the university or by us.</li>
         <li><strong>Look for the university's own statement for this academic year</strong> on whether, how and from which city it is teaching: in person, at a distance or both.</li>
         <li><strong>Pay and send documents only through the university's own procedure.</strong> Never send money or original documents to anyone who cannot show you the university's written instructions.</li>
       </ol>
@@ -83,11 +83,15 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
       <p class="prose">Tell us you are interested in {d.shortName} when you start your candidate profile. We reply by email with answers to your questions and the next steps we suggest, and we tell you plainly what has not yet been verified. Starting a profile is free.</p>
       <p><a class="btn btn-primary" href={applyHref}>{SITE.cta}</a></p>
 
-      <h2 id="to-verify" style="margin-top:2.25rem">Not yet verified</h2>
-      <p class="prose">We have not yet confirmed any of these from an official source, so none of them is shown here:</p>
-      <ul class="prose pending-list">
-        {pending.map((label) => <li>{label}</li>)}
-      </ul>
+      {pending.length > 0 && (
+        <>
+          <h2 id="to-verify" style="margin-top:2.25rem">Not yet verified</h2>
+          <p class="prose">We have not yet confirmed any of these from an official source, so none of them is shown here:</p>
+          <ul class="prose pending-list">
+            {pending.map((label) => <li>{label}</li>)}
+          </ul>
+        </>
+      )}
       <p class="prose">A full profile is published once the core facts are confirmed: the official name, website and address, the university's statement for the current year and at least one programme open to international applicants. Other facts, such as recognition, appear only if and when they are verified.</p>
       <p class="note">This page is not the university's website, and Ukraine Medical Admissions does not claim any partnership with {d.shortName}: we are an independent service, and admission decisions are made solely by the university.</p>
     </div>

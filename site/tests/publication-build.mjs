@@ -179,7 +179,7 @@ try {
       const eyebrow = (h) => (/<span class="eyebrow"[^>]*>([^<]*)<\/span>/.exec(h) ?? [])[1];
       check(eyebrow(alpha) === 'Alphaville, Alpha Oblast', `(b) N24 alpha: city and region found in the verified address not shown (eyebrow "${eyebrow(alpha)}")`);
       check(eyebrow(beta) === 'City to be confirmed', `(b) N24 beta: a city that is not in the verified address is not withheld (eyebrow "${eyebrow(beta)}")`);
-      for (const v of ['POSCTRL-BETA-OFFICIAL-NAME', 'POSCTRL-BETA-STATEMENT', 'POSCTRL-BETA-MEDICINE', 'POSCTRL-BETA-PHARMACY', 'POSCTRL-BETA-DEADLINE', 'POSCTRL-BETA-DURATION 6 years', 'relocated', 'To be confirmed'])
+      for (const v of ['POSCTRL-BETA-OFFICIAL-NAME', 'POSCTRL-BETA-STATEMENT', 'POSCTRL-BETA-MEDICINE', 'POSCTRL-BETA-PHARMACY', 'POSCTRL-BETA-DEADLINE', 'POSCTRL-BETA-DURATION 6 years', 'Relocated', 'To be confirmed'])
         check(beta.includes(v), `(b) beta profile: positive control "${v}" missing`);
       const overviewPara = (h) => /<h2[^>]*>Overview<\/h2>\s*<p class="prose"/.test(h);
       check(overviewPara(alpha), '(b) N24 alpha: the reviewed overview paragraph is missing (positive control for the overview check)');

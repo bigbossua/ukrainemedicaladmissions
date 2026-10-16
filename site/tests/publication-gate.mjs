@@ -207,6 +207,9 @@ if (!existsSync(PREV)) { console.log('dist-preview/ missing — run npm run buil
 if (existsSync(join(PREV, 'sitemap-0.xml')) || existsSync(join(PREV, 'sitemap-index.xml'))) fail('preview build emitted a sitemap'); ok();
 const robots = readFileSync(join(PREV, 'robots.txt'), 'utf8');
 if (/Sitemap:/.test(robots)) fail('preview robots.txt advertises a sitemap'); ok();
+// Every page of the preview build lists drafts with unverified values, so every page is noindex (not only the drafts).
+for (const p of htmlFiles(PREV)) if (!/<meta name="robots" content="noindex, nofollow"/.test(readFileSync(p, 'utf8'))) fail(`preview build: ${p.slice(PREV.length)} is not noindex, nofollow`);
+ok();
 
 function checkDraftPage(path, label, mustContain = []) {
   const file = join(PREV, path, 'index.html');

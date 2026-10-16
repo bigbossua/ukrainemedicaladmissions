@@ -25,7 +25,7 @@ const freePort = () => new Promise((res, rej) => {
 });
 
 const store = mkdtempSync(join(tmpdir(), 'uma-enquiry-test-'));
-writeFileSync(join(store, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key'];\n");
+writeFileSync(join(store, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key', 'max_per_hour' => 1000, 'per_ip_per_hour' => 1000];\n");
 const port = await freePort();
 const php = spawn('php', ['-d', 'display_errors=1', '-d', 'error_reporting=-1', '-S', `127.0.0.1:${port}`, '-t', PUBLIC], {
   env: { ...process.env, UMA_PRIVATE_DIR: store }, stdio: ['ignore', 'ignore', 'pipe'],
@@ -265,15 +265,82 @@ cleanup();
     check(res.status === 303, 'mail: submission accepted with sending on', String(res.status));
     for (let i = 0; i < 20 && !existsSync(mailFile); i++) await new Promise((r) => setTimeout(r, 100));
     const mail = existsSync(mailFile) ? readFileSync(mailFile, 'utf8') : '';
-    const headers = mail.split(/\r?\n\r?\n/)[0] ?? '';
+    const [headers = '', ...rest] = mail.split(/\r?\n\r?\n/);
     check(mail.length > 0, 'mail: a notification was handed to sendmail');
     check(!/^bcc:/im.test(headers), 'mail: CR/LF in the name cannot add a Bcc header', headers);
-    check(/^Subject: =\?UTF-8\?B\?[A-Za-z0-9+/=]+\?=$/m.test(headers), 'mail: subject is a single encoded word', headers);
+    // RFC 2047: one or more encoded words of at most 75 characters, folded onto continuation lines.
+    const subj = (headers.match(/^Subject: (.*(?:\r?\n[ \t].*)*)/m) ?? [])[1] ?? '';
+    const words = subj.split(/\r?\n[ \t]+|\s+/).filter(Boolean);
+    check(words.length > 1 && words.every((w) => /^=\?UTF-8\?B\?[A-Za-z0-9+/=]+\?=$/.test(w) && w.length <= 75), 'mail: subject is folded encoded words of at most 75 characters', subj);
+    const decoded = words.map((w) => Buffer.from(w.slice(10, -2), 'base64').toString('utf8')).join('');
+    check(decoded.startsWith('[UMA] New application-start from Synthetic') && !/[\r\n]/.test(decoded), 'mail: the subject decodes to the full text, without CR/LF', decoded);
     check(/^Reply-To: synthetic\.candidate@example\.invalid$/m.test(headers), 'mail: Reply-To is the validated address');
-    check(/Biology: B/.test(mail) && /nothing has been sent to any university/.test(mail), 'mail: body lists the profile and states nothing was sent to a university');
+    check(/^Content-Transfer-Encoding: base64$/m.test(headers), 'mail: body is base64 (no line over 998 bytes)', headers);
+    const bodyRaw = rest.join('\n\n');
+    check(bodyRaw.split(/\r?\n/).every((l) => l.length <= 76), 'mail: body lines are at most 76 characters');
+    const text = Buffer.from(bodyRaw.replace(/\s+/g, ''), 'base64').toString('utf8');
+    check(/Biology: B/.test(text) && /nothing has been sent to any university/.test(text), 'mail: body lists the profile and states nothing was sent to a university', text.slice(0, 200));
   } finally {
     php2.kill();
     rmSync(store2, { recursive: true, force: true });
+  }
+}
+
+// 12. A mail system that refuses the notification: the record is still stored (the person sees the thank-you page),
+// and the failure is written to the record and to the error log instead of disappearing.
+{
+  const store3 = mkdtempSync(join(tmpdir(), 'uma-enquiry-mailfail-'));
+  writeFileSync(join(store3, 'config.php'), "<?php return ['send_mail' => true, 'notify_to' => 'team@example.invalid', 'from' => 'no-reply@example.invalid'];\n");
+  const port3 = await freePort();
+  let log3 = '';
+  const php3 = spawn('php', ['-d', 'display_errors=0', '-d', 'log_errors=1', '-d', 'sendmail_path=/bin/false', '-S', `127.0.0.1:${port3}`, '-t', PUBLIC], {
+    env: { ...process.env, UMA_PRIVATE_DIR: store3 }, stdio: ['ignore', 'ignore', 'pipe'],
+  });
+  php3.stderr.on('data', (d) => { log3 += d; });
+  const url3 = `http://127.0.0.1:${port3}/api/enquiry.php`;
+  try {
+    let ok = false;
+    for (let i = 0; i < 50 && !ok; i++) { try { await fetch(url3); ok = true; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+    const res = await fetch(url3, { method: 'POST', body: new URLSearchParams([['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes']]), redirect: 'manual' });
+    check(res.status === 303, 'mail failure: the submission is still accepted', String(res.status));
+    const dir3 = join(store3, 'enquiries');
+    const files = existsSync(dir3) ? readdirSync(dir3) : [];
+    const rec = files.length === 1 ? JSON.parse(readFileSync(join(dir3, files[0]), 'utf8')) : {};
+    check(rec.notification === 'failed', 'mail failure: the record says the notification failed', JSON.stringify(rec).slice(0, 200));
+    await new Promise((r) => setTimeout(r, 200));
+    check(/notification e-mail for record [0-9a-f]{16} was not accepted/.test(log3), 'mail failure: written to the error log');
+  } finally {
+    php3.kill();
+    rmSync(store3, { recursive: true, force: true });
+  }
+}
+
+// 13. Rate limits: per keyed IP code (only with ip_hash_key) and in total per hour; nothing is stored or sent over the limit.
+{
+  const store4 = mkdtempSync(join(tmpdir(), 'uma-enquiry-rate-'));
+  writeFileSync(join(store4, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key', 'per_ip_per_hour' => 2, 'max_per_hour' => 3];\n");
+  const port4 = await freePort();
+  const php4 = spawn('php', ['-S', `127.0.0.1:${port4}`, '-t', PUBLIC], { env: { ...process.env, UMA_PRIVATE_DIR: store4 }, stdio: ['ignore', 'ignore', 'ignore'] });
+  const url4 = `http://127.0.0.1:${port4}/api/enquiry.php`;
+  const send = () => fetch(url4, { method: 'POST', body: new URLSearchParams([['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes']]), redirect: 'manual' });
+  const count = () => (existsSync(join(store4, 'enquiries')) ? readdirSync(join(store4, 'enquiries')).length : 0);
+  try {
+    let ok = false;
+    for (let i = 0; i < 50 && !ok; i++) { try { await fetch(url4); ok = true; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+    const statuses = [];
+    for (let i = 0; i < 3; i++) statuses.push((await send()).status);
+    check(statuses.join(',') === '303,303,429', 'rate limit: the third submission from one keyed IP within the hour is refused (429)', statuses.join(','));
+    check(count() === 2, 'rate limit: nothing is stored over the limit', String(count()));
+    const rl = existsSync(join(store4, 'ratelimit')) ? readdirSync(join(store4, 'ratelimit')) : [];
+    check(rl.length === 1 && /^[0-9a-f]{64}\.json$/.test(rl[0]), 'rate limit: only the keyed IP code is used as the counter name', rl.join(','));
+    rmSync(join(store4, 'ratelimit'), { recursive: true, force: true });
+    statuses.length = 0;
+    for (let i = 0; i < 2; i++) statuses.push((await send()).status);
+    check(statuses.join(',') === '303,429', 'rate limit: the total per-hour cap applies to everyone', statuses.join(','));
+    check(count() === 3, 'rate limit: the total cap stops storage at max_per_hour', String(count()));
+  } finally {
+    php4.kill();
+    rmSync(store4, { recursive: true, force: true });
   }
 }
 

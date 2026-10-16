@@ -7,7 +7,7 @@ import Icon from '../../components/illustrations/Icon.astro';
 import { COURSES, type CourseSlug } from '../../lib/courses';
 import { SITE, PREVIEW } from '../../lib/site';
 import { getListedUniversities } from '../../lib/records';
-import { viewClaim } from '../../lib/publication.mjs';
+import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 
 export function getStaticPaths() {
   return Object.keys(COURSES).map((course) => ({ params: { course } }));
@@ -21,7 +21,8 @@ const universities = (await getListedUniversities())
   .map((u) => ({ u, progs: u.d.programmes.filter((p: any) => p.field === course) }))
   .filter((x) => x.progs.length > 0);
 const duration = (p: any) => (viewClaim(p.durationText, { preview: PREVIEW }).state !== 'tbc' ? p.durationText : p.durationYears);
-const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per ${m.per} (${m.academicYear})`;
+// The policy's formatter, as on the fees page and profiles: year-by-year amounts and the payment schedule included.
+const money = (m: any) => formatMoney(m, { compact: true });
 ---
 <Base title={c.title} description={c.description}>
   <div class="page-head"><div class="wrap course-head">
@@ -41,19 +42,20 @@ const money = (m: any) => `${m.amount.toLocaleString('en-GB')} ${m.currency} per
       ))}
       <h2 id="universities">Universities verified for {lower}</h2>
       {universities.length === 0 && <p>No university has been verified for this course yet. <a href="/universities/">See the universities we are researching</a>: we have not yet confirmed which courses each one offers.</p>}
+      {universities.length > 0 && <p>Universities whose {lower} programme for international applicants we have verified are listed below. <a href="/universities/">See every university in the directory</a>, including those we are still researching.</p>}
     </div>
     {universities.length > 0 && (
       <div class="grid grid-2">
         {universities.map(({ u, progs }) => progs.map((p: any) => (
           <article class="card">
             <h3><a href={`/universities/${u.d.slug}/#${p.id}`}>{u.d.shortName}</a></h3>
-            <p style="font-size:.9rem;color:var(--slate);margin:0">{u.d.city}{u.draft && ' · '}{u.draft && <span class="badge badge-pending">Verification in progress</span>}</p>
+            <p style="font-size:.9rem;color:var(--slate);margin:0">{u.d.editorialWithheld?.city ? 'City to be confirmed' : u.d.city}{u.draft && ' · '}{u.draft && <span class="badge badge-pending">Verification in progress</span>}</p>
             <dl style="margin:0">
               <Fact label="Duration" claim={duration(p)} format={(v) => (typeof v === 'number' ? `${v} years` : String(v))} />
               <Fact label="Language" claim={p.language} />
               <Fact label="Tuition" claim={p.tuition} format={money} />
             </dl>
-            <a class="more" href={`/universities/${u.d.slug}/#${p.id}`}>Full programme details →</a>
+            <a class="more" href={`/universities/${u.d.slug}/#${p.id}`}>Full programme details<span class="visually-hidden">: {p.name}, {u.d.shortName}</span> →</a>
           </article>
         )))}
       </div>

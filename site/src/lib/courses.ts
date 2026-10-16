@@ -9,7 +9,8 @@
  * is fine.
  *
  * Fields:
- * - `title`: the <title>. The layout appends " | Ukraine Medical Admissions", so keep it to 41 characters or fewer.
+ * - `title`: the <title>. The layout appends " | Ukraine Medical Admissions" (29 characters) only when the whole title stays
+ *   within 60 characters, i.e. for titles of 31 characters or fewer; longer titles are shown without it.
  * - `h1`, `lead`: the visible heading and subtitle (the lead is not the meta description).
  * - `description`: the meta description, 50 to 165 characters (tests/check-meta.mjs).
  * - `summary`: one-line card text on the home page and /courses/. `cardLink`: the /courses/ card link text.
