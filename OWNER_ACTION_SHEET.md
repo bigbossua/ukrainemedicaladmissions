@@ -350,7 +350,7 @@ No deployment, DNS change, publication-gate bypass or move of the publishing poi
 | 2. Release sooner | Fixes everything | Needs all of §2 first, so it is not immediate |
 | 3. Leave as is | No work | Collection continues under the issues above |
 
-**Option 1, step by step (hPanel File Manager, menu names unverified):**
+**Option 1, step by step (you do this in hPanel; I have no access to the host. Menu names unverified):**
 1. Open `public_html/api/` and download `enquiry.php` (your copy).
 2. Rename it to `enquiry.php.original`.
 3. Upload `ops/pause-forms/enquiry.php` from this repository into the same folder. It reads and stores nothing, sends no e-mail, and answers every submission with a short page asking people to write to info@ (HTTP 503, noindex). Checked here: `php -l` passes, and a test submission returned 503 and left no file behind.
@@ -370,6 +370,10 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
 3. **I send you the release candidate:** commit, CI link, and the publication report (0 published universities; 17 previews, noindex).
 4. **You take the backup** (`RELEASE_CHECKLIST_PROPOSED.md` 9.1). In hPanel, download a full archive of `public_html` and of `uma-private` (if it exists), store it off the server and never in Git, and record its SHA-256 (`shasum -a 256 <archive>` on macOS, `sha256sum <archive>` on Linux, `Get-FileHash <archive>` in PowerShell). Send me the date and the hash.
 5. **You create the private configuration** (`EMAIL_DELIVERY_VERIFICATION.md` P3). Generate the key on your own computer (`openssl rand -hex 32`, or the PowerShell line in P3). Then, one level above `public_html`, create `uma-private/config.php` returning `notify_to`, `from`, `send_mail => true` and `ip_hash_key`, with permissions 600 for the file and 700 for the folder. Never send me the key; tell me only that it is done.
-6. **You approve that exact commit.** Only then does the publishing pointer move: the publish workflow re-runs the release gate before the host deploys. No DNS change is needed or made.
-7. **After the deploy:** the e-mail delivery test for both forms (`EMAIL_DELIVERY_VERIFICATION.md` §4–7), `npm run verify:live`, and Search Console (§3). If anything fails, restore the step 4 backup (`RELEASE_CHECKLIST_PROPOSED.md` 11.4).
+6. **You approve that exact commit** (by its hash, in this chat). Then I fast-forward `publish-production` to it (checked 2026-10-16: the current pointer `4d4e605` is an ancestor of the working branch, so no force-push is needed). The publish workflow re-runs the full release gate and, only if it passes, adds the built site to the `production` branch and tags the release. Hostinger then deploys `production`: automatically if auto-deploy is on, otherwise you click Deploy in hPanel → Websites → `ukrainemedicaladmissions.com` → Advanced → Git. No DNS change is needed or made.
+7. **After the deploy (who does what):**
+   - *Live checks* (`npm run verify:live`): this environment cannot reach the live site (2026-10-16: both `ukrainemedicaladmissions.com` and `www.ukrainemedicaladmissions.com` refused). Add those two hosts under Allowed domains (§1) and I run it; or run `cd site && npm run verify:live` on your computer and send me the output.
+   - *E-mail delivery* (`EMAIL_DELIVERY_VERIFICATION.md` §4–7, both forms): I can send the synthetic test submissions once the live host is allowed; you confirm the messages arrived in info@ (only you can open that mailbox), and I check the stored records with you.
+   - *Search Console* (§3): you add the domain property and submit `https://ukrainemedicaladmissions.com/sitemap-index.xml` in your Google account; send me a screenshot of the result. I never claim indexing until Search Console shows it.
+   - *If anything fails:* restore the step 4 backup (`RELEASE_CHECKLIST_PROPOSED.md` 11.4) and pause auto-deploy so the next pull does not overwrite it.
 
