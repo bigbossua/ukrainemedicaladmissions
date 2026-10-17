@@ -1,6 +1,55 @@
 # Google readiness audit (local, production build)
 
-> **Current state (2026-10-16):** the latest runs (addenda at the end and `SITE_GAP_ANALYSIS.md` §4 and §6) give 0 high, 0 medium and 3 accepted low issues, with 17 research previews (noindex, outside the sitemap). The header and verdict below describe the first run of 12 October and are kept as the record of that run; several of its points (robots.txt blocking the thank-you page, 12 previews) no longer apply.
+## Consolidated Google-readiness audit (2026-10-17)
+
+**Scope and evidence.** Working branch `claude/university-profile-pipeline` at `6b82acc` (site code identical to release candidate `485ac4c`). Local evidence: production build, `npm run test:seo` (`site/tests/output/seo-audit.json`, 106 URLs requested, 37 pages, 80 output files scanned), the full `npm test` suite, and CI [run 38925745895](https://github.com/bigbossua/ukrainemedicaladmissions/actions/runs/38925745895) (green, including the release-gate dry run). **Live evidence: none.** This environment cannot reach `ukrainemedicaladmissions.com` (proxy refusal, 2026-10-16), and the live site still serves the 11 October release (`b2ca3d6`), not this branch. So nothing below claims live Google readiness.
+
+**Verdict.** The release candidate is technically ready for Google on every check that can run locally: 0 high, 0 medium and 3 accepted low issues. What stands between it and Google is not technical: the release gate refuses publication until the 38 owner legal items are supplied and reviewed (`OWNER_ACTION_SHEET.md` §2.0); after the deploy come the live checks and Search Console, which only run against the live host.
+
+### Prioritised actions
+
+| Priority | Action | Owner | Why |
+|---|---|---|---|
+| P0 | Supply the 38 legal items and the legal review (`OWNER_ACTION_SHEET.md` §2.0) | You and your reviewer | The release gate refuses publication without them; nothing below can happen before |
+| P0 | Pause the live forms until the release (`OWNER_ACTION_SHEET.md` §6) | You (hPanel) | The live notice is inaccurate and the live handler stores an undisclosed reversible IP code |
+| P0 | Release: backup, private config, approval, deploy (`OWNER_ACTION_SHEET.md` §7) | You approve; I run the gate and move the pointer | Gets this branch, not the 11 October build, in front of Google |
+| P1 | Search Console: domain property (DNS TXT record at your registrar, or the HTML-tag route via `SEARCH_CONSOLE_VERIFICATION` and a rebuild), then submit `https://ukrainemedicaladmissions.com/sitemap-index.xml` (`OWNER_ACTION_SHEET.md` §3) | You | Indexing and coverage are only visible there |
+| P1 | Live checks: `npm run verify:live` (status codes, redirects, HTTPS, headers and CSP on live responses, release integrity, private paths blocked) | Me, once the two production hosts are allowed; or you | Confirms the deploy matches the tested build |
+| P1 | E-mail delivery test for both forms (`EMAIL_DELIVERY_VERIFICATION.md` §4–7) | Me (submissions) and you (mailbox) | Forms are the conversion path |
+| P2 | Official-source access (`OWNER_ACTION_SHEET.md` §1, P1 and P2 host lists) | You | Verified profiles are the only pages with steady name demand that can become indexable; today all 17 stay noindex |
+| P3 | Optional: accurate sitemap `<lastmod>` (needs full git history in CI and the publish workflow; little value for 18 URLs); a 301 for `/sitemap.xml` (needs the redirect-safety test to accept file targets: not done, the test is part of the gate); a 301 for `/index.html` (its canonical already consolidates it); the pharmacy page merge (your decision, no measured demand) | — | Low value or needs a decision |
+
+### Area by area
+
+| Area | Confirmed locally | Defects | Cannot be verified here |
+|---|---|---|---|
+| Crawl, index, robots, sitemap, canonicals | 18 indexable pages answer 200 with a self-canonical and `index, follow`; robots.txt names `/sitemap-index.xml`; sitemap lists exactly the 18; 17 research previews are `noindex, follow`, outside the sitemap, with no structured data; preview builds are entirely noindex (gate check); parameter URLs (`?q=`, `utm_`, `?ref=`, `?course=`) canonicalise to the clean URL; `/index.html` canonicalises to `/` | None open. Low: no `<lastmod>` (P3) | Google's crawl, the live robots.txt and sitemap responses, indexing |
+| Titles, descriptions, H1s | Every indexable page: one H1, title ≤ 60, description ≤ 160, distinct; titles carry their SEMrush clusters (table below) | None | How Google rewrites snippets |
+| Internal links, breadcrumbs, orphans | 0 broken internal links (66 targets); every page within 1 click of `/`; no orphans; BreadcrumbList on every inner page; `/terms/` is linked only from the footer (fine for a legal page) | None | — |
+| Structured data | Organization (512 px logo, slash-terminated URLs) and WebSite on `/`; FAQPage text identical to the visible FAQ; no structured data on previews or drafts; no claims about universities | None | Rich-result eligibility in Search Console |
+| Mobile, accessibility, performance | 37 pages × 3 widths with 0 failures and no horizontal scroll; axe 0 violations (37 pages × 2 widths and 14 apply-form states; preview build too); Lighthouse mobile 97–100, LCP about 2.0–2.3 s, CLS 0, TBT 0 ms (local runs, simulated) | None. Advisory: some tap targets under the 44 px AAA size (all pass the 24 px AA minimum) | Field Core Web Vitals (CrUX) and real devices |
+| Links, redirects, 404/410, duplicates | 2 legacy 301s, loop-safe (redirect test); unknown URLs answer 404 with noindex and no canonical; no 410 rules (nothing retired needs one); dentistry and pharmacy pages 34 % similar (accepted low); previews 94 % alike but noindex | None open | Live redirect chains and HTTPS rules (`verify:live`) |
+| Images | The only `<img>` elements on indexable pages are the header and footer logos (SVG, at most 17.8 KB, each with alt text, width and height); every illustration is inline SVG; no raster images, so no format or weight issue; the footer logo is not lazy-loaded (negligible at this size) | None | — |
+| Forms, privacy, headers, e-mail | Honeypot, timing field and server validation; 429 rate limits; mail failures logged and recorded; no uploads; CSP `script-src 'self'`, `object-src 'none'`, HSTS, nosniff, frame and referrer policies on every response in the local stand-in (156 checks) | **Release-blocking:** legal pages are drafts (38 owner items). **Live risk:** the live site's old notice and handler (`OWNER_ACTION_SHEET.md` §6) | Real e-mail delivery, SPF/DKIM/DMARC, live headers |
+| Search Console | Runbook ready (domain property first; sitemap after release); verification tag prepared and off | — | Verification, coverage, indexing: only after the release and your verification |
+
+### SEMrush evidence used (validated 2026-10-17 against the export rows; no new calls)
+
+| URL | Cluster | Figures (database, report, file) |
+|---|---|---|
+| `/tuition-fees/` (P0) | fees | "ukraine medical college fees" 590, KD 12 (in, broad: `2026-10-10-phrase_fullsearch-in-ukraine-medical.csv`); "…fees for indian students" 2,900, KD 9 (in, broad lead, same file); fee phrasings bring 69 % of the leading competitor's estimated Ukraine traffic (`2026-10-12-resource_organic-in-rmcedu-ukraine-urls.csv`) |
+| `/universities/` (P1) | list / best | "ukraine medical college" 2,900, KD 22 (in, broad: same fullsearch file); "best medical college in ukraine" 390, KD 14; "ukraine medical college list" 210, KD 11; exact "medical universities in ukraine" 20 (in, ng, pk, ae: `2026-10-10-phrase_these-*-variants.csv`) |
+| `/courses/medicine/` (P1) | MBBS | exact "mbbs in ukraine" 260, KD 18 (in: `2026-10-10-phrase_these-in-variants.csv`); "ukraine mbbs college" 480, KD 7 (in, related: `2026-10-11-P3-phrase_related-in-mbbs-in-ukraine.csv`) |
+| `/admissions/` (P1) | eligibility | "mbbs in ukraine eligibility" 30 (in: `2026-10-11-R1-phrase_these-in-programme-terms.csv`); "is neet required for mbbs in ukraine" 20 (in, questions) |
+| `/faq/` (P2) | validity | "is ukraine mbbs valid in india" 20 (in: R1 and P3 questions files) |
+| `/courses/dentistry/`, `/courses/nursing/` | programme | "study dentistry in ukraine" 30 (in, R1); "study nursing in ukraine" 20 (uk, R1) |
+| `/courses/pharmacy/` | — | no measured demand (R1): kept pending your merge decision |
+
+Broad and related figures are leads, not exact demand, and overlapping variants are never added. `python3 site/scripts/check-seo-figures.py SEO_PAGE_PLAN.md KEYWORD_URL_MAP.md SITE_GAP_ANALYSIS.md`: 308 figures, 0 problems. No new pages are justified: the page plan's open items each need verified evidence or your decision (`SEO_PAGE_PLAN.md` §5–6).
+
+---
+
+*The sections below are the record of the first run (12 October) and its re-runs; several of their points no longer apply.*
 
 - **Date:** 12 October 2026 (run finished 09:11 UTC)
 - **Commit audited:** `f86363c0a48459407cdbd4851f6f4efd79cf7a1d` on `claude/university-profile-pipeline`
