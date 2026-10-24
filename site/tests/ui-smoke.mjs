@@ -127,13 +127,43 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       const shot = (label) => page.screenshot({ path: join(OUT, `${name}_apply_${label}.png`), fullPage: true });
       let posted = 0; page.on('request', (r) => { if (r.url().includes('/api/enquiry.php')) posted++; });
 
+      // Prefill uses whichever universities the publication gate lets through (published profiles first, then the
+      // research previews inside optgroups); with none, an unknown slug must be ignored. The chosen university is also
+      // selected during the walk below so the review step must show its label.
+      const slugs = await page.$$eval('[name="university"] option', (o) => o.map((x) => x.value).filter((v) => v && v !== 'unlisted'));
+      const previewSlugs = await page.$$eval('[name="university"] optgroup option', (o) => o.map((x) => x.value));
+      const uni = slugs[0] ?? '';
+      const uniLabel = uni ? (await page.$eval(`[name="university"] option[value="${uni}"]`, (o) => o.textContent?.replace(/\s+/g, ' ').trim() ?? '')) : '';
       if (name === 'desktop') {
-        // Prefill uses whichever universities the publication gate lets through; with none, an unknown slug must be ignored.
-        const slugs = await page.$$eval('[name="university"] option', (o) => o.map((x) => x.value).filter((v) => v && v !== 'unlisted'));
-        const uni = slugs[0] ?? 'not-a-listed-university';
-        await page.goto(base + `/apply/?course=medicine&university=${uni}`, { waitUntil: 'load' });
+        const noteShown = () => page.$eval('[data-prefill-note]', (el) => !el.hidden);
+        const noteText = () => page.$eval('[data-prefill-note]', (el) => el.textContent ?? '');
+        await page.goto(base + `/apply/?course=medicine&university=${uni || 'not-a-listed-university'}`, { waitUntil: 'load' });
         if ((await page.inputValue('[name="course"]')) !== 'medicine') fail('apply prefill course');
-        if ((await page.inputValue('[name="university"]')) !== (slugs[0] ?? '')) fail('apply prefill university');
+        if ((await page.inputValue('[name="university"]')) !== uni) fail('apply prefill university');
+        if ((await page.inputValue('[name="university2"]')) !== '' || (await page.inputValue('[name="university3"]')) !== '') fail('apply prefill touched the second or third university choice');
+        if (!(await noteShown())) fail('apply prefill: the step-1 note is not shown');
+        const note = await noteText();
+        if (!note.includes('field of study “Medicine”')) fail(`apply prefill note does not name the field of study: ${note}`);
+        if (uni && !note.includes(`first-choice university “${uniLabel}”`)) fail(`apply prefill note does not name the university "${uniLabel}": ${note}`);
+        if (!uni && /university/.test(note)) fail(`apply prefill note names a university although none is listed: ${note}`);
+        // A research preview (optgroup option, "not yet verified") prefills like any other listed option, from a
+        // profile page's "Apply Online Now" link.
+        if (previewSlugs.length) {
+          const pv = previewSlugs[previewSlugs.length - 1];
+          const pvLabel = await page.$eval(`[name="university"] option[value="${pv}"]`, (o) => o.textContent?.replace(/\s+/g, ' ').trim() ?? '');
+          await page.goto(base + `/apply/?university=${pv}`, { waitUntil: 'load' });
+          if ((await page.inputValue('[name="university"]')) !== pv) fail(`apply prefill of a research preview (${pv})`);
+          if ((await page.inputValue('[name="course"]')) !== '') fail('apply prefill set a field of study that was not in the link');
+          if (!/not yet verified/i.test(pvLabel)) fail(`research-preview option "${pvLabel}" is not labelled not yet verified`);
+          const n = await noteText();
+          if (!(await noteShown()) || !n.includes(`“${pvLabel}”`) || /field of study/.test(n)) fail(`apply prefill note for a research preview: ${n}`);
+        }
+        // Unknown, unsafe or empty values are ignored: nothing selected, no note, no script error (pageerror is collected).
+        for (const qs of ['university=not-a-listed-university&course=zzz', 'university=%3Cscript%3Ealert(1)%3C%2Fscript%3E&course=%22%3E%3Cimg%20src%3Dx%3E', 'university=..%2F..%2Fetc%2Fpasswd', 'university=&course=', 'university=' + 'a'.repeat(300)]) {
+          await page.goto(base + `/apply/?${qs}`, { waitUntil: 'load' });
+          if ((await page.inputValue('[name="university"]')) !== '' || (await page.inputValue('[name="course"]')) !== '') fail(`apply prefill accepted an unlisted value (?${qs.slice(0, 40)})`);
+          if (await noteShown()) fail(`apply prefill note shown for an unlisted value (?${qs.slice(0, 40)})`);
+        }
         await page.goto(base + '/apply/?course=public_health', { waitUntil: 'load' });
         if ((await page.inputValue('[name="course"]')) !== 'public_health') fail('apply prefill of an underscored field key (programme cards)');
         await page.goto(base + '/apply/', { waitUntil: 'load' });
@@ -155,6 +185,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
 
       // Choose medicine -> step 2, focus on the step heading, summary cleared.
       await page.selectOption('#f-course', 'medicine');
+      if (uni) await page.selectOption('[name="university"]', uni);
       if ((await page.getAttribute('#f-course', 'aria-invalid')) === 'true') fail(`${A}: field still flagged after it was corrected`);
       await page.click('#step-1 [data-next]');
       if ((await visibleSteps()) !== '2') fail(`${A}: choosing medicine did not move to step 2`);
@@ -196,7 +227,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       await overflow('review');
       // Review: read-only summary of what was entered, with Edit links.
       const reviewText = (await page.textContent('[data-review-summary]')) ?? '';
-      for (const expected of ['Medicine', 'Biology', 'Predicted', 'Passport', 'I have it', 'Synthetic Candidate', 'synthetic.candidate@example.invalid']) {
+      for (const expected of ['Medicine', ...(uni ? [uniLabel] : []), 'Biology', 'Predicted', 'Passport', 'I have it', 'Synthetic Candidate', 'synthetic.candidate@example.invalid']) {
         if (!reviewText.includes(expected)) fail(`${A}: review summary does not show "${expected}"`);
       }
       if ((await page.$$('[data-review-summary] input, [data-review-summary] select, [data-review-summary] textarea')).length) fail(`${A}: review summary is not read-only`);

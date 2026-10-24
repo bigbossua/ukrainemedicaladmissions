@@ -98,6 +98,9 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
       <fieldset class="apply-step" id="step-1" data-step data-title={STEPS[0]}>
         <legend><h2 id="step-1-title" tabindex="-1"><span class="step-count">{stepCount(0)}</span> {STEPS[0]}</h2></legend>
         <p class="intro">Tell us what you would like to study. Only the field of study is required. Choose “Not decided yet” if you are unsure.</p>
+        {/* Filled by src/scripts/apply-steps.ts when the page is opened from a university page or the home-page form with
+            ?course= and ?university=: it names the choices already set below, from the option labels only. */}
+        <p class="note prefill-note" data-prefill-note role="status" hidden></p>
         <div class="field">
           <label for="f-course">Field of study <span class="hint">(required)</span></label>
           <span class="err" id="f-course-error" hidden></span>

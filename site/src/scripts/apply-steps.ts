@@ -12,12 +12,28 @@ import { validate, rulesIn, showSummary, hideSummary, lockSubmit, type Control }
 const form = document.querySelector<HTMLFormElement>('form[data-steps]');
 if (form) enhance(form);
 
+/**
+ * ?course= and ?university= (links from a university page, a programme card or the home-page form) pre-select the
+ * matching options of the two step-1 selects. A value is used only when it is exactly one of the select's option values
+ * (anything else, including an unlisted slug or markup, is ignored); the second and third university choices are never
+ * touched. The visitor is then told, at the top of step 1, which choices were set, using the option labels as text.
+ */
 function prefill(form: HTMLFormElement) {
   const q = new URLSearchParams(location.search);
-  for (const k of ['course', 'university']) {
+  const set: string[] = [];
+  for (const [k, what] of [['course', 'field of study'], ['university', 'first-choice university']] as const) {
     const v = q.get(k);
     const el = form.querySelector<HTMLSelectElement>(`select[name="${k}"]`);
-    if (v && el && [...el.options].some((o) => o.value === v)) el.value = v;
+    if (!v || !el) continue;
+    const option = [...el.options].find((o) => o.value === v && o.value !== '');
+    if (!option) continue;
+    el.value = v;
+    set.push(`${what} “${(option.textContent ?? '').replace(/\s+/g, ' ').trim()}”`);
+  }
+  const note = form.querySelector<HTMLElement>('[data-prefill-note]');
+  if (note && set.length) {
+    note.textContent = `Already set from the page you came from: ${set.join(' and ')}. You can change ${set.length === 1 ? 'it' : 'either'} below.`;
+    note.hidden = false;
   }
 }
 
