@@ -119,3 +119,12 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 2. If the handler misbehaves: rename `api/enquiry.php` → 404s safely; the site stays up.
 3. If the whole deployment is wrong: restore A2 backup into the document root.
 4. Record the incident and cause in `TECHNICAL_REPAIR_BACKLOG.md`.
+
+## Dependency advisories (assessed 2026-10-24, `npm audit --omit=dev` in `site/`)
+
+6 advisories (1 critical, 4 high, 1 low), all in build-time Node packages: `astro` 5.18.2 (XSS in `define:vars`; server-island parameter replay), `zod` / `zod-to-ts` (memory exhaustion while validating), `sharp` (libvips and libheif image decoding), `undici` (EventSource DoS; SRI token case) and `esbuild` (dev server on Windows).
+
+**Exposure of the deployed site: none found.** The release is static output (`astro.config.mjs`: `output: 'static'`) plus `api/enquiry.php`; no Node code runs on the host. The source uses no `define:vars`, no server islands and no `astro:assets` image processing (grep of `site/src` and `astro.config.mjs`); zod validates only our own content files at build time; the dev server is not used for releases.
+
+**Decision:** no dependency change before the first release (the fixes need Astro 7, a major upgrade). After the release: upgrade Astro and `@astrojs/sitemap` on a separate branch, run the full suite and the release gate, and release it like any other change. Re-run `npm audit --omit=dev` before each release and re-assess if an advisory touches static output or `enquiry.php`.
+
