@@ -464,3 +464,31 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
 ### 7.3 Staging: not used
 
 Owner decision 2026-10-24: no staging website. Releases go straight from the release gate to the existing production site (§7.1).
+
+## 8. Hostinger account facts to read in hPanel (2026-10-24)
+
+The privacy notice must name the provider that stores the data, where it stores it, and what it logs. None of this is recorded in the repository, and this environment cannot open hPanel or Hostinger's site. Menu names change, so look for the wording below rather than an exact path.
+- Send screenshots or copied text, never passwords.
+- Screenshots that show account numbers, billing addresses or payment cards are fine to send me, but they stay out of Git.
+- Write "not shown" where hPanel gives no answer: that becomes a question for Hostinger support, never a guess.
+
+| # | What to find | Where to look | Why |
+|---|---|---|---|
+| H1 | **The Hostinger company you contract with**: its exact legal name and country | Any invoice or receipt under Billing (the seller named at the top); the Terms of Service or Data Processing Agreement linked from your account | It is the processor named in the notice (items 19–20) |
+| H2 | **Whether a Data Processing Agreement covers your account**, and a copy or link with its date | Hostinger's legal pages (DPA), or ask support "which DPA applies to my account" | Shows whether written processing terms exist; also a reviewer question |
+| H3 | **Server or data-centre location of the hosting plan** that serves ukrainemedicaladmissions.com | The website's dashboard or plan details in hPanel (look for "server location" or "data center") | Where submissions are stored (item 20); possible transfer abroad (item 21) |
+| H4 | **Which email product runs info@**: Hostinger's own email, or a partner email service shown inside hPanel | hPanel → Emails: the product name on the mailbox page; and the domain's MX records in the DNS zone, as a screenshot of the MX lines only | If a partner service runs the mailbox, that company is a second processor (item 19) |
+| H5 | **Where that mailbox stores mail** (country or region), if shown | The email product's settings, or its own terms | Item 20 |
+| H6 | **Forwarding**: whether info@ forwards to, or is read through, any other mailbox or app (for example a personal Gmail account) | Mailbox settings: forwarding and auto-reply; and which devices or apps read it | Any other service holding copies must be named |
+| H7 | **Website access logs**: whether they exist, what they show (IP address, page, time, browser) and how long they are kept | hPanel website section: "Access logs", "Statistics" or "Logs"; or ask support | The notice must describe them (brief 3.5) |
+| H8 | **PHP error logs**: whether they exist, where, and how long they are kept | The same logs area, or ask support | The form handler writes a reference number there if an email fails |
+| H9 | **Mail logs**: whether delivery logs exist for the mailbox, what they show and how long they are kept | The email section (look for "logs" or "delivery"), or ask support | The notice must describe them |
+| H10 | **Backups**: how often, how many are kept and for how long, and whether files *outside* public_html are included (the private form storage, uma-private, sits one level above public_html) | hPanel → Backups for the website | Item 14 (backups) |
+| H11 | **Who can sign in**: hPanel users or collaborators, FTP/SFTP and SSH accounts, and who can read info@ | Account access or collaborator settings; FTP and SSH accounts; the email account list | The notice says access is limited to the people who need it |
+| H12 | **Document-root path** (the folder that holds public_html), for creating uma-private/config.php on release day | File Manager, top-level folders | Release step 5 |
+
+**Registration status (owner instruction 2026-10-24).** "Individual / sole operator" is recorded as supplied, but it is not assumed to mean a registered individual entrepreneur (ФОП).
+- The legal form and the registration number stay marked as requiring confirmation until the qualified reviewer advises.
+- In the private preview they carry a "proposed" marker; in the repository they remain open.
+- **Postal address:** it stays unresolved until the reviewer confirms what must be disclosed and recommends a lawful correspondence-address option. No address is invented or published.
+

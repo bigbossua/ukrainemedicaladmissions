@@ -10,10 +10,10 @@
 |---|---|---|
 | Legal name | Supplied; held outside the public repository until the release commit (owner instruction: personal details stay out of Git) | To enter at release |
 | Country | Ukraine | To enter at release |
-| Legal form | "Individual / sole operator" | Needs confirmation: an unregistered individual (фізична особа) or a registered individual entrepreneur (ФОП)? See 3.1 |
+| Legal form | "Individual / sole operator" | Needs confirmation: an unregistered individual (фізична особа) or a registered individual entrepreneur (ФОП)? Not assumed to be ФОП (owner instruction). See 3.1 |
 | Registration number | Not applicable | Depends on 3.1 |
-| Public postal address | Not decided. No residential address may be published | Open: see 3.2 |
-| Mailbox provider (info@) | Hostinger | To enter at release; which Hostinger entity and data centre is open (3.6) |
+| Public postal address | Not decided. No residential address may be published | Left unresolved until the reviewer confirms the disclosure required and recommends a lawful correspondence option (owner instruction). See 3.2 |
+| Mailbox provider (info@) | Hostinger | To enter at release once confirmed in hPanel: the contracting entity, the email product and the data-centre region (`OWNER_ACTION_SHEET.md` §8, H1–H6) |
 | Effective date | 24 October 2026 | Should match the actual publication date |
 | Review route | Draft for qualified legal review | The gate stays closed until the review is recorded |
 | Dashboard paragraph | Remove | **Done** in the draft (section 2) |
