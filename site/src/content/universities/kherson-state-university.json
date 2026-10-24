@@ -1,0 +1,561 @@
+{
+  "slug": "kherson-state-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Kherson State University (search-result lead: kspu.edu page titles and Wikipedia article title; no official page read)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kherson State University",
+  "alternativeNames": [
+    "KSU",
+    "KhSU",
+    "ХДУ",
+    "Kherson State University Medical Faculty",
+    "Херсонський держуніверситет (osvita.ua headline form)"
+  ],
+  "status": {
+    "value": "relocated",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kherson",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://kspu.edu/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://kspu.edu/About/Faculty/FBP/International_Student"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Kherson (legal seat lead: Admission Committee address 'Universitets'ka 27, Kherson' on a kspu.edu page). Reported relocated to Ivano-Frankivsk since 2022, working on the premises of Vasyl Stefanyk Precarpathian National University (kspu.edu Medicine department history page and fundraising page, undated in results; osvita.ua/consultations/86867, undated). The International Relations Office address shown on kspu.edu is in Ivano-Frankivsk., Ukraine, with leads for medicine, nursing programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). The institution is reported as relocated; its current base is unconfirmed. No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "medicine-department-of-medicine-medical-faculty-existence-of-a-current-222-medicine-intake-not-confirmed-lead-only",
+      "name": "Medicine (Department of Medicine, Medical Faculty) - existence of a current 222 Medicine intake NOT confirmed; lead only",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.kspu.edu/About/Faculty/Medicine/AboutMF.aspx?lang=en ; https://www.kspu.edu/About/Faculty/Medicine/DepartmentOfMedicine/111.aspx?lang=en ; https://vstup.osvita.ua/y2025/r10/48/1444612/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "physical-therapy-shown-with-code-361i7-on-education-ua",
+      "name": "Терапія та реабілітація / фізична терапія (physical therapy) - shown with code '361I7' on education.ua",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-offered-by-the-henichesk-professional-college-of-kherson-state-university-a-vocational-subdivision-not-a-university-degree",
+      "name": "Медсестринство (Nursing) - offered by the Henichesk Professional College of Kherson State University (Генічеський фаховий коледж ХДУ), a VOCATIONAL subdivision, not a university degree",
+      "field": "nursing",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r22/5076/ ; https://vstup.osvita.ua/y2024/r22/5076/1294431/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Medical Faculty 'About' page (search snippet): teaching/research unit; 'prepares",
+      "url": "https://www.kspu.edu/About/Faculty/Medicine/AboutMF.aspx?lang=en",
+      "purpose": "Medical Faculty 'About' page (search snippet): teaching/research unit; 'prepares applicants for ... KROK-1 and KROK-2'; three departments; KSU-online platform",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Department of Medicine history page: 'after the start of the full-scale invasion",
+      "url": "https://www.kspu.edu/About/Faculty/Medicine/DepartmentOfMedicine/111.aspx?lang=en",
+      "purpose": "Department of Medicine history page: 'after the start of the full-scale invasion in 2022, the faculty, together with the university, was moved to Ivano-Frankivsk' (Precarpathian National University pr",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Medical Faculty international-activity page: internationalisation strategy 2023-",
+      "url": "https://www.kspu.edu/About/Faculty/Medicine/InternationalActivity.aspx?lang=en",
+      "purpose": "Medical Faculty international-activity page: internationalisation strategy 2023-2027, English-language teaching concept 2023-2027, academic-mobility rules; no foreign-student medicine programme shown",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results (documents dated 2023-2027). Search-result lead, not read in full."
+    },
+    {
+      "label": "University 'About' page: 'about 8,000 students, drawn from 23 regions of Ukraine",
+      "url": "https://www.kspu.edu/About.aspx?lang=en",
+      "purpose": "University 'About' page: 'about 8,000 students, drawn from 23 regions of Ukraine and CIS countries'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: result title shows 'Updated: 11/21/2024'. Search-result lead, not read in full."
+    },
+    {
+      "label": "Fundraising page: 'temporary relocation to Ivano-Frankivsk ... in 2022'; Kherson",
+      "url": "https://www.kspu.edu/About/DepartmentAndServices/Fundraising.aspx?lang=en",
+      "purpose": "Fundraising page: 'temporary relocation to Ivano-Frankivsk ... in 2022'; Kherson buildings, observatory and 'all dormitories have been damaged'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "'International Student' page: Economics bachelor/master in English or Ukrainian,",
+      "url": "https://kspu.edu/About/Faculty/FBP/International_Student",
+      "purpose": "'International Student' page: Economics bachelor/master in English or Ukrainian, 'IELTS 5.5+', maths exam and interview; International Relations Office with Ivano-Frankivsk address; a separate kspu.ed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "'Херсонський держуніверситет продовжує працювати в Україні': relocated to Ivano-",
+      "url": "https://osvita.ua/consultations/86867/",
+      "purpose": "'Херсонський держуніверситет продовжує працювати в Україні': relocated to Ivano-Frankivsk, admits students, issues Ukrainian diplomas; warns about a self-proclaimed structure in occupied Kherson",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results (occupation-era wording, 2022). Search-result lead, not read in full."
+    },
+    {
+      "label": "KSU repository item '«Чорний лебідь» в історії Херсонського державного університ",
+      "url": "https://ekhsuir.kspu.edu/items/57057904-cec1-46db-bbea-554f3265ea73",
+      "purpose": "KSU repository item '«Чорний лебідь» в історії Херсонського державного університету, або хроніки релокованого вишу' (relocation chronicle)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 admission card under 'Медичний факультет': Chemistry master's, full-time, 4",
+      "url": "https://vstup.osvita.ua/y2025/r10/48/1444612/",
+      "purpose": "2025 admission card under 'Медичний факультет': Chemistry master's, full-time, 40000 UAH/yr contract, 01.09.2025-31.12.2026; not Medicine",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 admission cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Henichesk Professional College of KSU 2025 listing: vocational nursing ('Медсест",
+      "url": "https://vstup.osvita.ua/y2025/r22/5076/",
+      "purpose": "Henichesk Professional College of KSU 2025 listing: vocational nursing ('Медсестринство', фаховий молодший бакалавр) and 'Медичний масаж' (licence volume 20)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 admission cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "education.ua profile: structural units include 'Медичний факультет' / 'Факультет",
+      "url": "https://www.education.ua/universities/350/",
+      "purpose": "education.ua profile: structural units include 'Медичний факультет' / 'Факультет: Медицини, здоров'я та спорту'; offer '361I7 Терапія та реабілітація' (physical therapy), full-time; overall licence vo",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "2020 vstup.osvita.ua listing of KSU under Kherson region (r22), institution id 4",
+      "url": "https://vstup.osvita.ua/y2020/r22/48/",
+      "purpose": "2020 vstup.osvita.ua listing of KSU under Kherson region (r22), institution id 48 (pre-relocation reference)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020 admission cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry 'Study in Ukraine' portal entry (id 163, 'preparatory department') retu",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/163/preparatory-department",
+      "purpose": "Ministry 'Study in Ukraine' portal entry (id 163, 'preparatory department') returned for the KSU query; institution name not shown in snippet, attribution unconfirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Wikipedia article (title only; content not read)",
+      "url": "https://en.wikipedia.org/wiki/Kherson_State_University",
+      "purpose": "Wikipedia article (title only; content not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "TSN report: a university in Kherson hit by drones/artillery; 'Kherson branch hea",
+      "url": "https://tsn.ua/en/ato/kherson-under-attack-by-fpv-drones-and-artillery-a-university-was-hit-victims-reported-2738367.html",
+      "purpose": "TSN report: a university in Kherson hit by drones/artillery; 'Kherson branch head' quoted ('about three thousand students'); institution not identified in snippet",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Kherson (legal seat lead: Admission Committee address 'Universitets'ka 27, Kherson' on a kspu.edu page). Reported relocated to Ivano-Frankivsk since 2022, working on the premises of Vasyl Stefanyk Precarpathian National University (kspu.edu Medicine department history page and fundraising page, undated in results; osvita.ua/consultations/86867, undated). The International Relations Office address shown on kspu.edu is in Ivano-Frankivsk.",
+      "Relocation lead (unverified): Search-result leads (no official page read): the Medical Faculty's own history page says that 'after the start of the full-scale invasion in 2022, the faculty, together with the university, was moved to Ivano-Frankivsk' using the premises of Vasyl Stefanyk Precarpathian National University (https://www.kspu.edu/About/Faculty/Medicine/DepartmentOfMedicine/111.aspx?lang=en, undated). The fundraising page describes 'its temporary relocation to Ivano-Frankivsk, to the premises of Vasyl Stefanyk Precarpathian National University, in 2022' and says the Kherson buildings, assembly hall, observatory and 'all dormitories have been damaged' (https://www.kspu.edu/About/DepartmentAndServices/Fundraising.aspx?lang=en, undated). osvita.ua reports the university 'перемістився до Івано-Франківська, проводить набір студентів і видає українські дипломи' and warns not to confuse it with 'самопроголошеною структурою у захопленому окупантами Херсоні' (https://osvita.ua/consultations/86867/, undated in results, occupation-era wording). A KSU repository item is titled 'хроніки релокованого вишу' (https://ekhsuir.kspu.edu/items/57057904-cec1-46db-bbea-554f3265ea73, undated). The kspu.edu International Relations Office address is shown in Ivano-Frankivsk while the Admission Committee address is still 'Universitets'ka 27, Kherson'. The 2025 vstup.osvita.ua listing sits under region code r10 (vs r22 in 2017-2020), consistent with the move. Date of the relocation reports: 2022 (event year as stated by the pages); report dates not shown.",
+      "Red flag to resolve before any fact is shown: No 2025 admission offer for 222 Medicine found on vstup.osvita.ua; the only 2025 card tagged 'Медичний факультет' is a Chemistry master's. The inventory records the faculty page title as 'Medical Faculty (Archive)' and education.ua shows a renamed 'Факультет медицини, здоров'я та спорту' - the medicine programme may be discontinued, suspended or restructured. Do not list a medicine programme until an official 2026 admission page or EDEBO/NAQA record is read.",
+      "Red flag to resolve before any fact is shown: No lead of English-medium medical teaching or of foreign-applicant intake for medicine. The only English-medium lead is Economics (bachelor/master, 'IELTS 5.5+', on the FBP International Student page); the Medical Faculty 'Концепція викладання та використання англійської мови 2023-2027' is a policy document, not a programme.",
+      "Red flag to resolve before any fact is shown: Relocated institution: legal seat in Kherson (front-line city; campus buildings and all dormitories reported damaged), operating from another university's premises in Ivano-Frankivsk. Address data on official pages is mixed (Kherson for admissions, Ivano-Frankivsk for the international office).",
+      "Red flag to resolve before any fact is shown: Identity confusion: osvita.ua warns about a 'self-proclaimed structure' in occupied Kherson using the university's identity (occupation-era report). Any site or contact claiming to be 'Kherson State University' in Kherson under occupation administration must be rejected.",
+      "Red flag to resolve before any fact is shown: Name confusion with other Kherson institutions that appeared in the same searches: Kherson State Maritime Academy (ksma.ks.ua), Kherson National Technical University (kntu.net.ua), Kherson State Agrarian and Economic University (ksau.kherson.ua), and the Kherson Basic Medical Professional College (inventory slug kherson-basic-medical-college). None of these is KSU.",
+      "Red flag to resolve before any fact is shown: Two or three hosts in play: kspu.edu / www.kspu.edu / old.kspu.edu (legacy 'pedagogical university' domain), an admissions e-mail on ksu.kherson.ua, and a search-engine suggestion of 'ksu.ks.ua' that is unverified and must not be used.",
+      "Red flag to resolve before any fact is shown: The Henichesk Professional College of KSU offers vocational nursing and medical-massage programmes (фаховий молодший бакалавр). These are college-level, not university degrees, and must not be presented as KSU medicine/nursing degrees; Henichesk lies in the occupied part of Kherson oblast (general knowledge; the college's relocation status was not found in these searches).",
+      "Red flag to resolve before any fact is shown: A TSN report of a university in Kherson 'hit' by FPV drones quotes a 'Kherson branch head' ('We had about three thousand students'); the article did not show which university was meant, so it is not attributed to KSU here.",
+      "Missing evidence: Whether KSU currently runs (and admits to) a 222 Medicine master's programme at all: no 2025 admission offer, licence volume or NAQA accreditation record found; the faculty page is archived/renamed. Needs the official 2026 Rules of Admission (Правила прийому) or the vstup.osvita.ua y2025/y2026 r10/48 listing for field 22 'Охорона здоров'я', read in full.",
+      "Missing evidence: EDEBO registry entry (licence for 222 Medicine, 226 Pharmacy, 221 Dentistry, 223 Nursing, or the new I-series health codes) and NAQA accreditation certificates: not found.",
+      "Missing evidence: Whether any medicine/health programme at KSU is open to foreign applicants, and whether any is taught in English: no lead found (only Economics shows English-medium teaching and IELTS requirement).",
+      "Missing evidence: Confirmation of the official domain: kspu.edu is the consistent lead, but the admissions e-mail is on ksu.kherson.ua and the suggested 'ksu.ks.ua' is unverified; no official page could be opened.",
+      "Missing evidence: Official English and Ukrainian legal names (statute/EDEBO form) and ownership (state) confirmed from an official register rather than directory listings.",
+      "Missing evidence: Current operating base and address for applicants (Ivano-Frankivsk premises vs Kherson legal address), and the date of the most recent official statement on relocation.",
+      "Missing evidence: Whether the 'Study in Ukraine' portal entry id 163 belongs to KSU, and what it lists.",
+      "Missing evidence: Status and location of the Henichesk Professional College (occupied-territory risk) and whether it is still an operating KSU subdivision.",
+      "Missing evidence: Any fee, duration or quota figures for health programmes: none found; nothing should be published.",
+      "Skeptic's note: Medicine (222) must NOT be presented as a current programme: no 2025 or 2026 admission card for Medicine was found, the faculty appears renamed 'Факультет медицини, здоров'я та спорту' and the old faculty page is titled 'Medical Faculty (Archive)'. The qualifying degree lead is a 2026 Pharmacy master's card, seen only in search summaries of an EDEBO-fed aggregator (page not opened).",
+      "Name lead (unverified): Kherson State University (search-result lead: kspu.edu page titles and Wikipedia article title; no official page read)",
+      "Name lead (unverified): Херсонський державний університет (search-result lead: vstup.osvita.ua, education.ua and osvita.ua listings; abbreviation ХДУ)",
+      "Name lead (unverified): Medical Faculty (Archive) (page title lead for kspu.edu/About/Faculty/Medicine?culture=en, from inventory)",
+      "Name lead (unverified): Медичний факультет (faculty field on the vstup.osvita.ua 2025 listing y2025/r10/48/1444612)",
+      "Name lead (unverified): Факультет медицини, здоров'я та спорту (faculty name lead on education.ua listing 350)",
+      "Name lead (unverified): Kherson State Pedagogical University (historical name implied by the legacy domain kspu.edu; not confirmed in this round)"
+    ]
+  }
+}

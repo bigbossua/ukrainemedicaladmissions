@@ -1,0 +1,667 @@
+{
+  "slug": "international-academy-of-ecology-and-medicine",
+  "synthetic": false,
+  "officialName": {
+    "value": "Private Higher Educational Institution \"International Academy of Ecology and Medicine\" (English form used by health.gov.ua, Nov 2024; search-result lead, no official page read)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "International Academy of Ecology and Medicine",
+  "alternativeNames": [
+    "MAEM",
+    "МАЕМ",
+    "IAEM",
+    "PHEI «International Academy of Ecology and Medicine»",
+    "ПВНЗ «Міжнародна академія екології та медицини»",
+    "Міжнародна академія екології та медицини"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kyiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://maem.kiev.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical academy or institute (private) in Kyiv (lead: osvita.ua address \"Харківське шосе, 121\"; the academy's medical-pharmaceutical college at \"02660, м. Київ, вул. В. Шимановського, 2/1\" per MON 2018 document), Ukraine, with leads for dentistry, medicine, nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "dentistry-221",
+      "name": "Стоматологія (221) — освітня програма «Лікар-стоматолог», медичний факультет",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/r27/1292/ ; https://www.education.ua/universities/66/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "medicine-222",
+      "name": "Медицина (222) — освітня програма «Лікар»",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r27/1292/1479975/ ; https://vstup.osvita.ua/y2026/r27/1292/1610471/ ; https://www.education.ua/universities/66/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "subordinate-college-no-academy-level-pharmacy-degree-programme-found",
+      "name": "Медично-фармацевтичний коледж МАЕМ (subordinate college) — no academy-level pharmacy degree programme found",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-223-not-found",
+      "name": "Медсестринство (223) — not found",
+      "field": "nursing",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Aggregator profile: 'приватна академія', created for education 'на платній основ",
+      "url": "https://osvita.ua/vnz/guide/521/",
+      "purpose": "Aggregator profile: 'приватна академія', created for education 'на платній основі' for citizens, foreigners and stateless persons; address 'Харківське шосе, 121'; website given as maem.kiev.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (viewed via search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator profile 'Міжнародна академія екології та медицини (МАЕМ) у Києві'; '7",
+      "url": "https://www.education.ua/universities/66/",
+      "purpose": "Aggregator profile 'Міжнародна академія екології та медицини (МАЕМ) у Києві'; '780 студентів', '178 викладачів'; dentistry master's offer 2026 (52 000 UAH/yr, 24 contract places); medicine 50 000 UAH/",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 intake data; profile figures undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admissions aggregator institution page (osvita id 1292, region 27 = Kyiv): «Ліка",
+      "url": "https://vstup.osvita.ua/r27/1292/",
+      "purpose": "Admissions aggregator institution page (osvita id 1292, region 27 = Kyiv): «Лікар-стоматолог» master's, non-budget, 01.09.2026–30.06.2032; 2025 stats licensed volume 90, 27 applications, mean score 15",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "Medicine (222) master's «Лікар» 2025 card: non-budget, full-time, 40 000 UAH/yr,",
+      "url": "https://vstup.osvita.ua/y2025/r27/1292/1479975/",
+      "purpose": "Medicine (222) master's «Лікар» 2025 card: non-budget, full-time, 40 000 UAH/yr, 01.09.2025–01.07.2031",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Medicine master's 2026 card: 50 000 UAH/yr, applications 19.07.2026–01.08.2026",
+      "url": "https://vstup.osvita.ua/y2026/r27/1292/1610471/",
+      "purpose": "Medicine master's 2026 card: 50 000 UAH/yr, applications 19.07.2026–01.08.2026",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON order executing court decision 09.09.2019 No. 640/12300/19 cancelling MON or",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/2019/12/12/1007.pdf",
+      "purpose": "MON order executing court decision 09.09.2019 No. 640/12300/19 cancelling MON order 826-л (12.06.2019) refusal of licence expansion for master's 222 Medicine / 221 Dentistry; uses spelling 'екології і",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2019-12-12. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licensing document naming the academy's Медично-фармацевтичний коледж at '02",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/2018/10/mizhnarodna-akademiya-ekologii-ta-meditsini13.pdf",
+      "purpose": "MON licensing document naming the academy's Медично-фармацевтичний коледж at '02660, м. Київ, вул. В. Шимановського, 2/1'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2018-10. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licensing file for ПВНЗ «Міжнародна академія екології та медицини» (content ",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/pvnz-mizhnarodna-akademiya-ekologiyi-ta-mediczini-14-08.pdf",
+      "purpose": "MON licensing file for ПВНЗ «Міжнародна академія екології та медицини» (content not read; file name only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated ('14-08' in filename). Search-result lead, not read in full."
+    },
+    {
+      "label": "Marzieiev Institute for Public Health (NAMS Ukraine) news: cooperation agreement",
+      "url": "https://health.gov.ua/en/events/main-events-of-the-institute-2024/22-11-2024-cooperation-agreement-with-the-international-academy-of-ecology-and-medicine/",
+      "purpose": "Marzieiev Institute for Public Health (NAMS Ukraine) news: cooperation agreement signed 21 Nov 2024 with 'the Private Higher Educational Institution «International Academy of Ecology and Medicine»'; a",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024-11-22. Search-result lead, not read in full."
+    },
+    {
+      "label": "Conference proceedings 'Ecology and Medicine' 2021 hosted by the academy (first ",
+      "url": "https://health.gov.ua/wp-content/uploads/2024/03/ecology-and-medicine-conference-proceedings-2021.pdf",
+      "purpose": "Conference proceedings 'Ecology and Medicine' 2021 hosted by the academy (first spring conference 2021)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021 (uploaded 2024-03). Search-result lead, not read in full."
+    },
+    {
+      "label": "International European University rector's report 2021: cooperation with MAEM on",
+      "url": "https://ieu.edu.ua/docs/zvit-rectora-2021-v8.pdf",
+      "purpose": "International European University rector's report 2021: cooperation with MAEM on academic mobility, student exchange and shared use of clinics",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021. Search-result lead, not read in full."
+    },
+    {
+      "label": "Foreign aggregator: 'Estd in 2012 | Private University'; location line says 'Sev",
+      "url": "https://studyabroad.careers360.com/ukraine/universities/international-academy-of-ecology-and-medicine-kyiv-unpg",
+      "purpose": "Foreign aggregator: 'Estd in 2012 | Private University'; location line says 'Sevastopol' — contradicts Kyiv leads",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA accreditation-case table (also 27.07.2021 and 21.06.2022 tables surfaced); ",
+      "url": "https://naqa.gov.ua/wp-content/uploads/2023/03/Додаток-2-Таблиця-акредитаційних-справ_21.03.2023-.pdf",
+      "purpose": "NAQA accreditation-case table (also 27.07.2021 and 21.06.2022 tables surfaced); no MAEM entry visible in snippets",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023-03-21. Search-result lead, not read in full."
+    },
+    {
+      "label": "Encyclopedia of Modern Ukraine PDF returned for the Ukrainian name query; conten",
+      "url": "https://www.esu.com.ua/pdf/file/42852.pdf",
+      "purpose": "Encyclopedia of Modern Ukraine PDF returned for the Ukrainian name query; content not read",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Kyiv (lead: osvita.ua address \"Харківське шосе, 121\"; the academy's medical-pharmaceutical college at \"02660, м. Київ, вул. В. Шимановського, 2/1\" per MON 2018 document)",
+      "Relocation lead (unverified): No relocation lead. Every Ukrainian source (osvita.ua, vstup.osvita.ua, education.ua, MON documents, health.gov.ua) places the academy in Kyiv, with 2025 and 2026 competitive offers listed and a cooperation agreement signed 21 Nov 2024 (acting rector named as Ivan Savytskyi). The Careers360 aggregator page shows a location line \"Sevastopol, Ukraine | Estd in 2012 | Private University\" under a Kyiv title; this contradicts all other leads and looks like an aggregator error, but it is unverified and is recorded as a red flag rather than a relocation.",
+      "Red flag to resolve before any fact is shown: Licence history: MON order No. 826-л (12.06.2019) refused expansion to master's level in 222 Medicine and 221 Dentistry; the refusal was cancelled by Kyiv District Administrative Court (09.09.2019, No. 640/12300/19) and MON issued a follow-up order in Dec 2019. Current licensed scope and volumes are unverified (2025 aggregator shows licensed volume 90 for dentistry).",
+      "Red flag to resolve before any fact is shown: No NAQA programme accreditation record for MAEM visible in the 2021-2023 NAQA decision tables that surfaced; accreditation of the Medicine and Dentistry master's programmes is unverified.",
+      "Red flag to resolve before any fact is shown: Careers360 lists the location as 'Sevastopol' (occupied Crimea) under a Kyiv-titled page; all Ukrainian sources say Kyiv. Treat as aggregator error until confirmed; do not propagate.",
+      "Red flag to resolve before any fact is shown: Name spelling varies between 'екології та медицини' (osvita.ua, health.gov.ua, education.ua) and 'екології і медицини' (MON Dec 2019 order); easy to miss in registry searches.",
+      "Red flag to resolve before any fact is shown: Possible name confusion with the NAS Ukraine 'International Center for Astronomical, Medical and Ecological Research' (Міжнародний центр астрономічних та медико-екологічних досліджень), a separate research body in Kyiv.",
+      "Red flag to resolve before any fact is shown: Official domain maem.kiev.ua is attested only by the osvita.ua publisher family; a direct search for maem.kiev.ua returned no pages from the domain itself.",
+      "Red flag to resolve before any fact is shown: Aggregator data inconsistent: dentistry duration shown as both '4 роки 9 місяців (2026–2031)' and 2026–2032; application windows shown as both 19 July–1 Aug and 1–28 Sept; education.ua's '780 students / 178 teachers' figure is undated.",
+      "Red flag to resolve before any fact is shown: No lead for English-medium teaching, foreign-applicant admission rules, or an international office; the only foreigner mention is the statutory purpose wording on osvita.ua.",
+      "Red flag to resolve before any fact is shown: Reported cooperation with the private International European University (IEU rector report 2021: 'академічної мобільності та спільного використання клінік') — not a merger lead, but check that profiles for the two private Kyiv institutions are not conflated.",
+      "Missing evidence: Official website content: maem.kiev.ua not reachable from here and attested only by the osvita.ua publisher family; official name, address, rector, contacts and admissions pages all unread.",
+      "Missing evidence: EDEBO registry entry (registry.edbo.gov.ua): institution ID, legal status, current licences and licensed volumes for 221 Dentistry and 222 Medicine master's.",
+      "Missing evidence: Outcome of the 2019 licence dispute: the exact scope of the Dec 2019 MON expansion order and any later licence changes.",
+      "Missing evidence: NAQA accreditation certificates (or conditional/denied decisions) for the Medicine and Dentistry programmes.",
+      "Missing evidence: Any admission route for foreign applicants: foreign-applicant rules, invitation/visa support, English-medium (or any non-Ukrainian) teaching, tuition for foreigners (only UAH domestic contract fees found).",
+      "Missing evidence: International office / international-applicants page URL (not found).",
+      "Missing evidence: Ministry 'Study in Ukraine' (USCIE) portal listing (not found).",
+      "Missing evidence: Pharmacy and nursing: whether any higher-education programme exists (none found); status and relationship of the subordinate 'Медично-фармацевтичний коледж'.",
+      "Missing evidence: Founding year (Careers360 '2012' unverified) and current rector (acting rector Ivan Savytskyi per Nov 2024 third-party news).",
+      "Missing evidence: Reconciliation of the two Kyiv addresses (Kharkivske shose 121 vs Shymanovskoho 2/1) and of inconsistent aggregator programme durations and application windows.",
+      "Skeptic's note: Careers360 shows 'Sevastopol, Ukraine' as the location under a Kyiv-titled page. All Ukrainian sources (osvita.ua, vstup.osvita.ua, education.ua, MON licensing orders 2018/2019, health.gov.ua Nov 2024) place the academy in Kyiv with 2025 and 2026 admission offers; the Careers360 line is internally inconsistent and judged an aggregator error, not credible contradictory evidence on jurisdiction. Do not propagate it.",
+      "Skeptic's note: Licence history: MON order 826-л (12.06.2019) refused expansion to Master's in 222 Medicine / 221 Dentistry; refusal cancelled by Kyiv District Administrative Court (09.09.2019) and followed by a Dec 2019 MON order. Current licensed scope is unverified. Open question, not a bar.",
+      "Skeptic's note: No NAQA accreditation record visible for its Medicine or Dentistry programmes in the 2021-2023 decision tables that surfaced (absence in snippets is not proof).",
+      "Skeptic's note: Domain maem.kiev.ua is attested only by the osvita.ua publisher family (low confidence); no page from the domain itself surfaced.",
+      "Skeptic's note: Name spelling varies ('екології та медицини' vs MON's 'екології і медицини'); possible confusion with the NAS 'International Center for Astronomical, Medical and Ecological Research' (a research body, not a HEI).",
+      "Skeptic's note: Two Kyiv addresses (Kharkivske shose 121 vs Shymanovskoho 2/1, the latter its medical-pharmaceutical college) not reconciled; aggregator durations and application windows inconsistent.",
+      "Name lead (unverified): Private Higher Educational Institution \"International Academy of Ecology and Medicine\" (English form used by health.gov.ua, Nov 2024; search-result lead, no official page read)",
+      "Name lead (unverified): Приватний вищий навчальний заклад «Міжнародна академія екології та медицини» (ПВНЗ «МАЕМ»); MON 2019 order variant: «Міжнародна академія екології і медицини»",
+      "Name lead (unverified): Private Higher Educational Institution «International Academy of Ecology and Medicine»",
+      "Name lead (unverified): Міжнародна академія екології і медицини (spelling used in MON order, Dec 2019)",
+      "Name lead (unverified): Mizhnarodna akademiya ekologii ta meditsini (MON file-name transliteration, 2018)",
+      "Name lead (unverified): Mizhnarodna akademiya ekologiyi ta mediczini (MON file-name transliteration)",
+      "Name lead (unverified): International Academy of Ecology and Medicine Kyiv (Careers360 listing 'unpg')"
+    ]
+  }
+}

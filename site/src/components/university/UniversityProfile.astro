@@ -143,6 +143,8 @@ const applyHref = `/apply/?university=${d.slug}`;
 <style>
   .layout { display: grid; gap: 2rem; }
   @media (min-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; } .side { position: sticky; top: 90px; } }
+  /* Long unbreakable strings (URLs printed as link text, codes) wrap inside the column instead of widening it. */
+  .layout > * { min-width: 0; overflow-wrap: anywhere; }
   .glance { background: var(--blue-50); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 2rem; }
   .glance h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
   .glance-grid { display: grid; gap: 1rem; margin: 0; }

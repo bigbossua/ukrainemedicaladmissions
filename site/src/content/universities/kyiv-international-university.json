@@ -1,0 +1,786 @@
+{
+  "slug": "kyiv-international-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Private Higher Education Institution \"Kyiv International University\" (English rendering of the Ukrainian legal name; lead only – the institution's own English pages are titled \"KyMU\" / \"Kyiv International University\", no official English legal-name page was opened)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kyiv International University",
+  "alternativeNames": [
+    "KyIU (official: 'College of KyIU', college.kymu.edu.ua)",
+    "KIU",
+    "КиМУ",
+    "Київський міжнародний університет",
+    "Киевский международный университет (Russian)",
+    "Medical Institute of Kyiv International University"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kyiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://kymu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://kymu.edu.ua/en/pravila-priyomu-inozemnikh-gromadyan-na-navchannya/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (private) in Kyiv, Ukraine, with leads for dentistry, medicine, nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-222-medical-institute",
+      "name": "Medicine (222 Медицина) – Medical Institute",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kymu.edu.ua/en/instituti-ta-fakulteti/medical-institute/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kymu.edu.ua/en/instituti-ta-fakulteti/medical-institute/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry-stomatology-221-medical-institute",
+      "name": "Dentistry / Stomatology (221 Стоматологія) – Medical Institute (Навчально-науковий медичний інститут)",
+      "field": "dentistry",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kymu.edu.ua/en/kafedri/kafedra-stomatologii-2/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kymu.edu.ua/en/kafedri/kafedra-stomatologii-2/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "preparatory-division-for-foreign-citizens-ukrainian-language-pre-degree-course-health-care-is-one-of-four-tracks",
+      "name": "Preparatory Division for foreign citizens (Ukrainian-language pre-degree course; 'Health Care' is one of four tracks)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kymu.edu.ua/en/pidgotovche-viddilennya-dlya-inozemnikh-gromadyan/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-223-medical-institute",
+      "name": "Nursing (223 Медсестринство / Сестринська справа) – Medical Institute",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kymu.edu.ua/en/instituti-ta-fakulteti/medical-institute/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-226-degree-level-existence-unverified-only-a-pharmaceutical-faculty-mention-wikipedia-and-a-college-level-pharmacy-lead-were-returned",
+      "name": "Pharmacy (226 Фармація) – degree-level existence UNVERIFIED; only a 'Pharmaceutical Faculty' mention (Wikipedia) and a college-level (фаховий коледж) pharmacy lead were returned",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/college/36558/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Official 'Medical Institute - KyMU' page (not opened; search summary): Bachelor'",
+      "url": "https://kymu.edu.ua/en/instituti-ta-fakulteti/medical-institute/",
+      "purpose": "Official 'Medical Institute - KyMU' page (not opened; search summary): Bachelor's Nursing, Master's Medicine and Dentistry",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; search metadata 'about a year old' (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official homepage 'Main - KyMU' – supports domain lead",
+      "url": "https://kymu.edu.ua/en/",
+      "purpose": "Official homepage 'Main - KyMU' – supports domain lead",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 'Rules for admitting foreigners': invitation by email, motivation lette",
+      "url": "https://kymu.edu.ua/en/pravila-priyomu-inozemnikh-gromadyan-na-navchannya/",
+      "purpose": "Official 'Rules for admitting foreigners': invitation by email, motivation letter, passport copy, certificate; '$3,000' at customs; nostrification in first semester; cites June 1994 decree",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 'The Preparatory Division (PD)': 10-month Ukrainian-language course; he",
+      "url": "https://kymu.edu.ua/en/pidgotovche-viddilennya-dlya-inozemnikh-gromadyan/",
+      "purpose": "Official 'The Preparatory Division (PD)': 10-month Ukrainian-language course; health care track",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 'Department of Dentistry - KyMU': 5-year programme, note on admission o",
+      "url": "https://kymu.edu.ua/en/kafedri/kafedra-stomatologii-2/",
+      "purpose": "Official 'Department of Dentistry - KyMU': 5-year programme, note on admission of foreign citizens",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 'Department of General Medicine - KyMU' (title only returned)",
+      "url": "https://kymu.edu.ua/en/kafedri/kafedra-zagalnoyi-medytsyny-2/",
+      "purpose": "Official 'Department of General Medicine - KyMU' (title only returned)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 'College of KyIU' – separate college-level unit",
+      "url": "https://college.kymu.edu.ua/en/",
+      "purpose": "Official 'College of KyIU' – separate college-level unit",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry 'Study in Ukraine' portal: preparatory department as subdivision of Kyi",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/117/preparatory-department",
+      "purpose": "Ministry 'Study in Ukraine' portal: preparatory department as subdivision of Kyiv International University (from 2026-10-12 sweep; not re-returned today)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (recorded 2026-10-12). Search-result lead, not read in full."
+    },
+    {
+      "label": "Wikipedia: private, founded 1994 as International Institute of Linguistics and L",
+      "url": "https://en.wikipedia.org/wiki/Kyiv_International_University",
+      "purpose": "Wikipedia: private, founded 1994 as International Institute of Linguistics and Law, renamed 2002; structure lists Medical Institute (Nursing; Medicine), Pharmaceutical Faculty, Stomatological Faculty;",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Russian-language wiki: Ukrainian legal name 'Приватний заклад вищої освіти «Київ",
+      "url": "https://ru.ruwiki.ru/wiki/Киевский_международный_университет",
+      "purpose": "Russian-language wiki: Ukrainian legal name 'Приватний заклад вищої освіти «Київський міжнародний університет»', 1994, Sviatoshynskyi district, rector Khachaturian Kh.V., 'IV accreditation level' (old",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "osvita.ua directory: КиМУ, kymu.edu.ua, Lvivska 49; medical institute and dental",
+      "url": "https://osvita.ua/vnz/guide/67/",
+      "purpose": "osvita.ua directory: КиМУ, kymu.edu.ua, Lvivska 49; medical institute and dental faculty among divisions",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "osvita.ua: KyIU college trains pharmacy (specialisations) and dentistry at colle",
+      "url": "https://osvita.ua/vnz/college/36558/",
+      "purpose": "osvita.ua: KyIU college trains pharmacy (specialisations) and dentistry at college level",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "2024 intake listing: Dentistry master's, contract, places for foreigners, 42,000",
+      "url": "https://vstup.osvita.ua/y2024/r27/344/1433817/",
+      "purpose": "2024 intake listing: Dentistry master's, contract, places for foreigners, 42,000 UAH/year, 2024–2028",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 intake listing: Dentistry master's (junior-specialist basis), Навчально-нау",
+      "url": "https://vstup.osvita.ua/y2025/r27/344/1453265/",
+      "purpose": "2025 intake listing: Dentistry master's (junior-specialist basis), Навчально-науковий медичний інститут, 45,500 UAH/year",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licence register (Kyiv oblast page): no annulment mark for this university p",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/kiivska-oblast-2",
+      "purpose": "MON licence register (Kyiv oblast page): no annulment mark for this university per summary; no КиМУ row returned",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Low-reliability third-party fee page, likely conflating KyIU with KMU/IEU – flag",
+      "url": "https://jamiemcatee.com/wgdk/kyiv-international-university-tuition-fees.html",
+      "purpose": "Low-reliability third-party fee page, likely conflating KyIU with KMU/IEU – flagged, not used",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation reported in any result. Address lead: Lvivska St 49, Sviatoshynskyi district, Kyiv (osvita.ua directory guide/67 and ruwiki; third-party, undated). 'Operating' rests on official pages on kymu.edu.ua being returned by search (metadata 'about a year old') and a 2025 intake listing on vstup.osvita.ua; no dated 2026 statement on teaching was seen.",
+      "Red flag to resolve before any fact is shown: Severe name confusion with Kyiv Medical University (KMU, kmu.edu.ua, private, Kyiv): four of six searches returned KMU pages for a КиМУ/KyIU query; the official abbreviation 'KyMU' differs from 'KMU' by one letter. Every fact must be checked for which institution it belongs to.",
+      "Red flag to resolve before any fact is shown: Licence-annulment searches surface Kyiv Slavonic University (licence annulled) and other Kyiv private institutions; no annulment result names Kyiv International University, but no positive licence record was returned either.",
+      "Red flag to resolve before any fact is shown: No English-medium teaching lead for any health programme; the Preparatory Division is described as a Ukrainian-language course. A directory for English-speaking applicants must not imply English-medium Medicine or Dentistry.",
+      "Red flag to resolve before any fact is shown: No NAQA accreditation or EDEBO licence lead for 222 Medicine or 221 Dentistry; the official 'Rules for admitting foreigners' admit foreigners only to 'accredited educational programmes', so accreditation status is decisive and unverified. The 'accredited IV level' claim comes from an undated Russian-language wiki using the abolished accreditation-level system.",
+      "Red flag to resolve before any fact is shown: The official rules page is summarised as citing a June 1994 decree and requiring 'no less than 3 000$ (three thousand dollars) in cash or in bank account' at customs – possibly outdated legal basis; no deadlines or intake dates stated.",
+      "Red flag to resolve before any fact is shown: Official page metadata described as 'about a year old'; fee figures (42,000 UAH 2024; 45,500 UAH 2025, dentistry) come only from the third-party vstup.osvita.ua aggregator.",
+      "Red flag to resolve before any fact is shown: The 'College of KyIU' (фаховий коледж, college.kymu.edu.ua) trains pharmacy and dentistry at college level; these must not be presented as degree programmes, and pharmacy at degree level is unverified.",
+      "Red flag to resolve before any fact is shown: Third-party page jamiemcatee.com 'kyiv international university tuition fees' is low-reliability (flagged by the search tool) and appears to conflate KyIU with KMU/International European University; do not use.",
+      "Red flag to resolve before any fact is shown: Official domain kymu.edu.ua is supported by own-domain search results and osvita.ua/Wikipedia, but no government record ties the name to the domain.",
+      "Missing evidence: EDEBO register entry: legal name, EDRPOU code, licence volumes for 222 Medicine, 221 Dentistry, 223 Nursing, 226 Pharmacy, and permission to train foreigners.",
+      "Missing evidence: NAQA accreditation decisions for the Medicine and Dentistry programmes (the official rules admit foreigners only to accredited programmes).",
+      "Missing evidence: Language of instruction for Medicine and Dentistry – no English-medium lead exists; the only language lead is a Ukrainian-language preparatory course.",
+      "Missing evidence: Official tuition pages and 2026/27 admission dates, deadlines and document lists (fees seen only on third-party 2024/2025 listings).",
+      "Missing evidence: A dated 2026 official statement that teaching is running (official pages carry 'about a year old' metadata).",
+      "Missing evidence: Whether Pharmacy exists at degree level or only at the College of KyIU (фаховий коледж).",
+      "Missing evidence: The main university record (not just the preparatory-department sub-page) on the Ministry portal or in EDEBO; today's searches did not re-return the portal page.",
+      "Missing evidence: A government record tying the legal name to kymu.edu.ua.",
+      "Missing evidence: The institution's own official English legal name and the identity of its founder/owner (ruwiki names rector Khachaturian Kh.V.; founder not confirmed).",
+      "Skeptic's note: Open (not a bar): no EDEBO licence or NAQA accreditation lead for 222 Medicine or 221 Dentistry; the official foreigner-admission rules admit foreigners only to accredited programmes, so this is decisive for later publication.",
+      "Skeptic's note: No English-medium teaching lead for any health programme (the Preparatory Division is Ukrainian-language); the page must not imply English-medium Medicine.",
+      "Skeptic's note: Pharmacy at degree level unverified: the College of KyIU (фаховий коледж) trains pharmacy/dentistry at college level and must not be presented as degree programmes.",
+      "Skeptic's note: Severe name confusion with Kyiv Medical University (KMU, kmu.edu.ua, candidate kyiv-medical-university): most results for КиМУ queries return KMU pages; my search again returned KMU listings alongside KyIU's.",
+      "Skeptic's note: Domain kymu.edu.ua not re-returned by my search (medium confidence stands on the researcher's own-domain results).",
+      "Name lead (unverified): Private Higher Education Institution \"Kyiv International University\" (English rendering of the Ukrainian legal name; lead only – the institution's own English pages are titled \"KyMU\" / \"Kyiv International University\", no official English legal-name page was opened)",
+      "Name lead (unverified): Приватний заклад вищої освіти «Київський міжнародний університет» (lead: Russian-language ruwiki article and the earlier wave-2 sweep; not read on an official or government page)",
+      "Name lead (unverified): KyMU (abbreviation in official page titles: 'Main - KyMU', 'Medical Institute - KyMU', 'Department of Dentistry - KyMU')",
+      "Name lead (unverified): International Institute of Linguistics and Law (former name 1994–2002, per Wikipedia summary)",
+      "Name lead (unverified): Міжнародний інститут лінгвістики і права (former name, per ruwiki summary)",
+      "Name lead (unverified): Навчально-науковий медичний інститут КиМУ (name of the medical unit in the vstup.osvita.ua 2025 listing)"
+    ]
+  }
+}

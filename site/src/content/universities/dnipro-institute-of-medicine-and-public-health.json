@@ -1,0 +1,544 @@
+{
+  "slug": "dnipro-institute-of-medicine-and-public-health",
+  "synthetic": false,
+  "officialName": {
+    "value": "Dnipro Institute of Medicine and Public Health (search-result lead: English page titles on dimh.kmu.edu.ua and the KMU recognition PDF; not read from an official page)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Dnipro Institute of Medicine and Public Health",
+  "alternativeNames": [
+    "ДІМЗ",
+    "Дніпровський інститут медицини та громадського здоров'я",
+    "ПЗВО \"Дніпровський інститут медицини та громадського здоров'я\""
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Dnipro",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://dimh.kmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://dimh.kmu.edu.ua/?p=1814"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical academy or institute (private) in Dnipro, Ukraine, with leads for dentistry, medicine, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-master-s-qualification",
+      "name": "Медицина / Medicine (Master's, qualification лікар)",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/guide/37133/ ; https://dimh.kmu.edu.ua/?p=3089 ; https://dimh.kmu.edu.ua/wp-content/uploads/2021/05/Study-Program-DIMH.pdf ; https://dimh.kmu.edu.ua/en/institute-leadership ; https://mededatlas.lecturio.com/language-of-instructions/english/page/28."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/guide/37133/ ; https://dimh.kmu.edu.ua/?p=3089 ; https://dimh.kmu.edu.ua/wp-content/uploads/2021/05/Study-Program-DIMH.pdf ; https://dimh.kmu.edu.ua/en/institute-leadership ; https://mededatlas.lecturio.com/language-of-instructions/english/page/28."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/guide/37133/ ; https://dimh.kmu.edu.ua/?p=3089 ; https://dimh.kmu.edu.ua/wp-content/uploads/2021/05/Study-Program-DIMH.pdf ; https://dimh.kmu.edu.ua/en/institute-leadership ; https://mededatlas.lecturio.com/language-of-instructions/english/page/28."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "dentistry-master-s-qualification",
+      "name": "Стоматологія / Dentistry (Master's, qualification лікар-стоматолог)",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/guide/37133/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Фармація / Pharmacy",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Official-site English page (lead): title 'Institute Leadership | Дніпровський ін",
+      "url": "https://dimh.kmu.edu.ua/en/institute-leadership",
+      "purpose": "Official-site English page (lead): title 'Institute Leadership | Дніпровський інститут медицини та громадського здоров'я'; president Maksym Mirzebasov, PhD in Medical Sciences, Associate Professor; no",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-site English F.A.Q. (lead): Student Support Service for international s",
+      "url": "https://dimh.kmu.edu.ua/?p=1814",
+      "purpose": "Official-site English F.A.Q. (lead): Student Support Service for international students; application questions to the International Department at dimh@kmu.edu.ua; Master's admission requires 'a diplom",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-site announcement (lead): invited foreign students to the spring intake",
+      "url": "https://dimh.kmu.edu.ua/?p=3089",
+      "purpose": "Official-site announcement (lead): invited foreign students to the spring intake for medicine; medicine programme described as accredited by a German agency in 2021",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 (per search summary). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-site PDF (lead): foreign applicants admitted on secondary education plu",
+      "url": "https://dimh.kmu.edu.ua/wp-content/uploads/2021/05/Study-Program-DIMH.pdf",
+      "purpose": "Official-site PDF (lead): foreign applicants admitted on secondary education plus two entrance exams (Ukrainian or English; chemistry); document stated valid only until 2023/2024",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: uploaded 2021-05. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-site annual activity report for 2024 (academic year 2023–2024): staffin",
+      "url": "https://dimh.kmu.edu.ua/wp-content/uploads/2025/03/richnyj-zvit_2024.pdf",
+      "purpose": "Official-site annual activity report for 2024 (academic year 2023–2024): staffing, teaching, international activity, clinical practice at treatment facilities — operating-status lead",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: uploaded 2025-03. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator card (unofficial): private HEI founded 2018; MON licence dated 28.11.",
+      "url": "https://osvita.ua/vnz/guide/37133/",
+      "purpose": "Aggregator card (unofficial): private HEI founded 2018; MON licence dated 28.11.2018; trains in Фармація, Медицина, Стоматологія; master level for medicine and dentistry; contradictory line that ДІМЗ ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator card (unofficial): full name 'Приватний заклад вищої освіти «Дніпровс",
+      "url": "https://www.education.ua/universities/896/",
+      "purpose": "Aggregator card (unofficial): full name 'Приватний заклад вищої освіти «Дніпровський інститут медицини та громадського здоров'я» (ДІМЗ)'; 2024–2025 rating data and competitive offers",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024–2025 (per search summary). Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licence register page for Dnipropetrovska oblast (higher education) returned",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/dnipropetrovska-oblast-2",
+      "purpose": "MON licence register page for Dnipropetrovska oblast (higher education) returned for the institute's name; the institute's entry was not visible in the snippet — inclusion unconfirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Kyiv Medical University recognition document (lead): lists the Dnipro Institute ",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2021/02/viznannya.pdf",
+      "purpose": "Kyiv Medical University recognition document (lead): lists the Dnipro Institute of Medicine and Public Health alongside Kharkiv and Kyiv",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: uploaded 2021-02. Search-result lead, not read in full."
+    },
+    {
+      "label": "Kyiv Medical University brochure (lead): 'campuses in KYIV | KHARKIV | DNIPRO'",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2022/04/KMUforMayors_c.pdf",
+      "purpose": "Kyiv Medical University brochure (lead): 'campuses in KYIV | KHARKIV | DNIPRO'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: uploaded 2022-04. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party Lecturio MedEd Atlas listing of 'Dnipro Institute of Medicine and Pu",
+      "url": "https://mededatlas.lecturio.com/language-of-instructions/english/page/28",
+      "purpose": "Third-party Lecturio MedEd Atlas listing of 'Dnipro Institute of Medicine and Public Health' under language of instruction English (unofficial lead)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Wikipedia article on a DIFFERENT private Dnipro institute, returned for this ins",
+      "url": "https://en.wikipedia.org/wiki/Dnipro_Medical_Institute_of_Conventional_and_Alternative_Medicine",
+      "purpose": "Wikipedia article on a DIFFERENT private Dnipro institute, returned for this institute's English name — name-confusion evidence only",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result 2026-10-24). Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead found; Dnipro is not occupied. Operating-status leads: an annual activity report for 2024 (academic year 2023–2024) is published on the official site (PDF uploaded 2025-03: https://dimh.kmu.edu.ua/wp-content/uploads/2025/03/richnyj-zvit_2024.pdf), and education.ua shows 2024–2025 rating data. CONTRADICTION to check: the osvita.ua aggregator card (https://osvita.ua/vnz/guide/37133/) says 'сьогодні ДІМЗ успішно працює у серці Поділля — у місті Вінниця' while naming the institute 'Дніпровський'; this looks like an aggregator copy error but the actual licensed place of activity (Dnipro vs Vinnytsia) is unverified.",
+      "Red flag to resolve before any fact is shown: Legal identity vs Kyiv Medical University (inventory slug kyiv-medical-university) unexplained: the site is a KMU subdomain (dimh.kmu.edu.ua), the International Department e-mail is dimh@kmu.edu.ua, KMU's 2021 recognition PDF (kmu.edu.ua/wp-content/uploads/2021/02/viznannya.pdf) lists the Dnipro institute alongside Kharkiv and Kyiv, and KMU's 2022 brochure says 'campuses in KYIV | KHARKIV | DNIPRO'. Whether ДІМЗ is a separate licensed ПЗВО or a structural unit/campus of KMU (and whose licence covers its programmes) is unverified.",
+      "Red flag to resolve before any fact is shown: osvita.ua card says the institute 'працює ... у місті Вінниця' while the name says Dnipro — place of licensed activity contradiction (likely aggregator error, unverified).",
+      "Red flag to resolve before any fact is shown: Name confusion risk: distinct from the state Dnipro State Medical University (listed slug dnipro-state-medical-university) and from the private Dnipro Medical Institute of Traditional and Non-traditional Medicine (inventory slug dnipro-medical-institute-of-conventional-and-alternative-medicine); search results for the English name mostly return those two institutions.",
+      "Red flag to resolve before any fact is shown: The only foreign-intake lead is a 2022 announcement and a 2021 study-programme PDF stated to be 'valid only until 2023/2024' — no current (2025/2026) admission rules for foreigners found; do not present these as current.",
+      "Red flag to resolve before any fact is shown: The 'medicine program accredited by a German agency in 2021' claim (dimh.kmu.edu.ua/?p=3089) is a foreign/private accreditation lead, not Ukrainian NAQA accreditation; NAQA listing not found. Keep registration, licence, accreditation and recognition separate.",
+      "Red flag to resolve before any fact is shown: Young institution (founded 2018 per osvita.ua) with no EDEBO/NAQA listing found and no EDRPOU code located — programme licence and accreditation status entirely unverified.",
+      "Red flag to resolve before any fact is shown: English-medium teaching rests on a third-party atlas listing and a leadership-page remark about one faculty member teaching in English; no official English-programme page was read.",
+      "Missing evidence: Official page read of dimh.kmu.edu.ua (home, 'про інститут', ліцензія/акредитація, вступ for foreigners 2025/2026) — hosts blocked from here",
+      "Missing evidence: EDEBO (registry.edbo.gov.ua) record: legal name, EDRPOU code, legal address, licensed specialities 221/222/226 with licence volumes and status",
+      "Missing evidence: MON licence register entry for Dnipropetrovska oblast confirming the institute and licence date (osvita.ua's 28.11.2018 is unofficial)",
+      "Missing evidence: NAQA accreditation decisions for Medicine, Dentistry and Pharmacy programmes (none found)",
+      "Missing evidence: Legal relationship to Kyiv Medical University: separate ПЗВО vs structural unit/campus; which entity holds the licence and issues diplomas",
+      "Missing evidence: Current (2025/2026) admission rules for foreign citizens and whether an English-medium track exists now (only 2021–2022 leads found)",
+      "Missing evidence: Pharmacy programme level and licence (only an aggregator mention)",
+      "Missing evidence: Resolution of the osvita.ua 'Vinnytsia' place-of-activity statement vs Dnipro",
+      "Missing evidence: Ministry 'Study in Ukraine' portal listing (not found)",
+      "Missing evidence: Any dedicated international-applicants page beyond the FAQ (only the FAQ at ?p=1814 found)",
+      "Skeptic's note: Legal relationship to Kyiv Medical University (candidate kyiv-medical-university) still unexplained: the site is a KMU subdomain, the international e-mail is dimh@kmu.edu.ua and KMU's 2021 recognition PDF lists the institute. Leads point to a separate legal HEI with shared founders rather than a structural unit (see notes), but this must be settled from EDEBO/EDR before any fact is published.",
+      "Skeptic's note: No EDEBO card, MON licence-register row or NAQA decision found; osvita.ua's licence date 28.11.2018 is unofficial. The opendatabot EDRPOU record 44470425 returned for the name query has not been opened, so the code is unconfirmed.",
+      "Skeptic's note: osvita.ua card says the institute operates 'у місті Вінниця' — probable aggregator error, unresolved.",
+      "Skeptic's note: Foreign-intake leads are dated (2022 announcement; 2021 study programme 'valid until 2023/2024'); no current foreigner rules found. The 2021 AHPGS (Germany) accreditation is a foreign private accreditation, not NAQA.",
+      "Skeptic's note: Pharmacy rests on an aggregator mention only; English-medium teaching rests on a third-party atlas and one leadership-page remark.",
+      "Name lead (unverified): Dnipro Institute of Medicine and Public Health (search-result lead: English page titles on dimh.kmu.edu.ua and the KMU recognition PDF; not read from an official page)",
+      "Name lead (unverified): Приватний заклад вищої освіти «Дніпровський інститут медицини та громадського здоров'я» (ДІМЗ) (search-result lead: education.ua card title and osvita.ua; not read from an official page)",
+      "Name lead (unverified): DIMH (abbreviation lead: subdomain dimh.kmu.edu.ua and the PDF filename Study-Program-DIMH.pdf)",
+      "Name lead (unverified): Dnipro Institute of Medicine and Public Health of Kyiv Medical University (relationship form implied by the KMU subdomain and KMU documents; the exact legal relationship is unverified)",
+      "Name lead (unverified): Dnipro campus of Kyiv Medical University (KMU brochure wording lead: 'KYIV | KHARKIV | DNIPRO'; unverified)"
+    ]
+  }
+}

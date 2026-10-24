@@ -1,0 +1,634 @@
+{
+  "slug": "odesa-international-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Odesa International Medical University (lead: Wikipedia article title; private institution of higher education — no official English page opened)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Odesa International Medical University",
+  "alternativeNames": [
+    "OIMU",
+    "Odessa International Medical University",
+    "ОММУ",
+    "Одеський міжнародний медичний університет",
+    "ПЗВО «Одеський міжнародний медичний університет»",
+    "Одесский международный медицинский университет"
+  ],
+  "status": {
+    "value": "unknown",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "No clear lead on operating status (2026-10-24); read a dated official statement."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Odesa",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://oimu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical university (private) in Odesa, Ukraine, with leads for dentistry, medicine, nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-speciality-222-lead-only",
+      "name": "Медицина (Medicine, speciality 222) — lead only",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf (foreign applicants); https://en.wikipedia.org/wiki/Odesa_International_Medical_University (English medium)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf (foreign applicants); https://en.wikipedia.org/wiki/Odesa_International_Medical_University (English medium)."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf (foreign applicants); https://en.wikipedia.org/wiki/Odesa_International_Medical_University (English medium)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry-speciality-221-lead-only",
+      "name": "Стоматологія (Dentistry, speciality 221) — lead only",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf (foreign applicants); https://brive.com/bachelors/medicine-health/dentistry-stomatology-bds-odessa-international-medical-university/ (English medium)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf (foreign applicants); https://brive.com/bachelors/medicine-health/dentistry-stomatology-bds-odessa-international-medical-university/ (English medium)."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf (foreign applicants); https://brive.com/bachelors/medicine-health/dentistry-stomatology-bds-odessa-international-medical-university/ (English medium)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-weak-lead-only-not-in-the-2020-mon-speciality-snippet",
+      "name": "Pharmacy — weak lead only (not in the 2020 MON speciality snippet)",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://brive.com/el/edu/odessa-international-medical-university/."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://brive.com/el/edu/odessa-international-medical-university/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-wikipedia-mention-only-no-programme-level-lead",
+      "name": "Nursing — Wikipedia mention only, no programme-level lead",
+      "field": "nursing",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Wikipedia article: 'Ukrainian higher education institution in Odesa, founded in ",
+      "url": "https://en.wikipedia.org/wiki/Odesa_International_Medical_University",
+      "purpose": "Wikipedia article: 'Ukrainian higher education institution in Odesa, founded in 1999'; accrediting body MON; website oimu.edu.ua; languages English/Ukrainian/French/German; MBBS $3,900/yr; GMC 'unacce",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated page; figures reference 2020. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON document named for the institution, tied to licence order 14.01.2020 No. 14-",
+      "url": "https://mon.gov.ua/storage/app/media/17.01.2020/odeskiy-mizhnarodniy-medichniy-universitet-140120.pdf",
+      "purpose": "MON document named for the institution, tied to licence order 14.01.2020 No. 14-л (content not read).",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-01-17 (path date). Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licensing list: specialities Стоматологія and Медицина with order 14.01.2020",
+      "url": "https://mon.gov.ua/storage/app/media/14.%2009.%202020/47.pdf",
+      "purpose": "MON licensing list: specialities Стоматологія and Медицина with order 14.01.2020 № 14-л, 'можливість підготовки іноземців та осіб без громадянства'; cites order 10.08.2020 № 1031 on the unscheduled in",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-09-14 (path date). Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licensing annex returned for the Ukrainian name; relevance to this instituti",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/2021/october/227-dodatki.pdf",
+      "purpose": "MON licensing annex returned for the Ukrainian name; relevance to this institution not confirmed.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021-10 (path date). Search-result lead, not read in full."
+    },
+    {
+      "label": "Brive agent listing: five-year Dentistry (BDS), English-taught, about €3,942/yr.",
+      "url": "https://brive.com/bachelors/medicine-health/dentistry-stomatology-bds-odessa-international-medical-university/",
+      "purpose": "Brive agent listing: five-year Dentistry (BDS), English-taught, about €3,942/yr.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Brive institution page; summary says a Pharmacy programme in English is listed.",
+      "url": "https://brive.com/el/edu/odessa-international-medical-university/",
+      "purpose": "Brive institution page; summary says a Pharmacy programme in English is listed.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "GMC generic guidance (no list of acceptable qualifications; case-by-case). No OI",
+      "url": "https://www.gmc-uk.org/registration-and-licensing/join-our-registers/before-you-apply-guide-for-doctors/acceptable-overseas-qualifications-for-doctors/is-my-qualification-acceptable",
+      "purpose": "GMC generic guidance (no list of acceptable qualifications; case-by-case). No OIMU-specific GMC notice found.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "'International Medical University (Not Accredited)' — probable different institu",
+      "url": "https://iaar.agency/registry/program/4074/en",
+      "purpose": "'International Medical University (Not Accredited)' — probable different institution; name-confusion risk only.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Study in Ukraine portal result; summarised as a different university, not OIMU —",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/85/contacts",
+      "purpose": "Study in Ukraine portal result; summarised as a different university, not OIMU — recorded as 'not found' for OIMU.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead found. All leads place the institution in Odesa (not occupied territory). No post-2020 news result about the institution's operation, suspension or relocation appeared in six searches; \"not found\" rather than \"operating\".",
+      "Red flag to resolve before any fact is shown: MON order 10.08.2020 No. 1031 'on the results of an unscheduled inspection' of this private HEI exists (per MON document snippet); its findings and any licence sanction are unknown — must be read before any publication.",
+      "Red flag to resolve before any fact is shown: Wikipedia claims the UK General Medical Council placed the university on a list of institutions whose qualifications it considers unacceptable and advised UK-bound students to avoid it; NOT confirmed on gmc-uk.org from search results (only the generic 'Is my qualification acceptable' page surfaced). Destination-country recognition risk for UK applicants.",
+      "Red flag to resolve before any fact is shown: Domain unsettled: Wikipedia infobox gives oimu.edu.ua; the search engine's summary separately referenced 'en.oimu.com.ua' as the OIMU site (referenced but not retrieved). Neither host was opened; the inventory flag 'domain unsettled' stands.",
+      "Red flag to resolve before any fact is shown: Name confusion: most search hits for either name resolve to the state Odesa National Medical University (ONMedU, listed slug odesa-national-medical-university) — including ONMedU's 2018-2019 rector/building conflict news; these must not be attributed to OIMU. A separate 'International Medical University (Not Accredited)' entry on iaar.agency (Kazakh accreditation agency) is very likely a different institution and must not be conflated.",
+      "Red flag to resolve before any fact is shown: Wikipedia programme list (veterinary medicine, biomedical engineering, MD/MBBS, $3,900 fee, 2020 enrolment) looks dated and partly implausible against the 2020 MON licence list (Medicine and Dentistry only); do not reuse these figures.",
+      "Red flag to resolve before any fact is shown: Only third-party recruitment listings (Brive) support English-medium teaching and fees; no official or government lead for language of instruction.",
+      "Red flag to resolve before any fact is shown: No EDEBO, Study in Ukraine or NAQA listing found in six searches; no accreditation lead for any programme (licence ≠ accreditation).",
+      "Missing evidence: Official website not opened (network policy): domain (oimu.edu.ua vs en.oimu.com.ua), official Ukrainian/English names, founding year, programme list and levels, language of instruction, fees, admissions page, application link, international office page.",
+      "Missing evidence: EDEBO registry record: legal name, ЄДРПОУ code, licence scope and current status, licensed volumes for 222 Medicine / 221 Dentistry / 226 Pharmacy / 223 Nursing.",
+      "Missing evidence: Text and outcome of MON order 10.08.2020 No. 1031 (unscheduled inspection) and any later MON licensing decisions 2021-2026 (including the Oct 2021 annex 227-dodatki.pdf).",
+      "Missing evidence: NAQA accreditation decisions for any programme (none found).",
+      "Missing evidence: Study in Ukraine (USCIE) portal listing and foreign-applicant admission procedure (none found).",
+      "Missing evidence: GMC position: confirmation or refutation of the 'unacceptable qualification' claim on gmc-uk.org.",
+      "Missing evidence: Operating status since February 2022 (any suspension, relocation or merger) — no lead either way.",
+      "Missing evidence: Whether pharmacy and nursing programmes exist and are licensed (only Brive/Wikipedia mention them).",
+      "Missing evidence: Any English-medium teaching confirmed by an official or government source (only third-party listings found).",
+      "Skeptic's note: Weakest case in the batch: existence rests on 2020-2021 MON licensing documents plus Wikipedia/Brive; no EDEBO card, Study in Ukraine or NAQA listing found and no activity lead of any kind since Oct 2021 (operating status unknown, not contradicted).",
+      "Skeptic's note: Open licence question (not a bar, but must be read before any fact is published): MON order 10.08.2020 No. 1031 'on the results of an unscheduled inspection' of this private HEI; and the Oct 2021 MON annex (pravo-diyalnosti/2021/october/227-dodatki.pdf) returned for its name with content unconfirmed. If that annex records licence annulment, the name-only listing should be withdrawn.",
+      "Skeptic's note: Wikipedia's claim that the UK GMC lists its qualifications as unacceptable is unconfirmed on gmc-uk.org; must not appear on the page either way until verified.",
+      "Skeptic's note: Domain unsettled: oimu.edu.ua (Wikipedia infobox) vs en.oimu.com.ua (search-engine summary); neither opened.",
+      "Skeptic's note: Name confusion with the state Odesa National Medical University (listed): most hits for either name are ONMedU news (2018-2019 rector conflict) and must not be attributed to OIMU.",
+      "Skeptic's note: Pharmacy and Nursing leads are Brive/Wikipedia only; the 2020 MON list shows Medicine 222 and Dentistry 221 only.",
+      "Name lead (unverified): Odesa International Medical University (lead: Wikipedia article title; private institution of higher education — no official English page opened)",
+      "Name lead (unverified): Приватний заклад вищої освіти «Одеський міжнародний медичний університет» (lead: title of MON order 10.08.2020 No. 1031 as cited in search results; not read from EDEBO)",
+      "Name lead (unverified): Приватний заклад вищої освіти \"Одеський міжнародний медичний університет\""
+    ]
+  }
+}

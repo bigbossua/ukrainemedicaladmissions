@@ -6,6 +6,7 @@ import HeroIllustration from '../components/illustrations/HeroIllustration.astro
 import ApplicationJourney from '../components/illustrations/ApplicationJourney.astro';
 import { getListedUniversities, getResearchPreviews } from '../lib/records';
 import { SITE } from '../lib/site';
+import { nameKind } from '../lib/name-search.mjs';
 import { COURSES, type CourseSlug } from '../lib/courses';
 
 // Publication gate (lib/records.ts): only published records (projections) appear on the home page; drafts only in PREVIEW builds.
@@ -13,6 +14,11 @@ const universities = await getListedUniversities();
 // Research previews (N25): unpublished records that opt in, as projections; labelled "not yet verified", name only.
 const previews = await getResearchPreviews();
 const total = universities.length + previews.length;
+// Grouped by name only, as on /universities/ (lib/name-search.mjs nameKind): no claim beyond what the name says.
+const previewGroups = [
+  { key: 'medical', title: 'Medical and pharmacy institutions', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
+  { key: 'other', title: 'Other universities', items: previews.filter((u) => nameKind(u.shortName) === 'other') },
+].filter((g) => g.items.length > 0);
 // Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact.
 const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary }));
 const jsonLd = [{
@@ -63,7 +69,7 @@ const jsonLd = [{
               <select name="university">
                 <option value="">Help me choose</option>
                 {universities.map((u) => <option value={u.d.slug}>{u.d.shortName}</option>)}
-                {previews.map((u) => <option value={u.slug}>{u.shortName} (not yet verified)</option>)}
+                {previewGroups.map((g) => <optgroup label={`${g.title} (not yet verified)`}>{g.items.map((u) => <option value={u.slug}>{u.shortName} (not yet verified)</option>)}</optgroup>)}
                 <option value="unlisted">A university not listed here</option>
               </select>
             </label>
@@ -113,11 +119,14 @@ const jsonLd = [{
           ))}
         </div>
       )}
-      {previews.length > 0 && (
-        <ul class="research-list" aria-label="Universities we are researching (not yet verified), alphabetical">
-          {previews.map((u) => <li><a href={`/universities/${u.slug}/`}>{u.shortName}</a> <span class="badge badge-pending">Not yet verified</span></li>)}
-        </ul>
-      )}
+      {previewGroups.map((g) => (
+        <div class="research-group">
+          <h3 class="research-group-title">{g.title} <span class="research-group-count">({g.items.length})</span></h3>
+          <ul class="research-list" aria-label={`${g.title} we are researching (not yet verified), alphabetical`}>
+            {g.items.map((u) => <li><a href={`/universities/${u.slug}/`}>{u.shortName}</a> <span class="badge badge-pending">Not yet verified</span></li>)}
+          </ul>
+        </div>
+      ))}
       <p class="after-grid"><a class="btn btn-secondary" href="/universities/">{total > 0 ? `Search the directory (${total})` : 'Browse universities'}</a></p>
     </div>
   </section>
@@ -165,6 +174,9 @@ const jsonLd = [{
   @media (min-width: 1000px) { .research-list { grid-template-columns: repeat(3, 1fr); } }
   .research-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .75rem; padding: .1rem .9rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
   .research-list li { position: relative; }
+  .research-group { margin-top: 1.25rem; }
+  .research-group-title { font-size: 1.05rem; margin: 0 0 .5rem; }
+  .research-group-count { color: var(--slate); font-weight: 500; }
   .research-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
   .research-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); display: inline-flex; align-items: center; min-height: 44px; }
   .research-list .badge { margin-block: .5rem; }

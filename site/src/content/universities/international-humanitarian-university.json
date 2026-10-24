@@ -1,0 +1,808 @@
+{
+  "slug": "international-humanitarian-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "International Humanitarian University (lead only: ProZ listing title \"International Humanitarian University / Міжнародний гуманітарний університет IHU / МГУ\" and the Study in Ukraine portal paraphrase; the legal-form prefix, e.g. \"Private Higher Education Institution\", was not seen in any result)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "International Humanitarian University",
+  "alternativeNames": [
+    "IHU",
+    "vstup.osvita.ua institution code 353; abitly.org slug mhu-353"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Odesa",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://mgu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (private) in Odesa, Ukraine, with leads for dentistry, medicine, nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "specialty-222",
+      "name": "Медицина (specialty 222 Медицина), Факультет стоматології та фармації",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r16/353/944693/ (domestic admission record; no foreign-student statement) + agent leads https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/international-humanitarian-university/ and https://brive.com/el/proptyxiaka/iatrikh-igeia/general-medicine-md-international-humanitarian-university/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r16/353/944693/ (domestic admission record; no foreign-student statement) + agent leads https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/international-humanitarian-university/ and https://brive.com/el/proptyxiaka/iatrikh-igeia/general-medicine-md-international-humanitarian-university/."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r16/353/944693/ (domestic admission record; no foreign-student statement) + agent leads https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/international-humanitarian-university/ and https://brive.com/el/proptyxiaka/iatrikh-igeia/general-medicine-md-international-humanitarian-university/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry-degree-level-ukrainian-specialty-221-not-confirmed",
+      "name": "Dentistry (degree level; Ukrainian specialty 221 Стоматологія not confirmed)",
+      "field": "dentistry",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://brive.com/bachelors/medicine-health/dentistry-international-humanitarian-university/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://brive.com/bachelors/medicine-health/dentistry-international-humanitarian-university/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-ukrainian-specialty-226-not-confirmed",
+      "name": "Pharmacy (Ukrainian specialty 226 Фармація not confirmed)",
+      "field": "pharmacy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://brive.com/bachelors/medicine-health/pharmacy-international-humanitarian-university/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://brive.com/bachelors/medicine-health/pharmacy-international-humanitarian-university/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "specialty-223",
+      "name": "Медсестринство (specialty 223 Медсестринство)",
+      "field": "nursing",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "at-the-affiliated-vocational-college-not-a-higher-education-degree",
+      "name": "Стоматологія at the affiliated 'Медичний фаховий коледж Міжнародного (гуманітарного) університету' – vocational college, NOT a higher-education degree",
+      "field": "dentistry",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.education.ua/colleges/1912/ and https://vstup.osvita.ua/y2025/r16/1221/1569437/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "osvita.ua directory entry: private (Форма власності: приватна) university founde",
+      "url": "https://osvita.ua/vnz/guide/530/",
+      "purpose": "osvita.ua directory entry: private (Форма власності: приватна) university founded 20 Aug 2002 as a non-state institution of collective ownership; address Фонтанська дорога 33, Odesa; 'Веб-сайт: https:",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated directory page; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admission-data portal institution page titled 'Міжнародний гуманітарний універси",
+      "url": "https://vstup.osvita.ua/y2022/r16/353/",
+      "purpose": "Admission-data portal institution page titled 'Міжнародний гуманітарний університет' (institution code 353)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 admission-year path; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "222 Медицина, master's, Факультет стоматології та фармації; card holds 2021 admi",
+      "url": "https://vstup.osvita.ua/y2024/r16/353/944693/",
+      "purpose": "222 Медицина, master's, Факультет стоматології та фармації; card holds 2021 admission data (search-tool paraphrase)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 path, 2021 data; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "223 Медсестринство bachelor's programme at IHU, study period 01.09.2021–30.06.20",
+      "url": "https://vstup.osvita.ua/y2024/r16/353/944683/",
+      "purpose": "223 Медсестринство bachelor's programme at IHU, study period 01.09.2021–30.06.2025 (new lead; search-tool paraphrase)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 path, 2021–2025 data; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "'Фаховий коледж Міжнародного гуманітарного університету' at Бісквітний провулок ",
+      "url": "https://www.education.ua/colleges/1913/?industry=33",
+      "purpose": "'Фаховий коледж Міжнародного гуманітарного університету' at Бісквітний провулок 3, Odesa, with site epk-mgu.od.ua (search-tool paraphrase)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "'Медичний фаховий коледж Міжнародного університету' at Фонтанська дорога 33; Rus",
+      "url": "https://www.education.ua/colleges/1912/",
+      "purpose": "'Медичний фаховий коледж Міжнародного університету' at Фонтанська дорога 33; Russian title variant 'Медицинский коледж Одесского медицинского института, международного гуманитарного университета'; den",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: lists a 2026 intake; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "University law journal hosted on mgu.od.ua; editorial address Фонтанська дорога ",
+      "url": "https://vestnik-pravo.mgu.od.ua/archive/juspradenc8/juspradenc8.pdf",
+      "purpose": "University law journal hosted on mgu.od.ua; editorial address Фонтанська дорога 33, Odesa 65009 (institutional-subdomain lead)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated PDF; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "News: vice-rector of the International Humanitarian University, Борис Васильєв, ",
+      "url": "https://life.pravda.com.ua/society/raketna-ataka-na-odesu-zabrala-zhittya-prorektora-miscevogo-vishu-301312/",
+      "purpose": "News: vice-rector of the International Humanitarian University, Борис Васильєв, killed in a missile attack on Odesa (operating-existence lead, 2024)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 per the search summary; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Blog: 'Міжнародний гуманітарний університет, який сьогодні часто представляють я",
+      "url": "https://plandiy.com.ua/?p=3185",
+      "purpose": "Blog: 'Міжнародний гуманітарний університет, який сьогодні часто представляють як Міжнародний університет, є приватним закладом вищої освіти IV рівня акредитації в Одесі ... заснований 20 серпня 2002 ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated blog; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Government Study in Ukraine portal programmes page returned for the IHU query; d",
+      "url": "https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22",
+      "purpose": "Government Study in Ukraine portal programmes page returned for the IHU query; description 'founded on August 20, 2002 as a non-state higher education institution ... about 3700 students ... preparato",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Agent page claiming English-medium medical instruction for international student",
+      "url": "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/international-humanitarian-university/",
+      "purpose": "Agent page claiming English-medium medical instruction for international students leading to an MD; cautions that IHU 'is not widely listed among top Ukrainian medical universities' (agent lead only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Agent listing: Dentistry 'bachelor's', 5 years, about €4,386/year (agent lead on",
+      "url": "https://brive.com/bachelors/medicine-health/dentistry-international-humanitarian-university/",
+      "purpose": "Agent listing: Dentistry 'bachelor's', 5 years, about €4,386/year (agent lead only; conflicts with earlier figures)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Agent listing: Pharmacy 'bachelor's', 5 years, about €3,948/year (agent lead onl",
+      "url": "https://brive.com/bachelors/medicine-health/pharmacy-international-humanitarian-university/",
+      "purpose": "Agent listing: Pharmacy 'bachelor's', 5 years, about €3,948/year (agent lead only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "ProZ listing titled 'International Humanitarian University / Міжнародний гуманіт",
+      "url": "https://search.proz.com:443/translator_associations/1735",
+      "purpose": "ProZ listing titled 'International Humanitarian University / Міжнародний гуманітарний університет IHU / МГУ' (names; this session's summary also attributed mgu.com.ua to it, unconfirmed)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party directory (from the earlier sweep, not re-run): 'its website is mgu.",
+      "url": "https://xuanxiao.org/en/universities/international-humanitarian-university",
+      "purpose": "Third-party directory (from the earlier sweep, not re-run): 'its website is mgu.com.ua'; address Fontanska Doroha 33 (conflicting domain lead)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; recorded 2026-10-12. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA accreditation-cases PDF returned for the IHU + 222/221 query; content NOT d",
+      "url": "https://naqa.gov.ua/wp-content/uploads/2022/06/Акредитаційні-справи_постанова-21.06.22.pdf",
+      "purpose": "NAQA accreditation-cases PDF returned for the IHU + 222/221 query; content NOT described, not established that it mentions IHU",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022-06-21 (file name); seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry licensing-decision PDF returned for the IHU licence query; content NOT ",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/2019/08/21/%20955.pdf",
+      "purpose": "Ministry licensing-decision PDF returned for the IHU licence query; content NOT described (also .../2019/03/12/%20126%20555.pdf)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2019-08-21 (path); seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry PDF about Odesa International Medical University — a DIFFERENT institut",
+      "url": "https://mon.gov.ua/storage/app/media/17.01.2020/odeskiy-mizhnarodniy-medichniy-universitet-140120.pdf",
+      "purpose": "Ministry PDF about Odesa International Medical University — a DIFFERENT institution; recorded only for the name-confusion check",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-01-17 (path); seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Wikipedia article on Odesa International Medical University, returned for the IH",
+      "url": "https://en.wikipedia.org/wiki/Odesa_International_Medical_University",
+      "purpose": "Wikipedia article on Odesa International Medical University, returned for the IHU medicine query; separate institution (founded 1999 per the earlier sweep)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation reported. All leads keep the main campus at Фонтанська дорога 33, Odesa 65009 (osvita.ua, university journal PDFs, education.ua college listing). Signs of continued activity: 2025 non-budget Dentistry offers and a 2026 intake at the affiliated medical college (vstup.osvita.ua 2025; education.ua, 2026 dates); a 2024 news report (life.pravda.com.ua) that vice-rector Borys Vasyliev was killed in a missile attack on Odesa confirms the university existed and was staffed in 2024. An undated blog (plandiy.com.ua) claims 'вісім факультетів, два фахові коледжі та підрозділ у Чернівцях' (a unit in Chernivtsi) – unverified. No dated official 2025/26 statement on teaching location or format (in person / remote) was found. Odesa is subject to missile attacks; this is a wartime operating-risk note, not a fact about the institution.",
+      "Red flag to resolve before any fact is shown: Official domain unsettled: three conflicting candidates with no result from the institution's own main site — mgu.edu.ua (osvita.ua 'Веб-сайт: https://mgu.edu.ua' plus one other directory), mgu.com.ua (xuanxiao.org; this session's search summary also attributed it to the ProZ listing, whose snippet earlier showed no domain), mgu.od.ua (university law journal at vestnik-pravo.mgu.od.ua; college site epk-mgu.od.ua).",
+      "Red flag to resolve before any fact is shown: Name confusion: (a) informally presented as 'Міжнародний університет' (blog; college title on education.ua) with no formal renaming notice found; (b) a Russian-language college title introduces an 'Одеський медичний інститут' of IHU, unverified; (c) Odesa International Medical University (Одеський міжнародний медичний університет) is a DIFFERENT private institution (MON PDF 17.01.2020 and Wikipedia) and must not be merged; (d) the abbreviation 'МГУ' collides with Moscow State University in Russian usage.",
+      "Red flag to resolve before any fact is shown: Every foreign-applicant, English-medium and fee claim for Medicine, Dentistry and Pharmacy comes from agents (brive.com, rmcedu.com) or aggregators; figures conflict (€4,386.20 vs €4,380.52 per year; 'USD 33,600 total'; faculty counts '6 faculties with 46 departments' vs 'a few faculties, 2 institutes and 17 departments'); one directory earlier gave teaching languages 'Russian;English'. An aggregator itself cautions IHU 'is not widely listed among top Ukrainian medical universities, so recognition by national medical councils should be checked'.",
+      "Red flag to resolve before any fact is shown: No EDEBO licence evidence for specialty 222 Medicine, 221 Dentistry or 226 Pharmacy, no licence volume for foreign students, and no NAQA programme accreditation found; the 'IV accreditation level' wording is the legacy institutional level only.",
+      "Red flag to resolve before any fact is shown: The only 222 Medicine admission-data record shown carries 2021 data; a current (2025/26) Medicine offer for IHU was not shown, so admissions availability is unproven and possibly outdated.",
+      "Red flag to resolve before any fact is shown: Odesa is under wartime missile attack (a 2024 news report says the university's vice-rector was killed in a strike); no dated official statement on current teaching location/format was found.",
+      "Missing evidence: Official website confirmed from an official or government source (mgu.edu.ua vs mgu.com.ua vs mgu.od.ua); no page from any candidate domain was returned or opened",
+      "Missing evidence: Exact registered legal name and legal form (e.g. 'Приватний заклад вищої освіти ...'), EDRPOU code and EDEBO register card (registry.edbo.gov.ua) — not found",
+      "Missing evidence: Whether the institution has been formally renamed 'Міжнародний університет' (date and legal act) — no evidence either way",
+      "Missing evidence: Current licence (and licence volume for foreign students) for 222 Medicine, 221 Dentistry, 226 Pharmacy and 223 Nursing — not seen; only a 2021-data admission record for 222 Medicine and a 2021–2025 223 Nursing bachelor's",
+      "Missing evidence: NAQA accreditation status of the 222 Medicine programme (the 21.06.22 NAQA PDF and the 2019/2020 MON PDFs were returned but their content was not described)",
+      "Missing evidence: Any official statement that Medicine, Dentistry or Pharmacy is taught in English or open to foreign applicants; the only such claims are agent pages, and one directory gave 'Russian;English'",
+      "Missing evidence: Official fees for foreign students (agent figures conflict: €4,386.20 / €4,380.52 / 'USD 33,600 total'; domestic 42,000 UAH contract figure of unclear year)",
+      "Missing evidence: International office / foreign-applicant page, admission requirements, document list, deadlines and intake dates",
+      "Missing evidence: Dated 2025/26 official statement on operating status, teaching location and format (in person / remote), including the claimed 'підрозділ у Чернівцях'",
+      "Missing evidence: Identification of the exact studyinukraine.gov.ua page (university ID) carrying IHU's entry",
+      "Missing evidence: Existence and status of an 'Одеський медичний інститут' as a unit of IHU, and the 'Institute of Medicine' naming",
+      "Missing evidence: Current (2025/26) degree-level offers for Medicine/Dentistry/Pharmacy in admission data (only the vocational college's 2025/2026 Dentistry offers were shown)",
+      "Skeptic's note: Domain unsettled (not a bar): osvita.ua gives mgu.edu.ua; my search returned the institution's own law-journal archive at vestnik-pravo.mgu.od.ua (a live lead that mgu.od.ua is also theirs); mgu.com.ua is a third candidate. No page from any candidate host has been opened; kept researcher's host pending a direct read.",
+      "Skeptic's note: Possible rename not confirmed: the affiliated college is titled 'Медичний фаховий коледж Міжнародного університету' and a blog says the university is 'often referred to as Міжнародний університет'; no legal act or official notice of renaming found.",
+      "Skeptic's note: Degree-level Medicine currency unproven: the only 222 Medicine admission record carries 2021 data; current (2025/26) Medicine offer not shown. Dentistry/Pharmacy at degree level rest on Brive agent pages only; the confirmed dentistry offer is at the affiliated фаховий коледж (not a degree).",
+      "Skeptic's note: No EDEBO licence, licence volume for foreigners or NAQA programme accreditation found; 'IV accreditation level' is the legacy institutional level.",
+      "Skeptic's note: Every English-medium/fee claim comes from agents with conflicting figures; do not reuse.",
+      "Skeptic's note: Wartime note: a 2024 report says the vice-rector was killed in a missile strike on Odesa; no dated statement on current teaching location/format.",
+      "Name lead (unverified): International Humanitarian University (lead only: ProZ listing title \"International Humanitarian University / Міжнародний гуманітарний університет IHU / МГУ\" and the Study in Ukraine portal paraphrase; the legal-form prefix, e.g. \"Private Higher Education Institution\", was not seen in any result)",
+      "Name lead (unverified): Міжнародний гуманітарний університет (lead only: osvita.ua directory entry, vstup.osvita.ua institution page y2022/r16/353, and the university-hosted law journal PDFs on vestnik-pravo.mgu.od.ua; the registered legal form, e.g. \"Приватний заклад вищої освіти «...»\", was not shown verbatim in any result)",
+      "Name lead (unverified): МГУ (abbreviation used on the ProZ listing and on the university journal; note the same abbreviation is widely used in Russian for Moscow State University, so it is unsuitable as a card title)",
+      "Name lead (unverified): Міжнародний університет (informal usage: blog plandiy.com.ua says the university 'сьогодні часто представляють як Міжнародний університет'; the affiliated college is titled 'Медичний фаховий коледж Міжнародного університету' on education.ua; NO formal renaming notice found)",
+      "Name lead (unverified): Одеський медичний інститут Міжнародного гуманітарного університету / 'Медицинский коледж Одесского медицинского института, международного гуманитарного университета' (Russian-language title variant of the college on education.ua/colleges/1912/; the existence of an 'Odesa Medical Institute' unit is unverified)",
+      "Name lead (unverified): Institute of Medicine (third-party aggregator name for the medical unit; not reproduced)",
+      "Name lead (unverified): Faculty of Dentistry and Pharmacy / Факультет стоматології та фармації (faculty named on the vstup.osvita.ua 222 Medicine record)",
+      "Name lead (unverified): Медичний фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Фонтанська дорога 33; junior-specialist / фаховий молодший бакалавр level)",
+      "Name lead (unverified): Фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Бісквітний провулок 3; site given as epk-mgu.od.ua on education.ua/colleges/1913/)"
+    ]
+  }
+}

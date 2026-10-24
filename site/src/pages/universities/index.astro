@@ -34,7 +34,7 @@ const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
 const factFilters = records.length > 0;
 // Grouping by name only (lib/name-search.mjs nameKind): medical and pharmacy universities, then the others.
 const previewGroups = [
-  { key: 'medical', title: 'Medical and pharmacy universities', note: 'Universities whose name identifies them as medical or pharmacy universities.', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
+  { key: 'medical', title: 'Medical and pharmacy institutions', note: 'Universities, academies and institutes whose name identifies them as medical or pharmacy institutions.', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
   { key: 'other', title: 'Other universities', note: 'Universities whose name does not identify them as medical. Which medical, dental, pharmacy or nursing programmes each one offers is among the facts we are confirming.', items: previews.filter((u) => nameKind(u.shortName) === 'other') },
 ].filter((g) => g.items.length > 0);
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
@@ -63,7 +63,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
           <label class="field">Type
             <select name="kind" data-filter="kind">
               <option value="">All types</option>
-              <option value="medical">Medical and pharmacy universities</option>
+              <option value="medical">Medical and pharmacy institutions</option>
               <option value="other">Other universities</option>
             </select>
           </label>
@@ -208,7 +208,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
     if (noun) noun.textContent = cards.length === 1 ? 'university' : 'universities';
     if (query) query.textContent = search?.value ?? '';
     if (noMatch) noMatch.hidden = n > 0 || cards.length === 0;
-    if (nearMatch) nearMatch.hidden = n === 0 || found.tier !== 'near';
+    if (nearMatch) nearMatch.hidden = n === 0 || !(found.tier === 'near' || found.caution);
   }
   selects.forEach((s) => s.addEventListener('change', apply));
   search?.addEventListener('input', apply);

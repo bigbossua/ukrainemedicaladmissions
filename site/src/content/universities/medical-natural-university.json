@@ -1,0 +1,523 @@
+{
+  "slug": "medical-natural-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Private Higher Education Institution \"Medical and Natural Sciences University\" (English form is a directory rendering on education.ua; the inventory's \"Medical-Natural University\" is a literal translation; no official English form read)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Medical and Natural Sciences University",
+  "alternativeNames": [
+    "Medical-Natural University",
+    "Medical and Natural Sciences University (education.ua rendering)",
+    "Private Higher Education Institution \"Medical-Natural University\"",
+    "Медико-Природничий Університет",
+    "ПВНЗ «Медико-Природничий Університет»",
+    "Приватний вищий навчальний заклад «Медико-Природничий Університет»",
+    "Medyko-Pryrodnychyi Universytet (transliteration)",
+    "vnz-mpu.com.ua (domain lead)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Mykolaiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://vnz-mpu.com.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as an institution (private) in Mykolaiv (lead: osvita.ua gives the address as просп. Богоявленський, 43А, м. Миколаїв), Ukraine, with leads for nursing programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "public-health-specialty-code-i9-formerly-229",
+      "name": "Громадське здоров'я (Public Health), specialty code I9 (formerly 229), медичний факультет",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/r15/3955/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-specialty-code-i5-formerly-223-university-level",
+      "name": "Медсестринство (за спеціалізаціями) / Nursing, specialty code I5 (formerly 223) - university level",
+      "field": "nursing",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/guide/36804/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-at-the-attached-vocational-level-not-higher-education",
+      "name": "Медсестринство (Nursing) at the attached Фаховий коледж Медико-Природничого університету - VOCATIONAL level, not higher education",
+      "field": "nursing",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r15/6478/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Admissions-portal page 'Медико-Природничий Університет' (Mykolaiv): 'заклад вищо",
+      "url": "https://vstup.osvita.ua/r15/3955/",
+      "purpose": "Admissions-portal page 'Медико-Природничий Університет' (Mykolaiv): 'заклад вищої освіти без підпорядкування'; 'Пропозицій: 34, Ліцензійний обсяг: 238 місць, Всього подано заяв: 58'; degrees 'Бакалавр",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 intake data (current-year page). Search-result lead, not read in full."
+    },
+    {
+      "label": "Same portal, 2024 year page titled 'Приватний вищий навчальний заклад \"Медико-Пр",
+      "url": "https://vstup.osvita.ua/y2024/r15/3955/",
+      "purpose": "Same portal, 2024 year page titled 'Приватний вищий навчальний заклад \"Медико-Природничий Університет\"': 'Ліцензійний обсяг становить 166 місць, пропозицій – 25', bachelor licensed volume 67",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 intake data. Search-result lead, not read in full."
+    },
+    {
+      "label": "osvita.ua directory entry: 'ПВНЗ \"Медико-Природничий Університет\" - це приватний",
+      "url": "https://osvita.ua/vnz/guide/36804/",
+      "purpose": "osvita.ua directory entry: 'ПВНЗ \"Медико-Природничий Університет\" - це приватний вищий навчальний заклад'; address 'м. Миколаїв, просп. Богоявленський, 43А'; site vnz-mpu.com.ua; phones (093) 549 33 1",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated directory entry. Search-result lead, not read in full."
+    },
+    {
+      "label": "education.ua entry 'Приватний вищий навчальний заклад «Медико-Природничий Універ",
+      "url": "https://www.education.ua/universities/874/",
+      "purpose": "education.ua entry 'Приватний вищий навчальний заклад «Медико-Природничий Університет»' rendering the English name as 'Medical and Natural Sciences University'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated directory entry. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admissions-portal page for the attached 'Фаховий коледж Медико-Природничого унів",
+      "url": "https://vstup.osvita.ua/y2025/r15/6478/",
+      "purpose": "Admissions-portal page for the attached 'Фаховий коледж Медико-Природничого університету': Медсестринство, фаховий молодший бакалавр, interview in biology; same website vnz-mpu.com.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 intake data. Search-result lead, not read in full."
+    },
+    {
+      "label": "education.ua entry 'Фаховий коледж приватного вищого навчального закладу «Медико",
+      "url": "https://www.education.ua/colleges/1986/",
+      "purpose": "education.ua entry 'Фаховий коледж приватного вищого навчального закладу «Медико-природничий університет»': nursing '2 роки 8 місяців навчання (13.10.2026 — 01.07.2029)', 'контракт — 15 місць'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: shows 2026 intake dates. Search-result lead, not read in full."
+    },
+    {
+      "label": "Second osvita.ua guide entry returned for the same name (appears to be the colle",
+      "url": "https://osvita.ua/vnz/guide/37459/",
+      "purpose": "Second osvita.ua guide entry returned for the same name (appears to be the college or a second record of the institution; not opened)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON higher-education licence register, Mykolaiv oblast page - surfaced in result",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/mikolaivska-oblast-2",
+      "purpose": "MON higher-education licence register, Mykolaiv oblast page - surfaced in results but no snippet for this institution; entry not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated register page. Search-result lead, not read in full."
+    },
+    {
+      "label": "Returned for the English-name query; a DIFFERENT Mykolaiv institution (already l",
+      "url": "https://en.wikipedia.org/wiki/Petro_Mohyla_Black_Sea_State_University",
+      "purpose": "Returned for the English-name query; a DIFFERENT Mykolaiv institution (already listed as petro-mohyla-black-sea-national-university); cited only to document the name-confusion risk",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: n/a. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Mykolaiv (lead: osvita.ua gives the address as просп. Богоявленський, 43А, м. Миколаїв)",
+      "Relocation lead (unverified): No relocation lead found. The vstup.osvita.ua institution page carries 2026 intake data (34 offers, licensed volume 238 places, 58 applications submitted) for the Mykolaiv address, and osvita.ua gives просп. Богоявленський, 43А, м. Миколаїв. Licensed volume appears to have grown from 166 places / 25 offers (2024 page) to 238 / 34 (2026 page). Mykolaiv is a front-adjacent city, but no search result reported a move, suspension or merger. Search-result leads only; the official site was not read.",
+      "Red flag to resolve before any fact is shown: No lead shows admission of foreign applicants, a licence to train foreigners, or English-medium teaching: a dedicated search for іноземних студентів / international students returned nothing for this institution (osvita.ua, vstup.osvita.ua, education.ua listings only). The institution appears to be out of scope for an international medical-admissions directory.",
+      "Red flag to resolve before any fact is shown: No medicine (222), dentistry (221) or pharmacy (226) programme lead: all leads show only nursing (I5/223) and public health (I9/229), despite the name 'university' and a 'медичний факультет' label.",
+      "Red flag to resolve before any fact is shown: Name confusion with its own attached vocational college: 'Фаховий коледж Медико-Природничого університету' / 'Фаховий коледж ПВНЗ «Медико-природничий університет»' is a separate listing (education.ua/colleges/1986/, vstup.osvita.ua/y2025/r15/6478/) offering фаховий молодший бакалавр nursing; do not merge college-level data into the university profile.",
+      "Red flag to resolve before any fact is shown: Name confusion with the listed Petro Mohyla Black Sea National University (also Mykolaiv): the English-language search returned PMBSNU's Wikipedia page; the two are distinct institutions (state vs private; different addresses).",
+      "Red flag to resolve before any fact is shown: English name is unsettled: 'Medical and Natural Sciences University' (education.ua) vs 'Medical-Natural University' (inventory literal translation); no official English form read.",
+      "Red flag to resolve before any fact is shown: Domain vnz-mpu.com.ua comes essentially from one publisher family (osvita.ua / vstup.osvita.ua), echoed by the college listing; not confirmed against the official site or the MON/EDEBO register.",
+      "Red flag to resolve before any fact is shown: Small private institution (licensed volume 166-238 places across all offers) with no government register entry visible in search results; accreditation status of its programmes is unknown.",
+      "Red flag to resolve before any fact is shown: Possible 2025-2026 specialty recoding (223 -> I5, 229 -> I9) means older listings and the current portal use different codes; they are the same specialties, not extra programmes.",
+      "Missing evidence: Official site vnz-mpu.com.ua not read (network policy): official Ukrainian and English names, address, structure (university vs attached college), rector and legal identity all unconfirmed.",
+      "Missing evidence: MON licence register / EDEBO entry: ЄДРПОУ code, licensed specialties (223/I5 Медсестринство, 229/I9 Громадське здоров'я) and levels (bachelor vs master), licensed volumes - not found in search results.",
+      "Missing evidence: NAQA accreditation status of each programme - not found.",
+      "Missing evidence: Whether the institution holds a licence to train foreign citizens, admits foreign applicants at all, or has any international-applicants page - not found (no lead).",
+      "Missing evidence: Any English-medium teaching - not found (no lead).",
+      "Missing evidence: Level of university-level nursing (bachelor and/or master) - the portal lists bachelor and master intake for the institution but no nursing offer with its level was quoted.",
+      "Missing evidence: Whether the 'медичний факультет' label implies any plan for a medicine (222) programme - no lead; treat as nursing/public-health only.",
+      "Missing evidence: Confirmation that vnz-mpu.com.ua is the official domain from the official site or a government register (currently osvita.ua-family listings only).",
+      "Missing evidence: Current operating status from an official or government source (only third-party 2026 intake data found; no news items, no relocation, suspension or merger reports either way).",
+      "Missing evidence: Tuition fees, admission requirements for foreigners and application links - none found.",
+      "Skeptic's note: Weakest programme lead in this batch: the only university-level offer concretely identified for 2026 is Public Health (I9/229, bachelor), which is not one of the four qualifying fields. The nursing DEGREE lead rests on the osvita.ua HEI guide (vnz/guide/36804) stating the university trains in «Медсестринство (за спеціалізаціями)» and on a 2025 vstup.osvita.ua page mentioning I5 Медсестринство whose attribution (university vs attached college) is unclear. The clearly identified nursing offer belongs to the attached vocational college (фаховий молодший бакалавр) and does not count.",
+      "Skeptic's note: No medicine (222), dentistry (221) or pharmacy (226) lead at all despite the 'university' name and a 'медичний факультет' label.",
+      "Skeptic's note: No government register entry (MON licence register, EDEBO, NAQA) surfaced; HEI status rests on vstup.osvita.ua ('заклад вищої освіти без підпорядкування', bachelor/master, licensed volume 238 in 2026) and osvita.ua ('приватний вищий навчальний заклад').",
+      "Skeptic's note: English name unsettled: 'Medical and Natural Sciences University' (education.ua rendering) vs the literal 'Medical-Natural University'; no official English form read.",
+      "Skeptic's note: Domain vnz-mpu.com.ua comes from one publisher family (osvita.ua/vstup.osvita.ua), echoed by the college listing.",
+      "Skeptic's note: Do not merge data from the attached 'Фаховий коледж Медико-Природничого університету' into the university profile; do not confuse with Petro Mohyla Black Sea National University (listed, also Mykolaiv).",
+      "Name lead (unverified): Private Higher Education Institution \"Medical and Natural Sciences University\" (English form is a directory rendering on education.ua; the inventory's \"Medical-Natural University\" is a literal translation; no official English form read)",
+      "Name lead (unverified): Приватний вищий навчальний заклад «Медико-Природничий Університет» (ПВНЗ «Медико-Природничий Університет»)",
+      "Name lead (unverified): Фаховий коледж Медико-Природничого університету / Фаховий коледж ПВНЗ «Медико-природничий університет» (the attached VOCATIONAL college, a separate listing - not the university itself)"
+    ]
+  }
+}

@@ -1,0 +1,1050 @@
+{
+  "slug": "oles-honchar-dnipro-national-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Oles Honchar Dnipro National University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Oles Honchar Dnipro National University",
+  "alternativeNames": [
+    "Дніпровський національний університет імені Олеся Гончара",
+    "DNU",
+    "ДНУ"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Dnipro",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://dnu.dp.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://www.dnu.dp.ua/en/International_Students_Office"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Dnipro, Ukraine, with leads for nursing programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-223-nursing",
+      "name": "223 Медсестринство / Nursing",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r5/111/584337/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-223-nursing-master-s-educational-programme-onp-in-filename",
+      "name": "223 Медсестринство / Nursing (master's educational programme, 'ONP' in filename)",
+      "field": "nursing",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.dnu.dp.ua/docs/osvitni_programy/redakcii_2021_2024/m_223_ONP___2022-2024.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-227-physical-therapy-occupational-therapy-field-227-therapy-and-rehabilitation",
+      "name": "227 Фізична терапія, ерготерапія / Physical therapy, occupational therapy (field 227 Therapy and Rehabilitation)",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.dnu.dp.ua/docs/osvitni_programy/2022/b_227_TR_FTE_opp__2024.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-224-technologies-of-medical-diagnostics-and-treatment",
+      "name": "224 Технології медичної діагностики та лікування / Technologies of medical diagnostics and treatment",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r5/111/1300175/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-224-technologies-of-medical-diagnostics-and-treatment-specialisation-laboratory-diagnostics",
+      "name": "224 Technologies of medical diagnostics and treatment, specialisation 'Лабораторна діагностика' / Laboratory diagnostics",
+      "field": "other",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r5/111/1427504/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-224-technologies-of-medical-diagnostics-and-treatment-educational-scientific-phd-programme-code-47810",
+      "name": "224 Technologies of medical diagnostics and treatment — educational-scientific (PhD) programme, code 47810",
+      "field": "other",
+      "level": {
+        "value": "phd",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.dnu.dp.ua/docs/osvitni_programy/2025/2025_vysnovok_GER_PhD_224.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "public-health-partner-report-lead-only-unconfirmed",
+      "name": "Public health (partner-report lead only, unconfirmed)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "English name; 'state-sponsored public university ... affiliated with the Ministr",
+      "url": "https://en.wikipedia.org/wiki/Oles_Honchar_Dnipro_National_University",
+      "purpose": "English name; 'state-sponsored public university ... affiliated with the Ministry of Education and Science of Ukraine'; history (1918 Ekaterynoslavasky University, 1933 Dnipropetrovsk State University",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "'Admission of Foreigners to Study at Oles Honchar Dnipro National University': p",
+      "url": "https://www.dnu.dp.ua/en/admission_of_foreigners",
+      "purpose": "'Admission of Foreigners to Study at Oles Honchar Dnipro National University': preparatory faculty, language courses, postgraduate/advanced-training/internship; in-person or remote; enrolment via Unif",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "International Students Office: 72 Nauky Avenue, Dnipro, office 117; int.educatio",
+      "url": "https://www.dnu.dp.ua/en/International_Students_Office",
+      "purpose": "International Students Office: 72 Nauky Avenue, Dnipro, office 117; int.education.dnu@gmail.com; +38 (056) 374-98-16; Mon–Fri 8:00–16:30; subordinated to the Rector and Vice-Rector for International R",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "'DNU 2024' news: 88 bachelor's and 64 master's programmes",
+      "url": "https://www.dnu.dp.ua/ennews/138",
+      "purpose": "'DNU 2024' news: 88 bachelor's and 64 master's programmes",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "DNU news: graduates of the medical faculty practise at Mechnikov Regional Clinic",
+      "url": "https://www.dnu.dp.ua/ennews/110",
+      "purpose": "DNU news: graduates of the medical faculty practise at Mechnikov Regional Clinical Hospital; training covers physical rehabilitation, occupational therapy, laboratory diagnostics and nursing",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "DNU–Charles University partnership news (operating-status lead)",
+      "url": "https://www.dnu.dp.ua/ennews/189",
+      "purpose": "DNU–Charles University partnership news (operating-status lead)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (recent). Search-result lead, not read in full."
+    },
+    {
+      "label": "Medical University of Bialystok agreement news: faculty offers nursing, public h",
+      "url": "https://www.umb.edu.pl/en/international_cooperation/news/31015,Agreement_with_Oles_Honchar_Dnipro_National_University",
+      "purpose": "Medical University of Bialystok agreement news: faculty offers nursing, public health, physiotherapy and medical diagnostics; DNU had 86 international agreements by 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator structure page: faculty specialities 227 (Therapy and Rehabilitation)",
+      "url": "https://abitly.org/en/universities/dnu-111/structure",
+      "purpose": "Aggregator structure page: faculty specialities 227 (Therapy and Rehabilitation), 223 (Nursing), 231 (Social Work), Medical Diagnostics (truncated)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "223 Медсестринство bachelor, full-time, year-1 entry on complete general seconda",
+      "url": "https://vstup.osvita.ua/y2024/r5/111/584337/",
+      "purpose": "223 Медсестринство bachelor, full-time, year-1 entry on complete general secondary education",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 admission campaign. Search-result lead, not read in full."
+    },
+    {
+      "label": "DNU order no. 858с of 20 Aug 2024 for the ФМТДР faculty (competitive scores / ba",
+      "url": "https://dnu.dp.ua/docs/vstup/2024/nakazy/858%D1%81%20%D0%B2%D1%96%D0%B4%2020_08_2024%20%D0%A4%D0%9C%D0%A2%D0%94%D0%A0%20%D0%BF%D0%B7%D1%81%D0%BE.pdf",
+      "purpose": "DNU order no. 858с of 20 Aug 2024 for the ФМТДР faculty (competitive scores / bachelor places incl. 223)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024-08-20. Search-result lead, not read in full."
+    },
+    {
+      "label": "Master's programme 223 Медсестринство, 2022–2024 editions; 'Галузь знань – 22 Ох",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/redakcii_2021_2024/m_223_ONP___2022-2024.pdf",
+      "purpose": "Master's programme 223 Медсестринство, 2022–2024 editions; 'Галузь знань – 22 Охорона здоров'я'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022–2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "Master's programme 223, 2020 intake; 'Наявність акредитації ... До проходження п",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/nabir_20_21_m/17_09_21/m_2020_223_ONP.pdf",
+      "purpose": "Master's programme 223, 2020 intake; 'Наявність акредитації ... До проходження первинної акредитації' (outdated)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020/2021. Search-result lead, not read in full."
+    },
+    {
+      "label": "Bachelor 227 Фізична терапія, ерготерапія programme; department of general medic",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2022/b_227_TR_FTE_opp__2024.pdf",
+      "purpose": "Bachelor 227 Фізична терапія, ерготерапія programme; department of general medicine with a course of physical therapy; updated for 2024/25, amended Dec 2025; professional standard 'Асистент фізичного ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024/2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 expert-group accreditation report, bachelor 227; references naqa.gov.ua and",
+      "url": "https://dnu.dp.ua/docs/osvitni_programy/vidomosti/2025/2025_zvit_EG_b_227.pdf",
+      "purpose": "2025 expert-group accreditation report, bachelor 227; references naqa.gov.ua and ЄДЕБО",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Project educational programme 2026–2027 (227 per search summary)",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2026-2027/31_03/b_I7_opp_2026_project.pdf",
+      "purpose": "Project educational programme 2026–2027 (227 per search summary)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "'Спеціальність: 224. Технології медичної діагностики та лікування' listing",
+      "url": "https://vstup.osvita.ua/y2017/r5/111/372841/",
+      "purpose": "'Спеціальність: 224. Технології медичної діагностики та лікування' listing",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2017. Search-result lead, not read in full."
+    },
+    {
+      "label": "224 bachelor (field Охорона здоров'я) / 224 master's specialisation Лабораторна ",
+      "url": "https://vstup.osvita.ua/y2024/r5/111/1300175/",
+      "purpose": "224 bachelor (field Охорона здоров'я) / 224 master's specialisation Лабораторна діагностика — one of five y2024 r5/111 pages (1300175, 1427504, 1344611, 1427759, 542251); exact page per programme not ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 (page marked 'Інформація за: 2025 2024 2023 2022'). Search-result lead, not read in full."
+    },
+    {
+      "label": "Sectoral expert council conclusion on PhD programme 47810 Технології медичної ді",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2025/2025_vysnovok_GER_PhD_224.pdf",
+      "purpose": "Sectoral expert council conclusion on PhD programme 47810 Технології медичної діагностики та лікування",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA decision document on PhD 224 (hosted by DNU; outcome not shown)",
+      "url": "https://www.dnu.dp.ua/docs/osvitni_programy/2026/2026_rischennia%20NA_PhD_224.pdf",
+      "purpose": "NAQA decision document on PhD 224 (hosted by DNU; outcome not shown)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator: 'International students are welcome to apply for enrollment'; accept",
+      "url": "https://www.unirank.org/ua/uni/oles-honchar-dnipro-national-university/",
+      "purpose": "Aggregator: 'International students are welcome to apply for enrollment'; acceptance rate 20–29%; tuition US$1,000–2,499/yr for international students (unverified)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "DNU fact sheet: 7,142 students, 166 international (older figure)",
+      "url": "https://www.dnu.dp.ua/docs/Megdunarodnoe/DNUFactSheet.pdf",
+      "purpose": "DNU fact sheet: 7,142 students, 166 international (older figure)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "THE profile: ~3,000 international students from 20+ countries (apparently older ",
+      "url": "https://timeshighereducation.com/world-university-rankings/oles-honchar-dnipro-national-university",
+      "purpose": "THE profile: ~3,000 international students from 20+ countries (apparently older figure)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "MoES licensing-commission protocol surfaced for the DNU licence query; DNU-speci",
+      "url": "https://mon.gov.ua/storage/app/media/protokoly-zasidan-litsenziynoi-komisii/2018/_88%20.pdf",
+      "purpose": "MoES licensing-commission protocol surfaced for the DNU licence query; DNU-specific content not shown in snippet",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2018. Search-result lead, not read in full."
+    },
+    {
+      "label": "osvita.ua university guide entry (surfaced; content not shown)",
+      "url": "https://osvita.ua/vnz/guide/17/208/",
+      "purpose": "osvita.ua university guide entry (surfaced; content not shown)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead found. DNU's own English pages place the International Students Office at 72 Nauky Avenue, Dnipro, office 117 (search summary of https://www.dnu.dp.ua/en/International_Students_Office); DNU news for 2024 (ennews/138) and 2025–2026 programme/accreditation PDFs (227 project programme for 2026–2027, 2026 NAQA decision document on PhD 224) indicate ongoing activity in Dnipro. Wartime operating mode (in-person vs remote) was not checked.",
+      "Red flag to resolve before any fact is shown: No medicine (222), dentistry (221) or pharmacy (226) degree surfaced — only nursing (223), medical-diagnostics technologies (224) and physical therapy (227); the inventory group H classification stands. Absence in search results is not proof of absence.",
+      "Red flag to resolve before any fact is shown: Foreign-applicant route is generic: the 'Admission of Foreigners' page (https://www.dnu.dp.ua/en/admission_of_foreigners) describes a preparatory faculty, language courses, postgraduate/internship programmes and enrolment via the Unified Interdepartmental Information System, but no lead ties foreign admission or English-medium teaching to the 223/224/227 programmes.",
+      "Red flag to resolve before any fact is shown: Accreditation status unverified: the 2020 master's 223 document stated 'До проходження первинної акредитації'; 2025–2026 NAQA-related PDFs for 227 and PhD 224 are self-hosted and their outcomes were not shown.",
+      "Red flag to resolve before any fact is shown: Name confusion: distinct from the listed Dnipro State Medical University (slug dnipro-state-medical-university) and from Ukrainian State University of Science and Technologies (also Dnipro, inventory group H); 'Dnipro National University' / 'DNU' must not be mapped to either.",
+      "Red flag to resolve before any fact is shown: Conflicting international-enrolment figures across sources (Wikipedia ~130; DNU fact sheet 166; THE and FAO AGRIS ~3,000 — apparently pre-2014 figures): aggregator data is stale.",
+      "Red flag to resolve before any fact is shown: International Students Office contact in the search summary is a gmail.com address (int.education.dnu@gmail.com) rather than a dnu.dp.ua address — verify on the official page before publishing.",
+      "Red flag to resolve before any fact is shown: abitly.org lists 231 Social Work under the medical faculty; it is not a health programme and must not be counted.",
+      "Red flag to resolve before any fact is shown: Public-health programme lead comes only from a Polish partner's 2025 news item and is contradicted by Ukrainian-language results.",
+      "Missing evidence: Official faculty programme page of the Faculty of Medical Technologies of Diagnostics and Rehabilitation on dnu.dp.ua not read (host blocked); programme set assembled from vstup.osvita.ua, abitly.org and DNU PDF titles/snippets.",
+      "Missing evidence: EDEBO (registry.edbo.gov.ua) entry: licence volumes and licensed specialities for 223, 224, 227 — not found.",
+      "Missing evidence: NAQA register: current accreditation certificates/decisions for bachelor 223, master 223, bachelor 224, master 224, bachelor 227 and PhD 224 — not found; only DNU-hosted 2025/2026 PDFs whose outcomes were not shown.",
+      "Missing evidence: Ministry 'Study in Ukraine' portal listing — not found.",
+      "Missing evidence: Whether foreign applicants are admitted to 223/224/227 specifically, and language of instruction (no English-medium lead for any programme).",
+      "Missing evidence: Tuition fees for these programmes — only a uniRank aggregate range (US$1,000–2,499) exists.",
+      "Missing evidence: Confirmation that DNU runs no 222 Medicine, 221 Dentistry or 226 Pharmacy programme (none surfaced; absence not proven).",
+      "Missing evidence: Existence and level of any 229 Public Health programme (contradictory leads).",
+      "Missing evidence: Exact official English name on the charter and the precise rename date (Wikipedia snippet says 2018; not cross-checked).",
+      "Missing evidence: International Students Office contact details (gmail address, phone, hours) not read on the live page.",
+      "Missing evidence: Current operating mode under wartime conditions (in-person vs remote) and any 2025/2026 admission deadlines.",
+      "Skeptic's note: Nursing (223) currency not shown for 2025/2026: the bachelor lead is a 2024 vstup.osvita.ua card plus a DNU order of 20 Aug 2024; the master's lead is a 2022-2024 programme PDF. Only the 227 physical-therapy programme has a 2026-2027 project document.",
+      "Skeptic's note: No lead ties foreign admission or English-medium teaching to 223/224/227; the 'Admission of Foreigners' page is generic (preparatory faculty, UES enrolment).",
+      "Skeptic's note: Accreditation unverified: the 2020 master's 223 document said 'до проходження первинної акредитації'; 2025/2026 NAQA-related PDFs for bachelor 227 and PhD 224 are self-hosted with outcomes not shown; no EDEBO, NAQA or Study in Ukraine portal hit.",
+      "Skeptic's note: No 222 Medicine, 221 Dentistry or 226 Pharmacy lead; a 'public health' programme is claimed only by a Polish partner's news item and contradicted by Ukrainian-language results; abitly.org's 231 Social Work under the medical faculty is not a health programme.",
+      "Skeptic's note: International Students Office contact in the snippet is a gmail.com address; verify on the live page before showing any contact. International-enrolment figures across sources are stale and contradictory.",
+      "Name lead (unverified): Dnipro National University (Wikipedia mirror page title)",
+      "Name lead (unverified): Dnipropetrovsk State University (former name from 1933, per Wikipedia snippet)",
+      "Name lead (unverified): Ekaterynoslavasky University (1918 founding name as spelled in the Wikipedia snippet)",
+      "Name lead (unverified): Faculty of Medical Technologies of Diagnostics and Rehabilitation (medical unit; also rendered 'Faculty of Medical Technology, Diagnostics, and Rehabilitation' and, on abitly.org, 'Medical Technologies, Diagnostics, Rehabilitation Faculty')",
+      "Name lead (unverified): Факультет медичних технологій діагностики та реабілітації (ФМТДР, abbreviation used in a DNU 2024 enrolment-order filename)"
+    ]
+  }
+}

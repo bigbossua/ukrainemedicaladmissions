@@ -286,7 +286,7 @@ Menu names are from general product knowledge, not checked against Google's help
 - **Preferred host:** `https://ukrainemedicaladmissions.com` (no `www`). Canonical tags and the sitemap take it from `site` in `site/astro.config.mjs`; robots.txt takes it from `SITE.url` in `site/src/lib/site.ts`. Both are set to this host.
 - **HTTPS and `www`:** `site/public/.htaccess` lines 7–10 send `http://` and `www.` requests to `https://ukrainemedicaladmissions.com` with one 301. Legacy addresses and paths without the trailing slash take a second 301. Staging is exempt. Whether Hostinger applies the rule, whether the certificate covers both names (needed for `https://www.`) and whether a `www` DNS record exists can only be checked live.
 - **Sitemap:** `https://ukrainemedicaladmissions.com/sitemap-index.xml`. It points to `sitemap-0.xml` with the 18 indexable pages. `/sitemap.xml` is not built (the local test answers 404), so do not submit that address. robots.txt allows everything except `/api/` and names the sitemap index.
-- **Not in the sitemap, and `noindex`:** the 17 university preview pages, `/apply/thank-you/` and the 404 page.
+- **Not in the sitemap, and `noindex`:** the 45 university preview pages, `/apply/thank-you/` and the 404 page.
 - **Your DNS records:** I cannot read them from here, and I invent none. The only record to add is the TXT value that Google shows you in step 2.
 
 **Now (no release needed):**
@@ -320,7 +320,7 @@ Menu names are from general product knowledge, not checked against Google's help
 
    Google limits indexing requests per day: if it refuses one, continue the next day. The sitemap covers the other pages.
 9. **Spot-check one preview page** (for example `/universities/sumy-state-university/`) with URL inspection. It should say the page is excluded by `noindex`. That is correct: previews stay out of Google until their facts are verified.
-10. A few days later, check **Indexing → Pages**: the 17 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
+10. A few days later, check **Indexing → Pages**: the 45 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
 
 **What can only be confirmed after the release goes live** (`npm run verify:live` from a computer that can reach the site, then Search Console):
 - The 301s from `http://` and `www.` to the preferred host.

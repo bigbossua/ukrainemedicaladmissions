@@ -1,0 +1,583 @@
+{
+  "slug": "kyiv-national-university-of-technologies-and-design",
+  "synthetic": false,
+  "officialName": {
+    "value": "Kyiv National University of Technologies and Design",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kyiv National University of Technologies and Design",
+  "alternativeNames": [
+    "Київський національний університет технологій та дизайну",
+    "KNUTD",
+    "КНУТД"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kyiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://knutd.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://en.knutd.edu.ua/learning-opportunities/admissions/admissions_rules/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Kyiv, Ukraine, with leads for pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "industrial-pharmacy-specialty-226",
+      "name": "Промислова фармація / Industrial Pharmacy (specialty 226 Фармація, промислова фармація)",
+      "field": "pharmacy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r27/307/870169/ (2024 card; 2023 card https://vstup.osvita.ua/y2023/r27/307/1260429/ or /1210563/ — URL-to-snippet mapping not confirmed); programme document https://www.knutd.edu.ua/files/ekts/2021/fchbt/fchbt_226_bchf_2021-1.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r27/307/870169/ (2024 card; 2023 card https://vstup.osvita.ua/y2023/r27/307/1260429/ or /1210563/ — URL-to-snippet mapping not confirmed); programme document https://www.knutd.edu.ua/files/ekts/2021/fchbt/fchbt_226_bchf_2021-1.pdf."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "industrial-pharmacy-specialty-226-2",
+      "name": "Промислова фармація / Industrial Pharmacy (specialty 226 Фармація, промислова фармація)",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://knutd.edu.ua/files/ekts/2022/fchbt/fchbt_226mgchf_2022.pdf (2022); https://www.knutd.edu.ua/files/ekts/2023/fchbt/fhbt_226_mghfb_2023.pdf (2023); https://www.knutd.edu.ua/files/ekts/2021/fchbt/fchbt_226mgchf_2021.pdf (2021)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "industrial-pharmacy-educational-scientific-phd-programme",
+      "name": "Промислова фармація / Industrial Pharmacy — educational-scientific (PhD) programme",
+      "field": "pharmacy",
+      "level": {
+        "value": "phd",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://en.knutd.edu.ua/university/faculties/fcht/htpf (department page, undated); https://knutd.edu.ua/files/ekts/2019/fchbt/fchbt_226dfpf_2019.PDF (2019)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "MES 'Study in Ukraine' portal listing titled 'Kyiv National University of Techno",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/99/",
+      "purpose": "MES 'Study in Ukraine' portal listing titled 'Kyiv National University of Technologies and Design'; snippet 'Ownership: public'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search result, 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Industrial Pharmacy department page (Faculty of Chemical and Biopharmaceutical T",
+      "url": "https://en.knutd.edu.ua/university/faculties/fcht/htpf",
+      "purpose": "Industrial Pharmacy department page (Faculty of Chemical and Biopharmaceutical Technologies): 'only higher education institution in Kyiv that trains ... at all levels of higher education directly unde",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Faculty of Chemical and Biopharmaceutical Technologies page; faculty office emai",
+      "url": "https://en.knutd.edu.ua/university/faculties/fcht",
+      "purpose": "Faculty of Chemical and Biopharmaceutical Technologies page; faculty office email fht@knutd.edu.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Master's educational programme document, specialty 226, guarantor Halstian A. H.",
+      "url": "https://knutd.edu.ua/files/ekts/2022/fchbt/fchbt_226mgchf_2022.pdf",
+      "purpose": "Master's educational programme document, specialty 226, guarantor Halstian A. H., Department of Industrial Pharmacy",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 (per filename/snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "2023 master's programme document, 226: objects of study = drug development and i",
+      "url": "https://www.knutd.edu.ua/files/ekts/2023/fchbt/fhbt_226_mghfb_2023.pdf",
+      "purpose": "2023 master's programme document, 226: objects of study = drug development and industrial production, quality control, pharmaceutical quality system",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023. Search-result lead, not read in full."
+    },
+    {
+      "label": "Bachelor's programme document, specialty 226 (title only)",
+      "url": "https://www.knutd.edu.ua/files/ekts/2021/fchbt/fchbt_226_bchf_2021-1.pdf",
+      "purpose": "Bachelor's programme document, specialty 226 (title only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021. Search-result lead, not read in full."
+    },
+    {
+      "label": "2019 programme document: graduates suited to employment in the pharmaceutical in",
+      "url": "https://knutd.edu.ua/files/ekts/2019/fchbt/fchbt_226dfpf_2019.PDF",
+      "purpose": "2019 programme document: graduates suited to employment in the pharmaceutical industry; notes a path toward a doctoral degree",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2019. Search-result lead, not read in full."
+    },
+    {
+      "label": "vstup.osvita.ua 2024 card for KNUTD bachelor 'Промислова фармація' (226), report",
+      "url": "https://vstup.osvita.ua/y2024/r27/307/870169/",
+      "purpose": "vstup.osvita.ua 2024 card for KNUTD bachelor 'Промислова фармація' (226), reported marked 'Відкрита (в т.ч. для іноземців)'; URL-to-snippet mapping not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "vstup.osvita.ua 2023 card (KNUTD, 226), reported 'Небюджетна (в т.ч. для іноземц",
+      "url": "https://vstup.osvita.ua/y2023/r27/307/1260429/",
+      "purpose": "vstup.osvita.ua 2023 card (KNUTD, 226), reported 'Небюджетна (в т.ч. для іноземців)'; 'Ступінь навчання: Бакалавр'; mapping to /1210563/ alternative not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admission rules ('2025 edition'): KNUTD admits foreigners and stateless persons;",
+      "url": "https://en.knutd.edu.ua/learning-opportunities/admissions/admissions_rules/",
+      "purpose": "Admission rules ('2025 edition'): KNUTD admits foreigners and stateless persons; may admit to preparatory programmes; enrolment via the Unified Interagency Information System for Foreigners; distance ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Preparatory department for foreigners: Ukrainian language + specialised courses;",
+      "url": "https://en.knutd.edu.ua/learning-opportunities/preparatory-department/",
+      "purpose": "Preparatory department for foreigners: Ukrainian language + specialised courses; 'tuition fee is 1000 USD'; enrolment 1 Oct-1 Dec; contact study@knutd.edu.ua; address 2 Mala Shyianovska Str., Kyiv",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Shows an 'international_knutd' section exists on the English site (partner infor",
+      "url": "https://en.knutd.edu.ua/international_knutd/ompd/info-partner/",
+      "purpose": "Shows an 'international_knutd' section exists on the English site (partner information page); landing page of the international office not identified",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "KNUTD news items (also /9976/, /13653/, /16292/ returned) carrying the FIP World",
+      "url": "https://en.knutd.edu.ua/events-and-publications/news/14502/",
+      "purpose": "KNUTD news items (also /9976/, /13653/, /16292/ returned) carrying the FIP World List of Pharmacy Schools claim and the 'most popular universities in the capital ... Bogomolets National Medical Univer",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "KNUTD news item; one of /19269/ or /11291/ is the 2025 welcome notice for postgr",
+      "url": "https://en.knutd.edu.ua/events-and-publications/news/19269/",
+      "purpose": "KNUTD news item; one of /19269/ or /11291/ is the 2025 welcome notice for postgraduate students naming rector Oleksandra Olshanska (mapping not confirmed)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 (reported). Search-result lead, not read in full."
+    },
+    {
+      "label": "WHED entry: transliteration 'Kiivs'kij Natsional'nij Universitet Tekhnologii ta ",
+      "url": "https://www.whed.net/institutions/IAU-010359",
+      "purpose": "WHED entry: transliteration 'Kiivs'kij Natsional'nij Universitet Tekhnologii ta Dyzainu (KNUTD)'; languages 'Ukrainian;Russian;English'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "'state-sponsored university in Kyiv'; founded 1930; ~10,000 students; faculties ",
+      "url": "https://en.wikipedia.org/wiki/Kyiv_National_University_of_Technologies_and_Design",
+      "purpose": "'state-sponsored university in Kyiv'; founded 1930; ~10,000 students; faculties incl. chemical and biopharmaceutical technologies; official website en.knutd.edu.ua; address Nemyrovycha-Danchenka St, 2",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (encyclopedia). Search-result lead, not read in full."
+    },
+    {
+      "label": "IAU record: founded 17 April 1930 as the Institute of Leather Industry; focus on",
+      "url": "https://www.iau-hesd.net/node/168",
+      "purpose": "IAU record: founded 17 April 1930 as the Institute of Leather Industry; focus on light and chemical industries, fashion, design, economics, law",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Granted national university status and current name in 2001",
+      "url": "https://www.encyclopediaofukraine.com/pages%5CK%5CY%5CKyivNationalUniversityofTechnologiesandDesign.htm",
+      "purpose": "Granted national university status and current name in 2001",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead found. Every lead places the university in Kyiv: Wikipedia/IAU give 'Nemyrovycha-Danchenka St, 2, Kyiv, 01011'; the KNUTD preparatory-department page gives '2 Mala Shyianovska Str.' (possibly the same street under a new name — unverified). Activity leads for 2024-2025: 2024 vstup.osvita.ua admission card; '2025 edition' admission rules on en.knutd.edu.ua; a 2025 welcome notice for postgraduate students naming rector Oleksandra Olshanska. No suspension, merger or licence-revocation lead surfaced in six searches (absence of a search hit is not evidence of status).",
+      "Red flag to resolve before any fact is shown: Group H profile: no medicine (222), dentistry (221) or nursing (223) programme lead in any search; the only health-related programmes are specialty 226 under the educational programme 'Промислова фармація' (Industrial Pharmacy), run from a Faculty of Chemical and Biopharmaceutical Technologies at a light-industry/design university. Whether this track leads to a pharmacist (провізор) qualification acceptable for professional registration abroad, rather than an industrial-technologist profile, is unverified and must not be implied.",
+      "Red flag to resolve before any fact is shown: No English-medium teaching lead for any programme; WHED lists 'Ukrainian;Russian;English' only at institution level. The 2024 vstup.osvita.ua 'Відкрита (в т.ч. для іноземців)' marker is a Ukrainian-track admission flag, not evidence of English-medium teaching.",
+      "Red flag to resolve before any fact is shown: Preparatory-department page snippet ('tuition fee is 1000 USD', enrolment 1 Oct-1 Dec, study@knutd.edu.ua) is undated; do not publish as a current fee.",
+      "Red flag to resolve before any fact is shown: Name-confusion risk: several Kyiv institutions share the 'Kyiv National University of ...' pattern (e.g. Construction and Architecture; Culture and Arts; Taras Shevchenko), and a Study in Ukraine portal hit returned for a KNUTD query was actually NUPH (/university/41). Portal URLs must be matched by title, not by query.",
+      "Red flag to resolve before any fact is shown: Minor inconsistencies across leads: two addresses (Nemyrovycha-Danchenka 2 vs Mala Shyianovska 2); Wikipedia's rector entry reportedly differs from a 2025 university notice naming Oleksandra Olshanska; enrolment figures differ between directories.",
+      "Red flag to resolve before any fact is shown: Industrial Pharmacy department page claims to be 'the only higher education institution in Kyiv' training at all levels under 'Industrial Pharmacy' — a self-description, not verified.",
+      "Red flag to resolve before any fact is shown: The FIP 'World List of Pharmacy Schools' and 'most popular with foreign students' claims come from KNUTD's own news items (self-reported; exact news URLs not matched).",
+      "Missing evidence: No official page was opened: names, domain, ownership and programmes are search-result leads only (official hosts blocked by network policy).",
+      "Missing evidence: EDEBO registry record (licence for specialty 226, licensed volume, levels) — not found.",
+      "Missing evidence: NAQA accreditation status/certificates for the 'Промислова фармація' bachelor, master and PhD programmes — not found.",
+      "Missing evidence: Whether the 'Промислова фармація' educational programme confers a pharmacist (провізор) qualification usable for professional registration, versus an industrial-pharmacy technologist profile — unverified.",
+      "Missing evidence: English-medium instruction for any 226 programme — no lead at all.",
+      "Missing evidence: Current (2026) admission rules for foreigners, 226 tuition fees, and the foreign-applicant application link — not found; 2025 rules and an undated 1000 USD preparatory fee are the latest leads.",
+      "Missing evidence: International office landing page and contact — only the admissions-rules and preparatory-department pages surfaced; the 'international_knutd' section's main page is unidentified.",
+      "Missing evidence: Confirmation that no nursing (223), medicine (222) or dentistry (221) programme exists — based on search absence only, not on the programme catalogue.",
+      "Missing evidence: Address reconciliation (Nemyrovycha-Danchenka 2 vs Mala Shyianovska 2) and current rector — conflicting/undated leads.",
+      "Missing evidence: vstup.osvita.ua URL-to-snippet mapping (which 2023 URL carries the bachelor card) — not confirmed.",
+      "Missing evidence: Exact official Ukrainian full name as in the statute (e.g. whether 'та' or 'і') — taken from Ukrainian-language snippets in genitive form, not from the statute.",
+      "Skeptic's note: Whether the 'Промислова фармація' (Industrial Pharmacy) programmes in specialty 226 confer a pharmacist qualification usable for professional registration, rather than an industrial-technologist profile, is unverified and must not be implied.",
+      "Skeptic's note: No English-medium teaching lead for any programme; the 2024 vstup.osvita.ua 'Відкрита (в т.ч. для іноземців)' marker is a Ukrainian-track admission flag only.",
+      "Skeptic's note: No EDEBO licence record or NAQA accreditation lead for the 226 bachelor, master or PhD programmes.",
+      "Skeptic's note: Admission information is 2025-edition rules plus an undated '1000 USD' preparatory-department fee; no 2026 rules, 226 tuition or dedicated international-office landing page found.",
+      "Skeptic's note: Minor inconsistencies: two addresses (Nemyrovycha-Danchenka 2 vs Mala Shyianovska 2), differing rector entries, differing enrolment figures; vstup.osvita.ua URL-to-snippet mapping for the 2023 card not confirmed.",
+      "Skeptic's note: Study in Ukraine portal match (university/99) rests on the result title; an earlier portal hit for a KNUTD query (university/41) was actually the National University of Pharmacy.",
+      "Name lead (unverified): Kiivs'kij Natsional'nij Universitet Tekhnologii ta Dyzainu (WHED transliteration, whed.net IAU-010359)",
+      "Name lead (unverified): Institute of Leather Industry (founding name per IAU record: founded 17 April 1930 'as the Institute of Leather Industry'; current name and national status reported granted in 2001 by Encyclopedia of Ukraine)",
+      "Name lead (unverified): 'Kiev' spelling appears only in a third-party directory URL (edarabia.com '...kiev-ukraine'), not in any official lead"
+    ]
+  }
+}

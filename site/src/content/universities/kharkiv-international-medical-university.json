@@ -1,0 +1,468 @@
+{
+  "slug": "kharkiv-international-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Private Institution of Higher Education \"Kharkiv International Medical University\" (LEAD: EDEBO registry / DEQAR record title as shown in search results; official English page not opened)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kharkiv International Medical University",
+  "alternativeNames": [
+    "KhIMU",
+    "KHIMU",
+    "ХММУ",
+    "ПВНЗ «ХММУ» (EDEBO short name lead)",
+    "Харківський міжнародний медичний університет"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kharkiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://khimu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://khimu.edu.ua/en/admissions/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical university (private) in Kharkiv (LEAD: EDEBO entry; aggregators osvita.ua / education.ua give the address as vul. Molochna 38, Kharkiv; no relocation report found), Ukraine, with leads for dentistry, medicine programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-general-medicine-english-medium-track-for-foreign-applicants",
+      "name": "Medicine (General Medicine), English-medium track for foreign applicants",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://khimu.edu.ua/en/admissions/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://khimu.edu.ua/en/admissions/."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://khimu.edu.ua/en/admissions/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "dentistry",
+      "name": "Dentistry (Стоматологія)",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.education.ua/universities/922/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "EDEBO state registry entry (search snippet): private HEI, short name ПВНЗ \"ХММУ\"",
+      "url": "https://registry.edbo.gov.ua/university/4054",
+      "purpose": "EDEBO state registry entry (search snippet): private HEI, short name ПВНЗ \"ХММУ\", founded 03.10.2017, website khimu.edu.ua - not opened",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated live registry; searched 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry Study in Ukraine portal listing of Kharkiv International Medical Univer",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/17/",
+      "purpose": "Ministry Study in Ukraine portal listing of Kharkiv International Medical University as a private institution (snippet only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official homepage (snippet): 'first private international medical university in ",
+      "url": "https://khimu.edu.ua/en/",
+      "purpose": "Official homepage (snippet): 'first private international medical university in Ukraine'; claims licensing by MoES and MoH and NAQA accreditation",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official admissions page (snippet): General Medicine in English for foreign appl",
+      "url": "https://khimu.edu.ua/en/admissions/",
+      "purpose": "Official admissions page (snippet): General Medicine in English for foreign applicants, 50% minimum in biology/physics/chemistry/English, no language certificate, autumn and winter intakes, Master's i",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official contacts page (snippet): foreign applicants directed to admission@khimu",
+      "url": "https://khimu.edu.ua/en/contacts/",
+      "purpose": "Official contacts page (snippet): foreign applicants directed to admission@khimu.edu.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official general-information page surfaced in search; content not read",
+      "url": "https://khimu.edu.ua/en/about-university/general-information/",
+      "purpose": "Official general-information page surfaced in search; content not read",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator card: Ukrainian title 'Приватний вищий навчальний заклад «Харківський",
+      "url": "https://www.education.ua/universities/922/",
+      "purpose": "Aggregator card: Ukrainian title 'Приватний вищий навчальний заклад «Харківський міжнародний медичний університет»', address vul. Molochna 38, 2026 intake notice for Стоматологія",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 intake notice; page undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admission information system card (EDEBO code 4054): 2025 entry requires NMT 202",
+      "url": "https://vstup.osvita.ua/r21/4054/",
+      "purpose": "Admission information system card (EDEBO code 4054): 2025 entry requires NMT 2022-2025; study 5y10m after 11th grade, 4y10m after medical college",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 admission cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator guide: founded 2017, private, rector Denys Shyian, address vul. Moloc",
+      "url": "https://osvita.ua/vnz/guide/37331/",
+      "purpose": "Aggregator guide: founded 2017, private, rector Denys Shyian, address vul. Molochna 38, Kharkiv",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "uniRank profile: private non-profit, founded 2017, 'officially recognized by the",
+      "url": "https://www.unirank.org/ua/uni/kharkiv-international-medical-university/",
+      "purpose": "uniRank profile: private non-profit, founded 2017, 'officially recognized by the Ministry of Health of Ukraine', international students welcome (aggregator claim)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "THE institutional profile exists (content not read)",
+      "url": "https://www.timeshighereducation.com/world-university-rankings/kharkiv-international-medical-university",
+      "purpose": "THE institutional profile exists (content not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA 2025 accreditation of Kharkiv Institute of Medicine and Biomedical Sciences",
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "purpose": "NAQA 2025 accreditation of Kharkiv Institute of Medicine and Biomedical Sciences - a DIFFERENT institution; recorded only to prevent misattribution",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "EDEBO entry of Kharkiv Institute of Medicine and Biomedical Sciences of Kyiv Med",
+      "url": "https://registry.edbo.gov.ua/university/3979",
+      "purpose": "EDEBO entry of Kharkiv Institute of Medicine and Biomedical Sciences of Kyiv Medical University - a DIFFERENT institution (name-confusion check)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Agent guide: repeats NMC/WHO claims but states NMC listing not verified and advi",
+      "url": "https://future-mbbs.com/blog/universities/mbbs-in-ukraine-kharkiv-international-medical-university/",
+      "purpose": "Agent guide: repeats NMC/WHO claims but states NMC listing not verified and advises checking conflict impact on operating/accreditation status",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "Agent marketing page advertising 2026-27 admission (not evidence)",
+      "url": "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/kharkiv-international-medical-university/",
+      "purpose": "Agent marketing page advertising 2026-27 admission (not evidence)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026-27 cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "News on return to offline teaching - concerns Kharkiv NATIONAL Medical Universit",
+      "url": "https://gwaramedia.com/harkivskij-meduniversitet-gotuietsya-do-perehodu-v-oflajn-navchannya/",
+      "purpose": "News on return to offline teaching - concerns Kharkiv NATIONAL Medical University, not KhIMU (exclusion note)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: older than one year per search summary. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Kharkiv (LEAD: EDEBO entry; aggregators osvita.ua / education.ua give the address as vul. Molochna 38, Kharkiv; no relocation report found)",
+      "Relocation lead (unverified): No relocation, suspension, merger or licence-revocation lead was found in English or Ukrainian searches for 2024-2026. Admission activity leads exist for 2025 (vstup.osvita.ua/r21/4054: NMT results 2022-2025 required) and 2026 (education.ua: 2026 intake notice for Dentistry; agent pages advertise 2026-27 intake). However Kharkiv is a frontline city and no snippet states the current teaching mode (online/offline) or physical base; the gwaramedia.com article about a Kharkiv medical university returning to offline teaching concerns Kharkiv NATIONAL Medical University, not KhIMU, and must not be attributed to this institution. Status therefore remains a lead, not a verified fact.",
+      "Red flag to resolve before any fact is shown: NAQA accreditation decision for KhIMU's own programmes not found in search (official site snippet claims NAQA accreditation and MoES/MoH licensing - unverified self-description); inventory flag 'accreditation found only to 2021' remains open",
+      "Red flag to resolve before any fact is shown: Name confusion with Kharkiv National Medical University (KhNMU, state, already listed): most results for 'Kharkiv International Medical University' returned KhNMU pages and the summariser mixed the two",
+      "Red flag to resolve before any fact is shown: Name confusion with 'Kharkiv Institute of Medicine and Biomedical Sciences' (private, a unit of Kyiv Medical University, EDEBO 3979): its NAQA accreditations surfaced in searches for KhIMU and could be misattributed",
+      "Red flag to resolve before any fact is shown: Education-agent pages (rmcedu.com, selectyouruniversity.com, ruseducation.in, future-mbbs.com) advertise 'NMC and WHO recognised'; one 2026 agent guide itself says the NMC listing was not verified and notes WHO does not approve medical schools - do not reuse these recognition claims",
+      "Red flag to resolve before any fact is shown: Young (founded 03.10.2017), private institution; uniRank states 'officially recognized by the Ministry of Health of Ukraine' - aggregator claim, not a licence record",
+      "Red flag to resolve before any fact is shown: Kharkiv is a frontline city; current teaching mode and physical base in 2025/26 not shown by any snippet",
+      "Red flag to resolve before any fact is shown: SEMrush exact-match demand for the name is only 10/month (IN), so the page has weak independent organic justification",
+      "Missing evidence: EDEBO licence record (licensed specialities 222 Medicine, 221 Dentistry; licence volumes) - registry page not opened",
+      "Missing evidence: NAQA accreditation certificate(s) for KhIMU's Medicine and Dentistry programmes - none found in search; the site's own NAQA claim is unverified",
+      "Missing evidence: Full official programme list with levels; Pharmacy and Nursing: NOT FOUND in any snippet",
+      "Missing evidence: Whether Dentistry admits foreign applicants and whether it is taught in English - not shown",
+      "Missing evidence: Current (2025/26) teaching mode and physical base in frontline Kharkiv",
+      "Missing evidence: Official tuition fees - not found (agent figures must not be used)",
+      "Missing evidence: Contents of the Study in Ukraine portal record (university/17) - confirm it is KhIMU and which programmes it lists",
+      "Missing evidence: DEQAR/EQAR record contents referenced in the inventory - not opened",
+      "Missing evidence: Official confirmation of the address (vul. Molochna 38) and rector (Denys Shyian) - aggregator leads only",
+      "Missing evidence: WDOMS listing (claimed by agents) - not checked",
+      "Missing evidence: Legal identity details (EDRPOU code, founder) - not found",
+      "Skeptic's note: Open (not a bar): NAQA accreditation decision for its own Medicine/Dentistry programmes not found; the site's NAQA/MoES/MoH claims are self-description.",
+      "Skeptic's note: Open (not a bar): EDEBO licence record (registry.edbo.gov.ua/university/4054) not opened; licence volumes and the Study in Ukraine portal record (university/17) unconfirmed.",
+      "Skeptic's note: Open (not a bar): Kharkiv is a frontline city; current teaching mode and physical base in 2025/26 not shown by any snippet.",
+      "Skeptic's note: Name-confusion risk to manage in copy: Kharkiv National Medical University (state, listed) and the Kyiv Medical University unit at khim.edu.ua (candidate kharkiv-institute-of-medicine-and-biomedical-sciences); search results for KhIMU mostly return KhNMU pages.",
+      "Skeptic's note: Agent recognition claims (NMC/WHO) must not be reused; Pharmacy/Nursing not found.",
+      "Name lead (unverified): Private Institution of Higher Education \"Kharkiv International Medical University\" (LEAD: EDEBO registry / DEQAR record title as shown in search results; official English page not opened)",
+      "Name lead (unverified): Приватний вищий навчальний заклад «Харківський міжнародний медичний університет» (LEAD: EDEBO registry title, registry.edbo.gov.ua/university/4054; short form ПВНЗ «ХММУ»)",
+      "Name lead (unverified): Private HEI Kharkiv International Medical University (EQAR/DEQAR record title per inventory)"
+    ]
+  }
+}

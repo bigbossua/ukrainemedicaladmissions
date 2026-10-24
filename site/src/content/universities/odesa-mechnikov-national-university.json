@@ -1,0 +1,513 @@
+{
+  "slug": "odesa-mechnikov-national-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Odesa I. I. Mechnikov National University (the university's own English pages spell it \"Odessa I.I. Mechnikov National University\")",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Odesa I. I. Mechnikov National University",
+  "alternativeNames": [
+    "Одеський національний університет імені І. І. Мечникова",
+    "ONU",
+    "ОНУ",
+    "ОНУ імені Мечникова",
+    "Odesa National University",
+    "Odessa National University",
+    "Odesa University",
+    "Odessa I.I. Mechnikov National University",
+    "Odessa I.I. Mechnykov National University",
+    "Odesa I. I. Mechnykov National University",
+    "Mechnikov University",
+    "Одесский национальный университет имени И. И. Мечникова"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Odesa",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://onu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://imo.onu.edu.ua/en/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Odesa, Ukraine, with leads for pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "educational-programme-30292-specialty-226-qualification-faculty-of-chemistry-and-pharmacy-yelisavetynska-st-14-odesa",
+      "name": "Фармація (educational programme 30292) — specialty 226 Фармація, промислова фармація; qualification Фармацевт; Faculty of Chemistry and Pharmacy, Yelisavetynska St. 14, Odesa",
+      "field": "pharmacy",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://onu.edu.ua/pub/bank/userfiles/files/accredit/akredit_OP/magistr/vidomosti_pro_samootsinyuvannya__30292.pdf ; https://mon.gov.ua/static-objects/mon/sites/1/05.%2001.%202021/VO%202021/10/22/Odes.nats.un.Mechnykova.01.13.10.pdf ; https://vstup.osvita.ua/y2024/r16/28/618835/ ; https://chempharm.onu.edu.ua/storage/files/Specialnosti_OPP_doc/OPP_proekti/2026_proekt_OPP_I8_farmaciya_mag_.pdf ; https://imo.onu.edu.ua/en/faculties-and-specialties."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://onu.edu.ua/pub/bank/userfiles/files/accredit/akredit_OP/magistr/vidomosti_pro_samootsinyuvannya__30292.pdf ; https://mon.gov.ua/static-objects/mon/sites/1/05.%2001.%202021/VO%202021/10/22/Odes.nats.un.Mechnykova.01.13.10.pdf ; https://vstup.osvita.ua/y2024/r16/28/618835/ ; https://chempharm.onu.edu.ua/storage/files/Specialnosti_OPP_doc/OPP_proekti/2026_proekt_OPP_I8_farmaciya_mag_.pdf ; https://imo.onu.edu.ua/en/faculties-and-specialties."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmaceutical-chemistry-educational-programme-within-specialty-102-chemistry-bachelor-of-chemistry-with-pharmaceutical-chemistry-specialisation-not-a-pharmacist-qualification",
+      "name": "Pharmaceutical chemistry (Фармацевтична хімія) — educational programme within specialty 102 Chemistry; Bachelor of Chemistry with pharmaceutical chemistry specialisation (not a pharmacist qualification)",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://onu.edu.ua/en/structure/faculty/chem ; https://chempharm.onu.edu.ua/en/department-en/department-of-general-and-clinical-pharmacy ; https://imo.onu.edu.ua/en/faculties-and-specialties."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://onu.edu.ua/en/structure/faculty/chem ; https://chempharm.onu.edu.ua/en/department-en/department-of-general-and-clinical-pharmacy ; https://imo.onu.edu.ua/en/faculties-and-specialties."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Official faculty page: Faculty of Chemistry and Pharmacy; Bachelor specialty 102",
+      "url": "https://onu.edu.ua/en/structure/faculty/chem",
+      "purpose": "Official faculty page: Faculty of Chemistry and Pharmacy; Bachelor specialty 102 Chemistry, programme Pharmaceutical chemistry, 3 y 10 m, full-time and part-time",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Faculty site: address Elizavetinska St. 14, Odesa; phone (048) 723-82-64; dean V",
+      "url": "https://chempharm.onu.edu.ua/en/",
+      "purpose": "Faculty site: address Elizavetinska St. 14, Odesa; phone (048) 723-82-64; dean Vasyl Menchuk",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Department of General and Clinical Pharmacy; pharmaceutical chemistry training s",
+      "url": "https://chempharm.onu.edu.ua/en/department-en/department-of-general-and-clinical-pharmacy",
+      "purpose": "Department of General and Clinical Pharmacy; pharmaceutical chemistry training since 1993",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "International Education Centre list: faculty specialties 'Chemistry, Pharmacy, P",
+      "url": "https://imo.onu.edu.ua/en/faculties-and-specialties",
+      "purpose": "International Education Centre list: faculty specialties 'Chemistry, Pharmacy, Pharmaceutical Chemistry'; '12 faculties'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Self-assessment of OP 30292 Фармація, Master, specialty 226, qualification Фарма",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/accredit/akredit_OP/magistr/vidomosti_pro_samootsinyuvannya__30292.pdf",
+      "purpose": "Self-assessment of OP 30292 Фармація, Master, specialty 226, qualification Фармацевт, Yelisavetynska 14 Odesa",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Expert-group accreditation report for 226 Pharmacy Master (outcome not shown)",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/accredit/akredit_OP/magistr/zvit_EG_226_farmacia_magistr.pdf",
+      "purpose": "Expert-group accreditation report for 226 Pharmacy Master (outcome not shown)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licensing record for ONU incl. 226 Фармація, промислова фармація (master); l",
+      "url": "https://mon.gov.ua/static-objects/mon/sites/1/05.%2001.%202021/VO%202021/10/22/Odes.nats.un.Mechnykova.01.13.10.pdf",
+      "purpose": "MON licensing record for ONU incl. 226 Фармація, промислова фармація (master); licence order 12.04.2021 No. 42-л",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021 (per path). Search-result lead, not read in full."
+    },
+    {
+      "label": "2024 admissions listing: Фармація, Faculty of Chemistry and Pharmacy, full-time,",
+      "url": "https://vstup.osvita.ua/y2024/r16/28/618835/",
+      "purpose": "2024 admissions listing: Фармація, Faculty of Chemistry and Pharmacy, full-time, year 1, complete secondary education",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "2026 draft educational-professional programme, Pharmacy Master, based on MON sta",
+      "url": "https://chempharm.onu.edu.ua/storage/files/Specialnosti_OPP_doc/OPP_proekti/2026_proekt_OPP_I8_farmaciya_mag_.pdf",
+      "purpose": "2026 draft educational-professional programme, Pharmacy Master, based on MON standard order 04.11.2022 No. 981",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "Rules of admission for foreigners; restricted-nationality permit rule; 2025–2026",
+      "url": "https://imo.onu.edu.ua/en/rules-of-admission",
+      "purpose": "Rules of admission for foreigners; restricted-nationality permit rule; 2025–2026 timetable (1 Jul–24 Oct 2025; contract enrolment to 28 Feb 2026)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Invitation to study via apply.studyinukraine.gov.ua (UES); language preparation ",
+      "url": "https://imo.onu.edu.ua/en/invitation-to-studies",
+      "purpose": "Invitation to study via apply.studyinukraine.gov.ua (UES); language preparation listed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "International Education Centre: programmes in English at bachelor, master, PhD, ",
+      "url": "https://imo.onu.edu.ua/en/degree-studies",
+      "purpose": "International Education Centre: programmes in English at bachelor, master, PhD, DSc (fields not named); contact interstud@onu.edu.ua, +38-048-723-84-77",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "'48 specialties in 3 institutes and 10 faculties'",
+      "url": "https://imo.onu.edu.ua/en/about-onu",
+      "purpose": "'48 specialties in 3 institutes and 10 faculties'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Encyclopaedic: 'one of Ukraine's major state-sponsored universities, founded in ",
+      "url": "https://en.wikipedia.org/wiki/Odesa_University",
+      "purpose": "Encyclopaedic: 'one of Ukraine's major state-sponsored universities, founded in 1865', named after Mechnikov; spelling 'Odesa I. I. Mechnykov National University'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (encyclopaedia). Search-result lead, not read in full."
+    },
+    {
+      "label": "News: MON says Odesa Law Academy to be merged into ONU; gradual transition durin",
+      "url": "https://lb.ua/society/2025/02/13/660463_odesku_yuridichnu_akademiyu_yaku.html",
+      "purpose": "News: MON says Odesa Law Academy to be merged into ONU; gradual transition during 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-02-13. Search-result lead, not read in full."
+    },
+    {
+      "label": "News: government reorganised National University 'Odesa Law Academy' (attachment",
+      "url": "https://osvita.ua/vnz/reform/94075/",
+      "purpose": "News: government reorganised National University 'Odesa Law Academy' (attachment to ONU); reorganisation commission headed by ONU rector",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "News: Cabinet merged the two Odesa institutions",
+      "url": "https://life.pravda.com.ua/society/ukrupnennya-vishiv-uryad-ob-yednav-dva-odeski-universiteti-kivalov-vtratit-posadu-306413/",
+      "purpose": "News: Cabinet merged the two Odesa institutions",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "ONU order 23.12.2025 on organising rector elections, citing MON order 17.12.2025",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/vybory-rectora-2026/nakaz-110-02-vid-23-12-2025pro-organizatsiyu-vyboriv-rektora-onu.pdf",
+      "purpose": "ONU order 23.12.2025 on organising rector elections, citing MON order 17.12.2025 No. 491-К-25",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-12-23. Search-result lead, not read in full."
+    },
+    {
+      "label": "Candidate programme: V. I. Truba, rector 2021–2026, chair of reorganisation comm",
+      "url": "https://onu.edu.ua/pub/bank/userfiles/files/vybory-rectora-2026/programa-kandydata-truba-vi.pdf",
+      "purpose": "Candidate programme: V. I. Truba, rector 2021–2026, chair of reorganisation commissions",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "Licence excerpt for ONU vocational college (Фаховий коледж ОНУ); MON orders 07.0",
+      "url": "https://vstup.onu.edu.ua/storage/files/vstupna_kompaniya/fahovyi_koledg/vytyag-z-litsenzii-fk-onu-12-04-2025.pdf",
+      "purpose": "Licence excerpt for ONU vocational college (Фаховий коледж ОНУ); MON orders 07.04.2023 No. 116-л and 09.04.2025 No. 30-л; specialties not shown",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-04-12. Search-result lead, not read in full."
+    },
+    {
+      "label": "Odesa National Medical University admissions listing — separate institution (nam",
+      "url": "https://vstup.osvita.ua/y2022/r16/188/",
+      "purpose": "Odesa National Medical University admissions listing — separate institution (name-confusion check)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party research profile giving bilingual name 'Odesa I. I. Mechnikov Nation",
+      "url": "https://cris.fau.de/organisations/ext/137353806",
+      "purpose": "Third-party research profile giving bilingual name 'Odesa I. I. Mechnikov National University / Одеський національний університет імені І. І. Мечникова'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead: all leads place the university in Odesa (faculty address Yelisavetynska/Elizavetinska St. 14, Odesa; phone (048) 723-82-64). Structural-change leads instead: (1) 13 Feb 2025 — Cabinet of Ministers decided to attach the National University \"Odesa Law Academy\" TO ONU (ONU is the absorbing institution; \"Перехід відбуватиметься поступово впродовж 2025 року\"; reorganisation commission headed by the ONU rector) — lb.ua / osvita.ua / life.pravda.com.ua, Feb 2025; completion not found. (2) MON order 17.12.2025 No. 491-К-25 announced a competition for the post of rector; ONU internal order 23.12.2025 No. 110-02 organised the election; incumbent Vyacheslav Truba (rector 2021–2026) is a candidate; outcome not found.",
+      "Red flag to resolve before any fact is shown: Name confusion: 'Odesa National University' / ONU is a classical university and is NOT Odesa National Medical University (ONMedU, MOH-subordinated, already listed as odesa-national-medical-university). Search for 222 Medicine / 221 Dentistry / 223 Nursing at ONU returned only ONMedU and the communal 'Одеський обласний базовий медичний фаховий коледж' — no medicine, dentistry or nursing programme lead at ONU.",
+      "Red flag to resolve before any fact is shown: Programme confusion: the Bachelor 'Pharmaceutical chemistry' is a Chemistry (102) degree, not a pharmacist qualification; only the Master 226 'Фармація' leads to the qualification 'Фармацевт'. The faculty page and the international office page describe the offer inconsistently (faculty page shows 102 Pharmaceutical chemistry; international office lists 'Chemistry, Pharmacy, Pharmaceutical Chemistry').",
+      "Red flag to resolve before any fact is shown: Sub-unit confusion: ONU runs a vocational college (Фаховий коледж ОНУ) with its own MON licence (orders 07.04.2023 No. 116-л; 09.04.2025 No. 30-л); its specialties were not visible — do not attribute any college programme to the university.",
+      "Red flag to resolve before any fact is shown: Governance in flux: absorption of the National University 'Odesa Law Academy' into ONU (Cabinet decision Feb 2025, gradual transition during 2025; completion not found) and an open rector competition (MON order 17.12.2025 No. 491-К-25; result not found).",
+      "Red flag to resolve before any fact is shown: Admissions information found is outdated: the foreign-applicant timetable covers 2025–2026 ('applications from July 1 to October 24, 2025 and contract-form enrolment running to February 28, 2026'); no 2026–2027 rules found.",
+      "Red flag to resolve before any fact is shown: Restricted-nationality rule in the admission rules: citizens of the Russian Federation, Iran, Belarus and DPRK without a Ukrainian permanent residence permit need an individual MON permit.",
+      "Red flag to resolve before any fact is shown: Unreliable third-party data: ProZ translator-association pages state 'Fully accredited' and a fee of '$1100' — user-submitted, not to be used.",
+      "Red flag to resolve before any fact is shown: No English-medium lead for pharmacy; the International Education Centre says English programmes exist at bachelor/master/PhD/DSc level but the results do not name pharmacy among them.",
+      "Red flag to resolve before any fact is shown: No EDEBO or NAQA registry hit; accreditation status of OP 30292 (226 Master) rests only on ONU-hosted self-assessment and expert-group files whose outcome is not visible.",
+      "Missing evidence: No official page was read (onu.edu.ua, imo.onu.edu.ua, chempharm.onu.edu.ua, vstup.onu.edu.ua, mon.gov.ua blocked by network policy); every item above is a search-result lead.",
+      "Missing evidence: EDEBO registry entry for ONU and the current licensed volume for 226 Pharmacy (Master).",
+      "Missing evidence: NAQA accreditation decision, certificate number and validity dates for OP 30292 Фармація (226 Master) — only ONU-hosted self-assessment and expert-group files were found, outcome not visible.",
+      "Missing evidence: Whether 226 Pharmacy (Master) is open to foreign applicants in 2026–2027, the language of instruction, and any English-medium option (none found).",
+      "Missing evidence: 2026–2027 admission rules and timetable for foreigners (only the 2025–2026 cycle was found).",
+      "Missing evidence: Tuition for foreign applicants (only a 39,548 UAH/year domestic non-budget figure of unstated year and an unreliable $1100 third-party figure were found).",
+      "Missing evidence: Completion status of the Odesa Law Academy absorption and the result of the 2026 rector competition.",
+      "Missing evidence: Positive confirmation that ONU has no 222 Medicine, 221 Dentistry or 223 Nursing programme (absence is 'not found', not proven).",
+      "Missing evidence: Which specialties the ONU vocational college licence covers (to rule out a college-level nursing programme being misattributed).",
+      "Missing evidence: Registered official English name spelling (university pages use 'Odessa I.I. Mechnikov', others 'Odesa I. I. Mechnikov/Mechnykov').",
+      "Skeptic's note: Accreditation outcome of educational programme 30292 Фармація (226, Master) not shown: only ONU-hosted self-assessment and expert-group files; no NAQA or EDEBO register hit.",
+      "Skeptic's note: No lead that 226 Pharmacy admits foreign applicants in 2026-2027 or is taught in English; the International Education Centre's English-programme statement does not name pharmacy.",
+      "Skeptic's note: Only 2025-2026 foreign-applicant rules found (applications 1 Jul-24 Oct 2025); 2026-2027 rules not found.",
+      "Skeptic's note: Governance in flux: Cabinet decision (Feb 2025) attaching the National University 'Odesa Law Academy' to ONU, completion not found; rector competition announced by MON order 17.12.2025 No. 491-К-25, result not found.",
+      "Skeptic's note: The bachelor 'Pharmaceutical chemistry' is a 102 Chemistry degree, not a pharmacy qualification, and must not be shown as pharmacy. ONU's vocational college holds its own licence with specialties unknown; nothing from it may be attributed to the university.",
+      "Skeptic's note: Third-party 'Fully accredited' and '$1100' fee (ProZ) are user-submitted and unusable; the 39,548 UAH figure is domestic and undated.",
+      "Name lead (unverified): Odesa I. I. Mechnikov National University (the university's own English pages spell it \"Odessa I.I. Mechnikov National University\")",
+      "Name lead (unverified): Odessa State University (pre-2000 name, lead only)"
+    ]
+  }
+}

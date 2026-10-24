@@ -1,0 +1,716 @@
+{
+  "slug": "lviv-medical-institute",
+  "synthetic": false,
+  "officialName": {
+    "value": "Higher Private Educational Institution \"Lviv Medical University\" (working translation of the Ukrainian legal name; no official English form found in search results)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Lviv Medical University (private)",
+  "alternativeNames": [
+    "LMU (private Lviv)",
+    "ЛМУ",
+    "Львівський медичний університет (ЛМУ), ВПНЗ (education.ua title form)",
+    "ВПНЗ «Львівський медичний університет»",
+    "Вищий приватний навчальний заклад «Львівський медичний університет»"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Lviv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Official domain unsettled; confirm against the EDEBO register before linking."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical university (private) in Lviv, Ukraine, with leads for dentistry, medicine, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "medicine",
+      "name": "Медицина (Medicine)",
+      "field": "medicine",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Стоматологія (Dentistry)",
+      "field": "dentistry",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.education.ua/universities/324/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy",
+      "name": "Фармація (Pharmacy)",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "medical-psychology",
+      "name": "Медична психологія (Medical Psychology)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "therapy-and-rehabilitation",
+      "name": "Терапія та реабілітація (Therapy and Rehabilitation)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "osvita.ua guide entry for ВПНЗ «Львівський медичний університет»: training direc",
+      "url": "https://osvita.ua/vnz/guide/330/",
+      "purpose": "osvita.ua guide entry for ВПНЗ «Львівський медичний університет»: training directions Фармація, Терапія та реабілітація, Медицина, Медична психологія, Стоматологія; page shown as updated 14.07.2026",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026-07-14 (as marked on the aggregator page). Search-result lead, not read in full."
+    },
+    {
+      "label": "education.ua profile 'Львівський медичний університет (ЛМУ), ВПНЗ' / Russian for",
+      "url": "https://www.education.ua/universities/324/",
+      "purpose": "education.ua profile 'Львівський медичний університет (ЛМУ), ВПНЗ' / Russian form 'Высшее частное учебное заведение «Львовский медицинский университет»'; 651 students, 107 teaching staff; EDEBO-derive",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated page showing the 2026 admission campaign. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party directory 'Lviv Medical Institute': described as established in 2004",
+      "url": "https://www.uni2study.com/universities/ukraine/lviv-medical-institute",
+      "purpose": "Third-party directory 'Lviv Medical Institute': described as established in 2004, private, Lviv; little programme detail; page itself advises cross-checking with the official website",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Encyclopedia of Modern Ukraine PDF mentioning a private 'Львівський медичний уні",
+      "url": "https://esu.com.ua/pdf/file/891342.pdf",
+      "purpose": "Encyclopedia of Modern Ukraine PDF mentioning a private 'Львівський медичний університет' where physician Mar'yana Regeda worked — confirms a private LMU exists, nothing on founding date or rector",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Suspilne article on foreign students in Lviv during the war: '10 іноземних студе",
+      "url": "https://suspilne.media/592639-a-obrav-zalisitisa-v-ukraini-ak-studenti-inozemci-navcautsa-u-lvovi-popri-vijnu/",
+      "purpose": "Suspilne article on foreign students in Lviv during the war: '10 іноземних студентів' enrolled in first year of 'Львівського медуніверситету', intake to 15 December, USD 5,000/year for foreigners, Pol",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA document that surfaced for the name query but concerns the state Danylo Hal",
+      "url": "https://naqa.gov.ua/wp-content/uploads/2019/10/035.pdf",
+      "purpose": "NAQA document that surfaced for the name query but concerns the state Danylo Halytsky LNMU (national status by Decree 872/2003) — evidence of name-confusion risk, not of this institution",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2019-10. Search-result lead, not read in full."
+    },
+    {
+      "label": "Study in Ukraine portal programme list URL surfaced in results; snippet did not ",
+      "url": "https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22",
+      "purpose": "Study in Ukraine portal programme list URL surfaced in results; snippet did not show this institution — listing not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead. All leads place the institution in Lviv; education.ua shows an EDEBO-derived admission offer for the 2026 intake (applications 19 July – 1 August 2026) and osvita.ua marks its page as updated 14.07.2026, which together suggest current operation. Nursing programme: not found.",
+      "Red flag to resolve before any fact is shown: Official website/domain not surfaced in six searches; every lead is an aggregator (osvita.ua, education.ua, uni2study) or an encyclopaedia mention — unusual for an operating HEI and the official domain remains unsettled.",
+      "Red flag to resolve before any fact is shown: Severe name confusion with the listed state institution Danylo Halytsky Lviv National Medical University (ЛНМУ), which English-language agents also call 'Lviv Medical University' and whose own history begins as 'Львівський державний медичний інститут' (1939); most results for 'Lviv Medical University/Institute' refer to the state university, so any fee, English-medium or recognition claim found under that name must not be attributed to the private ВПНЗ.",
+      "Red flag to resolve before any fact is shown: Rename from 'Львівський медичний інститут' to 'Львівський медичний університет' and licence/legal-form continuity: no lead found (only uni2study lists 'Lviv Medical Institute, private, established 2004'); founding year, founder and rector unconfirmed.",
+      "Red flag to resolve before any fact is shown: No lead shows admission of foreign applicants or English-medium teaching at this institution. A Suspilne article (https://suspilne.media/592639-...) says 'на перший курс Львівського медуніверситету зарахували 10 іноземних студентів ... п'ять тисяч доларів на рік', but the snippet does not identify which Lviv medical university and the article is undated — cannot be attributed.",
+      "Red flag to resolve before any fact is shown: Programme levels, licence volumes and accreditation status for Medicine, Dentistry and Pharmacy are not shown in any lead; only field names and one EDEBO-derived 2026 dentistry offer (contract places only, no state-funded places) are visible.",
+      "Missing evidence: Official website and domain (no host surfaced; none could be opened from this environment).",
+      "Missing evidence: Official English name as used by the institution itself.",
+      "Missing evidence: EDEBO registry entry: institution ID, legal form, licensed specialties (222 Medicine, 221 Dentistry, 226 Pharmacy) and licence volumes.",
+      "Missing evidence: MES licence register entry and NAQA accreditation decisions/certificates per programme.",
+      "Missing evidence: Documentary evidence of the rename 'Львівський медичний інститут' → 'Львівський медичний університет' (date, founder decision, MES order) and legal-form continuity.",
+      "Missing evidence: Founding year (2004 appears only on uni2study), founder and current rector.",
+      "Missing evidence: Degree level (Master/Bachelor) of each programme; whether Medicine and Pharmacy have current 2026 intakes (only Dentistry seen on education.ua).",
+      "Missing evidence: Any page or policy on admission of foreign applicants, language of instruction (English-medium not evidenced), tuition for foreigners and the international office contact.",
+      "Missing evidence: Whether the Suspilne '10 foreign students' report refers to this institution or to the state LNMU.",
+      "Missing evidence: Study in Ukraine (studyinukraine.gov.ua) portal listing.",
+      "Missing evidence: Nursing programme: not found in any lead.",
+      "Skeptic's note: Official website/domain not surfaced in any of the researcher's six searches or mine — unusual for an operating HEI; officialDomain stays empty. The planned EDRPOU follow-up (opendatabot record 46005015 returned for the name query, name on record not shown) did not run.",
+      "Skeptic's note: Rename lead undocumented: slug and uni2study use 'Lviv Medical Institute' (private, est. 2004) while every current Ukrainian lead uses 'Вищий приватний навчальний заклад «Львівський медичний університет»'; no founder decision or MES order found and legal-form continuity unconfirmed.",
+      "Skeptic's note: No lead for foreign-applicant admission or English-medium teaching; a Suspilne article about 10 foreign first-years at 'Львівський медуніверситет' does not identify which Lviv institution.",
+      "Skeptic's note: Programme levels, licence volumes and accreditation unknown; only the 2026 Dentistry offer (90 contract places) is EDEBO-derived; Medicine and Pharmacy appear only in the osvita.ua programme list.",
+      "Skeptic's note: Severe name confusion with the listed state Danylo Halytsky Lviv National Medical University, which English-language agents also call 'Lviv Medical University'.",
+      "Name lead (unverified): Higher Private Educational Institution \"Lviv Medical University\" (working translation of the Ukrainian legal name; no official English form found in search results)",
+      "Name lead (unverified): Вищий приватний навчальний заклад «Львівський медичний університет» (search snippets show the abbreviated form ВПНЗ «Львівський медичний університет»; the expansion matches education.ua's Russian rendering «Высшее частное учебное заведение „Львовский медицинский университет“»)",
+      "Name lead (unverified): Lviv Medical Institute (former/directory name; uni2study lists 'Lviv Medical Institute', private, established 2004 — lead only)",
+      "Name lead (unverified): Львівський медичний інститут (former name per inventory; rename not confirmed by any lead)",
+      "Name lead (unverified): Высшее частное учебное заведение «Львовский медицинский университет» (Russian form on education.ua)"
+    ]
+  }
+}

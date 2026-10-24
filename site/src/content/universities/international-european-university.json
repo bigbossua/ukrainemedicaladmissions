@@ -1,0 +1,499 @@
+{
+  "slug": "international-european-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Private Higher Education Institution \"International European University\" (lead only: inventory records this as the EDEBO English name per tool paraphrase; the IEU site uses \"International European University\"; no official page opened)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "International European University",
+  "alternativeNames": [
+    "IEU"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kyiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://ieu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://ieu.edu.ua/for-foreign-students/about-university"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (private) in Kyiv (lead: search summary of ieu.edu.ua/for-foreign-students/about-university gives \"42B Akademika Hlushkova avenue, Kyiv\"; vstup.osvita.ua 2025 lists the institution in Kyiv with programme dates 01.10.2025–01.07.2030, i.e. no relocation shown), Ukraine, with leads for medicine programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-222-educational-scientific-institute-european-medical-school",
+      "name": "Medicine (222 Медицина), Educational-Scientific Institute \"European Medical School\"",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://en.naqa.gov.ua/?p=4543 ; https://ieu.edu.ua/en/about-ieu/news/international-european-university-received-national-accreditation-of-the-medicine-educational-and-professional-program ; https://vstup.osvita.ua/y2025/r27/4374/1451007/ ; https://ieu.edu.ua/for-foreign-students/about-university."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://en.naqa.gov.ua/?p=4543 ; https://ieu.edu.ua/en/about-ieu/news/international-european-university-received-national-accreditation-of-the-medicine-educational-and-professional-program ; https://vstup.osvita.ua/y2025/r27/4374/1451007/ ; https://ieu.edu.ua/for-foreign-students/about-university."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://en.naqa.gov.ua/?p=4543 ; https://ieu.edu.ua/en/about-ieu/news/international-european-university-received-national-accreditation-of-the-medicine-educational-and-professional-program ; https://vstup.osvita.ua/y2025/r27/4374/1451007/ ; https://ieu.edu.ua/for-foreign-students/about-university."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "healthcare-degree-programmes-field-and-specialty-code-not-stated-in-any-snippet",
+      "name": "Healthcare degree programmes (field and specialty code not stated in any snippet)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "NAQA page: IEU Medicine 222 master's accredited (ZEvA criteria) until 30 Sep 203",
+      "url": "https://en.naqa.gov.ua/?p=4543",
+      "purpose": "NAQA page: IEU Medicine 222 master's accredited (ZEvA criteria) until 30 Sep 2031; 28 May 2025 board update adding certificates to EDEBO (per search summary, page not opened)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 (28 May 2025 update mentioned). Search-result lead, not read in full."
+    },
+    {
+      "label": "IEU news: passed national accreditation for 222 Medicine, second (Master) level,",
+      "url": "https://ieu.edu.ua/en/about-ieu/news/international-european-university-received-national-accreditation-of-the-medicine-educational-and-professional-program",
+      "purpose": "IEU news: passed national accreditation for 222 Medicine, second (Master) level, in 2023",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023 (per snippet; exact date not shown). Search-result lead, not read in full."
+    },
+    {
+      "label": "Admissions portal institution page: 'Тип НЗ: Університет, Підпорядкування: Без п",
+      "url": "https://vstup.osvita.ua/y2025/r27/4374/",
+      "purpose": "Admissions portal institution page: 'Тип НЗ: Університет, Підпорядкування: Без підпорядкування', Kyiv; licensed bachelor intake shown, no medical data on this page",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 admissions campaign. Search-result lead, not read in full."
+    },
+    {
+      "label": "Programme card: European Medical School, Medicine, Master, entry basis junior sp",
+      "url": "https://vstup.osvita.ua/y2025/r27/4374/1451007/",
+      "purpose": "Programme card: European Medical School, Medicine, Master, entry basis junior specialist, full-time, UAH 43,000/year contract, term 01.10.2025–01.07.2030",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Second Medicine master's programme card (same institute)",
+      "url": "https://vstup.osvita.ua/y2025/r27/4374/1515334/",
+      "purpose": "Second Medicine master's programme card (same institute)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "IEU foreign-students page: languages of instruction English/Ukrainian/Russian, c",
+      "url": "https://ieu.edu.ua/for-foreign-students/about-university",
+      "purpose": "IEU foreign-students page: languages of instruction English/Ukrainian/Russian, clinical departments in Kyiv hospitals, address 42B Akademika Hlushkova avenue, Kyiv, foreign students department phone (",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "IEU concept of educational activity for 222 Medicine master's, 'ЗАТВЕРДЖЕНО Вчен",
+      "url": "https://www.ieu.edu.ua/docs/concepcia_1.pdf",
+      "purpose": "IEU concept of educational activity for 222 Medicine master's, 'ЗАТВЕРДЖЕНО Вченою радою ... від 18 січня 2024 року (протокол № 1)' — internal document",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 18 Jan 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "IEU strategy PDF on international subdomain (content not read)",
+      "url": "https://international.ieu.edu.ua/wp-content/uploads/2023/08/Strategy.pdf",
+      "purpose": "IEU strategy PDF on international subdomain (content not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: Aug 2023 (from URL path). Search-result lead, not read in full."
+    },
+    {
+      "label": "European Medical School department page on medicine.ieu.edu.ua (confirms subdoma",
+      "url": "https://medicine.ieu.edu.ua/department-of-internal-medicine-with-a-course-in-obstetrics-and-gynecology",
+      "purpose": "European Medical School department page on medicine.ieu.edu.ua (confirms subdomain exists)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory entry: HQ Kyiv, 'operational campus in Malta', programmes in medicine,",
+      "url": "https://www.gala-global.org/organization/international-european-university",
+      "purpose": "Directory entry: HQ Kyiv, 'operational campus in Malta', programmes in medicine, healthcare, engineering, business, law, IT, etc.",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Interfax press conference: '850 foreign students from more than 40 countries' (a",
+      "url": "https://interfax.com.ua/news/press-conference/755068.html",
+      "purpose": "Interfax press conference: '850 foreign students from more than 40 countries' (also en.interfax.com.ua/news/press-conference/755068.html)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Interfax item; the search summary attributed the ownership claim (owner Serhii R",
+      "url": "https://interfax.com.ua/news/press-release/784727.html",
+      "purpose": "Interfax item; the search summary attributed the ownership claim (owner Serhii Ryzhkov via TOV 'Polimed-K', share capital UAH 14.2m) to Interfax without naming which URL — this or press-conference/754",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Interfax press conference about IEU (possible source of ownership/foreign-studen",
+      "url": "https://interfax.com.ua/news/press-conference/754748.html",
+      "purpose": "Interfax press conference about IEU (possible source of ownership/foreign-student claims)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "MFHEA announcement: temporary licence No. 2023-016 of International European Uni",
+      "url": "https://mfhea.mt/?p=1350",
+      "purpose": "MFHEA announcement: temporary licence No. 2023-016 of International European University revoked; no longer authorised to operate as a university in Malta",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 13 Aug 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "The Shift: licence revoked after audit (failed 9 of 11 standards)",
+      "url": "https://theshiftnews.com/2025/08/14/malta-revokes-sham-university-licence-after-two-years-of-ignoring-complaints/",
+      "purpose": "The Shift: licence revoked after audit (failed 9 of 11 standards)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 14 Aug 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "The Shift: 52 students appeal visa cancellations after revocation",
+      "url": "https://theshiftnews.com/2025/08/20/sham-university-locks-out-students-appeals-filed-with-immigration-board/",
+      "purpose": "The Shift: 52 students appeal visa cancellations after revocation",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 20 Aug 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "The Shift: Malta licence renewed 2024 with audit condition by Jan 2025",
+      "url": "https://theshiftnews.com/2024/10/13/gzira-based-university-given-second-temporary-licence-despite-complaints/",
+      "purpose": "The Shift: Malta licence renewed 2024 with audit condition by Jan 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 13 Oct 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "The Shift: 'Education authorities ignore reports of scam university in Gzira'; c",
+      "url": "https://theshiftnews.com/?p=104535",
+      "purpose": "The Shift: 'Education authorities ignore reports of scam university in Gzira'; claims operations transferred to Poland, not recognised, Poznan prosecutor reportedly investigating; notes IEU is regulat",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "IEU student-concerns/complaints procedure page (14-day appeal step)",
+      "url": "https://ieu.edu.ua/en/additionally/students-concerns",
+      "purpose": "IEU student-concerns/complaints procedure page (14-day appeal step)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Kyiv Post business wire: IEU opened in Kyiv (date not shown)",
+      "url": "https://archive.kyivpost.com/business-wire/international-european-university-was-opened-in-kyiv.html",
+      "purpose": "Kyiv Post business wire: IEU opened in Kyiv (date not shown)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Returned for the IEU query but is a DIFFERENT institution (name-confusion check)",
+      "url": "https://en.wikipedia.org/wiki/Kyiv_International_University",
+      "purpose": "Returned for the IEU query but is a DIFFERENT institution (name-confusion check)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: n/a. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Kyiv (lead: search summary of ieu.edu.ua/for-foreign-students/about-university gives \"42B Akademika Hlushkova avenue, Kyiv\"; vstup.osvita.ua 2025 lists the institution in Kyiv with programme dates 01.10.2025–01.07.2030, i.e. no relocation shown)",
+      "Relocation lead (unverified): No Ukrainian relocation reported: the 2025 admissions-portal cards place the Medicine programme in Kyiv with term 01.10.2025–01.07.2030 and NAQA recorded a May 2025 decision. Contradictory foreign claim: The Shift (Malta, undated page ?p=104535) states \"Since the war in Ukraine, the IEU has transferred its operations to Poland. However, the Polish government never officially recognised it, and the public prosecutor of Poznan is reportedly investigating it\" — this is a single-outlet claim about overseas branches, not about the Kyiv licence, and is unverified. The Malta branch (Gzira) lost its MFHEA temporary licence on 13 Aug 2025.",
+      "Red flag to resolve before any fact is shown: Malta branch licence revoked: MFHEA announcement dated 13 Aug 2025 states 'the temporary licence granted to International European University (Licence No. 2023-016) has been revoked' and IEU 'will no longer be authorised to operate as a university in Malta' (mfhea.mt/?p=1350). The Shift (14 Aug 2025) reports the audit found IEU 'failing to meet nine out of eleven standards' and calls it a 'sham university'; 52 students appealed visa cancellations (20 Aug 2025). These concern the Maltese operation, not the Ukrainian licence, but the brand is the same.",
+      "Red flag to resolve before any fact is shown: Poland claim (The Shift, undated): operations 'transferred to Poland', 'never officially recognised' by the Polish government, Poznan prosecutor 'reportedly investigating' — single-outlet, unverified; any IEU 'European campus' marketing to applicants should not be presented as Ukrainian-licensed study.",
+      "Red flag to resolve before any fact is shown: Admissions-portal card shows the Medicine master's entering 'на базі: Молодший спеціаліст' (junior specialist) — unusual structure for a 222 Medicine programme; needs the official rules of admission to confirm entry basis for foreign school-leavers.",
+      "Red flag to resolve before any fact is shown: Dentistry, Pharmacy and Nursing: no lead at all; the directory must list only Medicine 222 unless EDEBO shows more.",
+      "Red flag to resolve before any fact is shown: Name confusion: not the same as Kyiv International University (KIU, Wikipedia result), European University (Європейський університет, Kyiv, a different private university) or Kyiv Medical University (KMU). Also distinct from 'Міжнародний грецький університет' (irrelevant result).",
+      "Red flag to resolve before any fact is shown: Reported owner via TOV 'Polimed-K' (Serhii Ryzhkov, share capital UAH 14.2m) comes from an undated Interfax item; currency unknown.",
+      "Red flag to resolve before any fact is shown: Contact leads are inconsistent: search title shows '+38 063 169 98 67', summary cites foreign students department '+380507133624'.",
+      "Red flag to resolve before any fact is shown: Inventory flag carried forward: 'licence questions' — the only state-recognition lead is the NAQA accreditation summary; the MON licence order/licensed volume for 222 Medicine was not found.",
+      "Missing evidence: EDEBO record: legal name, EDEBO ID, licence order number and licensed volume for 222 Medicine (and whether any other medical specialty is licensed) — EDEBO not reachable, only a tool paraphrase of the English name exists",
+      "Missing evidence: NAQA accreditation certificate number, exact decision date and validity dates for 222 Medicine (only a search summary of en.naqa.gov.ua/?p=4543 saying 'until September 30, 2031')",
+      "Missing evidence: Whether Dentistry 221, Pharmacy 226 or Nursing 223 exist at IEU — not found; treat as not offered until EDEBO shows otherwise",
+      "Missing evidence: Language of instruction specifically for the Medicine programme and whether an English-medium track admits foreign school-leavers (only a general 'English, Ukrainian, and Russian' statement)",
+      "Missing evidence: Official rules of admission for foreign applicants (entry basis; the portal card's 'на базі молодший спеціаліст' is unexplained), tuition for foreigners (UAH 43,000 is a domestic contract figure from a third-party portal), application link",
+      "Missing evidence: Current operating base and mode in Kyiv during wartime (address 42B Akademika Hlushkova avenue is a search-summary lead; clinical bases unverified)",
+      "Missing evidence: Ministry 'Study in Ukraine' portal listing — not found",
+      "Missing evidence: Verification of The Shift's Poland claims (transfer of operations, non-recognition, Poznan prosecutor) and whether they affect the Ukrainian institution",
+      "Missing evidence: Ownership currency (Polimed-K / Ryzhkov) — undated Interfax item",
+      "Missing evidence: WHO/WDOMS listing and any destination-country recognition — not searched within the 6-search cap",
+      "Missing evidence: Exact full Ukrainian legal name and legal form (ПЗВО vs 'приватна установа вищої освіти')",
+      "Name lead (unverified): Private Higher Education Institution \"International European University\" (lead only: inventory records this as the EDEBO English name per tool paraphrase; the IEU site uses \"International European University\"; no official page opened)",
+      "Name lead (unverified): Міжнародний Європейський університет (lead: vstup.osvita.ua title \"Міжнародний європейський університет\"; IEU concept PDF \"Вченою радою Міжнародного європейського Університету\"; Interfax snippet calls it \"приватної установи вищої освіти «Міжнародний європейський університет»\" — the legal-form wording is unverified)",
+      "Name lead (unverified): МЄУ (abbreviation inferred from the Ukrainian name; not seen in any snippet)",
+      "Name lead (unverified): European Medical School (Навчально-науковий інститут «Європейська медична школа») — IEU's medical unit, host medicine.ieu.edu.ua",
+      "Name lead (unverified): International European University, Malta / Gzira (Maltese temporary licence No. 2023-016, revoked 13 Aug 2025)",
+      "Name lead (unverified): International European University Poland / Poznan (The Shift claims operations were transferred to Poland; unrecognised there — unverified)",
+      "Name lead (unverified): PRIVATE HIGHER EDUCATION INSTITUTION 'INTERNATIONAL EUROPEAN UNIVERSITY' (EDEBO English name per inventory tool paraphrase)"
+    ]
+  }
+}

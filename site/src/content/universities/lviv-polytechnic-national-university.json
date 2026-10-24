@@ -1,0 +1,697 @@
+{
+  "slug": "lviv-polytechnic-national-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Lviv Polytechnic National University",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Lviv Polytechnic National University",
+  "alternativeNames": [
+    "Національний університет «Львівська політехніка»",
+    "LPNU",
+    "НУЛП",
+    "Львівська політехніка"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Lviv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://lpnu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://lpnu.ua/en/department-foreign-students/general-admission-procedure-international-applicants"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Lviv, Ukraine, with leads for pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "specialty-226-pharmacy-industrial-pharmacy-institute-of-chemistry-and-chemical-technologies",
+      "name": "Фармація, промислова фармація (specialty 226 Pharmacy, Industrial Pharmacy), Institute of Chemistry and Chemical Technologies",
+      "field": "pharmacy",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2023/r14/97/1202952/ (2023 listing); https://vstup.osvita.ua/y2024/r14/97/825551/ (2024 listing); https://ojs.tdmu.edu.ua/pharm-chas/article/view/12877 (2022 journal article)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-industrial-pharmacy-specialty-226-educational-professional-master-s-programme-2022",
+      "name": "Pharmacy, Industrial Pharmacy (specialty 226), educational-professional master's programme (ОПП 2022)",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://lpnu.ua/sites/default/files/2022/program/18359/opp2022226.pdf (2022, official PDF); https://old.lpnu.ua/en/education/majors/ICCT/3.226.00/52/2017/en/full (2017 archived page)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "industrial-pharmacy-educational-scientific-master-s-programme-within-specialty-226-admitting-bachelor-s-holders",
+      "name": "Промислова фармація (Industrial Pharmacy) educational-scientific master's programme within specialty 226, admitting bachelor's holders",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r14/97/1470728/ ; https://vstup.osvita.ua/y2025/r14/97/1476222/ ; https://vstup.osvita.ua/y2025/r14/97/1578018/ (2025 listings, third-party aggregator)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "specialty-226-third-level-scientific-educational-programme-phd-programme-edebo-id-21927-per-the-university-s-self-evaluation-file",
+      "name": "Фармація, промислова фармація (specialty 226), third-level scientific-educational programme (PhD); programme EDEBO ID 21927 per the university's self-evaluation file",
+      "field": "pharmacy",
+      "level": {
+        "value": "phd",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://lpnu.ua/sites/default/files/2021/program/12449/farmaciya-promislova-farmaciya.pdf (2021, official PDF); https://lpnu.ua/sites/default/files/2020/11/2/paragraphs/3435/vs-farmaciya-promislova-farmaciya.pdf (2020 NAQA self-evaluation); earlier record: https://lpnu.ua/sites/default/files/2021/program/14780/onp2022226.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Official English page (search summary): foreigners and stateless persons may stu",
+      "url": "https://lpnu.ua/en/department-foreign-students/general-admission-procedure-international-applicants",
+      "purpose": "Official English page (search summary): foreigners and stateless persons may study at bachelor's, master's and doctoral levels (4 / 1.5 / 4 years); teaching mainly in Ukrainian, English limited to a s",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search summary flagged it as possibly dated). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official English admission-procedure page for foreign citizens (same search resu",
+      "url": "https://lpnu.ua/en/admission-procedure-foreign-citizens",
+      "purpose": "Official English admission-procedure page for foreign citizens (same search result set; content not shown separately)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official English bachelor's admission requirements page for international applic",
+      "url": "https://lpnu.ua/en/admission-procedure/admission-requirements-ba",
+      "purpose": "Official English bachelor's admission requirements page for international applicants (title only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 2022 educational-professional master's programme document for specialty",
+      "url": "https://lpnu.ua/sites/default/files/2022/program/18359/opp2022226.pdf",
+      "purpose": "Official 2022 educational-professional master's programme document for specialty 226: Master of Pharmacy and Industrial Pharmacy, 90 ECTS, 1.5 years, NRK level 7 (search summary)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "Archived (2005-2020 site) English page for the 226 master's: 120 ECTS, 1 year 9 ",
+      "url": "https://old.lpnu.ua/en/education/majors/ICCT/3.226.00/52/2017/en/full",
+      "purpose": "Archived (2005-2020 site) English page for the 226 master's: 120 ECTS, 1 year 9 months, NQF level 8; the archive banner names lpnu.ua as the current official site",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2017 (archived). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 2021 programme PDF described in this round as the third-level (PhD) 226",
+      "url": "https://lpnu.ua/sites/default/files/2021/program/12449/farmaciya-promislova-farmaciya.pdf",
+      "purpose": "Official 2021 programme PDF described in this round as the third-level (PhD) 226 programme accredited by NAQA with a certificate valid until 1 July 2026 (earlier record read it as a master's document;",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official NAQA self-evaluation report for the PhD-level 226 programme (programme ",
+      "url": "https://lpnu.ua/sites/default/files/2020/11/2/paragraphs/3435/vs-farmaciya-promislova-farmaciya.pdf",
+      "purpose": "Official NAQA self-evaluation report for the PhD-level 226 programme (programme EDEBO ID 21927 per the Ukrainian search summary)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020. Search-result lead, not read in full."
+    },
+    {
+      "label": "TDMU journal article analysing 226 programmes; says LPNU trains bachelors and ma",
+      "url": "https://ojs.tdmu.edu.ua/pharm-chas/article/view/12877",
+      "purpose": "TDMU journal article analysing 226 programmes; says LPNU trains bachelors and masters in Pharmacy, Industrial Pharmacy and that its programmes share components with those of Danylo Halytsky LNMU (sear",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party listing placing specialty 226 under LPNU's Institute of Chemistry an",
+      "url": "https://abitly.org/en/universities/lvivska-politekhnika-97/faculties/institute-of-chemistry-and-chemical-technologies-189/specialities",
+      "purpose": "Third-party listing placing specialty 226 under LPNU's Institute of Chemistry and Chemical Technologies",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party 2023 admissions listing: bachelor's 226, full-time, non-budget, cont",
+      "url": "https://vstup.osvita.ua/y2023/r14/97/1202952/",
+      "purpose": "Third-party 2023 admissions listing: bachelor's 226, full-time, non-budget, contract fee 28,000 UAH/year (2023)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party 2023 admissions listing: bachelor's 226 part-time, contract fee 19,6",
+      "url": "https://vstup.osvita.ua/y2023/r14/97/1195685/",
+      "purpose": "Third-party 2023 admissions listing: bachelor's 226 part-time, contract fee 19,600 UAH/year (2023) per the search summary",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party 2024 admissions listing for the bachelor's 226 programme (no fee sho",
+      "url": "https://vstup.osvita.ua/y2024/r14/97/825551/",
+      "purpose": "Third-party 2024 admissions listing for the bachelor's 226 programme (no fee shown)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party 2025 listing for a 226 master's variant ('На базі: Бакалавр'; 'Спеці",
+      "url": "https://vstup.osvita.ua/y2025/r14/97/1470728/",
+      "purpose": "Third-party 2025 listing for a 226 master's variant ('На базі: Бакалавр'; 'Спеціалізація: Промислова фармація'); one of three 2025 master's URLs (1470728, 1476222, 1578018)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 2021 self-evaluation document stating EDEBO registration number 97, ЄДР",
+      "url": "https://lpnu.ua/sites/default/files/2021/program/12337/011phd.pdf",
+      "purpose": "Official 2021 self-evaluation document stating EDEBO registration number 97, ЄДРПОУ 02071010, registry.edbo.gov.ua/university/97, rector Yurii Bobalo, older site www.lp.edu.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official 2025 self-evaluation document repeating the EDEBO reference and naming ",
+      "url": "https://lpnu.ua/sites/default/files/2025/program/31713/vso029.pdf",
+      "purpose": "Official 2025 self-evaluation document repeating the EDEBO reference and naming rector Nataliia Shakhovska and site https://lpnu.ua/",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Wikipedia: 'public university in Lviv, founded in 1816', affiliation Ministry of",
+      "url": "https://en.wikipedia.org/wiki/Lviv_Polytechnic",
+      "purpose": "Wikipedia: 'public university in Lviv, founded in 1816', affiliation Ministry of Education and Science of Ukraine; largest institution by student numbers (search summary)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (retrieved 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "University's own encyclopedia: established 7 March 1816; name history (Technical",
+      "url": "https://wiki.lpnu.ua/wiki/Lviv_Polytechnic_National_University",
+      "purpose": "University's own encyclopedia: established 7 March 1816; name history (Technical Academy 1844; Lviv Polytechnic Institute 1939; Lviv Polytechnic State University 1993; National University status 2000)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "THE profile describing LPNU as Ukraine's oldest technical university",
+      "url": "https://www.timeshighereducation.com/world-university-rankings/lviv-polytechnic-national-university",
+      "purpose": "THE profile describing LPNU as Ukraine's oldest technical university",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Earlier-record lead: LPNU news item saying the programmes most popular with fore",
+      "url": "https://lpnu.ua/en/news/lviv-polytechnic-conquering-educational-market-among-international-students",
+      "purpose": "Earlier-record lead: LPNU news item saying the programmes most popular with foreigners are engineering, architecture, economics and IT (pharmacy not mentioned)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead. All results place the university in Lviv (western Ukraine, not an occupied or front-line region). Operating leads: a 2025-dated self-evaluation document on lpnu.ua naming a 2025 rector (Nataliia Shakhovska, versus Yurii Bobalo in 2021 documents), and 2025 admissions listings for the 226 master's programme on vstup.osvita.ua. No dated official statement on the current teaching format (in person, online, blended) under martial law was found; status is a lead, not verified.",
+      "Red flag to resolve before any fact is shown: Not a medical institution: a polytechnic/technical national university; the only health-field programmes found are specialty 226 Pharmacy, Industrial Pharmacy, housed in the Institute of Chemistry and Chemical Technologies. No medicine (222), dentistry (221) or nursing (223) programme surfaced.",
+      "Red flag to resolve before any fact is shown: English-medium teaching: the international admissions page lead says 'Most programs are taught in Ukrainian, with some offered in English. Programs taught in English are limited to a short list of specialties, including Computer Science and Architecture.' Pharmacy is not named, so an English-taught pharmacy route should be presumed absent until shown otherwise.",
+      "Red flag to resolve before any fact is shown: Foreign applicants: only a general statement exists ('Foreign citizens, as well as stateless persons, can enter and study at bachelor's, master's and doctoral levels, either paying their own way or through intergovernmental agreements'); no lead shows pharmacy admission of foreigners specifically. An LPNU news item lead says the programmes popular with foreigners are engineering, architecture, economics and IT.",
+      "Red flag to resolve before any fact is shown: Accreditation: the 226 PhD certificate (No. 1081) was stated valid until 01.07.2026, which has passed; renewal unknown. The earlier record's master's certificate lead (НД № 1495099, valid to 01.07.2022) has no later successor in search results. No bachelor's 226 accreditation found. Programme licence and accreditation must be kept separate from institutional registration.",
+      "Red flag to resolve before any fact is shown: Conflicting programme data: the 2022 master's document lead (90 ECTS, 1.5 years, NRK 7) contradicts the archived 2017 page (120 ECTS, 1 year 9 months, NQF 8); which document the 12449 PDF is (master's vs PhD) is also unclear between research rounds.",
+      "Red flag to resolve before any fact is shown: Fee leads are stale or doubtful: 28,000 / 19,600 UAH per year are 2023 contract fees for Ukrainian applicants on a third-party aggregator; the '138 000 грн' 2025 master's figure from a search summary is unverified and should not be used.",
+      "Red flag to resolve before any fact is shown: Name confusion: distinct from Danylo Halytsky Lviv National Medical University (listed slug danylo-halytsky-lviv-national-medical-university), Ivan Franko National University of Lviv (international.lnu.edu.ua results appeared in the same search), the private Lviv Medical University and the Andrei Krupynskyi Lviv Medical Academy. A 'Department of drug technology and biopharmaceutics' result (new.meduniv.lviv.ua) belongs to the medical university, not LPNU.",
+      "Red flag to resolve before any fact is shown: Dated admissions details: the international applicants page lead gives an interview window 'August 20 to September 20' that may be out of date; the SOURCE page was not opened.",
+      "Missing evidence: Everything above is a search-result lead; no official page, PDF or register entry was opened (network policy). The owner's capture process must read the pages listed before any claim is published.",
+      "Missing evidence: EDEBO registry page registry.edbo.gov.ua/university/97: institutional registration, ownership (state is inferred only from Wikipedia's 'public university' and Ministry affiliation), and the licence for specialty 226 at each level.",
+      "Missing evidence: NAQA register: current accreditation status of the 226 bachelor's, master's and PhD programmes (PhD certificate No. 1081 stated valid only to 01.07.2026; master's НД № 1495099 stated valid only to 01.07.2022).",
+      "Missing evidence: Whether the pharmacy programmes admit foreign applicants, in which language, and through which route; no pharmacy-specific lead exists, and English-taught programmes are described as limited to specialties such as Computer Science and Architecture.",
+      "Missing evidence: Current (2025/2026) admission rules, deadlines, interview dates and fees for international applicants; the only fees found are 2023 contract fees for Ukrainian applicants from a third-party aggregator.",
+      "Missing evidence: Current master's programme structure (90 ECTS/1.5 years vs 120 ECTS/1 year 9 months) and the level of the 2021 PDF 12449 (master's vs PhD).",
+      "Missing evidence: Any dated official statement on the teaching format under martial law (in person, online, blended).",
+      "Missing evidence: Ministry 'Study in Ukraine' portal listing: not found.",
+      "Missing evidence: Destination-country recognition of an LPNU pharmacy degree: not searched and not inferable.",
+      "Missing evidence: Confirmation that no medicine, dentistry or nursing programme exists (absence in search results is not proof).",
+      "Skeptic's note: Accreditation of the 226 programmes unverified: PhD certificate No. 1081 stated valid only to 01.07.2026 (now past, renewal unknown); master's certificate НД No. 1495099 stated valid only to 01.07.2022 with no later successor found; no bachelor's 226 accreditation found; NAQA register not opened.",
+      "Skeptic's note: No pharmacy-specific lead on foreign-applicant admission; the international admissions page says English-taught programmes are limited to a short list (Computer Science, Architecture named), so an English pharmacy route should be presumed absent until shown.",
+      "Skeptic's note: Conflicting master's structure (2022 OPP: 90 ECTS, 1.5 years, NRK 7; archived 2017 page: 120 ECTS, 1 year 9 months, NQF 8); the level of PDF 12449 (master's vs PhD) is unclear between research rounds.",
+      "Skeptic's note: No 2025/2026 bachelor's 226 listing surfaced (2023 and 2024 only); the 2025 listings are master's variants. Fees found are stale 2023 domestic contract fees; the '138 000 грн' figure is unverified and unusable.",
+      "Skeptic's note: EDEBO page registry.edbo.gov.ua/university/97 referenced in LPNU's own documents but not opened; Study in Ukraine portal listing not found; teaching format under martial law not documented.",
+      "Name lead (unverified): Lvivska Politekhnika (transliteration used in the abitly.org URL slug 'lvivska-politekhnika-97')",
+      "Name lead (unverified): Lviv Polytechnic Institute (Soviet-era name from 1939, per the university history page lead)",
+      "Name lead (unverified): Lviv Polytechnic State University (name 1993-2000, per the university history page lead)",
+      "Name lead (unverified): Technical Academy (historical name, 1844, per the history page lead)",
+      "Name lead (unverified): lp.edu.ua (older official host named in 2021 self-evaluation documents; current host lpnu.ua)"
+    ]
+  }
+}

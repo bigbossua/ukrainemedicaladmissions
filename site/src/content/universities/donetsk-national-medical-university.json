@@ -1,0 +1,754 @@
+{
+  "slug": "donetsk-national-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Donetsk National Medical University (search-result lead: title used on dnmu.edu.ua/en and on Wikipedia; official page not opened)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Donetsk National Medical University",
+  "alternativeNames": [
+    "DNMU",
+    "DonNMU",
+    "ДНМУ",
+    "ДонНМУ",
+    "Донецький національний медичний університет",
+    "Donetsk National Medical University (Kropyvnytskyi Campus)"
+  ],
+  "status": {
+    "value": "relocated",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kropyvnytskyi",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://dnmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://dnmu.edu.ua/en/?p=30640 (lead: 'Appeal to prospective entrants' - preparatory department for foreign applicants; not confirmed to be the international office page)"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical university (state) in Kropyvnytskyi (reported current base, unverified: osvita.ua directory address 'вул. Юрія Коваленка, 4А, м. Кропивницький' and the vstup.osvita.ua 2025 admissions record name Kropyvnytskyi; the 2017 admissions record named Lyman, Donetsk oblast; Wikipedia says the university relocated from Donetsk to Kramatorsk in 2014), Ukraine, with leads for dentistry, medicine, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). The institution is reported as relocated; its current base is unconfirmed. No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-222-medicine",
+      "name": "222 Медицина / Medicine",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf (2024 budget-place enrolment protocol); foreign-applicant lead from https://dnmu.edu.ua/en/?p=30640; English-medium lead only from https://en.wikipedia.org/wiki/Donetsk_National_Medical_University and aggregators (selectyouruniversity.com, careers360.com)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf (2024 budget-place enrolment protocol); foreign-applicant lead from https://dnmu.edu.ua/en/?p=30640; English-medium lead only from https://en.wikipedia.org/wiki/Donetsk_National_Medical_University and aggregators (selectyouruniversity.com, careers360.com)."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf (2024 budget-place enrolment protocol); foreign-applicant lead from https://dnmu.edu.ua/en/?p=30640; English-medium lead only from https://en.wikipedia.org/wiki/Donetsk_National_Medical_University and aggregators (selectyouruniversity.com, careers360.com)."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry-221-dentistry",
+      "name": "221 Стоматологія / Dentistry",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf; English-medium/foreign lead only from aggregator https://www.azent.com/universities/donestk-national-medical-university/program."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf; English-medium/foreign lead only from aggregator https://www.azent.com/universities/donestk-national-medical-university/program."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf; English-medium/foreign lead only from aggregator https://www.azent.com/universities/donestk-national-medical-university/program."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-226-pharmacy-industrial-pharmacy-naqa-2021-report-refers-to-the-programme",
+      "name": "226 Фармація, промислова фармація / Pharmacy, industrial pharmacy (NAQA 2021 report refers to the programme 'Провізор')",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf; https://dnmu.edu.ua/wp-content/uploads/2021/07/zvit-eg-nazyavo.pdf (NAQA expert-group report, July 2021); English-medium lead only from aggregator azent.com."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf; https://dnmu.edu.ua/wp-content/uploads/2021/07/zvit-eg-nazyavo.pdf (NAQA expert-group report, July 2021); English-medium lead only from aggregator azent.com."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf; https://dnmu.edu.ua/wp-content/uploads/2021/07/zvit-eg-nazyavo.pdf (NAQA expert-group report, July 2021); English-medium lead only from aggregator azent.com."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "medicine-228-pediatrics-directory-lead-only",
+      "name": "228 Педіатрія / Pediatrics (directory lead only)",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/vnz/guide/133/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "osvita.ua directory entry: address вул. Юрія Коваленка, 4А, м. Кропивницький; si",
+      "url": "https://osvita.ua/vnz/guide/133/",
+      "purpose": "osvita.ua directory entry: address вул. Юрія Коваленка, 4А, м. Кропивницький; site dnmu.edu.ua; specialties medicine, pediatrics, dentistry, pharmacy; Ministry of Health subordination (per search summ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (retrieved 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 admissions-campaign record: settlement Kropyvnytskyi, site dnmu.edu.ua, adm",
+      "url": "https://vstup.osvita.ua/y2025/r6/4/",
+      "purpose": "2025 admissions-campaign record: settlement Kropyvnytskyi, site dnmu.edu.ua, admissions committee contact",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 campaign (retrieved 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "2017 admissions record: location Lyman (Donetsk oblast); licensed volume 856 (ye",
+      "url": "https://vstup.osvita.ua/y2017/r6/4/",
+      "purpose": "2017 admissions record: location Lyman (Donetsk oblast); licensed volume 856 (year/level unspecified)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2017. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 master's-level offer record showing 25 places (programme not identified in ",
+      "url": "https://vstup.osvita.ua/y2025/r12/4/1453859/",
+      "purpose": "2025 master's-level offer record showing 25 places (programme not identified in snippet)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "University-hosted 2024 budget-place enrolment protocol listing specialties 222 M",
+      "url": "https://dnmu.edu.ua/wp-content/uploads/2024/08/protokol_pro_zarahuvannya_2024_byudzhet_compressed.pdf",
+      "purpose": "University-hosted 2024 budget-place enrolment protocol listing specialties 222 Medicine, 221 Dentistry, 226 Pharmacy, industrial pharmacy",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024-08 (upload path). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official EN page 'Appeal to prospective entrants': preparatory department for fo",
+      "url": "https://dnmu.edu.ua/en/?p=30640",
+      "purpose": "Official EN page 'Appeal to prospective entrants': preparatory department for foreign applicants (10 months; language courses A1 3.5 months, A2 7 months)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "University booklet PDF (content not read)",
+      "url": "https://dnmu.edu.ua/wp-content/uploads/2023/02/buklet-sejchas-stysnuto.pdf",
+      "purpose": "University booklet PDF (content not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023-02 (upload path). Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA expert-group report for the Pharmacy ('Провізор') programme hosted by the u",
+      "url": "https://dnmu.edu.ua/wp-content/uploads/2021/07/zvit-eg-nazyavo.pdf",
+      "purpose": "NAQA expert-group report for the Pharmacy ('Провізор') programme hosted by the university; no accreditation decision in snippet",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021-07 (upload path). Search-result lead, not read in full."
+    },
+    {
+      "label": "Regulation of the medical college as a separate structural unit (approved 2017 p",
+      "url": "https://dnmu.edu.ua/wp-content/uploads/2020/10/medkoledzh-polozhennya-1.pdf",
+      "purpose": "Regulation of the medical college as a separate structural unit (approved 2017 per snippet)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-10 (upload path). Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry 'Study in Ukraine' programme listing: eight faculties incl. preparatory",
+      "url": "https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22",
+      "purpose": "Ministry 'Study in Ukraine' programme listing: eight faculties incl. preparatory faculty for foreign students; about 4,200 students",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "MoES portal contacts page (id 125) surfaced for the query; content/identity not ",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/125/contacts",
+      "purpose": "MoES portal contacts page (id 125) surfaced for the query; content/identity not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "education.ua directory with EDEBO-derived licensed volume and competitive offers",
+      "url": "https://www.education.ua/universities/182/",
+      "purpose": "education.ua directory with EDEBO-derived licensed volume and competitive offers",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Lyman Medical Professional College of DNMU - vocational college, separate struct",
+      "url": "https://www.education.ua/colleges/400/",
+      "purpose": "Lyman Medical Professional College of DNMU - vocational college, separate structural unit",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Relocation to Kramatorsk in 2014; teaching in English, Russian and Ukrainian; se",
+      "url": "https://en.wikipedia.org/wiki/Donetsk_National_Medical_University",
+      "purpose": "Relocation to Kramatorsk in 2014; teaching in English, Russian and Ukrainian; separate Russia-recognised institution in occupied Donetsk",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Encyclopedia entry: International Learning Center opened to foreign students in ",
+      "url": "https://www.encyclopediaofukraine.com/pages%5CD%5CO%5CDonetskNationalMedicalUniversity.htm",
+      "purpose": "Encyclopedia entry: International Learning Center opened to foreign students in 1990",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Suspilne: DNMU surgery department works in Haivoron hospital (Kirovohrad oblast)",
+      "url": "https://suspilne.media/kropyvnytskiy/230671-u-gajvoroni-na-kirovogradsini-pracue-kafedra-hirurgii-doneckogo-meduniversitetu/",
+      "purpose": "Suspilne: DNMU surgery department works in Haivoron hospital (Kirovohrad oblast); salaries paid by the university",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet. Search-result lead, not read in full."
+    },
+    {
+      "label": "Suspilne: students collected signatures against closing the Kropyvnytskyi branch",
+      "url": "https://suspilne.media/kropyvnytskiy/135907-u-kropivnickomu-studenti-medicnogo-visu-zbirali-pidpisi-proti-jogo-zakritta/",
+      "purpose": "Suspilne: students collected signatures against closing the Kropyvnytskyi branch; acting rector said the base would move to Kramatorsk",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet. Search-result lead, not read in full."
+    },
+    {
+      "label": "Suspilne: students of the DNMU branch protest in Kropyvnytskyi",
+      "url": "https://suspilne.media/131451-u-kropivnickomu-protestuut-studenti-filii-doneckogo-meduniversitetu/",
+      "purpose": "Suspilne: students of the DNMU branch protest in Kropyvnytskyi",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet. Search-result lead, not read in full."
+    },
+    {
+      "label": "Suspilne: about 500 DNMU graduates received diplomas in Kropyvnytskyi; equipment",
+      "url": "https://suspilne.media/257050-u-kropivnickomu-piv-tisaci-vipusknikiv-doneckogo-meduniversitetu-otrimali-diplomi/",
+      "purpose": "Suspilne: about 500 DNMU graduates received diplomas in Kropyvnytskyi; equipment worth UAH 30 million moved from Kramatorsk to Kropyvnytskyi",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet. Search-result lead, not read in full."
+    },
+    {
+      "label": "Prozorro tender record (2023) surfaced for the university query - activity indic",
+      "url": "https://prozorro.gov.ua/tender/UA-2023-09-25-009523-a/print/limited-reporting/pdf",
+      "purpose": "Prozorro tender record (2023) surfaced for the university query - activity indicator only, content not read",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023-09-25. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ombudsman report PDF 'Звіт Донецький' - subject unknown",
+      "url": "https://www.ombudsman.gov.ua/storage/app/media/uploaded-files/%D0%97%D0%B2%D1%96%D1%82%20%D0%94%D0%BE%D0%BD%D0%B5%D1%86%D1%8C%D0%BA%D0%B8%D0%B9.pdf",
+      "purpose": "Ombudsman report PDF 'Звіт Донецький' - subject unknown",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA annex to protocol 3-94 of 17.02.2026; DNMU not visible in snippet",
+      "url": "https://naqa.gov.ua/wp-content/uploads/2026/02/%D0%94%D0%BE%D0%B4%D0%B0%D1%82%D0%BE%D0%BA-7-%D0%B4%D0%BE-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D1%83-%E2%84%96-3-94-%D0%B2%D1%96%D0%B4-17.02.2026.pdf",
+      "purpose": "NAQA annex to protocol 3-94 of 17.02.2026; DNMU not visible in snippet",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026-02-17. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator: online application, invitation letter, '2000+ international students",
+      "url": "https://studyabroad.careers360.com/ukraine/universities/dnmu-unpg",
+      "purpose": "Aggregator: online application, invitation letter, '2000+ international students'; cites dnmu.com.ua - unverified",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator 'Admission 2026-27' with fee, NEET and recognition claims - unverifie",
+      "url": "https://www.selectyouruniversity.com/university/donetsk-national-medical-university",
+      "purpose": "Aggregator 'Admission 2026-27' with fee, NEET and recognition claims - unverified, do not reuse",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator: English-taught B.Pharm and BDS, Feb/Sept intakes - unverified",
+      "url": "https://www.azent.com/universities/donestk-national-medical-university/program",
+      "purpose": "Aggregator: English-taught B.Pharm and BDS, Feb/Sept intakes - unverified",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "News: new level-3 hospital in Kramatorsk may lack staff - relevance to DNMU relo",
+      "url": "https://glavred.net/ukraine/amp-novaya-bolnica-3-urovnya-v-kramatorske-mozhet-ostatsya-bez-personala-nazvana-prichina-10286913.html",
+      "purpose": "News: new level-3 hospital in Kramatorsk may lack staff - relevance to DNMU relocation not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Kropyvnytskyi (reported current base, unverified: osvita.ua directory address 'вул. Юрія Коваленка, 4А, м. Кропивницький' and the vstup.osvita.ua 2025 admissions record name Kropyvnytskyi; the 2017 admissions record named Lyman, Donetsk oblast; Wikipedia says the university relocated from Donetsk to Kramatorsk in 2014)",
+      "Relocation lead (unverified): Leads only, chronology unverified. (1) Wikipedia: 'With the beginning of the Russo-Ukrainian Donbas war in 2014 the Donetsk National Medical University (DonNMU) relocated to Kramatorsk', with 'some faculty stayed in Russian-occupied Donetsk, where a separate university is recognized only by Russia'. (2) vstup.osvita.ua 2017 record names Lyman (Donetsk oblast); a Lyman Medical Professional College is described as a separate structural unit of DNMU (education.ua/colleges/400; regulation PDF approved 2017). (3) Suspilne Kropyvnytskyi (undated in snippet): students collected signatures against closure of the Kropyvnytskyi branch; the acting rector said the branch would close at the end of June and the material base would be moved to Kramatorsk. (4) Suspilne (undated in snippet, article 257050): 'Обладнання медичного університету на 30 мільйонів гривень вивезли з Краматорська до Кропивницького' and about half a thousand DNMU graduates received diplomas in Kropyvnytskyi. (5) Suspilne (article 230671, undated in snippet): the DNMU surgery department works in Haivoron hospital, Kirovohrad oblast, with salaries paid by the university. (6) Current directories (osvita.ua guide; vstup.osvita.ua 2025) give Kropyvnytskyi as the address/settlement, and the university published a 2024 enrolment protocol, a Feb 2023 booklet and a 2023 Prozorro tender, so it appears to be operating as a relocated institution; the registered legal address and the actual teaching base(s) in 2025/26 are unverified.",
+      "Red flag to resolve before any fact is shown: Name confusion with the occupation-side institution in Donetsk ('Donetsk National Medical University named after M. Gorky', inventory slug donetsk-gorky-occupied), which Wikipedia describes as 'recognized only by Russia'; aggregator pages and old 'M. Gorky' naming may mix the two. Any profile must state that the Ukrainian DNMU is the relocated, Ministry-supervised institution and never link to occupation-side hosts.",
+      "Red flag to resolve before any fact is shown: Base unsettled: Kropyvnytskyi (current directory address), Kramatorsk (2014 relocation; front-line city) and Lyman (2017 record; college site) all appear in results; dates of the moves are not shown in the snippets. Undated Suspilne reports describe a dispute over closing the Kropyvnytskyi branch (acting rector planned to move the base to Kramatorsk) that conflicts with later leads showing Kropyvnytskyi as the main base.",
+      "Red flag to resolve before any fact is shown: Governance lead: the search summary mentioned a report that the Ministry was preparing a decision to suspend rector Kondratenko; the source URL and date could not be pinned down in the result set - unverified, do not publish.",
+      "Red flag to resolve before any fact is shown: Domain confusion: Ukrainian directories and the university's own PDFs use dnmu.edu.ua, while Indian aggregators cite dnmu.com.ua.",
+      "Red flag to resolve before any fact is shown: Aggregator claims (WHO/GMC/NMC recognition, USD 3,700-5,300 fees, NEET requirement, Feb/Sept intakes, '2000+ international students a year', 'Admission 2026-27') are self-reported and unverified; they must not be reused as facts.",
+      "Red flag to resolve before any fact is shown: Conflicting student numbers (about 4,200 on the Study in Ukraine portal vs over 10,000 and 15,200 on other sites).",
+      "Red flag to resolve before any fact is shown: Lyman Medical Professional College of DNMU (education.ua/colleges/400) is a vocational 'фаховий коледж' structural unit, not the university; it must not be listed as a degree provider.",
+      "Red flag to resolve before any fact is shown: An Ombudsman (ombudsman.gov.ua) PDF titled 'Звіт Донецький' appeared in the results; its subject and content are unknown.",
+      "Missing evidence: No official page was opened (network policy): official Ukrainian legal name and legal form, English name, EDEBO entry (registry.edbo.gov.ua) and ownership/supervising ministry remain search-result leads.",
+      "Missing evidence: Registered legal address and actual teaching base(s) for 2025/26 (Kropyvnytskyi vs Kramatorsk vs Lyman), with the date of the latest relocation; status of the Kramatorsk and Lyman sites.",
+      "Missing evidence: Current licence (licensed volume per specialty) and programme accreditation certificates/NAQA register entries for 222 Medicine, 221 Dentistry, 226 Pharmacy and 228 Pediatrics; level (master's) is inferred from specialty codes only.",
+      "Missing evidence: Whether English-medium tracks for foreign applicants are currently offered (2025/26 or 2026/27 intake): only Wikipedia and aggregator claims; no official admissions page for foreigners found beyond the preparatory-department appeal.",
+      "Missing evidence: International applicants page/office contacts, tuition fees, invitation-letter procedure and intake dates - aggregator-only.",
+      "Missing evidence: Nursing (223) degree programme: not found.",
+      "Missing evidence: Identity of the current rector/acting rector and the date/outcome of the reported ministerial action against rector Kondratenko.",
+      "Missing evidence: Dates and chronology of the Suspilne reports (branch-closure dispute, equipment move, graduations) - undated in snippets.",
+      "Missing evidence: Confirmation that MoES portal id 125 (universities.studyinukraine.gov.ua) is DNMU and what it lists.",
+      "Missing evidence: Content of the Ombudsman 'Звіт Донецький' PDF and whether it concerns DNMU.",
+      "Name lead (unverified): Donetsk National Medical University (search-result lead: title used on dnmu.edu.ua/en and on Wikipedia; official page not opened)",
+      "Name lead (unverified): Донецький національний медичний університет (search-result lead: title used by osvita.ua, education.ua and vstup.osvita.ua; legal-form prefix not seen)",
+      "Name lead (unverified): Donetsk State Medical University (historical form; also in the inventory aliases)",
+      "Name lead (unverified): Donetsk National Medical University named after M. Gorky (pre-2017 name per the inventory note; the same wording is used by the occupation-side institution in Donetsk - see red flags)",
+      "Name lead (unverified): dnmu.com.ua (domain cited by third-party aggregators such as Careers360; NOT the domain shown by Ukrainian directories)"
+    ]
+  }
+}

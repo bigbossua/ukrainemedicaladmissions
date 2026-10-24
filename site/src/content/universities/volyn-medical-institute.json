@@ -1,0 +1,880 @@
+{
+  "slug": "volyn-medical-institute",
+  "synthetic": false,
+  "officialName": {
+    "value": "Municipal Higher Education Institution \"Volyn Medical Institute\" of the Volyn Regional Council (unofficial translation of the Ukrainian name; no official English name surfaced in any search result)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Volyn Medical Institute",
+  "alternativeNames": [
+    "ВМІ",
+    "Волинський медичний інститут",
+    "КЗВО «Волинський медичний інститут» Волинської обласної ради"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Lutsk",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://vmi.volyn.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical academy or institute (communal) in Lutsk (lead: Луцьк, вул. Лесі Українки, 2 — education.ua/universities/978), Ukraine, with leads for nursing programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-223-bachelor",
+      "name": "Сестринська справа (спеціальність 223 Медсестринство) — bachelor",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vmi.volyn.ua/vstupnikam/pyeryelik-spyetsialnostyey/ ; https://vstup.osvita.ua/y2025/r4/622/1508443/ ; https://www.vmi.volyn.ua/data/media/files/2/3/23-osvitno-profesiina-programa-sestrynska-sprava-(2023).pdf ; https://vstup.osvita.ua/r4/622/price.html."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-223",
+      "name": "Екстрена медицина / парамедик (спеціальність 223 Медсестринство)",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vmi.volyn.ua/data/media/files/2/6/26-opp-paramedyk-2025-26.pdf ; https://vmi.volyn.ua/vstupnikam/pyeryelik-spyetsialnostyey/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-223-master",
+      "name": "Сестринська справа (спеціальність 223 Медсестринство) — master",
+      "field": "nursing",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vmi.volyn.ua/vstupnikam/litsyenziyni-obsyagi-ryegionalnye-zamovlyennya-ta-vartist-navchannya/ ; https://www.education.ua/universities/978/ ; https://vstup.osvita.ua/r4/622/price.html."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-053",
+      "name": "Клінічна психологія (спеціальність 053 Психологія)",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vmi.volyn.ua/vstupnikam/pyeryelik-spyetsialnostyey/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "college-programme-of-the-structural-unit-dental-technician-level-not-a-higher-education-dentistry-degree",
+      "name": "Стоматологія ортопедична — college programme of the structural unit Луцький базовий фаховий медичний коледж (dental technician level; NOT a higher-education dentistry degree)",
+      "field": "other",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.education.ua/colleges/1998/ ; https://vstup.osvita.ua/y2026/r4/7042/1635936/ (page appears to be the college's 2026 listing; attribution from search summary, unread)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "college-programme-of-the-structural-unit-feldsher-level-not-a-medicine-degree",
+      "name": "Лікувальна справа — college programme of the structural unit Луцький базовий фаховий медичний коледж (feldsher level; NOT a medicine degree)",
+      "field": "other",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://www.education.ua/colleges/1998/ ; https://www.education.ua/colleges/1998/?industry=39."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Aggregator profile: full legal name «Комунальний заклад вищої освіти «Волинський",
+      "url": "https://www.education.ua/universities/978/",
+      "purpose": "Aggregator profile: full legal name «Комунальний заклад вищої освіти «Волинський медичний інститут» Волинської обласної ради», address Луцьк, вул. Лесі Українки, 2, acting rector Пастрик Т. В., 2026/2",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated page; content refers to the 2026/27 intake; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-domain lead: 'Перелік спеціальностей' listing bachelor 223 Медсестринст",
+      "url": "https://vmi.volyn.ua/vstupnikam/pyeryelik-spyetsialnostyey/",
+      "purpose": "Official-domain lead: 'Перелік спеціальностей' listing bachelor 223 Медсестринство (Сестринська справа; Екстрена медицина/парамедик) and 053 Психологія (Клінічна психологія)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen in search results 2026-10-24 (page not opened). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-domain lead: licence volumes, regional order and tuition page; master's",
+      "url": "https://vmi.volyn.ua/vstupnikam/litsyenziyni-obsyagi-ryegionalnye-zamovlyennya-ta-vartist-navchannya/",
+      "purpose": "Official-domain lead: licence volumes, regional order and tuition page; master's 223 licence asserted",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24 (page not opened). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official-domain lead: history page exists (content not seen)",
+      "url": "https://vmi.volyn.ua/about-institute/istoriya/",
+      "purpose": "Official-domain lead: history page exists (content not seen)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA self-assessment form hosted on the institute's domain (programme/year not v",
+      "url": "https://vmi.volyn.ua/data/media/files/9/4/94-vidomostiprosamoocinyuvannyaosvitnoiprogramy.pdf",
+      "purpose": "NAQA self-assessment form hosted on the institute's domain (programme/year not visible)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Educational-professional programme 'Сестринська справа' (2023 edition) PDF",
+      "url": "https://www.vmi.volyn.ua/data/media/files/2/3/23-osvitno-profesiina-programa-sestrynska-sprava-(2023).pdf",
+      "purpose": "Educational-professional programme 'Сестринська справа' (2023 edition) PDF",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023 (from file title). Search-result lead, not read in full."
+    },
+    {
+      "label": "Educational-professional programme 'Екстрена медицина/парамедик' PDF",
+      "url": "https://vmi.volyn.ua/data/media/files/2/6/26-opp-paramedyk-2025-26.pdf",
+      "purpose": "Educational-professional programme 'Екстрена медицина/парамедик' PDF",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-26 (from file name). Search-result lead, not read in full."
+    },
+    {
+      "label": "PDF whose title carries the letterhead form «КОМУНАЛЬНИЙ ЗАКЛАД ВИЩОЇ ОСВІТИ «ВО",
+      "url": "https://vmi.volyn.ua/data/media/files/6/1/61-ok16-rpok-pedagogichna-praktyka-ostatochnyi.pdf",
+      "purpose": "PDF whose title carries the letterhead form «КОМУНАЛЬНИЙ ЗАКЛАД ВИЩОЇ ОСВІТИ «ВОЛИНСЬКИЙ МЕДИЧНИЙ ІНСТИТУТ»»",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator tuition page: 36,600 UAH/yr bachelor full-time and 45,850 UAH/yr mast",
+      "url": "https://vstup.osvita.ua/r4/622/price.html",
+      "purpose": "Aggregator tuition page: 36,600 UAH/yr bachelor full-time and 45,850 UAH/yr master (2026 figures per search summary)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 figures per summary; older page shows 28,300 UAH for 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator 2025 listing 'Медсестринство': bachelor Сестринська справа, non-budge",
+      "url": "https://vstup.osvita.ua/y2025/r4/622/1508443/",
+      "purpose": "Aggregator 2025 listing 'Медсестринство': bachelor Сестринська справа, non-budget, full-time",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 admissions cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator 2026 listing, apparently the structural college (college programmes, ",
+      "url": "https://vstup.osvita.ua/y2026/r4/7042/1635936/",
+      "purpose": "Aggregator 2026 listing, apparently the structural college (college programmes, 9-class basis, 12–17 Aug applications)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 admissions cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator guide: 'перший медичний навчальний заклад на Волині, понад сімдесятил",
+      "url": "https://osvita.ua/vnz/guide/37446/",
+      "purpose": "Aggregator guide: 'перший медичний навчальний заклад на Волині, понад сімдесятилітня історія'; lists ownership as 'Державна' (discrepancy)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator page on professional-junior-bachelor admission conditions (college le",
+      "url": "https://osvita.ua/mlbachelor/fmb_umovy_pryyomu/89242/",
+      "purpose": "Aggregator page on professional-junior-bachelor admission conditions (college level)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator profile of Луцький базовий фаховий медичний коледж described as a str",
+      "url": "https://www.education.ua/colleges/1998/",
+      "purpose": "Aggregator profile of Луцький базовий фаховий медичний коледж described as a structural unit of the institute; programmes Стоматологія ортопедична, Лікувальна справа",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; refers to 2026 intake. Search-result lead, not read in full."
+    },
+    {
+      "label": "Name-confusion check: English search for 'Volyn Medical Institute' returned only",
+      "url": "https://en.wikipedia.org/wiki/Lesya_Ukrainka_Volyn_National_University",
+      "purpose": "Name-confusion check: English search for 'Volyn Medical Institute' returned only VNU (Prosp. Voli 13, Lutsk; rector Anatolii Tsos) and its Medical Faculty wiki pages",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated; seen 2026-10-24. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Lutsk (lead: Луцьк, вул. Лесі Українки, 2 — education.ua/universities/978)",
+      "Relocation lead (unverified): No relocation lead. Lutsk (Volyn oblast, western Ukraine) is neither occupied nor front-line. Address lead: вул. Лесі Українки, 2, Луцьк (education.ua, undated). Activity leads for the 2026/27 cycle (master's intake 7–22 Aug 2026, college intake 12–17 Aug 2026) and an acting rector (\"В.о. ректора — Пастрик Тетяна Володимирівна\", education.ua) indicate a functioning institution. No merger, suspension or licence-revocation lead was found in a targeted search (реорганізація / ліцензія / акредитація 2025).",
+      "Red flag to resolve before any fact is shown: Name confusion: an English search for \"Volyn Medical Institute\" Lutsk returned ONLY Lesya Ukrainka Volyn National University (VNU) pages; VNU's medical unit was itself named \"Educational and Scientific Medical Institute\" in 2020–2021 (inventory block for lesya-ukrainka-volyn-national-university). The two are distinct legal entities (communal institute at вул. Лесі Українки 2 vs state university at просп. Волі 13), but a directory card titled \"Volyn Medical Institute\" invites conflation.",
+      "Red flag to resolve before any fact is shown: Relevance: nursing-level institute (223 Медсестринство bachelor/master, 053 psychology, plus a vocational college). No medicine, dentistry or pharmacy degree lead. No lead of any kind for admission of foreign citizens or English-medium teaching; the inventory flag \"domestic intake\" stands unchanged.",
+      "Red flag to resolve before any fact is shown: Ownership discrepancy in aggregators: osvita.ua lists \"Форма власності: Державна\" while the legal name and education.ua say Волинської обласної ради (communal). Probably stale catalogue data, unverified.",
+      "Red flag to resolve before any fact is shown: Fee figures differ between aggregator pages (28,300 UAH for 2025 vs 36,600 UAH bachelor / 45,850 UAH master for 2026); none read from the official page. Do not present either as current.",
+      "Red flag to resolve before any fact is shown: The structural unit Луцький базовий фаховий медичний коледж (фаховий коледж, professional junior bachelor level) appears on separate aggregator pages (education.ua/colleges/1998, vstup.osvita.ua r4/7042) and could be mistaken for a separate institution or for higher-education programmes (\"Стоматологія ортопедична\", \"Лікувальна справа\" are college-level, not dentistry/medicine degrees).",
+      "Red flag to resolve before any fact is shown: Leadership listed as acting rector (\"В.о. ректора\") on education.ua — governance status unverified.",
+      "Red flag to resolve before any fact is shown: No official English name, English site version or international page surfaced; \"Volyn Medical Institute\" is a translation.",
+      "Missing evidence: No official page read: vmi.volyn.ua (and www.vmi.volyn.ua) could not be opened; everything above is a search-result lead. Needed: the institute's own 'Правила прийому 2026' (incl. any section on іноземці), the 'Перелік спеціальностей' and licence/fees pages, and the history page (foundation year, former names).",
+      "Missing evidence: EDEBO registry entry (registry.edbo.gov.ua): legal name, ЄДРПОУ code, ownership form, licensed specialties (223, 053) and licence volumes — not found in search.",
+      "Missing evidence: MON licence order for the second (master's) level in 223 Медсестринство and any NAQA accreditation decisions/certificates for the bachelor and master programmes — asserted only on institute material; the self-assessment PDF's programme and year are unknown.",
+      "Missing evidence: Whether foreign citizens are admitted at all, under what conditions, and whether any teaching is in English — no lead in any direction.",
+      "Missing evidence: Official English name and whether the site has an English version or an international applicants page — not found.",
+      "Missing evidence: Current tuition fees from the official page (aggregators show 28,300 / 36,600 / 45,850 UAH for different years and levels).",
+      "Missing evidence: Rector / acting rector confirmation (education.ua lists Пастрик Тетяна Володимирівна as в.о. ректора).",
+      "Missing evidence: Ownership confirmation: communal (Volyn Regional Council) per legal name vs 'Державна' per osvita.ua.",
+      "Missing evidence: Relationship and dates for the structural unit Луцький базовий фаховий медичний коледж (search summary mentioned a host lbmk.lutsk.ua — unverified, not seen in any result URL).",
+      "Missing evidence: Level of the 'Екстрена медицина/парамедик' programme (bachelor per search summary only).",
+      "Missing evidence: Note on domain: vmi.volyn.ua returned institutional pages and PDFs in two searches and both search summaries name it as the institute's site, but it is not confirmed by any government register — hence domainConfidence medium.",
+      "Skeptic's note: Name-confusion risk: an English search for 'Volyn Medical Institute' Lutsk returned only Lesya Ukrainka Volyn National University (candidate), whose medical unit was itself called 'Educational and Scientific Medical Institute' in 2020-2021. The two are distinct legal entities (communal institute at вул. Лесі Українки 2 vs state university at просп. Волі 13); the profile must say so.",
+      "Skeptic's note: No EDEBO, MON licence register, Study in Ukraine or NAQA entry surfaced; the master's licence in 223 Медсестринство is asserted only on the institute's own pages. Open question, not a bar.",
+      "Skeptic's note: Qualifying degree leads are nursing only (bachelor «Сестринська справа», «Екстрена медицина/парамедик»; master «Сестринська справа»). No medicine, dentistry or pharmacy degree lead; the structural unit Луцький базовий фаховий медичний коледж offers only vocational programmes («Стоматологія ортопедична», «Лікувальна справа») that must not be shown as degrees.",
+      "Skeptic's note: Ownership discrepancy (communal per legal name and education.ua vs 'Державна' on osvita.ua); acting rector only (В.о. ректора) per education.ua.",
+      "Skeptic's note: No official English name or English site surfaced; 'Volyn Medical Institute' is a translation.",
+      "Skeptic's note: Aggregator fee figures differ by year and page; none read from the official site.",
+      "Name lead (unverified): Municipal Higher Education Institution \"Volyn Medical Institute\" of the Volyn Regional Council (unofficial translation of the Ukrainian name; no official English name surfaced in any search result)",
+      "Name lead (unverified): Комунальний заклад вищої освіти «Волинський медичний інститут» Волинської обласної ради",
+      "Name lead (unverified): КОМУНАЛЬНИЙ ЗАКЛАД ВИЩОЇ ОСВІТИ «ВОЛИНСЬКИЙ МЕДИЧНИЙ ІНСТИТУТ» (letterhead form in vmi.volyn.ua PDF title)",
+      "Name lead (unverified): Луцький базовий фаховий медичний коледж (structural unit of the institute per education.ua/colleges/1998; a фаховий коледж, not the institute itself)",
+      "Name lead (unverified): Lutsk Basic Professional Medical College (translation of the structural unit's name)"
+    ]
+  }
+}

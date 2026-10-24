@@ -1,0 +1,497 @@
+{
+  "slug": "kharkiv-polytechnic-institute",
+  "synthetic": false,
+  "officialName": {
+    "value": "National Technical University \"Kharkiv Polytechnic Institute\" (lead: Study in Ukraine contacts page lists \"National Technical University «Kharkiv Polytechnic Institute»\"; THE ranking page uses the same wording)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kharkiv Polytechnic Institute",
+  "alternativeNames": [
+    "NTU \"KhPI\"",
+    "NTU KhPI",
+    "KhPI",
+    "НТУ «ХПІ»",
+    "ХПІ"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kharkiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://kpi.kharkov.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://web.kpi.kharkov.ua/mo/en/ (Institute of International Education; recruitment notice: https://web.kpi.kharkov.ua/mo/en/2024/08/13/recruitment-of-foreign-students-at-ntu-khpi-in-the-2025-2026/; contacts shown in snippets: fmo@khpi.edu.ua, +38 (057) 707-66-34; an older page shows omsroot@kpi.kharkov.ua and +38 (057) 707-63-16)"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Kharkiv (lead: Study in Ukraine contacts page gives \"Kyrpychova str. 2\", postal code 61002; medical-institute department page gives \"Харків 61002, вул. Пушкінська 79, Комплекс «Гігант»\"). No relocation lead found., Ukraine, with leads for medicine, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "speciality-226-pharmacy-industrial-pharmacy-educational-professional-programme-of-the-educational-and-scientific-institute-of-chemical-technologies-and-engineering-graduating-department-named-as-organic-synthesis-and-pharmaceutical-technologies-2022-opp-and-pharmacy-and-chemical-technologies-2025-syllabus-host",
+      "name": "Фармація, промислова фармація (speciality 226) / Pharmacy, Industrial Pharmacy — educational-professional programme of the Educational and Scientific Institute of Chemical Technologies and Engineering; graduating department named as Organic Synthesis and Pharmaceutical Technologies (2022 OPP) and Pharmacy and Chemical Technologies (2025 syllabus host)",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://blogs.kpi.kharkov.ua/v2/nv/wp-content/uploads/sites/43/2024/01/226-OPP-2022.pdf (OPP 2022); https://web.kpi.kharkov.ua/pharmchem/wp-content/uploads/sites/126/2016/06/I8_Sylabus_Vstup-do-spetsialnosti_2025.pdf (2025 syllabus); https://vstup.osvita.ua/y2022/r27/307/999569/ and https://vstup.osvita.ua/y2023/r27/307/1210563/ (2022/2023 admissions listings, content not seen)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "educational-and-scientific-medical-institute-postgraduate-physician-training-only-per-leads-interns-in-and-departments-of-internal-diseases-and-family-medicine-radiology",
+      "name": "Навчально-науковий медичний інститут НТУ «ХПІ» (Educational and Scientific Medical Institute) — postgraduate physician training only per leads: interns in 'Внутрішні хвороби' and 'Загальна практика – сімейна медицина'; departments of Internal Diseases and Family Medicine, Radiology",
+      "field": "medicine",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "OPP 2022 for 226 Pharmacy, Industrial Pharmacy, bachelor level; names the owning",
+      "url": "https://blogs.kpi.kharkov.ua/v2/nv/wp-content/uploads/sites/43/2024/01/226-OPP-2022.pdf",
+      "purpose": "OPP 2022 for 226 Pharmacy, Industrial Pharmacy, bachelor level; names the owning institute and graduating department",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 programme year; uploaded 2024-01 per URL path. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 syllabus 'Вступ до спеціальності' of the Pharmacy and Chemical Technologies",
+      "url": "https://web.kpi.kharkov.ua/pharmchem/wp-content/uploads/sites/126/2016/06/I8_Sylabus_Vstup-do-spetsialnosti_2025.pdf",
+      "purpose": "2025 syllabus 'Вступ до спеціальності' of the Pharmacy and Chemical Technologies department - programme still taught in 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 (filename). Search-result lead, not read in full."
+    },
+    {
+      "label": "vstup.osvita.ua 2022 admissions listing for KhPI (region r27, institution 307); ",
+      "url": "https://vstup.osvita.ua/y2022/r27/307/999569/",
+      "purpose": "vstup.osvita.ua 2022 admissions listing for KhPI (region r27, institution 307); content not seen",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "vstup.osvita.ua 2023 admissions listing for KhPI; content not seen (also /y2023/",
+      "url": "https://vstup.osvita.ua/y2023/r27/307/1210563/",
+      "purpose": "vstup.osvita.ua 2023 admissions listing for KhPI; content not seen (also /y2023/r27/307/1198782/)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023. Search-result lead, not read in full."
+    },
+    {
+      "label": "University order No. 379ОД of 3 Sept 2021 enacting the Regulation on the Educati",
+      "url": "https://blogs.kpi.kharkov.ua/v2/vr/wp-content/uploads/sites/27/2021/09/Rishennya-radi-protokol-8-2021.pdf",
+      "purpose": "University order No. 379ОД of 3 Sept 2021 enacting the Regulation on the Educational and Scientific Medical Institute",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021-09-03. Search-result lead, not read in full."
+    },
+    {
+      "label": "Academic council decision/order 2023 (surfaced for the medical-institute query; ",
+      "url": "https://blogs.kpi.kharkov.ua/v2/vr/wp-content/uploads/sites/27/2023/04/Nakaz-rishennya-radi-protokol-3-2023.pdf",
+      "purpose": "Academic council decision/order 2023 (surfaced for the medical-institute query; content not described)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023-04. Search-result lead, not read in full."
+    },
+    {
+      "label": "Medical institute department page: postgraduate intern training; address Pushkin",
+      "url": "https://web.kpi.kharkov.ua/medicine/uk/vnutrishnih-hvorob-i-simejnoyi-medicini/",
+      "purpose": "Medical institute department page: postgraduate intern training; address Pushkinska 79, Kharkiv",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Medical institute radiology department page",
+      "url": "https://web.kpi.kharkov.ua/medicine/uk/radiologiyi",
+      "purpose": "Medical institute radiology department page",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Repository paper 'Становлення та розвиток медико-фармацевтичної школи в НТУ ХПІ'",
+      "url": "https://repository.kpi.kharkov.ua/handle/KhPI-Press/91025",
+      "purpose": "Repository paper 'Становлення та розвиток медико-фармацевтичної школи в НТУ ХПІ' (historical review)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Institute of International Education notice: 2025/2026 recruitment of foreign st",
+      "url": "https://web.kpi.kharkov.ua/mo/en/2024/08/13/recruitment-of-foreign-students-at-ntu-khpi-in-the-2025-2026/",
+      "purpose": "Institute of International Education notice: 2025/2026 recruitment of foreign students begun; refers to list of programmes in Ukrainian and English and to admission rules for foreigners",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024-08-13. Search-result lead, not read in full."
+    },
+    {
+      "label": "Institute of International Education (foreign students) section, English",
+      "url": "https://web.kpi.kharkov.ua/mo/en/",
+      "purpose": "Institute of International Education (foreign students) section, English",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "2024 bachelor admissions roadmap (domestic NMT-based admission)",
+      "url": "https://vstup.kpi.kharkov.ua/wp-content/uploads/2024/06/kht_dorozhna_karta_vstupnoi_kampanii_2024_roku_v_ntu_khpi_bak.pdf",
+      "purpose": "2024 bachelor admissions roadmap (domestic NMT-based admission)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024-06. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry 'Study in Ukraine' portal contacts page: state (Governmental) ownership",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/83/contacts",
+      "purpose": "Ministry 'Study in Ukraine' portal contacts page: state (Governmental) ownership, MES Ukraine, Kyrpychova str. 2, 61002 Kharkiv",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Background: founded 1885 as Kharkiv Technological Institute, Polytechnical Insti",
+      "url": "https://en.wikipedia.org/wiki/Kharkiv_Polytechnic_Institute",
+      "purpose": "Background: founded 1885 as Kharkiv Technological Institute, Polytechnical Institute 1929, national university status 2000 (tertiary source)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Encyclopedia of Ukraine entry (spelling 'Kharkiv Polytechnical Institute')",
+      "url": "https://www.encyclopediaofukraine.com/pages%5CK%5CH%5CKharkivPolytechnicalInstituteNationalTechnicalUniversity.htm",
+      "purpose": "Encyclopedia of Ukraine entry (spelling 'Kharkiv Polytechnical Institute')",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "THE profile: 1501+ band 2025; bachelor's, master's, doctoral degrees",
+      "url": "https://timeshighereducation.com/world-university-rankings/national-technical-university-kharkiv-polytechnic-institute",
+      "purpose": "THE profile: 1501+ band 2025; bachelor's, master's, doctoral degrees",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 rankings. Search-result lead, not read in full."
+    },
+    {
+      "label": "uniRank profile (Ukrainian name slug; enrolment band; admission description) - t",
+      "url": "https://www.unirank.org/ua/uni/національний-технічний-університет-“харківський-політехнічний-інститут”/",
+      "purpose": "uniRank profile (Ukrainian name slug; enrolment band; admission description) - tertiary",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON document surfaced for the medical-institute licence query; content not descr",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/2020/April/13/%20123.pdf",
+      "purpose": "MON document surfaced for the medical-institute licence query; content not described, unread",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-04-13. Search-result lead, not read in full."
+    },
+    {
+      "label": "Journal article on the khpi.edu.ua host (shows the second official host); conten",
+      "url": "https://bmpp.khpi.edu.ua/article/download/342007/329930/793999",
+      "purpose": "Journal article on the khpi.edu.ua host (shows the second official host); content not seen",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Context only: war damage to another Kharkiv university (KhNMU), 2025; not about ",
+      "url": "https://gwaramedia.com/en/kharkiv-national-medical-university-suffered-1-6-million-loss-because-of-damage-inflicted-by-russian-attacks/",
+      "purpose": "Context only: war damage to another Kharkiv university (KhNMU), 2025; not about KhPI",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Kharkiv (lead: Study in Ukraine contacts page gives \"Kyrpychova str. 2\", postal code 61002; medical-institute department page gives \"Харків 61002, вул. Пушкінська 79, Комплекс «Гігант»\"). No relocation lead found.",
+      "Relocation lead (unverified): No relocation lead found; all address leads place the university in Kharkiv (Kyrpychova St 2; medical departments at Pushkinska St 79). Continued operation is indicated by: the Institute of International Education notice dated 2024-08-13 'The main recruitment of foreign students at NTU \"KhPI\" in the 2025/2026 academic year has begun'; a 2025 syllabus for the 226 programme; a June 2024 admissions roadmap (vstup.kpi.kharkov.ua); and the Study in Ukraine search summary saying the official site 'has a page on admission of foreign students for the 2026/2027 academic year' and pages on 'distance learning for foreign students' (pages not read). Kharkiv is a front-line city: the search surfaced general reports of war damage to Kharkiv universities (e.g., Gwara Media 2025 on Kharkiv National Medical University) but no KhPI-specific damage, suspension or relocation report. Whether teaching is in person, online or mixed is unverified.",
+      "Red flag to resolve before any fact is shown: Weak fit for a medical-admissions directory: no undergraduate medicine, dentistry or master's pharmacy degree lead; the only health-related degree lead is a BACHELOR in 226 Pharmacy, Industrial Pharmacy (industrial/technological orientation), and the medical institute appears to be postgraduate internship training only (consistent with the earlier inventory note).",
+      "Red flag to resolve before any fact is shown: No lead that pharmacy is open to foreign applicants or taught in English; the 2025/2026 recruitment notice points to a programme list in Ukrainian and English that the search did not expose.",
+      "Red flag to resolve before any fact is shown: Front-line city (Kharkiv); general war-damage reports for Kharkiv universities exist, no KhPI-specific report found; in-person vs distance delivery unverified.",
+      "Red flag to resolve before any fact is shown: Two official-looking hosts in use (kpi.kharkov.ua for www/web/vstup/blogs/repository subdomains; khpi.edu.ua for e-mail and a journal host) - canonical domain unsettled.",
+      "Red flag to resolve before any fact is shown: Name/domain confusion: 'KPI' in kpi.kharkov.ua and the 'Polytechnic Institute' name invite confusion with Igor Sikorsky Kyiv Polytechnic Institute (kpi.ua); 'Навчально-науковий медичний інститут' is also the name of medical units at other universities (e.g., Sumy State University).",
+      "Red flag to resolve before any fact is shown: Institution is titled 'Institute' but is a national technical UNIVERSITY (bachelor/master/doctoral per THE/uniRank leads); not a vocational 'фаховий коледж' - the title alone could mislead a reader.",
+      "Red flag to resolve before any fact is shown: No EDEBO licence record, licensed volume or NAQA accreditation lead for 226 found; 222 Medicine licence lead explicitly not found.",
+      "Missing evidence: EDEBO licence record for NTU KhPI: speciality 226 level(s) and licensed volume; confirmation that no 221/222/223 licence exists",
+      "Missing evidence: Official 2025/2026 (and 2026/2027) list of programmes open to foreign applicants with language of instruction - whether 226 Pharmacy is included and whether any English-medium option exists",
+      "Missing evidence: Existence of a master's-level 226 programme (only a bachelor's OPP 2022 found)",
+      "Missing evidence: Current official programme list of the Educational and Scientific Medical Institute (undergraduate vs postgraduate only)",
+      "Missing evidence: NAQA accreditation status of the 226 bachelor programme",
+      "Missing evidence: Canonical official domain (kpi.kharkov.ua vs khpi.edu.ua) and the canonical international-admissions/apply page (the 'here' links in the recruitment notice were not resolved)",
+      "Missing evidence: Official statement on 2025/2026 operating mode (in-person/distance), campus condition and any relocation",
+      "Missing evidence: Tuition fees for foreign applicants",
+      "Missing evidence: Study in Ukraine main profile page (only the contacts sub-page surfaced) and the content of the 2020-04-13 MON document",
+      "Missing evidence: vstup.osvita.ua 2025 listing content for 226 at KhPI (only 2022/2023 listing URLs surfaced, unread)",
+      "Skeptic's note: The only health-degree lead is a BACHELOR in 226 Фармація, промислова фармація (OPP 2022; 2025 syllabus of the Pharmacy and Chemical Technologies department; 2022/2023 vstup.osvita.ua listings, content unread). No master's 226 found, so no lead to a pharmacist qualification; the orientation is industrial.",
+      "Skeptic's note: The Educational and Scientific Medical Institute appears to train interns only (postgraduate); no undergraduate 222 Medicine licence lead was found. It must not be presented as a medicine degree route.",
+      "Skeptic's note: No lead that pharmacy is open to foreign applicants or taught in English; the 2025/2026 recruitment notice points to a programme list not exposed by search.",
+      "Skeptic's note: Kharkiv is a front-line city; delivery mode (in person, distance) and campus condition are unverified; no KhPI-specific damage or relocation report found.",
+      "Skeptic's note: Canonical domain unsettled: kpi.kharkov.ua (www, web, vstup, blogs, repository) versus khpi.edu.ua (e-mail, journal host); domain confidence medium.",
+      "Skeptic's note: No EDEBO licence record, licensed volume or NAQA accreditation lead for 226; Study in Ukraine portal main profile not surfaced (contacts sub-page only).",
+      "Skeptic's note: Title says 'Institute' although it is a national technical university; readers may misjudge the institution type.",
+      "Name lead (unverified): National Technical University \"Kharkiv Polytechnic Institute\" (lead: Study in Ukraine contacts page lists \"National Technical University «Kharkiv Polytechnic Institute»\"; THE ranking page uses the same wording)",
+      "Name lead (unverified): Національний технічний університет «Харківський політехнічний інститут» (lead: inventory alias; uniRank URL slug \"національний-технічний-університет-“харківський-політехнічний-інститут”\"; abbreviated НТУ «ХПІ» in university PDFs)",
+      "Name lead (unverified): Kharkiv Polytechnical Institute (Encyclopedia of Ukraine spelling; 1929 name)",
+      "Name lead (unverified): Kharkiv Technological Institute (1885 predecessor, per Wikipedia/Encyclopedia of Ukraine leads)",
+      "Name lead (unverified): Навчально-науковий медичний інститут НТУ «ХПІ» (its medical unit, per 2021 order lead)",
+      "Name lead (unverified): Навчально-науковий інститут хімічних технологій та інженерії (unit that owns the 226 pharmacy programme, per OPP 2022 lead)",
+      "Name lead (unverified): Institute of International Education / web.kpi.kharkov.ua/mo (foreign-student unit)"
+    ]
+  }
+}

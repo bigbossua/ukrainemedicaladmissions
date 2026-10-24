@@ -1,0 +1,757 @@
+{
+  "slug": "karazin-kharkiv-national-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "V. N. Karazin Kharkiv National University (search-result lead; form seen in result titles, e.g. periodicals.karazin.ua article 'V.N. KARAZIN KHARKIV NATIONAL UNIVERSITY DURING THE FULL-SCALE RUSSIAN MILITARY INVASION OF UKRAINE' and aurora.upol.cz 'V N Karazin Kharkiv National University'; punctuation of the initials varies; not read on an official page)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Karazin Kharkiv National University",
+  "alternativeNames": [
+    "Університет Каразіна",
+    "Каразінський університет",
+    "ХНУ імені В. Н. Каразіна",
+    "KhNU",
+    "Kharkov National University (older transliteration, inventory alias)",
+    "V.N. Karazin Kharkiv National University"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kharkiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://karazin.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://iie.karazin.ua/applicants"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Kharkiv, Ukraine, with leads for medicine programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-222-medicine-educational-professional-programme-school-of-medicine-full-time",
+      "name": "222 Медицина / Medicine (educational-professional programme), School of Medicine, full-time",
+      "field": "medicine",
+      "level": {
+        "value": "integrated_master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://karazin.ua/storage/documents/945_huDTd6MHpRuJoDGEcETv5qaA5.pdf (licence annex PDFs on karazin.ua/storage/documents, also 1899_..., 967_..., 1962_..., 1635_...); https://start.karazin.ua/admin/documents/dopuscheni-mag,bak-med-01.08.2024.pdf; https://www.med.karazin.ua/en/news/page/59; https://iie.karazin.ua/applicants; https://mededatlas.lecturio.com/?p=9646."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://karazin.ua/storage/documents/945_huDTd6MHpRuJoDGEcETv5qaA5.pdf (licence annex PDFs on karazin.ua/storage/documents, also 1899_..., 967_..., 1962_..., 1635_...); https://start.karazin.ua/admin/documents/dopuscheni-mag,bak-med-01.08.2024.pdf; https://www.med.karazin.ua/en/news/page/59; https://iie.karazin.ua/applicants; https://mededatlas.lecturio.com/?p=9646."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://karazin.ua/storage/documents/945_huDTd6MHpRuJoDGEcETv5qaA5.pdf (licence annex PDFs on karazin.ua/storage/documents, also 1899_..., 967_..., 1962_..., 1635_...); https://start.karazin.ua/admin/documents/dopuscheni-mag,bak-med-01.08.2024.pdf; https://www.med.karazin.ua/en/news/page/59; https://iie.karazin.ua/applicants; https://mededatlas.lecturio.com/?p=9646."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "postgraduate-internship-for-foreign-citizens-and-stateless-persons-in-20-specialties-incl-general-medical-practice-centre-for-postgraduate-medical-education",
+      "name": "Postgraduate internship (інтернатура) for foreign citizens and stateless persons in 20 specialties incl. General Medical Practice, Centre for Postgraduate Medical Education",
+      "field": "medicine",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://cpo.karazin.ua/en/english-localization-of-the-official-website-of-the-centre-for-postgraduate-medical-education/."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://cpo.karazin.ua/en/english-localization-of-the-official-website-of-the-centre-for-postgraduate-medical-education/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "medicine-222-medicine-educational-scientific-programme-phd",
+      "name": "222 Медицина / Medicine (educational-scientific programme, PhD)",
+      "field": "medicine",
+      "level": {
+        "value": "phd",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r21/62/1567602/; https://start.karazin.ua/app/webroot/files/upload/opp/2025/med/aspirant/onp_2025_ukr.pdf; https://karazin.ua/storage/documents/1899_5T2xi4ZLAxkI6Tk7QV6hNnBxo.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "physical-therapy-specialty-code-not-confirmed-in-snippet-likely-227-but-unverified",
+      "name": "Фізична терапія / Physical Therapy (specialty code not confirmed in snippet; likely 227 but unverified)",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://start.karazin.ua/admin/documents/ilovepdf_merged.pdf; https://start.karazin.ua/app/webroot/files/upload/2025/zarakhovani-kontrakt-bakalavr/med/ilovepdf_merged_53.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "School of Medicine news archive; item 'On October 13, 2022, the lists of foreign",
+      "url": "https://www.med.karazin.ua/en/news/page/59",
+      "purpose": "School of Medicine news archive; item 'On October 13, 2022, the lists of foreign students studying in English were updated' (online and offline programmes)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022-10-13 (apparent). Search-result lead, not read in full."
+    },
+    {
+      "label": "School of Medicine news archive (alternate host); Network Cooperation Agreement ",
+      "url": "https://medicine.karazin.ua/en/news/page/37",
+      "purpose": "School of Medicine news archive (alternate host); Network Cooperation Agreement with Igbinedion University, Okada for internally displaced foreign students",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 (apparent, undated in snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Centre for Postgraduate Medical Education: plan to admit foreign citizens to int",
+      "url": "https://cpo.karazin.ua/en/english-localization-of-the-official-website-of-the-centre-for-postgraduate-medical-education/",
+      "purpose": "Centre for Postgraduate Medical Education: plan to admit foreign citizens to internships in 20 specialties in English from August 2024; mention of an Ivano-Frankivsk campus",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 (apparent). Search-result lead, not read in full."
+    },
+    {
+      "label": "International Education Institute applicants page; English-language entrance-exa",
+      "url": "https://iie.karazin.ua/applicants",
+      "purpose": "International Education Institute applicants page; English-language entrance-exam programmes for foreign citizens applying to Bachelor's and Master's Medicine",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Legacy 'International Students Training' page",
+      "url": "https://old.karazin.ua/en/entrant/foreign_study",
+      "purpose": "Legacy 'International Students Training' page",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (legacy host). Search-result lead, not read in full."
+    },
+    {
+      "label": "School of Medicine admission rules: minimum entrance score for 222 Medicine not ",
+      "url": "https://www.med.karazin.ua/en/future-students/abiturientam-umovi-vstupu",
+      "purpose": "School of Medicine admission rules: minimum entrance score for 222 Medicine not below 150 points",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "'Admissions. Studies at the School' page",
+      "url": "https://www.med.karazin.ua/en/future-students/abiturientam-navchannya-na-fakulteti",
+      "purpose": "'Admissions. Studies at the School' page",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Main-site English admissions page (not read)",
+      "url": "https://karazin.ua/en/osvita/vstup/",
+      "purpose": "Main-site English admissions page (not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Licence annex PDF (one of several: 1899_, 967_, 1962_, 1635_): '222 Медицина 900",
+      "url": "https://karazin.ua/storage/documents/945_huDTd6MHpRuJoDGEcETv5qaA5.pdf",
+      "purpose": "Licence annex PDF (one of several: 1899_, 967_, 1962_, 1635_): '222 Медицина 900', MON order 11.02.2021 No. 17-л; later version change 09.04.2025 No. 30-л; PhD volume 50/34",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021-02-11 / 2025-04-09 (order dates quoted). Search-result lead, not read in full."
+    },
+    {
+      "label": "Licence annex PDF (another version) with 222 Medicine rows",
+      "url": "https://karazin.ua/storage/documents/1899_5T2xi4ZLAxkI6Tk7QV6hNnBxo.pdf",
+      "purpose": "Licence annex PDF (another version) with 222 Medicine rows",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 (apparent). Search-result lead, not read in full."
+    },
+    {
+      "label": "PhD Medicine educational-scientific programme 2025, language of instruction Ukra",
+      "url": "https://start.karazin.ua/app/webroot/files/upload/opp/2025/med/aspirant/onp_2025_ukr.pdf",
+      "purpose": "PhD Medicine educational-scientific programme 2025, language of instruction Ukrainian, approved 26 May 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-05-26. Search-result lead, not read in full."
+    },
+    {
+      "label": "EDEBO-fed aggregator: PhD Medicine 2025 admission dates 03.09.2025-25.09.2025, c",
+      "url": "https://vstup.osvita.ua/y2025/r21/62/1567602/",
+      "purpose": "EDEBO-fed aggregator: PhD Medicine 2025 admission dates 03.09.2025-25.09.2025, contract 57,000 UAH/year",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "List of admitted applicants, 222 Medicine master's full-time, medical faculty, a",
+      "url": "https://start.karazin.ua/admin/documents/dopuscheni-mag,bak-med-01.08.2024.pdf",
+      "purpose": "List of admitted applicants, 222 Medicine master's full-time, medical faculty, admissions committee protocol No. 14",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024-08-01. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 contract bachelor enrolment file for the medical faculty (specialties not s",
+      "url": "https://start.karazin.ua/app/webroot/files/upload/2025/zarakhovani-kontrakt-bakalavr/med/ilovepdf_merged_53.pdf",
+      "purpose": "2025 contract bachelor enrolment file for the medical faculty (specialties not shown)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Enrolment order 18.08.2025 (protocol No. 17); 2024 version shows 'Фізична терапі",
+      "url": "https://start.karazin.ua/admin/documents/ilovepdf_merged.pdf",
+      "purpose": "Enrolment order 18.08.2025 (protocol No. 17); 2024 version shows 'Фізична терапія 153,367'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-08-18. Search-result lead, not read in full."
+    },
+    {
+      "label": "Third-party school profile: languages English, Russian, Ukrainian; foreign stude",
+      "url": "https://mededatlas.lecturio.com/?p=9646",
+      "purpose": "Third-party school profile: languages English, Russian, Ukrainian; foreign students admitted; most fields 'to be added' (weak)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "WHED (IAU) institution entry (not read)",
+      "url": "https://whed.net/institutions/IAU-007026",
+      "purpose": "WHED (IAU) institution entry (not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "'Університет Каразіна залишиться у рідному Харкові' - decision not to relocate",
+      "url": "https://life.pravda.com.ua/society/2022/04/01/248058/",
+      "purpose": "'Університет Каразіна залишиться у рідному Харкові' - decision not to relocate",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022-04-01. Search-result lead, not read in full."
+    },
+    {
+      "label": "UP.Life: most of the campus destroyed; classes resumed online late March 2022",
+      "url": "https://pda.pravda.com.ua/eng/news/id_7336308/",
+      "purpose": "UP.Life: most of the campus destroyed; classes resumed online late March 2022",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "March 2022 strike destroyed the economics department building",
+      "url": "https://www.the-scientist.com/professors-at-bombed-kharkiv-university-struggle-to-continue-their-work-70093",
+      "purpose": "March 2022 strike destroyed the economics department building",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "Acting rector interview: university remained in Kharkiv, did not stop teaching",
+      "url": "https://apostrophe.ua/en/interview/tetyana-kaganovska-our-task-is-to-preserve-universities-so-that-ukraine-is-spoken-of-not-only-in-the-context-of-war.html",
+      "purpose": "Acting rector interview: university remained in Kharkiv, did not stop teaching",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (2022-2023 apparent). Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 analysis of front-line universities: Karazin maintains scientific weight de",
+      "url": "https://news.telegraf.com.ua/ukr/statti/5944687-trimayut-planku-yak-prifrontovi-ukrainski-universiteti-zberigayut-pozitsii-u-svitovikh-reytingakh",
+      "purpose": "2025 analysis of front-line universities: Karazin maintains scientific weight despite destruction",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Article title gives the English name form 'V.N. Karazin Kharkiv National Univers",
+      "url": "https://periodicals.karazin.ua/politology/article/view/27437",
+      "purpose": "Article title gives the English name form 'V.N. Karazin Kharkiv National University'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Listing title gives the Ukrainian name 'Харківський національний університет іме",
+      "url": "https://www.education.ua/universities/429/",
+      "purpose": "Listing title gives the Ukrainian name 'Харківський національний університет імені В. Н. Каразіна'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Pre-war style news: over a thousand foreigners from 50+ countries inducted; Saud",
+      "url": "https://www.objectiv.tv/?p=48957",
+      "purpose": "Pre-war style news: over a thousand foreigners from 50+ countries inducted; Saudi student entered the medical faculty (undated)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (likely pre-2022). Search-result lead, not read in full."
+    },
+    {
+      "label": "Concerns KhNMU, a different institution; recorded only to document the name-conf",
+      "url": "https://gwaramedia.com/en/only-9-international-students-start-first-year-at-kharkiv-national-medical-university-in-2025/",
+      "purpose": "Concerns KhNMU, a different institution; recorded only to document the name-confusion risk",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-09 (apparent). Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): Not relocated (lead). In spring 2022 a Ministry of Education official said the university would be moved to a safer city, but the university decided to stay: life.pravda.com.ua, 2022-04-01, 'Університет Каразіна залишиться у рідному Харкові'; acting rector Tetyana Kaganovska (Apostrophe interview, undated) said the team decided Karazin University 'would remain in Kharkiv' and 'did not stop its educational process'. Campus heavily damaged: UP.Life (2022) 'Russian forces had destroyed most of the campus with artillery and aircraft'; The Scientist (2022) a March 2022 strike destroyed the economics department building. Classes resumed online in late March 2022. A 2025 telegraf.com.ua analysis says the university 'maintains its scientific weight despite the destruction'. The only relocation-type lead is the cpo.karazin.ua notice that postgraduate internship teaching would partly use an 'Ivano-Frankivsk campus' (apparent 2024); a Ukrainian search found no Karazin unit in Ivano-Frankivsk, so this is unconfirmed. Current in-person vs online arrangements for the medical programme in 2025/2026: not found.",
+      "Red flag to resolve before any fact is shown: Front-line region: Kharkiv is repeatedly shelled; the campus was largely destroyed in 2022 (UP.Life, The Scientist) and teaching moved online in March 2022; current in-person clinical training for the medical programme is unverified.",
+      "Red flag to resolve before any fact is shown: Name confusion with Kharkiv National Medical University (KhNMU), already listed as kharkiv-national-medical-university: searches mixed in KhNMU items (e.g. gwaramedia.com 2025 'only 9 international students start first year at Kharkiv National Medical University'), and one search summary even garbled the two names together. Any profile must state they are separate institutions.",
+      "Red flag to resolve before any fact is shown: English-medium evidence for the Master's in Medicine is dated 2022 (lists of foreign students studying in English; online programme and network agreement with Igbinedion University, Okada for displaced foreign students). No 2025/2026 lead confirms English-medium admission of foreign applicants to 222 Medicine.",
+      "Red flag to resolve before any fact is shown: Licence annex: the 'preparation of foreigners' column value for the 222 Medicine row is not legible in snippets; one 'Так' appears for another 222 row with incomplete context. Do not infer foreign-admission rights from this.",
+      "Red flag to resolve before any fact is shown: Two School of Medicine hosts appear (med.karazin.ua and medicine.karazin.ua) plus legacy old.karazin.ua; which is current is unknown.",
+      "Red flag to resolve before any fact is shown: Conflicting PhD licensed volume (50 vs 34) across licence-annex versions; indicates the annex has been amended and the current one was not read.",
+      "Red flag to resolve before any fact is shown: The 'Ivano-Frankivsk campus' for postgraduate internship teaching (cpo.karazin.ua lead, apparent 2024) is unconfirmed by any other result.",
+      "Red flag to resolve before any fact is shown: Pre-war promotional material (objectiv.tv, undated: over a thousand foreigners from 50+ countries inducted; Saudi student entering the medical faculty) must not be presented as current.",
+      "Red flag to resolve before any fact is shown: No tuition fee for the 222 Medicine master's programme found; the only fee lead is PhD contract 57,000 UAH/year (2025).",
+      "Missing evidence: Current licence annex (post 09.04.2025 No. 30-л) read in full: foreign-student ('підготовка іноземців') value for 222 Medicine and the current PhD volume (50 vs 34 conflict).",
+      "Missing evidence: Any 2025/2026 official page confirming English-medium Master's in Medicine admission for foreign applicants (only 2022 leads exist).",
+      "Missing evidence: Tuition fee for 222 Medicine (none found); only PhD contract fee 57,000 UAH/year (2025) seen.",
+      "Missing evidence: NAQA accreditation certificate for the 222 Medicine programme (not found).",
+      "Missing evidence: EDEBO / Ministry 'Study in Ukraine' portal entries (not found).",
+      "Missing evidence: Which School of Medicine host is current: med.karazin.ua vs medicine.karazin.ua.",
+      "Missing evidence: Existence and status of the 'Ivano-Frankivsk campus' for postgraduate medical teaching (single unconfirmed lead).",
+      "Missing evidence: Bachelor-level programmes at the School of Medicine and their specialty codes (Physical Therapy 227? Nursing 223? only a file-path lead and one score line).",
+      "Missing evidence: Confirmation that no dentistry (221), pharmacy (226) or nursing (223) programmes exist (searches returned nothing).",
+      "Missing evidence: Ownership/founding document (state ownership inferred from MON licensing and 'national university' status, not read).",
+      "Missing evidence: Current (2025/2026) teaching mode and clinical-base arrangements for medical students in Kharkiv.",
+      "Missing evidence: Exact official English name punctuation ('V. N.' vs 'V.N.') from an official page.",
+      "Missing evidence: The international-applicants page content at iie.karazin.ua/applicants (URL seen in results, not read).",
+      "Name lead (unverified): V. N. Karazin Kharkiv National University (search-result lead; form seen in result titles, e.g. periodicals.karazin.ua article 'V.N. KARAZIN KHARKIV NATIONAL UNIVERSITY DURING THE FULL-SCALE RUSSIAN MILITARY INVASION OF UKRAINE' and aurora.upol.cz 'V N Karazin Kharkiv National University'; punctuation of the initials varies; not read on an official page)",
+      "Name lead (unverified): Харківський національний університет імені В. Н. Каразіна (search-result lead; title of the education.ua listing /universities/429/; not read on an official page)",
+      "Name lead (unverified): Karazin University (news usage: life.pravda.com.ua headline 'Університет Каразіна залишиться у рідному Харкові'; Apostrophe interview 'Karazin University would remain in Kharkiv')",
+      "Name lead (unverified): Kharkiv University imeni Karazina (zaxid.net headline, inventory alias)",
+      "Name lead (unverified): School of Medicine, V. N. Karazin Kharkiv National University (English name of the medical unit on med.karazin.ua / medicine.karazin.ua: 'Admissions. Studies at the School')",
+      "Name lead (unverified): Медичний факультет ХНУ імені В. Н. Каразіна (Ukrainian name of the medical unit in admissions documents on start.karazin.ua)",
+      "Name lead (unverified): Centre for Postgraduate Medical Education (cpo.karazin.ua, postgraduate medical unit)",
+      "Name lead (unverified): International Education Institute / IIE (iie.karazin.ua, foreign-applicant unit)"
+    ]
+  }
+}

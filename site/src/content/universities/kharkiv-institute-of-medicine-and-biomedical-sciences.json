@@ -1,0 +1,659 @@
+{
+  "slug": "kharkiv-institute-of-medicine-and-biomedical-sciences",
+  "synthetic": false,
+  "officialName": {
+    "value": "Private Higher Education Institution \"University of Medicine and Social Sciences\" (English rendering of the registered Ukrainian name; no official English form found in search results). Formerly \"Kharkiv Institute of Medicine and Biomedical Sciences\", the name still used in NAQA (English), EQAR and third-party listings.",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kharkiv Institute of Medicine and Biomedical Sciences",
+  "alternativeNames": [
+    "KhIM",
+    "KHIM",
+    "Харківський інститут медицини та біомедичних наук",
+    "Університет медицини та соціальних наук",
+    "ПЗВО \"Університет медицини та соціальних наук\""
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kharkiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://khim.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (private) in Kharkiv, Ukraine, with leads for medicine, nursing programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "medicine-speciality-222-medicine",
+      "name": "Medicine (speciality 222 Medicine)",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://en.naqa.gov.ua/?p=5910 (NAQA English); English-medium lead only from https://mededatlas.lecturio.com/school/kharkiv-institute-of-medicine-and-biomedical-sciences (third-party)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://en.naqa.gov.ua/?p=5910 (NAQA English); English-medium lead only from https://mededatlas.lecturio.com/school/kharkiv-institute-of-medicine-and-biomedical-sciences (third-party)."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-reported-new-bachelor-programme",
+      "name": "Nursing (сестринська справа) – reported new bachelor programme",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/news/96051/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "psychology-reported-new-bachelor-programme",
+      "name": "Psychology – reported new bachelor programme",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/news/96051/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "management-and-business-administration-reported-new-bachelor-programme",
+      "name": "Management and Business Administration – reported new bachelor programme",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://osvita.ua/news/96051/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "osvita.ua news: 'Харківській інститут медицини та біомедичних наук стає Універси",
+      "url": "https://osvita.ua/news/96051/",
+      "purpose": "osvita.ua news: 'Харківській інститут медицини та біомедичних наук стає Університетом медицини та соціальних наук' — rename report; president Anton Smirnov quoted; new bachelor programmes in psycholog",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in search result; MON register dated 05.05.2026 already carries the new name. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry of Education licence register of higher-education providers, Kharkiv ob",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/kharkivska-oblast-2",
+      "purpose": "Ministry of Education licence register of higher-education providers, Kharkiv oblast — snippet says it lists ПЗВО 'Університет медицини та соціальних наук'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: register stated current at 05.05.2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA (English) record: Medicine speciality 222, Master's level, accredited by AH",
+      "url": "https://en.naqa.gov.ua/?p=5910",
+      "purpose": "NAQA (English) record: Medicine speciality 222, Master's level, accredited by AHPGS for 1 year until 21 Oct 2026; NAQA board meeting 14 Oct 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-10-14 (board decision, per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Earlier NAQA (English) record: AHPGS experts required an in-person visit; term c",
+      "url": "https://en.naqa.gov.ua/?p=1676",
+      "purpose": "Earlier NAQA (English) record: AHPGS experts required an in-person visit; term could be extended to 30 Sept 2027 after a successful visit",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021 (per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Further NAQA (English) record for the institution (returned in search; content n",
+      "url": "https://en.naqa.gov.ua/?p=5033",
+      "purpose": "Further NAQA (English) record for the institution (returned in search; content not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "EQAR/DEQAR institution entry titled 'Kharkiv Institute of Medicine and Biomedica",
+      "url": "https://www.eqar.eu/qa-results/search/by-institution/institution/?id=9491",
+      "purpose": "EQAR/DEQAR institution entry titled 'Kharkiv Institute of Medicine and Biomedical Sciences'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "Business directory: 'Kharkiv Institute of Medicine and Biomedical Sciences of PH",
+      "url": "https://village.ai/company/khim",
+      "purpose": "Business directory: 'Kharkiv Institute of Medicine and Biomedical Sciences of PHEE Kyiv Medical University', domain khim.edu.ua, founded 2017",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "Lecturio MedEd Atlas: private, 'currently operational', instruction in English a",
+      "url": "https://mededatlas.lecturio.com/school/kharkiv-institute-of-medicine-and-biomedical-sciences",
+      "purpose": "Lecturio MedEd Atlas: private, 'currently operational', instruction in English and Ukrainian, start year 2018; many fields 'TBA'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "education.ua profile under the new name: ~238 students, 69 teachers, faculty of ",
+      "url": "https://www.education.ua/universities/886/",
+      "purpose": "education.ua profile under the new name: ~238 students, 69 teachers, faculty of medicine, dormitory, preparatory department, military department (third-party, unverified)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "Kharkiv Oblast administration list of private higher-education institutions (ret",
+      "url": "https://kharkivoda.gov.ua/content/documents/149/14826/Attaches/spisok_privatnih_zakladiv_vischoyi_osviti_1_.pdf",
+      "purpose": "Kharkiv Oblast administration list of private higher-education institutions (returned for the new name; PDF not read)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "Kyiv Medical University document returned in the search for the new name (not re",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2020/05/KMU_FaFa_2020_UKRENG_v3.pdf",
+      "purpose": "Kyiv Medical University document returned in the search for the new name (not read) — weak lead for the KMU relationship",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-05 (from URL path). Search-result lead, not read in full."
+    },
+    {
+      "label": "Profile of the different private 'Харківський міжнародний медичний університет' ",
+      "url": "https://www.education.ua/universities/922/",
+      "purpose": "Profile of the different private 'Харківський міжнародний медичний університет' (Kharkiv International Medical University) — name-confusion reference",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: unknown. Search-result lead, not read in full."
+    },
+    {
+      "label": "Agent listing for Kharkiv International Medical University (khimu.edu.ua) return",
+      "url": "https://www.selectyouruniversity.com/university/kharkiv-international-medical-university/",
+      "purpose": "Agent listing for Kharkiv International Medical University (khimu.edu.ua) returned when searching this institution's name — shows confusion risk; its fee figures do not apply here",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026-27 admission cycle (per title). Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead found. Every lead places the institution in Kharkiv: the Ministry of Education licence register for Kharkiv oblast (data stated as current at 05.05.2026) lists ПЗВО \"Університет медицини та соціальних наук\", and the education.ua profile (undated) shows a Kharkiv institution with a faculty of medicine, dormitory, preparatory department and military department (~238 students, 69 teachers; third-party figures, unverified). The osvita.ua rename report quotes president Anton Smirnov: \"зміна назви не вплине на навчальний процес. Усі освітні програми, документи та права студентів залишаються без змін\". Kharkiv is a frontline city; the teaching format (in-person/online) during hostilities is unverified. Rename date not shown in the search results.",
+      "Red flag to resolve before any fact is shown: Identity split across sources: the MON register and osvita.ua carry the new name 'Університет медицини та соціальних наук', while NAQA (English), EQAR, Lecturio and directories still use 'Kharkiv Institute of Medicine and Biomedical Sciences'; the domain lead khim.edu.ua comes from a third-party directory and may be stale after the rename (no new domain found).",
+      "Red flag to resolve before any fact is shown: Relationship to PHEE 'Kyiv Medical University' (inventory slug kyiv-medical-university) is unexplained: a directory names it 'Kharkiv Institute of Medicine and Biomedical Sciences of PHEE Kyiv Medical University' and a KMU document surfaced in the rename search, yet the MON register lists it as a separate private HEI under the new name. Whether it was a KMU branch that became a separate legal entity, and when, is unverified.",
+      "Red flag to resolve before any fact is shown: Accreditation of the only medical degree programme (Medicine 222, Master's) was granted by AHPGS for one year only, until 21 October 2026 (NAQA, decision 14 Oct 2025) — that date has passed as of 2026-10-24 and no renewal lead was found; the 2021 NAQA record shows a conditional term pending an on-site visit.",
+      "Red flag to resolve before any fact is shown: Name confusion risk with two other Kharkiv institutions: Kharkiv International Medical University (KhIMU, khimu.edu.ua, private; inventory slug kharkiv-international-medical-university) and the state Kharkiv National Medical University (KNMU). Agent sites returned for this institution's name actually describe KhIMU/KNMU fees and MBBS intakes — none of those figures apply here.",
+      "Red flag to resolve before any fact is shown: No international-applicants page, English-medium programme page, tuition or admissions information for foreigners was found; the only English-medium lead is a third-party atlas entry (Lecturio) with most fields marked 'TBA'.",
+      "Red flag to resolve before any fact is shown: Young and small institution per third-party leads: founded 2017 (village.ai) or 2018 (Lecturio); ~238 students and 69 teachers (education.ua) — figures unverified.",
+      "Red flag to resolve before any fact is shown: Kharkiv is a frontline city; teaching format and campus access during hostilities unverified (no relocation report found either way).",
+      "Red flag to resolve before any fact is shown: Dentistry and pharmacy: no programme leads found; the directory must not imply them.",
+      "Missing evidence: Official website: no page read; current domain after the rename unknown (khim.edu.ua is a third-party directory lead only).",
+      "Missing evidence: Official English name of the renamed institution (the English form 'University of Medicine and Social Sciences' is a translation).",
+      "Missing evidence: Date and legal basis of the rename (institute to university); institution type after the rename (register shows 'університет' in the name but no structure was seen).",
+      "Missing evidence: EDEBO entry: licence number, legal-entity (ЄДРПОУ) code, licensed specialities and volumes (222 Medicine, 223 Nursing, others).",
+      "Missing evidence: Current accreditation status of Medicine 222 after 21 Oct 2026 (AHPGS/NAQA); the 2021 conditional term and whether the extension to 30 Sept 2027 was granted.",
+      "Missing evidence: Admission of foreign applicants, English-medium teaching, tuition, international office contact and application procedure — no official lead found.",
+      "Missing evidence: Legal relationship to PHEE 'Kyiv Medical University' (former branch? separate entity? date of separation).",
+      "Missing evidence: Teaching format and campus access in Kharkiv during hostilities; any relocation or distance-learning arrangement.",
+      "Missing evidence: Ministry 'Study in Ukraine' portal listing (not found).",
+      "Missing evidence: Verification of third-party figures: founding year (2017 vs 2018), ~238 students, 69 teachers.",
+      "Missing evidence: Confirmation that no dentistry or pharmacy programme exists (none found; absence not proven).",
+      "Skeptic's note: Identity split: the MON higher-education licence register (Kharkiv oblast, stated current at 05.05.2026) and an osvita.ua news item carry a new name, ПЗВО «Університет медицини та соціальних наук», while NAQA (English), EQAR, Lecturio and directories still use 'Kharkiv Institute of Medicine and Biomedical Sciences'. The rename date, legal basis and official English form are unconfirmed; no English source uses the new name.",
+      "Skeptic's note: Relationship to the candidate kyiv-medical-university is unexplained: one directory (village.ai) calls it 'Kharkiv Institute of Medicine and Biomedical Sciences of PHEE Kyiv Medical University', yet the MON register lists it as a separate private HEI. Treated as a separate institution on the strength of the register lead; not confirmed.",
+      "Skeptic's note: Only medical degree lead (Medicine 222, Master's) was accredited by AHPGS for one year to 21 Oct 2026 per NAQA; that date has passed and no renewal lead exists. Open question, not a bar for a name-only listing.",
+      "Skeptic's note: Domain khim.edu.ua is a third-party directory lead (low confidence) and may be stale after the rename; no new domain found.",
+      "Skeptic's note: Name-confusion risk with Kharkiv International Medical University (candidate) and Kharkiv National Medical University (listed); agent sites returned for this name actually describe those two.",
+      "Skeptic's note: No foreign-applicant, English-medium or admissions page found (not required for the name-only tier).",
+      "Name lead (unverified): Private Higher Education Institution \"University of Medicine and Social Sciences\" (English rendering of the registered Ukrainian name; no official English form found in search results). Formerly \"Kharkiv Institute of Medicine and Biomedical Sciences\", the name still used in NAQA (English), EQAR and third-party listings.",
+      "Name lead (unverified): Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" (раніше: Харківський інститут медицини та біомедичних наук)",
+      "Name lead (unverified): Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\" (directory form, village.ai; unverified)",
+      "Name lead (unverified): University of Medicine and Social Sciences (translation of the new registered name; not found in English on an official page)",
+      "Name lead (unverified): khim.edu.ua (domain lead from a third-party directory; not confirmed after the rename)"
+    ]
+  }
+}

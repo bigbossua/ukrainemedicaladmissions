@@ -1,0 +1,638 @@
+{
+  "slug": "cherkasy-medical-academy",
+  "synthetic": false,
+  "officialName": {
+    "value": "Cherkasy Medical Academy (English name as given in the EDEBO registry search result; full legal form not confirmed)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Cherkasy Medical Academy",
+  "alternativeNames": [
+    "Черкаська медична академія",
+    "ЧМА (short name shown in the EDEBO registry search summary)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Cherkasy",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://medacademy.ck.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical academy or institute (communal) in Cherkasy (address lead: вул. Хрещатик, 215 / Khreshchatyk Street 215, consistent across the EDEBO registry, education.ua and osvita.ua search results), Ukraine, with leads for medicine, nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "speciality-222-educational-programme",
+      "name": "Медицина (speciality 222), educational programme «Лікар»",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r24/834/ (offer sub-pages returned: 1612817, 1672195, 1643158, 1673664, 1672121, 1669090; which one carries this offer is not identified) and https://vstup.osvita.ua/y2025/r24/834/ (sub-pages 1551911, 1572215)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "speciality-223-programmes",
+      "name": "Медсестринство (speciality 223), programmes «Лікувальна справа», «Акушерська справа», «Сестринська справа»",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r24/834/ and https://vstup.edbo.gov.ua/offer/1579659/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "programme-2",
+      "name": "Фармація (за спеціалізаціями)",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r24/834/ and https://www.education.ua/universities/942/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "speciality-227-therapy-and-rehabilitation",
+      "name": "Терапія та реабілітація (за спеціалізаціями) (speciality 227 Therapy and rehabilitation)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "EDEBO registry entry titled «Черкаська медична академія»; search summary: code 8",
+      "url": "https://registry.edbo.gov.ua/university/834",
+      "purpose": "EDEBO registry entry titled «Черкаська медична академія»; search summary: code 834, founded 14.10.1930, regional council governing body, website medacademy.ck.ua, Khreshchatyk St 215, English name Che",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated registry page; search run 2026-10-24. Search-result lead, not read in full."
+    },
+    {
+      "label": "State admissions-portal offer titled «Бакалавр, (I5) Медсестринство, Заочна, Чер",
+      "url": "https://vstup.edbo.gov.ua/offer/1579659/",
+      "purpose": "State admissions-portal offer titled «Бакалавр, (I5) Медсестринство, Заочна, Черкаська медична академія»",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 per search summary. Search-result lead, not read in full."
+    },
+    {
+      "label": "2026 admissions-campaign listing: Master's «Лікар» (222 Medicine) 38,947 UAH/yr ",
+      "url": "https://vstup.osvita.ua/y2026/r24/834/",
+      "purpose": "2026 admissions-campaign listing: Master's «Лікар» (222 Medicine) 38,947 UAH/yr contract, term 01.09.2026–30.06.2032; bachelor nursing (Лікувальна/Акушерська/Сестринська справа) budget and contract; p",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 campaign (undated page). Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 admissions-campaign listing: Master's «Лікар» 38,947 UAH/yr, term 01.10.202",
+      "url": "https://vstup.osvita.ua/y2025/r24/834/",
+      "purpose": "2025 admissions-campaign listing: Master's «Лікар» 38,947 UAH/yr, term 01.10.2025–30.06.2031; licence-volume text truncated; sub-pages 1551911 and 1572215",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 campaign (undated page). Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory entry: «Тип НЗ: Академія; Підпорядкування: Обласна рада; Тип НЗ: Закла",
+      "url": "https://www.education.ua/universities/942/",
+      "purpose": "Directory entry: «Тип НЗ: Академія; Підпорядкування: Обласна рада; Тип НЗ: Заклад вищої освіти»; website http://www.medacademy.ck.ua; phone (0472) 37 33 10; rector Губенко Інна Яківна; directions Фарм",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated directory page. Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory entry calling it «державний заклад вищої освіти в місті Черкаси»; addr",
+      "url": "https://osvita.ua/vnz/guide/37467/",
+      "purpose": "Directory entry calling it «державний заклад вищої освіти в місті Черкаси»; address вул. Хрещатик, 215; site https://medacademy.ck.ua/; same four programme directions",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated directory page. Search-result lead, not read in full."
+    },
+    {
+      "label": "Older college listing: «Черкаський медичний коледж - вищий навчальний заклад I-I",
+      "url": "https://osvita.ua/vnz/college/16858/",
+      "purpose": "Older college listing: «Черкаський медичний коледж - вищий навчальний заклад I-II рівнів акредитації» (apparent predecessor; link to the academy not confirmed)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated, apparently pre-academy. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON page: information on the right to conduct educational activity in higher edu",
+      "url": "https://mon.gov.ua/ua/ministerstvo/poslugi/licenzuvannya/vidomosti-pro-pravo-zdijsnennya-osvitnoyi-diyalnosti/vidomosti-pro-pravo-zdijsnennya-osvitnoyi-diyalnosti-u-sveri-vischoi-osviti/cherkaska-oblast-l",
+      "purpose": "MON page: information on the right to conduct educational activity in higher education, Cherkasy oblast (returned for the academy's name; not opened)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON PDF titled «medichna akademiya19» under the licensing ('pravo diyalnosti') p",
+      "url": "https://mon.gov.ua/storage/app/media/pravo-diyalnosti/2019/10/10/medichna-akademiya19.pdf",
+      "purpose": "MON PDF titled «medichna akademiya19» under the licensing ('pravo diyalnosti') path, returned for the licence query (content unread)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2019-10-10 (from URL path). Search-result lead, not read in full."
+    },
+    {
+      "label": "NAQA expert-register annex naming the academy (staff as accreditation experts); ",
+      "url": "https://naqa.gov.ua/wp-content/uploads/2026/01/Додаток-про-включення-до-Реєстру-експертів-з-числа-НПП-НП-від-23.12.2025.pdf",
+      "purpose": "NAQA expert-register annex naming the academy (staff as accreditation experts); not a programme accreditation decision; similar NAQA expert-register PDFs dated 2019-09-04, 2020-10-13, 2022-12, 2024-01",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-12-23. Search-result lead, not read in full."
+    },
+    {
+      "label": "Study in Ukraine portal result returned for the domain-restricted search — it is",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/52/",
+      "purpose": "Study in Ukraine portal result returned for the domain-restricted search — it is Bohdan Khmelnytsky National University of Cherkasy, not the academy; no portal entry for the academy was found",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Cherkasy (address lead: вул. Хрещатик, 215 / Khreshchatyk Street 215, consistent across the EDEBO registry, education.ua and osvita.ua search results)",
+      "Relocation lead (unverified): No relocation lead. The Cherkasy address (Khreshchatyk St 215) is consistent across the EDEBO registry, education.ua and osvita.ua results, and the academy has 2025 and 2026 admissions-campaign offers on vstup.osvita.ua plus an EDEBO admissions-portal offer (vstup.edbo.gov.ua/offer/1579659). Cherkasy is not in an occupied or front-line region. No official page was opened, so current operation is inferred from third-party admissions listings only.",
+      "Red flag to resolve before any fact is shown: Inventory group G (nursing/allied-health level) is contradicted by the 2025 and 2026 admissions listings, which show a 6-year Master's «Лікар» in 222 Medicine at a communal academy; the licence volume text in the lead is truncated and no NAQA accreditation decision for 222 Medicine (or any programme) was found — licence and accreditation remain unverified.",
+      "Red flag to resolve before any fact is shown: No lead of any kind for admission of foreign applicants, English-medium teaching, an international office, or a Study in Ukraine portal entry; every offer found is a domestic (budget/contract, UAH-priced) offer.",
+      "Red flag to resolve before any fact is shown: Ownership wording is inconsistent across leads: EDEBO registry and education.ua indicate a regional-council (communal) body («Підпорядкування: Обласна рада»), while osvita.ua text calls it «державний заклад вищої освіти»; the full legal name with «Комунальний заклад вищої освіти … Черкаської обласної ради» was not confirmed by search.",
+      "Red flag to resolve before any fact is shown: Name confusion: an osvita.ua listing describes the apparent predecessor «Черкаський медичний коледж» (I-II accreditation level); the reorganisation into an academy, and whether a separate 'фаховий коледж' still exists under a similar name, are unconfirmed.",
+      "Red flag to resolve before any fact is shown: English-language searches for 'Cherkasy Medical Academy' return Bohdan Khmelnytsky National University of Cherkasy (already listed) and Cherkasy State Technological University instead — easy to conflate in directories and in SEO copy.",
+      "Red flag to resolve before any fact is shown: Rector name (Inna Gubenko) comes from directory/registry summaries only and may be outdated.",
+      "Red flag to resolve before any fact is shown: The contract fee leads (38,947 UAH/yr Medicine; 38,856 UAH/yr non-budget nursing) are domestic figures from a third-party aggregator; they must not be presented as fees for international applicants.",
+      "Missing evidence: No page on medacademy.ck.ua was opened (network policy): full legal name, charter/founder, rector, admissions rules, programme list and contact details are all unverified against the official site.",
+      "Missing evidence: MON licence register entry (licence number, licensed volumes, date) for 222 Medicine Master's, 223 Nursing, 226 Pharmacy and 227 Therapy and rehabilitation — the MON oblast list and 2019 PDF were returned but not read; the vstup.osvita.ua licence-volume text was truncated.",
+      "Missing evidence: NAQA accreditation decisions/certificates for any educational programme — none found; only staff expert-register PDFs.",
+      "Missing evidence: Any provision for foreign applicants (admission rules for foreigners, invitation issuance, Study in Ukraine portal listing, international office page) — not found.",
+      "Missing evidence: English-medium teaching — not found.",
+      "Missing evidence: Dentistry — no lead at all (not found).",
+      "Missing evidence: Level of the pharmacy programme (bachelor vs. master) and the speciality codes for pharmacy and therapy/rehabilitation — not shown.",
+      "Missing evidence: Date and legal act of the reorganisation of «Черкаський медичний коледж» into the academy, and whether any 'фаховий коледж' with a similar name still exists.",
+      "Missing evidence: Fees for international applicants — not found (only domestic UAH contract fees from a third-party aggregator).",
+      "Missing evidence: Current rector and governance (EDEBO summary names Inna Gubenko; may be outdated).",
+      "Missing evidence: Direct official confirmation of 2026/27 operation (only third-party campaign listings and a 2024 EDEBO offer found).",
+      "Skeptic's note: Licence and accreditation unverified: the vstup.osvita.ua licence-volume text for the 6-year Master's «Лікар» (222 Medicine) is truncated, and no NAQA accreditation decision for any programme was found (only expert-register PDFs naming its staff). Open question, not a bar.",
+      "Skeptic's note: Ownership wording inconsistent: EDEBO registry summary and education.ua indicate a regional-council (communal) body, osvita.ua calls it 'державний заклад вищої освіти'; the full legal form was not confirmed.",
+      "Skeptic's note: Apparent predecessor «Черкаський медичний коледж» (I-II accreditation level) appears in an older osvita.ua listing; the reorganisation into an academy and whether a similarly named фаховий коледж still exists are unconfirmed.",
+      "Skeptic's note: English-language searches for 'Cherkasy Medical Academy' return Bohdan Khmelnytsky National University of Cherkasy (listed) and Cherkasy State Technological University; keep profiles separate.",
+      "Skeptic's note: Rector name (Inna Gubenko) from registry/directory summaries may be outdated; contract-fee figures are domestic UAH aggregator leads and must not be shown as international fees.",
+      "Skeptic's note: No foreign-applicant, English-medium or Study in Ukraine portal lead (not required for the name-only tier).",
+      "Name lead (unverified): Cherkasy Medical Academy (English name as given in the EDEBO registry search result; full legal form not confirmed)",
+      "Name lead (unverified): Черкаська медична академія (registry title lead; the full legal form \"Комунальний заклад вищої освіти «Черкаська медична академія» Черкаської обласної ради\" was NOT confirmed by any search result)",
+      "Name lead (unverified): Cherkaska medychna akademiia (standard transliteration of the Ukrainian name, not a form seen in a source)",
+      "Name lead (unverified): Черкаський медичний коледж (apparent predecessor: an osvita.ua college listing describes 'Черкаський медичний коледж - вищий навчальний заклад I-II рівнів акредитації'; reorganisation into the academy is NOT confirmed by any search result)"
+    ]
+  }
+}

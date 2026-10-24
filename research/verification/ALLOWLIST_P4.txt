@@ -1,0 +1,36 @@
+# Fourth host list (2026-10-24): official-domain leads for the institutions added to the directory as name-only
+# research previews under decision N27 (PUBLICATION_POLICY_DECISIONS.md (f)). Each host is a search-result lead
+# recorded in that institution's record (site/src/content/universities/<slug>.json); it is checked against the national
+# registers in P1/P2 before any claim is used. Hosts already in P1-P3 are not repeated.
+karazin.ua
+iie.karazin.ua
+vnu.edu.ua
+inter-dep.vnu.edu.ua
+kspu.edu
+dnmu.edu.ua
+lsmu.edu.ua
+kmu.edu.ua
+khimu.edu.ua
+ieu.edu.ua
+oimu.edu.ua
+kymu.edu.ua
+emu.dp.ua
+mgu.edu.ua
+dimh.kmu.edu.ua
+maem.kiev.ua
+khim.edu.ua
+vnz-mpu.com.ua
+lma.edu.ua
+medacademy.ck.ua
+mcollege.rv.ua
+vmi.volyn.ua
+zhim.org.ua
+onu.edu.ua
+imo.onu.edu.ua
+dnu.dp.ua
+www.dnu.dp.ua
+kpi.kharkov.ua
+web.kpi.kharkov.ua
+lpnu.ua
+knutd.edu.ua
+en.knutd.edu.ua

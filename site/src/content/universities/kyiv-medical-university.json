@@ -1,0 +1,922 @@
+{
+  "slug": "kyiv-medical-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "PRIVATE HIGHER EDUCATIONAL ESTABLISHMENT \"KYIV MEDICAL UNIVERSITY\" (wording of the EQAR/DEQAR institution listing title; the university's own site uses \"Kyiv Medical University\") - search-result lead, no official page read",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Kyiv Medical University",
+  "alternativeNames": [
+    "KMU",
+    "Київський медичний університет (КМУ)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Kyiv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://kmu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://kmu.edu.ua/en/admission-requirements/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical university (private) in Kyiv, Ukraine, with leads for dentistry, medicine, nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [
+    {
+      "id": "medicine-md-speciality-222",
+      "name": "Medicine (MD) - speciality 222 'Медицина'",
+      "field": "medicine",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://kmu.edu.ua/en/admission-requirements/ ; https://kmu.edu.ua/wp-content/uploads/2025/10/стратегический-план_КМУ_2016_24.16.doc.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://kmu.edu.ua/en/admission-requirements/ ; https://kmu.edu.ua/wp-content/uploads/2025/10/стратегический-план_КМУ_2016_24.16.doc.pdf."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://kmu.edu.ua/en/admission-requirements/ ; https://kmu.edu.ua/wp-content/uploads/2025/10/стратегический-план_КМУ_2016_24.16.doc.pdf."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry-speciality-221",
+      "name": "Dentistry - speciality 221 'Стоматологія'",
+      "field": "dentistry",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://kmu.edu.ua/en/admission-requirements/ ; https://www.findcourse.com/en/highereducation/course/116657/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://kmu.edu.ua/en/admission-requirements/ ; https://www.findcourse.com/en/highereducation/course/116657/."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://kmu.edu.ua/en/admission-requirements/ ; https://www.findcourse.com/en/highereducation/course/116657/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-speciality-226",
+      "name": "Pharmacy / 'Фармація, промислова фармація' - speciality 226",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://data.deqar.eu/institution/3388 ; https://kmu.edu.ua/wp-content/uploads/2022/07/2022-№-1-від-27.08.2021.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/ ; https://data.deqar.eu/institution/3388 ; https://kmu.edu.ua/wp-content/uploads/2022/07/2022-№-1-від-27.08.2021.pdf."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "preparatory-course-ukrainian-language-for-international-students",
+      "name": "Preparatory course (Ukrainian language) for international students",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/apply-here/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "general-medical-practice-primary-specialization-postgraduate-for-holders-of-a-medical-degree",
+      "name": "General Medical Practice - primary specialization (postgraduate, for holders of a medical degree)",
+      "field": "medicine",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": [
+          "English",
+          "Ukrainian"
+        ],
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (language of instruction as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/kyiv-medical-university-opens-enrolment-for-international-students-in-the-general-medical-practice-primary-specialization-programme/."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": true,
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (admission of foreign applicants as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://kmu.edu.ua/en/kyiv-medical-university-opens-enrolment-for-international-students-in-the-general-medical-practice-primary-specialization-programme/."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-speciality-not-stated-in-results-level-not-stated",
+      "name": "Nursing (speciality not stated in results; level not stated)",
+      "field": "nursing",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "KMU application page: programmes MD (6 yrs), dentistry (5), pharmacy (5), 1-year",
+      "url": "https://kmu.edu.ua/en/apply-here/",
+      "purpose": "KMU application page: programmes MD (6 yrs), dentistry (5), pharmacy (5), 1-year preparatory course; 'Courses are taught also in the English language'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (current site page). Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU 2025 admission requirements for foreigners: invitation letter via 'KMU Inter",
+      "url": "https://kmu.edu.ua/en/admission-requirements/",
+      "purpose": "KMU 2025 admission requirements for foreigners: invitation letter via 'KMU International Faculty'; NEET for Indian nationals; winter intake 'General Medicine and Dentistry in English medium only'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 (per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU 2026 admission requirements: two sessions (23-30 April; 6 July - 1 November ",
+      "url": "https://kmu.edu.ua/en/admission-requirements-2/",
+      "purpose": "KMU 2026 admission requirements: two sessions (23-30 April; 6 July - 1 November 2026); written test in English or Ukrainian, Chemistry, Biology",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 (per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU news on 2026 admissions at the Polish campus; mentions Psychology, Nursing a",
+      "url": "https://kmu.edu.ua/en/2026-admissions-at-kmu-polish-campus-growing-interest-an-international-environment-and-practice-oriented-medical-education/",
+      "purpose": "KMU news on 2026 admissions at the Polish campus; mentions Psychology, Nursing and Professional Medical College programmes",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU page describing the Polish Campus as 'an officially registered branch in the",
+      "url": "https://kmu.edu.ua/en/kmu-polish-campus-2/",
+      "purpose": "KMU page describing the Polish Campus as 'an officially registered branch in the Republic of Poland' in the Katowice agglomeration",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU notice to international students: Polish teaching run 'on license and accred",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2022/08/CLARIFICATIONS.pdf",
+      "purpose": "KMU notice to international students: Polish teaching run 'on license and accreditation certificates issued for Kyiv Medical University'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022-08 (upload path). Search-result lead, not read in full."
+    },
+    {
+      "label": "Business Ombudsman Council case summary: branch set up to keep the Ukrainian lic",
+      "url": "https://boi.org.ua/en/cases-post/medical-university-opens-a-branch-in-poland/",
+      "purpose": "Business Ombudsman Council case summary: branch set up to keep the Ukrainian licence while teaching in Poland; Polish authorities approved the branch",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 (per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Law-firm release: EBRD loan up to EUR 2.5m for the Polish campus; capacity 'over",
+      "url": "https://avellum.com/avellum-advises-ebrd-on-financing-of-kyiv-medical-universitys-new-campus-in-poland",
+      "purpose": "Law-firm release: EBRD loan up to EUR 2.5m for the Polish campus; capacity 'over 2000 Ukrainian and international students'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated in snippet (EBRD project 54412). Search-result lead, not read in full."
+    },
+    {
+      "label": "DEQAR record: PRIVATE HIGHER EDUCATIONAL ESTABLISHMENT \"KYIV MEDICAL UNIVERSITY\"",
+      "url": "https://data.deqar.eu/institution/3388",
+      "purpose": "DEQAR record: PRIVATE HIGHER EDUCATIONAL ESTABLISHMENT \"KYIV MEDICAL UNIVERSITY\"; 2022 Pharmacy programme accreditation 'positive with conditions or restrictions'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 (accreditation year). Search-result lead, not read in full."
+    },
+    {
+      "label": "EQAR listing of the same institution record",
+      "url": "https://www.eqar.eu/qa-results/search/by-institution/institution/?id=3388",
+      "purpose": "EQAR listing of the same institution record",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator card: 'Тип НЗ: Університет', 'Ліцензійний обсяг: 706 місць', site kmu",
+      "url": "https://vstup.osvita.ua/y2020/r27/197/",
+      "purpose": "Aggregator card: 'Тип НЗ: Університет', 'Ліцензійний обсяг: 706 місць', site kmu.edu.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020 admission cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU strategic plan (2016): MES licence for specialities 221 Стоматологія, 222 Ме",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2025/10/стратегический-план_КМУ_2016_24.16.doc.pdf",
+      "purpose": "KMU strategic plan (2016): MES licence for specialities 221 Стоматологія, 222 Медицина, 226 Фармація",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2016 document, uploaded 2025-10. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU 2021-2022 report: international accreditation extended for 'Фармація, промис",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2022/07/2022-№-1-від-27.08.2021.pdf",
+      "purpose": "KMU 2021-2022 report: international accreditation extended for 'Фармація, промислова фармація' of ПВНЗ 'Київський медичний університет' and 'Медицина' of the Kharkiv institute",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2021-08-27 / uploaded 2022-07. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU 2022 brochure: ~3,200 students, 700 clinical residents; 'KYIV | KHARKIV | DN",
+      "url": "https://kmu.edu.ua/wp-content/uploads/2022/04/KMUforMayors_c.pdf",
+      "purpose": "KMU 2022 brochure: ~3,200 students, 700 clinical residents; 'KYIV | KHARKIV | DNIPRO'; Kharkiv Institute of Medicine and Biomedical Sciences consortium unit est. 2017",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022-04. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU history page: founded 1992 by Valerii Pokanevych around folk and alternative",
+      "url": "https://kmu.edu.ua/en/history-and-symbolism/",
+      "purpose": "KMU history page: founded 1992 by Valerii Pokanevych around folk and alternative medicine; 'Doctor of Folk and Alternative Medicine' specialty 1998",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Wikipedia (flagged 'multiple issues'): older name; established 1992; ~3,900 stud",
+      "url": "https://en.wikipedia.org/wiki/Kyiv_Medical_University_of_UAFM",
+      "purpose": "Wikipedia (flagged 'multiple issues'): older name; established 1992; ~3,900 students; IMED listing",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry Study in Ukraine portal page surfaced for the query (titled 'Student fe",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/15",
+      "purpose": "Ministry Study in Ukraine portal page surfaced for the query (titled 'Student feedback'); identity as KMU inferred, not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "KMU news: postgraduate General Medical Practice primary specialization for inter",
+      "url": "https://kmu.edu.ua/en/kyiv-medical-university-opens-enrolment-for-international-students-in-the-general-medical-practice-primary-specialization-programme/",
+      "purpose": "KMU news: postgraduate General Medical Practice primary specialization for international medical graduates, Ukrainian or English",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (news item). Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator listing: Bachelor Dentistry in English, '3,800 per year' (not officia",
+      "url": "https://www.findcourse.com/en/highereducation/course/116657/",
+      "purpose": "Aggregator listing: Bachelor Dentistry in English, '3,800 per year' (not official, possibly stale)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator card 'Київський медичний університет (КМУ)' with 2026 admissions data",
+      "url": "https://www.education.ua/ua/universities/92/",
+      "purpose": "Aggregator card 'Київський медичний університет (КМУ)' with 2026 admissions data",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation reported. Base is Kyiv; KMU's 2022 brochure describes operations as 'KYIV | KHARKIV | DNIPRO' and a 'Kharkiv Institute of Medicine and Biomedical Sciences' consortium unit (est. 2017) - status of the Kharkiv/Dnipro operations after 2022 not found. A registered branch in Poland ('KMU Polish Campus', Katowice agglomeration) is described on kmu.edu.ua; Business Ombudsman (2022) says 'Polish authorities later approved the branch'; EBRD lent 'up to EUR 2.5 million' to finish it (Avellum / EBRD project 54412, date not shown in snippet). 2026 admission sessions announced on kmu.edu.ua: 'from April, 23 till April, 30' and 'from July, 6 and till November, 1'. All search-result leads.",
+      "Red flag to resolve before any fact is shown: Inventory flag 'licence and accreditation questions' remains open: the only licence lead is KMU's own 2016 strategic plan (licence for 221/222/226); no current MES licence register or EDEBO entry surfaced; DEQAR shows the 2022 Pharmacy accreditation decision as 'positive with conditions or restrictions'.",
+      "Red flag to resolve before any fact is shown: Polish campus: KMU's CLARIFICATIONS.pdf (2022/08) says Polish teaching is run 'on license and accreditation certificates issued for Kyiv Medical University' (i.e. Ukrainian certificates used for teaching inside the EU); no Polish regulator record (POL-on / Polish ministry register of foreign branches) surfaced. Destination-country recognition of degrees earned at the Polish site is unverified.",
+      "Red flag to resolve before any fact is shown: Name confusion: distinct from Bogomolets National Medical University (Kyiv, state, listed as bogomolets-national-medical-university) - search results mixed the two; also confusable with 'Kyiv International University' (ruwiki result) and with the state 'Kyiv Medical Professional College' (the only MES document in the results was a college licensing table, not KMU).",
+      "Red flag to resolve before any fact is shown: Older name 'Kyiv Medical University of UAFM' and a founding focus on 'folk and alternative medicine' (own history page: 'Doctor of Folk and Alternative Medicine' specialty launched 1998) - may raise questions with recognition bodies; the UAFM expansion is unverified.",
+      "Red flag to resolve before any fact is shown: Conflicting third-party fee figures (US$4,000/yr medicine; 3,800 dentistry; 3,100 pharmacy from aggregators) and conflicting enrolment figures (Wikipedia ~3,900 vs 2022 brochure ~3,200) - none from an official current page; Wikipedia article is flagged 'multiple issues'.",
+      "Red flag to resolve before any fact is shown: Kharkiv and Dnipro operations and the 'Kharkiv Institute of Medicine and Biomedical Sciences' consortium unit: status after the 2022 invasion not found.",
+      "Red flag to resolve before any fact is shown: Self-ranking claims ('best private university (according to the Rankings-2019)', 'top-ranked private institution') come from KMU's own marketing PDFs; not independent.",
+      "Missing evidence: Current MES licence (register entry / licence number) for 221, 222, 226 and any 223 Nursing - only KMU's own 2016 document found",
+      "Missing evidence: EDEBO (registry.edbo.gov.ua) institution record and code - not surfaced",
+      "Missing evidence: NAQA accreditation certificates per programme (national, as distinct from the DEQAR-listed accreditation) - not surfaced",
+      "Missing evidence: Official 2026 admission rules for foreigners (official PDF), including the exact list of English-medium programmes and whether Pharmacy and Nursing are taught in English",
+      "Missing evidence: Nursing: whether it is a higher-education degree (speciality 223) at the university or a Professional Medical College programme, and at which site",
+      "Missing evidence: Official current tuition fees (only aggregator figures found)",
+      "Missing evidence: Polish registration of 'KMU Polish Campus' in the Polish register of foreign branches and the legal basis for degrees earned there",
+      "Missing evidence: Status of Kharkiv and Dnipro operations and the Kharkiv Institute of Medicine and Biomedical Sciences after 2022",
+      "Missing evidence: Expansion and legal history of the former name 'Kyiv Medical University of UAFM'",
+      "Missing evidence: Full legal name as written in the Unified State Register (ПВНЗ expansion, EDRPOU code, legal address)",
+      "Missing evidence: Confirmation that studyinukraine.gov.ua university/15 is this institution",
+      "Missing evidence: Any recognition statements by destination-country bodies (none found; none should be inferred)",
+      "Name lead (unverified): PRIVATE HIGHER EDUCATIONAL ESTABLISHMENT \"KYIV MEDICAL UNIVERSITY\" (wording of the EQAR/DEQAR institution listing title; the university's own site uses \"Kyiv Medical University\") - search-result lead, no official page read",
+      "Name lead (unverified): ПВНЗ «Київський медичний університет» (wording quoted in KMU's own 2021-2022 report snippet: 'ПВНЗ \"Київський медичний університет\"'; vstup.osvita.ua card title 'Київський медичний університет') - search-result lead",
+      "Name lead (unverified): Kyiv Medical University of UAFM (older name; Wikipedia article title en.wikipedia.org/wiki/Kyiv_Medical_University_of_UAFM; the expansion of UAFM is still not stated in any result - KMU's history page says founder Valerii Pokanevych set it up in 1992 around 'folk and alternative medicine', which is consistent with but does not prove 'Ukrainian Association of Folk Medicine')",
+      "Name lead (unverified): Private Higher Educational Establishment \"Kyiv Medical University\" (EQAR/DEQAR id 3388)",
+      "Name lead (unverified): KMU Polish Campus (branch in the Katowice agglomeration, Poland, per kmu.edu.ua/en/kmu-polish-campus-2/)",
+      "Name lead (unverified): Kharkiv Institute of Medicine and Biomedical Sciences (unit named in KMU's 2022 brochure as part of a 'medical academic consortium with Kyiv Medical University', 'Established in 2017'; relationship not verified)",
+      "Name lead (unverified): Kiev Medical University (transliteration variant used in search demand: 'kiev medical university ukraine')"
+    ]
+  }
+}

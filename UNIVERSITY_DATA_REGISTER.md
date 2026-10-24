@@ -385,3 +385,58 @@ Fee, course and comparison content never lists a preview. A record flagged `publ
 - **Rejected (occupied territory):** Donetsk State Medical University named after M. Gorky and the Medical Academy named after S. I. Georgievsky in Simferopol (two discovery records of one institution, merged), both described in the results as run by the occupying authorities. They are different from the relocated Ukrainian Donetsk National Medical University, which stays in group D.
 - **Not researched in this pass:** Sumy National Agrarian University, and an unidentified private medical institute in Dnipro and an unidentified Zhytomyr nursing provider seen in Study in Ukraine portal results (possibly institutions already listed).
 
+### 13.2 Directory expansion under decision N27 (2026-10-24)
+
+Owner instruction of 2026-10-24: add every relevant Ukrainian institution offering medicine, dentistry, pharmacy or nursing programmes to the directory as a name-only research preview (`PUBLICATION_POLICY_DECISIONS.md` (f)). Method: one researcher per candidate (search-result leads only; official hosts and registers are refused by this environment's network policy), then an independent skeptic per batch of seven who tried to refute existence, Ukrainian jurisdiction, the programme lead, duplicates and the card title. The leads are kept in each record's `researchReferences` and `verification.openQuestions` (the skeptic's notes included). Records were generated with `site/scripts/make-preview-records.py`; every claim is `unverified` or `not-published`, no fee, deadline or intake date is recorded, and every record is `publishable: false`, `researchPreview: true`.
+
+**Added (28; the directory now lists 45 research previews, 0 verified):**
+- Andrei Krupynskyi Lviv Medical Academy (`lviv-medical-academy-krupynskyi`; Lviv; status lead: operating; 0 programme lead(s) with foreign admission, 7 deferred)
+- Cherkasy Medical Academy (`cherkasy-medical-academy`; Cherkasy; status lead: operating; 0 programme lead(s) with foreign admission, 4 deferred)
+- Dnipro Institute of Medicine and Public Health (`dnipro-institute-of-medicine-and-public-health`; Dnipro; status lead: operating; 1 programme lead(s) with foreign admission, 2 deferred)
+- Dnipro Medical Institute (`dnipro-medical-institute-of-conventional-and-alternative-medicine`; Dnipro; status lead: operating; 2 programme lead(s) with foreign admission, 0 deferred)
+- Donetsk National Medical University (`donetsk-national-medical-university`; Kropyvnytskyi; status lead: relocated; 3 programme lead(s) with foreign admission, 1 deferred)
+- International Academy of Ecology and Medicine (`international-academy-of-ecology-and-medicine`; Kyiv; status lead: operating; 0 programme lead(s) with foreign admission, 4 deferred)
+- International European University (`international-european-university`; Kyiv; status lead: operating; 1 programme lead(s) with foreign admission, 1 deferred)
+- International Humanitarian University (`international-humanitarian-university`; Odesa; status lead: operating; 3 programme lead(s) with foreign admission, 2 deferred)
+- Karazin Kharkiv National University (`karazin-kharkiv-national-university`; Kharkiv; status lead: operating; 2 programme lead(s) with foreign admission, 2 deferred)
+- Kharkiv Institute of Medicine and Biomedical Sciences (`kharkiv-institute-of-medicine-and-biomedical-sciences`; Kharkiv; status lead: operating; 0 programme lead(s) with foreign admission, 4 deferred)
+- Kharkiv International Medical University (`kharkiv-international-medical-university`; Kharkiv; status lead: operating; 1 programme lead(s) with foreign admission, 1 deferred)
+- Kharkiv Polytechnic Institute (`kharkiv-polytechnic-institute`; Kharkiv; status lead: operating; 0 programme lead(s) with foreign admission, 2 deferred)
+- Kherson State University (`kherson-state-university`; Kherson; status lead: relocated; 0 programme lead(s) with foreign admission, 3 deferred)
+- Kyiv International University (`kyiv-international-university`; Kyiv; status lead: operating; 3 programme lead(s) with foreign admission, 2 deferred)
+- Kyiv Medical University (`kyiv-medical-university`; Kyiv; status lead: operating; 5 programme lead(s) with foreign admission, 1 deferred)
+- Kyiv National University of Technologies and Design (`kyiv-national-university-of-technologies-and-design`; Kyiv; status lead: operating; 1 programme lead(s) with foreign admission, 2 deferred)
+- Lesya Ukrainka Volyn National University (`lesya-ukrainka-volyn-national-university`; Lutsk; status lead: operating; 0 programme lead(s) with foreign admission, 3 deferred)
+- Luhansk State Medical University (`luhansk-state-medical-university`; Rivne; status lead: relocated; 1 programme lead(s) with foreign admission, 2 deferred)
+- Lviv Medical University (private) (`lviv-medical-institute`; Lviv; status lead: operating; 0 programme lead(s) with foreign admission, 5 deferred)
+- Lviv Polytechnic National University (`lviv-polytechnic-national-university`; Lviv; status lead: operating; 0 programme lead(s) with foreign admission, 4 deferred)
+- Medical and Natural Sciences University (`medical-natural-university`; Mykolaiv; status lead: operating; 0 programme lead(s) with foreign admission, 3 deferred)
+- Odesa I. I. Mechnikov National University (`odesa-mechnikov-national-university`; Odesa; status lead: operating; 2 programme lead(s) with foreign admission, 0 deferred)
+- Odesa International Medical University (`odesa-international-medical-university`; Odesa; status lead: unknown; 3 programme lead(s) with foreign admission, 1 deferred)
+- Oles Honchar Dnipro National University (`oles-honchar-dnipro-national-university`; Dnipro; status lead: operating; 0 programme lead(s) with foreign admission, 7 deferred)
+- Rivne Medical Academy (`rivne-medical-academy`; Rivne; status lead: operating; 0 programme lead(s) with foreign admission, 5 deferred)
+- Ukrainian State University of Science and Technologies (`ukrainian-state-university-of-science-and-technologies`; Dnipro; status lead: operating; 0 programme lead(s) with foreign admission, 2 deferred)
+- Volyn Medical Institute (`volyn-medical-institute`; Lutsk; status lead: operating; 0 programme lead(s) with foreign admission, 6 deferred)
+- Zhytomyr Medical Institute (`zhytomyr-medical-institute`; Zhytomyr; status lead: operating; 0 programme lead(s) with foreign admission, 12 deferred)
+
+**Not listed (15), with the reason:**
+- Zaporizhzhia National University (`zaporizhzhia-national-university`): no lead for a medicine, dentistry, pharmacy or nursing degree programme
+- Shupyk National Healthcare University of Ukraine (`shupyk-national-healthcare-university`): postgraduate-only or military-only: not a first-degree route for international applicants (group E)
+- Kharkiv Medical Academy of Postgraduate Education (`kharkiv-medical-academy-of-postgraduate-education`): postgraduate-only or military-only: not a first-degree route for international applicants (group E)
+- Ukrainian Military Medical Academy (`ukrainian-military-medical-academy`): postgraduate-only or military-only: not a first-degree route for international applicants (group E)
+- King Danylo University (`king-danylo-university`): no lead for a medicine, dentistry, pharmacy or nursing degree programme
+- Kherson Basic Medical Professional College (`kherson-basic-medical-college`): vocational medical college (фаховий коледж), junior-bachelor level (group G)
+- Nikopol Medical College (`nikopol-medical-college`): vocational medical college (фаховий коледж), junior-bachelor level (group G)
+- Bakhmut Medical Professional College (`bakhmut-medical-college`): vocational medical college (фаховий коледж), junior-bachelor level (group G)
+- Kyiv medical college (Study in Ukraine portal entry) (`kyiv-city-medical-college`): vocational medical college (фаховий коледж), junior-bachelor level (group G)
+- Vasyl Stefanyk Precarpathian National University (reported renamed Carpathian National University, 2025) (`vasyl-stefanyk-carpathian-national-university`): no lead for a medicine, dentistry, pharmacy or nursing degree programme
+- Ukrainian Catholic University (`ukrainian-catholic-university`): no lead for a medicine, dentistry, pharmacy or nursing degree programme
+- Ivan Franko National University of Lviv (`ivan-franko-national-university-of-lviv`): no lead for a medicine, dentistry, pharmacy or nursing degree programme
+- Donetsk State Medical University named after M. Gorky (occupied Donetsk) (`donetsk-gorky-occupied`): run by an occupying administration (group R)
+- Medical Academy named after S. I. Georgievsky (occupied Crimea) (`crimea-georgievsky-occupied`): run by an occupying administration (group R)
+- Luhansk State Medical University named after St. Luke (`luhansk-st-luke-occupied`): run by an occupying administration (group R)
+
+**What this changes on the site:** 45 cards on `/universities/` in two name-based groups (medical and pharmacy institutions; other universities), 45 profile pages (noindex, outside the sitemap), the homepage list grouped the same way, and the two university selects grouped the same way. Nothing is shown about any institution beyond its name. The search (`site/src/lib/name-search.mjs`) now shows every full match under the caution when one query names several listed institutions, and three former look-alike guards are retired because those institutions are listed.
+
+**What stays open for every one of the 45:** official name, website and address from the official site and the EDEBO register; a dated current-year teaching statement; registration, licence and accreditation as three separate claims; which programmes admit foreign applicants, in which language, with what duration, intake and fee page. Official-source access: `research/verification/ALLOWLIST_P1.txt`–`ALLOWLIST_P4.txt` (probes 2026-10-24: 0 of 88 hosts open).
+

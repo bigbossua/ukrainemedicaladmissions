@@ -849,15 +849,28 @@
   "city": "Kharkiv",
   "flags": "front-line region",
   "aliases": [
+   "Centre for Postgraduate Medical Education (cpo.karazin.ua, postgraduate medical unit)",
+   "International Education Institute / IIE (iie.karazin.ua, foreign-applicant unit)",
    "Karazin University",
+   "Karazin University (news usage: life.pravda.com.ua headline 'Університет Каразіна залишиться у рідному Харкові'; Apostrophe interview 'Karazin University would remain in Kharkiv')",
+   "KhNU",
+   "Kharkiv University imeni Karazina (zaxid.net headline, inventory alias)",
    "Kharkiv University imeni Karazina (zaxid.net headline: 'Харківський університет імені Каразіна')",
    "Kharkov National University",
+   "Kharkov National University (older transliteration, inventory alias)",
    "School of Medicine, V. N. Karazin Kharkiv National University",
+   "School of Medicine, V. N. Karazin Kharkiv National University (English name of the medical unit on med.karazin.ua / medicine.karazin.ua: 'Admissions. Studies at the School')",
+   "V. N. Karazin Kharkiv National University (search-result lead; form seen in result titles, e.g. periodicals.karazin.ua article 'V.N. KARAZIN KHARKIV NATIONAL UNIVERSITY DURING THE FULL-SCALE RUSSIAN MILITARY INVASION OF UKRAINE' and aurora.upol.cz 'V N Karazin Kharkiv National University'; punctuation of the initials varies; not read on an official page)",
    "V.N. Karazin Kharkiv National University",
    "Каразінський Університет (Ukrainian title shown on cie.karazin.ua result)",
+   "Каразінський університет",
+   "Медичний факультет ХНУ імені В. Н. Каразіна (Ukrainian name of the medical unit in admissions documents on start.karazin.ua)",
+   "Університет Каразіна",
+   "ХНУ імені В. Н. Каразіна",
+   "Харківський національний університет імені В. Н. Каразіна (search-result lead; title of the education.ua listing /universities/429/; not read on an official page)",
    "Харківський національний університет імені В.Н. Каразіна (from unirank result URL slug)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "––PQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -871,7 +884,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 2
  },
  {
   "slug": "lesya-ukrainka-volyn-national-university",
@@ -882,15 +895,25 @@
   "flags": "no programme for foreigners shown",
   "aliases": [
    "Eastern European National University (former name)",
+   "Eastern European National University (former name, per inventory)",
+   "Educational and Scientific Medical Institute (medical unit name 2020-2021, per inventory; renamed Medical Faculty 30 Sept 2021)",
    "Educational and Scientific Medical Institute (name of the medical unit 2020-2021, per university page; renamed Medical Faculty 30 Sept 2021)",
+   "LUVNU (abbreviation on inter-dep.vnu.edu.ua 'Study in LUVNU')",
    "LUVNU (abbreviation used on a university page)",
+   "Lesya Ukrainka Eastern European National University / Східноєвропейський національний університет імені Лесі Українки (name 2012-2020; Cabinet order No. 426-r of 04.07.2012 approved the rename per osvita.ua; 'Volyn' name back in use by MON order No. 1471 of 26.11.2020 per ra.vnu.edu.ua)",
+   "Lesya Ukrainka University (vnu.edu.ua/en news title 'Lesya Ukrainka University Interns Start Their Studies')",
+   "Lesya Ukrainka Volyn National University (search-result lead: Wikipedia article title; vnu.edu.ua/uk news slug \"lesya-ukrainka-volyn-national-university-invites-foreign-citizens...\"; inter-dep.vnu.edu.ua uses \"LUVNU\")",
    "Medical Faculty (current name of the medical unit per university pages)",
+   "Medical Faculty / Медичний факультет (current medical unit name; dean Andrii Poruchynskyi per vnu.edu.ua/en news lead)",
    "Medical Institute / Faculty of medicine (alternate unit names appearing on separate vnu.edu.ua pages; inconsistency not resolved)",
    "VNU",
+   "Volinsʹkij nacìonalʹnij unìversitet ìmenì Lesì Ukraïnki (ISSN portal transliteration)",
    "Volyn National University named after Lesya Ukrainka",
-   "Волинський національний університет імені Лесі Українки"
+   "ВНУ / VNU (abbreviation used by education.ua listing)",
+   "Волинський національний університет імені Лесі Українки",
+   "Волинський національний університет імені Лесі Українки (search-result lead: education.ua listing \"Волинський національний університет імені Лесі Українки (ВНУ)\"; MON order No. 1471 of 26.11.2020 cited on ra.vnu.edu.ua; ISSN record \"Volinsʹkogo nacìonalʹnogo unìversitetu ìmenì Lesì Ukraïnki\")"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG––",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -898,7 +921,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "zaporizhzhia-national-university",
@@ -937,13 +960,21 @@
   "aliases": [
    "KSU",
    "KhSU",
+   "Kherson State Pedagogical University (historical name implied by the legacy domain kspu.edu; not confirmed in this round)",
+   "Kherson State University (search-result lead: kspu.edu page titles and Wikipedia article title; no official page read)",
    "Kherson State University Medical Faculty",
+   "Medical Faculty (Archive) (page title lead for kspu.edu/About/Faculty/Medicine?culture=en, from inventory)",
    "Medical Faculty (Archive) (page title shown for kspu.edu/About/Faculty/Medicine?culture=en)",
+   "Медичний факультет (faculty field on the vstup.osvita.ua 2025 listing y2025/r10/48/1444612)",
    "Медичний факультет (faculty field on vstup.osvita.ua 2025 listing)",
+   "Факультет медицини, здоров'я та спорту (faculty name lead on education.ua listing 350)",
    "Факультет медицини, здоров'я та спорту (faculty name on vstup.osvita.ua 2026 Pharmacy listing, tool paraphrase)",
-   "Херсонський державний університет (ХДУ)"
+   "ХДУ",
+   "Херсонський державний університет (search-result lead: vstup.osvita.ua, education.ua and osvita.ua listings; abbreviation ХДУ)",
+   "Херсонський державний університет (ХДУ)",
+   "Херсонський держуніверситет (osvita.ua headline form)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–––Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -951,7 +982,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "donetsk-national-medical-university",
@@ -963,11 +994,20 @@
   "aliases": [
    "DNMU",
    "DONETSK NATIONAL MEDICAL UNIVERSITY",
+   "DonNMU",
    "Donetsk National Medical University (Kropyvnytskyi Campus)",
+   "Donetsk National Medical University (search-result lead: title used on dnmu.edu.ua/en and on Wikipedia; official page not opened)",
+   "Donetsk National Medical University named after M. Gorky (pre-2017 name per the inventory note; the same wording is used by the occupation-side institution in Donetsk - see red flags)",
    "Donetsk State Medical University",
+   "Donetsk State Medical University (historical form; also in the inventory aliases)",
+   "dnmu.com.ua (domain cited by third-party aggregators such as Careers360; NOT the domain shown by Ukrainian directories)",
+   "ДНМУ",
+   "ДонНМУ",
+   "Донецький національний медичний університет",
+   "Донецький національний медичний університет (search-result lead: title used by osvita.ua, education.ua and vstup.osvita.ua; legal-form prefix not seen)",
    "Донецький національний медичний університет (ДНМУ)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NGPQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -981,7 +1021,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 3
  },
  {
   "slug": "luhansk-state-medical-university",
@@ -995,12 +1035,18 @@
    "Lugansk",
    "Lugansk State Medical University",
    "Luhansk State Medical University",
+   "SE \"LSMU\"",
    "SE \"LSMU\" (form used on lsmu.edu.ua pages)",
+   "State Establishment \"Lugansk State Medical University\"",
+   "State Establishment \"Luhansk State Medical University\" (lead; \"Lugansk\" spelling used in older English titles, e.g. TDMU repository article \"STATE OF ESTABLISHMENT 'LUGANSK STATE MEDICAL UNIVERSITY'\"; English site title in results: \"Luhansk State Medical University\")",
+   "ДЗ \"ЛДМУ\"",
    "Державний заклад \"Луганський державний медичний університет\"",
+   "Державний заклад \"Луганський державний медичний університет\" (form used in vstup.osvita.ua 2023 and 2024 page titles and in the i-lug.gov.ua URL slug \"derzhavnij zaklad «luganskij derzhavnij medichnij universitet»\")",
    "ЛДМУ",
-   "Луганський державний медичний університет"
+   "Луганський державний медичний університет",
+   "Луганський медуніверситет (press shorthand)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NGP–",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1020,7 +1066,7 @@
   ],
   "demandNote": "the name is shared with the occupied-territory institution; the figure cannot be split",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 1
  },
  {
   "slug": "shupyk-national-healthcare-university",
@@ -1103,13 +1149,20 @@
   "flags": "licence and accreditation questions; Polish campus",
   "aliases": [
    "KMU",
+   "KMU Polish Campus (branch in the Katowice agglomeration, Poland, per kmu.edu.ua/en/kmu-polish-campus-2/)",
+   "Kharkiv Institute of Medicine and Biomedical Sciences (unit named in KMU's 2022 brochure as part of a 'medical academic consortium with Kyiv Medical University', 'Established in 2017'; relationship not verified)",
+   "Kiev Medical University (transliteration variant used in search demand: 'kiev medical university ukraine')",
    "Kyiv Medical University of UAFM (former name)",
    "Kyiv Medical University of UAFM (older name per Wikipedia article title and Findcourse listing; the expansion of UAFM is not stated in any result)",
+   "Kyiv Medical University of UAFM (older name; Wikipedia article title en.wikipedia.org/wiki/Kyiv_Medical_University_of_UAFM; the expansion of UAFM is still not stated in any result - KMU's history page says founder Valerii Pokanevych set it up in 1992 around 'folk and alternative medicine', which is consistent with but does not prove 'Ukrainian Association of Folk Medicine')",
+   "PRIVATE HIGHER EDUCATIONAL ESTABLISHMENT \"KYIV MEDICAL UNIVERSITY\" (wording of the EQAR/DEQAR institution listing title; the university's own site uses \"Kyiv Medical University\") - search-result lead, no official page read",
+   "Private Higher Educational Establishment \"Kyiv Medical University\" (EQAR/DEQAR id 3388)",
    "Київський медичний університет (КМУ)",
    "ПВНЗ «Київський медичний університет» (rector's reports)",
+   "ПВНЗ «Київський медичний університет» (wording quoted in KMU's own 2021-2022 report snippet: 'ПВНЗ \"Київський медичний університет\"'; vstup.osvita.ua card title 'Київський медичний університет') - search-result lead",
    "Приватний вищий навчальний заклад «Київський медичний університет» (uniRank URL slug)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NGPQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1129,7 +1182,7 @@
   ],
   "demandNote": "searchers may mean another Kyiv medical university (for example Bogomolets); the figure cannot be split",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 5
  },
  {
   "slug": "international-european-university",
@@ -1139,15 +1192,22 @@
   "city": "Kyiv",
   "flags": "licence questions; Malta campus licence reported revoked",
   "aliases": [
+   "European Medical School (Навчально-науковий інститут «Європейська медична школа») — IEU's medical unit, host medicine.ieu.edu.ua",
    "European Medical School of International European University (IEU unit, medicine.ieu.edu.ua)",
    "IEU",
+   "International European University Poland / Poznan (The Shift claims operations were transferred to Poland; unrecognised there — unverified)",
    "International European University, Malta (name used on IEU's Malta subdomains)",
+   "International European University, Malta / Gzira (Maltese temporary licence No. 2023-016, revoked 13 Aug 2025)",
+   "PRIVATE HIGHER EDUCATION INSTITUTION 'INTERNATIONAL EUROPEAN UNIVERSITY' (EDEBO English name per inventory tool paraphrase)",
    "PRIVATE HIGHER EDUCATION INSTITUTION 'INTERNATIONAL EUROPEAN UNIVERSITY' (EDEBO English name, per tool paraphrase)",
+   "Private Higher Education Institution \"International European University\" (lead only: inventory records this as the EDEBO English name per tool paraphrase; the IEU site uses \"International European University\"; no official page opened)",
    "МЄУ",
+   "МЄУ (abbreviation inferred from the Ukrainian name; not seen in any snippet)",
+   "Міжнародний Європейський університет (lead: vstup.osvita.ua title \"Міжнародний європейський університет\"; IEU concept PDF \"Вченою радою Міжнародного європейського Університету\"; Interfax snippet calls it \"приватної установи вищої освіти «Міжнародний європейський університет»\" — the legal-form wording is unverified)",
    "Міжнародний європейський університет",
    "ПРИВАТНИЙ ЗАКЛАД ВИЩОЇ ОСВІТИ \"МІЖНАРОДНИЙ ЄВРОПЕЙСЬКИЙ УНІВЕРСИТЕТ\" (EDEBO registry title)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NGPQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1169,7 +1229,7 @@
   "competitorPages": [
    "https://www.rmcedu.com/mbbs-abroad/mbbs-in-ukraine/international-european-university/"
   ],
-  "recordPrograms": null
+  "recordPrograms": 1
  },
  {
   "slug": "kharkiv-international-medical-university",
@@ -1181,12 +1241,17 @@
   "aliases": [
    "KHIMU",
    "KhIMU",
+   "Private HEI Kharkiv International Medical University (EQAR/DEQAR record title per inventory)",
    "Private Institution of Higher Education \"Kharkiv International Medical University\" (EQAR/DEQAR record title)",
+   "Private Institution of Higher Education \"Kharkiv International Medical University\" (LEAD: EDEBO registry / DEQAR record title as shown in search results; official English page not opened)",
+   "ПВНЗ «ХММУ» (EDEBO short name lead)",
+   "Приватний вищий навчальний заклад «Харківський міжнародний медичний університет» (LEAD: EDEBO registry title, registry.edbo.gov.ua/university/4054; short form ПВНЗ «ХММУ»)",
    "Приватний вищий навчальний заклад «Харківський міжнародний медичний університет» (education.ua directory title)",
+   "ХММУ",
    "ХММУ (abbreviation used by search summariser; not confirmed from an official source)",
    "Харківський міжнародний медичний університет"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NGPQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1200,7 +1265,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 1
  },
  {
   "slug": "odesa-international-medical-university",
@@ -1211,12 +1276,17 @@
   "flags": "domain unsettled",
   "aliases": [
    "OIMU",
+   "Odesa International Medical University (lead: Wikipedia article title; private institution of higher education — no official English page opened)",
    "Odessa International Medical University",
+   "ОММУ",
    "Одесский Международный Медицинский Университет",
+   "Одесский международный медицинский университет",
    "Одеський міжнародний медичний університет",
-   "Приватний заклад вищої освіти \"Одеський міжнародний медичний університет\""
+   "ПЗВО «Одеський міжнародний медичний університет»",
+   "Приватний заклад вищої освіти \"Одеський міжнародний медичний університет\"",
+   "Приватний заклад вищої освіти «Одеський міжнародний медичний університет» (lead: title of MON order 10.08.2020 No. 1031 as cited in search results; not read from EDEBO)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–GPQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1224,7 +1294,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 3
  },
  {
   "slug": "kyiv-international-university",
@@ -1234,15 +1304,24 @@
   "city": "Kyiv",
   "flags": "no government listing found",
   "aliases": [
+   "International Institute of Linguistics and Law (former name 1994–2002, per Wikipedia summary)",
    "International Institute of Linguistics and Law (former name, per Wikipedia summary; renamed 2002)",
    "KIU",
    "KyIU",
+   "KyIU (official: 'College of KyIU', college.kymu.edu.ua)",
+   "KyMU (abbreviation in official page titles: 'Main - KyMU', 'Medical Institute - KyMU', 'Department of Dentistry - KyMU')",
    "Kyiv International University",
+   "Medical Institute of Kyiv International University",
+   "Private Higher Education Institution \"Kyiv International University\" (English rendering of the Ukrainian legal name; lead only – the institution's own English pages are titled \"KyMU\" / \"Kyiv International University\", no official English legal-name page was opened)",
    "КиМУ",
+   "Киевский международный университет (Russian)",
    "Київський міжнародний університет",
-   "Приватний заклад вищої освіти «Київський міжнародний університет»"
+   "Міжнародний інститут лінгвістики і права (former name, per ruwiki summary)",
+   "Навчально-науковий медичний інститут КиМУ (name of the medical unit in the vstup.osvita.ua 2025 listing)",
+   "Приватний заклад вищої освіти «Київський міжнародний університет»",
+   "Приватний заклад вищої освіти «Київський міжнародний університет» (lead: Russian-language ruwiki article and the earlier wave-2 sweep; not read on an official or government page)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "N–P–",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1250,7 +1329,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 3
  },
  {
   "slug": "international-humanitarian-university",
@@ -1260,14 +1339,23 @@
   "city": "Odesa",
   "flags": "domain unsettled",
   "aliases": [
+   "Faculty of Dentistry and Pharmacy / Факультет стоматології та фармації (faculty named on the vstup.osvita.ua 222 Medicine record)",
    "IHU",
+   "Institute of Medicine (third-party aggregator name for the medical unit; not reproduced)",
    "International Humanitarian University",
+   "International Humanitarian University (lead only: ProZ listing title \"International Humanitarian University / Міжнародний гуманітарний університет IHU / МГУ\" and the Study in Ukraine portal paraphrase; the legal-form prefix, e.g. \"Private Higher Education Institution\", was not seen in any result)",
    "Medical Professional College of the International Humanitarian University (Медичний фаховий коледж Міжнародного гуманітарного університету) – affiliated college, junior-specialist level",
    "МГУ",
+   "МГУ (abbreviation used on the ProZ listing and on the university journal; note the same abbreviation is widely used in Russian for Moscow State University, so it is unsuitable as a card title)",
+   "Медичний фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Фонтанська дорога 33; junior-specialist / фаховий молодший бакалавр level)",
    "Медичний фаховий коледж Міжнародного університету (college name as shown on education.ua; whether the parent was renamed 'Міжнародний університет' has not been confirmed)",
-   "Міжнародний гуманітарний університет"
+   "Міжнародний гуманітарний університет",
+   "Міжнародний гуманітарний університет (lead only: osvita.ua directory entry, vstup.osvita.ua institution page y2022/r16/353, and the university-hosted law journal PDFs on vestnik-pravo.mgu.od.ua; the registered legal form, e.g. \"Приватний заклад вищої освіти «...»\", was not shown verbatim in any result)",
+   "Міжнародний університет (informal usage: blog plandiy.com.ua says the university 'сьогодні часто представляють як Міжнародний університет'; the affiliated college is titled 'Медичний фаховий коледж Міжнародного університету' on education.ua; NO formal renaming notice found)",
+   "Одеський медичний інститут Міжнародного гуманітарного університету / 'Медицинский коледж Одесского медицинского института, международного гуманитарного университета' (Russian-language title variant of the college on education.ua/colleges/1912/; the existence of an 'Odesa Medical Institute' unit is unverified)",
+   "Фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Бісквітний провулок 3; site given as epk-mgu.od.ua on education.ua/colleges/1913/)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–G–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1275,7 +1363,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 3
  },
  {
   "slug": "dnipro-medical-institute-of-conventional-and-alternative-medicine",
@@ -1285,13 +1373,23 @@
   "city": "Dnipro",
   "flags": "domain unsettled; no government listing found",
   "aliases": [
+   "Dnipro Medical Institute of Conventional and Alternative Medicine (Wikipedia title)",
    "Dnipro Medical Institute of Traditional and Non-Traditional Medicine (IAU-HESD / WHED listing name)",
+   "Dnipro Medical Institute of Traditional and Non-Traditional Medicine (LLC) — name used by WHED (IAU-003791) and the MoES 2020 invitation list; Wikipedia titles it \"Dnipro Medical Institute of Conventional and Alternative Medicine\"; a rename to \"European Medical University\" is a lead only (education.ua)",
+   "Dnipro Medical Institute of Traditional and Non-Traditional Medicine (WHED / IAU-003791 listing name)",
    "Dnipropetrovsk Medical Institute of Traditional & Nontraditional Medicine (earlier name, SUCHO archive listing)",
+   "European Medical University / EMU (lead only; one blog and education.ua)",
+   "Limited Liability Company \"Dnipro Medical Institute of Traditional and Nontraditional Medicine\" (MoES 2020 invitation list form)",
+   "Європейський медичний університет (new name per education.ua, unconfirmed)",
    "Європейський медичний університет / European Medical University (title of the education.ua page that also shows ДМИ ТНМ; possible later name, NOT confirmed)",
+   "ДМІ ТНМ / DMI TNM",
+   "Днепровский медицинский институт традиционной и нетрадиционной медицины (Russian form shown on education.ua)",
    "Днепровский медицинский институт традиционной и нетрадиционной медицины / ДМИ ТНМ (Russian name and abbreviation shown on education.ua)",
-   "Дніпровський медичний інститут традиційної і нетрадиційної медицини (Ukrainian name, osvita.ua and IAU-HESD)"
+   "Дніпровський медичний інститут традиційної і нетрадиційної медицини",
+   "Дніпровський медичний інститут традиційної і нетрадиційної медицини (Ukrainian name, osvita.ua and IAU-HESD)",
+   "Дніпровський медичний інститут традиційної і нетрадиційної медицини (ТОВ) — lead; education.ua now lists it as «Європейський медичний університет» with the former name in brackets (rename unconfirmed)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–––Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1299,7 +1397,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 2
  },
  {
   "slug": "dnipro-institute-of-medicine-and-public-health",
@@ -1309,14 +1407,19 @@
   "city": "Dnipro",
   "flags": "relationship to Kyiv Medical University unexplained",
   "aliases": [
+   "DIMH (abbreviation lead: subdomain dimh.kmu.edu.ua and the PDF filename Study-Program-DIMH.pdf)",
    "Dnipro Institute of Medicine and Public Health",
+   "Dnipro Institute of Medicine and Public Health (search-result lead: English page titles on dimh.kmu.edu.ua and the KMU recognition PDF; not read from an official page)",
+   "Dnipro Institute of Medicine and Public Health of Kyiv Medical University (relationship form implied by the KMU subdomain and KMU documents; the exact legal relationship is unverified)",
+   "Dnipro campus of Kyiv Medical University (KMU brochure wording lead: 'KYIV | KHARKIV | DNIPRO'; unverified)",
    "ДІМЗ",
    "Дніпровський інститут медицини та громадського здоров'я",
    "ПЗВО \"Дніпровський інститут медицини та громадського здоров'я\"",
    "Приватний заклад вищої освіти «Дніпровський інститут медицини та громадського здоров'я» (ДІМЗ)",
+   "Приватний заклад вищої освіти «Дніпровський інститут медицини та громадського здоров'я» (ДІМЗ) (search-result lead: education.ua card title and osvita.ua; not read from an official page)",
    "Частное высшее учебное заведение «Днепровский институт медицины и общественного здоровья» (ДИМЗ)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–GPQ",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1324,7 +1427,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 1
  },
  {
   "slug": "lviv-medical-institute",
@@ -1334,15 +1437,25 @@
   "city": "Lviv",
   "flags": "legal-form change and licence continuity unverified; easily confused with the state Lviv national medical university",
   "aliases": [
+   "Higher Private Educational Institution \"Lviv Medical University\" (working translation of the Ukrainian legal name; no official English form found in search results)",
+   "LMU (private Lviv)",
    "Lviv Medical Institute",
    "Lviv Medical Institute (former name)",
+   "Lviv Medical Institute (former/directory name; uni2study lists 'Lviv Medical Institute', private, established 2004 — lead only)",
    "Lviv Medical University (private)",
    "ВПНЗ \"Львівський медичний університет\"",
+   "ВПНЗ «Львівський медичний університет»",
    "Вищий приватний навчальний заклад \"Львівський медичний університет\"",
+   "Вищий приватний навчальний заклад «Львівський медичний університет»",
+   "Вищий приватний навчальний заклад «Львівський медичний університет» (search snippets show the abbreviated form ВПНЗ «Львівський медичний університет»; the expansion matches education.ua's Russian rendering «Высшее частное учебное заведение „Львовский медицинский университет“»)",
+   "Высшее частное учебное заведение «Львовский медицинский университет» (Russian form on education.ua)",
+   "ЛМУ",
    "ЛМУ (Львівський медичний університет)",
-   "Львівський медичний інститут"
+   "Львівський медичний університет (ЛМУ), ВПНЗ (education.ua title form)",
+   "Львівський медичний інститут",
+   "Львівський медичний інститут (former name per inventory; rename not confirmed by any lead)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–––Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1350,7 +1463,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "kharkiv-institute-of-medicine-and-biomedical-sciences",
@@ -1360,14 +1473,22 @@
   "city": "Kharkiv",
   "flags": "reported renamed University of Medicine and Social Sciences; relationship to Kyiv Medical University unexplained; current programme accreditation unknown",
   "aliases": [
+   "KHIM",
    "KhIM",
    "KhIM / KHIM (abbreviation used in third-party listings and in the domain lead khim.edu.ua)",
+   "Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\" (directory form, village.ai; unverified)",
    "Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\" (directory form; unverified)",
+   "Private Higher Education Institution \"University of Medicine and Social Sciences\" (English rendering of the registered Ukrainian name; no official English form found in search results). Formerly \"Kharkiv Institute of Medicine and Biomedical Sciences\", the name still used in NAQA (English), EQAR and third-party listings.",
+   "University of Medicine and Social Sciences (translation of the new registered name; not found in English on an official page)",
+   "khim.edu.ua (domain lead from a third-party directory; not confirmed after the rename)",
+   "ПЗВО \"Університет медицини та соціальних наук\"",
    "Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" (form shown in MON licence register search result)",
+   "Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" (раніше: Харківський інститут медицини та біомедичних наук)",
+   "Університет медицини та соціальних наук",
    "Університет медицини та соціальних наук / University of Medicine and Social Sciences (reported new name after conversion to university status; osvita.ua news, MON licence register entry as of 05.05.2026)",
    "Харківський інститут медицини та біомедичних наук"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–G–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1375,7 +1496,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "international-academy-of-ecology-and-medicine",
@@ -1385,13 +1506,22 @@
   "city": "Kyiv (lead)",
   "flags": "domain from one publisher family; no programme for foreign applicants found",
   "aliases": [
+   "IAEM",
+   "International Academy of Ecology and Medicine Kyiv (Careers360 listing 'unpg')",
    "MAEM",
+   "Mizhnarodna akademiya ekologii ta meditsini (MON file-name transliteration, 2018)",
+   "Mizhnarodna akademiya ekologiyi ta mediczini (MON file-name transliteration)",
+   "PHEI «International Academy of Ecology and Medicine»",
+   "Private Higher Educational Institution \"International Academy of Ecology and Medicine\" (English form used by health.gov.ua, Nov 2024; search-result lead, no official page read)",
+   "Private Higher Educational Institution «International Academy of Ecology and Medicine»",
    "Private Higher Educational Institution «International Academy of Ecology and Medicine» (PHEI, English form used on health.gov.ua)",
    "МАЕМ",
    "Міжнародна академія екології та медицини",
-   "ПВНЗ «Міжнародна академія екології та медицини»"
+   "Міжнародна академія екології і медицини (spelling used in MON order, Dec 2019)",
+   "ПВНЗ «Міжнародна академія екології та медицини»",
+   "Приватний вищий навчальний заклад «Міжнародна академія екології та медицини» (ПВНЗ «МАЕМ»); MON 2019 order variant: «Міжнародна академія екології і медицини»"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–G–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1399,7 +1529,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "medical-natural-university",
@@ -1409,14 +1539,22 @@
   "city": "Mykolaiv (lead)",
   "flags": "nursing and public health only; no programme for foreign applicants found",
   "aliases": [
+   "Medical and Natural Sciences University (education.ua rendering)",
    "Medical-Natural University",
+   "Medyko-Pryrodnychyi Universytet (transliteration)",
+   "Private Higher Education Institution \"Medical and Natural Sciences University\" (English form is a directory rendering on education.ua; the inventory's \"Medical-Natural University\" is a literal translation; no official English form read)",
    "Private Higher Education Institution \"Medical-Natural University\"",
    "vnz-mpu.com.ua",
+   "vnz-mpu.com.ua (domain lead)",
    "Медико-Природничий Університет",
    "ПВНЗ \"Медико-природничий університет\"",
-   "Приватний вищий навчальний заклад \"Медико-Природничий Університет\""
+   "ПВНЗ «Медико-Природничий Університет»",
+   "Приватний вищий навчальний заклад \"Медико-Природничий Університет\"",
+   "Приватний вищий навчальний заклад «Медико-Природничий Університет»",
+   "Приватний вищий навчальний заклад «Медико-Природничий Університет» (ПВНЗ «Медико-Природничий Університет»)",
+   "Фаховий коледж Медико-Природничого університету / Фаховий коледж ПВНЗ «Медико-природничий університет» (the attached VOCATIONAL college, a separate listing - not the university itself)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–G–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1424,7 +1562,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "king-danylo-university",
@@ -1459,9 +1597,19 @@
   "city": "Lviv",
   "flags": "communal (regional council); directory-title lead only",
   "aliases": [
-   "Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\""
+   "Andrei Krupynskyi Lviv Medical Academy (Studyportals spelling)",
+   "Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine (unipage.net; apparent predecessor name before academy status, lead only)",
+   "Higher Educational Communal Institution of Lviv Regional Council \"Andrei Krupynskyi Lviv Medical Academy\" (LEAD ONLY: wording attributed by the search summary to the Study in Ukraine portal programmes listing; official English rendering on lma.edu.ua not seen)",
+   "LMA (abbreviation matching domain lma.edu.ua)",
+   "Lviv Andrey Krupynskyi Medical Academy",
+   "Lviv Medical Academy named after Andrei Krupinsky (uni2study spelling)",
+   "Lviv Medical Academy named after Andrei Krupynskyi",
+   "КЗВО ЛОР «Львівська медична академія імені Андрея Крупинського»",
+   "Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\"",
+   "Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\" (LEAD: page titles on vstup.osvita.ua 2020, 2023, 2024 and education.ua; not read from an official page)",
+   "Львівська медична академія імені Андрея Крупинського"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "––––",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1469,7 +1617,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "cherkasy-medical-academy",
@@ -1479,9 +1627,14 @@
   "city": "Cherkasy",
   "flags": "communal (regional council); directory-title lead only",
   "aliases": [
-   "Черкаська медична академія"
+   "Cherkaska medychna akademiia (standard transliteration of the Ukrainian name, not a form seen in a source)",
+   "Cherkasy Medical Academy (English name as given in the EDEBO registry search result; full legal form not confirmed)",
+   "ЧМА (short name shown in the EDEBO registry search summary)",
+   "Черкаська медична академія",
+   "Черкаська медична академія (registry title lead; the full legal form \"Комунальний заклад вищої освіти «Черкаська медична академія» Черкаської обласної ради\" was NOT confirmed by any search result)",
+   "Черкаський медичний коледж (apparent predecessor: an osvita.ua college listing describes 'Черкаський медичний коледж - вищий навчальний заклад I-II рівнів акредитації'; reorganisation into the academy is NOT confirmed by any search result)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1489,7 +1642,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "rivne-medical-academy",
@@ -1499,12 +1652,18 @@
   "city": "Rivne",
   "flags": "communal or state ownership unresolved; domestic nursing offers only",
   "aliases": [
+   "Communal Institution of Higher Education \"Rivne Medical Academy\" of Rivne Regional Council (translation of the Ukrainian name; no official English name found in search results)",
    "KZVO \"Rivnenska medychna akademiia\" Rivnenskoi oblasnoi rady",
    "Rivne Medical Academy",
+   "Rivne Medical Academy of Rivne Regional Council",
+   "Rivnenska Medychna Akademiia",
+   "mcollege.rv.ua (host lead from osvita.ua and vstup.osvita.ua directories; college-era hostname)",
+   "КЗВО «Рівненська медична академія» Рівненської обласної ради",
+   "Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради",
    "Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради (name as given by education.ua and an ombudsman.gov.ua tag page)",
    "Рівненська медична академія"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–––Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1512,7 +1671,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "volyn-medical-institute",
@@ -1522,12 +1681,18 @@
   "city": "Lutsk",
   "flags": "communal (regional council); nursing only; domestic intake",
   "aliases": [
+   "Lutsk Basic Professional Medical College (translation of the structural unit's name)",
+   "Municipal Higher Education Institution \"Volyn Medical Institute\" of the Volyn Regional Council (unofficial translation of the Ukrainian name; no official English name surfaced in any search result)",
    "Volyn Medical Institute",
+   "ВМІ",
+   "Волинський медичний інститут",
    "Волинський медичний інститут (ВМІ)",
    "КЗВО «Волинський медичний інститут» Волинської обласної ради",
-   "Комунальний заклад вищої освіти «Волинський медичний інститут» Волинської обласної ради"
+   "КОМУНАЛЬНИЙ ЗАКЛАД ВИЩОЇ ОСВІТИ «ВОЛИНСЬКИЙ МЕДИЧНИЙ ІНСТИТУТ» (letterhead form in vmi.volyn.ua PDF title)",
+   "Комунальний заклад вищої освіти «Волинський медичний інститут» Волинської обласної ради",
+   "Луцький базовий фаховий медичний коледж (structural unit of the institute per education.ua/colleges/1998; a фаховий коледж, not the institute itself)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1535,7 +1700,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "kherson-basic-medical-college",
@@ -1641,14 +1806,22 @@
   "city": "Zhytomyr",
   "flags": "communal; nursing-based; no programme for foreigners shown",
   "aliases": [
+   "Volyn Paramedic School (1875 historical origin, per FRSE directory; from inventory)",
    "Volyn Paramedic School (historical origin, 1875, per FRSE directory)",
+   "ZhMI / ЖМІ (abbreviation inferred from the domain zhim.org.ua; not seen in a snippet)",
    "Zhytomyr Institute of Nursing / Житомирський інститут медсестринства (predecessor name, per third-party summary and MON news title)",
+   "Zhytomyr Institute of Nursing / Житомирський інститут медсестринства (predecessor; still used as alternative name by education.ua and in aggregator titles)",
+   "Zhytomyr Medical Institute (lead: MON \"Study in Ukraine\" portal and FRSE directory; longer form \"Zhytomyr Medical Institute of Zhytomyr Regional Council\" seen only in inventory alias, not in a snippet)",
    "Zhytomyr Medical Institute of Zhytomyr Regional Council",
+   "Zhytomyr Medical Institute of Zhytomyr Regional Council (inventory alias; founder = Regional Council per osvita.ua)",
    "Відокремлений структурний підрозділ фаховий коледж Житомирського медичного інституту (attached vocational college, separate unit)",
+   "Відокремлений структурний підрозділ фаховий коледж Житомирського медичного інституту (its own professional college sub-unit; NOT a separate institution)",
+   "Житомирский институт медсестринства (Russian-language alternative name shown on education.ua)",
    "Житомирський медичний інститут",
+   "Житомирський медичний інститут (catalogue short form; 2017 MON news calls it \"комунальний ВНЗ «Житомирський медичний інститут»\"; the full legal form with founder \"Житомирської обласної ради\" and the KZVO prefix was not shown in any snippet and is unverified)",
    "Житомирський медичний інститут Житомирської обласної ради"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "–G––",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1656,7 +1829,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "odesa-mechnikov-national-university",
@@ -1666,15 +1839,22 @@
   "city": "Odesa",
   "flags": "pharmacy programme lead only; no medicine programme found",
   "aliases": [
+   "Mechnikov University",
    "ONU",
+   "Odesa I. I. Mechnikov National University (the university's own English pages spell it \"Odessa I.I. Mechnikov National University\")",
+   "Odesa I. I. Mechnykov National University",
    "Odesa National University",
+   "Odesa University",
    "Odessa I.I. Mechnikov National University",
+   "Odessa I.I. Mechnykov National University",
    "Odessa National University",
+   "Odessa State University (pre-2000 name, lead only)",
+   "ОНУ",
    "ОНУ імені Мечникова",
    "Одесский национальный университет имени И. И. Мечникова",
    "Одеський національний університет імені І. І. Мечникова"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1682,7 +1862,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 2
  },
  {
   "slug": "oles-honchar-dnipro-national-university",
@@ -1693,11 +1873,16 @@
   "flags": "nursing and allied-health programmes only; no route for foreign applicants found",
   "aliases": [
    "DNU",
+   "Dnipro National University (Wikipedia mirror page title)",
+   "Dnipropetrovsk State University (former name from 1933, per Wikipedia snippet)",
+   "Ekaterynoslavasky University (1918 founding name as spelled in the Wikipedia snippet)",
    "Faculty of Medical Technologies of Diagnostics and Rehabilitation (DNU unit; also rendered 'Faculty of Medical Technology, Diagnostics, and Rehabilitation')",
+   "Faculty of Medical Technologies of Diagnostics and Rehabilitation (medical unit; also rendered 'Faculty of Medical Technology, Diagnostics, and Rehabilitation' and, on abitly.org, 'Medical Technologies, Diagnostics, Rehabilitation Faculty')",
    "ДНУ",
-   "Дніпровський національний університет імені Олеся Гончара"
+   "Дніпровський національний університет імені Олеся Гончара",
+   "Факультет медичних технологій діагностики та реабілітації (ФМТДР, abbreviation used in a DNU 2024 enrolment-order filename)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1705,7 +1890,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "vasyl-stefanyk-carpathian-national-university",
@@ -1787,13 +1972,22 @@
   "city": "Kharkiv",
   "flags": "industrial pharmacy programme lead; its medical institute is reported as postgraduate only",
   "aliases": [
+   "Institute of International Education / web.kpi.kharkov.ua/mo (foreign-student unit)",
+   "KhPI",
    "Kharkiv Polytechnic Institute",
+   "Kharkiv Polytechnical Institute (Encyclopedia of Ukraine spelling; 1929 name)",
+   "Kharkiv Technological Institute (1885 predecessor, per Wikipedia/Encyclopedia of Ukraine leads)",
    "NTU \"KhPI\"",
    "NTU KhPI",
+   "National Technical University \"Kharkiv Polytechnic Institute\" (lead: Study in Ukraine contacts page lists \"National Technical University «Kharkiv Polytechnic Institute»\"; THE ranking page uses the same wording)",
    "НТУ «ХПІ»",
-   "Національний технічний університет «Харківський політехнічний інститут»"
+   "Навчально-науковий медичний інститут НТУ «ХПІ» (its medical unit, per 2021 order lead)",
+   "Навчально-науковий інститут хімічних технологій та інженерії (unit that owns the 226 pharmacy programme, per OPP 2022 lead)",
+   "Національний технічний університет «Харківський політехнічний інститут»",
+   "Національний технічний університет «Харківський політехнічний інститут» (lead: inventory alias; uniRank URL slug \"національний-технічний-університет-“харківський-політехнічний-інститут”\"; abbreviated НТУ «ХПІ» in university PDFs)",
+   "ХПІ"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "N––Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1801,7 +1995,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "lviv-polytechnic-national-university",
@@ -1813,11 +2007,16 @@
   "aliases": [
    "LPNU",
    "Lviv Polytechnic",
+   "Lviv Polytechnic Institute (Soviet-era name from 1939, per the university history page lead)",
+   "Lviv Polytechnic State University (name 1993-2000, per the university history page lead)",
+   "Lvivska Politekhnika (transliteration used in the abitly.org URL slug 'lvivska-politekhnika-97')",
+   "Technical Academy (historical name, 1844, per the history page lead)",
+   "lp.edu.ua (older official host named in 2021 self-evaluation documents; current host lpnu.ua)",
    "Львівська політехніка",
    "НУЛП",
    "Національний університет «Львівська політехніка»"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "N––Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1825,7 +2024,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "kyiv-national-university-of-technologies-and-design",
@@ -1835,12 +2034,15 @@
   "city": "Kyiv",
   "flags": "industrial pharmacy programme lead",
   "aliases": [
+   "'Kiev' spelling appears only in a third-party directory URL (edarabia.com '...kiev-ukraine'), not in any official lead",
+   "Institute of Leather Industry (founding name per IAU record: founded 17 April 1930 'as the Institute of Leather Industry'; current name and national status reported granted in 2001 by Encyclopedia of Ukraine)",
    "KNUTD",
    "Kiivs'kij Natsional'nij Universitet Tekhnologii ta Dyzainu (WHED transliteration)",
+   "Kiivs'kij Natsional'nij Universitet Tekhnologii ta Dyzainu (WHED transliteration, whed.net IAU-010359)",
    "КНУТД",
    "Київський національний університет технологій та дизайну"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG––",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1848,7 +2050,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 1
  },
  {
   "slug": "ukrainian-state-university-of-science-and-technologies",
@@ -1859,15 +2061,28 @@
   "flags": "pharmacy programme lead (through a merged chemical-technology university)",
   "aliases": [
    "A studyabroadaide.com URL slug uses 'national-metallurgical-academy-of-ukraine' for this university's page (relationship not confirmed by the result)",
+   "Inventory note (earlier Wikipedia snippet): predecessor 'Dnipro Institute of Infrastructure and Transport (1930)' reported merged into it",
+   "National Metallurgical Academy of Ukraine (NMetAU, nmetau.edu.ua) — predecessor; Opendatabot (ЄДРПОУ 02070766) shows it 'в стані припинення ... в результаті її реорганізації'; studyabroadaide.com uses the URL slug 'national-metallurgical-academy-of-ukraine' for this university's page",
    "Predecessor reported merged into it (Wikipedia snippet): Dnipro Institute of Infrastructure and Transport (1930)",
    "Predecessor reported merged into it (Wikipedia snippet): Prydniprovsk State Academy of Civil Engineering and Architecture (1916)",
    "Predecessor reported merged into it (Wikipedia snippet): Ukrainian State University of Chemical Technology (УДХТУ, founded 1916)",
+   "Prydniprovsk State Academy of Physical Culture and Sports — reported incorporated in 2025 (Times Higher Education profile)",
+   "Prydniprovska State Academy of Civil Engineering and Architecture — reported joined alongside UDKhTU (ust.edu.ua About page / nmetau.edu.ua news)",
+   "UST (ust.edu.ua domain; 'UST logo' in nmetau.edu.ua / ipbt.ust.edu.ua page titles)",
    "USUST",
+   "USUST (railml.org partner page title 'USUST Dnipro')",
    "USUST Dnipro (railML partner listing title)",
+   "Ukrainian State University of Chemical Technology (УДХТУ, udhtu.edu.ua) — reported joined (Cabinet decree 11 July 2023 No. 620-r per nmetau.edu.ua news; '2024' per ust.edu.ua About page)",
+   "Ukrainian State University of Science and Technologies (search-result lead: Wikipedia article title, ust.edu.ua page titles, Times Higher Education profile; the variant \"Ukrainian State University of Science and Technology\" (singular) appears in an nmetau.edu.ua news item)",
+   "Ukrainian State University of Science and Technology (singular variant, nmetau.edu.ua news item)",
+   "ННІ «Дніпровський металургійний інститут» — institute named in a 2025 ust.edu.ua staff order (search-result summary)",
+   "ННІ «Дніпровський інститут інфраструктури і транспорту» (ДІІТ) — educational-scientific institute within the university (crust.ust.edu.ua / omp.diit.edu.ua community titles)",
+   "УДУНТ (education.ua listing title)",
    "УДУНТ / UDUNT",
-   "Український державний університет науки і технологій"
+   "Український державний університет науки і технологій",
+   "Український державний університет науки і технологій (search-result lead: education.ua listing title \"Український державний університет науки і технологій (УДУНТ)\" and a udhtu.edu.ua page title)"
   ],
-  "directory": "private register only",
+  "directory": "research preview (name only, noindex)",
   "skepticChecks": "NG–Q",
   "evidence": "search-result leads only; no official page read (official hosts refused by the network policy)",
   "verifiedClaims": 0,
@@ -1875,7 +2090,7 @@
   "demandLeads": [],
   "demandNote": "",
   "competitorPages": [],
-  "recordPrograms": null
+  "recordPrograms": 0
  },
  {
   "slug": "donetsk-gorky-occupied",

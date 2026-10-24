@@ -1,0 +1,762 @@
+{
+  "slug": "rivne-medical-academy",
+  "synthetic": false,
+  "officialName": {
+    "value": "Communal Institution of Higher Education \"Rivne Medical Academy\" of Rivne Regional Council (translation of the Ukrainian name; no official English name found in search results)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Rivne Medical Academy",
+  "alternativeNames": [
+    "Рівненська медична академія",
+    "КЗВО «Рівненська медична академія» Рівненської обласної ради",
+    "KZVO \"Rivnenska medychna akademiia\" Rivnenskoi oblasnoi rady",
+    "Rivnenska Medychna Akademiia",
+    "Rivne Medical Academy of Rivne Regional Council"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Rivne",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://mcollege.rv.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical academy or institute (communal) in Rivne, Ukraine, with leads for nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-223-nursing-bachelor-medical-pharmaceutical-faculty",
+      "name": "223 Медсестринство / Nursing (Bachelor), Medical-Pharmaceutical Faculty",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r18/729/1608415/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-226-pharmacy-bachelor-medical-pharmaceutical-faculty",
+      "name": "226 Фармація / Pharmacy (Bachelor), Medical-Pharmaceutical Faculty",
+      "field": "pharmacy",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2017/r18/729/ (institution hub, id r18/729); the specific programme page is one of the result URLs under vstup.osvita.ua/y2022-y2026/r18/729/ but the exact page was not identified in the snippet."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-221-dental-hygiene-allied-health-vocational-programme-not-a-dentist-qualification",
+      "name": "221 Стоматологія - Профілактична стоматологія (dental hygiene, allied-health vocational programme; NOT a dentist qualification)",
+      "field": "other",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r18/729/1443712/ (2025 statistics page; identification of this exact URL with the programme is inferred from the result set, not confirmed)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "other-221-dental-technology-prosthetic-dental-technician-allied-health-vocational-programme-not-a-dentist-qualification",
+      "name": "221 Стоматологія - Ортопедична стоматологія (dental technology / prosthetic dental technician, allied-health vocational programme; NOT a dentist qualification)",
+      "field": "other",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r18/729/ (one of result URLs 1589040, 1611416, 1589069; exact page not identified)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-223-midwifery-professional-junior-bachelor-appears-under-a-different-vstup-osvita-ua-institution-id-933-possibly-a-structural-college-rather-than-the-academy-itself",
+      "name": "223 Медсестринство - Акушерська справа / Midwifery (professional junior bachelor) - appears under a DIFFERENT vstup.osvita.ua institution id (933), possibly a structural college rather than the academy itself",
+      "field": "nursing",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2023/r18/933/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "Directory entry titled with the full official-form name 'Комунальний заклад вищо",
+      "url": "https://www.education.ua/universities/939/",
+      "purpose": "Directory entry titled with the full official-form name 'Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради' (communal HEI of Rivne Regional Council)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ombudsman (government) tag page naming dormitory No. 2 of the 'Комунальний закла",
+      "url": "https://ombudsman.gov.ua/en/news/tags/gurtozhitok-2-komunalnogo-zakladu-vishchoi-osviti-rivnenska-medichna-akademiya-rivnenskoi-oblasnoi-radi",
+      "purpose": "Ombudsman (government) tag page naming dormitory No. 2 of the 'Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory: type Академія, 'Форма власності: Державна', forms full-time/evening/d",
+      "url": "https://osvita.ua/vnz/guide/37461/",
+      "purpose": "Directory: type Академія, 'Форма власності: Державна', forms full-time/evening/distance, qualification levels bachelor, professional junior bachelor, master, city Rivne; address вул. М. Карнаухова, 53",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory page (college-type listing) at the same address giving mcollege.rv.ua;",
+      "url": "https://osvita.ua/vnz/college/16814/",
+      "purpose": "Directory page (college-type listing) at the same address giving mcollege.rv.ua; describes the college heritage ('один із перших в області серед закладів І-ІІ рівня акредитації')",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admissions directory hub for 'Рівненська медична академія' (institution id 729):",
+      "url": "https://vstup.osvita.ua/y2017/r18/729/",
+      "purpose": "Admissions directory hub for 'Рівненська медична академія' (institution id 729): web-site http://www.mcollege.rv.ua, status academy, 'державної форми власності і підпорядковується обласній раді'; '23 ",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2017 cycle page (undated). Search-result lead, not read in full."
+    },
+    {
+      "label": "2026 admission page: Nursing bachelor, full-time, complete secondary education b",
+      "url": "https://vstup.osvita.ua/y2026/r18/729/1608415/",
+      "purpose": "2026 admission page: Nursing bachelor, full-time, complete secondary education basis, Medical-Pharmaceutical Faculty",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 admission cycle (undated). Search-result lead, not read in full."
+    },
+    {
+      "label": "2022 page: Nursing bachelor contract fee 31,400 UAH/year (outdated)",
+      "url": "https://vstup.osvita.ua/y2022/r18/729/992571/",
+      "purpose": "2022 page: Nursing bachelor contract fee 31,400 UAH/year (outdated)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022 cycle (undated). Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 statistics page (dental hygiene professional junior bachelor: 20 budget / 6",
+      "url": "https://vstup.osvita.ua/y2025/r18/729/1443712/",
+      "purpose": "2025 statistics page (dental hygiene professional junior bachelor: 20 budget / 6 contract enrolled, average scores 150.95 / 131.17) - exact URL-to-programme mapping inferred",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 cycle (undated). Search-result lead, not read in full."
+    },
+    {
+      "label": "2023 page: 223 Медсестринство / Акушерська справа, professional junior bachelor,",
+      "url": "https://vstup.osvita.ua/y2023/r18/933/",
+      "purpose": "2023 page: 223 Медсестринство / Акушерська справа, professional junior bachelor, 40 licence places - under a different institution id (933)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023 cycle (undated). Search-result lead, not read in full."
+    },
+    {
+      "label": "'Рокитнівський фаховий медичний коледж Рівненської медичної академії' - a profes",
+      "url": "https://vstup.osvita.ua/y2025/r18/4412/",
+      "purpose": "'Рокитнівський фаховий медичний коледж Рівненської медичної академії' - a professional college listed as part of the academy",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 cycle (undated). Search-result lead, not read in full."
+    },
+    {
+      "label": "News: part of the former Rivne MSEK building (вул. Стельмаха, 6) transferred to ",
+      "url": "https://zaxid.net/chastinu_budivli_rivnenskoyi_msek_peredadut_medichniy_akademiyi_n1604132",
+      "purpose": "News: part of the former Rivne MSEK building (вул. Стельмаха, 6) transferred to the medical academy for classrooms and simulation-centre expansion",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON licence register page for higher-education providers in Rivne oblast - surfa",
+      "url": "https://mon.gov.ua/ministerstvo-2/poslugi/litsenzuvannya/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti/litsenziyniy-reestr-subektiv-osvitnoi-diyalnosti-u-sferi-vishchoi-osviti/rivnenska-oblast-2",
+      "purpose": "MON licence register page for higher-education providers in Rivne oblast - surfaced for the academy query; entry content not visible in snippet",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    },
+    {
+      "label": "News that Luhansk State Medical University started operating in Rivne oblast (co",
+      "url": "https://suspilne.media/225305-na-rivnensini-rozpocav-robotu-luganskij-medicnij-universitet/",
+      "purpose": "News that Luhansk State Medical University started operating in Rivne oblast (confusion-risk context only)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead. Address lead: м. Рівне, вул. М. Карнаухова, 53 (osvita.ua directory). A zaxid.net news item (date not shown in results) reports that part of the former Rivne MSEK building at вул. Стельмаха, 6 was transferred to the academy for classrooms and expansion of a simulation centre - consistent with ongoing operation in Rivne. 2026 admission pages exist on vstup.osvita.ua. Related: Luhansk State Medical University is reported (suspilne.media) to have started work in Rivne oblast after relocation - a different institution.",
+      "Red flag to resolve before any fact is shown: No lead at all for admission of foreign applicants, an international office, or English-medium teaching (English and Ukrainian searches both returned nothing); all surfaced offers are domestic nursing/pharmacy bachelor and vocational allied-health programmes.",
+      "Red flag to resolve before any fact is shown: No medicine (222) or dentist-level dentistry degree programme surfaced; the two '221 Стоматологія' programmes are professional-junior-bachelor allied-health programmes (dental hygiene, dental technology) and must not be presented as dentistry degrees.",
+      "Red flag to resolve before any fact is shown: Ownership label conflict: the official name form 'Комунальний заклад вищої освіти ... Рівненської обласної ради' indicates communal ownership, while the osvita.ua directory labels it 'Форма власності: Державна' and the vstup directory says 'державної форми власності і підпорядковується обласній раді' - communal is the better-supported reading but unconfirmed by a statute or founder decision.",
+      "Red flag to resolve before any fact is shown: Domain 'mcollege.rv.ua' is a college-era hostname given only by third-party directories (osvita.ua, vstup.osvita.ua); not confirmed from the institution or a government register.",
+      "Red flag to resolve before any fact is shown: Name/location confusion risks: Luhansk State Medical University is reported to operate in Rivne oblast after relocation (suspilne.media); Rivne State Humanitarian University and the Open International University 'Ukraine' Rivne Institute appear in 'Rivne' searches; 'Рокитнівський фаховий медичний коледж Рівненської медичної академії' is listed as a structural subdivision of the academy (vstup.osvita.ua/y2025/r18/4412/).",
+      "Red flag to resolve before any fact is shown: The midwifery lead sits under vstup.osvita.ua institution id 933, not the academy's id 729 - attribution unverified.",
+      "Red flag to resolve before any fact is shown: osvita.ua directory states master-level qualification exists, but no master's programme page was found; the pharmacy bachelor page reflects a 2021-2024 cohort, so current pharmacy intake is unconfirmed.",
+      "Red flag to resolve before any fact is shown: Only fee found is a 2022 contract fee (31,400 UAH/year, nursing bachelor) - outdated; no current fees.",
+      "Missing evidence: Official website not read (network policy); domain mcollege.rv.ua is a third-party directory lead only - needs confirmation from the institution or a government register.",
+      "Missing evidence: Official English name - none found; the English name given is a translation.",
+      "Missing evidence: EDEBO registry entry (institution record, licence, licensed specialties and volumes, accreditation certificates) - not found.",
+      "Missing evidence: NAQA accreditation decisions for any programme - not found.",
+      "Missing evidence: Ministry 'Study in Ukraine' portal listing - not found.",
+      "Missing evidence: Ownership form: statute or Rivne Regional Council founding decision confirming communal ownership (directories conflict: communal name form vs 'державна' label).",
+      "Missing evidence: Any rule or page on admission of foreign applicants, an international office, or English-medium teaching - not found.",
+      "Missing evidence: Current (2026/27) programme list from the academy itself, especially: whether a master's programme (osvita.ua claims master level) exists; whether 226 Pharmacy bachelor has a current intake (only a 2021-2024 cohort page found); whether 224/227 programmes exist (none surfaced).",
+      "Missing evidence: Current tuition fees - only a 2022 nursing fee (31,400 UAH/year) found.",
+      "Missing evidence: Relationship between vstup.osvita.ua institution id 933 (midwifery lead) and the academy (id 729).",
+      "Missing evidence: Founding history and former name (e.g. a predecessor 'базовий медичний коледж') - not confirmed by any snippet; the college-era hostname is suggestive only.",
+      "Missing evidence: Publication dates of the zaxid.net and ombudsman.gov.ua items.",
+      "Missing evidence: Status of the Rokytne Professional Medical College as a structural subdivision.",
+      "Skeptic's note: No EDEBO, MON licence register or NAQA entry surfaced; HEI status and the full name rest on a government ombudsman.gov.ua tag page (full communal name), education.ua and vstup.osvita.ua ('академія', подпорядкована обласній раді). Licence and accreditation of every programme unverified.",
+      "Skeptic's note: Qualifying degree leads are nursing bachelor (2026 admission page) and pharmacy bachelor (only a 2021-2024 cohort page; current pharmacy intake unconfirmed). No medicine (222) or dentist-level dentistry lead; the two '221 Стоматологія' programmes are professional-junior-bachelor allied-health programmes (dental hygiene, dental technology) and must not be shown as dentistry degrees.",
+      "Skeptic's note: Domain mcollege.rv.ua is a college-era hostname given only by osvita.ua-family directories (medium confidence); not confirmed by the institution or a register.",
+      "Skeptic's note: Ownership label conflict: communal per the legal name form vs 'Державна' in osvita.ua.",
+      "Skeptic's note: Midwifery lead sits under a different vstup.osvita.ua institution id (933) and may belong to a structural college; the 'Рокитнівський фаховий медичний коледж Рівненської медичної академії' is a vocational subdivision, not a separate HEI.",
+      "Skeptic's note: Confusion risk with Luhansk State Medical University (candidate), reported to operate in Rivne oblast after relocation; the two are different institutions.",
+      "Name lead (unverified): Communal Institution of Higher Education \"Rivne Medical Academy\" of Rivne Regional Council (translation of the Ukrainian name; no official English name found in search results)",
+      "Name lead (unverified): Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради",
+      "Name lead (unverified): mcollege.rv.ua (host lead from osvita.ua and vstup.osvita.ua directories; college-era hostname)"
+    ]
+  }
+}

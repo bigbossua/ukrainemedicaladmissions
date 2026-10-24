@@ -1,0 +1,468 @@
+{
+  "slug": "ukrainian-state-university-of-science-and-technologies",
+  "synthetic": false,
+  "officialName": {
+    "value": "Ukrainian State University of Science and Technologies (search-result lead: Wikipedia article title, ust.edu.ua page titles, Times Higher Education profile; the variant \"Ukrainian State University of Science and Technology\" (singular) appears in an nmetau.edu.ua news item)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Ukrainian State University of Science and Technologies",
+  "alternativeNames": [
+    "USUST (railml.org partner page title 'USUST Dnipro')",
+    "УДУНТ (education.ua listing title)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Dnipro",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://ust.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://ust.edu.ua/en/for-students/international-students-en/about-university-en/"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Dnipro, Ukraine, with leads for pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "pharmacy-industrial-pharmacy-specialty-code-shown-as-i8-on-the-2025-admissions-aggregator-card-the-pre-2025-code-was-226",
+      "name": "Фармація, промислова фармація / Pharmacy, industrial pharmacy (specialty code shown as 'I8' on the 2025 admissions-aggregator card; the pre-2025 code was 226)",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r5/6507/1636290/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-226-historical-lead-at-the-predecessor-ukrainian-state-university-of-chemical-technology-vstup-osvita-ua-institution-id-216-2017-intake",
+      "name": "226 Фармація, промислова фармація — HISTORICAL lead at the predecessor Ukrainian State University of Chemical Technology (vstup.osvita.ua institution id 216), 2017 intake",
+      "field": "pharmacy",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "English name; merger history (formed 2021; chemical-technology university joined",
+      "url": "https://en.wikipedia.org/wiki/Ukrainian_State_University_of_Science_and_Technologies",
+      "purpose": "English name; merger history (formed 2021; chemical-technology university joined 'in 2024' per search summary)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Official About page lead: 'brand new, powerful technical university that establi",
+      "url": "https://ust.edu.ua/about-university",
+      "purpose": "Official About page lead: 'brand new, powerful technical university that established at the end of 2021, located in Dnipro'; UDKhTU and Prydniprovska State Academy of Civil Engineering and Architectur",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "7 educational and scientific institutes; 'Ukrainian and English as the languages",
+      "url": "https://ust.edu.ua/general-information/",
+      "purpose": "7 educational and scientific institutes; 'Ukrainian and English as the languages of the educational process'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "English international-students section (candidate international-applicants page)",
+      "url": "https://ust.edu.ua/en/for-students/international-students-en/about-university-en/",
+      "purpose": "English international-students section (candidate international-applicants page); dual-degree partner programmes at master's level mentioned",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "History page: union of four institutions; former universities function as educat",
+      "url": "https://ust.edu.ua/en/university/history/",
+      "purpose": "History page: union of four institutions; former universities function as educational-scientific institutes",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Predecessor NMetAU news: Cabinet decree 11 July 2023 No. 620-r joining UDKhTU an",
+      "url": "https://nmetau.edu.ua/en/mnews/i6/p6",
+      "purpose": "Predecessor NMetAU news: Cabinet decree 11 July 2023 No. 620-r joining UDKhTU and the Dnipro State Academy of Construction and Architecture to the university ('Science and Technology' singular)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023 (decree date in snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "THE profile: incorporated Prydniprovsk State Academy of Physical Culture and Spo",
+      "url": "https://www.timeshighereducation.com/world-university-rankings/ukrainian-state-university-science-and-technologies",
+      "purpose": "THE profile: incorporated Prydniprovsk State Academy of Physical Culture and Sports in 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 (per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Pharmacy master's card, 2025 intake: specialty I8 Pharmacy, full-time, year 1, c",
+      "url": "https://vstup.osvita.ua/y2025/r5/6507/1531437/",
+      "purpose": "Pharmacy master's card, 2025 intake: specialty I8 Pharmacy, full-time, year 1, contract 53,500 UAH/yr (institution id 6507)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025 admissions cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Pharmacy master's card, 2026 intake: contract 64,700 UAH, licensed intake 80, 75",
+      "url": "https://vstup.osvita.ua/y2026/r5/6507/1636290/",
+      "purpose": "Pharmacy master's card, 2026 intake: contract 64,700 UAH, licensed intake 80, 75 contract places",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 admissions cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Predecessor UDKhTU card: 226 Фармація, промислова фармація, licensed volume 63",
+      "url": "https://vstup.osvita.ua/y2017/r5/216/383118/",
+      "purpose": "Predecessor UDKhTU card: 226 Фармація, промислова фармація, licensed volume 63",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2017 admissions cycle. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ukrainian name and abbreviation 'Український державний університет науки і техно",
+      "url": "https://www.education.ua/universities/101/",
+      "purpose": "Ukrainian name and abbreviation 'Український державний університет науки і технологій (УДУНТ)'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Predecessor NMetAU company record: 'в стані припинення', termination through reo",
+      "url": "https://opendatabot.ua/c/02070766",
+      "purpose": "Predecessor NMetAU company record: 'в стані припинення', termination through reorganisation",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Repository community 'ННІ «Дніпровський інститут інфраструктури і транспорту» (Д",
+      "url": "https://crust.ust.edu.ua/communities/8d575a47-fb8e-453d-a4e0-4b915ba8b644/subcoms-cols",
+      "purpose": "Repository community 'ННІ «Дніпровський інститут інфраструктури і транспорту» (ДІІТ)' — DIIT as an institute within the university",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Abbreviation 'USUST Dnipro'",
+      "url": "https://www.railml.org/en/partners/usust-dnipro",
+      "purpose": "Abbreviation 'USUST Dnipro'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "Commercial aggregator: '2026 intake open' claim (unverified); a sibling page use",
+      "url": "https://studyabroadaide.com/institutions/ukrainian-state-university-of-science-and-technologies/",
+      "purpose": "Commercial aggregator: '2026 intake open' claim (unverified); a sibling page uses slug 'national-metallurgical-academy-of-ukraine'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "uniRank profile: officially recognised higher-education degrees; selective admis",
+      "url": "https://www.unirank.org/ua/uni/ukrainian-state-university-of-science-and-technologies/",
+      "purpose": "uniRank profile: officially recognised higher-education degrees; selective admission by entrance examinations",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (search 2026-10-24). Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Relocation lead (unverified): No relocation lead: every result places the university in Dnipro (ust.edu.ua About page: 'a brand new, powerful technical university that established at the end of 2021, located in Dnipro'). It is itself the product of mergers: formed end-2021 'as a result of the union of four powerful educational institutions' whose 'former universities now function as educational and scientific institutes within one large university' (ust.edu.ua history/About, search summary); the Ukrainian State University of Chemical Technology and the Prydniprovska State Academy of Civil Engineering and Architecture were joined to it by Cabinet decree of 11 July 2023 No. 620-r (nmetau.edu.ua news) or 'in 2024' (ust.edu.ua About page) — the two dates conflict in the snippets; Times Higher Education says it incorporated the Prydniprovsk State Academy of Physical Culture and Sports in 2025. Opendatabot shows the predecessor National Metallurgical Academy of Ukraine (ЄДРПОУ 02070766) 'в стані припинення' through reorganisation. No suspension, licence-revocation or accreditation-problem lead was found.",
+      "Red flag to resolve before any fact is shown: Not a medical school: a technical university with 7 educational-scientific institutes (ust.edu.ua general-information); the only health-related lead is one pharmacy master's programme inherited through the merged chemical-technology university. No medicine, dentistry or nursing lead found.",
+      "Red flag to resolve before any fact is shown: No lead shows the pharmacy programme admits foreign applicants or is taught in English; the only language statement ('Ukrainian and English as the languages of the educational process') is university-wide and programme-unspecific.",
+      "Red flag to resolve before any fact is shown: The fees in the leads (53,500 UAH/yr 2025; 64,700 UAH/yr 2026) are domestic contract fees from an admissions aggregator, not international tuition — must not be presented as foreigner fees.",
+      "Red flag to resolve before any fact is shown: Name confusion: 'Science and Technologies' vs 'Science and Technology'; abbreviations UST vs USUST; the aggregator studyabroadaide.com files it under the slug 'national-metallurgical-academy-of-ukraine' and separately under its own name; predecessor hosts nmetau.edu.ua, udhtu.edu.ua and diit.edu.ua are still live in results. Also distinct from the similarly named Dnipro University of Technology (Dnipro Polytechnic) and Dnipro State Technical University (Kamianske), neither of which appeared in these results.",
+      "Red flag to resolve before any fact is shown: Conflicting merger dates for the chemical-technology university (Cabinet decree 11 July 2023 No. 620-r vs '2024' on the About page) — the legal successor status for the 226/I8 pharmacy licence is a lead only.",
+      "Red flag to resolve before any fact is shown: Admissions aggregator (vstup.osvita.ua) specialty code 'I8' reflects the new specialty classifier; the mapping to the former code 226 is an inference from the programme name, not from the snippet.",
+      "Missing evidence: Official programme page on ust.edu.ua for the pharmacy master's (name, level, duration, form, language) — only aggregator cards found; no official host could be opened.",
+      "Missing evidence: Any bachelor's-level pharmacy programme at USUST — not found.",
+      "Missing evidence: Whether foreign applicants are admitted to the pharmacy programme and whether any English-medium stream exists — not found.",
+      "Missing evidence: International tuition for foreign applicants — not found (only domestic contract fees in the leads).",
+      "Missing evidence: EDEBO record and licence/accreditation status for specialty 226/I8 Pharmacy under USUST as legal successor of UDKhTU — EDEBO not queried; MON 2019 licensing PDF for the predecessor not read.",
+      "Missing evidence: Ministry 'Study in Ukraine' portal record — not found; the two universities.studyinukraine.gov.ua URLs surfaced (university/202, university/192) are unidentified.",
+      "Missing evidence: NAQA accreditation records — not queried.",
+      "Missing evidence: Exact legal date of the UDKhTU merger (2023 decree vs 2024 About-page date) — conflicting leads.",
+      "Missing evidence: Official Ukrainian and English names from the statute/EDEBO (the leads come from listing titles).",
+      "Missing evidence: Dedicated international-applicants admissions page (requirements, deadlines, invitation procedure) — only an 'About University' page under the international-students section was found.",
+      "Missing evidence: An education.ua URL for this university carries a '?speciality=211' filter; the snippet does not say the university offers specialty 211 — do not infer anything from it.",
+      "Skeptic's note: The pharmacy master's (specialty shown as I8, formerly 226) is known only from vstup.osvita.ua admissions cards for 2025 and 2026 (institution id 6507); no official programme page on ust.edu.ua was found, and the id-to-institution match rests on the search summary.",
+      "Skeptic's note: Legal-successor status for the former UDKhTU 226 licence is a lead only; the merger date conflicts (Cabinet decree 11 July 2023 No. 620-r per nmetau.edu.ua vs '2024' on the ust.edu.ua About page). The I8-to-226 mapping is inferred from the programme name.",
+      "Skeptic's note: No lead that the pharmacy programme admits foreign applicants or has an English-medium stream; the only language statement is university-wide.",
+      "Skeptic's note: Fees in the leads (53,500 UAH/yr 2025; 64,700 UAH/yr 2026) are domestic contract fees, not international tuition.",
+      "Skeptic's note: EDEBO and NAQA not queried; Study in Ukraine portal record not identified (university/202 and /192 hits unattributed); the 2019 MON licensing PDF for the predecessor was not read.",
+      "Skeptic's note: Name-confusion risk: 'Science and Technologies' vs 'Science and Technology'; UST vs USUST; predecessor hosts (nmetau.edu.ua, udhtu.edu.ua, diit.edu.ua) still live; distinct from Dnipro University of Technology (Dnipro Polytechnic) and Dnipro State Technical University (Kamianske).",
+      "Name lead (unverified): Ukrainian State University of Science and Technologies (search-result lead: Wikipedia article title, ust.edu.ua page titles, Times Higher Education profile; the variant \"Ukrainian State University of Science and Technology\" (singular) appears in an nmetau.edu.ua news item)",
+      "Name lead (unverified): Український державний університет науки і технологій (search-result lead: education.ua listing title \"Український державний університет науки і технологій (УДУНТ)\" and a udhtu.edu.ua page title)",
+      "Name lead (unverified): UST (ust.edu.ua domain; 'UST logo' in nmetau.edu.ua / ipbt.ust.edu.ua page titles)",
+      "Name lead (unverified): Ukrainian State University of Science and Technology (singular variant, nmetau.edu.ua news item)",
+      "Name lead (unverified): ННІ «Дніпровський інститут інфраструктури і транспорту» (ДІІТ) — educational-scientific institute within the university (crust.ust.edu.ua / omp.diit.edu.ua community titles)",
+      "Name lead (unverified): ННІ «Дніпровський металургійний інститут» — institute named in a 2025 ust.edu.ua staff order (search-result summary)",
+      "Name lead (unverified): National Metallurgical Academy of Ukraine (NMetAU, nmetau.edu.ua) — predecessor; Opendatabot (ЄДРПОУ 02070766) shows it 'в стані припинення ... в результаті її реорганізації'; studyabroadaide.com uses the URL slug 'national-metallurgical-academy-of-ukraine' for this university's page",
+      "Name lead (unverified): Ukrainian State University of Chemical Technology (УДХТУ, udhtu.edu.ua) — reported joined (Cabinet decree 11 July 2023 No. 620-r per nmetau.edu.ua news; '2024' per ust.edu.ua About page)",
+      "Name lead (unverified): Prydniprovska State Academy of Civil Engineering and Architecture — reported joined alongside UDKhTU (ust.edu.ua About page / nmetau.edu.ua news)",
+      "Name lead (unverified): Prydniprovsk State Academy of Physical Culture and Sports — reported incorporated in 2025 (Times Higher Education profile)",
+      "Name lead (unverified): Inventory note (earlier Wikipedia snippet): predecessor 'Dnipro Institute of Infrastructure and Transport (1930)' reported merged into it"
+    ]
+  }
+}

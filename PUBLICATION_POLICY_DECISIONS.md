@@ -131,6 +131,23 @@ It must also have no open relocation, occupation, closure, merger or licence que
 
 **Owner choices.** (1) Keep this rule. (2) List only institutions with a verified government register entry, which today removes all five. (3) Exclude Sumy, whose skeptic flagged reports of strikes on the campus (2023, 2025) and no official teaching statement since 2022. Switch a record off with `verification.researchPreview: false`; nothing else changes.
 
+## (f) Directory expansion: every relevant institution as a name-only preview (N27, owner instruction 2026-10-24)
+
+**Owner instruction (2026-10-24).** Add all relevant Ukrainian universities offering medicine, dentistry, pharmacy and other medical programmes to the directory with immediate effect, each with its own profile page; record what cannot be verified as unverified and name the missing evidence; do not weaken verification safeguards to increase the page count.
+
+**Rule applied (replaces the N26 default for listing).** An institution is listed as a "Not yet verified" research preview (name only, noindex, outside the sitemap, no fact shown) when an independent skeptic's check of the search-result leads finds all of:
+- a Ukrainian higher-education institution (university, academy or institute; not a vocational college) under Ukrainian jurisdiction today, not military-only;
+- at least a search-result lead for a medicine, dentistry, pharmacy or nursing degree programme;
+- not the same institution as a listed one (renames and mergers checked).
+
+Open relocation, licence or accreditation questions no longer bar a name-only listing; they are recorded in the record's open questions and bar every fact until resolved. The preview page states that whether, where and how the institution teaches, and whether it admits foreign applicants, are among the facts still to be checked.
+
+**Excluded, with the reason recorded in `research/universities/MASTER_INVENTORY.md`:** institutions run by an occupying administration (group R); military-only and postgraduate-only institutions (group E: not a first-degree route for international applicants); vocational medical colleges (фахові коледжі, junior-bachelor level); universities with no lead for any medicine, dentistry, pharmacy or nursing degree programme (for example rehabilitation-only or no medical faculty found).
+
+**What this does not change.** The publication policy for facts (decisions (a)–(c)), the evidence standard, the leak checks and the sitemap rule are unchanged: a profile becomes indexable and shows facts only when its evidence passes. Research-result leads remain leads.
+
+**Applied (2026-10-24).** 28 institutions added; the directory lists 45 research previews. The list, the skeptic verdicts and the 15 not listed, with reasons, are in `UNIVERSITY_DATA_REGISTER.md` §13.2.
+
 ## Technical gaps fixed at the same time (no owner decision needed)
 
 | Backlog wording (N24) | What the code does now |

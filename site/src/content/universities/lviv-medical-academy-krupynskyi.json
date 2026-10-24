@@ -1,0 +1,982 @@
+{
+  "slug": "lviv-medical-academy-krupynskyi",
+  "synthetic": false,
+  "officialName": {
+    "value": "Higher Educational Communal Institution of Lviv Regional Council \"Andrei Krupynskyi Lviv Medical Academy\" (LEAD ONLY: wording attributed by the search summary to the Study in Ukraine portal programmes listing; official English rendering on lma.edu.ua not seen)",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Andrei Krupynskyi Lviv Medical Academy",
+  "alternativeNames": [
+    "Львівська медична академія імені Андрея Крупинського",
+    "КЗВО ЛОР «Львівська медична академія імені Андрея Крупинського»",
+    "Lviv Medical Academy named after Andrei Krupynskyi",
+    "Lviv Medical Academy named after Andrei Krupinsky (uni2study spelling)",
+    "Andrei Krupynskyi Lviv Medical Academy (Studyportals spelling)",
+    "Lviv Andrey Krupynskyi Medical Academy",
+    "LMA (abbreviation matching domain lma.edu.ua)"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Lviv",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://lma.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence medium, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "International office page not found."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a medical academy or institute (communal) in Lviv (address lead: vul. P. Doroshenka 70, Lviv — osvita.ua guide, undated), Ukraine, with leads for nursing, pharmacy programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "nursing-223-nursing-bachelor-s",
+      "name": "223 Медсестринство (Nursing) — bachelor's",
+      "field": "nursing",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2023/r14/627/."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "nursing-master-s",
+      "name": "Медсестринство (Nursing) — master's, освітньо-професійна програма",
+      "field": "nursing",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r14/627/1634308/ (one of the 2026 programme sub-pages 1587479, 1609641, 1634308, 1638675, 1642797, 1668064; which sub-page carries this programme is not confirmed)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "pharmacy-226-pharmacy-master-s",
+      "name": "226 Фармація (Pharmacy) — master's",
+      "field": "pharmacy",
+      "level": {
+        "value": "master",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r14/627/1484963/ (one of the 2025 programme sub-pages 1459468, 1484963, 1486611, 1537625, 1558546, 1558902; mapping not confirmed)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "vocational-run-by-the-academy-s",
+      "name": "Фармація — фаховий молодший бакалавр (vocational, run by the academy's фаховий коледж)",
+      "field": "pharmacy",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r14/627/1587479/ (2026 programme sub-page set; exact mapping not confirmed)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "vocational-academy-s",
+      "name": "Медсестринство — «Сестринська справа», «Акушерська справа» (vocational, academy's фаховий коледж)",
+      "field": "nursing",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2025/r14/627/1459468/ and https://vstup.osvita.ua/y2025/r14/627/1537625/ (2025 sub-pages; mapping not confirmed)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "psychology-bachelor-s",
+      "name": "Психологія (Psychology) — bachelor's",
+      "field": "other",
+      "level": {
+        "value": "bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2026/r14/627/1642797/ (2026 sub-page set; mapping not confirmed)."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "laboratory-medicine-laboratory-techniques-treatment-techniques-paediatrics-nursing-study-in-ukraine-portal-listing-levels-not-stated",
+      "name": "Laboratory Medicine / Laboratory Techniques / Treatment Techniques / Paediatrics / Nursing (Study in Ukraine portal listing; levels not stated)",
+      "field": "other",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "2024 admission directory entry; full communal title; summary: website lma.edu.ua",
+      "url": "https://vstup.osvita.ua/y2024/r14/627/",
+      "purpose": "2024 admission directory entry; full communal title; summary: website lma.edu.ua, 122 offers, licensed capacity 841, 909 applications; no foreign-applicant breakdown",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2024 (admission campaign year in URL). Search-result lead, not read in full."
+    },
+    {
+      "label": "2023 entry; Bachelor 223 Медсестринство, 40 licensed places, study 01.09.2023–30",
+      "url": "https://vstup.osvita.ua/y2023/r14/627/",
+      "purpose": "2023 entry; Bachelor 223 Медсестринство, 40 licensed places, study 01.09.2023–30.06.2027",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023. Search-result lead, not read in full."
+    },
+    {
+      "label": "2022 entry under the short title «Львівська медична академія імені Андрея Крупин",
+      "url": "https://vstup.osvita.ua/y2022/r14/627/",
+      "purpose": "2022 entry under the short title «Львівська медична академія імені Андрея Крупинського»",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2022. Search-result lead, not read in full."
+    },
+    {
+      "label": "2020 entry under the full communal title (continuity of the name since at least ",
+      "url": "https://vstup.osvita.ua/y2020/r14/627/",
+      "purpose": "2020 entry under the full communal title (continuity of the name since at least 2020)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 programme page (set also includes 1459468, 1486611, 1537625, 1558546, 15589",
+      "url": "https://vstup.osvita.ua/y2025/r14/627/1484963/",
+      "purpose": "2025 programme page (set also includes 1459468, 1486611, 1537625, 1558546, 1558902): Pharmacy master's non-budget offer; vocational nursing programmes",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "2026 programme page (set also includes 1587479, 1609641, 1638675, 1642797, 16680",
+      "url": "https://vstup.osvita.ua/y2026/r14/627/1634308/",
+      "purpose": "2026 programme page (set also includes 1587479, 1609641, 1638675, 1642797, 1668064): Nursing master's, Pharmacy vocational, Psychology bachelor — evidence the academy is admitting for 2026",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026. Search-result lead, not read in full."
+    },
+    {
+      "label": "osvita.ua guide: communal higher-education institution of Lviv Regional Council;",
+      "url": "https://osvita.ua/vnz/college/16768/",
+      "purpose": "osvita.ua guide: communal higher-education institution of Lviv Regional Council; bachelor, master, junior bachelor; address P. Doroshenka 70, Lviv; site lma.edu.ua",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "osvita.ua guide entry; licensed capacity 582 places (older figure)",
+      "url": "https://osvita.ua/vnz/guide/37458/",
+      "purpose": "osvita.ua guide entry; licensed capacity 582 places (older figure)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory entry titled «КЗВО ЛОР «Львівська медична академія імені Андрея Крупин",
+      "url": "https://www.education.ua/universities/864/",
+      "purpose": "Directory entry titled «КЗВО ЛОР «Львівська медична академія імені Андрея Крупинського»» (abbreviated communal title)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Ministry Study in Ukraine portal programmes listing (Health/Medicine area) in wh",
+      "url": "https://studyinukraine.gov.ua/study-in-ukraine/programmes-and-courses/?areas=22",
+      "purpose": "Ministry Study in Ukraine portal programmes listing (Health/Medicine area) in which the search summary places the academy; institution page not confirmed",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Studyportals profile: \"one of the oldest higher medical educational institutions",
+      "url": "https://www.mastersportal.com/universities/21828/andrei-krupynskyi-lviv-medical-academy.html",
+      "purpose": "Studyportals profile: \"one of the oldest higher medical educational institutions not only in Ukraine, but also in Europe\"; \"turned 246 years old on October 1, 2019\"; third-party scholarship listings",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: text references 2019; page undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Recruitment-style directory: lineage to a 1773 Lviv Medical Collegium; academy s",
+      "url": "https://www.uni2study.com/universities/ukraine/lviv-medical-academy-named-after-andrei-krupinsky",
+      "purpose": "Recruitment-style directory: lineage to a 1773 Lviv Medical Collegium; academy status 2019; lists Lviv Regional Council and MON as accrediting agencies",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Directory entry under the apparent predecessor name \"Andrey Krupynski Lviv Insti",
+      "url": "https://www.unipage.net/en/27631/andrey_krupynski_lviv_institute_of_nursing_and_laboratory_medicine",
+      "purpose": "Directory entry under the apparent predecessor name \"Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine\"",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Danylo Halytsky Lviv National Medical University page returned for the same quer",
+      "url": "https://new.meduniv.lviv.ua/en/?p=818",
+      "purpose": "Danylo Halytsky Lviv National Medical University page returned for the same query — disambiguation only (LNMU's English Medium Program since 1997 is not this academy's)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Lviv (address lead: vul. P. Doroshenka 70, Lviv — osvita.ua guide, undated)",
+      "Relocation lead (unverified): No relocation lead. Admission listings for 2020, 2022, 2023, 2024, 2025 and 2026 on vstup.osvita.ua all place the academy in Lviv (region r14); address lead vul. P. Doroshenka 70, Lviv (osvita.ua). Lviv is not occupied territory. 2024 listing lead: \"122 offers, a licensed capacity of 841 places, and 909 total applications\"; an older guide entry gives \"Ліцензійний обсяг: 582 місць\" at 107 offers — figures differ by year and must not be quoted as current.",
+      "Red flag to resolve before any fact is shown: Name confusion: searches for \"Lviv Medical Academy\" return Danylo Halytsky Lviv National Medical University (meduniv.lviv.ua, already listed) pages, including its English Medium Program \"implemented in 1997\" — that programme belongs to LNMU, not to this academy. Any copy must not attribute LNMU's medicine/dentistry/English-medium offers to the academy.",
+      "Red flag to resolve before any fact is shown: No lead for any 222 Medicine or 221 Dentistry degree programme; the portfolio found is nursing (bachelor/master), pharmacy (master, non-budget), psychology (bachelor) plus vocational nursing/pharmacy. A targeted search for Технології медичної діагностики, Фізична терапія and Стоматологія returned nothing. Relevance to international medicine/dentistry applicants is unsupported; inventory group G (nursing/allied-health level) stands.",
+      "Red flag to resolve before any fact is shown: The academy runs an internal \"фаховий коледж\" offering фаховий молодший бакалавр programmes (Сестринська справа, Акушерська справа, Фармація). These are vocational, not higher-education degrees, and must not be presented as degree programmes.",
+      "Red flag to resolve before any fact is shown: No lead at all for admission of foreign applicants, English-medium teaching, tuition for foreigners or an international office page; the vstup.osvita.ua directory \"doesn't break out foreign applicants\". Studyportals/uni2study/unipage are recruitment-style directories and their \"scholarships\" listings are third-party and possibly stale.",
+      "Red flag to resolve before any fact is shown: Predecessor identity: unipage.net lists \"Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine\"; uni2study says academy status was granted in 2019 and traces lineage to a 1773 \"Lviv Medical Collegium\". The rename history and the official order are unconfirmed; older directory entries may exist under the institute name.",
+      "Red flag to resolve before any fact is shown: Inconsistent admission basis for the Pharmacy master's across two search summaries (на базі фахового молодшого бакалавра vs. на базі бакалавра) — do not state either as fact.",
+      "Red flag to resolve before any fact is shown: Licensed-capacity figures differ across years (582 places/107 offers in an undated guide; 841 places/122 offers in the 2024 listing); none is a verified current figure.",
+      "Red flag to resolve before any fact is shown: No EDEBO or NAQA record surfaced; licence and accreditation status of every programme is unverified.",
+      "Missing evidence: Official site lma.edu.ua not opened (network policy): official Ukrainian/English name, domain ownership, programme list, admission rules and contacts unconfirmed from the primary source.",
+      "Missing evidence: EDEBO registry entry (registry.edbo.gov.ua): not found in search — licence (specialities 223, 226, others), licensed volumes and accreditation certificates unverified.",
+      "Missing evidence: NAQA accreditation decisions for any higher-education programme: not found.",
+      "Missing evidence: Study in Ukraine portal: institution page URL not confirmed; only a programmes-area listing lead.",
+      "Missing evidence: Admission of foreign applicants to any programme, tuition for foreigners, English-medium teaching, international office/department page: not found.",
+      "Missing evidence: Whether any 222 Medicine or 221 Dentistry (or dental technology) higher-education programme exists: no lead; absence in results is not proof of absence.",
+      "Missing evidence: Full higher-education programme list (e.g., 224 lab diagnostics, 227 physical therapy): not found; only nursing, pharmacy and psychology leads.",
+      "Missing evidence: Legal/rename history (institute to academy, reported 2019) and the Ukrainian predecessor name: only recruitment-directory leads; founding order not found.",
+      "Missing evidence: Pharmacy master's admission basis (vocational junior bachelor vs. bachelor): inconsistent between search summaries.",
+      "Missing evidence: Current (2026) licensed capacity and offer count: only 2024 and older figures.",
+      "Missing evidence: Exact mapping of each programme to its vstup.osvita.ua sub-page URL: not confirmed from snippets.",
+      "Skeptic's note: No lead for any 222 Medicine or 221 Dentistry degree; the qualifying leads are nursing (bachelor 2023 with 40 licensed places; master 2026) and pharmacy (master, non-budget, 2025). The academy also runs a фаховий коледж whose nursing/pharmacy/midwifery programmes are vocational and must not be shown as degrees.",
+      "Skeptic's note: No EDEBO or NAQA record surfaced; licence and accreditation of every programme unverified. Study in Ukraine portal institution page not confirmed (only a programmes-area listing lead).",
+      "Skeptic's note: Pharmacy master's admission basis is reported inconsistently (на базі фахового молодшого бакалавра vs на базі бакалавра).",
+      "Skeptic's note: Predecessor identity ('Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine', academy status reportedly 2019) rests on recruitment directories; the founding/rename order was not found.",
+      "Skeptic's note: Name-confusion risk: 'Lviv Medical Academy' searches return Danylo Halytsky Lviv National Medical University (listed) and its English Medium Program; none of LNMU's offers belong to this academy. Also distinct from the private candidate lviv-medical-institute.",
+      "Skeptic's note: Domain lma.edu.ua is a directory lead (osvita.ua, vstup.osvita.ua), medium confidence, not read on the site or a register.",
+      "Name lead (unverified): Higher Educational Communal Institution of Lviv Regional Council \"Andrei Krupynskyi Lviv Medical Academy\" (LEAD ONLY: wording attributed by the search summary to the Study in Ukraine portal programmes listing; official English rendering on lma.edu.ua not seen)",
+      "Name lead (unverified): Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\" (LEAD: page titles on vstup.osvita.ua 2020, 2023, 2024 and education.ua; not read from an official page)",
+      "Name lead (unverified): Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine (unipage.net; apparent predecessor name before academy status, lead only)"
+    ]
+  }
+}

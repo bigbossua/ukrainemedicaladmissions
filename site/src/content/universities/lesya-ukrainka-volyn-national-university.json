@@ -1,0 +1,580 @@
+{
+  "slug": "lesya-ukrainka-volyn-national-university",
+  "synthetic": false,
+  "officialName": {
+    "value": "Lesya Ukrainka Volyn National University (search-result lead: Wikipedia article title; vnu.edu.ua/uk news slug \"lesya-ukrainka-volyn-national-university-invites-foreign-citizens...\"; inter-dep.vnu.edu.ua uses \"LUVNU\")",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official name as it appears in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "shortName": "Lesya Ukrainka Volyn National University",
+  "alternativeNames": [
+    "Волинський національний університет імені Лесі Українки",
+    "ВНУ / VNU (abbreviation used by education.ua listing)",
+    "LUVNU (abbreviation on inter-dep.vnu.edu.ua 'Study in LUVNU')"
+  ],
+  "status": {
+    "value": "operating",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (operating status as described in the results, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "statusStatement": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "No current-year official statement found."
+  },
+  "teachingFormat": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Read from a dated official statement for the current academic year."
+  },
+  "city": "Lutsk",
+  "address": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the postal address only from the official contacts page or the EDEBO register."
+  },
+  "website": {
+    "value": "https://vnu.edu.ua/",
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (official domain, confidence high, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "internationalOffice": {
+    "value": {
+      "url": "https://inter-dep.vnu.edu.ua/ (International Relations Office; pages seen in results: \"Study in LUVNU\" https://inter-dep.vnu.edu.ua/?p=4736 and \"Admission procedures & required documents\" https://inter-dep.vnu.edu.ua/enrolment-procedures-required-documents/; also https://vnu.edu.ua/en/news/incoming-students, which references the 2020-2021 academic year)"
+    },
+    "status": "unverified",
+    "source": null,
+    "checked": null,
+    "note": "Search-snippet lead (international-applicants page, 2026-10-24) — NOT verified; read the official page before publishing."
+  },
+  "founded": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record the founding year from the official history page."
+  },
+  "overview": "Research draft record, unpublished: every statement below is an unverified lead, not a verified fact. Described in search results as a multi-faculty university (state) in Lutsk (Луцьк), Volyn Oblast, Ukraine, with leads for dentistry, medicine programmes. Draft record built from search-result leads on 2026-10-24; no official page was opened (official hosts are refused by this environment's network policy). No fee, deadline or intake date is recorded. Every field is awaiting verification against the official pages listed under research references, and nothing here is presented as a current fact.",
+  "accreditation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record accreditation only from a NAQA register entry or the official certificate; registration, licence and accreditation are separate claims."
+  },
+  "recognition": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Recognition is decided separately by each destination country's regulator; record only from a listed tier-4 source."
+  },
+  "accommodation": {
+    "value": null,
+    "status": "not-published",
+    "source": null,
+    "checked": null,
+    "note": "Record only published hostel details."
+  },
+  "programmes": [],
+  "deferredProgrammes": [
+    {
+      "id": "medicine-specialty-222-medical-faculty",
+      "name": "Медицина / Medicine (specialty 222), Medical Faculty",
+      "field": "medicine",
+      "level": {
+        "value": "junior_bachelor",
+        "status": "unverified",
+        "source": null,
+        "checked": null,
+        "note": "Search-snippet lead (level as described in the result, 2026-10-24) — NOT verified; read the official page before publishing. Source seen: https://vstup.osvita.ua/y2024/r4/44/1308487/ (and sibling y2023/y2024 pages); https://vnu.edu.ua/en/news/universitet-imeni-lesi-ukrainki-vipustiv-pershikh-magistriv-medikiv; https://vnu.edu.ua/sites/default/files/2022-03/%D0%A0%D0%B5%D1%86%D0%B5%D0%BD%D0%B7%202.%202020.pdf."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "dentistry-specialty-221",
+      "name": "Стоматологія / Dentistry (specialty 221)",
+      "field": "dentistry",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    },
+    {
+      "id": "postgraduate-internship-at-the-medical-faculty",
+      "name": "Postgraduate internship (інтернатура) at the Medical Faculty",
+      "field": "medicine",
+      "level": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Level not stated in the returned text; read the programme page."
+      },
+      "specialtyCode": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the specialty code only from the official programme page or the licence register."
+      },
+      "qualification": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the exact award title as the university prints it; never \"MBBS\" unless the university uses it."
+      },
+      "durationYears": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the programme page."
+      },
+      "durationText": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Record the duration exactly as published."
+      },
+      "language": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Language of instruction not stated in the returned text."
+      },
+      "format": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Teaching format for the current year must come from a dated official statement."
+      },
+      "internationalAdmission": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No lead that this programme admits foreign applicants; verify on the official admissions page."
+      },
+      "intakeYear": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No year in the returned text."
+      },
+      "tuition": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No fee recorded: fees are recorded only from the official fee page with their academic year."
+      },
+      "otherMandatoryCosts": [],
+      "entryRequirements": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official admission rules for foreign applicants."
+      },
+      "requirements": [],
+      "requiredDocuments": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Not recorded; read the official document list for foreign applicants."
+      },
+      "documents": [],
+      "deadlines": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "No date is recorded."
+      },
+      "intake": {
+        "value": null,
+        "status": "not-published",
+        "source": null,
+        "checked": null,
+        "note": "Start of studies for the current intake not found."
+      }
+    }
+  ],
+  "preparatoryRoutes": [],
+  "researchReferences": [
+    {
+      "label": "English name; 'state-sponsored university in Lutsk'; roots in a 1940 teachers' i",
+      "url": "https://en.wikipedia.org/wiki/Lesya_Ukrainka_Volyn_National_University",
+      "purpose": "English name; 'state-sponsored university in Lutsk'; roots in a 1940 teachers' institute; 1993 presidential decree granted university status; infobox ~12,369 students, rector Anatolii Tsos (possibly d",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated (encyclopedia; search 2026-10-24). Search-result lead, not read in full."
+    },
+    {
+      "label": "First master's graduates of the Medical Faculty received diplomas on 23 June 202",
+      "url": "https://vnu.edu.ua/en/news/universitet-imeni-lesi-ukrainki-vipustiv-pershikh-magistriv-medikiv",
+      "purpose": "First master's graduates of the Medical Faculty received diplomas on 23 June 2025",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-06-23 (event date per snippet). Search-result lead, not read in full."
+    },
+    {
+      "label": "Interns start studies; Dean of Medical Faculty Andrii Poruchynskyi",
+      "url": "https://vnu.edu.ua/en/news/lesya-ukrainka-university-interns-start-their-studies",
+      "purpose": "Interns start studies; Dean of Medical Faculty Andrii Poruchynskyi",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown. Search-result lead, not read in full."
+    },
+    {
+      "label": "Medical Faculty department; address 'Lutsk, Bankova Street, 9'",
+      "url": "https://wiki.vnu.edu.ua/wiki/Department_of_Internal_and_Family_Medicine",
+      "purpose": "Medical Faculty department; address 'Lutsk, Bankova Street, 9'",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "222 Medicine: Master, Medical Faculty, full-time; licence volume and contract fe",
+      "url": "https://vstup.osvita.ua/y2024/r4/44/1308487/",
+      "purpose": "222 Medicine: Master, Medical Faculty, full-time; licence volume and contract fee figures (also y2023 and sibling y2024 pages)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2023-2024 admission campaigns. Search-result lead, not read in full."
+    },
+    {
+      "label": "Review of the educational-professional programme 'Medicine' (master, 222) as the",
+      "url": "https://vnu.edu.ua/sites/default/files/2022-03/%D0%A0%D0%B5%D1%86%D0%B5%D0%BD%D0%B7%202.%202020.pdf",
+      "purpose": "Review of the educational-professional programme 'Medicine' (master, 222) as the basis for creating the Medical Faculty",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020 review; uploaded 2022-03. Search-result lead, not read in full."
+    },
+    {
+      "label": "2026/2027 tuition: Dentistry and Medicine 58,700 UAH/year; increases up to 28%",
+      "url": "https://zaxid.net/podorozhchannya_do_28_volinskiy_universitet_imeni_lesi_ukrayinki_zatverdiv_tsini_dlya_vstupnikiv_n1639300",
+      "purpose": "2026/2027 tuition: Dentistry and Medicine 58,700 UAH/year; increases up to 28%",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2026 (2026/2027 entrants). Search-result lead, not read in full."
+    },
+    {
+      "label": "Earlier tuition approval article (figures not in snippet)",
+      "url": "https://zaxid.net/volinskiy_universitet_imeni_lesi_ukrayinki_zatverdiv_vartist_navchannya_dlya_vstupnikiv_n1614725",
+      "purpose": "Earlier tuition approval article (figures not in snippet)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: not shown. Search-result lead, not read in full."
+    },
+    {
+      "label": "2025 admission rules; links to registry.edbo.gov.ua/university/44 (EDEBO id 44 l",
+      "url": "https://vstup.vnu.edu.ua/wp-content/uploads/2025/04/І.pdf",
+      "purpose": "2025 admission rules; links to registry.edbo.gov.ua/university/44 (EDEBO id 44 lead); rules approved by Academic Council under MON procedure",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2025-04 (upload path). Search-result lead, not read in full."
+    },
+    {
+      "label": "'Study in LUVNU' page of the International Relations Office",
+      "url": "https://inter-dep.vnu.edu.ua/?p=4736",
+      "purpose": "'Study in LUVNU' page of the International Relations Office",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Admission procedures and required documents for foreign applicants",
+      "url": "https://inter-dep.vnu.edu.ua/enrolment-procedures-required-documents/",
+      "purpose": "Admission procedures and required documents for foreign applicants",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Invitation to foreign citizens; teaching languages Ukrainian, English, French, G",
+      "url": "https://vnu.edu.ua/uk/news/lesya-ukrainka-volyn-national-university-invites-foreign-citizens-enroll-bachelors-masters",
+      "purpose": "Invitation to foreign citizens; teaching languages Ukrainian, English, French, German; strengths listed exclude medicine",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Two intake windows (deadlines 1 November and 1 March); MON invitation letter; pr",
+      "url": "https://vnu.edu.ua/en/news/incoming-students",
+      "purpose": "Two intake windows (deadlines 1 November and 1 March); MON invitation letter; pre-study courses in Ukrainian or Russian",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: references 2020-2021 academic year. Search-result lead, not read in full."
+    },
+    {
+      "label": "Aggregator listing: 'Волинський національний університет імені Лесі Українки (ВН",
+      "url": "https://www.education.ua/universities/39/",
+      "purpose": "Aggregator listing: 'Волинський національний університет імені Лесі Українки (ВНУ)'; ~9,873 students, 722 staff; faculties incl. philology, history, medicine, economics, psychology, law",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated aggregator. Search-result lead, not read in full."
+    },
+    {
+      "label": "Cabinet of Ministers order No. 426-r of 04.07.2012 approving the rename Volyn Na",
+      "url": "https://osvita.ua/legislation/Vishya_osvita/30155/",
+      "purpose": "Cabinet of Ministers order No. 426-r of 04.07.2012 approving the rename Volyn National University -> Eastern European National University",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2012-07-04. Search-result lead, not read in full."
+    },
+    {
+      "label": "MON order No. 1471 of 26.11.2020 lists journals of 'Волинського національного ун",
+      "url": "https://ra.vnu.edu.ua/dva-periodychnyh-vydannya-universytetu-vklyucheno-do-pereliku-naukovyh-fahovyh-vydan-ukrayiny-kategoriyi-b",
+      "purpose": "MON order No. 1471 of 26.11.2020 lists journals of 'Волинського національного університету імені Лесі Українки' (name back in use by late 2020)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: 2020-11-26 (order date). Search-result lead, not read in full."
+    },
+    {
+      "label": "Accreditation expert-group report hosted by the university (programme not named ",
+      "url": "https://vnu.edu.ua/sites/default/files/2024-02/%D0%97%D0%B2%D1%96%D1%82%20%D0%BF%D1%80%D0%BE%20%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B8%20%D0%B0%D0%BA%D1%80%D0%B5%D0%B4%D0%B8%D1%82%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D0%BE%D1%97%20%D0%B5%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D1%82%D0%B8%D0%B7%D0%B8%20%D0%BE%D1%81%D0%B2%D1%96%D1%82%D0%BD%D1%8C%D0%BE%D1%97%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B8_2.pdf",
+      "purpose": "Accreditation expert-group report hosted by the university (programme not named in snippet; a 2023-03 sibling PDF also exists)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: uploaded 2024-02. Search-result lead, not read in full."
+    },
+    {
+      "label": "uniRank listing (third-party)",
+      "url": "https://www.unirank.org/ua/uni/lesya-ukrainka-volyn-national-university/",
+      "purpose": "uniRank listing (third-party)",
+      "snippetDate": "2026-10-24",
+      "note": "Result date as shown: undated. Search-result lead, not read in full."
+    }
+  ],
+  "faqs": [],
+  "images": [],
+  "verification": {
+    "publishable": false,
+    "researchPreview": true,
+    "lastReview": null,
+    "openQuestions": [
+      "Official name in English and Ukrainian, canonical domain and postal address, from the official site and the EDEBO register.",
+      "Dated official statement for the current academic year on whether, where and how foreign students are taught.",
+      "State registration (EDEBO), programme licence (Ministry or EDEBO licence register) and NAQA accreditation for each health programme: three separate claims.",
+      "Which medicine, dentistry, pharmacy or nursing programmes admit foreign applicants, in which language, with what duration and intake, and the official fee page.",
+      "Location lead as found (unverified): Lutsk (Луцьк), Volyn Oblast",
+      "Relocation lead (unverified): No relocation lead. Lutsk, Volyn Oblast (north-west Ukraine) is the reported base in every lead; the Department of Internal and Family Medicine lists \"Lutsk, Bankova Street, 9\" (wiki.vnu.edu.ua, undated). Recent activity leads: first Medical Faculty masters graduated 23 June 2025 (vnu.edu.ua/en news); tuition for 2026/2027 entrants approved (zaxid.net, headline \"Подорожчання до 28%\"). No occupied-territory or front-line lead.",
+      "Red flag to resolve before any fact is shown: No lead shows foreign applicants admitted to, or English-medium teaching of, Medicine or Dentistry. The university's own invitation to foreign citizens (vnu.edu.ua/uk news, undated) names teaching languages Ukrainian, English, French and German and lists strengths in economics, information systems, international relations, tourism and journalism; medicine is not mentioned. Consistent with the inventory flag 'no programme for foreigners shown'.",
+      "Red flag to resolve before any fact is shown: The Medical Faculty is new (programme review dated 2020; first master's graduates 23 June 2025). No NAQA accreditation decision for 222 Medicine was found; accreditation status is unverified.",
+      "Red flag to resolve before any fact is shown: Dentistry (221) rests on one 2026/2027 fee snippet from zaxid.net; no licence, EDEBO or NAQA lead.",
+      "Red flag to resolve before any fact is shown: Name confusion risk: (a) a separate communal institution 'Volyn Medical Institute' (КЗВО «Волинський медичний інститут» Волинської обласної ради, Lutsk) exists in the inventory (group G) and is NOT the same body; (b) 2012-2020 name 'Lesya Ukrainka Eastern European National University' still appears in third-party and academic sources.",
+      "Red flag to resolve before any fact is shown: International-applicant pages seen in results reference the 2020-2021 academic year (deadlines 1 November and 1 March; pre-study language courses in Ukrainian or Russian, 6-10 months) and may be outdated; no current international prospectus found.",
+      "Red flag to resolve before any fact is shown: Tuition volatility: contract fees for Medicine rose from about 29,500-40,000 UAH/year (2022-2024, vstup.osvita.ua) to 58,700 UAH/year for 2026/2027 entrants (zaxid.net); figures are domestic contract fees, not foreign-applicant fees.",
+      "Red flag to resolve before any fact is shown: All findings are search-result leads; no official page, EDEBO record or NAQA record was read (network policy blocks those hosts).",
+      "Missing evidence: EDEBO record (registry.edbo.gov.ua/university/44) read directly: legal name, ownership, licence for 222 Medicine and 221 Dentistry, current licence volumes",
+      "Missing evidence: NAQA accreditation decision(s) for 222 Medicine and 221 Dentistry (not found in any lead)",
+      "Missing evidence: Whether foreign applicants are admitted to Medicine/Dentistry at all, in which language, and any English-medium medicine programme (no lead found)",
+      "Missing evidence: Study in Ukraine portal (studyinukraine.gov.ua) listing (not found)",
+      "Missing evidence: Dentistry (221): level, start year, licence, first intake (only a 2026/2027 fee snippet)",
+      "Missing evidence: Nursing (223) and Pharmacy (226) programmes: not found in results",
+      "Missing evidence: The 2020 legal act (presidential decree or order) that restored the name 'Volyn National University'",
+      "Missing evidence: Current international-office content and foreign-applicant fees (pages seen reference 2020-2021)",
+      "Missing evidence: Any official page of vnu.edu.ua read directly (network policy blocked official hosts; every item above is a search-result lead)",
+      "Name lead (unverified): Lesya Ukrainka Volyn National University (search-result lead: Wikipedia article title; vnu.edu.ua/uk news slug \"lesya-ukrainka-volyn-national-university-invites-foreign-citizens...\"; inter-dep.vnu.edu.ua uses \"LUVNU\")",
+      "Name lead (unverified): Волинський національний університет імені Лесі Українки (search-result lead: education.ua listing \"Волинський національний університет імені Лесі Українки (ВНУ)\"; MON order No. 1471 of 26.11.2020 cited on ra.vnu.edu.ua; ISSN record \"Volinsʹkogo nacìonalʹnogo unìversitetu ìmenì Lesì Ukraïnki\")",
+      "Name lead (unverified): Lesya Ukrainka University (vnu.edu.ua/en news title 'Lesya Ukrainka University Interns Start Their Studies')",
+      "Name lead (unverified): Lesya Ukrainka Eastern European National University / Східноєвропейський національний університет імені Лесі Українки (name 2012-2020; Cabinet order No. 426-r of 04.07.2012 approved the rename per osvita.ua; 'Volyn' name back in use by MON order No. 1471 of 26.11.2020 per ra.vnu.edu.ua)",
+      "Name lead (unverified): Eastern European National University (former name, per inventory)",
+      "Name lead (unverified): Volinsʹkij nacìonalʹnij unìversitet ìmenì Lesì Ukraïnki (ISSN portal transliteration)",
+      "Name lead (unverified): Educational and Scientific Medical Institute (medical unit name 2020-2021, per inventory; renamed Medical Faculty 30 Sept 2021)",
+      "Name lead (unverified): Medical Faculty / Медичний факультет (current medical unit name; dean Andrii Poruchynskyi per vnu.edu.ua/en news lead)"
+    ]
+  }
+}
