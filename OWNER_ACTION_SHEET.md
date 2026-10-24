@@ -414,7 +414,7 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
 2. **I switch CI to expect a pass** and push. CI must be green on that exact commit.
 3. **I send you the release candidate:** commit, CI link, and the publication report (0 published universities; 17 previews, noindex).
 4. **You take the backup** (`RELEASE_CHECKLIST_PROPOSED.md` 9.1). In hPanel, download a full archive of `public_html` and of `uma-private` (if it exists), store it off the server and never in Git, and record its SHA-256 (`shasum -a 256 <archive>` on macOS, `sha256sum <archive>` on Linux, `Get-FileHash <archive>` in PowerShell). Send me the date and the hash.
-5. **You create the private configuration** (`EMAIL_DELIVERY_VERIFICATION.md` P3). Generate the key on your own computer (`openssl rand -hex 32`, or the PowerShell line in P3). Then, one level above `public_html`, create `uma-private/config.php` returning `notify_to`, `from`, `send_mail => true` and `ip_hash_key`, with permissions 600 for the file and 700 for the folder. Never send me the key; tell me only that it is done.
+5. **You create the private configuration** (`EMAIL_DELIVERY_VERIFICATION.md` P3) on release day, right before you approve. Not earlier: the live handler already reads `uma-private/config.php` (`b2ca3d6`, `api/enquiry.php` line 26), so creating it early changes how the live forms behave. The backup in step 4 can be taken at any time, since it is a download only. Generate the key on your own computer (`openssl rand -hex 32`, or the PowerShell line in P3). Then, one level above `public_html`, create `uma-private/config.php` returning `notify_to`, `from`, `send_mail => true` and `ip_hash_key`, with permissions 600 for the file and 700 for the folder. Never send me the key; tell me only that it is done.
 6. **You approve that exact commit** (by its hash, in this chat). Then I fast-forward `publish-production` to it (checked 2026-10-16: the current pointer `4d4e605` is an ancestor of the working branch, so no force-push is needed). The publish workflow re-runs the full release gate and, only if it passes, adds the built site to the `production` branch and tags the release. Hostinger then deploys `production`: automatically if auto-deploy is on, otherwise you click Deploy in hPanel → Websites → `ukrainemedicaladmissions.com` → Advanced → Git. No DNS change is needed or made.
 7. **After the deploy (who does what):**
    - *Live checks* (`npm run verify:live`): this environment cannot reach the live site (2026-10-16: both `ukrainemedicaladmissions.com` and `www.ukrainemedicaladmissions.com` refused). Add those two hosts under Allowed domains (§1) and I run it; or run `cd site && npm run verify:live` on your computer and send me the output.
@@ -448,16 +448,6 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
 - **R3. Only the forms are failing:** rename `public_html/api/enquiry.php`. Form posts then answer 404 and the rest of the site stays up.
 - Not recommended: re-publishing the old source `4d4e605` through the workflow (`RELEASE_CHECKLIST_PROPOSED.md` 11.2). It re-runs old date-dependent tests and can refuse.
 
-### 7.3 Optional: a private staging copy before the release (no legal gate; never public)
+### 7.3 Staging: not used
 
-The publish workflow can build a staging copy:
-- every page `noindex` plus an `X-Robots-Tag` header;
-- no sitemap and no canonical tags.
-
-It needs three hPanel steps from you (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`, decision D4; on 2026-10-10 you made staging optional):
-1. Create the subdomain `staging.ukrainemedicaladmissions.com`.
-2. Turn on hPanel password protection for it.
-3. Connect Hostinger Git for that subdomain to the branch `staging`.
-
-After that, and with your approval, I push `7a0aef3` to `publish-staging`. The workflow writes the build to `staging`, and the copy appears at `https://staging.ukrainemedicaladmissions.com/universities/` behind your password. Without the password protection it must not be connected: the staging copy carries the draft legal pages and working forms.
-
+Owner decision 2026-10-24: no staging website. Releases go straight from the release gate to the existing production site (§7.1).
