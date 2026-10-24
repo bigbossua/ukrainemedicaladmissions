@@ -79,6 +79,16 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
           await page.fill('[data-search]', 'Cherkassy');
           if ((await visible()) !== names.filter((n) => n.includes('cherkasy')).length) fail('directory search: the spelling "Cherkassy" does not find Cherkasy');
         }
+        // Type filter (grouping by name): each option shows exactly the cards of that kind.
+        if (await page.$('[data-filter="kind"]')) {
+          await page.fill('[data-search]', '');
+          for (const kind of ['medical', 'other']) {
+            await page.selectOption('[data-filter="kind"]', kind);
+            const predicted = await page.$$eval('[data-list] article', (a, k) => a.filter((el) => el.dataset.kind === k).length, kind);
+            if ((await visible()) !== predicted || Number(await page.textContent('[data-count]')) !== predicted) fail(`directory type filter "${kind}": shows ${await visible()}, expected ${predicted}`);
+          }
+          await page.selectOption('[data-filter="kind"]', '');
+        }
         await page.fill('[data-search]', 'zzqx university');
         if ((await visible()) !== 0 || (await page.textContent('[data-count]')) !== '0') fail('directory search for a non-existent name still shows cards');
         if (await page.$eval('[data-no-match]', (el) => el.hidden)) fail('directory: no-match message hidden with zero results');

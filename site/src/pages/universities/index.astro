@@ -5,6 +5,7 @@ import CtaBand from '../../components/CtaBand.astro';
 import DraftBanner from '../../components/university/DraftBanner.astro';
 import UniversityCard from '../../components/university/UniversityCard.astro';
 import ResearchPreviewCard from '../../components/university/ResearchPreviewCard.astro';
+import { nameKind } from '../../lib/name-search.mjs';
 import CompareTable from '../../components/university/CompareTable.astro';
 import { SITE, PREVIEW } from '../../lib/site';
 import { FIELDS, LEVELS } from '../../lib/fields';
@@ -31,6 +32,11 @@ const languages = languagesOf(allProgrammes);
 const intakes = intakesOf(allProgrammes);
 const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
 const factFilters = records.length > 0;
+// Grouping by name only (lib/name-search.mjs nameKind): medical and pharmacy universities, then the others.
+const previewGroups = [
+  { key: 'medical', title: 'Medical and pharmacy universities', note: 'Universities whose name identifies them as medical or pharmacy universities.', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
+  { key: 'other', title: 'Other universities', note: 'Universities whose name does not identify them as medical. Which medical, dental, pharmacy or nursing programmes each one offers is among the facts we are confirming.', items: previews.filter((u) => nameKind(u.shortName) === 'other') },
+].filter((g) => g.items.length > 0);
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 const summary = [plural(total, 'university', 'universities'), `${verifiedCount} verified`, previews.length ? `${previews.length} not yet verified` : '', drafts ? plural(drafts, 'draft', 'drafts') : '', 'alphabetical, not ranked'].filter(Boolean).join(' · ');
 ---
@@ -53,6 +59,15 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
         <label class="field search">Search by university name
           <input type="search" name="q" data-search placeholder="e.g. Bukovinian, Pirogov" autocomplete="off" />
         </label>
+        {total > 1 && (
+          <label class="field">Type
+            <select name="kind" data-filter="kind">
+              <option value="">All types</option>
+              <option value="medical">Medical and pharmacy universities</option>
+              <option value="other">Other universities</option>
+            </select>
+          </label>
+        )}
         {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
           <label class="field">Show
             <select name="status" data-filter="status">
@@ -110,7 +125,13 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
                 <li>A university moves to “Verified profiles” once its official name, website, address, current teaching statement and at least one programme open to international applicants, with its language, duration, intake and fee page, have been checked.</li>
               </ul>
             </details>
-            <div class="grid grid-3 previews">{previews.map((u) => <ResearchPreviewCard u={u} />)}</div>
+            {previewGroups.map((g) => (
+              <div class="group" role="group" aria-labelledby={`group-${g.key}`} data-tier>
+                <h3 id={`group-${g.key}`}>{g.title} <span class="group-count">({g.items.length})</span></h3>
+                <p class="group-note">{g.note}</p>
+                <div class="grid grid-3 previews">{g.items.map((u) => <ResearchPreviewCard u={u} headingLevel="h4" />)}</div>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -156,7 +177,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   // similar names are never presented as one). status: verified | preview | draft. Exact-match keys: city, prep. List
   // keys: fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
   import { searchNames } from '../../lib/name-search.mjs';
-  const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
+  const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], kind: ['kind', 'exact'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
   const form = document.querySelector<HTMLFormElement>('[data-filters]');
   if (form) form.hidden = false;
   const search = document.querySelector<HTMLInputElement>('[data-search]');
@@ -219,6 +240,11 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   .meaning ul { padding-left: 1.25rem; margin: .6rem 0 0; }
   .meaning li { margin-bottom: .35rem; }
   .previews { gap: .75rem; }
+  .group { margin-top: 1.5rem; }
+  .group[hidden] { display: none; }
+  .group > h3 { font-size: 1.1rem; margin: 0 0 .25rem; }
+  .group-count { color: var(--slate); font-weight: 500; }
+  .group-note { margin: 0 0 .75rem; color: var(--slate); font-size: .9rem; max-width: 80ch; }
   .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--blue-600); text-decoration: underline; cursor: pointer; }
   .cta-inline { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; background: var(--blue-50); border-radius: var(--radius); padding: 1.1rem 1.4rem; margin: 2rem 0 0; }
   .cta-inline p { margin: 0; max-width: 62ch; }

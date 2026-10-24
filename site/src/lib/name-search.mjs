@@ -38,6 +38,18 @@ export function normName(s) {
   return x;
 }
 
+/**
+ * Directory grouping by NAME only: "medical" when the commonly used English name identifies a medical or pharmacy
+ * university ("... Medical University", "National University of Pharmacy", "... Medical and Pharmaceutical
+ * University"), otherwise "other". It states nothing the name does not say: whether an "other" university has a medical
+ * faculty or programme is among the facts still to be verified.
+ * @param {string} name
+ * @returns {'medical' | 'other'}
+ */
+export function nameKind(name) {
+  return /\b(medical|pharmacy|pharmaceutical)\b/i.test(String(name ?? '')) ? 'medical' : 'other';
+}
+
 const hasPhrase = (text, phrase) => ` ${text} `.includes(` ${phrase} `);
 
 /**

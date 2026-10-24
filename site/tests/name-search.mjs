@@ -7,7 +7,7 @@
 //    publication gate's leak check), and every look-alike phrase would be a false full match without the guard.
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { LOOKALIKES, normName, searchNames } from '../src/lib/name-search.mjs';
+import { LOOKALIKES, nameKind, normName, searchNames } from '../src/lib/name-search.mjs';
 
 let checks = 0;
 const failures = [];
@@ -86,6 +86,14 @@ for (const p of LOOKALIKES) {
   const words = p.split(' ');
   ok(names.map(normName).some((n) => words.every((w) => n.includes(w))), `look-alike "${p}" is not needed: no listed name contains all its words`);
 }
+
+// 5. Grouping by name: only names that say "medical" or "pharmacy/pharmaceutical" are grouped as medical.
+for (const r of records) {
+  const expect = /\b(medical|pharmacy|pharmaceutical)\b/i.test(r.shortName) ? 'medical' : 'other';
+  ok(nameKind(r.shortName) === expect, `nameKind("${r.shortName}") = ${nameKind(r.shortName)}, expected ${expect}`);
+}
+ok(nameKind('Sumy State University') === 'other' && nameKind('National University of Pharmacy') === 'medical' && nameKind('Zaporizhzhia State Medical and Pharmaceutical University') === 'medical', 'nameKind on the known edge cases');
+ok(nameKind('Biomedical Institute') === 'other', 'nameKind does not match "medical" inside another word');
 
 for (const f of failures) console.log(`FAIL  ${f}`);
 console.log(`name-search: ${checks} checks, ${failures.length} failures`);

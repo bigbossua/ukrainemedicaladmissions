@@ -128,3 +128,13 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 
 **Decision:** no dependency change before the first release (the fixes need Astro 7, a major upgrade). After the release: upgrade Astro and `@astrojs/sitemap` on a separate branch, run the full suite and the release gate, and release it like any other change. Re-run `npm audit --omit=dev` before each release and re-assess if an advisory touches static output or `enquiry.php`.
 
+## Secrets and sensitive-data review of the public repository (2026-10-24; owner decision: the repository stays public)
+
+Scope: every commit on every branch (141 commits, full patch history), read-only; nothing was deleted and no history was rewritten.
+- **Secrets: none found.** No private keys, cloud or GitHub tokens, API keys, passwords, `ip_hash_key` values or `config.php` contents; no `.env`, `.pem`, `.htpasswd`, `uma-private` or enquiry files were ever committed. `site/.gitignore` excludes `uma-private/`, `private/`, `.env` and `.env.*`.
+- **Applicant data: none.** The only form data in the repository is synthetic test data (`*.example`, `*.invalid` addresses).
+- **Personal data: one item.** The owner's personal e-mail address is the author address of the repository's first commit (`d9a4542`, "Create ukrainemedicaladmissions.com", branch `main`). Removing it would need a history rewrite of `main`, which is not done without the owner's approval; to keep it out of future commits, turn on GitHub's "Keep my email addresses private" setting.
+- **Third-party contact details: public institutional only.** University admissions e-mail addresses and phone numbers quoted in the research files come from the institutions' own or third-party public pages (research leads, unverified); no private individual's contact details.
+
+**Rules from now on (public repository):** never commit passwords, API keys, server secrets, applicant data or the contents of `uma-private/config.php`. The legal-page values in `site/src/lib/legal.mjs` are published on the site by design, so they are entered in one commit just before the release, not piecemeal; use a business or correspondence address rather than a home address if you prefer it not to be public. The legal reviewer's identity is not needed in Git: `reviewedBy` takes a review reference that you control (for example "Legal review ref. UMA-LR-01, record held by the owner"), the gate still refuses an empty or placeholder value, and you keep the signed review record offline.
+

@@ -150,11 +150,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the draft banner
 
 **Reviewer brief (not gate items, but raised by the 2026-10-16 review, `SITE_GAP_ANALYSIS.md` §6):** the consent wording ("agree to the privacy notice"); rights and authorities for applicants outside the UK and EU (India, Nigeria, Pakistan, UAE); missing rights (objection, portability, whether giving data is required, automated decisions); server and mail logs; the notice's commitments about the unbuilt dashboard; the brevity of the terms.
 
-**Before you send anything: the repository is public.**
-- What I enter in `site/src/lib/legal.mjs` is readable on GitHub as soon as it is pushed. That happens before any release and before the review, and it stays in the repository's history.
-- After a release, items 1–31 also appear on the public legal pages.
-- The reviewer's name and date (33–34) appear on no page, but they are stored in the repository and printed in the CI logs. Ask the reviewer first, or give a firm name.
-- Send only what you are willing to publish now. Otherwise, make the repository private first (decision D8), or tell me to keep your answers out of commits until you decide.
+**The repository is public (your decision, 2026-10-24).** What I enter in `site/src/lib/legal.mjs` is readable on GitHub once pushed, and items 1–31 also appear on the public legal pages after the release. So: I enter all your answers in one commit just before the release, not piecemeal; use a business or correspondence address for item 5 if you prefer your home address not to be public; and for item 33 send a review reference you control (for example "Legal review ref. UMA-LR-01, record held by the owner") instead of the reviewer's name: the gate still refuses an empty or placeholder value, and you keep the signed review record offline. Never send passwords, keys or the contents of `config.php`.
 
 **How to reply.** Fill in what you know in the template (§2.5) and send it. Partial replies are fine: leave a line blank if you do not have the answer yet. Agree the R lines with your reviewer before sending them. I enter the answers word for word. You can also edit `legal.mjs` yourself. "TBC", "???" or anything in square brackets counts as not supplied.
 
@@ -217,7 +213,7 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 | # | Field | Send |
 |---|---|---|
 | 32 | `legalReviewCompleted` | `true`, only once the review is done |
-| 33 | `reviewedBy` | Reviewer's name (see the public-repository note above) |
+| 33 | `reviewedBy` | Review reference you control, or the reviewer's name (see the note above) |
 | 34 | `reviewDate` | Review date, `YYYY-MM-DD`, not in the future |
 
 ### 2.4 Draft banner on the four legal pages (4): nothing to send
@@ -265,7 +261,7 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 30 complaints.reviewer:            approve / your wording
 31 complaints.review:              approve / your wording
 32 legalReviewCompleted:           (true only after the review)
-33 reviewedBy:
+33 reviewedBy:                     (review reference, e.g. "Legal review ref. UMA-LR-01, record held by the owner")
 34 reviewDate:                     (YYYY-MM-DD)
 ```
 

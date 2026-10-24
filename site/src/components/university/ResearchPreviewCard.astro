@@ -7,7 +7,8 @@
  * filter only (name and status: no claim). Compact by design: the caveat is said once per page, not on every card.
  */
 import { shownFactCount } from '../../lib/records';
-interface Props { u: any; headingLevel?: 'h2' | 'h3' }
+import { nameKind } from '../../lib/name-search.mjs';
+interface Props { u: any; headingLevel?: 'h2' | 'h3' | 'h4' }
 const { u, headingLevel = 'h3' } = Astro.props;
 const Heading = headingLevel;
 const href = `/universities/${u.slug}/`;
@@ -16,7 +17,7 @@ const verified = shownFactCount(u);
 // (the policy refuses such a short name for a preview anyway; tests/publication-build.mjs covers published names).
 const searchName = u.shortName.toLowerCase().replace(/[<>]/g, '');
 ---
-<article class="pcard card-link" data-slug={u.slug} data-status="preview" data-name={searchName}>
+<article class="pcard card-link" data-slug={u.slug} data-status="preview" data-name={searchName} data-kind={nameKind(u.shortName)}>
   <Heading class="name">{u.shortName}</Heading>
   <p class="tag"><span class="badge badge-pending"><span aria-hidden="true">◔ </span>Not yet verified</span>{verified > 0 && <span class="facts"> {verified} {verified === 1 ? 'fact' : 'facts'} verified</span>}</p>
   <a class="more" href={href}>What to check before you apply<span class="visually-hidden">: {u.shortName}</span> →</a>
