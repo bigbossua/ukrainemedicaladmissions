@@ -487,8 +487,8 @@ The privacy notice must name the provider that stores the data, where it stores 
 | H11 | **Who can sign in**: hPanel users or collaborators, FTP/SFTP and SSH accounts, and who can read info@ | Account access or collaborator settings; FTP and SSH accounts; the email account list | The notice says access is limited to the people who need it |
 | H12 | **Document-root path** (the folder that holds public_html), for creating uma-private/config.php on release day | File Manager, top-level folders | Release step 5 |
 
-**Registration status (owner instruction 2026-10-24).** "Individual / sole operator" is recorded as supplied, but it is not assumed to mean a registered individual entrepreneur (ФОП).
-- The legal form and the registration number stay marked as requiring confirmation until the qualified reviewer advises.
+**Registration status (owner statement 2026-10-24, later the same day).** The owner states the legal form is ФОП (Ukrainian individual entrepreneur), subject to confirmation against the registration documents.
+- The legal form stays marked as pending until that confirmation; the registration number is left open until read from the documents (never invented).
 - In the private preview they carry a "proposed" marker; in the repository they remain open.
 - **Postal address:** it stays unresolved until the reviewer confirms what must be disclosed and recommends a lawful correspondence-address option. No address is invented or published.
 

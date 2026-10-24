@@ -10,8 +10,8 @@
 |---|---|---|
 | Legal name | Supplied; held outside the public repository until the release commit (owner instruction: personal details stay out of Git) | To enter at release |
 | Country | Ukraine | To enter at release |
-| Legal form | "Individual / sole operator" | Needs confirmation: an unregistered individual (фізична особа) or a registered individual entrepreneur (ФОП)? Not assumed to be ФОП (owner instruction). See 3.1 |
-| Registration number | Not applicable | Depends on 3.1 |
+| Legal form | ФОП (Ukrainian individual entrepreneur), stated by the owner on 2026-10-24, **subject to confirmation against the registration documents** | Pending that confirmation. If confirmed, the e-commerce and consumer-law disclosure questions for a ФОП in 3.2 apply directly. See 3.1 |
+| Registration number | Pending: to be read from the registration documents, never invented | Open until verified; the gate rejects a placeholder |
 | Public postal address | Not decided. No residential address may be published | Left unresolved until the reviewer confirms the disclosure required and recommends a lawful correspondence option (owner instruction). See 3.2 |
 | Mailbox provider (info@) | Hostinger | To enter at release once confirmed in hPanel: the contracting entity, the email product and the data-centre region (`OWNER_ACTION_SHEET.md` §8, H1–H6) |
 | Effective date | 24 October 2026 | Should match the actual publication date |
