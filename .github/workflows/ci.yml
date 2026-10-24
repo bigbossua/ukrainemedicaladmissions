@@ -43,6 +43,8 @@ jobs:
       - run: npm run test:preview
       - run: php -l public/api/enquiry.php
       - run: node tests/enquiry-php.mjs
+      - name: Applicant journey end to end (home, directory, profile, pre-selected apply form, review, real handler, thank-you; phone and desktop)
+        run: npm run test:journey
       - name: Live smoke checks self-test (production build behind a local stand-in for the server, production .htaccess, defect mutations)
         run: npm run test:verify-live
       - name: Google readiness audit (status, canonical, robots, sitemap, titles, links, structured data, exposure, mobile; fails on a high issue)

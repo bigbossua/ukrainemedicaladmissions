@@ -4,10 +4,10 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
 // This URL exists on the legacy site (/services) and is the only one search engines currently index for the
 // domain, so it is kept rather than redirected. Describes what the service does — no prices, no guarantees.
-// "Today" and "Planned" are split exactly from what this page already stated; add nothing here without a decision.
+// Only what this service does today is stated here; nothing planned or unavailable is described (owner decision 2026-10-24).
 ---
-<Base title="Our services" description="What we do today for applicants to Ukrainian medical universities, and what is planned: a free enquiry, guidance and facts checked against official sources.">
-  <div class="page-head"><div class="wrap"><span class="eyebrow">Services</span><h1>What we do for applicants</h1><p>Independent help for international students applying to medical universities in Ukraine. Below: what we do for you today, and what is planned but not available yet.</p></div></div>
+<Base title="Our services" description="What we do today for applicants to Ukrainian medical universities: a free enquiry, guidance and facts checked against official sources.">
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Services</span><h1>What we do for applicants</h1><p>Independent help for international students applying to medical universities in Ukraine. Below: what we do for you today, what we never promise, and what it costs.</p></div></div>
   <Breadcrumbs items={[{ label: 'Services' }]} />
   <section style="padding-top:1rem"><div class="wrap">
     <h2 id="today">What we do today (free)</h2>
@@ -19,12 +19,6 @@ import CtaBand from '../../components/CtaBand.astro';
     </div>
 
     <div class="prose" style="margin-top:2.5rem">
-      <h2 id="planned">Planned (not available yet)</h2>
-      <ul>
-        <li><strong>A document checklist</strong> built from the university's verified document list.</li>
-        <li><strong>An online status view</strong> of what has happened and what comes next.</li>
-        <li><strong>Official submission</strong>: an application is submitted through the university's authorised procedure, and only after you confirm.</li>
-      </ul>
       <h2 id="limits">What we never promise</h2>
       <p>Admission, a visa, recognition of a qualification in any country, scholarships or employment. Admission decisions are made solely by the university, visa decisions by the relevant authorities, and recognition by the regulator in the country where you plan to work. See our <a href="/disclosure/">independence and referral disclosure</a>.</p>
       <h2 id="cost">What it costs</h2>

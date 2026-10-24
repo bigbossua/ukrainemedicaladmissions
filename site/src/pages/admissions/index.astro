@@ -6,7 +6,7 @@ import ApplicationJourney from '../../components/illustrations/ApplicationJourne
 import { SITE } from '../../lib/site';
 // Anchors linked from other pages: #stages (home, /apply/, /services/), #readiness (/tuition-fees/, /universities/, course
 // pages, research-preview profiles: it sits on the eligibility heading, where entry requirements are compared), #documents
-// (footer, /services/), #official-sites (/universities/, research-preview profiles), #preparatory, #checklist.
+// (footer, /services/), #official-sites (/universities/, research-preview profiles), #preparatory.
 // No university fact appears here: every requirement is written as a check the student makes with the university or the regulator.
 ---
 <Base title="How to apply to a Ukrainian medical university: eligibility" suffix={false} description="MBBS in Ukraine eligibility, documents and application steps for international students, and how to check each requirement with the university itself.">
@@ -34,11 +34,6 @@ import { SITE } from '../../lib/site';
     </ul>
     <p>Then check the other side. Whether the qualification is accepted and whether you can register to practise are decided by the authorities in the country where you plan to work, not by the university or by us. Read the regulator's current rules on its own website before you apply. Applying from India? Read <a href="/faq/#is-neet-required-to-study-mbbs-in-ukraine">Is NEET required?</a> and <a href="/faq/#is-an-mbbs-from-ukraine-valid-in-india">Is an MBBS from Ukraine valid in India?</a></p>
     <p>A verified profile on this site shows each requirement with its official source and the date we checked it. More answers on cost, duration and recognition are in the <a href="/faq/#eligibility-duration-and-recognition">FAQ</a>.</p>
-
-    <div class="later">
-      <h2 id="checklist">Coming later: a readiness check and a document checklist</h2>
-      <p>Planned, not available yet: a readiness check that compares your subjects and grades with a programme's verified entry requirements (a comparison, not an admission decision); profiles you can save and return to; and secure uploads with a checklist built from the university's own document list. Until then, use the checks on this page and the Apply Online form.</p>
-    </div>
 
     <h2 id="documents">Documents to start gathering — check each against the university's own list</h2>
     <p>This is a starting point, not any university's list. Ask the university for its list for your programme and intake.</p>
@@ -96,9 +91,5 @@ import { SITE } from '../../lib/site';
   /* The stages diagram breaks out of the reading column so it can run horizontally on wide screens. */
   .journey-wrap { max-width: 1080px; margin-top: .5rem; margin-bottom: 1rem; }
   .today li { margin-bottom: .6rem; }
-  /* One short "Coming later" box for everything planned (content audit §5.6). */
-  .later { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 2rem 0; }
-  .later h2 { font-size: 1.125rem; margin: 0 0 .4rem; }
-  .later p { margin: 0; font-size: .95rem; }
   .table-wrap th[scope="row"] { background: transparent; }
 </style>

@@ -1,0 +1,106 @@
+// End-to-end applicant journey against the production build, served by PHP's built-in server through
+// tests/fixtures/live-router.php (the build's own .htaccess: CSP and security headers, redirects) with the real
+// enquiry handler (public/api/enquiry.php) writing to a temporary private directory (e-mail off).
+//   Home → directory (search) → research-preview profile → Apply Online (pre-selected university, visible note) →
+//   five steps → review shows the university → submit → /apply/thank-you/ (noindex, onward links) → one stored record
+//   carrying the chosen university and nothing about the IP key.
+// Runs on a phone-sized touch viewport and a desktop viewport. Nothing here states a university fact; the profile page
+// is checked NOT to print one. Exit 1 on any failure. Needs dist/ (npm run build) and php.
+import { chromium, devices } from 'playwright';
+import { spawn } from 'node:child_process';
+import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync, existsSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+
+const DIST = resolve('dist');
+const ROUTER = resolve('tests/fixtures/live-router.php');
+if (!existsSync(join(DIST, 'index.html'))) { console.log('journey: dist/ missing (run npm run build first)'); process.exit(1); }
+const priv = mkdtempSync(join(tmpdir(), 'uma-journey-'));
+writeFileSync(join(priv, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'journey-only-key', 'max_per_hour' => 1000, 'per_ip_per_hour' => 1000];\n");
+const port = 4300 + Math.floor(Math.random() * 500);
+const php = spawn('php', ['-d', 'display_errors=1', '-d', 'error_reporting=-1', '-d', 'expose_php=0', '-S', `127.0.0.1:${port}`, '-t', DIST, ROUTER], { env: { ...process.env, UMA_PRIVATE_DIR: priv }, stdio: ['ignore', 'pipe', 'pipe'] });
+let phpLog = ''; php.stdout.on('data', (d) => { phpLog += d; }); php.stderr.on('data', (d) => { phpLog += d; });
+const base = `http://127.0.0.1:${port}`;
+let up = false;
+for (let i = 0; i < 40 && !up; i++) { await new Promise((r) => setTimeout(r, 250)); try { up = (await fetch(base + '/')).ok; } catch {} }
+if (!up) { console.log('FAIL php -S did not start', phpLog); console.log('journey: 0 checks, 1 failures'); php.kill(); process.exit(1); }
+
+let checks = 0, failures = 0;
+const ok = (cond, msg) => { checks++; if (!cond) { failures++; console.log('FAIL', msg); } };
+const browser = await chromium.launch();
+const SLUG = 'kyiv-medical-university';
+for (const [label, ctxOpts] of [['mobile', { ...devices['iPhone 13'] }], ['desktop', { viewport: { width: 1440, height: 900 } }]]) {
+  const ctx = await browser.newContext(ctxOpts);
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+
+  // 1. Home → directory through the navigation (the mobile menu first on a phone).
+  await page.goto(base + '/', { waitUntil: 'load' });
+  if (label === 'mobile') { const toggle = page.locator('header button[aria-expanded]').first(); if (await toggle.count()) await toggle.click(); }
+  await page.locator('a[href="/universities/"]:visible').first().click();
+  await page.waitForURL('**/universities/');
+  const cards = await page.$$eval('[data-list] article', (a) => a.map((x) => x.dataset.slug ?? ''));
+  const expected = readdirSync(resolve('src/content/universities')).filter((f) => f.endsWith('.json')).length;
+  ok(cards.length === expected, `${label}: directory lists ${cards.length} universities, records ${expected}`);
+  ok(new Set(cards).size === cards.length, `${label}: directory lists a university twice`);
+
+  // 2. Search, then open the profile from its card.
+  await page.fill('[data-search]', 'kyiv medical');
+  const shown = await page.$$eval('[data-list] article:not([hidden])', (a) => a.map((x) => x.dataset.slug));
+  ok(shown.includes(SLUG), `${label}: search "kyiv medical" does not show ${SLUG} (${shown.join(', ')})`);
+  await page.click(`article[data-slug="${SLUG}"] a.more`);
+  await page.waitForURL(`**/universities/${SLUG}/`);
+  ok((await page.textContent('h1'))?.trim() === 'Kyiv Medical University', `${label}: profile heading`);
+  const mainText = (await page.textContent('main')) ?? '';
+  ok(!/€|\$|USD|per year|per semester|Kyiv,|Kiev,|www\.|https?:\/\//.test(mainText), `${label}: research-preview profile prints a fee, address or web address`);
+  ok(/noindex/.test(await page.$eval('meta[name="robots"]', (m) => m.content)), `${label}: research-preview profile is not noindex`);
+
+  // 3. Profile → Apply Online with the university pre-selected and said so.
+  await page.click('main a[href^="/apply/?university="]');
+  await page.waitForURL(`**/apply/?university=${SLUG}`);
+  ok((await page.inputValue('[name="university"]')) === SLUG, `${label}: university not pre-selected on /apply/`);
+  ok((await page.inputValue('[name="university2"]')) === '' && (await page.inputValue('[name="university3"]')) === '', `${label}: second or third choice touched`);
+  ok(await page.isVisible('[data-prefill-note]'), `${label}: pre-selection note not visible`);
+  ok(/Kyiv Medical University/.test((await page.textContent('[data-prefill-note]')) ?? ''), `${label}: pre-selection note does not name the university`);
+
+  // 4. The five steps, with the minimum required, to the review.
+  await page.selectOption('#f-course', 'medicine'); await page.click('#step-1 [data-next]');
+  await page.fill('#f-qual-year', '2025'); await page.click('#step-2 [data-next]');
+  await page.click('#step-3 [data-next]');
+  await page.fill('#f-name', 'Journey Candidate'); await page.fill('#f-email', 'journey.candidate@example.invalid'); await page.check('#f-consent'); await page.click('#step-4 [data-next]');
+  const review = (await page.textContent('[data-review-summary]')) ?? '';
+  ok(review.includes('Kyiv Medical University (not yet verified)'), `${label}: review does not show the chosen university with its label`);
+  ok(review.includes('Medicine'), `${label}: review does not show the field of study`);
+  ok(!(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)), `${label}: horizontal overflow on the review step`);
+
+  // 5. Submit through the real handler → thank-you page.
+  await Promise.all([page.waitForURL('**/apply/thank-you/**'), page.click('[data-submit]')]);
+  const thanks = (await page.textContent('main')) ?? '';
+  ok(/received|thank/i.test(thanks), `${label}: thank-you page text`);
+  ok(/noindex/.test(await page.$eval('meta[name="robots"]', (m) => m.content)), `${label}: thank-you page is not noindex`);
+  const onward = await page.$$eval('main a', (a) => a.map((x) => x.getAttribute('href') ?? ''));
+  ok(onward.includes('/universities/'), `${label}: thank-you page has no link back to the directory`);
+  ok(!/dashboard|track your application|status view|upload (?:securely|your documents)|secure uploads?/i.test(thanks), `${label}: thank-you page promises a dashboard, tracking or uploads`);
+  ok(errors.length === 0, `${label}: browser errors: ${errors.join(' | ')}`);
+  await ctx.close();
+}
+await browser.close();
+php.kill();
+
+// 6. Stored records: one per submission, carrying the chosen university; nothing about the IP key; no e-mail sent.
+const files = [];
+(function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) walk(p); else if (f.endsWith('.json')) files.push(p); } })(priv);
+const records = files.map((p) => JSON.parse(readFileSync(p, 'utf8'))).filter((r) => r && r.type === 'application-start');
+ok(records.length === 2, `stored submissions: ${records.length}, expected 2 (one per viewport)`);
+for (const r of records) {
+  ok(r.university === SLUG, `stored record carries university ${JSON.stringify(r.university)}`);
+  ok(r.course === 'medicine', `stored record carries course ${JSON.stringify(r.course)}`);
+  ok(!JSON.stringify(r).includes('journey-only-key'), 'stored record leaks the IP hash key');
+  ok(r.consent === true || r.consent === 'yes', `stored record consent ${JSON.stringify(r.consent)}`);
+}
+ok(!/Warning|Fatal|Notice|Deprecated/.test(phpLog), `PHP log: ${phpLog.slice(0, 300)}`);
+rmSync(priv, { recursive: true, force: true });
+console.log(`journey: ${checks} checks, ${failures} failures`);
+process.exit(failures ? 1 : 0);
