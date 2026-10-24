@@ -47,6 +47,19 @@ universities.studyinukraine.gov.ua
 
 **Second list (optional, after the first 20).** The five previews added under N26 (Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla, Cherkasy), the national registers, NAQA accreditation pages, and India's National Medical Commission (for the India questions on the FAQ). The list is in `research/verification/ALLOWLIST_P2.txt` (25 hosts, the same steps; it covers every page address for those five in `CAPTURE_REQUEST_WAVE2_2026-10-12.md`). Checked 2026-10-16: 0 of 25 open. After adding it, I run `npm run probe:access -- --list ../research/verification/ALLOWLIST_P2.txt`.
 
+**Third list (2026-10-24).** It covers the four previews whose own sites are on neither list above: Danylo Halytsky Lviv, Dnipro, Poltava and Zaporizhzhia.
+- The list is in `research/verification/ALLOWLIST_P3.txt`: 11 hosts, taken from the website leads already recorded in their records.
+- Probe on 2026-10-24: P1 0 of 20 open, P2 0 of 25 open, P3 0 of 11 open. Every request was refused by this environment's network policy.
+- With all three lists allowed, every one of the 17 profiles can be checked.
+- Instead of adding all 56 hosts one by one, you can choose a broader network access level in the same settings.
+
+**Which profiles each list unlocks:**
+- P1: Bukovinian, Odesa, Kharkiv, Bogomolets, Ivano-Frankivsk, Uzhhorod, Ternopil and Vinnytsia, plus the two national registers.
+- P2: Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla, Cherkasy, NAQA and the other registers.
+- P3: Lviv, Dnipro, Poltava and Zaporizhzhia.
+
+A profile becomes indexable and enters the sitemap automatically once its facts pass the publication policy; the gate is unchanged.
+
 ```
 sumdu.edu.ua
 int.sumdu.edu.ua

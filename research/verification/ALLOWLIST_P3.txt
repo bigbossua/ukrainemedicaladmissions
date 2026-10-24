@@ -1,0 +1,16 @@
+# Third host list (2026-10-24). The four research previews whose own sites are on neither ALLOWLIST_P1.txt nor
+# ALLOWLIST_P2.txt: Danylo Halytsky Lviv, Dnipro, Poltava and Zaporizhzhia. Each host below is the website lead
+# already recorded in that university's record (site/src/content/universities/<slug>.json, researchReferences),
+# plus the bare domain of the Lviv lead. They are LEADS: whether each is the official site is checked against the
+# national registers in P1/P2 (registry.edbo.gov.ua, universities.studyinukraine.gov.ua) before any claim is used.
+meduniv.lviv.ua
+new.meduniv.lviv.ua
+dmu.edu.ua
+infoen.dmu.edu.ua
+study.dmu.edu.ua
+pdmu.edu.ua
+www.pdmu.edu.ua
+en.pdmu.edu.ua
+vstup.pdmu.edu.ua
+mphu.edu.ua
+int.mphu.edu.ua
