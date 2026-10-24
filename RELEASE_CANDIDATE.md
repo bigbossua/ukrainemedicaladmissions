@@ -1,6 +1,13 @@
 # RELEASE_CANDIDATE.md — first release from `claude/university-profile-pipeline`
 
-**Status (2026-10-12, updated after the directory milestone): NOT SAFE TO RELEASE.** The release gate refuses, for one reason only: the owner's legal details are missing and the legal review is not recorded (`npm run check:release`; `LEGAL_COMPLETION_CHECKLIST.md`). Every other check passes. Nothing has been deployed; production is still `b2ca3d6` (release `release-20261011-005330`, source `4d4e605`).
+**Status (2026-10-24): technically ready, not legally cleared, so NOT SAFE TO RELEASE.**
+- On the branch head, the full test suite, a clean production build and the publication report pass.
+- CI is green: [run 40057578714](https://github.com/bigbossua/ukrainemedicaladmissions/actions/runs/40057578714) on `ed12cdc`; the head is re-checked on each push.
+- Only `npm run check:release` fails, on the 38 legal items (`OWNER_ACTION_SHEET.md` §2.0; shortest route in §5).
+- The directory lists 17 research previews; 60 institutions are accounted for in the inventory.
+- Production is unchanged at `b2ca3d6`.
+
+*Earlier status, kept for the record:* **(2026-10-12, updated after the directory milestone): NOT SAFE TO RELEASE.** The release gate refuses, for one reason only: the owner's legal details are missing and the legal review is not recorded (`npm run check:release`; `LEGAL_COMPLETION_CHECKLIST.md`). Every other check passes. Nothing has been deployed; production is still `b2ca3d6` (release `release-20261011-005330`, source `4d4e605`).
 
 **Candidate commit.** The head of `claude/university-profile-pipeline` that the owner approves. Its exact SHA is stated in the handover and re-checked at `RELEASE_CHECKLIST_PROPOSED.md` 2.1. It fast-forwards the publish pointer (`4d4e605` is its ancestor).
 

@@ -1,5 +1,15 @@
 # Google readiness audit (local, production build)
 
+## Update 2026-10-24: the three low findings (no audit repeated)
+
+Baseline: CI [run 40057578714](https://github.com/bigbossua/ukrainemedicaladmissions/actions/runs/40057578714) is green on `ed12cdc`. Re-measured with `npm run test:seo` on the branch head; no new SEMrush units.
+
+| Finding | Outcome | Reason |
+|---|---|---|
+| SEO-03: tap targets under the 44 px AAA advisory size (all already passed the 24 px AA minimum) | **Fixed.** These standalone links and controls are now at least 44 px tall: the header logo link, breadcrumbs, footer links (also 44 px wide), card links, the sidebar and "next steps" link lists, small buttons, the FAQ toggles (the whole closed card is the toggle; the layout does not move) and standalone e-mail links | Shared components only, CSS only. Inline links inside sentences are exempt under WCAG and unchanged |
+| SEO-01: the dentistry and pharmacy course pages share 34 % of their text (5-word shingles) | **Accepted, low** | The shared part is the verification checklist both courses need. Each page targets its own cluster (`KEYWORD_URL_MAP.md` §1). The overlap is below the 50 % medium threshold. Rewriting copy only to lower the number would add unsupported text. The pharmacy merge stays your decision (no measured demand) |
+| SEO-02: no `<lastmod>` in the sitemap | **Accepted, low** | Google uses `lastmod` only when it is consistently accurate. No accurate per-page date exists: CI checks out one commit, and a build date would be wrong for unchanged pages. On the first release every URL is new, and submitting the sitemap (`OWNER_ACTION_SHEET.md` §3) asks Google to crawl it. Revisit after the release if needed |
+
 ## Consolidated Google-readiness audit (2026-10-17)
 
 **Scope and evidence.** Working branch `claude/university-profile-pipeline` at `6b82acc` (site code identical to release candidate `485ac4c`). Local evidence: production build, `npm run test:seo` (`site/tests/output/seo-audit.json`, 106 URLs requested, 37 pages, 80 output files scanned), the full `npm test` suite, and CI [run 38925745895](https://github.com/bigbossua/ukrainemedicaladmissions/actions/runs/38925745895) (green, including the release-gate dry run). **Live evidence: none.** This environment cannot reach `ukrainemedicaladmissions.com` (proxy refusal, 2026-10-16), and the live site still serves the 11 October release (`b2ca3d6`), not this branch. So nothing below claims live Google readiness.

@@ -126,6 +126,11 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 
 **Exposure of the deployed site: none found.** The release is static output (`astro.config.mjs`: `output: 'static'`) plus `api/enquiry.php`; no Node code runs on the host. The source uses no `define:vars`, no server islands and no `astro:assets` image processing (grep of `site/src` and `astro.config.mjs`); zod validates only our own content files at build time; the dev server is not used for releases.
 
+**Re-validated 2026-10-24 (branch head; `npm audit --omit=dev` and `npm ls`):** the same 6 advisories, nothing new.
+- `undici` is reached only through `astro` → `unifont`, Astro's font-provider fetcher. `astro.config.mjs` configures no Astro fonts (fonts are self-hosted files in `public/fonts/`), so it is not exercised at build time and never runs on the host.
+- Every fix except `undici`'s needs Astro 7 (`npm audit fix --dry-run`: "Will install astro@7.4.1, which is a breaking change").
+- Mitigations already in place for the deployed site: static output only; CSP `script-src 'self'` and `object-src 'none'`; no `define:vars`, server islands or image processing in `site/src`.
+
 **Decision:** no dependency change before the first release (the fixes need Astro 7, a major upgrade). After the release: upgrade Astro and `@astrojs/sitemap` on a separate branch, run the full suite and the release gate, and release it like any other change. Re-run `npm audit --omit=dev` before each release and re-assess if an advisory touches static output or `enquiry.php`.
 
 ## Secrets and sensitive-data review of the public repository (2026-10-24; owner decision: the repository stays public)
@@ -137,4 +142,18 @@ Scope: every commit on every branch (141 commits, full patch history), read-only
 - **Third-party contact details: public institutional only.** University admissions e-mail addresses and phone numbers quoted in the research files come from the institutions' own or third-party public pages (research leads, unverified); no private individual's contact details.
 
 **Rules from now on (public repository):** never commit passwords, API keys, server secrets, applicant data or the contents of `uma-private/config.php`. The legal-page values in `site/src/lib/legal.mjs` are published on the site by design, so they are entered in one commit just before the release, not piecemeal; use a business or correspondence address rather than a home address if you prefer it not to be public. The legal reviewer's identity is not needed in Git: `reviewedBy` takes a review reference that you control (for example "Legal review ref. UMA-LR-01, record held by the owner"), the gate still refuses an empty or placeholder value, and you keep the signed review record offline.
+
+**Follow-up check, 2026-10-24 (owner request: secrets, private research registers, applicant data):**
+- **Secrets and applicant data:** none in the commits since the review above, nor in the working tree (key, token, password and `ip_hash_key` patterns; no `config.php`, `.env` or enquiry files tracked).
+- **What is deployed:** the `production` branch, which Hostinger serves, contains only the built site: HTML pages, `_astro/`, fonts, icons, `api/enquiry.php`, `.htaccess`, `.well-known/security.txt`, robots.txt and the sitemaps. No `research/`, Markdown, register, Python or private file is on it (`git ls-tree -r origin/production`).
+- **Research registers are public on GitHub:** `research/` (the 60-institution inventory and other unverified university leads, 17 verification folders and 46 SEMrush export files) and the registers in the repository root (for example `UNIVERSITY_DATA_REGISTER.md`) can be read by anyone on GitHub. They follow from keeping the repository public; they are not on the website.
+  - Each file is labelled as unverified research, and none holds secrets or private individuals' data.
+  - Two points for your decision:
+    - Whether naming unverified leads about institutions in a public place is acceptable to you.
+    - Whether your SEMrush subscription terms allow its exported data to be published. I have not checked those terms; check them with SEMrush or your reviewer.
+  - Options:
+    - Keep everything as it is.
+    - Move `research/` and the registers to a private repository from now on. That removes them from the current files only; they stay in the history.
+    - Also rewrite the history. Forks and clones made before then would keep copies.
+  - Nothing has been moved or deleted without your approval.
 

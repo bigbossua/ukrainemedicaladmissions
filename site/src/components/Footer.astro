@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
       <div>
         <img src="/brand/uma-logo-horizontal-dark.svg" alt={SITE.name} width="279" height="64" />
         <p>{SITE.disclaimer}</p>
-        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><a class="link-standalone" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
       </div>
       <div>
         <h2>Explore</h2>
@@ -51,7 +51,7 @@ const year = new Date().getFullYear();
   h2 { color: #fff; font-size: 1rem; margin: 0 0 .75rem; }
   ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
   a { color: #CFDAEC; text-decoration: none; }
-  ul a { display: inline-block; padding: .55rem 0; }
+  ul a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
   a:hover { color: #fff; text-decoration: underline; }
   img { height: 44px; width: auto; margin-bottom: 1rem; }
   .legal { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.25rem; font-size: .8rem; color: #9FB0CC; }

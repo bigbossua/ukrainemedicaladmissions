@@ -102,13 +102,13 @@ In the order `node scripts/release-readiness.mjs` lists them. The check prints b
 
 Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the draft banner on the four legal pages) clear by themselves once 1–34 are in and I rebuild.
 
-**A. Facts only you can supply (11).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off).
+**A. Facts only you can supply (11).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14 and 20 are marked R in §2.1: your reviewer confirms them.
 
 | # | Item | Where to find it |
 |---|---|---|
 | 1 | Legal name of the person or company running the service | registration certificate or ID |
 | 2 | Legal form (sole trader, limited company …) | registration certificate |
-| 3 | Country of registration (send first: it decides 7–11 and bears on 21) | registration certificate |
+| 3 | Country of registration (send first: it decides 6–11 and bears on 21) | registration certificate |
 | 4 | Registration number, or `not applicable` | registration certificate |
 | 5 | Postal address for formal requests | registration or business address |
 | 6 | Data controller (normally the same as 1; your reviewer confirms) | — |
@@ -269,6 +269,13 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 
 Menu names are from general product knowledge, not checked against Google's help pages from here (Google's sites are blocked in this environment). Follow what Google shows on the day.
 
+**What the build and the server rules establish (checked 2026-10-24; the live host and public DNS cannot be reached from here):**
+- **Preferred host:** `https://ukrainemedicaladmissions.com` (no `www`). Every canonical tag, the sitemap and robots.txt use it (`site/src/lib/site.ts`).
+- **HTTPS and `www`:** `site/public/.htaccess` lines 7–10 send `http://` and `www.` requests to `https://ukrainemedicaladmissions.com` with one 301. Staging is exempt. Whether Hostinger applies the rule, whether the certificate covers both names and whether a `www` DNS record exists can only be checked live.
+- **Sitemap:** `https://ukrainemedicaladmissions.com/sitemap-index.xml`. It points to `sitemap-0.xml` with the 18 indexable pages. `/sitemap.xml` does not exist (404), so do not submit that address. robots.txt allows everything except `/api/` and names the sitemap index.
+- **Not in the sitemap, and `noindex`:** the 17 university preview pages, `/apply/thank-you/` and the 404 page.
+- **Your DNS records:** I cannot read them from here, and I invent none. The only record to add is the TXT value that Google shows you in step 2.
+
 **Now (no release needed):**
 
 1. Open Search Console → **Add property** → **Domain** → enter `ukrainemedicaladmissions.com`.
@@ -290,8 +297,29 @@ Menu names are from general product knowledge, not checked against Google's help
 **After a release you approve:**
 
 7. **Sitemaps** → submit `sitemap-index.xml` (`https://ukrainemedicaladmissions.com/sitemap-index.xml`). The release lists 18 pages and no university preview pages.
-8. **URL inspection** → `/`, `/universities/`, `/tuition-fees/` → **Request indexing** for each.
-9. A few days later, check **Indexing → Pages**: the 17 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
+8. **URL inspection** → run **Test live URL**, then **Request indexing**, on these addresses in this order. The order follows the SEMrush priorities in `GOOGLE_READINESS_AUDIT.md`, "SEMrush evidence used"; it uses existing exports, no new units.
+   1. `/`
+   2. `/tuition-fees/` (fees cluster, P0)
+   3. `/universities/` (list and "best" cluster, P1)
+   4. `/courses/medicine/` (MBBS cluster, P1)
+   5. `/admissions/` (eligibility, P1)
+   6. `/faq/` (validity, P2)
+
+   Google limits indexing requests per day: if it refuses one, continue the next day. The sitemap covers the other pages.
+9. **Spot-check one preview page** (for example `/universities/sumy-state-university/`) with URL inspection. It should say the page is excluded by `noindex`. That is correct: previews stay out of Google until their facts are verified.
+10. A few days later, check **Indexing → Pages**: the 17 university preview pages carry `noindex`, so they should not appear as indexed. Repeat the step 5 export 28 days after the release.
+
+**What can only be confirmed after the release goes live** (`npm run verify:live` from a computer that can reach the site, then Search Console):
+- The 301s from `http://` and `www.` to the preferred host.
+- The certificate and HSTS on live responses.
+- Live status codes, headers and CSP.
+- That the sitemap and robots.txt are served as built.
+- That Google fetched the sitemap.
+- Indexing and coverage.
+- Real Core Web Vitals (field data needs real visitors over weeks).
+- Delivery of form e-mails.
+
+Until each of these is checked, none of them is confirmed.
 
 I can report verification, sitemap status or indexing only from screenshots or exports you send; there is no Search Console connector here. If you would rather use a URL-prefix property, send only the token's `content` value; that route needs a release.
 
@@ -323,7 +351,28 @@ M1 needs §1 (or captures). It needs no release.
    - You complete the items in `SECURITY_AND_RELEASE_CHECKLIST.md` §A that apply.
 5. You approve that exact commit.
 6. `publish-production` moves. The workflow re-runs the release gate, then the host deploys.
-7. Post-release checks follow: the live checks and the e-mail test (`OWNER_INPUT_NEEDED.md` §5, remaining rows), then §3 steps 7–9.
+7. Post-release checks follow: the live checks and the e-mail test (`OWNER_INPUT_NEEDED.md` §5, remaining rows), then §3 steps 7–10.
+
+**Shortest route, 48-hour target (2026-10-24).** The technical work is done: every check except the legal readiness check passes on the branch head. Only §2 stands between the branch and an approvable release commit; the pre-publish steps in M2 step 4 (backup, private config) follow. The legal reviewer is the critical path.
+- **Hour 0:**
+  - You send item 3 first, then items 1, 2, 4, 5, 19 and 20 (group A, in the §2.0 order).
+  - You book the reviewer with group C, items 6 and 14 and the reviewer brief (§2.0). Item 3 decides 6–11 together with the reviewer.
+  - In parallel, you add the Search Console domain property and its TXT record (§3 steps 1–4; no release needed).
+- **By hour 24:**
+  - The reviewer settles items 6–11, 14–18 and 21–22, plus 23–27.
+  - You approve or replace items 28–31.
+- **Preview for the reviewer:**
+  - I rebuild the four legal pages locally with your answers and send you the private preview copy (§2.3).
+  - Items 12–13 (date and version) can be provisional until the text is final.
+  - The reviewer reads the built pages and then signs.
+- **When the review is signed:**
+  - You send items 32–34.
+  - I enter everything in one commit and run M2 steps 2–3.
+  - I give you the commit hash.
+  - You take the backup and create the private config, then approve.
+  - Then come step 6, the live checks and §3 steps 7–10.
+
+If the review cannot be finished within 48 hours, nothing is released: the gate stays closed. The branch head stays a release candidate that is technically valid but not legally cleared.
 
 No deployment, DNS change, publication-gate bypass or move of the publishing pointer happens without your explicit approval.
 
