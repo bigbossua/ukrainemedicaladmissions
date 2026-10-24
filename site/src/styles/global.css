@@ -68,7 +68,7 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 .card-link .ico { transition: background .2s, color .2s; }
 .card-link:hover .ico, .card-link:focus-within .ico { background: var(--blue-600); color: #fff; }
 .card-link h3, .card-link h2 { margin-bottom: .1rem; }
-.card a.more { margin-top: auto; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.card a.more { margin-top: auto; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: .3em; min-height: 44px; }
 .chips { display: flex; flex-wrap: wrap; gap: .4rem; font-size: .78rem; }
 .chips span:where(:not(.badge)) { background: var(--mist); border-radius: 999px; padding: .25rem .6rem; color: var(--slate); }
 
@@ -153,6 +153,7 @@ details { border: 1px solid var(--line); border-radius: var(--radius-sm); paddin
 summary { cursor: pointer; font-weight: 600; color: var(--navy-900); }
 /* The whole closed card is the toggle (at least 44 px tall): the summary takes over the card's padding, so the layout does not move. */
 details > summary { margin: -.9rem -1.1rem; padding: .9rem 1.1rem; border-radius: inherit; }
+details > summary:focus-visible { outline-offset: -3px; }
 details p { margin: .75rem 0 0; }
 
 /* Motion: honour the user's reduced-motion setting everywhere. */

@@ -100,7 +100,7 @@ In the order `node scripts/release-readiness.mjs` lists them. The check prints b
 
 ### 2.0 At a glance: the 38 blockers in three groups
 
-Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the draft banner on the four legal pages) clear by themselves once 1–34 are in and I rebuild.
+Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal pages built as drafts: banner, placeholder and proposal markers) clear by themselves once 1–34 are in and I rebuild. If item 7 is `true`, the representative's name and address become one more required item.
 
 **A. Facts only you can supply (11).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14 and 20 are marked R in §2.1: your reviewer confirms them.
 
@@ -270,9 +270,9 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 Menu names are from general product knowledge, not checked against Google's help pages from here (Google's sites are blocked in this environment). Follow what Google shows on the day.
 
 **What the build and the server rules establish (checked 2026-10-24; the live host and public DNS cannot be reached from here):**
-- **Preferred host:** `https://ukrainemedicaladmissions.com` (no `www`). Every canonical tag, the sitemap and robots.txt use it (`site/src/lib/site.ts`).
-- **HTTPS and `www`:** `site/public/.htaccess` lines 7–10 send `http://` and `www.` requests to `https://ukrainemedicaladmissions.com` with one 301. Staging is exempt. Whether Hostinger applies the rule, whether the certificate covers both names and whether a `www` DNS record exists can only be checked live.
-- **Sitemap:** `https://ukrainemedicaladmissions.com/sitemap-index.xml`. It points to `sitemap-0.xml` with the 18 indexable pages. `/sitemap.xml` does not exist (404), so do not submit that address. robots.txt allows everything except `/api/` and names the sitemap index.
+- **Preferred host:** `https://ukrainemedicaladmissions.com` (no `www`). Canonical tags and the sitemap take it from `site` in `site/astro.config.mjs`; robots.txt takes it from `SITE.url` in `site/src/lib/site.ts`. Both are set to this host.
+- **HTTPS and `www`:** `site/public/.htaccess` lines 7–10 send `http://` and `www.` requests to `https://ukrainemedicaladmissions.com` with one 301. Legacy addresses and paths without the trailing slash take a second 301. Staging is exempt. Whether Hostinger applies the rule, whether the certificate covers both names (needed for `https://www.`) and whether a `www` DNS record exists can only be checked live.
+- **Sitemap:** `https://ukrainemedicaladmissions.com/sitemap-index.xml`. It points to `sitemap-0.xml` with the 18 indexable pages. `/sitemap.xml` is not built (the local test answers 404), so do not submit that address. robots.txt allows everything except `/api/` and names the sitemap index.
 - **Not in the sitemap, and `noindex`:** the 17 university preview pages, `/apply/thank-you/` and the 404 page.
 - **Your DNS records:** I cannot read them from here, and I invent none. The only record to add is the TXT value that Google shows you in step 2.
 
@@ -297,7 +297,7 @@ Menu names are from general product knowledge, not checked against Google's help
 **After a release you approve:**
 
 7. **Sitemaps** → submit `sitemap-index.xml` (`https://ukrainemedicaladmissions.com/sitemap-index.xml`). The release lists 18 pages and no university preview pages.
-8. **URL inspection** → run **Test live URL**, then **Request indexing**, on these addresses in this order. The order follows the SEMrush priorities in `GOOGLE_READINESS_AUDIT.md`, "SEMrush evidence used"; it uses existing exports, no new units.
+8. **URL inspection** → run **Test live URL**, then **Request indexing**, on these addresses in this order. `/` comes first as the entry page; it is not a SEMrush target. The rest follow the SEMrush priorities in `GOOGLE_READINESS_AUDIT.md`, "SEMrush evidence used" (existing exports, no new units).
    1. `/`
    2. `/tuition-fees/` (fees cluster, P0)
    3. `/universities/` (list and "best" cluster, P1)
