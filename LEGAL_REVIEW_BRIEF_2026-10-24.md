@@ -14,7 +14,11 @@
 | Registration number | Pending: to be read from the registration documents, never invented | Open until verified; the gate rejects a placeholder |
 | Public postal address | Not decided. No residential address may be published | Left unresolved until the reviewer confirms the disclosure required and recommends a lawful correspondence option (owner instruction). See 3.2 |
 | Mailbox provider (info@) | Hostinger | To enter at release once confirmed in hPanel: the contracting entity, the email product and the data-centre region (`OWNER_ACTION_SHEET.md` §8, H1–H6) |
-| Effective date | 24 October 2026 | Should match the actual publication date |
+| Effective date | 24 October 2026, only if published that day | If publication is later, the actual date is used after the owner confirms; never backdated |
+| Privacy notice version | 1.0 | Owner decision; entered at release |
+| Deletion routine | Owner's proposal: a weekly review and deletion of eligible enquiry records and mailbox copies | A proposal, not an approved retention policy: see 3.6 |
+| Complaint timescales (28–31) | Retained as proposals | Pending qualified review and the owner's approval |
+| Services page | Planned-dashboard wording removed | Done |
 | Review route | Draft for qualified legal review | The gate stays closed until the review is recorded |
 | Dashboard paragraph | Remove | **Done** in the draft (section 2) |
 
@@ -85,7 +89,7 @@ For abuse detection the proposal is legitimate interests ("keeping our forms fre
   - A retention item would be added to `legal.mjs` for it. No period has been invented.
 
 ### 3.6 Retention, processors and transfers
-- **Retention.** The proposed periods (items 23–25: "up to 12 months after our last contact") have no deletion job behind them. **Records must be deleted by hand: confirm a routine before approving any period.** Backups (item 14) depend on the Hostinger plan.
+- **Retention.** The proposed periods (items 23–25: "up to 12 months after our last contact") have no deletion job behind them. Records must be deleted by hand. The owner proposes a **weekly review and deletion of eligible enquiry records and mailbox copies**; this is a proposal, not an approved policy. **Reviewer: confirm what may lawfully be deleted, whether a weekly routine is adequate for the periods chosen, and how "last contact" is evidenced.** Backups (item 14) depend on the Hostinger plan.
 - **Processor.** Hostinger's data-processing terms name Hostinger International Ltd (Cyprus) or Hostinger UK Limited. **Which entity and which data-centre region apply to this account** (owner to read from hPanel)?
 - **Transfers.** **Is there a transfer under Ukrainian Art. 29 or GDPR Chapter V, and which safeguard?**
 

@@ -492,3 +492,17 @@ The privacy notice must name the provider that stores the data, where it stores 
 - In the private preview they carry a "proposed" marker; in the repository they remain open.
 - **Postal address:** it stays unresolved until the reviewer confirms what must be disclosed and recommends a lawful correspondence-address option. No address is invented or published.
 
+## 9. Owner decisions recorded on 2026-10-24 (later the same day)
+
+Recorded as stated; none of them completes a gate item by itself.
+- **Legal form:** ФОП, as stated by the owner; documentary confirmation still required. Entered at release only once confirmed.
+- **Registration number:** pending until read from the registration documents. Never invented or inferred.
+- **Correspondence address:** unresolved until the qualified Ukrainian reviewer confirms the disclosure required and a lawful option. No residential address is published; no address is invented.
+- **Bank details:** private; never in pages, Git, build output, metadata, reports or examples.
+- **Data deletion:** the owner's *proposal* is a weekly review and deletion of eligible enquiry records and mailbox copies. It is not an approved retention policy: it stays subject to a legally approved retention policy and to confirmation of what may lawfully be deleted. Items 23–25 therefore remain proposals.
+- **Privacy notice version:** 1.0 (item 13), entered at release.
+- **Effective date (item 12):** 24 October 2026 only if the pages are published that day. If publication is later, the date is flagged for confirmation and set to the actual date; the notice is never backdated.
+- **Complaint timescales and second-stage reviewer (items 28–31):** retained as proposals pending qualified review and the owner's approval.
+- **Services page:** the planned-dashboard wording is removed; no dashboard functionality is described as an existing or planned service.
+- **Legal review:** all four legal pages stay drafts until a qualified reviewer has reviewed the wording and the sign-off is recorded (items 32–34).
+
