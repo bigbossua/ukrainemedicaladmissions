@@ -424,7 +424,7 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
 
 ### 7.1 Exact deploy commands (2026-10-24; each runs only after your approval of that exact commit)
 
-`X` is the release commit. It is the single commit on top of `7a0aef3` that holds your legal answers and switches CI to `expect: pass`. `7a0aef3` itself cannot pass the gate.
+`X` is the release commit. It sits on top of the branch head (site code as tested in `7a0aef3`; later commits change documents only), holds your legal answers and switches CI to `expect: pass`. `7a0aef3` itself cannot pass the gate.
 1. **Before you approve:**
    - On `X`, `cd site && npm run check:release` prints READY and `npm run release:gate` prints `RELEASE GATE: PASSED`.
    - CI is green on `X`.
