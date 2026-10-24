@@ -14,7 +14,7 @@
  *   page script on both forms). A submission is treated as a bot only when ts is present and below 3 seconds.
  * - Rate limits (429): at most max_per_hour stored submissions in the current and previous clock hour in total
  *   (counted from the record file names; nothing extra is stored), and, only when ip_hash_key is configured, at most
- *   per_ip_per_hour per keyed IP code (the code and submission times sit in <storage>/ratelimit for one hour).
+ *   per_ip_per_hour per keyed IP code (the code and submission times sit in <storage>/ratelimit; a counter older than an hour is deleted at the next submission).
  * - The notification e-mail is base64-encoded with a folded RFC 2047 subject; when the mail system does not accept
  *   it, the failure is written to error_log and to the stored record ("notification": "failed").
  * - Stores each record as JSON OUTSIDE the web root (never inside public_html) and e-mails a plain-text notification
@@ -221,6 +221,8 @@ $ipKey = !empty($config['ip_hash_key']) ? hash_hmac('sha256', (string)($_SERVER[
 if ($ipKey !== null) {
     $rlDir = $storage . '/ratelimit';
     if (is_dir($rlDir) || @mkdir($rlDir, 0700, true)) {
+        // Counters older than an hour are no longer needed for the limit: delete them, so none is kept indefinitely.
+        foreach (glob($rlDir . '/*.json') ?: [] as $old) { if ((int)@filemtime($old) < time() - 3600) @unlink($old); }
         $rlFile = $rlDir . '/' . $ipKey . '.json';
         $times = is_file($rlFile) ? (json_decode((string)file_get_contents($rlFile), true) ?: []) : [];
         $times = array_values(array_filter(is_array($times) ? $times : [], static fn($t): bool => is_int($t) && $t > time() - 3600));

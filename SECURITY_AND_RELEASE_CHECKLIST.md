@@ -157,3 +157,18 @@ Scope: every commit on every branch (141 commits, full patch history), read-only
     - Also rewrite the history. Forks and clones made before then would keep copies.
   - Nothing has been moved or deleted without your approval.
 
+**Bank details and residential address audit, 2026-10-24 (owner request).** Read-only, masked scan; no value was reproduced in any log, report or commit.
+- **Scope:**
+  - every tracked file;
+  - every added line in the full history (all branches) and all commit metadata and messages;
+  - the deployed `production` branch (`b2ca3d6`);
+  - a fresh production build of the branch head.
+- **Patterns:** IBAN (including Ukrainian), Luhn-valid card numbers, banking words (English and Ukrainian), street-address and Ukrainian postcode forms, and the owner's surname.
+- **Bank details:** none anywhere. The only banking phrase is a university's published customs rule about cash "in bank account", in a research file.
+- **Owner's residential address:** none anywhere, and the owner's name appears in no tracked file, commit or build.
+- **Addresses found:**
+  - public institutional addresses of universities (research leads and records; the live Ternopil page shows that university's address);
+  - synthetic test data ("1 Example Street").
+- **Live legal pages** (`b2ca3d6`) show bracketed placeholders ("[Legal entity name, registered address …]") but no personal data.
+- **Limitation:** the server's document root may hold files not deployed from Git. That cannot be checked from here; the owner can compare `public_html` in hPanel with the `production` branch, or run `npm run verify:live`.
+

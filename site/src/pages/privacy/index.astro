@@ -24,11 +24,11 @@ const representativeNeeded = documented('representative.needed') === true;
     <h2>Who we are</h2>
     <p>Ukraine Medical Admissions (“we”) operates {SITE.url}. Contact: <a href={`mailto:${email}`}>{email}</a>.</p>
     <ul>
-      <li>Legal entity: <OwnerValue path="entity.name" /></li>
+      <li>Operated by: <OwnerValue path="entity.name" /></li>
       <li>Legal form: <OwnerValue path="entity.type" /></li>
-      <li>Country of registration: <OwnerValue path="entity.country" /></li>
+      <li>Country: <OwnerValue path="entity.country" /></li>
       <li>Registration number: <OwnerValue path="entity.registrationNumber" /></li>
-      <li>Registered address: <OwnerValue path="entity.address" /></li>
+      <li>Postal address for formal requests: <OwnerValue path="entity.address" /></li>
       <li>Data controller: <OwnerValue path="controller.name" /></li>
       {!representativeNotNeeded && (
         <li>Representative in the UK or the EU: {representativeNeeded ? <OwnerValue path="representative.details" /> : <OwnerValue path="representative.needed" />}</li>
@@ -36,13 +36,14 @@ const representativeNeeded = documented('representative.needed') === true;
     </ul>
     <h2>What we collect and why</h2>
     <ul>
-      <li><strong>Enquiries (contact form):</strong> name, email and your message. Used to reply to you. Legal basis: <OwnerValue path="lawfulBasis.enquiries" />.</li>
+      <li><strong>Enquiries (contact form):</strong> your name, email address and message, with the date and time we received them and a note that you ticked the consent box. Used to reply to you. Legal basis: <OwnerValue path="lawfulBasis.enquiries" />.</li>
       <li><strong>Candidate profiles (the application form, stage 1):</strong> your name and email; your study plans (field of study, level, preferred universities and preferred start); your education history (highest level, qualification, awarding country, year, grading scale, and the subjects and grades you choose to enter, including results still outstanding); which documents you say you have, still need or are not sure about (we do not collect the documents themselves at this stage); the country where you live; your nationality, if you choose to give it; your preferred language for our emails; and your questions. Used to reply to you and to suggest next steps. Legal basis: <OwnerValue path="lawfulBasis.candidateProfiles" />.</li>
-      <li><strong>Applications (when the secure dashboard is available):</strong> identity and academic documents you choose to upload. Used solely to prepare and, with your explicit confirmation, submit your application to the university. These are stored outside public web directories, access-controlled and retained only as long as needed. Legal basis: <OwnerValue path="lawfulBasis.applications" />.</li>
       <li><strong>Website analytics:</strong> none installed. We use no analytics or advertising trackers today; if we add privacy-respecting measurement, this notice will name the tool before it is switched on.</li>
     </ul>
+    <p>Giving us information is your choice. To reply, we need your name and email address, your message (contact form) or your field of study (application form), and your tick in the consent box. Every other question is optional. Without the required details, the form cannot be sent.</p>
+    <p>We do not make decisions about you by automated means. Our form handler only runs automatic spam checks: a form that looks automated, for example one sent faster than a person could fill it in, is not stored, and too many submissions within an hour are refused.</p>
     <h2>Sharing</h2>
-    <p>We share your information with a university only when you confirm an official submission. We do not sell personal data and we do not use it for advertising.</p>
+    <p>We do not send your enquiry or candidate profile to any university, and this website does not make applications to universities. Your information stays with us and with the service providers listed below. We do not sell personal data and we do not use it for advertising.</p>
     <p>Service providers that store or carry your data for us:</p>
     <ul>
       <li>Website hosting and storage of form submissions: {hosting}</li>
@@ -56,7 +57,6 @@ const representativeNeeded = documented('representative.needed') === true;
       <li>Candidate profiles: <OwnerValue path="retention.candidateProfiles" />.</li>
       <li>Copies of each submission in our business mailbox: <OwnerValue path="retention.mailboxCopies" />.</li>
       <li>Backups: <OwnerValue path="retention.backups" />.</li>
-      <li>Application records and documents: for the duration of the application process and a limited period afterwards for accountability, then securely deleted. Period after an application ends: <OwnerValue path="retention.applicationRecords" />.</li>
     </ul>
     <h2>Your rights</h2>
     <p>You can ask for a copy of your data, correction, deletion, or restriction of processing, and withdraw consent at any time by emailing us. Where UK or EU data-protection law applies, you also have the right to complain to the relevant supervisory authority.</p>
@@ -64,8 +64,8 @@ const representativeNeeded = documented('representative.needed') === true;
     <h2>Applicants under 18</h2>
     <p><OwnerValue path="under18Policy" /></p>
     <h2>Security</h2>
-    <p>We use encrypted connections (HTTPS) and restrict access to personal data to the people who need it. Form submissions are stored outside the public web directories. We do not accept documents at this stage; when the secure application dashboard is available, it will keep a record of who accessed each file.</p>
+    <p>Your browser sends our forms over an encrypted connection (HTTPS). Form submissions are stored outside the public web directories, in files that only our hosting account can read. Access to that account and to our business mailbox is limited to the people who need it. We do not accept documents through this website; please do not email us documents either.</p>
     <h2>What else is stored with a submission</h2>
-    <p>With each enquiry or candidate profile we store the date and time you sent it and, where enabled, a pseudonymised code derived from your IP address (a keyed hash that changes every month; the address itself is not stored), used only to detect abuse. Legal basis: <OwnerValue path="lawfulBasis.abuseDetection" />. Each submission is also delivered by e-mail to our business mailbox and kept there for the period given under Retention above.</p>
+    <p>With each enquiry or candidate profile we store a reference number, the date and time we received it, a note that you ticked the consent box with a short description of what you agreed to and, where our abuse protection is switched on, a pseudonymised code made from your IP address. The code is a keyed hash that changes every month; your IP address itself is not stored with your submission. We use the code only to detect abuse, for example to refuse repeated submissions from the same connection within an hour; for this, the code and the times of recent submissions are also kept in a separate file, which is deleted once it is more than an hour old, at the next submission. If the email copy of your submission could not be sent, we note that too. Legal basis: <OwnerValue path="lawfulBasis.abuseDetection" />. Each submission is also delivered by email to our business mailbox and kept there for the period given under Retention above.</p>
   </div></section>
 </Base>

@@ -53,7 +53,7 @@ if (overrideNote) console.log(`${overrideNote}\n`);
 
 // ---- 1. Owner details --------------------------------------------------------------------------------------------
 const status = legalStatus(LEGAL, { now });
-const where = (/** @type {{ path: string, pages: string[] }} */ i) => `[${i.path}; on the ${i.pages.map((p) => pageNames[/** @type {keyof typeof pageNames} */ (p)]).join(', ')}]`;
+const where = (/** @type {{ path: string, pages: string[] }} */ i) => `[${i.path}; ${i.pages.length ? `on the ${i.pages.map((p) => pageNames[/** @type {keyof typeof pageNames} */ (p)]).join(', ')}` : 'not yet on any page: add reviewed wording to the privacy notice'}]`;
 const required = LEGAL_ITEMS.filter((i) => !i.requiredWhen || i.requiredWhen(LEGAL)).length;
 const supplied = required - status.missing.length - status.proposals.length - status.invalid.length;
 console.log(`1. Owner details for the legal pages (${show(legalFile)})`);

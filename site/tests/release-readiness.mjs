@@ -48,6 +48,8 @@ const paths = (/** @type {any[]} */ list) => list.map((x) => (x.item ?? x).path)
   check(s.review.length === 3, `A: the review flag, reviewer and review date must all be reported (got ${s.review.length})`);
   check(!paths(s.missing).includes('representative.details') && !paths(s.missing).includes('paidServices.terms') && !paths(s.missing).includes('referralDetails'),
     'A: conditional items (representative details, paid-service terms, referral details) must not be required today');
+  check(LEGAL.facts.documentsAccepted === false && !paths(s.missing).includes('retention.applicationRecords') && !paths(s.missing).includes('lawfulBasis.applications'),
+    'A: no documents are accepted, so the application-record retention and basis are not required today (owner decision 2026-10-24)');
   check(LEGAL.legalReviewCompleted === false && LEGAL.reviewedBy === null && LEGAL.reviewDate === null, 'A: the review flag must start false with no reviewer or date');
   check(LEGAL.facts.analyticsInstalled === false && LEGAL.facts.paymentsTaken === false && LEGAL.paidServices.offered === false, 'A: documented facts: no analytics, no payments, no paid service');
 }
@@ -65,7 +67,7 @@ const hasKey = (/** @type {any} */ o, /** @type {string} */ p) => { const ks = p
   for (const p of leaves(LEGAL)) check(covered(p), `B: LEGAL.${p} is neither an owner item (LEGAL_ITEMS) nor a documented path (LEGAL_DOCUMENTED_PATHS)`);
   for (const p of itemPaths) check(hasKey(LEGAL, p), `B: LEGAL_ITEMS names "${p}", which LEGAL does not have`);
   check(new Set(itemPaths).size === itemPaths.length, 'B: LEGAL_ITEMS must not repeat a path');
-  for (const i of LEGAL_ITEMS) check(i.what && i.why && i.pages.length && typeof i.review === 'boolean', `B: LEGAL_ITEMS "${i.path}" needs what, why, pages and review`);
+  for (const i of LEGAL_ITEMS) check(i.what && i.why && (i.pages.length || (i.requiredWhen && !i.requiredWhen(LEGAL))) && typeof i.review === 'boolean', `B: LEGAL_ITEMS "${i.path}" needs what, why, pages and review (no page is allowed only while the item is not required)`);
 
   /** @type {Record<string, string>} */
   const sources = {};
@@ -95,7 +97,8 @@ const hasKey = (/** @type {any} */ o, /** @type {string} */ p) => { const ks = p
   const block = (/** @type {string} */ start) => { const i = php.indexOf(start); if (i < 0) return ''; const j = php.indexOf('];\n', i); return php.slice(i, j); };
   const keys = (/** @type {string} */ s) => [...s.matchAll(/^\s*'([A-Za-z_]+)'\s*=>/gm)].map((m) => m[1]);
   const recordKeys = keys(block('$record = ['));
-  if (php.includes("$record['profile'] = $profile")) recordKeys.push('profile');
+  // Keys added later by assignment ($record['profile'] = …, $record['notification'] = …) are stored too.
+  for (const m of php.matchAll(/\$record\['([A-Za-z_]+)'\]\s*=(?!=)/g)) if (!recordKeys.includes(m[1])) recordKeys.push(m[1]);
   check(JSON.stringify([...recordKeys].sort()) === JSON.stringify([...LEGAL.facts.storedRecordFields].sort()),
     `C: enquiry.php stores ${JSON.stringify(recordKeys)}; legal.mjs facts.storedRecordFields says ${JSON.stringify(LEGAL.facts.storedRecordFields)}. Update the privacy notice and legal.mjs together.`);
   const profile = block('$profile = [');
@@ -132,6 +135,7 @@ function syntheticComplete() {
   variant('representative needed without details', (l) => { l.representative.needed = true; l.representative.details = null; }, (r) => paths(r.missing).includes('representative.details'));
   variant('a paid service without terms', (l) => { l.paidServices.offered = true; l.paidServices.terms = null; }, (r) => paths(r.missing).includes('paidServices.terms'));
   variant('a referral arrangement without details', (l) => { l.referralArrangements = true; l.referralDetails = null; }, (r) => paths(r.missing).includes('referralDetails'));
+  variant('documents accepted without application retention or basis', (l) => { l.facts.documentsAccepted = true; l.retention.applicationRecords = null; l.lawfulBasis.applications = null; }, (r) => paths(r.missing).includes('retention.applicationRecords') && paths(r.missing).includes('lawfulBasis.applications'));
   variant('legalReviewCompleted false', (l) => { l.legalReviewCompleted = false; }, (r) => r.review.length === 1);
   variant('no reviewer', (l) => { l.reviewedBy = null; }, (r) => r.review.some((x) => /reviewer/.test(x)));
   variant('a review date in the future', (l) => { l.reviewDate = day(30); }, (r) => r.review.some((x) => /future/.test(x)));
@@ -147,6 +151,7 @@ function syntheticComplete() {
   // The documented values the pages read must keep their form.
   variant('the paid-service flag given as text', (l) => { l.paidServices.offered = 'no'; }, (r) => r.documented.some((x) => /paidServices\.offered/.test(x)));
   variant('the referral flag removed', (l) => { l.referralArrangements = null; }, (r) => r.documented.some((x) => /referralArrangements/.test(x)));
+  variant('the documents flag given as text', (l) => { l.facts.documentsAccepted = 'no'; }, (r) => r.documented.some((x) => /facts\.documentsAccepted/.test(x)));
   variant('the business e-mail removed', (l) => { l.contact.email = ''; }, (r) => r.documented.some((x) => /contact\.email/.test(x)));
   variant('the hosting provider replaced by a placeholder', (l) => { l.processors.hosting = 'TBC'; }, (r) => r.documented.some((x) => /processors\.hosting/.test(x)));
   const naText = syntheticComplete(); naText.entity.registrationNumber = 'N/A'; naText.complaintsBody = 'not applicable';

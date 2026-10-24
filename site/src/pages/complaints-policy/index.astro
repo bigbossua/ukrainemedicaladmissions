@@ -8,6 +8,7 @@ import { documented, legalPagesComplete, ownerState } from '../../lib/legal.mjs'
 const complete = legalPagesComplete();
 const email: string = documented('contact.email');
 const showComplaintsBody = ownerState('complaintsBody') !== 'not-applicable';
+const paidServicesOffered = documented('paidServices.offered') === true;
 ---
 <Base title="Complaints policy" description="How to raise a complaint about Ukraine Medical Admissions, how it is handled, and the timescales we work to.">
   <div class="page-head"><div class="wrap"><span class="eyebrow">Legal</span><h1>Complaints policy</h1>
@@ -26,14 +27,14 @@ const showComplaintsBody = ownerState('complaintsBody') !== 'not-applicable';
       <li>If you are not satisfied, you can ask for the complaint to be reviewed by <OwnerValue path="complaints.reviewer" />, who replies within <OwnerValue path="complaints.review" />.</li>
     </ol>
     <h2>Refunds and remedies</h2>
-    <p>Where a paid service was not delivered as described, the remedy follows the refund terms shown when you chose that service. University fees are paid to the university and are subject to the university's own rules.</p>
+    <p>{paidServicesOffered ? 'Where a paid service was not delivered as described, the remedy follows the refund terms shown when you chose that service.' : 'We do not charge for our service at present.'} University fees are paid to the university and are subject to the university's own rules.</p>
     <h2>What we cannot change</h2>
     <p>We cannot overturn a university's admission decision or an authority's visa decision; complaints about those decisions must be directed to the body that made them.</p>
     <h2>Records</h2>
     <p>We keep a record of each complaint and its outcome, and use them to improve the service. How long complaint records are kept: <OwnerValue path="retention.complaints" />.</p>
     <ul>
-      <li>Legal entity: <OwnerValue path="entity.name" /></li>
-      <li>Registered address: <OwnerValue path="entity.address" /></li>
+      <li>Operated by: <OwnerValue path="entity.name" /></li>
+      <li>Postal address for formal requests: <OwnerValue path="entity.address" /></li>
       {showComplaintsBody && <li>Outside body for complaints we cannot resolve: <OwnerValue path="complaintsBody" /></li>}
     </ul>
   </div></section>

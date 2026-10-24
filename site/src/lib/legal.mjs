@@ -91,8 +91,9 @@ export const LEGAL = {
     // MISSING: APPLICATION_SYSTEM_SPEC.md §14.12 "Backups … Window TO BE CONFIRMED"; whether the host's own backups
     // include the private storage directory is not recorded (HOSTING_AND_DEPLOYMENT_ASSESSMENT.md §1: plan unverified).
     backups: null,
-    // MISSING: privacy draft "for the duration of the application process and a limited period afterwards … [Exact
-    // periods to be confirmed.]"; APPLICATION_SYSTEM_SPEC.md §14.12 "TO BE CONFIRMED". The dashboard is not built.
+    // NOT REQUIRED while facts.documentsAccepted is false. Owner decision 2026-10-24: the privacy notice no longer
+    // describes the application dashboard, which is not built. If documents are ever accepted, this period (and a reviewed
+    // paragraph on the privacy page) is required again before release.
     applicationRecords: null,
     // MISSING: the complaints draft says "We keep a record of each complaint and its outcome" with no period.
     complaints: null,
@@ -105,7 +106,7 @@ export const LEGAL = {
     candidateProfiles: proposed('your consent and steps taken at your request before any contract', 'site/src/pages/privacy/index.astro (draft); not legally reviewed (A10, C11.1)'),
     // MISSING: the draft gives no basis for keeping the submission time and the keyed IP code used to detect abuse.
     abuseDetection: null,
-    // MISSING: the draft gives no basis for application documents (secure dashboard, not built).
+    // NOT REQUIRED while facts.documentsAccepted is false (owner decision 2026-10-24, as retention.applicationRecords).
     applications: null,
   },
 
@@ -166,7 +167,7 @@ export const LEGAL = {
     // What site/public/api/enquiry.php stores for each submission (one JSON file in uma-private/enquiries/, outside the
     // web root) and e-mails as plain text to contact.email. tests/release-readiness.mjs compares these lists with the
     // handler, so a new stored field fails the test until this list (and the privacy notice) is updated.
-    storedRecordFields: ['id', 'version', 'type', 'stage', 'received', 'name', 'email', 'course', 'university', 'message', 'consent', 'consentText', 'ip_hash', 'profile'],
+    storedRecordFields: ['id', 'version', 'type', 'stage', 'received', 'name', 'email', 'course', 'university', 'message', 'consent', 'consentText', 'ip_hash', 'profile', 'notification'],
     storedProfileFields: {
       intent: ['field', 'level', 'universities', 'university_other', 'intake'],
       education: ['level', 'qualification', 'awarding_country', 'year', 'year_status', 'scale_type', 'scale_max', 'subjects', 'outstanding'],
@@ -191,7 +192,8 @@ export const LEGAL = {
  * @property {string} path   dotted path into LEGAL
  * @property {string} what   plain words, shown on the page as "[to be supplied by the owner: <what>]"
  * @property {string} why    why the pages need it
- * @property {('privacy'|'terms'|'disclosure'|'complaints-policy')[]} pages  where it appears
+ * @property {('privacy'|'terms'|'disclosure'|'complaints-policy')[]} pages  where it appears (empty only for an item that is not
+ *   required today and that no page shows yet: it is required, and blocks the release, as soon as its condition holds)
  * @property {boolean} review  needs a qualified legal review
  * @property {'text'|'date'|'boolean'} [kind]  default 'text'
  * @property {boolean} [notApplicable]  NOT_APPLICABLE is an allowed answer
@@ -203,9 +205,9 @@ export const LEGAL = {
 export const LEGAL_ITEMS = Object.freeze([
   { path: 'entity.name', what: 'the legal name of the person or company that runs this service', why: 'Visitors must be told who they are dealing with and who holds their data.', pages: ['privacy', 'terms', 'disclosure', 'complaints-policy'], review: false },
   { path: 'entity.type', what: 'the legal form of the business (for example sole trader or limited company)', why: 'Identifies the entity; decides whether a registration number exists.', pages: ['privacy', 'terms'], review: false },
-  { path: 'entity.country', what: 'the country where the business is registered', why: 'Decides which data-protection and consumer law applies, the authority, and whether a representative is needed.', pages: ['privacy', 'terms'], review: false },
+  { path: 'entity.country', what: 'the country where the business is registered or, for an individual, where you operate the service from', why: 'Decides which data-protection and consumer law applies, the authority, and whether a representative is needed.', pages: ['privacy', 'terms'], review: false },
   { path: 'entity.registrationNumber', what: 'the registration number, or "not applicable" if the business has none', why: 'Identifies a registered company.', pages: ['privacy', 'terms'], review: false, notApplicable: true },
-  { path: 'entity.address', what: 'the registered or business postal address', why: 'A postal address for formal requests and complaints.', pages: ['privacy', 'terms', 'complaints-policy'], review: false },
+  { path: 'entity.address', what: 'a postal address for formal requests (a business or correspondence address; it is published, so never a residential address you do not want public, and never called a registered office unless it is one)', why: 'A postal address for formal requests and complaints.', pages: ['privacy', 'terms', 'complaints-policy'], review: false },
   { path: 'controller.name', what: 'the name of the data controller', why: 'The privacy notice must name who decides how personal data is used.', pages: ['privacy'], review: true },
   { path: 'representative.needed', what: 'whether the law requires a representative in the UK or the EU', why: 'A business established outside the UK or the EU may need one; depends on the country of registration.', pages: ['privacy'], review: true, kind: 'boolean' },
   { path: 'representative.details', what: "the representative's name and postal address", why: 'Must be named in the privacy notice when one is required.', pages: ['privacy'], review: true, requiredWhen: (l) => l.representative?.needed === true },
@@ -219,12 +221,12 @@ export const LEGAL_ITEMS = Object.freeze([
   { path: 'retention.candidateProfiles', what: 'how long candidate profiles from the application form are kept', why: 'The privacy notice must state each retention period.', pages: ['privacy'], review: true },
   { path: 'retention.mailboxCopies', what: 'how long the e-mail copies in the business mailbox are kept', why: 'Each submission is also e-mailed to the business mailbox.', pages: ['privacy'], review: true },
   { path: 'retention.backups', what: 'whether backups contain form submissions, and how long backups are kept', why: 'Deleted data can remain in backups; the notice must say for how long (APPLICATION_SYSTEM_SPEC.md §14.12).', pages: ['privacy'], review: true },
-  { path: 'retention.applicationRecords', what: 'how long application records and documents are kept after an application ends', why: 'The notice describes the future secure dashboard and gives no period.', pages: ['privacy'], review: true },
+  { path: 'retention.applicationRecords', what: 'how long application records and documents are kept after an application ends', why: 'Required once documents are accepted (the notice must then describe the document process and give a period).', pages: [], review: true, requiredWhen: (l) => l.facts?.documentsAccepted === true },
   { path: 'retention.complaints', what: 'how long complaint records are kept', why: 'The complaints policy says each complaint is recorded, with no period.', pages: ['complaints-policy'], review: true },
   { path: 'lawfulBasis.enquiries', what: 'the lawful basis for replying to enquiries', why: 'The privacy notice must give a lawful basis for each purpose.', pages: ['privacy'], review: true },
   { path: 'lawfulBasis.candidateProfiles', what: 'the lawful basis for handling candidate profiles', why: 'The privacy notice must give a lawful basis for each purpose.', pages: ['privacy'], review: true },
   { path: 'lawfulBasis.abuseDetection', what: 'the lawful basis for keeping the submission time and the keyed IP code to detect abuse', why: 'The draft gives no basis for this purpose.', pages: ['privacy'], review: true },
-  { path: 'lawfulBasis.applications', what: 'the lawful basis for handling application documents', why: 'The draft describes the future secure dashboard and gives no basis.', pages: ['privacy'], review: true },
+  { path: 'lawfulBasis.applications', what: 'the lawful basis for handling application documents', why: 'Required once documents are accepted (the notice must then give a basis for the document process).', pages: [], review: true, requiredWhen: (l) => l.facts?.documentsAccepted === true },
   { path: 'processors.mailbox', what: 'the company that provides the business mailbox', why: 'Each submission is e-mailed there, so it handles personal data for us.', pages: ['privacy'], review: false },
   { path: 'processingLocation', what: 'the countries where the hosting and mailbox providers store the data', why: 'The notice must say where data is processed.', pages: ['privacy'], review: true },
   { path: 'internationalTransfers', what: 'whether personal data is sent to other countries, and the safeguard used', why: 'Transfers abroad must be disclosed with their safeguard.', pages: ['privacy'], review: true },
@@ -302,7 +304,7 @@ export function legalStatus(legal, { now = new Date() } = {}) {
   // The documented values the pages read must keep their form: a flag that is not true or false would hide a conditional
   // line (paid-service terms, referral payments) and switch off the item it requires, while the banner disappeared.
   const documented = [];
-  for (const [p, what] of [['paidServices.offered', 'Whether paid services are offered'], ['referralArrangements', 'Whether a referral arrangement exists']])
+  for (const [p, what] of [['paidServices.offered', 'Whether paid services are offered'], ['referralArrangements', 'Whether a referral arrangement exists'], ['facts.documentsAccepted', 'Whether documents are accepted']])
     if (typeof getPath(legal, p) !== 'boolean') documented.push(`${what} (${p}) must be true or false.`);
   const email = getPath(legal, 'contact.email');
   if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) documented.push('The business e-mail (contact.email) must be an e-mail address.');

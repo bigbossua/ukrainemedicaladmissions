@@ -6,7 +6,7 @@
 |---|---|
 | Official sources | **Blocked.** All 20 hosts below refused by the network policy (latest probe 10:12 UTC: 403 to CONNECT for all 20) |
 | Evidence received | **None.** No captures, no access, no verified fact |
-| Release | **NOT READY:** the 38 items in §2, then the release steps in §5 |
+| Release | **NOT READY:** the 36 items in §2 (38 before the dashboard paragraph was removed on 2026-10-24), then the release steps in §5 |
 | Google | Nothing verified or submitted by us. Index status unknown (no Search Console access; the live site is public and crawlable) |
 
 Background and every other open question: `OWNER_INPUT_NEEDED.md`. Pages to capture if you cannot allow the hosts: `research/verification/CAPTURE_REQUEST_2026-10-12.md` §2–§3.
@@ -107,7 +107,7 @@ All but `tnmu.edu.ua` are described in the capture request §1.
 - **Separate claims:** Ukrainian registration (EDEBO), programme accreditation (NAQA) and recognition abroad (each country's regulator) are never merged.
 - **Visibility:** profiles stay noindex and unpublished until the publication gate passes and you approve a release.
 
-## 2. The 38 items the release check lists
+## 2. The items the release check lists (36 since 2026-10-24; numbering kept from the original 38)
 
 In the order `node scripts/release-readiness.mjs` lists them. The check prints bullets and lists only what is still open; the numbers below are this sheet's own. `LEGAL_COMPLETION_CHECKLIST.md` numbers the same fields differently, so always keep the field name next to an answer, as the template does. **R** = a qualified legal reviewer must check the answer.
 
@@ -145,7 +145,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 30 | Second-stage reviewer | "the business owner" (if the owner also handles the first stage, the review is not independent: name someone else if you can) |
 | 31 | Second-stage reply within | "a further 10 working days" |
 
-**C. Needs a qualified legal reviewer (14).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
+**C. Needs a qualified legal reviewer (12; items 15 and 18 removed with the dashboard paragraph on 2026-10-24).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
 
 | # | Item |
 |---|---|
@@ -153,10 +153,10 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 8–9 | Governing law and courts for the terms |
 | 10 | The data-protection authority people can complain to, with its web address |
 | 11 | The outside complaints body, or `not applicable` |
-| 15 | Retention of application records (future dashboard), or remove that paragraph |
+| ~~15~~ | Not required: dashboard paragraph removed (owner decision 2026-10-24); returns only if documents are ever accepted |
 | 16 | Retention of complaint records |
 | 17 | Lawful basis for abuse detection (submission time and keyed IP code) |
-| 18 | Lawful basis for application documents (future dashboard), or remove that paragraph |
+| ~~18~~ | Not required: as item 15 |
 | 21 | International transfers and the safeguard used |
 | 22 | The rule for applicants under 18 (the forms are built for school-leavers) |
 | 32–34 | Review completed, reviewer's name, review date (set only after the review) |
@@ -194,10 +194,10 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 12 | `effectiveDate` | Date the legal pages take effect, `YYYY-MM-DD` | |
 | 13 | `noticeVersion` | Privacy notice version number | |
 | 14 | `retention.backups` | Whether backups hold form submissions, and how long backups are kept | R |
-| 15 | `retention.applicationRecords` | How long application records are kept after an application ends | R |
+| ~~15~~ | `retention.applicationRecords` | Not required while no documents are accepted (owner decision 2026-10-24) | R |
 | 16 | `retention.complaints` | How long complaint records are kept | R |
 | 17 | `lawfulBasis.abuseDetection` | Lawful basis for keeping the submission time and the keyed IP code | R |
-| 18 | `lawfulBasis.applications` | Lawful basis for application documents (future dashboard) | R |
+| ~~18~~ | `lawfulBasis.applications` | Not required while no documents are accepted (owner decision 2026-10-24) | R |
 | 19 | `processors.mailbox` | Company that provides the info@ mailbox | |
 | 20 | `processingLocation` | Countries where Hostinger and the mailbox provider store data | R |
 | 21 | `internationalTransfers` | Whether personal data goes abroad, and the safeguard used | R |
@@ -256,10 +256,10 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 12 effectiveDate:                  (YYYY-MM-DD)
 13 noticeVersion:
 14 retention.backups:
-15 retention.applicationRecords:
+15 retention.applicationRecords:  (not required: dashboard paragraph removed)
 16 retention.complaints:
 17 lawfulBasis.abuseDetection:
-18 lawfulBasis.applications:
+18 lawfulBasis.applications:     (not required: dashboard paragraph removed)
 19 processors.mailbox:
 20 processingLocation:
 21 internationalTransfers:

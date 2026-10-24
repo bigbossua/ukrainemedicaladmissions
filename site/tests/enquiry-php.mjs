@@ -8,7 +8,7 @@
 // Prints "enquiry-php: N checks, M failures" and exits non-zero on any failure.
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
-import { mkdtempSync, writeFileSync, readdirSync, readFileSync, rmSync, existsSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readdirSync, readFileSync, rmSync, existsSync, utimesSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -333,6 +333,9 @@ cleanup();
     check(count() === 2, 'rate limit: nothing is stored over the limit', String(count()));
     const rl = existsSync(join(store4, 'ratelimit')) ? readdirSync(join(store4, 'ratelimit')) : [];
     check(rl.length === 1 && /^[0-9a-f]{64}\.json$/.test(rl[0]), 'rate limit: only the keyed IP code is used as the counter name', rl.join(','));
+    const stale = join(store4, 'ratelimit', `${'0'.repeat(64)}.json`);
+    writeFileSync(stale, '[1]'); utimesSync(stale, new Date(Date.now() - 2 * 3600e3), new Date(Date.now() - 2 * 3600e3));
+    check((await send()).status === 429 && !existsSync(stale) && readdirSync(join(store4, 'ratelimit')).length === 1, 'rate limit: a counter older than an hour is deleted at the next submission; the current one is kept', readdirSync(join(store4, 'ratelimit')).join(','));
     rmSync(join(store4, 'ratelimit'), { recursive: true, force: true });
     statuses.length = 0;
     for (let i = 0; i < 2; i++) statuses.push((await send()).status);
