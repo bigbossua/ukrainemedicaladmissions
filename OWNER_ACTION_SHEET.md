@@ -422,3 +422,42 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
    - *Search Console* (§3): you add the domain property and submit `https://ukrainemedicaladmissions.com/sitemap-index.xml` in your Google account; send me a screenshot of the result. I never claim indexing until Search Console shows it.
    - *If anything fails:* restore the step 4 backup (`RELEASE_CHECKLIST_PROPOSED.md` 11.4) and pause auto-deploy so the next pull does not overwrite it.
 
+### 7.1 Exact deploy commands (2026-10-24; each runs only after your approval of that exact commit)
+
+`X` is the release commit. It is the single commit on top of `7a0aef3` that holds your legal answers and switches CI to `expect: pass`. `7a0aef3` itself cannot pass the gate.
+1. **Before you approve:**
+   - On `X`, `cd site && npm run check:release` prints READY and `npm run release:gate` prints `RELEASE GATE: PASSED`.
+   - CI is green on `X`.
+2. **Pointer check:** `git fetch origin && git merge-base --is-ancestor origin/publish-production X`. It must succeed, so the move is a fast-forward. Today the pointer is `4d4e605`, an ancestor of `7a0aef3`.
+3. **Deploy:** `git push origin X:refs/heads/publish-production`, with no `--force`.
+   - The push starts "Publish deploy branch" with target `production`; pushing to `publish-production` counts as the PUBLISH confirmation.
+   - The workflow re-runs the full release gate on `X` and stops if anything fails.
+   - It then adds one commit holding only the built site on top of `production` and tags the release `release-<UTC stamp>`.
+4. **Host:** Hostinger deploys the new `production` commit, automatically or when you click Deploy (hPanel → Websites → ukrainemedicaladmissions.com → Advanced → Git). No DNS change.
+5. **Record:** the new `production` commit, the release tag and the workflow run link.
+
+### 7.2 Rollback (decided by you at the time; fastest first)
+
+- **R1. Put the previous build back exactly (about 2 minutes plus the host pull).** This writes a new commit on `production` whose files are identical to today's live build `b2ca3d6`. It is a fast-forward, with no force-push:
+  1. `git fetch origin production`
+  2. `C=$(git commit-tree b2ca3d6^{tree} -p origin/production -m "Rollback: restore build b2ca3d6")`
+  3. `git push origin "$C:refs/heads/production"`
+
+  Then Hostinger deploys it (auto, or click Deploy). It restores bytes that were already live, so no new content is released. It brings back the old Ternopil card, so treat it as the last resort for a broken site.
+- **R2. Restore the step 4 backup** in hPanel (whole document root), then pause auto-deploy so the next pull does not overwrite it. Use this if the host itself misbehaves.
+- **R3. Only the forms are failing:** rename `public_html/api/enquiry.php`. Form posts then answer 404 and the rest of the site stays up.
+- Not recommended: re-publishing the old source `4d4e605` through the workflow (`RELEASE_CHECKLIST_PROPOSED.md` 11.2). It re-runs old date-dependent tests and can refuse.
+
+### 7.3 Optional: a private staging copy before the release (no legal gate; never public)
+
+The publish workflow can build a staging copy:
+- every page `noindex` plus an `X-Robots-Tag` header;
+- no sitemap and no canonical tags.
+
+It needs three hPanel steps from you (`HOSTING_AND_DEPLOYMENT_ASSESSMENT.md`, decision D4; on 2026-10-10 you made staging optional):
+1. Create the subdomain `staging.ukrainemedicaladmissions.com`.
+2. Turn on hPanel password protection for it.
+3. Connect Hostinger Git for that subdomain to the branch `staging`.
+
+After that, and with your approval, I push `7a0aef3` to `publish-staging`. The workflow writes the build to `staging`, and the copy appears at `https://staging.ukrainemedicaladmissions.com/universities/` behind your password. Without the password protection it must not be connected: the staging copy carries the draft legal pages and working forms.
+
