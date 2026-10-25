@@ -219,7 +219,7 @@ const jsonLd = [{
   @media (min-width: 1000px) { .featured-list { grid-template-columns: repeat(3, 1fr); } }
   .featured-list li { position: relative; display: grid; gap: .25rem; padding: 1rem 1.1rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
   .featured-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
-  .featured-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); line-height: 1.3; }
+  .featured-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); line-height: 1.3; display: inline-flex; align-items: center; min-height: 44px; }
   .featured-list a::after { content: ""; position: absolute; inset: 0; }
   .featured-list a:hover { text-decoration: underline; }
   .featured-list .badge { justify-self: start; margin-top: .15rem; }
