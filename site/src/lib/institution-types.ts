@@ -23,9 +23,15 @@ export const typeLabel = (t: unknown): string => (typeof t === 'string' && t in 
 
 export interface PreviewGroup<T> { key: string; title: string; note: string; items: T[] }
 
+/** The reported institution type of a preview projection (publication.mjs reportedLeads), or null. */
+const reportedType = (u: unknown): string | null => {
+  const t = (u as { reported?: { institutionType?: unknown } | null } | null)?.reported?.institutionType;
+  return typeof t === 'string' && t in INSTITUTION_TYPES ? t : null;
+};
+
 /** Research previews grouped by reported institution type, in INSTITUTION_TYPE_KEYS order, unclassified last; empty groups dropped. */
-export function groupPreviews<T extends { reported?: { institutionType?: string | null } | null }>(previews: T[]): PreviewGroup<T>[] {
-  const groups: PreviewGroup<T>[] = INSTITUTION_TYPE_KEYS.map((k) => ({ key: k, title: INSTITUTION_TYPES[k].group, note: INSTITUTION_TYPES[k].note, items: previews.filter((u) => u.reported?.institutionType === k) }));
-  groups.push({ key: UNCLASSIFIED.key, title: UNCLASSIFIED.group, note: UNCLASSIFIED.note, items: previews.filter((u) => !u.reported?.institutionType || !(u.reported.institutionType in INSTITUTION_TYPES)) });
+export function groupPreviews<T>(previews: T[]): PreviewGroup<T>[] {
+  const groups: PreviewGroup<T>[] = INSTITUTION_TYPE_KEYS.map((k) => ({ key: k, title: INSTITUTION_TYPES[k].group, note: INSTITUTION_TYPES[k].note, items: previews.filter((u) => reportedType(u) === k) }));
+  groups.push({ key: UNCLASSIFIED.key, title: UNCLASSIFIED.group, note: UNCLASSIFIED.note, items: previews.filter((u) => reportedType(u) === null) });
   return groups.filter((g) => g.items.length > 0);
 }
