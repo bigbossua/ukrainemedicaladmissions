@@ -39,6 +39,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Odesa",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -529,11 +530,11 @@
   "preparatoryRoutes": [],
   "researchReferences": [
     {
-      "label": "Wikipedia article: 'Ukrainian higher education institution in Odesa, founded in ",
+      "label": "Website lead (Wikipedia, discovery only)",
       "url": "https://en.wikipedia.org/wiki/Odesa_International_Medical_University",
       "purpose": "Wikipedia article: 'Ukrainian higher education institution in Odesa, founded in 1999'; accrediting body MON; website oimu.edu.ua; languages English/Ukrainian/French/German; MBBS $3,900/yr; GMC 'unacce",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: undated page; figures reference 2020. Search-result lead, not read in full."
+      "note": "Result date as shown: undated page; figures reference 2020. Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "MON document named for the institution, tied to licence order 14.01.2020 No. 14-",
@@ -590,6 +591,12 @@
       "purpose": "Study in Ukraine portal result; summarised as a different university, not OIMU — recorded as 'not found' for OIMU.",
       "snippetDate": "2026-10-24",
       "note": "Result date as shown: undated. Search-result lead, not read in full."
+    },
+    {
+      "label": "Register entry (Study in Ukraine, MES)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/85",
+      "purpose": "Government portal entry returned for this name on 2026-10-25; its content was not opened",
+      "snippetDate": "2026-10-25"
     }
   ],
   "faqs": [],
@@ -628,7 +635,8 @@
       "Skeptic's note: Pharmacy and Nursing leads are Brive/Wikipedia only; the 2020 MON list shows Medicine 222 and Dentistry 221 only.",
       "Name lead (unverified): Odesa International Medical University (lead: Wikipedia article title; private institution of higher education — no official English page opened)",
       "Name lead (unverified): Приватний заклад вищої освіти «Одеський міжнародний медичний університет» (lead: title of MON order 10.08.2020 No. 1031 as cited in search results; not read from EDEBO)",
-      "Name lead (unverified): Приватний заклад вищої освіти \"Одеський міжнародний медичний університет\""
+      "Name lead (unverified): Приватний заклад вищої освіти \"Одеський міжнародний медичний університет\"",
+      "Website lead oimu.edu.ua rests on Wikipedia and the earlier lead only (2026-10-25); confirm the government register entry (university/85) names this institution and that website."
     ]
   }
 }

@@ -92,6 +92,21 @@ export const GOVERNMENT_HOST_SUFFIXES = Object.freeze(['gov.ua']);
  */
 export const RESEARCH_PREVIEWS = true;
 
+// ------------------------------------------------------------------------------------------- (g) reported leads on previews (2026-10-25)
+/**
+ * true (default, owner instruction of 2026-10-25: "publish only what can responsibly be supported and label it clearly
+ * as unverified or awaiting confirmation"): a RESEARCH PREVIEW (d) also carries a small block of REPORTED leads,
+ * each labelled "reported, not yet verified": the website address found in public sources (only when at least one
+ * recorded research reference is on that host or is a listing marked "Website lead", and never while the record marks
+ * the website conflicting), the city and region as recorded, the institution type as recorded, and the programme
+ * AREAS (family names only, never programme names) found in public sources, with the date of the latest lead. Nothing
+ * else: no fee, requirement, deadline, intake, accreditation, operating status, office contact or statement, and
+ * nothing from a research note. Verified facts still go through the evidence rules above; a reported lead never
+ * becomes a shown claim.
+ * false: previews show nothing but the short name (the behaviour of (d) alone).
+ */
+export const REPORTED_LEADS_ON_PREVIEWS = true;
+
 // ------------------------------------------------------------------------------------------- review age
 /** A profile is published only when its last full review (verification.lastReview) is at most this many days old. */
 export const REVIEW_MAX_AGE_DAYS = 180;
@@ -109,5 +124,6 @@ export const PUBLICATION_SETTINGS = Object.freeze({
   WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE,
   GOVERNMENT_HOST_SUFFIXES,
   RESEARCH_PREVIEWS,
+  REPORTED_LEADS_ON_PREVIEWS,
   REVIEW_MAX_AGE_DAYS,
 });

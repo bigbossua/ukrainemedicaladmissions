@@ -21,6 +21,7 @@ import {
   FIELD_POLICY, policyCoverage, assertPolicyCoverage, evaluateClaim, allowedTiers, toPublicRecord, evaluatePublication, publicationDecision,
   publicationBuildError, viewClaim, viewItems, serializeJsonLd, profileJsonLd, currentAcademicYear, listClaims, PUBLIC_REASONS,
   editorialTextHash, containsPhrase, editorialReviewMatches, formatMoney, CODE_WORDS, NOT_LISTED_WORDS, RESEARCH_PREVIEW_WORDS,
+  reportedLeads,
 } from '../src/lib/publication.mjs';
 import * as CONFIG from '../src/lib/publication-config.mjs';
 import { readFixture, FIXTURE_ROOT, academicYear } from './fixtures/publication/materialise.mjs';
@@ -723,7 +724,9 @@ section('N25 research previews');
   // An unpublished record that opts in: a preview whose record is EXACTLY the projection.
   const d = publicationDecision(opt(unpub(rec)), e, { now: NOW });
   eq([d.published, d.researchPreview, d.researchPreviewReasons], [false, true, []], 'N25 unpublished + opted in = research preview');
-  eq(d.previewRecord, toPublicRecord(opt(unpub(rec)), e, { now: NOW }), 'N25 the preview record is exactly toPublicRecord()');
+  // (g) 2026-10-25: the preview record is the projection plus `reported` (the labelled leads), nothing else.
+  eq({ ...d.previewRecord, reported: undefined }, { ...toPublicRecord(opt(unpub(rec)), e, { now: NOW }), reported: undefined }, 'N25 the preview record is exactly toPublicRecord() apart from `reported`');
+  eq(d.previewRecord.reported, reportedLeads(opt(unpub(rec))), 'g the preview record carries reportedLeads()');
   check(d.publicRecord === null, 'N25 a research preview has no publicRecord (it is not published)');
   check(!deepKeys(d.previewRecord).has('researchPreview') && !deepKeys(d.previewRecord).has('publishable') && !deepKeys(d.previewRecord).has('note'), 'N25 the preview record carries no internal key');
   // Published records are never previews; flags and settings each refuse on their own.
@@ -748,8 +751,14 @@ section('N25 research previews');
   leaky.programmes[0].tuition = U(money(98765));
   const lp = publicationDecision(record.parse(leaky), e, { now: NOW });
   check(lp.researchPreview, 'N25 a record full of unverified values can still be a preview (name only)');
-  const ls = JSON.stringify(lp.previewRecord);
-  for (const c of ['CANARY', 'canary-host', '98765', 'Search-snippet', 'NOT verified']) check(!ls.includes(c), `N25 preview record leaks "${c}"`);
+  const ls = JSON.stringify({ ...lp.previewRecord, reported: undefined });
+  for (const c of ['CANARY', 'canary-host', '98765', 'Search-snippet', 'NOT verified']) check(!ls.includes(c), `N25 preview record leaks "${c}" outside reported`);
+  // (g) the reported leads: the region is reported as recorded; the website is NOT (its only reference is on another host);
+  // the fee, the note, the alternative name and the reference label never appear anywhere in it.
+  const rs = JSON.stringify(lp.previewRecord.reported);
+  check(lp.previewRecord.reported.region === 'CANARY-REGION', 'g reported region as recorded');
+  check(lp.previewRecord.reported.website === null, 'g a website whose references are all on other hosts is not reported');
+  for (const c of ['canary-host', '98765', 'Search-snippet', 'NOT verified', 'CANARY-ALT', 'CANARY-REF', 'CANARY-PURPOSE', 'CANARY-OFFICIAL-NAME', 'CANARY-ADDRESS', 'CANARY-OVERVIEW']) check(!rs.includes(c), `g reported leads leak "${c}"`);
   eq(lp.previewRecord.city, CONFIG.WITHHELD_PLACE_TEXT, 'N25 preview: a city not in a verified address is withheld');
   check(lp.previewRecord.officialName.show === false && lp.previewRecord.website.show === false, 'N25 preview: unverified name and website are not shown');
   // Opting in never turns a flagged, failing record into a quiet preview: a production build still stops.
@@ -759,6 +768,47 @@ section('N25 research previews');
   check(publicationBuildError([ff]) !== null, 'N25 publicationBuildError still names a flagged, failing, opted-in record');
   // A preview shows exactly the claims that ARE verified (progressive): here status, statement and format still pass.
   check(lp.previewRecord.status.show === false, 'N25 preview: claims on the university\'s own pages are not shown while the website is withheld (N24 c)');
+}
+
+// ------------------------------------------------------------------------------------------------ (g) reported leads (2026-10-25)
+section('g reported leads');
+{
+  const { rec } = passing();
+  const base = () => { const r = clone(rec); r.verification = { ...clone(r.verification), publishable: false, researchPreview: true }; return r; };
+  eq(CONFIG.REPORTED_LEADS_ON_PREVIEWS, true, 'g default: reported leads on (owner instruction 2026-10-25)');
+  eq(CONFIG.PUBLICATION_SETTINGS.REPORTED_LEADS_ON_PREVIEWS, true, 'g setting is part of PUBLICATION_SETTINGS');
+  eq(FIELD_POLICY.record.institutionType, 'editorial-public', 'g institutionType is editorial-public');
+  check(reportedLeads(base(), { REPORTED_LEADS_ON_PREVIEWS: false }) === null, 'g setting off: no reported leads');
+  const withRefs = (r, refs) => ({ ...r, researchReferences: refs });
+  const sameHost = [{ label: 'Admission page', url: 'https://unit-test.example/en/admission/', purpose: 'p', snippetDate: '2026-10-20' }];
+  const listing = [{ label: 'Website lead (listing: example directory)', url: 'https://directory.example/entry/1', purpose: 'p', snippetDate: '2026-10-25' }];
+  const other = [{ label: 'Admission page', url: 'https://other.example/x', purpose: 'p', snippetDate: '2026-10-20' }];
+  const r1 = withRefs({ ...base(), website: U('https://unit-test.example/') }, sameHost);
+  const g1 = reportedLeads(r1);
+  check(g1.website && g1.website.host === 'unit-test.example' && g1.website.date === '2026-10-20' && g1.website.sources.length === 1, 'g website reported with a same-host reference');
+  check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, listing)).website?.sources[0].label === 'Listing: example directory', 'g website reported with a "Website lead" listing, under a generic label');
+  check(g1.website.sources[0].label === 'Official page 1', 'g a same-host source is labelled "Official page N", never with the researcher\'s label');
+  const leadyLabel = withRefs({ ...base(), website: U('https://unit-test.example/') }, [{ label: 'Admission page: MD (6 yrs) CANARY-LABEL', url: 'https://unit-test.example/adm/', purpose: 'CANARY-PURPOSE', snippetDate: '2026-10-20' }]);
+  check(!JSON.stringify(reportedLeads(leadyLabel)).includes('CANARY'), 'g a researcher\'s label or purpose never reaches the reported leads');
+  const docRefs = [{ label: 'Rules', url: 'https://unit-test.example/uploads/rules-2026.pdf', purpose: 'p', snippetDate: '2026-10-20' }, { label: 'Rules', url: 'https://unit-test.example/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0/', purpose: 'p' }, { label: 'Rules', url: 'https://unit-test.example/правила/', purpose: 'p' }];
+  check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, docRefs)).website === null, 'g documents and non-ASCII or encoded addresses are never cited, so a website with only those is not reported');
+  check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, [...docRefs, ...sameHost])).website?.sources.length === 1, 'g a plain page is cited and the document addresses are skipped');
+  check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, other)).website === null, 'g no website with references on other hosts only');
+  const officeRec = withRefs({ ...base(), website: U('https://unit-test.example/'), internationalOffice: U({ email: 'x@unit-test.example', url: 'https://unit-test.example/office/' }) }, [{ label: 'Office page', url: 'https://unit-test.example/office/', purpose: 'p', snippetDate: '2026-10-20' }, ...sameHost]);
+  check(reportedLeads(officeRec).website?.sources.every((x) => x.url !== 'https://unit-test.example/office/'), 'g the international-office page is never cited as a reported source');
+  check(reportedLeads(withRefs({ ...base(), website: { ...U('https://unit-test.example/'), status: 'conflicting' } }, sameHost)).website === null, 'g a conflicting website is never reported');
+  check(reportedLeads(withRefs({ ...base(), website: U('http://unit-test.example/') }, sameHost)).website === null, 'g a non-https website is never reported');
+  check(reportedLeads(withRefs({ ...base(), website: U('https://www.facebook.com/unittest') }, [{ label: 'Website lead', url: 'https://www.facebook.com/unittest', purpose: 'p' }])).website === null, 'g a social page is never a reported website');
+  check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, [{ label: 'Website lead', url: 'https://www.google.com/search?q=x', purpose: 'p' }])).website === null, 'g a search result never supports a reported website');
+  check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, [{ label: 'Website lead (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Unit_Test', purpose: 'p', snippetDate: '2026-10-25' }])).website?.sources[0].url.includes('wikipedia'), 'g a Wikipedia entry may be cited as a discovery source for a reported website');
+  const g2 = reportedLeads({ ...base(), city: 'Unit City', region: 'Unit Region', institutionType: 'state-medical-university', programmes: [{ ...base().programmes[0], field: 'medicine', name: 'CANARY-PROGRAMME-NAME' }], deferredProgrammes: [{ ...base().programmes[0], id: 'dent', field: 'dentistry', name: 'CANARY-DEFERRED' }] });
+  eq([g2.city, g2.region, g2.institutionType, g2.programmeFields], ['Unit City', 'Unit Region', 'state-medical-university', ['medicine', 'dentistry']], 'g city, region, type and programme areas as recorded');
+  check(!JSON.stringify(g2).includes('CANARY'), 'g programme names never appear in the reported leads');
+  check(reportedLeads({ ...base(), city: 'Unit City (not verified)' }).city === null, 'g a city with research-note wording is not reported');
+  check(reportedLeads({ ...base(), institutionType: 'made-up' }).institutionType === null, 'g an unknown institution type is not reported');
+  check(reportedLeads({ ...base(), programmes: [], deferredProgrammes: [] }).programmeFields.length === 0, 'g no programme areas without programmes');
+  const pub = publicationDecision({ ...clone(rec) }, passing().ev, { now: NOW });
+  check(pub.published && pub.publicRecord.reported === undefined, 'g a published profile carries no reported block');
 }
 
 // ------------------------------------------------------------------------------------------------ static checks over src/

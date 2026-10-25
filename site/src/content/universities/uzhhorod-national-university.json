@@ -38,6 +38,7 @@
   },
   "city": "Uzhhorod",
   "region": "Zakarpattia Oblast",
+  "institutionType": "multi-faculty-university",
   "address": {
     "value": null,
     "status": "not-published",

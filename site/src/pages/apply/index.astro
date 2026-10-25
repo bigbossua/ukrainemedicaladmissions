@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getListedUniversities, getResearchPreviews } from '../../lib/records';
 import { FIELDS, LEVELS } from '../../lib/fields';
 import { SITE, PREVIEW } from '../../lib/site';
-import { nameKind } from '../../lib/name-search.mjs';
+import { groupPreviews } from '../../lib/institution-types';
 
 // Stage-1 candidate profile (APPLICATION_SYSTEM_SPEC.md §8.1, §12.1, §13). One form, five fieldsets.
 // Without JavaScript every fieldset is visible and the form posts as one page; scripts/apply-steps.ts turns it
@@ -14,10 +14,7 @@ import { nameKind } from '../../lib/name-search.mjs';
 const universities = (await getListedUniversities()).map((u) => u.d);
 // Research previews (N25): offered as a choice, labelled "not yet verified"; choosing one records interest only.
 const previews = await getResearchPreviews();
-const previewGroups = [
-  { title: 'Medical and pharmacy institutions', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
-  { title: 'Other universities', items: previews.filter((u) => nameKind(u.shortName) === 'other') },
-].filter((g) => g.items.length > 0);
+const previewGroups = groupPreviews(previews);
 
 const STEPS = ['Your plan', 'Your education', 'Your documents', 'About you', 'Review and send'];
 const fieldOptions = [...Object.entries(FIELDS).map(([value, f]) => ({ value, label: f.label })), { value: 'undecided', label: 'Not decided yet' }];

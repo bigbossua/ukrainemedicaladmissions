@@ -37,6 +37,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Dnipro",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -46,10 +47,10 @@
   },
   "website": {
     "value": "https://emu.dp.ua/",
-    "status": "unverified",
+    "status": "conflicting",
     "source": null,
     "checked": null,
-    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing."
+    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing. | Search results of 2026-10-25 give two different websites: emu.dp.ua (earlier lead) and dnipromedicalinstitute.com (IAU/WHED profile). Neither page was opened. Withheld as conflicting until a register entry or the site itself is read."
   },
   "internationalOffice": {
     "value": null,
@@ -379,6 +380,12 @@
       "purpose": "Student forum post: 'seats are limited for international students' and transfers hard — anecdotal, unverified",
       "snippetDate": "2026-10-24",
       "note": "Result date as shown: undated (older forum post). Search-result lead, not read in full."
+    },
+    {
+      "label": "Register entry contacts (Study in Ukraine, MES)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/92/contacts",
+      "purpose": "Contacts as listed on the government portal",
+      "snippetDate": "2026-10-25"
     }
   ],
   "faqs": [],
@@ -426,7 +433,8 @@
       "Name lead (unverified): Dnipropetrovsk Medical Institute of Traditional & Nontraditional Medicine (earlier name, SUCHO archive listing)",
       "Name lead (unverified): Днепровский медицинский институт традиционной и нетрадиционной медицины (Russian form shown on education.ua)",
       "Name lead (unverified): Європейський медичний університет (new name per education.ua, unconfirmed)",
-      "Name lead (unverified): European Medical University / EMU (lead only; one blog and education.ua)"
+      "Name lead (unverified): European Medical University / EMU (lead only; one blog and education.ua)",
+      "OFFICIAL WEBSITE CONFLICT (2026-10-25): emu.dp.ua (earlier lead) versus dnipromedicalinstitute.com (IAU/WHED). Read the Study in Ukraine register entry (university/92) to settle it."
     ]
   }
 }

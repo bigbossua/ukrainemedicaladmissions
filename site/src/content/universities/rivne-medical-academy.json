@@ -38,6 +38,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Rivne",
+  "institutionType": "communal-medical-academy-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -624,11 +625,11 @@
   "preparatoryRoutes": [],
   "researchReferences": [
     {
-      "label": "Directory entry titled with the full official-form name 'Комунальний заклад вищо",
+      "label": "Website lead (listing: education.ua)",
       "url": "https://www.education.ua/universities/939/",
       "purpose": "Directory entry titled with the full official-form name 'Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради' (communal HEI of Rivne Regional Council)",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "Ombudsman (government) tag page naming dormitory No. 2 of the 'Комунальний закла",
@@ -638,11 +639,11 @@
       "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
     },
     {
-      "label": "Directory: type Академія, 'Форма власності: Державна', forms full-time/evening/d",
+      "label": "Website lead (listing: osvita.ua)",
       "url": "https://osvita.ua/vnz/guide/37461/",
       "purpose": "Directory: type Академія, 'Форма власності: Державна', forms full-time/evening/distance, qualification levels bachelor, professional junior bachelor, master, city Rivne; address вул. М. Карнаухова, 53",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: not shown in results. Search-result lead, not read in full."
+      "note": "Result date as shown: not shown in results. Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "Directory page (college-type listing) at the same address giving mcollege.rv.ua;",
@@ -756,7 +757,8 @@
       "Skeptic's note: Confusion risk with Luhansk State Medical University (candidate), reported to operate in Rivne oblast after relocation; the two are different institutions.",
       "Name lead (unverified): Communal Institution of Higher Education \"Rivne Medical Academy\" of Rivne Regional Council (translation of the Ukrainian name; no official English name found in search results)",
       "Name lead (unverified): Комунальний заклад вищої освіти «Рівненська медична академія» Рівненської обласної ради",
-      "Name lead (unverified): mcollege.rv.ua (host lead from osvita.ua and vstup.osvita.ua directories; college-era hostname)"
+      "Name lead (unverified): mcollege.rv.ua (host lead from osvita.ua and vstup.osvita.ua directories; college-era hostname)",
+      "Programme areas rest on listings (2026-10-25): bachelor, junior specialist and master levels reported; nursing and pharmacy not named in the snippets. Confirm on the site itself."
     ]
   }
 }

@@ -38,6 +38,7 @@
   },
   "city": "Odesa",
   "region": "Odesa Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": "13 Olgiivska Street, Odesa",
     "status": "unverified",

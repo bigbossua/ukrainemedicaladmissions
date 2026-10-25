@@ -38,6 +38,7 @@
   },
   "city": "Vinnytsia",
   "region": "Vinnytsia Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": null,
     "status": "not-published",

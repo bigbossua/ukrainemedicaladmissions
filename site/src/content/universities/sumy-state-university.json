@@ -40,6 +40,7 @@
     "note": "Read from a dated official statement for the current academic year. The latest official evidence is from 2022 (remote teaching from 1 April 2022; online or mixed depending on where students are); no 2025–26 or 2026–27 statement found."
   },
   "city": "Sumy",
+  "institutionType": "multi-faculty-university",
   "address": {
     "value": null,
     "status": "not-published",

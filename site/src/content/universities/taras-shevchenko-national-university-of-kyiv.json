@@ -40,6 +40,7 @@
     "note": "Read from a dated official statement for the current academic year. No 2025–26 or 2026–27 statement on in-person, blended or distance teaching found."
   },
   "city": "Kyiv",
+  "institutionType": "multi-faculty-university",
   "address": {
     "value": null,
     "status": "not-published",

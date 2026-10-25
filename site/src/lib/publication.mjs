@@ -40,6 +40,7 @@
 import { createHash } from 'node:crypto';
 import { parseEvidence, isIsoDate, isHttpsUrl } from './evidence.mjs';
 import { PUBLICATION_SETTINGS, REVIEW_MAX_AGE_DAYS } from './publication-config.mjs';
+import { FIELD_KEYS, INSTITUTION_TYPE_KEYS } from '../content/schema.mjs';
 
 /** @typedef {typeof PUBLICATION_SETTINGS} PublicationSettings */
 /**
@@ -64,7 +65,7 @@ const resolveSettings = (s) => (s && s !== PUBLICATION_SETTINGS ? Object.freeze(
 export const FIELD_POLICY = Object.freeze({
   record: Object.freeze({
     slug: 'editorial-public', synthetic: 'internal', officialName: 'public', shortName: 'editorial-public', alternativeNames: 'internal',
-    status: 'public', statusStatement: 'public', teachingFormat: 'public', city: 'editorial-public', region: 'editorial-public',
+    status: 'public', statusStatement: 'public', teachingFormat: 'public', city: 'editorial-public', region: 'editorial-public', institutionType: 'editorial-public',
     address: 'public', website: 'public', internationalOffice: 'public', founded: 'public', overview: 'editorial-public',
     accreditation: 'public', recognition: 'public', accommodation: 'public', programmes: 'public', deferredProgrammes: 'internal',
     preparatoryRoutes: 'public', researchReferences: 'internal', faqs: 'internal', images: 'internal', verification: 'editorial-public',
@@ -830,9 +831,65 @@ export function publicationDecision(record, evidence, { now = new Date(), previe
   return {
     slug: typeof record?.slug === 'string' ? record.slug : '?', flagged, policyPasses: r.publishable, published, draft: !published,
     buildError: flagged && !r.publishable && !preview, failures: r.failures, notListed: r.notListed, publicRecord: published ? r.publicRecord : null,
-    // Research preview (N25): the SAME projection a published profile would get, never the raw record.
-    researchPreview: rp.ok, researchPreviewReasons: rp.reasons, previewRecord: rp.ok ? r.publicRecord : null,
+    // Research preview (N25): the SAME projection a published profile would get, never the raw record, plus (g, 2026-10-25)
+    // the labelled REPORTED leads under `reported` (null when the owner setting is off).
+    researchPreview: rp.ok, researchPreviewReasons: rp.reasons, previewRecord: rp.ok ? { ...r.publicRecord, reported: reportedLeads(record, resolveSettings(settings)) } : null,
   };
+}
+
+// ------------------------------------------------------------------------------------------------ reported leads (g, 2026-10-25)
+
+/** @typedef {{ url: string, label: string, date: string | null }} ReportedSource */
+/** @typedef {{ website: { value: string, host: string, date: string | null, sources: ReportedSource[] } | null, city: string | null, region: string | null, institutionType: string | null, programmeFields: string[], asOf: string | null }} ReportedLeads */
+
+const REPORTED_SOURCE_EXCLUDED = /(^|\.)(google|googleusercontent|bing|yahoo|yandex|baidu|duckduckgo|ecosia|startpage|archive|facebook|instagram|youtube|tiktok|twitter|linkedin|reddit|quora|medium|blogspot|wordpress|telegram|whatsapp)\.[a-z]{2,}(\.[a-z]{2})?$|(^|\.)(t\.me|x\.com|youtu\.be|wa\.me|archive\.ph|archive\.is|archive\.today|search\.brave\.com|bit\.ly|tinyurl\.com)$|\.translate\.goog$/;
+/** A research reference recorded as a website lead from a register or listing (its label starts "Website lead"). */
+const WEBSITE_LEAD_LABEL = /^website lead\b/i;
+/** @param {string | undefined} s */
+const plainText = (s) => typeof s === 'string' && s.trim().length > 0 && !/[<>\r\n\u2028\u2029]/.test(s) && !hasInternalWording(s) ? s.trim() : null;
+
+/**
+ * The REPORTED leads a research-preview page may print, each labelled as reported and not yet verified (owner
+ * instruction 2026-10-25, setting REPORTED_LEADS_ON_PREVIEWS). Built only from: the website claim's value (an https
+ * address, not a search, archive or social host, not marked conflicting), supported by at least one recorded research
+ * reference on the same host or marked "Website lead" (listing or register); the recorded city and region; the recorded
+ * institution type; and the programme FAMILIES of the recorded programmes (listed and deferred), never their names. Dates
+ * are the latest snippet dates of the references used. Notes, open questions, statements, contacts, fees, requirements,
+ * deadlines, accreditation and operating status are never part of it. Null when the setting is off.
+ * @param {any} record @param {Partial<PublicationSettings>} [settings] @returns {ReportedLeads | null}
+ */
+export function reportedLeads(record, settings) {
+  const S = resolveSettings(settings);
+  if (S.REPORTED_LEADS_ON_PREVIEWS !== true) return null;
+  // Sources a REPORTED lead may cite: any https page except a search engine, cache, archive, social network, blog or
+  // link shortener. Wikipedia and public listings are allowed here as discovery sources (owner hierarchy 2026-10-25);
+  // they are still never evidence for a verified claim (isNotEvidenceSource).
+  const refs = (Array.isArray(record?.researchReferences) ? record.researchReferences : []).filter((/** @type {any} */ r) => r && typeof r === 'object' && isHttpsUrl(r.url) && !REPORTED_SOURCE_EXCLUDED.test(hostOf(r.url) ?? ''));
+  const dateOf = (/** @type {any[]} */ list) => list.map((r) => (isIsoDate(r.snippetDate) ? r.snippetDate : null)).filter(Boolean).sort().pop() ?? null;
+  let website = null;
+  const w = record?.website;
+  if (w && typeof w === 'object' && typeof w.value === 'string' && isHttpsUrl(w.value) && !isNotEvidenceSource(w.value) && w.status !== 'conflicting' && !hasInternalWording(w.value)) {
+    const host = hostOf(w.value);
+    // Never cite the recorded international-office page (its address is an unverified contact claim) as a source.
+    const officeUrl = typeof record?.internationalOffice?.value?.url === 'string' ? record.internationalOffice.value.url : null;
+    // Only plain web pages are cited: a document address (.pdf, .docx) or one with non-ASCII or encoded characters can
+    // itself carry a lead (a year, a title) in its file name.
+    const plainPage = (/** @type {string} */ u) => /^[\x21-\x7e]+$/.test(u) && !/%[0-9a-f]{2}/i.test(u) && !/\.(pdf|docx?|xlsx?|pptx?)(\?|#|$)/i.test(u);
+    const sources = refs.filter((/** @type {any} */ r) => r.url !== officeUrl && plainPage(r.url) && (hostOf(r.url) === host || WEBSITE_LEAD_LABEL.test(String(r.label ?? '')))).slice(0, 3);
+    // Source labels are generic by construction (a researcher's label may carry a lead such as a duration or a year):
+    // "Official page N" for the university's own host, otherwise the kind named after "Website lead" in the label.
+    let n = 0;
+    const genericLabel = (/** @type {any} */ r) => {
+      if (hostOf(r.url) === host) return `Official page ${++n}`;
+      const m = /^website lead\s*\(([^)]*)\)/i.exec(String(r.label ?? ''));
+      const kind = m ? m[1].replace(/,?\s*discovery only/i, '').trim() : '';
+      return kind ? kind.charAt(0).toUpperCase() + kind.slice(1) : 'Public listing';
+    };
+    if (host && sources.length) website = { value: w.value, host, date: dateOf(sources), sources: sources.map((/** @type {any} */ r) => ({ url: r.url, label: genericLabel(r), date: isIsoDate(r.snippetDate) ? r.snippetDate : null })) };
+  }
+  const fields = [...new Set([...(Array.isArray(record?.programmes) ? record.programmes : []), ...(Array.isArray(record?.deferredProgrammes) ? record.deferredProgrammes : [])].map((/** @type {any} */ p) => p?.field).filter((/** @type {any} */ f) => FIELD_KEYS.includes(f)))];
+  const institutionType = INSTITUTION_TYPE_KEYS.includes(record?.institutionType) ? record.institutionType : null;
+  return { website, city: plainText(record?.city), region: plainText(record?.region), institutionType, programmeFields: fields, asOf: dateOf(refs) };
 }
 
 // ------------------------------------------------------------------------------------------------ research previews (N25)

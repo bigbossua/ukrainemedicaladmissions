@@ -35,6 +35,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Kyiv",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",

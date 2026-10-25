@@ -37,6 +37,7 @@
   },
   "city": "Zaporizhzhia",
   "region": "Zaporizhzhia Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": null,
     "status": "not-published",

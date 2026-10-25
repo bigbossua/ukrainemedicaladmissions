@@ -53,8 +53,11 @@ for (const [label, ctxOpts] of [['mobile', { ...devices['iPhone 13'] }], ['deskt
   await page.click(`article[data-slug="${SLUG}"] a.more`);
   await page.waitForURL(`**/universities/${SLUG}/`);
   ok((await page.textContent('h1'))?.trim() === 'Kyiv Medical University', `${label}: profile heading`);
-  const mainText = (await page.textContent('main')) ?? '';
-  ok(!/€|\$|USD|per year|per semester|Kyiv,|Kiev,|www\.|https?:\/\//.test(mainText), `${label}: research-preview profile prints a fee, address or web address`);
+  const mainText = (await page.evaluate(() => { const m = document.querySelector('main')?.cloneNode(true); m?.querySelector('[data-reported]')?.remove(); return m?.textContent ?? ''; }));
+  ok(!/€|\$|USD|per year|per semester|www\.|https?:\/\//.test(mainText), `${label}: research-preview profile prints a fee or web address outside the reported block`);
+  const reportedText = (await page.textContent('[data-reported]')) ?? '';
+  ok(/not yet verified/i.test(reportedText) && !/€|\$|USD|per year|per semester/.test(reportedText), `${label}: reported block is labelled and prints no fee`);
+  ok((await page.$$eval('[data-reported] a[href^="http"]', (a) => a.every((x) => x.rel.includes('nofollow')))), `${label}: an external link in the reported block lacks rel=nofollow`);
   ok(/noindex/.test(await page.$eval('meta[name="robots"]', (m) => m.content)), `${label}: research-preview profile is not noindex`);
 
   // 3. Profile → Apply Online with the university pre-selected and said so.

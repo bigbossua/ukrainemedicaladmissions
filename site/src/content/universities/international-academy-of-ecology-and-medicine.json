@@ -39,6 +39,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Kyiv",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -661,7 +662,8 @@
       "Name lead (unverified): Міжнародна академія екології і медицини (spelling used in MON order, Dec 2019)",
       "Name lead (unverified): Mizhnarodna akademiya ekologii ta meditsini (MON file-name transliteration, 2018)",
       "Name lead (unverified): Mizhnarodna akademiya ekologiyi ta mediczini (MON file-name transliteration)",
-      "Name lead (unverified): International Academy of Ecology and Medicine Kyiv (Careers360 listing 'unpg')"
+      "Name lead (unverified): International Academy of Ecology and Medicine Kyiv (Careers360 listing 'unpg')",
+      "Website lead maem.kiev.ua was not found in any listing on 2026-10-25; one agency listing (careers360) places the institution in Sevastopol, which conflicts with the Kyiv leads. No website is reported until a register entry or the site itself is read."
     ]
   }
 }

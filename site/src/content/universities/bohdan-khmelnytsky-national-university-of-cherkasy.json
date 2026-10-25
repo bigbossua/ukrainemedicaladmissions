@@ -39,6 +39,7 @@
     "note": "Read from a dated official statement for the current academic year. No statement on teaching format (in person, blended or distance) was found for any year; the NAQA seminar held in Cherkasy on 4 November 2025 and the 2025 admission card show activity, not a teaching format."
   },
   "city": "Cherkasy",
+  "institutionType": "multi-faculty-university",
   "address": {
     "value": "81 Shevchenko Blvd., Cherkasy",
     "status": "unverified",

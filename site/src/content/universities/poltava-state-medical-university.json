@@ -38,6 +38,7 @@
   },
   "city": "Poltava",
   "region": "Poltava Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": "36011, Poltava, 23 Shevchenka Street",
     "status": "unverified",

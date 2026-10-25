@@ -35,6 +35,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Odesa",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -44,10 +45,10 @@
   },
   "website": {
     "value": "https://mgu.edu.ua/",
-    "status": "unverified",
+    "status": "conflicting",
     "source": null,
     "checked": null,
-    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing."
+    "note": "Search-snippet lead (official domain, confidence low, 2026-10-24) — NOT verified; read the official page before publishing. | Search results of 2026-10-25 give mgu.com.ua (national listing and directory entries) while the earlier lead was mgu.edu.ua. Neither page was opened. Withheld as conflicting."
   },
   "internationalOffice": {
     "value": null,
@@ -802,7 +803,8 @@
       "Name lead (unverified): Institute of Medicine (third-party aggregator name for the medical unit; not reproduced)",
       "Name lead (unverified): Faculty of Dentistry and Pharmacy / Факультет стоматології та фармації (faculty named on the vstup.osvita.ua 222 Medicine record)",
       "Name lead (unverified): Медичний фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Фонтанська дорога 33; junior-specialist / фаховий молодший бакалавр level)",
-      "Name lead (unverified): Фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Бісквітний провулок 3; site given as epk-mgu.od.ua on education.ua/colleges/1913/)"
+      "Name lead (unverified): Фаховий коледж Міжнародного гуманітарного університету (affiliated vocational college, Бісквітний провулок 3; site given as epk-mgu.od.ua on education.ua/colleges/1913/)",
+      "OFFICIAL WEBSITE CONFLICT (2026-10-25): mgu.edu.ua (earlier lead) versus mgu.com.ua (listings). Confirm on the Study in Ukraine register."
     ]
   }
 }

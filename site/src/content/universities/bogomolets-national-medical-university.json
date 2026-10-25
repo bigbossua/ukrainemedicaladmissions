@@ -38,6 +38,7 @@
   },
   "city": "Kyiv",
   "region": "Kyiv",
+  "institutionType": "state-medical-university",
   "address": {
     "value": "13 Taras Shevchenka Boulevard, Kyiv, 01601",
     "status": "unverified",

@@ -38,6 +38,7 @@
   },
   "city": "Ternopil",
   "region": "Ternopil Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": "1 Maidan Voli, Ternopil, 46001, Ukraine",
     "status": "unverified",

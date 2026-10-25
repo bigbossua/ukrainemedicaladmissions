@@ -42,6 +42,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Rivne",
+  "institutionType": "relocated-state-medical-university",
   "address": {
     "value": null,
     "status": "not-published",

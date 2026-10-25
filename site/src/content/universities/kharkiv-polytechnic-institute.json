@@ -38,6 +38,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Kharkiv",
+  "institutionType": "health-programmes-university",
   "address": {
     "value": null,
     "status": "not-published",
@@ -446,6 +447,18 @@
       "purpose": "Context only: war damage to another Kharkiv university (KhNMU), 2025; not about KhPI",
       "snippetDate": "2026-10-24",
       "note": "Result date as shown: 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Educational and Scientific Medical Institute (official page)",
+      "url": "https://www.kpi.kharkov.ua/eng/?p=5156",
+      "purpose": "Official page: institute set up by rector's order no. 206 OD of 30 April 2021; departments include General Pharmacy; the licence reported covers postgraduate education",
+      "snippetDate": "2026-10-25"
+    },
+    {
+      "label": "Foreign students news (official page)",
+      "url": "https://www.kpi.kharkov.ua/eng/2024/11/29/ntu-khpi-is-among-the-top-3-university-leaders-in-ukraine-by-the-number-of-foreign-students/",
+      "purpose": "Official news item on foreign-student numbers",
+      "snippetDate": "2026-10-25"
     }
   ],
   "faqs": [],
@@ -491,7 +504,8 @@
       "Name lead (unverified): Kharkiv Technological Institute (1885 predecessor, per Wikipedia/Encyclopedia of Ukraine leads)",
       "Name lead (unverified): Навчально-науковий медичний інститут НТУ «ХПІ» (its medical unit, per 2021 order lead)",
       "Name lead (unverified): Навчально-науковий інститут хімічних технологій та інженерії (unit that owns the 226 pharmacy programme, per OPP 2022 lead)",
-      "Name lead (unverified): Institute of International Education / web.kpi.kharkov.ua/mo (foreign-student unit)"
+      "Name lead (unverified): Institute of International Education / web.kpi.kharkov.ua/mo (foreign-student unit)",
+      "No source of 2026-10-25 confirms an undergraduate Medicine (222) or Pharmacy programme open to international applicants; the medical institute's reported licence covers postgraduate education only. Keep every programme area as a lead until the admission rules for foreigners are read."
     ]
   }
 }

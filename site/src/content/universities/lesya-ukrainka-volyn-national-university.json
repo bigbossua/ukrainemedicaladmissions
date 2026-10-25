@@ -36,6 +36,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Lutsk",
+  "institutionType": "multi-faculty-university",
   "address": {
     "value": null,
     "status": "not-published",

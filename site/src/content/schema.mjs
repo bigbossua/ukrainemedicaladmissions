@@ -34,6 +34,16 @@ export const money = z.object({
 });
 
 export const FIELD_KEYS = /** @type {const} */ (['medicine', 'dentistry', 'pharmacy', 'nursing', 'public_health', 'physical_therapy', 'physical_education', 'preparatory', 'other']);
+/**
+ * Institution type as REPORTED in public sources (added 2026-10-25, owner instruction: distinguish dedicated medical
+ * universities from multi-faculty universities, private and communal institutions and relocated universities). Our own
+ * classification of the leads, never a verified fact; printed only with a "reported" label (src/lib/publication.mjs
+ * reportedLeads). Postgraduate-only and military institutions are not recorded at all (UNIVERSITY_DATA_REGISTER.md §13).
+ */
+export const INSTITUTION_TYPE_KEYS = /** @type {const} */ ([
+  'state-medical-university', 'state-pharmacy-university', 'relocated-state-medical-university', 'multi-faculty-university',
+  'private-university-or-institute', 'communal-medical-academy-or-institute', 'health-programmes-university',
+]);
 export const LEVEL_KEYS = /** @type {const} */ (['bachelor', 'master', 'integrated_master', 'junior_bachelor', 'preparatory', 'phd', 'other']);
 
 /** One entry requirement as the university states it. Only `verified` objects feed a readiness assessment. */
@@ -126,6 +136,7 @@ export const record = z.object({
   teachingFormat: claim(z.enum(['in-person', 'blended', 'distance', 'unknown'])),
   city: z.string(),
   region: z.string().optional(),
+  institutionType: z.enum(INSTITUTION_TYPE_KEYS).optional(), // reported classification (see INSTITUTION_TYPE_KEYS); editorial, labelled "reported"
   address: claim(z.string()),
   website: claim(z.string().url()),
   internationalOffice: claim(z.object({ email: z.string().optional(), phone: z.string().optional(), url: z.string().url().optional() })),

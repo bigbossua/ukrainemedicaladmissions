@@ -50,8 +50,19 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       const visible = () => page.$$eval('[data-list] article', (a) => a.filter((el) => el.offsetParent !== null).length);
       const count = Number(await page.textContent('[data-count]'));
       if (count !== total) fail(`directory count ${count} ≠ ${total} cards`);
-      const previews = await page.$$eval('[data-list] article[data-status="preview"]', (a) => a.map((el) => ({ name: el.dataset.name ?? '', facts: ['city', 'fields', 'levels', 'languages', 'intakes', 'prep'].filter((k) => k in el.dataset) })));
+      const previews = await page.$$eval('[data-list] article[data-status="preview"]', (a) => a.map((el) => ({ name: el.dataset.name ?? '', facts: ['city', 'fields', 'levels', 'languages', 'intakes', 'prep'].filter((k) => k in el.dataset), extra: Object.keys(el.dataset).filter((k) => !['slug', 'status', 'name', 'kind', 'type', 'rcity', 'rfields'].includes(k) && !k.startsWith('astroCid')), reported: el.querySelector('.rep')?.textContent ?? '' })));
       for (const p of previews) if (p.facts.length) fail(`directory: not-yet-verified card "${p.name}" carries fact attributes ${p.facts.join(', ')}`);
+      for (const p of previews) if (p.extra.length) fail(`directory: not-yet-verified card "${p.name}" carries unexpected attributes ${p.extra.join(', ')}`);
+      for (const p of previews) if (p.reported && !/^Reported/.test(p.reported.trim())) fail(`directory: card "${p.name}" prints a lead without the word Reported: ${p.reported.slice(0, 60)}`);
+      // The "as reported" filters narrow the previews and Clear restores them.
+      if (previews.length > 1 && (await page.$('select[name="rcity"]'))) {
+        const city = await page.$eval('select[name="rcity"] option:nth-child(2)', (o) => o.value);
+        await page.selectOption('select[name="rcity"]', city);
+        const shown = await page.$$eval('[data-list] article:not([hidden])', (a) => a.map((el) => el.dataset.rcity));
+        if (!shown.length || shown.some((c) => c !== city)) fail(`directory: city filter "${city}" shows ${shown.length} cards, not all from that city`);
+        await page.click('[data-reset]'); await page.waitForTimeout(50);
+        if ((await visible()) !== total) fail('directory: Clear after the city filter did not restore every card');
+      }
       if (total === 0) {
         if (!(await page.$('[data-empty-state]'))) fail('directory empty state missing with zero universities');
         if (await page.$('[data-list] a[href^="/universities/"]')) fail('directory lists a profile link with zero universities');

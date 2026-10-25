@@ -40,6 +40,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Lviv",
+  "institutionType": "communal-medical-academy-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -976,7 +977,8 @@
       "Skeptic's note: Domain lma.edu.ua is a directory lead (osvita.ua, vstup.osvita.ua), medium confidence, not read on the site or a register.",
       "Name lead (unverified): Higher Educational Communal Institution of Lviv Regional Council \"Andrei Krupynskyi Lviv Medical Academy\" (LEAD ONLY: wording attributed by the search summary to the Study in Ukraine portal programmes listing; official English rendering on lma.edu.ua not seen)",
       "Name lead (unverified): Комунальний заклад вищої освіти Львівської обласної ради \"Львівська медична академія імені Андрея Крупинського\" (LEAD: page titles on vstup.osvita.ua 2020, 2023, 2024 and education.ua; not read from an official page)",
-      "Name lead (unverified): Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine (unipage.net; apparent predecessor name before academy status, lead only)"
+      "Name lead (unverified): Andrey Krupynski Lviv Institute of Nursing and Laboratory Medicine (unipage.net; apparent predecessor name before academy status, lead only)",
+      "Website lead lma.edu.ua was not found in any listing on 2026-10-25 (only third-party directories without the address); no website is reported until a register entry or the site itself is read. Directories report nursing, laboratory and treatment programmes; pharmacy was not seen."
     ]
   }
 }

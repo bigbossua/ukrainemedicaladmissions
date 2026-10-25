@@ -38,6 +38,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Kharkiv",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -653,7 +654,8 @@
       "Name lead (unverified): Приватний заклад вищої освіти \"Університет медицини та соціальних наук\" (раніше: Харківський інститут медицини та біомедичних наук)",
       "Name lead (unverified): Kharkiv Institute of Medicine and Biomedical Sciences of PHEE \"Kyiv Medical University\" (directory form, village.ai; unverified)",
       "Name lead (unverified): University of Medicine and Social Sciences (translation of the new registered name; not found in English on an official page)",
-      "Name lead (unverified): khim.edu.ua (domain lead from a third-party directory; not confirmed after the rename)"
+      "Name lead (unverified): khim.edu.ua (domain lead from a third-party directory; not confirmed after the rename)",
+      "Website lead khim.edu.ua was not found in any listing or register on 2026-10-25; no website is reported. A NAQA accreditation record (one year, to 2026-10-21) is a lead for the Medicine programme and must be read directly; whether accreditation was renewed after that date is unknown."
     ]
   }
 }

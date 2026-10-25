@@ -35,6 +35,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Cherkasy",
+  "institutionType": "communal-medical-academy-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -543,11 +544,11 @@
       "note": "Result date as shown: 2025 campaign (undated page). Search-result lead, not read in full."
     },
     {
-      "label": "Directory entry: «Тип НЗ: Академія; Підпорядкування: Обласна рада; Тип НЗ: Закла",
+      "label": "Website lead (listing: education.ua)",
       "url": "https://www.education.ua/universities/942/",
       "purpose": "Directory entry: «Тип НЗ: Академія; Підпорядкування: Обласна рада; Тип НЗ: Заклад вищої освіти»; website http://www.medacademy.ck.ua; phone (0472) 37 33 10; rector Губенко Інна Яківна; directions Фарм",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: undated directory page. Search-result lead, not read in full."
+      "note": "Result date as shown: undated directory page. Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "Directory entry calling it «державний заклад вищої освіти в місті Черкаси»; addr",
@@ -557,11 +558,11 @@
       "note": "Result date as shown: undated directory page. Search-result lead, not read in full."
     },
     {
-      "label": "Older college listing: «Черкаський медичний коледж - вищий навчальний заклад I-I",
+      "label": "Website lead (listing: osvita.ua)",
       "url": "https://osvita.ua/vnz/college/16858/",
       "purpose": "Older college listing: «Черкаський медичний коледж - вищий навчальний заклад I-II рівнів акредитації» (apparent predecessor; link to the academy not confirmed)",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: undated, apparently pre-academy. Search-result lead, not read in full."
+      "note": "Result date as shown: undated, apparently pre-academy. Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "MON page: information on the right to conduct educational activity in higher edu",
@@ -632,7 +633,8 @@
       "Name lead (unverified): Cherkasy Medical Academy (English name as given in the EDEBO registry search result; full legal form not confirmed)",
       "Name lead (unverified): Черкаська медична академія (registry title lead; the full legal form \"Комунальний заклад вищої освіти «Черкаська медична академія» Черкаської обласної ради\" was NOT confirmed by any search result)",
       "Name lead (unverified): Cherkaska medychna akademiia (standard transliteration of the Ukrainian name, not a form seen in a source)",
-      "Name lead (unverified): Черкаський медичний коледж (apparent predecessor: an osvita.ua college listing describes 'Черкаський медичний коледж - вищий навчальний заклад I-II рівнів акредитації'; reorganisation into the academy is NOT confirmed by any search result)"
+      "Name lead (unverified): Черкаський медичний коледж (apparent predecessor: an osvita.ua college listing describes 'Черкаський медичний коледж - вищий навчальний заклад I-II рівнів акредитації'; reorganisation into the academy is NOT confirmed by any search result)",
+      "Website lead medacademy.ck.ua is supported by two listings only (education.ua, osvita.ua, 2026-10-25); no official page was opened. Confirm on the Study in Ukraine register or the site itself."
     ]
   }
 }

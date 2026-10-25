@@ -6,7 +6,7 @@ import HeroIllustration from '../components/illustrations/HeroIllustration.astro
 import ApplicationJourney from '../components/illustrations/ApplicationJourney.astro';
 import { getListedUniversities, getResearchPreviews } from '../lib/records';
 import { SITE } from '../lib/site';
-import { nameKind } from '../lib/name-search.mjs';
+import { groupPreviews } from '../lib/institution-types';
 import { COURSES, type CourseSlug } from '../lib/courses';
 
 // Publication gate (lib/records.ts): only published records (projections) appear on the home page; drafts only in PREVIEW builds.
@@ -14,11 +14,9 @@ const universities = await getListedUniversities();
 // Research previews (N25): unpublished records that opt in, as projections; labelled "not yet verified", name only.
 const previews = await getResearchPreviews();
 const total = universities.length + previews.length;
-// Grouped by name only, as on /universities/ (lib/name-search.mjs nameKind): no claim beyond what the name says.
-const previewGroups = [
-  { key: 'medical', title: 'Medical and pharmacy institutions', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
-  { key: 'other', title: 'Other universities', items: previews.filter((u) => nameKind(u.shortName) === 'other') },
-].filter((g) => g.items.length > 0);
+// Grouped by REPORTED institution type, as on /universities/ (lib/institution-types.ts): a labelled classification of
+// the research leads; each name carries its reported city. No other claim.
+const previewGroups = groupPreviews(previews);
 // Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact.
 const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary }));
 const jsonLd = [{
@@ -100,7 +98,7 @@ const jsonLd = [{
       <div class="section-head">
         <span class="eyebrow">Universities</span>
         <h2>{universities.length > 0 ? 'Medical universities in Ukraine' : 'Universities we are researching'}</h2>
-        <p>{previews.length > 0 ? 'Names only for now: we show fees, programmes and requirements once each is checked on the university’s official website. Open a university to see what to check before you apply.' : 'A university appears here once its core facts have been checked against its official website.'} <a href="/about/#verification">How we verify</a>.</p>
+        <p>{previews.length > 0 ? 'Each university is listed by reported type with its reported city; fees, programmes and requirements appear once each is checked on the university’s official website. Open a university to see what public sources report and what to check before you apply.' : 'A university appears here once its core facts have been checked against its official website.'} <a href="/about/#verification">How we verify</a>.</p>
       </div>
       {total === 0 && <p class="note">No university profile has completed verification yet. Each will appear here, dated, as soon as it passes.</p>}
       {universities.length > 0 && (
@@ -123,7 +121,7 @@ const jsonLd = [{
         <div class="research-group">
           <h3 class="research-group-title">{g.title} <span class="research-group-count">({g.items.length})</span></h3>
           <ul class="research-list" aria-label={`${g.title} we are researching (not yet verified), alphabetical`}>
-            {g.items.map((u) => <li><a href={`/universities/${u.slug}/`}>{u.shortName}</a> <span class="badge badge-pending">Not yet verified</span></li>)}
+            {g.items.map((u) => <li><a href={`/universities/${u.slug}/`}>{u.shortName}</a>{u.reported?.city && <span class="rcity"> · {u.reported.city}</span>} <span class="badge badge-pending">Not yet verified</span></li>)}
           </ul>
         </div>
       ))}
@@ -180,6 +178,7 @@ const jsonLd = [{
   .research-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
   .research-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); display: inline-flex; align-items: center; min-height: 44px; }
   .research-list .badge { margin-block: .5rem; }
+  .rcity { color: var(--slate); font-size: .9rem; }
   .research-list a::after { content: ""; position: absolute; inset: 0; }
   .research-list a:hover { text-decoration: underline; }
   /* Stack the intro above the course cards until there is room for both side by side. */

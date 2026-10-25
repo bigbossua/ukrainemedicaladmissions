@@ -144,9 +144,12 @@ try {
       // N24 (f): a flagged record in a subdirectory is never built (and so cannot stop the build either).
       check(!existsSync(join(OUT.pass, 'universities', 'fixture-nested-record')), '(b) N24 a record in a subdirectory of the records directory got a page');
       // N25 research previews: epsilon (unpublished, opts in) gets a labelled noindex page built from its PROJECTION only.
-      // Its two verified facts are positive controls; every unverified value, note, reference, open question, city, region
-      // and overview carries "CANARY" and is caught by scan() above. Zeta opts in but its short name carries research-note
-      // wording, and gamma does not opt in: neither may leave any trace (not even the slug).
+      // Its two verified facts are positive controls; every unverified value, note, reference, open question and the
+      // overview carry "CANARY" and are caught by scan() above. Since (g) 2026-10-25 the recorded city, region and
+      // institution type are REPORTED leads (positive controls, printed under the word "Reported"), and the reference label
+      // and purpose must still never appear (the website is not reported: its only reference is on another host). Zeta opts
+      // in but its short name carries research-note wording, and gamma does not opt in: neither may leave any trace (not
+      // even the slug).
       const eps = page(OUT.pass, 'universities/fixture-epsilon-preview-university');
       if (check(eps, '(b) N25 epsilon: research-preview page was not built')) {
         check(eps.includes('data-research-preview'), '(b) N25 epsilon: research-preview marker missing');
@@ -158,6 +161,13 @@ try {
         check(eps.includes('POSCTRL-EPSILON-OFFICIAL-NAME University &lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;'), '(b) N25 epsilon: the verified name with markup is not rendered as escaped text');
         check(!/<\/script><script>alert/i.test(eps), '(b) N25 epsilon: a raw script breakout appears on the preview page');
         check(!eps.includes('ucard') && !eps.includes('Verified profile') && !eps.includes('admissions &amp; fees'), '(b) N25 epsilon: the preview page uses published-profile markup or wording');
+        // (g) reported leads: city, region and type appear inside the labelled block only; no reported website (reference on another host).
+        const repBlock = /<section class="reported"[^>]*data-reported[\s\S]*?<\/section>/.exec(eps)?.[0] ?? '';
+        check(repBlock.includes('Reported in public sources, not yet verified') && repBlock.includes('POSCTRL-EPSILON-CITY, POSCTRL-EPSILON-REGION') && repBlock.includes('Private university or institute'), '(b) g epsilon: the reported block does not print the recorded city, region and type under its label');
+        check(!repBlock.includes('Website reported') && !eps.includes('epsilon-refs.fixture.example'), '(b) g epsilon: a website or a research reference on another host is reported');
+        check(eps.split('POSCTRL-EPSILON-CITY').length - 1 === 1, '(b) g epsilon: the reported city appears outside the reported block (or not at all)');
+        const dirHtml = page(OUT.pass, 'universities');
+        check(dirHtml && /data-slug="fixture-epsilon-preview-university"[^>]*data-rcity="POSCTRL-EPSILON-CITY"/.test(dirHtml) && dirHtml.includes('>Reported</span> POSCTRL-EPSILON-CITY, POSCTRL-EPSILON-REGION'), '(b) g epsilon: the directory card does not carry the reported city under the word Reported');
         for (const v of ['Research preview', 'Not yet verified', 'https://epsilon.fixture.example/', '2 facts verified so far', '/apply/?university=fixture-epsilon-preview-university', 'does not claim any partnership'])
           check(eps.includes(v), `(b) N25 epsilon: expected "${v}"`);
         check((eps.match(/badge-verified">Verified</g) ?? []).length === 2, `(b) N25 epsilon: ${(eps.match(/badge-verified">Verified</g) ?? []).length} Verified badges; exactly the two verified facts may carry one`);

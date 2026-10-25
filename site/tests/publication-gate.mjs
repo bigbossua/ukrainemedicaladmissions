@@ -91,6 +91,11 @@ const prodText = (() => { const out = []; (function walk(d) { for (const f of re
 const dirPage = prodHtml.find((x) => x.p === '/universities/index.html');
 const appliesPage = prodHtml.find((x) => x.p === '/apply/index.html')?.h ?? '';
 const shownCount = (d) => ['officialName', 'website', 'address', 'status', 'statusStatement', 'teachingFormat', 'founded', 'internationalOffice', 'accreditation', 'recognition', 'accommodation'].filter((k) => d?.[k]?.show === true).length + (d?.programmes?.length ?? 0);
+// (g) 2026-10-25: the pages and hosts every preview's REPORTED website cites (listings, registers, the university's own
+// host) legitimately appear on the citing profile pages, so they are not treated as leaked research references of
+// another record. Each record's own unverified website host is still confined to its own profile page (below).
+const reportedSourceUrls = new Set(previewed.flatMap((x) => decision.get(x.slug).previewRecord?.reported?.website?.sources?.map((y) => y.url) ?? []));
+const reportedHosts = new Set(previewed.flatMap((x) => { const w = decision.get(x.slug).previewRecord?.reported?.website; return w ? [w.host, ...w.sources.map((y) => hostOf(y.url))] : []; }));
 for (const r of previewed) {
   const dec = decision.get(r.slug);
   const pr = dec.previewRecord;
@@ -110,17 +115,31 @@ for (const r of previewed) {
   ok();
   // Nothing from the record beyond slug, short name and SHOWN claims may reach any production file.
   const shownValues = new Set(Object.values(pr).filter((v) => v && typeof v === 'object' && v.show === true).flatMap((v) => [v.value, v.source]).filter((x) => typeof x === 'string'));
+  // (g) 2026-10-25: the REPORTED leads (pr.reported) may appear, labelled, on the preview's own page and (city, type,
+  // programme areas only) on the directory, home and apply pages; the website address and its sources only on the
+  // profile page. Everything else from the record is still forbidden everywhere.
+  const rep = pr.reported ?? {};
+  const profilePath = `/universities/${r.slug}/index.html`;
+  const repSourceUrls = new Set((rep.website?.sources ?? []).map((x) => x.url));
   const forbidden = [];
-  const add = (label, v) => { if (typeof v === 'string' && v.trim().length >= 4 && !r.shortName.includes(v) && !shownValues.has(v)) forbidden.push([label, v]); };
+  const add = (label, v, allowedIn = null) => { if (typeof v === 'string' && v.trim().length >= 4 && !r.shortName.includes(v) && !shownValues.has(v)) forbidden.push([label, v, allowedIn]); };
   for (const n of notesOf(r)) add('internal note', n);
-  // Reference labels are generic ("Tuition fee"); their addresses and hosts are what must never appear.
-  for (const ref of r.researchReferences ?? []) { add('research reference', ref.url); add('research reference host', hostOf(ref.url)); }
-  for (const k of ['officialName', 'website', 'address', 'statusStatement']) { const c = r[k]; if (c && typeof c.value === 'string' && pr[k]?.show !== true) add(`unverified ${k}`, c.value); }
-  if (r.website?.value && pr.website?.show !== true) add('unverified website host', hostOf(r.website.value));
+  // Reference labels are generic ("Tuition fee"); their addresses and hosts are what must never appear, except the
+  // sources the reported website cites (profile page only).
+  const hostCited = (h) => !!h && [...reportedHosts].some((x) => x === h || x.endsWith(`.${h}`));
+  for (const ref of r.researchReferences ?? []) { if (!repSourceUrls.has(ref.url) && !reportedSourceUrls.has(ref.url) && ref.url !== rep.website?.value) add('research reference', ref.url); if (hostOf(ref.url) !== rep.website?.host && !hostCited(hostOf(ref.url))) add('research reference host', hostOf(ref.url)); }
+  for (const k of ['officialName', 'address', 'statusStatement']) { const c = r[k]; if (c && typeof c.value === 'string' && pr[k]?.show !== true) add(`unverified ${k}`, c.value); }
+  if (r.website?.value && pr.website?.show !== true) { add('unverified website', r.website.value, rep.website ? profilePath : null); add('unverified website host', hostOf(r.website.value), rep.website ? profilePath : null); }
+  if (rep.website) {
+    const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const profileHtml = readFileSync(join(DIST, 'universities', r.slug, 'index.html'), 'utf8');
+    if (!new RegExp(`<a href="${esc(rep.website.value)}"[^>]*rel="nofollow noopener noreferrer"[^>]*>${esc(rep.website.host)}</a>`).test(profileHtml)) fail(`preview ${r.slug}: reported website not printed as a nofollow link under its host`);
+    if (r.website?.status === 'conflicting') fail(`preview ${r.slug}: a conflicting website is reported`);
+  }
   const office = r.internationalOffice?.value;
-  if (office && pr.internationalOffice?.show !== true) { add('unverified office email', office.email); add('unverified office phone', office.phone); add('unverified office url', office.url); add('unverified office host', hostOf(office.url)); }
+  if (office && pr.internationalOffice?.show !== true) { add('unverified office email', office.email); add('unverified office phone', office.phone); add('unverified office url', office.url); add('unverified office host', hostOf(office.url), rep.website && hostOf(office.url) === rep.website.host ? profilePath : null); }
   if (pr.overview === undefined) add('withheld overview', r.overview);
-  if (pr.editorialWithheld?.city) add('withheld city', r.city);
+  if (pr.editorialWithheld?.city && !rep.city) add('withheld city', r.city);
   if (typeof r.verification.reviewer === 'string') add('reviewer', r.verification.reviewer);
   const evRaw = existsSync(join('data', 'evidence', `${r.slug}.json`)) ? JSON.parse(readFileSync(join('data', 'evidence', `${r.slug}.json`), 'utf8')) : null;
   if (evRaw?.access?.note) add('evidence access note', evRaw.access.note);
@@ -129,16 +148,25 @@ for (const r of previewed) {
   for (const dp of r.deferredProgrammes ?? []) if (typeof dp.name === 'string' && dp.name.length >= 12) add('deferred programme name', dp.name);
   // Unverified money, as any page would format it ("4,500 USD").
   for (const prog of [...(r.programmes ?? []), ...(r.deferredProgrammes ?? [])]) { const m = prog.tuition?.value; if (m && typeof m.amount === 'number' && prog.tuition.status !== 'verified') add('unverified fee', `${m.amount.toLocaleString('en-GB')} ${m.currency}`); }
-  if (pr.region === undefined) add('withheld region', r.region);
+  if (pr.region === undefined && !rep.region) add('withheld region', r.region);
   for (const a of r.alternativeNames ?? []) add('alternative name', a);
   for (const q of r.verification.openQuestions ?? []) add('open question', q);
   for (const f of dec.failures) add('publication failure message', f.message);
   // A listed university's displayed name may contain another record's withheld city ("Kyiv" in "Taras Shevchenko National
   // University of Kyiv"); that name is public by design, so occurrences inside listed names are removed before searching.
   // Anything outside a listed name still fails (proved below with a planted sentence).
+  // A host name is matched as a whole host: "kmu.edu.ua" is not found inside "dimh.kmu.edu.ua" (another record's own
+  // domain, reported on its own page), but is found in "kmu.edu.ua/en/" or on its own.
+  const hostHit = (text, h) => new RegExp(`(^|[^A-Za-z0-9.-])${h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![A-Za-z0-9-])`).test(text);
   for (const { p, h: text } of prodText) {
     const rest = withoutListedNames(text);
-    for (const [label, v] of forbidden) if (rest.includes(v) || rest.includes(escapeHtml(v))) fail(`${p}: ${label} of research preview ${r.slug} leaked: "${v.slice(0, 70)}"`);
+    for (const [label, v, allowedIn] of forbidden) {
+      if (p === allowedIn) continue;
+      // A web address is matched as a whole address too: "https://x.example/en/" is not found inside the cited source
+      // "https://x.example/en/admission/" but is found when printed on its own or as an href value.
+      const hit = / host$/.test(label) ? hostHit(rest, v) : /^https?:\/\//.test(v) ? [v, escapeHtml(v)].some((u) => new RegExp(`${u.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![A-Za-z0-9/._~%?#=&-])`).test(rest)) : rest.includes(v) || rest.includes(escapeHtml(v));
+      if (hit) fail(`${p}: ${label} of research preview ${r.slug} leaked: "${v.slice(0, 70)}"`);
+    }
   }
   ok();
   for (const { p, h: html } of prodHtml) for (const ld of ldBlocks(html)) if (ld.includes(r.shortName) || (r.officialName.value && pr.officialName?.show !== true && ld.includes(r.officialName.value))) fail(`${p}: JSON-LD names research preview ${r.slug}`);

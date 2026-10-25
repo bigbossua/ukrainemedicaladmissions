@@ -37,6 +37,7 @@
   },
   "city": "Ivano-Frankivsk",
   "region": "Ivano-Frankivsk Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": "2 Halytska Street, Ivano-Frankivsk",
     "status": "unverified",

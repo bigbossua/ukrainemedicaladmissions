@@ -41,6 +41,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Mykolaiv",
+  "institutionType": "private-university-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -415,11 +416,11 @@
   "preparatoryRoutes": [],
   "researchReferences": [
     {
-      "label": "Admissions-portal page 'Медико-Природничий Університет' (Mykolaiv): 'заклад вищо",
+      "label": "Website lead (admissions portal: vstup.osvita.ua)",
       "url": "https://vstup.osvita.ua/r15/3955/",
       "purpose": "Admissions-portal page 'Медико-Природничий Університет' (Mykolaiv): 'заклад вищої освіти без підпорядкування'; 'Пропозицій: 34, Ліцензійний обсяг: 238 місць, Всього подано заяв: 58'; degrees 'Бакалавр",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: 2026 intake data (current-year page). Search-result lead, not read in full."
+      "note": "Result date as shown: 2026 intake data (current-year page). Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "Same portal, 2024 year page titled 'Приватний вищий навчальний заклад \"Медико-Пр",
@@ -457,11 +458,11 @@
       "note": "Result date as shown: shows 2026 intake dates. Search-result lead, not read in full."
     },
     {
-      "label": "Second osvita.ua guide entry returned for the same name (appears to be the colle",
+      "label": "Website lead (listing: osvita.ua)",
       "url": "https://osvita.ua/vnz/guide/37459/",
       "purpose": "Second osvita.ua guide entry returned for the same name (appears to be the college or a second record of the institution; not opened)",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: undated. Search-result lead, not read in full."
+      "note": "Result date as shown: undated. Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "MON higher-education licence register, Mykolaiv oblast page - surfaced in result",
@@ -517,7 +518,8 @@
       "Skeptic's note: Do not merge data from the attached 'Фаховий коледж Медико-Природничого університету' into the university profile; do not confuse with Petro Mohyla Black Sea National University (listed, also Mykolaiv).",
       "Name lead (unverified): Private Higher Education Institution \"Medical and Natural Sciences University\" (English form is a directory rendering on education.ua; the inventory's \"Medical-Natural University\" is a literal translation; no official English form read)",
       "Name lead (unverified): Приватний вищий навчальний заклад «Медико-Природничий Університет» (ПВНЗ «Медико-Природничий Університет»)",
-      "Name lead (unverified): Фаховий коледж Медико-Природничого університету / Фаховий коледж ПВНЗ «Медико-природничий університет» (the attached VOCATIONAL college, a separate listing - not the university itself)"
+      "Name lead (unverified): Фаховий коледж Медико-Природничого університету / Фаховий коледж ПВНЗ «Медико-природничий університет» (the attached VOCATIONAL college, a separate listing - not the university itself)",
+      "The English name \"Medical Natural University\" is our rendering of \"Медико-Природничий університет\"; no English-language official page was seen (2026-10-25)."
     ]
   }
 }

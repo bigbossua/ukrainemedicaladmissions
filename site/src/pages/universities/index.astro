@@ -5,8 +5,8 @@ import CtaBand from '../../components/CtaBand.astro';
 import DraftBanner from '../../components/university/DraftBanner.astro';
 import UniversityCard from '../../components/university/UniversityCard.astro';
 import ResearchPreviewCard from '../../components/university/ResearchPreviewCard.astro';
-import { nameKind } from '../../lib/name-search.mjs';
 import CompareTable from '../../components/university/CompareTable.astro';
+import { groupPreviews, INSTITUTION_TYPES } from '../../lib/institution-types';
 import { SITE, PREVIEW } from '../../lib/site';
 import { FIELDS, LEVELS } from '../../lib/fields';
 import { getListedUniversities, getResearchPreviews, fieldsOf, levelsOf, languagesOf, intakesOf } from '../../lib/records';
@@ -32,11 +32,13 @@ const languages = languagesOf(allProgrammes);
 const intakes = intakesOf(allProgrammes);
 const hasPrep = records.some((d) => d.preparatoryRoutes.length > 0);
 const factFilters = records.length > 0;
-// Grouping by name only (lib/name-search.mjs nameKind): medical and pharmacy universities, then the others.
-const previewGroups = [
-  { key: 'medical', title: 'Medical and pharmacy institutions', note: 'Universities, academies and institutes whose name identifies them as medical or pharmacy institutions.', items: previews.filter((u) => nameKind(u.shortName) === 'medical') },
-  { key: 'other', title: 'Other universities', note: 'Universities whose name does not identify them as medical. Which medical, dental, pharmacy or nursing programmes each one offers is among the facts we are confirming.', items: previews.filter((u) => nameKind(u.shortName) === 'other') },
-].filter((g) => g.items.length > 0);
+// Grouping by REPORTED institution type (lib/institution-types.ts; owner instruction 2026-10-25): a classification of the
+// research leads, labelled as reported on every group. The filters below marked "as reported" use the same leads (city,
+// programme areas); the fact filters use verified facts only.
+const previewGroups = groupPreviews(previews);
+const reportedCities = [...new Set(previews.map((u) => u.reported?.city).filter((c): c is string => typeof c === 'string' && c.length > 0))].sort();
+const reportedFields = Object.keys(FIELDS).filter((k) => previews.some((u) => Array.isArray(u.reported?.programmeFields) && u.reported.programmeFields.includes(k)));
+const reportedTypes = previewGroups.map((g) => g.key).filter((k) => k in INSTITUTION_TYPES);
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 const summary = [plural(total, 'university', 'universities'), `${verifiedCount} verified`, previews.length ? `${previews.length} not yet verified` : '', drafts ? plural(drafts, 'draft', 'drafts') : '', 'alphabetical, not ranked'].filter(Boolean).join(' · ');
 ---
@@ -59,13 +61,22 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
         <label class="field search">Search by university name
           <input type="search" name="q" data-search placeholder="e.g. Bukovinian, Pirogov" autocomplete="off" />
         </label>
-        {total > 1 && (
-          <label class="field">Type
-            <select name="kind" data-filter="kind">
+        {reportedTypes.length > 1 && (
+          <label class="field">Type (as reported)
+            <select name="type" data-filter="type">
               <option value="">All types</option>
-              <option value="medical">Medical and pharmacy institutions</option>
-              <option value="other">Other universities</option>
+              {reportedTypes.map((k) => <option value={k}>{(INSTITUTION_TYPES as any)[k].group}</option>)}
             </select>
+          </label>
+        )}
+        {reportedCities.length > 1 && (
+          <label class="field">City (as reported)
+            <select name="rcity" data-filter="rcity"><option value="">All cities</option>{reportedCities.map((c) => <option value={c}>{c}</option>)}</select>
+          </label>
+        )}
+        {reportedFields.length > 1 && (
+          <label class="field">Programme area (as reported)
+            <select name="rfield" data-filter="rfield"><option value="">All programme areas</option>{reportedFields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
           </label>
         )}
         {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
@@ -102,7 +113,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
         )}
         <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Clear</button></p>
       </form>
-      <p class="count" aria-live="polite" aria-atomic="true">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' City, programme, level, language and intake filters use verified facts only, so universities not yet verified do not match them.')}</p>
+      <p class="count" aria-live="polite" aria-atomic="true">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{previews.length > 0 && ' Filters marked “as reported” use what public sources say about universities not yet verified.'}{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' The other filters use verified facts only, so universities not yet verified do not match them.')}</p>
 
       <p class="note near-note" data-near-match role="status" hidden>No listed name matches every word you typed. Universities with similar names can be different institutions, so check the full name before you choose.</p>
       <div data-list>
@@ -115,14 +126,14 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
         {previews.length > 0 && (
           <div class="tier" role="region" aria-labelledby="research-h" data-tier>
             <h2 id="research-h">List of universities we are researching</h2>
-            {verifiedCount === 0 && <p class="lead-note" data-empty-state><strong>No university profile has completed verification yet.</strong> We have not yet confirmed any facts about these universities from their official websites, so we show names only: no fees, programmes, dates or rankings. We have not yet verified whether, where or how each one is teaching this academic year.</p>}
-            {verifiedCount > 0 && <p class="lead-note">We have not yet confirmed facts about these universities from their official websites, so we show names only.</p>}
+            {verifiedCount === 0 && <p class="lead-note" data-empty-state><strong>No university profile has completed verification yet.</strong> Each university below is listed with what public sources report about it, marked “Reported”: its type, city and programme areas. We have not confirmed any of it on the university's own website or in a government register, and we show no fee, requirement, date or ranking until we have. We have not yet verified whether, where or how each one is teaching this academic year.</p>}
+            {verifiedCount > 0 && <p class="lead-note">Each university below is listed with what public sources report about it, marked “Reported”; nothing has been confirmed on its official website yet.</p>}
             <details class="meaning">
-              <summary>What “not yet verified” means</summary>
+              <summary>What “not yet verified” and “reported” mean</summary>
               <ul>
-                <li>We have not yet read the university's facts on its own website or a Ukrainian government register.</li>
+                <li>“Reported” is what public sources (listings, registers, the university's pages seen in search results) say. We have not yet read the university's facts on its own website or a Ukrainian government register.</li>
                 <li>It is not a judgement about the university. It may or may not be admitting students for your intake; we simply have not confirmed it yet.</li>
-                <li>A university moves to “Verified profiles” once its official name, website, address, current teaching statement and at least one programme open to international applicants, with its language, duration, intake and fee page, have been checked.</li>
+                <li>A university moves to “Verified profiles” once its official name, website, address, current teaching statement and at least one programme open to international applicants, with its language, duration, intake and fee page, have been checked on official sources.</li>
               </ul>
             </details>
             {previewGroups.map((g) => (
@@ -177,7 +188,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   // similar names are never presented as one). status: verified | preview | draft. Exact-match keys: city, prep. List
   // keys: fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
   import { searchNames } from '../../lib/name-search.mjs';
-  const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], kind: ['kind', 'exact'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
+  const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], type: ['type', 'exact'], rcity: ['rcity', 'exact'], rfield: ['rfields', 'list'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
   const form = document.querySelector<HTMLFormElement>('[data-filters]');
   if (form) form.hidden = false;
   const search = document.querySelector<HTMLInputElement>('[data-search]');
@@ -224,7 +235,7 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
 <style>
   .head-summary { margin-top: .75rem !important; font-weight: 600; color: var(--yellow-400); }
   .filters { display: grid; gap: 0 1rem; margin-bottom: .25rem; align-items: end; }
-  @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]) { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]), .filters:has(select[name="rcity"]) { grid-template-columns: repeat(3, 1fr); } .filters:has(select[name="rcity"]) .search { grid-column: 1 / -1; } }
   .filter-actions { margin: 0 0 1rem; }
   .filter-actions .btn { min-height: 44px; }
   .filters[hidden] { display: none; }

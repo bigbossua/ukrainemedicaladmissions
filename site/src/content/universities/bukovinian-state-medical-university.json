@@ -37,6 +37,7 @@
   },
   "city": "Chernivtsi",
   "region": "Chernivtsi Oblast",
+  "institutionType": "state-medical-university",
   "address": {
     "value": null,
     "status": "not-published",

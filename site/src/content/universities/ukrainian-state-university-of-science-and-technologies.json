@@ -35,6 +35,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Dnipro",
+  "institutionType": "health-programmes-university",
   "address": {
     "value": null,
     "status": "not-published",

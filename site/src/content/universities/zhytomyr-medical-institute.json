@@ -32,6 +32,7 @@
     "note": "Read from a dated official statement for the current academic year."
   },
   "city": "Zhytomyr",
+  "institutionType": "communal-medical-academy-or-institute",
   "address": {
     "value": null,
     "status": "not-published",
@@ -1402,11 +1403,11 @@
       "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
     },
     {
-      "label": "MON 'Study in Ukraine' portal profile: 'Zhytomyr Medical Institute Ownership: mu",
+      "label": "Website lead (register: Study in Ukraine, MES)",
       "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/24",
       "purpose": "MON 'Study in Ukraine' portal profile: 'Zhytomyr Medical Institute Ownership: municipal'",
       "snippetDate": "2026-10-24",
-      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full."
+      "note": "Result date as shown: undated (seen 2026-10-24). Search-result lead, not read in full. | Re-checked 2026-10-25: listing gives this website address."
     },
     {
       "label": "Polish FRSE exchange directory: levels (professional junior bachelor, bachelor, ",
@@ -1435,6 +1436,12 @@
       "purpose": "NAQA certificate-extension annex that appeared in results; snippet does not show the institute's name",
       "snippetDate": "2026-10-24",
       "note": "Result date as shown: January 2025. Search-result lead, not read in full."
+    },
+    {
+      "label": "Register entry contacts (Study in Ukraine, MES)",
+      "url": "https://universities.studyinukraine.gov.ua/en/minedu/university/24/contacts",
+      "purpose": "Contacts as listed on the government portal",
+      "snippetDate": "2026-10-25"
     }
   ],
   "faqs": [],
@@ -1480,7 +1487,8 @@
       "Name lead (unverified): Zhytomyr Medical Institute of Zhytomyr Regional Council (inventory alias; founder = Regional Council per osvita.ua)",
       "Name lead (unverified): ZhMI / ЖМІ (abbreviation inferred from the domain zhim.org.ua; not seen in a snippet)",
       "Name lead (unverified): Volyn Paramedic School (1875 historical origin, per FRSE directory; from inventory)",
-      "Name lead (unverified): Відокремлений структурний підрозділ фаховий коледж Житомирського медичного інституту (its own professional college sub-unit; NOT a separate institution)"
+      "Name lead (unverified): Відокремлений структурний підрозділ фаховий коледж Житомирського медичного інституту (its own professional college sub-unit; NOT a separate institution)",
+      "Dentistry is reported inconsistently (a dentistry track versus dental hygiene and dental technology only, 2026-10-25); confirm the level and title on the site itself."
     ]
   }
 }

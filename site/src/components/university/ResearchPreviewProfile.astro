@@ -12,9 +12,10 @@
 import Breadcrumbs from '../Breadcrumbs.astro';
 import Fact from '../Fact.astro';
 import ProgrammeCard from './ProgrammeCard.astro';
-import { SITE } from '../../lib/site';
-import { TEACHING_FORMATS, OPERATING_STATUS, label } from '../../lib/fields';
+import { SITE, formatDate } from '../../lib/site';
+import { TEACHING_FORMATS, OPERATING_STATUS, FIELDS, label } from '../../lib/fields';
 import { officeText, shownFactCount } from '../../lib/records';
+import { typeLabel } from '../../lib/institution-types';
 
 interface Props { d: any }
 const { d } = Astro.props;
@@ -45,6 +46,15 @@ const pending = [
 ].filter(([open]) => open).map(([, label]) => label as string);
 const applyHref = `/apply/?university=${d.slug}`;
 const showOverview = typeof d.overview === 'string' && d.overview.trim().length > 0;
+// REPORTED leads (owner instruction 2026-10-25; publication.mjs reportedLeads): what public sources say, printed only under
+// the heading "Reported in public sources, not yet verified": type, location, programme AREAS and the website address
+// found, each with its source and date. Never a programme name, fee, requirement, deadline, intake, contact or status.
+const rep = d.reported && typeof d.reported === 'object' ? d.reported : null;
+const rPlace = rep?.city ? [rep.city, rep.region].filter(Boolean).join(', ') : '';
+const rType = typeLabel(rep?.institutionType);
+const rFields: string[] = (Array.isArray(rep?.programmeFields) ? rep.programmeFields : []).map((f: string) => (FIELDS as any)[f]?.label ?? f);
+const rWeb = rep?.website && typeof rep.website.value === 'string' ? rep.website : null;
+const hasReported = !!(rPlace || rType || rFields.length || rWeb);
 ---
 <div class="page-head preview-head" data-research-preview>
   <div class="wrap">
@@ -60,6 +70,20 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
   <div class="wrap layout">
     <div>
       {showOverview && <p class="prose">{d.overview}</p>}
+      {hasReported && (
+        <section class="reported" data-reported aria-labelledby="reported-h">
+          <h2 id="reported-h">Reported in public sources, not yet verified</h2>
+          <p class="prose">What public sources say about this university{rep?.asOf ? `, as found on ${formatDate(rep.asOf)}` : ''}. We have not confirmed any of it on the university's own website or in a government register, so treat each item as a lead to check, not as a fact.</p>
+          <dl class="rep-list">
+            {rType && <div><dt>Type</dt><dd>{rType}</dd></div>}
+            {rPlace && <div><dt>Location</dt><dd>{rPlace}</dd></div>}
+            {rFields.length > 0 && <div><dt>Programme areas reported</dt><dd>{rFields.join(', ')}. Whether each is open to international applicants, at which level and in which language is not yet confirmed.</dd></div>}
+            {rWeb && (
+              <div><dt>Website reported</dt><dd><a href={rWeb.value} rel="nofollow noopener noreferrer">{rWeb.host}</a>{rWeb.date ? ` (found ${formatDate(rWeb.date)})` : ''}. Seen in: {rWeb.sources.map((s: any, i: number) => <span>{i > 0 ? '; ' : ''}<a href={s.url} rel="nofollow noopener noreferrer">{s.label}</a>{s.date ? ` (${formatDate(s.date)})` : ''}</span>)}. Look-alike websites exist: check the address in a government register before you send anything.</dd></div>
+            )}
+          </dl>
+        </section>
+      )}
       {count > 0 && (
         <>
           <h2 id="verified">Verified so far</h2>
@@ -122,6 +146,13 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
   .preview-head .count { color: #CFDAEC; font-size: .95rem; }
   .layout { display: grid; gap: 2rem; }
   @media (min-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; } .side { position: sticky; top: 90px; } }
+  .reported { background: var(--blue-50); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 0 0 1.75rem; }
+  .reported h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
+  .rep-list { margin: .75rem 0 0; display: grid; gap: .55rem; }
+  .rep-list div { display: grid; gap: .15rem; }
+  @media (min-width: 700px) { .rep-list div { grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem; } }
+  .rep-list dt { font-weight: 600; color: var(--navy-900); margin: 0; }
+  .rep-list dd { margin: 0; overflow-wrap: anywhere; }
   .steps li { margin-bottom: .7rem; }
   .pending-list li { margin-bottom: .3rem; }
   .side-h { font-size: 1.05rem; margin: 0; }
