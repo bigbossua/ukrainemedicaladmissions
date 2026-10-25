@@ -16,7 +16,7 @@
 // LEGAL in place of src/lib/legal.mjs (the item list and the rules always come from src/lib/legal.mjs); UMA_DIST_DIR =
 // built site directory in place of dist/; UMA_UNIVERSITIES_DIR / UMA_EVIDENCE_DIR as for the build. A run with any of
 // them set prints "TEST INPUTS IN USE" before and after the verdict, so its result is never mistaken for the site's.
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { record as recordSchema } from '../src/content/schema.mjs';
@@ -42,6 +42,11 @@ try {
 /** @type {string[]} */
 const blockers = [];
 const block = (/** @type {string} */ m) => { blockers.push(m); };
+// --json <file>: also write { ready, blockers, banners } (the release gate reads it in interim mode).
+const argv = process.argv.slice(2);
+const jsonOut = argv.includes('--json') ? argv[argv.indexOf('--json') + 1] : null;
+/** @type {Record<string, boolean>} */
+const banners = {};
 
 console.log(`Release readiness check, ${now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}`);
 console.log('Lists everything that still blocks a release. This is preparation, not legal advice.\n');
@@ -94,6 +99,7 @@ for (const [name, path] of Object.entries(LEGAL_PAGES)) {
   const text = plain(html);
   const found = [];
   const banner = count(text, /Draft for legal review/gi);
+  banners[path] = banner > 0;
   if (banner) found.push(`"Draft for legal review" banner shown`);
   const markers = count(text, /\[to be supplied/gi);
   if (markers) found.push(`${markers} "[to be supplied by the owner: …]" marker${markers === 1 ? '' : 's'}`);
@@ -131,6 +137,7 @@ for (const { file, data, error } of rows) {
 console.log(`   ${rows.length} record${rows.length === 1 ? '' : 's'}; ${flagged} flagged publishable; ${published} published.${flagged === published ? ' No flagged record fails the publication policy.' : ''}`);
 console.log('');
 
+if (jsonOut) writeFileSync(jsonOut, JSON.stringify({ ready: blockers.length === 0, blockers, banners, overrides }, null, 2));
 if (blockers.length) {
   console.log(`NOT READY: ${blockers.length} item${blockers.length === 1 ? '' : 's'} block${blockers.length === 1 ? 's' : ''} a release. Owner items and the order to complete them: LEGAL_COMPLETION_CHECKLIST.md.`);
   process.exit(1);

@@ -2,7 +2,7 @@
 // push without the release gate, if the non-deploying "verify" target could push, if a workflow call could select a
 // deploy target, if the gate loses one of its checks, or if CI stops exercising the publish workflow.
 // Prints "publish-workflow: N checks, M failures".
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import YAML from 'yaml';
 
@@ -25,6 +25,12 @@ check((on?.workflow_dispatch?.inputs?.target?.options ?? []).includes('verify'),
 const resolveStep = steps[idx((s) => s.name === 'Resolve and validate target')];
 check(resolveStep && /a workflow call may only run target verify/.test(runOf(resolveStep)), 'a workflow call cannot select staging or production');
 check(resolveStep && /production\) if \[ "\$CONFIRM" != "PUBLISH" \]/.test(runOf(resolveStep)), 'production still requires the typed PUBLISH confirmation');
+// Interim release (RELEASE_AUTHORISATION.md, 2026-10-25): the interim pointer branch maps to the SAME production target and
+// gate, only with UMA_RELEASE_MODE=interim; the gate accepts interim only with the authorisation file and the draft banners.
+check((on?.push?.branches ?? []).includes('publish-production-interim'), 'the interim pointer branch triggers the workflow');
+check(resolveStep && /publish-production-interim\|publish-production-interim-\*\) TARGET=production; CONFIRM=PUBLISH; echo "UMA_RELEASE_MODE=interim"/.test(runOf(resolveStep)), 'the interim branch is a production publish in interim mode');
+check(/UMA_RELEASE_MODE === 'interim'/.test(gate) && /RELEASE_AUTHORISATION\.md/.test(gate) && /Draft for legal review/.test(gate) && /INTERIM_ALLOWED = \/\^\(missing owner detail\|proposal not approved\|legal review\|built page not final\):\//.test(gate), 'gate: interim mode needs the authorisation file, the draft banners and only open legal-page items');
+check(existsSync(resolve(ROOT, 'RELEASE_AUTHORISATION.md')) && /^Mode:\s*interim$/m.test(readFileSync(resolve(ROOT, 'RELEASE_AUTHORISATION.md'), 'utf8')), 'RELEASE_AUTHORISATION.md exists and states Mode: interim');
 
 // The release gate runs before the only push, for production; verify never pushes
 const prodGate = idx((s) => /Release gate \(production\)/.test(s.name ?? ''));
@@ -47,7 +53,7 @@ check(stagingStep && /test:records/.test(runOf(stagingStep)) && /test:publicatio
 check(/run\('npm', \['test'\]\)/.test(gate), 'gate: full test suite');
 check(/rmSync\(resolve\(SITE, 'dist'\)/.test(gate) && /\['run', 'build'\]/.test(gate), 'gate: clean production build');
 check(/\['run', 'report:publication'\]/.test(gate), 'gate: publication report');
-check(/\['run', 'check:release'\]/.test(gate), 'gate: release readiness (legal details, built legal pages, publication)');
+check(/\['run', 'check:release'(?:, '--', '--json', \w+)?\]/.test(gate), 'gate: release readiness (legal details, built legal pages, publication)');
 for (const s of ['test', 'build', 'report:publication', 'check:release', 'test:records', 'test:publication', 'test:php']) check(Boolean(pkg.scripts?.[s]), `package.json defines "${s}"`);
 check(/test:php/.test(pkg.scripts?.test ?? '') && /test:publication/.test(pkg.scripts?.test ?? '') && /test:records/.test(pkg.scripts?.test ?? ''), 'npm test includes the PHP handler, publication and record checks');
 

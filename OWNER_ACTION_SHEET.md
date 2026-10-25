@@ -449,6 +449,10 @@ Prepared now so that nothing waits once your answers arrive. Each step needs the
 4. **Host:** Hostinger deploys the new `production` commit, automatically or when you click Deploy (hPanel → Websites → ukrainemedicaladmissions.com → Advanced → Git). No DNS change.
 5. **Record:** the new `production` commit, the release tag and the workflow run link.
 
+### 7.1a Interim release (authorised 2026-10-25; `RELEASE_AUTHORISATION.md`)
+
+Until the legal review is recorded, a release can go out in **interim mode**: the same full test suite, clean build and publication report, with the four legal pages published as drafts (banner and visible markers, as the live site has shown since 11 October). Command: `git push origin <commit>:refs/heads/publish-production-interim`. The gate still refuses if any check but the open legal items fails, if a legal page is built without the draft banner, or if the authorisation file is missing. The open legal items stay listed in `npm run check:release`; nothing is marked satisfied. Once the review is recorded, use `publish-production` (§7.1) and the authorisation ends.
+
 ### 7.2 Rollback (decided by you at the time; fastest first)
 
 - **R1. Put the previous build back exactly (about 2 minutes plus the host pull).** This writes a new commit on `production` whose files are identical to today's live build `b2ca3d6`. It is a fast-forward, with no force-push:

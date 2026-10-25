@@ -34,6 +34,10 @@ Complete every box before the **first** production write and before each later r
 - [ ] Mobile menu, directory filters and the stepped `/apply/` form work on the live site with the production CSP (backlog N20); a synthetic candidate profile arrives in the business mailbox (backlog N4).
 - [ ] First release from `claude/university-profile-pipeline`: work through `RELEASE_CHECKLIST_PROPOSED.md` (proposed 2026-10-12, not approved); the mail test and its evidence line follow `EMAIL_DELIVERY_VERIFICATION.md` (delivery unverified until it passes on the real host).
 
+### B.1 Interim releases (2026-10-25)
+
+`RELEASE_AUTHORISATION.md` (owner authorisation) lets the production gate run in interim mode (`UMA_RELEASE_MODE=interim`, pointer branch `publish-production-interim`): every check in B still runs; only open legal-page items are tolerated, and only while all four legal pages carry the "Draft for legal review" banner. The gate self-test (`npm run test:release-gate`, S3–S5) proves the mode passes on open legal items alone and refuses without the authorisation file or with a failing record. The mode ends when the legal review is recorded.
+
 ## C. Application system (Stage 2+) — additional gates (refreshed 2026-10-11)
 
 Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…) are defined in §14.15. **Stage 2 is not built, so nothing in this section can be ticked today.** Tick a box only with evidence (test report, dated screenshot or signed log), and write the date and who ticked it beside the box.

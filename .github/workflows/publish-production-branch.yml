@@ -50,6 +50,7 @@ on:
       - 'publish-staging-*'
     branches:
       - publish-production
+      - publish-production-interim
       - publish-staging
 
 permissions:
@@ -73,6 +74,9 @@ jobs:
             echo "EXPECT=$INPUT_EXPECT" >> "$GITHUB_ENV"
           elif [ "$GITHUB_EVENT_NAME" = "push" ]; then
             case "$GITHUB_REF_NAME" in
+              # Interim release (RELEASE_AUTHORISATION.md, owner authorisation of 2026-10-25): the same production
+              # target and gate, run in interim mode (legal pages published as drafts; see scripts/release-gate.mjs).
+              publish-production-interim|publish-production-interim-*) TARGET=production; CONFIRM=PUBLISH; echo "UMA_RELEASE_MODE=interim" >> "$GITHUB_ENV" ;;
               publish-production|publish-production-*) TARGET=production; CONFIRM=PUBLISH ;;
               publish-staging|publish-staging-*)       TARGET=staging; CONFIRM="" ;;
               *) echo "tag '$GITHUB_REF_NAME' names no deploy target"; exit 1 ;;
@@ -134,7 +138,7 @@ jobs:
           git config --global user.name "uma-release-bot"
           git config --global user.email "noreply@ukrainemedicaladmissions.com"
           if [ "$TARGET" = "production" ]; then
-            TAG="release-$(date -u +%Y%m%d-%H%M%S)"; MSG="Build ${GITHUB_SHA::7} ($TAG)"
+            TAG="release-$(date -u +%Y%m%d-%H%M%S)"; MSG="Build ${GITHUB_SHA::7} ($TAG${UMA_RELEASE_MODE:+, $UMA_RELEASE_MODE release: legal pages published as drafts})"
           elif [ "$TARGET" = "staging" ]; then
             TAG=""; MSG="Staging build ${GITHUB_SHA::7} (noindex)"
           else
