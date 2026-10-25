@@ -14,14 +14,18 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
-body { margin: 0; font-family: var(--font-body); color: var(--ink); background: var(--white); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body { margin: 0; font-family: var(--font-body); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--navy-900); letter-spacing: -0.02em; line-height: 1.12; margin: 0 0 0.5em; }
+h1, h2 { text-wrap: balance; }
+h3 { line-height: 1.25; }
+.lead { font-size: 1.125rem; color: var(--slate); max-width: 62ch; }
 h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; }
 h2 { font-size: clamp(1.5rem, 3vw, 2.125rem); font-weight: 700; }
 h3 { font-size: 1.125rem; font-weight: 600; }
 h4 { font-size: 1rem; font-weight: 600; }
 p { margin: 0 0 1em; }
-a { color: var(--blue-600); }
+a { color: var(--blue-600); text-decoration-thickness: 1px; text-underline-offset: .15em; }
+a:hover { text-decoration-thickness: 2px; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: var(--focus); outline-offset: 2px; }
 /* Dark surfaces: the navy ring would vanish, so the focus ring turns yellow (contrast > 9:1 on navy). */
 :is(.hero, .page-head, .cta-band, .site-footer, .on-dark) :focus-visible { outline-color: var(--focus-on-dark); }
@@ -39,7 +43,8 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 .prose li { margin-bottom: .35rem; }
 
 /* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-weight: 600; border-radius: 999px; padding: .9rem 1.5rem; text-decoration: none; font-size: 1rem; border: 2px solid transparent; cursor: pointer; transition: background .15s, color .15s; font-family: inherit; line-height: 1.2; white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-weight: 600; border-radius: 999px; padding: .85rem 1.5rem; min-height: 48px; text-decoration: none; font-size: 1rem; border: 2px solid transparent; cursor: pointer; transition: background .15s, color .15s, box-shadow .15s; font-family: inherit; line-height: 1.2; white-space: nowrap; }
+.btn-primary:hover, .btn-on-dark:hover { box-shadow: 0 8px 20px rgba(11, 31, 63, .18); }
 .btn-primary { background: var(--blue-600); color: #fff; }
 .btn-primary:hover { background: var(--navy-700); }
 .btn-secondary { background: transparent; color: var(--navy-900); border-color: var(--navy-900); }
@@ -57,7 +62,9 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 /* Cards & grids */
 .grid { display: grid; gap: 1.25rem; }
 @media (min-width: 700px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: repeat(3, 1fr); } .grid-4 { grid-template-columns: repeat(4, 1fr); } }
-.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.25rem, 2.5vw, 1.75rem); display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.card p { color: var(--slate); }
+.card p:last-of-type { margin-bottom: .25rem; }
 .ico { width: 48px; height: 48px; flex: none; border-radius: 12px; background: var(--blue-50); display: grid; place-items: center; color: var(--blue-600); font-weight: 700; font-family: var(--font-display); }
 .ico svg { width: 26px; height: 26px; }
 /* Link cards: the whole card is the target of its single "more" link; lift on hover, ring on keyboard focus. */
@@ -86,12 +93,12 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 /* Section heads: eyebrow + h2 + optional lead, with one consistent gap before the content. */
 .section-head { max-width: 64ch; margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
 .section-head h2 { margin-bottom: .4em; }
-.section-head p { color: var(--slate); margin: 0; }
+.section-head p { color: var(--slate); margin: 0; font-size: 1.05rem; }
 
 /* Hero */
 .hero { position: relative; overflow: hidden; background: radial-gradient(ellipse 60% 70% at 85% 30%, rgba(47, 123, 229, .16), transparent 70%), linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 60%, #123A72 100%); color: #fff; padding: clamp(3rem, 8vw, 6rem) 0; }
 .hero h1, .hero h2 { color: #fff; }
-.hero p { color: #CFDAEC; font-size: 1.125rem; max-width: 42ch; }
+.hero p { color: #CFDAEC; font-size: 1.125rem; max-width: 46ch; line-height: 1.6; }
 .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr .9fr; } }
 .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
@@ -105,12 +112,13 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 /* Page header (inner pages) */
 .page-head { background: var(--navy-900); color: #fff; padding: clamp(2rem, 5vw, 3.5rem) 0; }
 .page-head h1 { color: #fff; margin-bottom: .25em; }
-.page-head p { color: #CFDAEC; max-width: 60ch; margin: 0; }
+.page-head p { color: #CFDAEC; max-width: 60ch; margin: 0; font-size: 1.05rem; line-height: 1.6; }
 
 /* Forms */
 .field { display: grid; gap: .35rem; margin-bottom: 1rem; font-size: .9rem; font-weight: 500; color: var(--slate); }
-.field input, .field select, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); border: 1px solid var(--control-line); border-radius: var(--radius-sm); padding: .75rem .9rem; background: var(--mist); width: 100%; }
-.field input:focus, .field select:focus, .field textarea:focus { background: #fff; border-color: var(--blue-600); }
+.field input, .field select, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); border: 1px solid var(--control-line); border-radius: var(--radius-sm); padding: .8rem .95rem; min-height: 48px; background: var(--mist); width: 100%; transition: border-color .15s, box-shadow .15s, background .15s; }
+.field input:focus, .field select:focus, .field textarea:focus { background: #fff; border-color: var(--blue-600); box-shadow: 0 0 0 3px var(--blue-100); }
+.field > span:first-child, .field > label:first-child { color: var(--navy-900); }
 .field .hint { font-weight: 400; font-size: .8rem; }
 .field.error input, .field.error select, .field.error textarea { border-color: #B91C1C; border-width: 2px; }
 .checkbox.error { color: #B91C1C; }

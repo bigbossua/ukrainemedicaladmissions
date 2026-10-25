@@ -6,7 +6,7 @@ import CtaBand from '../../components/CtaBand.astro';
 import Icon from '../../components/illustrations/Icon.astro';
 import { COURSES, type CourseSlug } from '../../lib/courses';
 import { SITE, PREVIEW } from '../../lib/site';
-import { getListedUniversities } from '../../lib/records';
+import { getListedUniversities, reportedFieldCounts } from '../../lib/records';
 import { viewClaim, formatMoney } from '../../lib/publication.mjs';
 
 export function getStaticPaths() {
@@ -20,6 +20,9 @@ const lower = c.name.toLowerCase();
 const universities = (await getListedUniversities())
   .map((u) => ({ u, progs: u.d.programmes.filter((p: any) => p.field === course) }))
   .filter((x) => x.progs.length > 0);
+// How many research previews REPORT this programme area in public sources (a count and a link to the filtered directory;
+// never a name, never a confirmation that the programme exists: lib/records.ts reportedFieldCounts).
+const reportedCount = (await reportedFieldCounts())[course] ?? 0;
 const duration = (p: any) => (viewClaim(p.durationText, { preview: PREVIEW }).state !== 'tbc' ? p.durationText : p.durationYears);
 // The policy's formatter, as on the fees page and profiles: year-by-year amounts and the payment schedule included.
 const money = (m: any) => formatMoney(m, { compact: true });
@@ -41,7 +44,7 @@ const money = (m: any) => formatMoney(m, { compact: true });
         </>
       ))}
       <h2 id="universities">Universities verified for {lower}</h2>
-      {universities.length === 0 && <p>No university has been verified for this course yet. <a href="/universities/">See the universities we are researching</a>: we have not yet confirmed which courses each one offers.</p>}
+      {universities.length === 0 && <p>No university has been verified for this course yet.{reportedCount > 0 ? <> Public sources report {lower} at <a href={`/universities/?rfield=${course}`}>{reportedCount} of the universities in our directory</a>; we have not yet confirmed any of them on an official website, so each is marked “not yet verified”.</> : <> <a href="/universities/">See the universities we are researching</a>: we have not yet confirmed which courses each one offers.</>}</p>}
       {universities.length > 0 && <p>Universities whose {lower} programme for international applicants we have verified are listed below. <a href="/universities/">See every university in the directory</a>, including those we are still researching.</p>}
     </div>
     {universities.length > 0 && (

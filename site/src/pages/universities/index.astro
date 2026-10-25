@@ -223,9 +223,15 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
   }
   selects.forEach((s) => s.addEventListener('change', apply));
   search?.addEventListener('input', apply);
-  // A shared or reloaded link such as /universities/?q=odessa opens with the search applied.
-  const initial = new URLSearchParams(location.search).get('q');
-  if (search && initial) { search.value = initial.slice(0, 80); apply(); }
+  // A shared or reloaded link opens with its search and filters applied: /universities/?q=odessa, or the links from the
+  // home and course pages, /universities/?type=state-medical-university, ?rfield=medicine, ?rcity=Kyiv. A value that is
+  // not one of a select's options is ignored.
+  const params = new URLSearchParams(location.search);
+  const initial = params.get('q');
+  if (search && initial) search.value = initial.slice(0, 80);
+  let preset = Boolean(initial);
+  selects.forEach((s) => { const v = params.get(s.dataset.filter ?? ''); if (v && [...s.options].some((o) => o.value === v)) { s.value = v; preset = true; } });
+  if (preset) { apply(); document.querySelector<HTMLElement>('[data-list]')?.setAttribute('data-preset', ''); }
   form?.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
   form?.addEventListener('reset', () => setTimeout(apply, 0));
   document.querySelector('[data-reset-link]')?.addEventListener('click', () => { form?.reset(); setTimeout(() => { apply(); search?.focus(); }, 0); });

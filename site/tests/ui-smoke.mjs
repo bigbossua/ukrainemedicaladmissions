@@ -43,7 +43,35 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       const links = await page.$$eval('[data-menu] a', (as) => as.filter((a) => a.offsetParent !== null).length);
       if (links < 6) fail(`mobile menu shows ${links} links`);
     }
+    if (name === 'desktop' && path === '/') {
+      // Home page (2026-10-25): a featured group of research previews and counted links into the directory by reported
+      // type, never the whole directory; every featured name links to its profile; the explainer carries both labels.
+      const featured = await page.$$eval('.featured-list li a[href^="/universities/"]', (a) => a.map((x) => x.getAttribute('href')));
+      const directoryCards = await page.$$eval('[data-list] article', (a) => a.length).catch(() => 0);
+      if (!featured.length) fail('home: no featured universities');
+      if (featured.length > 15) fail(`home: ${featured.length} featured universities (the home page must feature a selection, not the whole directory)`);
+      if (directoryCards) fail('home: the full directory list is rendered on the home page');
+      const typeLinks = await page.$$eval('.browse-list a[href^="/universities/?type="]', (a) => a.map((x) => x.getAttribute('href')));
+      if (typeLinks.length < 3) fail(`home: only ${typeLinks.length} browse-by-type links`);
+      const text = (await page.textContent('main')) ?? '';
+      for (const t of ['Reported in public sources', 'Verified on an official source', 'How we verify']) if (!text.includes(t)) fail(`home: explainer text "${t}" missing`);
+      if (!(await page.$(`a.btn[href="/universities/"]`))) fail('home: no directory button');
+    }
     if (name === 'desktop' && path === '/universities/') {
+      // Deep links from the home and course pages pre-apply a filter; an unknown value is ignored.
+      const typeOpt = await page.$eval('select[name="type"] option:nth-child(2)', (o) => o.value).catch(() => null);
+      if (typeOpt) {
+        await page.goto(base + `/universities/?type=${typeOpt}`, { waitUntil: 'load' });
+        const shown = await page.$$eval('[data-list] article:not([hidden])', (a) => a.map((el) => el.dataset.type));
+        if (!shown.length || shown.some((t) => t !== typeOpt)) fail(`directory: ?type=${typeOpt} did not filter to that type (${shown.length} shown)`);
+        if ((await page.inputValue('select[name="type"]')) !== typeOpt) fail('directory: the type select does not reflect the deep link');
+        await page.goto(base + '/universities/?rfield=medicine', { waitUntil: 'load' });
+        const med = await page.$$eval('[data-list] article:not([hidden])', (a) => a.map((el) => (el.dataset.rfields ?? '').split(' ')));
+        if (!med.length || med.some((f) => !f.includes('medicine'))) fail('directory: ?rfield=medicine did not filter to universities reporting medicine');
+        await page.goto(base + '/universities/?type=no-such-type&rfield=zzz', { waitUntil: 'load' });
+        if ((await page.$$eval('[data-list] article:not([hidden])', (a) => a.length)) !== (await page.$$eval('[data-list] article', (a) => a.length))) fail('directory: an unknown deep-link value hid cards');
+        await page.goto(base + '/universities/', { waitUntil: 'load' });
+      }
       // Data-driven: the directory lists published profiles and, since N25, research previews ("not yet verified"), so
       // expectations are derived from the cards' own data attributes instead of hard-coding a university.
       const total = await page.$$eval('[data-list] article', (a) => a.length);

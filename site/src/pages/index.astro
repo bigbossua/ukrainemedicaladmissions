@@ -17,8 +17,15 @@ const total = universities.length + previews.length;
 // Grouped by REPORTED institution type, as on /universities/ (lib/institution-types.ts): a labelled classification of
 // the research leads; each name carries its reported city. No other claim.
 const previewGroups = groupPreviews(previews);
-// Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact.
-const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary }));
+// Featured selection (owner instruction 2026-10-25: not all 45 on the home page): the complete "state medical universities"
+// group as reported, alphabetical, no ranking; every other group is a counted link into the directory filtered by type.
+const featuredGroup = previewGroups.find((g) => g.key === 'state-medical-university');
+const otherGroups = previewGroups.filter((g) => g.key !== 'state-medical-university');
+// Card text comes from lib/courses.ts: no duration, qualification or availability is stated as a fact. The count beside each
+// course is how many research previews REPORT that programme area in public sources (never a confirmation).
+const reportedCounts: Record<string, number> = {};
+for (const u of previews) for (const f of (u.reported?.programmeFields ?? []) as string[]) reportedCounts[f] = (reportedCounts[f] ?? 0) + 1;
+const courses = (Object.entries(COURSES) as [CourseSlug, (typeof COURSES)[CourseSlug]][]).map(([slug, c]) => ({ slug, name: c.name, blurb: c.summary, reported: reportedCounts[slug] ?? 0 }));
 const jsonLd = [{
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -35,13 +42,13 @@ const jsonLd = [{
   url: `${SITE.url}/`,
 }];
 ---
-<Base title="Ukraine Medical Admissions: independent admissions help" description="Free, independent help applying to medical universities in Ukraine. Browse the universities we are researching and start your application online." suffix={false} jsonLd={jsonLd}>
+<Base title="Ukraine Medical Admissions: independent admissions help" description={`Free, independent help applying to medical universities in Ukraine: ${total} universities with reported and verified facts clearly labelled, and an online start.`} suffix={false} jsonLd={jsonLd}>
   <section class="hero on-dark">
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">International medical admissions</span>
         <h1>Independent help applying to medical universities in Ukraine.</h1>
-        <p>Tell us what you want to study and the qualifications you have, and we reply by email with your next steps. Entry requirements and fees appear here only once checked against the university's official source.</p>
+        <p>For international students planning medicine, dentistry, pharmacy or nursing in Ukraine. Tell us what you want to study and the qualifications you have; we reply by email with answers and your next steps. Our directory of {total} universities says plainly what is reported in public sources and what we have verified on official websites.</p>
         <div class="cta-row">
           <a class="btn btn-on-dark" href={SITE.ctaHref}>{SITE.cta}</a>
           <a class="btn btn-ghost" href="/universities/">Browse universities</a>
@@ -82,23 +89,47 @@ const jsonLd = [{
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">What you get here</span>
+        <span class="eyebrow">Why use this service</span>
         <h2>Independent guidance you can check</h2>
+        <p>We are not an agent for any university. We help you compare, prepare and apply through each university's own procedure, and we never dress up a lead as a fact.</p>
       </div>
       <div class="grid grid-3">
-        <div class="card card-link"><div class="ico"><Icon name="dated" /></div><h3>Fees explained before figures</h3><p>Learn how to read a university fee schedule, what “per year” leaves out and which charges to ask about. A fee appears here only with its academic year and the date we checked it.</p><a class="more" href="/tuition-fees/">Tuition fees guide →</a></div>
-        <div class="card card-link"><div class="ico"><Icon name="compare" /></div><h3>Know what to check</h3><p>Each university page lists what to confirm before you apply: the programme, teaching language, fee and academic year, entry requirements and recognition at home. Verified profiles add the facts side by side.</p><a class="more" href="/universities/">See the universities →</a></div>
-        <div class="card card-link"><div class="ico"><Icon name="journey" /></div><h3>One application journey</h3><p>Four clear stages, from your first enquiry to official submission through the university's own procedure.</p><a class="more" href="/admissions/#stages">See the process →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="compare" /></div><h3>Know what to confirm</h3><p>Each university page lists what to check before you apply: the programme, the teaching language, the fee and its academic year, entry requirements and recognition at home.</p><a class="more" href="/universities/">See the universities →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="dated" /></div><h3>Fees explained before figures</h3><p>How to read a fee schedule, what “per year” leaves out and which charges to ask about. A fee appears here only with its academic year and the date we checked it.</p><a class="more" href="/tuition-fees/">Tuition fees guide →</a></div>
+        <div class="card card-link"><div class="ico"><Icon name="journey" /></div><h3>Clear next steps</h3><p>Start with a short enquiry; we reply by email. Four stages take you from enquiry to official submission through the university's own procedure, with nothing sent until you confirm.</p><a class="more" href="/admissions/#stages">See the process →</a></div>
       </div>
     </div>
   </section>
 
-  <section class="alt" id="universities">
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Reported or verified?</span>
+        <h2>Two labels, one rule: no fact without its source</h2>
+        <p>Every university page uses the same two labels, so you always know how much weight a line can carry.</p>
+      </div>
+      <div class="grid grid-2 labels">
+        <div class="card">
+          <p class="label-row"><span class="rep-label">Reported</span><span class="badge badge-pending">Not yet verified</span></p>
+          <h3>Reported in public sources</h3>
+          <p>What listings, registers and the university's own pages seen in search results say: the institution type, city, programme areas and website address. We show these as leads to check, with where we saw them and when. No fee, requirement, date or operating status is ever shown this way.</p>
+        </div>
+        <div class="card">
+          <p class="label-row"><span class="badge badge-verified">Verified</span></p>
+          <h3>Verified on an official source</h3>
+          <p>A fact we have read on the university's official website or in a Ukrainian government register, kept with its source address and the date we checked it, and reviewed before each intake. Only verified facts appear as fees, requirements, deadlines or programme details.</p>
+          <a class="link-standalone" href="/about/#verification">How we verify →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="universities">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Universities</span>
-        <h2>{universities.length > 0 ? 'Medical universities in Ukraine' : 'Universities we are researching'}</h2>
-        <p>{previews.length > 0 ? 'Each university is listed by reported type with its reported city; fees, programmes and requirements appear once each is checked on the university’s official website. Open a university to see what public sources report and what to check before you apply.' : 'A university appears here once its core facts have been checked against its official website.'} <a href="/about/#verification">How we verify</a>.</p>
+        <h2>{universities.length > 0 ? 'Medical universities in Ukraine' : `${total} universities in one directory`}</h2>
+        <p>{previews.length > 0 ? 'Grouped by reported type, each with its reported city and programme areas. Open a university to see what public sources report, what we have verified and what to check before you apply.' : 'A university appears here once its core facts have been checked against its official website.'} <a href="/about/#verification">How we verify</a>.</p>
       </div>
       {total === 0 && <p class="note">No university profile has completed verification yet. Each will appear here, dated, as soon as it passes.</p>}
       {universities.length > 0 && (
@@ -117,24 +148,36 @@ const jsonLd = [{
           ))}
         </div>
       )}
-      {previewGroups.map((g) => (
-        <div class="research-group">
-          <h3 class="research-group-title">{g.title} <span class="research-group-count">({g.items.length})</span></h3>
-          <ul class="research-list" aria-label={`${g.title} we are researching (not yet verified), alphabetical`}>
-            {g.items.map((u) => <li><a href={`/universities/${u.slug}/`}>{u.shortName}</a>{u.reported?.city && <span class="rcity"> · {u.reported.city}</span>} <span class="badge badge-pending">Not yet verified</span></li>)}
+      {featuredGroup && (
+        <div class="featured">
+          <h3 class="featured-title">{featuredGroup.title} <span class="muted">({featuredGroup.items.length}, as reported; alphabetical, not ranked)</span></h3>
+          <p class="featured-note">{featuredGroup.note} Facts appear once verified on each university's official website.</p>
+          <ul class="featured-list" aria-label={`${featuredGroup.title}, as reported, not yet verified`}>
+            {featuredGroup.items.map((u) => (
+              <li class="card-link"><a href={`/universities/${u.slug}/`}>{u.shortName}</a>{u.reported?.city && <span class="rcity">{u.reported.city}</span>}<span class="badge badge-pending">Not yet verified</span></li>
+            ))}
           </ul>
         </div>
-      ))}
-      <p class="after-grid"><a class="btn btn-secondary" href="/universities/">{total > 0 ? `Search the directory (${total})` : 'Browse universities'}</a></p>
+      )}
+      {otherGroups.length > 0 && (
+        <div class="browse">
+          <h3 class="featured-title">Browse the rest by reported type</h3>
+          <ul class="browse-list">
+            {otherGroups.map((g) => <li><a class="link-standalone" href={`/universities/?type=${g.key}`}>{g.title}<span class="muted"> ({g.items.length})</span></a></li>)}
+          </ul>
+        </div>
+      )}
+      <p class="after-grid"><a class="btn btn-secondary" href="/universities/">{total > 0 ? `Search all ${total} universities` : 'Browse universities'}</a></p>
     </div>
   </section>
 
-  <section>
+  <section class="alt">
     <div class="wrap grid grid-2 courses-split">
       <div class="section-head">
         <span class="eyebrow">Courses</span>
         <h2>Programmes for international students</h2>
-        <p>Programme details are listed only where availability has been confirmed from the university's official pages. Duration, entry requirements and degree titles are specific to each programme and follow each university's own terminology.</p>
+        <p>Each guide explains what to check for that programme: the qualification title, the teaching language, entry requirements and recognition at home. Programme details for a university are listed only once confirmed from its official pages.</p>
+        <p class="area-links">Universities reporting each area in public sources (not yet verified): {courses.map((c, i) => <>{i > 0 && ' · '}<a href={`/universities/?rfield=${c.slug}`}>{c.name} ({c.reported})</a></>)}.</p>
       </div>
       <div class="grid grid-2">
         {courses.map((c) => <div class="card card-link"><div class="ico"><Icon name={c.slug} /></div><h3>{c.name}</h3><p>{c.blurb}</p><a class="more" href={`/courses/${c.slug}/`}>Explore {c.name.toLowerCase()} →</a></div>)}
@@ -142,7 +185,7 @@ const jsonLd = [{
     </div>
   </section>
 
-  <section class="alt">
+  <section>
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">How it works</span>
@@ -166,21 +209,29 @@ const jsonLd = [{
   @media (min-width: 1080px) {
     .hero-art { display: block; position: absolute; z-index: 0; inset: -110px -40px -130px -60px; pointer-events: none; }
   }
-  .after-grid { margin: 1.5rem 0 0; }
-  .research-list { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .5rem 1rem; }
-  @media (min-width: 640px) { .research-list { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1000px) { .research-list { grid-template-columns: repeat(3, 1fr); } }
-  .research-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .75rem; padding: .1rem .9rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
-  .research-list li { position: relative; }
-  .research-group { margin-top: 1.25rem; }
-  .research-group-title { font-size: 1.05rem; margin: 0 0 .5rem; }
-  .research-group-count { color: var(--slate); font-weight: 500; }
-  .research-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
-  .research-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); display: inline-flex; align-items: center; min-height: 44px; }
-  .research-list .badge { margin-block: .5rem; }
+  .after-grid { margin: 2rem 0 0; }
+  .muted { color: var(--slate); font-weight: 500; }
+  .featured { margin-top: .5rem; }
+  .featured-title { font-size: 1.1rem; margin: 0 0 .35rem; }
+  .featured-note { color: var(--slate); margin: 0 0 1rem; max-width: 72ch; }
+  .featured-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+  @media (min-width: 640px) { .featured-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .featured-list { grid-template-columns: repeat(3, 1fr); } }
+  .featured-list li { position: relative; display: grid; gap: .25rem; padding: 1rem 1.1rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
+  .featured-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
+  .featured-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); line-height: 1.3; }
+  .featured-list a::after { content: ""; position: absolute; inset: 0; }
+  .featured-list a:hover { text-decoration: underline; }
+  .featured-list .badge { justify-self: start; margin-top: .15rem; }
   .rcity { color: var(--slate); font-size: .9rem; }
-  .research-list a::after { content: ""; position: absolute; inset: 0; }
-  .research-list a:hover { text-decoration: underline; }
+  .browse { margin-top: 2rem; }
+  .browse-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem .75rem; }
+  .browse-list a { text-decoration: none; color: var(--navy-900); font-weight: 600; background: var(--mist); border: 1px solid var(--line); border-radius: 999px; padding: .35rem 1rem; }
+  .browse-list a:hover { border-color: var(--blue-600); color: var(--blue-600); }
+  .labels .card h3 { margin-top: .25rem; }
+  .label-row { display: flex; gap: .5rem; align-items: center; margin: 0; }
+  .rep-label { font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--navy-800); background: var(--blue-50); border-radius: 3px; padding: .1rem .4rem; }
+  .area-links { font-size: .95rem; margin-top: 1rem; }
   /* Stack the intro above the course cards until there is room for both side by side. */
   .courses-split { align-items: start; grid-template-columns: 1fr; }
   @media (min-width: 1000px) { .courses-split { grid-template-columns: 1fr 1.35fr; gap: 2.5rem; } }

@@ -80,6 +80,17 @@ export async function getResearchPreviews(): Promise<PublicUniversity[]> {
   return (await decide()).filter((x) => x.d.researchPreview && !x.d.published).map((x) => x.d.previewRecord as PublicUniversity).sort(byShortName);
 }
 
+/**
+ * How many research previews REPORT each programme area (publication.mjs reportedLeads, owner decision (g) 2026-10-25),
+ * by FIELDS key. Counts only, never names: a course page may say "31 universities report medicine" with a link to the
+ * directory filtered by that area, but never list a preview as if the programme were confirmed.
+ */
+export async function reportedFieldCounts(): Promise<Record<string, number>> {
+  const counts: Record<string, number> = {};
+  for (const u of await getResearchPreviews()) for (const f of (u.reported?.programmeFields ?? []) as string[]) counts[f] = (counts[f] ?? 0) + 1;
+  return counts;
+}
+
 /** Count of the claims a projection SHOWS (top-level facts plus listed programmes): what a preview page calls "verified so far". */
 export function shownFactCount(d: any): number {
   const top = ['officialName', 'website', 'address', 'status', 'statusStatement', 'teachingFormat', 'founded', 'internationalOffice', 'accreditation', 'recognition', 'accommodation'];
