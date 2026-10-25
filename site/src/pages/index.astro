@@ -40,6 +40,12 @@ const jsonLd = [{
   '@type': 'WebSite',
   name: SITE.name,
   url: `${SITE.url}/`,
+  // Sitelinks search box: the directory's own name search (/universities/?q=), nothing invented.
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${SITE.url}/universities/?q={search_term_string}` },
+    'query-input': 'required name=search_term_string',
+  },
 }];
 ---
 <Base title="Ukraine Medical Admissions: independent admissions help" description={`Free, independent help applying to medical universities in Ukraine: ${total} universities with reported and verified facts clearly labelled, and an online start.`} suffix={false} jsonLd={jsonLd}>
