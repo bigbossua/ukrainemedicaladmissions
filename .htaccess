@@ -21,6 +21,14 @@ Options -Indexes
 RedirectMatch 301 ^/dentistry-admissions-in-ukraine/?$ /courses/dentistry/
 RedirectMatch 301 ^/document-translation-legalisation/?$ /admissions/
 
+# Publication gate (2026-10-11): the Ternopil profile was live as a noindex draft before the gate. Since 2026-10-12 (N25)
+# its URL is served again as a labelled, noindex RESEARCH PREVIEW built from the policy projection, so no redirect is
+# needed. tests/publication-gate.mjs requires a 302 to /universities/ here ONLY while that record is neither published
+# nor a research preview, and rejects the rule otherwise (a redirect would hide the page that is built).
+# Private form storage must never be served, even if a staging document root is nested so that uma-private/ falls
+# inside a public directory (APPLICATION_SYSTEM_SPEC §14.3).
+RedirectMatch 404 ^/uma-private(/.*)?$
+
 # Astro "directory" output: /page/ -> /page/index.html (default DirectoryIndex)
 DirectoryIndex index.html index.php
 ErrorDocument 404 /404.html
@@ -41,16 +49,17 @@ ErrorDocument 404 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  Header set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
 </IfModule>
 
-# Caching for hashed assets
+# Caching. Files here keep their names when their content changes (fonts, logos, icons, fonts.css), so they get
+# 7 days; the hashed build output in /_astro/ gets one year from its own .htaccess (public/_astro/.htaccess).
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
   ExpiresByType text/html "access plus 10 minutes"
 </IfModule>
