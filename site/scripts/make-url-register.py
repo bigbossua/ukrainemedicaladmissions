@@ -57,7 +57,7 @@ def fmt(kw, best):
     shown = [x for x in dbs if x[1][0] > 0] or dbs[:1]
     parts = []
     for i, (db, (v, kd)) in enumerate(shown):
-        parts.append(f'{db} {v:,}' + (f' · kd {kd}' if kd and i == 0 else ''))
+        parts.append(f'{db} {v:,}' + (f' · kd {kd}' if kd else ''))
     return f'"{kw}" ' + ', '.join(parts)
 # Keywords assigned to a record in the ledger or earlier map sections (beyond the record's own names), with caveats.
 EXTRA = {
@@ -73,6 +73,7 @@ EXTRA = {
  'kyiv-medical-university': ['kiev medical university ukraine'],
  'luhansk-state-medical-university': ['lugansk state medical university', 'lugansk medical university ukraine'],
  'kharkiv-national-medical-university': ['kharkiv national medical university ukraine ranking'],
+ 'bogomolets-national-medical-university': ['national medical university in kiev ukraine'],
 }
 CAVEAT = {
  'kyiv-medical-university': 'ambiguous: searchers may mean another Kyiv medical university; the figure cannot be split',
@@ -81,6 +82,8 @@ CAVEAT = {
  'karazin-kharkiv-national-university': '"kharkiv national university" may also mean other Kharkiv national universities',
  'zaporizhzhia-state-medical-and-pharmaceutical-university': 'former name',
 }
+# Names queried in the 2026-10-12 phrase_these call that SEMrush did not return (ledger, programme 4, call 2).
+NO_DATA = {'lesya-ukrainka-volyn-national-university', 'odesa-international-medical-university'}
 SERP = {
  'bukovinian-state-medical-university': 'in SERP: bsmu.edu.ua #1/#3/#5 (not verified), Wikipedia #2, social, agencies #7–#10',
  'vinnytsia-national-pirogov-memorial-medical-university': 'in SERP ("pirogov medical university ukraine"): vnnmu.com #1, Wikipedia #2, pirogov-university.com #3, vnmu.edu.ua #6, rankings, agencies (no domain verified)',
@@ -99,7 +102,7 @@ existing = [
 ('/courses/medicine/', 'course', 'mbbs in ukraine · ukraine mbbs college', 'in 260 · kd 18 exact ("mbbs in ukraine"); in 480 · kd 7 broad ("ukraine mbbs college")', 'informational', 'in SERP ("mbbs in ukraine"): agencies 10/10', 'verified programme rows', 'P1', '**Improve** when a programme is verified'),
 ('/courses/dentistry/', 'course', 'study dentistry in ukraine', 'in 30 exact (spiky trend)', 'informational', NOSERP, 'verified programme', 'P2', 'Retain'),
 ('/courses/nursing/', 'course', 'study nursing in ukraine', 'uk 20 exact; in 0', 'informational', NOSERP, 'verified English-taught award', 'P3', 'Retain'),
-('/courses/pharmacy/', 'course', '—', 'none measured', 'informational', '—', 'verified programme', 'P3', 'Retain (fold into /courses/ if nothing is verified)'),
+('/courses/pharmacy/', 'course', 'study pharmacy in ukraine', 'uk 0 exact ("study pharmacy in ukraine"); "pharmacy universities in ukraine" queried, not returned (uk)', 'informational', '—', 'verified programme', 'P3', 'Retain (fold into /courses/ if nothing is verified)'),
 ('/admissions/', 'guide', 'mbbs in ukraine eligibility · how to get admission', 'in 30 exact ("… eligibility"); in 10 (question)', 'informational', NOSERP, 'verified requirements', 'P1', 'Retain'),
 ('/faq/', 'FAQ', 'cost · years · NEET · valid in India/Germany/Canada', 'in 10–40 each (questions)', 'informational', NOSERP, 'regulator documents for recognition answers', 'P2', 'Retain (every measured question answered)'),
 ('/apply/', 'conversion', '—', '—', 'transactional', '—', '—', 'P0 (conversion)', 'Retain'),
@@ -122,22 +125,28 @@ for r in recs:
     exact = [(k, figures(k, 'exact')) for k in kws]
     exact = [(k, b) for k, b in exact if b]
     exact.sort(key=lambda kb: -max(v for v, _ in kb[1].values()))
+    fees = []
+    for k, _ in exact:
+        b = figures(k + ' fees', 'exact')
+        if b: fees.append((k + ' fees', b))
     leads = []
-    exact_kws = {k for k, _ in exact}
-    for k in kws:
-        if k in exact_kws: continue  # a lead never repeats a keyword already measured exactly
+    exact_dbs = {k: set(b) for k, b in exact}
+    for k in kws + [k + ' ukraine' for k in kws]:
         for t in ('broad', 'ranking'):
-            b = figures(k, t)
-            if b and max(v for v, _ in b.values()) >= 20: leads.append((k, t, b))
+            # a lead never repeats a database already measured exactly for the same keyword
+            b = {db: x for db, x in figures(k, t).items() if db not in exact_dbs.get(k, set())}
+            if b and max(v for v, _ in b.values()) >= 20 and not any(k == l[0] and t == l[1] for l in leads): leads.append((k, t, b))
     leads.sort(key=lambda x: -max(v for v, _ in x[2].values()))
     top = max((max(v for v, _ in b.values()) for _, b in exact), default=None)
     if exact:
         d = 'exact: ' + '; '.join(fmt(k, b) for k, b in exact[:3])
         if len(exact) > 1: d += ' (name variants overlap; never added)'
     else:
-        d = 'exact: not measured' if r['slug'] != 'lesya-ukrainka-volyn-national-university' else 'exact: queried (in), no data returned; other databases not measured'
+        d = 'exact: queried (in), no data returned; other databases not measured' if r['slug'] in NO_DATA else 'exact: not measured'
+    if fees:
+        d += '. Fees: ' + '; '.join(fmt(k, b) for k, b in fees) + ' (exact)'
     if leads:
-        d += '. Leads, not exact: ' + '; '.join(fmt(k, b) + f' ({LABEL[t]})' for k, t, b in leads[:3])
+        d += '. Leads, not exact: ' + '; '.join(fmt(k, b) + f' ({LABEL[t]})' for k, t, b in leads[:4])
         if len(leads) > 1: d += ' (overlapping; never added)'
     if r['slug'] in CAVEAT: d += f'. Caveat: {CAVEAT[r["slug"]]}'
     pr = 'P0' if top is not None and top >= 100 else ('P1' if top is not None and top >= 20 else 'P2')
@@ -149,12 +158,12 @@ for r in recs:
         'minimum viable profile: verified name, official website on a government register, address, current-year statement, teaching format, ≥1 programme open to international applicants (language, duration, intake, fee page read)',
         f'{pr} when verified', '**Create (index) on verification**; built today as a noindex research preview')
 countries = [
-('india', 'India', 'mbbs in ukraine for indian students · fees for indian students · NEET · valid in India', 'in 20 exact ("mbbs in ukraine for indian students"); fees cluster 170–2,900 broad; NEET 20 (question); validity 10–30 (questions; one phrasing also 20 exact)', 'informational', 'in SERP ("mbbs in ukraine", "… fees"): agency hubs', '≥1 verified fee; the National Medical Commission\'s own regulation text read on its site', 'P1', '**Defer**: create when both gates are met (decision of 2026-10-12 stands)'),
+('india', 'India', 'mbbs in ukraine for indian students · fees for indian students · NEET · valid in India', 'in 20 exact ("mbbs in ukraine for indian students"); fees cluster 170–2,900 broad; NEET 20 (question); validity 10–30 (questions; one phrasing also 20 exact)', 'informational', 'in SERP ("mbbs in ukraine", "ukraine medical college fees"): agency hubs', '≥1 verified fee; the National Medical Commission\'s own regulation text read on its site', 'P1', '**Defer**: create when both gates are met (decision of 2026-10-12 stands)'),
 ('nigeria', 'Nigeria', 'medical school in ukraine for international students · list · names', 'ng university names 10–30 exact; "list of …" and "… for international students" 20 broad; top broad figure 40 (a Kyiv city query)', 'informational', NOSERP, 'demand above the list queries; MDCN rules read on its site', 'P3', '**Defer** (list intent served by /universities/)'),
 ('pakistan', 'Pakistan', 'ukraine medical college · names', 'pk university names 10–30 exact; "ukraine medical college" 40 · kd 27 broad', 'informational', NOSERP, 'more demand; PMDC rules', 'P3', '**Reject** for now'),
-('uae', 'UAE', 'university names', 'ae 10–40', 'navigational', NOSERP, 'more demand', 'P3', '**Reject** for now'),
-('south-africa', 'South Africa', 'study medicine in ukraine', 'za 30; MBBS 0', 'informational', NOSERP, 'more demand; HPCSA rules', 'P3', '**Reject** for now'),
-('uk', 'United Kingdom', 'study medicine in ukraine · names', 'uk 20–90', 'informational', NOSERP, 'GMC rules; more demand', 'P3', '**Reject** for now'),
+('uae', 'UAE', 'university names', 'ae university names 10–40 exact', 'navigational', NOSERP, 'more demand', 'P3', '**Reject** for now'),
+('south-africa', 'South Africa', 'study medicine in ukraine', 'za 30 exact ("study medicine in ukraine"); "mbbs in ukraine" za 0 exact', 'informational', NOSERP, 'more demand; HPCSA rules', 'P3', '**Reject** for now'),
+('uk', 'United Kingdom', 'study medicine in ukraine · names', 'uk 30 exact ("study medicine in ukraine"); uk university names 0–90 exact', 'informational', NOSERP, 'GMC rules; more demand', 'P3', '**Reject** for now'),
 ]
 for code, slug, name, lang in [('eg', 'egypt', 'Egypt', 'Arabic'), ('ma', 'morocco', 'Morocco', 'French and Arabic'), ('az', 'azerbaijan', 'Azerbaijan', 'Azerbaijani and Russian'), ('ge', 'georgia', 'Georgia', 'Georgian'), ('tr', 'turkey', 'Turkey', 'Turkish'), ('bd', 'bangladesh', 'Bangladesh', 'Bengali'), ('gh', 'ghana', 'Ghana', 'other English')]:
     v = figures('study medicine in ukraine', 'exact').get(code)
@@ -191,12 +200,12 @@ fees = [
 ('/tuition-fees/mbbs/', 'fees (MBBS)', 'mbbs in ukraine fees · ukraine mbbs fees · cost of mbbs in ukraine', 'in 260 · kd 7 exact ("mbbs in ukraine fees"); 260 broad ("ukraine mbbs fees", identical metrics); 260 · kd 11 broad ("cost of mbbs in ukraine"); never added', 'informational', 'in SERP ("ukraine medical college fees"): agencies, Quora', 'verified fees', 'P1', '**Consolidate** into /tuition-fees/'),
 ('/compare/state-vs-private-medical-universities/', 'comparison', '—', 'not measured', 'informational', '—', 'verified facts for both sides; SEMrush', '—', '**Defer**: unmeasured, needs verified profiles'),
 ('/compare/medical-universities-in-kyiv/', 'city list', 'medical universities in kiev ukraine', 'ng 40 broad; in none', 'informational', NOSERP, '—', 'P3', '**Reject** (city pages rejected; directory city filter)'),
-('/compare/medical-universities-in-lviv/', 'city list', 'medical university in lviv', 'uk 20', 'informational', NOSERP, '—', 'P3', '**Reject** (city pages rejected)'),
+('/compare/medical-universities-in-lviv/', 'city list', 'medical university in lviv', 'uk 20 exact', 'informational', NOSERP, '—', 'P3', '**Reject** (city pages rejected)'),
 ('/best-medical-universities-in-ukraine/', 'ranking', 'best medical college in ukraine · top medical schools in ukraine', 'in 390 broad; pk 20 broad ("top medical schools in ukraine")', 'mixed', 'in SERP ("best medical college in ukraine"): agencies, Wikipedia, ranking sites, YouTube', '—', '—', '**Reject** (we never rank; answered on /universities/#best)'),
 ('/courses/public-health/', 'course', 'public health in ukraine', 'uk 10; in 0 (exact)', 'informational', '—', 'an English-taught programme open to international applicants', '—', '**Defer** (near-zero demand; decision #12 / M11 / O8 stands)'),
 ('/courses/physical-therapy/', 'course', 'physiotherapy in ukraine', 'queried, not returned (R1, six databases)', 'informational', '—', 'measured demand; English-taught supply; recognition route', '—', '**Defer** (no measured demand; decision #13 / M12 / O9 stands)'),
 ('/mbbs-in-ukraine-2026/', 'MBBS variant', 'mbbs in ukraine 2026', 'queried, not returned (R1, six databases)', 'informational', '—', '—', '—', '**Reject** (duplicate of /courses/medicine/)'),
-('/universities/zaporizhzhia-national-university/', 'university profile', 'zaporizhzhia national university', 'in 20 exact', 'navigational', NOSERP, 'the institution is not in the directory: medical programmes for international applicants not researched', '—', '**Defer**: research the institution before any profile'),
+('/universities/zaporizhzhia-national-university/', 'university profile (no record)', 'zaporizhzhia national university', 'in 20 exact', 'navigational', NOSERP, 'the institution is not in the directory: medical programmes for international applicants not researched', 'P1 by demand, after research and verification', '**Defer**: research the institution before any profile'),
 ('/clinics/american-medical-center-ukraine/', 'off-topic', 'american medical center ukraine', 'ng 20 broad', 'navigational (clinic)', NOSERP, '—', '—', '**Reject** (a clinic, not admissions)')]
 for t in fees:
     n += 1; row(n, *t)
