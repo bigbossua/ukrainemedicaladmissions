@@ -100,7 +100,7 @@ The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal page
 | T1 | Full suite `npm test`, CI on the release commit, release gate (publish workflow) | Me | All green, as for `053cee0` |
 | T2 | Confirm the live build: open `/apply/thank-you/` and look for "We reply by email from info@ukrainemedicaladmissions.com", or check hPanel → Git for `5048eb1` | You | Text present, or commit shown |
 | T3 | Live test enquiry through Apply Online, named `TEST – please ignore` | You | Thank-you page shown; a new file appears in `uma-private/enquiries/` (not inside `public_html`); notification email received |
-| T4 | Live error states: submit the contact form without ticking consent while scripts are disabled | You | 422 page listing the missing item, nothing stored |
+| T4 | Live error state (the browser blocks an incomplete form, so test the server directly): `curl -i -X POST -d "type=enquiry&name=TEST&email=test@example.com&message=TEST" https://ukrainemedicaladmissions.com/api/enquiry.php` (consent left out) | You | `HTTP 422` with a page naming the missing consent; no new file in `uma-private/enquiries/` |
 | T5 | Private storage is not public: open `https://ukrainemedicaladmissions.com/uma-private/` | You | 404 |
 | T6 | Live checks script `node site/scripts/verify-live.mjs https://ukrainemedicaladmissions.com`, run on a machine that can reach the site | You, or Claude on your computer | 0 failures |
 | T7 | Search Console URL Inspection → Test live URL for `/`, `/universities/` and one profile | You | First two indexable; the profile "Excluded by noindex" |
