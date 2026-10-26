@@ -40,117 +40,145 @@ const reportedCities = [...new Set(previews.map((u) => u.reported?.city).filter(
 const reportedFields = Object.keys(FIELDS).filter((k) => previews.some((u) => Array.isArray(u.reported?.programmeFields) && u.reported.programmeFields.includes(k)));
 const reportedTypes = previewGroups.map((g) => g.key).filter((k) => k in INSTITUTION_TYPES);
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
-const summary = [plural(total, 'university', 'universities'), `${verifiedCount} verified`, previews.length ? `${previews.length} not yet verified` : '', drafts ? plural(drafts, 'draft', 'drafts') : '', 'alphabetical, not ranked'].filter(Boolean).join(' · ');
+// Hero figures (counts of records and of groups only; never a claim about a university).
+const stats = [
+  { n: total, label: total === 1 ? 'university listed' : 'universities listed' },
+  { n: previewGroups.length + (universities.length > 0 ? 1 : 0), label: 'institution types' },
+  { n: verifiedCount, label: verifiedCount === 1 ? 'profile verified' : 'profiles verified' },
+];
 ---
 <Base title="Medical universities in Ukraine: list of medical colleges" description={`${total} Ukrainian universities in one directory, each marked verified or not yet verified. We show a fact only once checked, and we never rank universities.`} suffix={false}>
   {PREVIEW && drafts > 0 && <DraftBanner kind="unpublished" text={`Preview build: this directory includes ${drafts} draft ${drafts === 1 ? 'record' : 'records'} that ${drafts === 1 ? 'is' : 'are'} not on the public site. Values marked “pending” are research leads, not verified facts.`} />}
-  <div class="page-head">
+  <div class="page-head dir-head">
     <div class="wrap">
-      <span class="eyebrow">Directory</span>
+      <span class="eyebrow">University directory</span>
       <h1>Medical universities in Ukraine</h1>
-      <p>The Ukrainian universities in our directory, in one list. A <strong>verified profile</strong> shows facts checked against official sources, each dated. A university marked <strong>not yet verified</strong> is one we are still researching: we show its name and what to check before you apply, never unconfirmed fees, programmes or dates. The list includes dedicated medical universities and multi-faculty universities; which medical, dental, pharmacy or nursing programmes each one offers is among the facts we confirm. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
-      <p class="head-summary" data-summary>{summary}</p>
+      <p>Universities in Ukraine that teach medicine, dentistry, pharmacy or nursing, in one searchable list. Open a university to see what public sources report about it and what to check before you apply. In India these institutions are often called medical colleges; in the UK, medical schools.</p>
+      <ul class="dir-stats" aria-label="Directory figures">
+        {stats.map((x) => <li><b>{x.n}</b> {x.label}</li>)}
+        <li class="dir-stats-note">Alphabetical, not ranked</li>
+      </ul>
     </div>
   </div>
   <Breadcrumbs items={[{ label: 'Universities' }]} />
 
-  <section style="padding-top:1rem">
+  <section class="dir">
     <div class="wrap">
       {/* Hidden until the directory script runs: without JavaScript every university is listed anyway. */}
-      <form class="filters" data-filters aria-label="Search the directory" role="search" hidden>
-        <label class="field search">Search by university name
-          <input type="search" name="q" data-search placeholder="e.g. Bukovinian, Pirogov" autocomplete="off" />
+      <form class="finder" data-filters aria-label="Search the directory" role="search" hidden>
+        <label class="finder-search" for="dir-q">
+          <span class="finder-label">Search by university name</span>
+          <span class="finder-box">
+            <svg class="finder-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="dir-q" type="search" name="q" data-search placeholder="For example Bogomolets, Kharkiv or Odesa" autocomplete="off" />
+          </span>
         </label>
-        {reportedTypes.length > 1 && (
-          <label class="field">Type (as reported)
-            <select name="type" data-filter="type">
-              <option value="">All types</option>
-              {reportedTypes.map((k) => <option value={k}>{(INSTITUTION_TYPES as any)[k].group}</option>)}
-            </select>
-          </label>
-        )}
-        {reportedCities.length > 1 && (
-          <label class="field">City (as reported)
-            <select name="rcity" data-filter="rcity"><option value="">All cities</option>{reportedCities.map((c) => <option value={c}>{c}</option>)}</select>
-          </label>
-        )}
-        {reportedFields.length > 1 && (
-          <label class="field">Programme area (as reported)
-            <select name="rfield" data-filter="rfield"><option value="">All programme areas</option>{reportedFields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
-          </label>
-        )}
-        {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
-          <label class="field">Show
-            <select name="status" data-filter="status">
-              <option value="">All universities</option>
-              <option value="verified">Verified profiles only</option>
-              {previews.length > 0 && <option value="preview">Not yet verified only</option>}
-              {drafts > 0 && <option value="draft">Drafts (preview build)</option>}
-            </select>
-          </label>
-        )}
-        {factFilters && (
-          <>
+        <div class="finder-filters">
+          {reportedTypes.length > 1 && (
+            <label class="field">Institution type
+              <select name="type" data-filter="type">
+                <option value="">All types</option>
+                {reportedTypes.map((k) => <option value={k}>{(INSTITUTION_TYPES as any)[k].group}</option>)}
+              </select>
+            </label>
+          )}
+          {reportedCities.length > 1 && (
             <label class="field">City
-              <select name="city" data-filter="city"><option value="">All cities</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
+              <select name="rcity" data-filter="rcity"><option value="">All cities</option>{reportedCities.map((c) => <option value={c}>{c}</option>)}</select>
             </label>
-            <label class="field">Programme family
-              <select name="field" data-filter="field"><option value="">All programmes</option>{fields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
+          )}
+          {reportedFields.length > 1 && (
+            <label class="field">Programme area
+              <select name="rfield" data-filter="rfield"><option value="">All programme areas</option>{reportedFields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
             </label>
-            <label class="field">Qualification level
-              <select name="level" data-filter="level"><option value="">Any level</option>{levels.map((k) => <option value={k}>{(LEVELS as any)[k]}</option>)}</select>
+          )}
+          {(verifiedCount > 0 && previews.length > 0 || drafts > 0) && (
+            <label class="field">Show
+              <select name="status" data-filter="status">
+                <option value="">All universities</option>
+                <option value="verified">Verified profiles only</option>
+                {previews.length > 0 && <option value="preview">Not yet verified only</option>}
+                {drafts > 0 && <option value="draft">Drafts (preview build)</option>}
+              </select>
             </label>
-            <label class="field">Teaching language
-              <select name="language" data-filter="language"><option value="">Any language</option>{languages.map((l) => <option value={l}>{l}</option>)}</select>
-            </label>
-            <label class="field">Preparatory route
-              <select name="prep" data-filter="prep"><option value="">Either</option>{hasPrep && <option value="yes">Offers a preparatory route</option>}<option value="no">No preparatory route recorded</option></select>
-            </label>
-            <label class="field">Intake
-              <select name="intake" data-filter="intake"><option value="">Any intake</option>{intakes.map((i) => <option value={i}>{i}</option>)}</select>
-            </label>
-          </>
-        )}
-        <p class="filter-actions"><button type="reset" class="btn btn-secondary btn-sm" data-reset>Clear</button></p>
+          )}
+          {factFilters && (
+            <>
+              <label class="field">Verified city
+                <select name="city" data-filter="city"><option value="">All cities</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
+              </label>
+              <label class="field">Programme family
+                <select name="field" data-filter="field"><option value="">All programmes</option>{fields.map((k) => <option value={k}>{(FIELDS as any)[k].label}</option>)}</select>
+              </label>
+              <label class="field">Qualification level
+                <select name="level" data-filter="level"><option value="">Any level</option>{levels.map((k) => <option value={k}>{(LEVELS as any)[k]}</option>)}</select>
+              </label>
+              <label class="field">Teaching language
+                <select name="language" data-filter="language"><option value="">Any language</option>{languages.map((l) => <option value={l}>{l}</option>)}</select>
+              </label>
+              <label class="field">Preparatory route
+                <select name="prep" data-filter="prep"><option value="">Either</option>{hasPrep && <option value="yes">Offers a preparatory route</option>}<option value="no">No preparatory route recorded</option></select>
+              </label>
+              <label class="field">Intake
+                <select name="intake" data-filter="intake"><option value="">Any intake</option>{intakes.map((i) => <option value={i}>{i}</option>)}</select>
+              </label>
+            </>
+          )}
+          <button type="reset" class="btn btn-secondary finder-reset" data-reset>Reset</button>
+        </div>
+        {previews.length > 0 && <p class="finder-hint">Type, city and programme area are as reported in public sources.{factFilters && (PREVIEW ? ' Preview build: verified-fact filters use reported values for drafts.' : ' Filters named “verified” use verified facts only.')}</p>}
       </form>
-      <p class="count" aria-live="polite" aria-atomic="true">Showing <span data-count>{total}</span> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span>.{previews.length > 0 && ' Filters marked “as reported” use what public sources say about universities not yet verified.'}{factFilters && (PREVIEW ? ' Preview build: level, language and intake filters use reported values for drafts.' : ' The other filters use verified facts only, so universities not yet verified do not match them.')}</p>
+
+      <div class="results-bar">
+        <p class="count" aria-live="polite" aria-atomic="true">Showing <strong data-count>{total}</strong> of {total} <span data-noun>{total === 1 ? 'university' : 'universities'}</span></p>
+      </div>
+
+      {previews.length > 0 && (
+        <div class="status-note">
+          {verifiedCount === 0
+            ? <p data-empty-state><strong>No university profile has completed verification yet.</strong> Each card shows the institution type, city and programme areas reported in public sources. Fees, entry requirements and dates appear only once confirmed on the university’s official website.</p>
+            : <p><strong>{plural(verifiedCount, 'profile is', 'profiles are')} verified.</strong> The others show only what public sources report; fees, entry requirements and dates appear once confirmed on the university’s official website.</p>}
+          <details class="meaning">
+            <summary>What “reported” and “not yet verified” mean</summary>
+            <ul>
+              <li><strong>Reported</strong> is what public sources say: listings, registers and the university’s own pages seen in search results. We have not yet read it on the university’s official website or in a Ukrainian government register.</li>
+              <li>“Not yet verified” is not a judgement about the university. It may or may not be admitting students for your intake; we have not confirmed it yet.</li>
+              <li>A university becomes a verified profile once its official name, website, address, current teaching statement and at least one programme open to international applicants, with its language, duration, intake and fee page, have been checked on official sources.</li>
+            </ul>
+          </details>
+        </div>
+      )}
 
       <p class="note near-note" data-near-match role="status" hidden>No listed name matches every word you typed. Universities with similar names can be different institutions, so check the full name before you choose.</p>
-      <div data-list>
+      <div data-list class="dir-list">
         {universities.length > 0 && (
-          <div class="tier" role="region" aria-labelledby="verified-h" data-tier>
-            <h2 id="verified-h">{PREVIEW && drafts ? 'Profiles and drafts' : 'Verified profiles'}</h2>
-            <div class="grid grid-3">{universities.map((u) => <UniversityCard u={u.d} draft={u.draft} />)}</div>
+          <div class="group" role="region" aria-labelledby="verified-h" data-tier>
+            <div class="group-head">
+              <h2 id="verified-h">{PREVIEW && drafts ? 'Profiles and drafts' : 'Verified profiles'}</h2>
+              <span class="group-count">{universities.length}</span>
+            </div>
+            <div class="cards">{universities.map((u) => <UniversityCard u={u.d} draft={u.draft} />)}</div>
           </div>
         )}
-        {previews.length > 0 && (
-          <div class="tier" role="region" aria-labelledby="research-h" data-tier>
-            <h2 id="research-h">List of universities we are researching</h2>
-            {verifiedCount === 0 && <p class="lead-note" data-empty-state><strong>No university profile has completed verification yet.</strong> Each university below is listed with what public sources report about it, marked “Reported”: its type, city and programme areas. We have not confirmed any of it on the university's own website or in a government register, and we show no fee, requirement, date or ranking until we have. We have not yet verified whether, where or how each one is teaching this academic year.</p>}
-            {verifiedCount > 0 && <p class="lead-note">Each university below is listed with what public sources report about it, marked “Reported”; nothing has been confirmed on its official website yet.</p>}
-            <details class="meaning">
-              <summary>What “not yet verified” and “reported” mean</summary>
-              <ul>
-                <li>“Reported” is what public sources (listings, registers, the university's pages seen in search results) say. We have not yet read the university's facts on its own website or a Ukrainian government register.</li>
-                <li>It is not a judgement about the university. It may or may not be admitting students for your intake; we simply have not confirmed it yet.</li>
-                <li>A university moves to “Verified profiles” once its official name, website, address, current teaching statement and at least one programme open to international applicants, with its language, duration, intake and fee page, have been checked on official sources.</li>
-              </ul>
-            </details>
-            {previewGroups.map((g) => (
-              <div class="group" role="group" aria-labelledby={`group-${g.key}`} data-tier>
-                <h3 id={`group-${g.key}`}>{g.title} <span class="group-count">({g.items.length})</span></h3>
-                <p class="group-note">{g.note}</p>
-                <div class="grid grid-3 previews">{g.items.map((u) => <ResearchPreviewCard u={u} headingLevel="h4" />)}</div>
-              </div>
-            ))}
+        {previewGroups.map((g) => (
+          <div class="group" role="region" aria-labelledby={`group-${g.key}`} data-tier>
+            <div class="group-head">
+              <h2 id={`group-${g.key}`}>{g.title}</h2>
+              <span class="group-count" aria-label={`${g.items.length} ${g.items.length === 1 ? 'university' : 'universities'}`}>{g.items.length}</span>
+            </div>
+            <p class="group-note">{g.note}</p>
+            <div class="cards">{g.items.map((u) => <ResearchPreviewCard u={u} headingLevel="h3" />)}</div>
           </div>
-        )}
+        ))}
       </div>
       <p class="note" data-no-match role="status" hidden>No university name matches “<span data-query></span>”. We search university names only. Check the spelling, or <button type="button" class="linkish" data-reset-link>show all universities</button>. If the university is not in the list, choose “A university not listed here” when you <a href={SITE.ctaHref}>start your profile</a>.</p>
       {total === 0 && <p class="note" data-empty-state><strong>No university profile has completed verification yet.</strong> <a href={SITE.ctaHref}>{SITE.cta}</a> and tell us which university you are considering.</p>}
 
       <div class="cta-inline">
-        <p><strong>University not in the list, or not sure which to choose?</strong> Start your candidate profile with your course, country and qualifications, and choose “A university not listed here” if you need to. We reply by email.</p>
+        <div>
+          <h2 class="cta-inline-h">Not sure which university to choose?</h2>
+          <p>Start your candidate profile with your course, country and qualifications, and choose “A university not listed here” if you need to. We reply by email with your next steps.</p>
+        </div>
         <a class="btn btn-primary" href={SITE.ctaHref}>{SITE.cta}</a>
       </div>
 
@@ -162,21 +190,24 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
         </>
       )}
 
-      <div class="prose">
-        <h2 style="margin-top:2.5rem" id="best">Which is the best medical university in Ukraine?</h2>
-        <p>There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. The right choice depends on you: the programme you want, your school-leaving qualification, your budget, the teaching language and the country where you plan to work.</p>
-        <h3 id="compare-instead">What to compare instead</h3>
-        <ul>
-          <li>Is your programme open to applicants from your country for your intake, and in which language is it taught? Course guides: <a href="/courses/medicine/">medicine</a>, <a href="/courses/dentistry/">dentistry</a>, <a href="/courses/pharmacy/">pharmacy</a> and <a href="/courses/nursing/">nursing</a>.</li>
-          <li>What qualification title is awarded, and does the regulator where you plan to work accept it?</li>
-          <li>What is the tuition fee, for which academic year, with which payment schedule and other mandatory charges? <a href="/tuition-fees/">How to read a fee schedule</a>.</li>
-          <li>What are the entry requirements and documents? <a href="/admissions/#readiness">How requirements are compared</a>.</li>
-        </ul>
-        <h3 id="no-ranking">Why a ranking can mislead</h3>
-        <p>A league table turns many facts into one order chosen by its publisher, may measure research output rather than teaching, and can be old, unsourced or paid for by universities or agents. Check who publishes a list, what it measures and the year it describes.</p>
-
-        <h2 id="official-websites">Check the official website before you send anything</h2>
-        <p>Some third-party websites are made to look like a university's own site, with the university's name in the address or a copy of its logo. Before you send documents, personal details or money, check that the address matches the university's official domain (a verified profile shows it, with the date we checked it) and follow only the admission procedure the university publishes on its own website. <a href="/admissions/#official-sites">Apply through official channels only</a>.</p>
+      <div class="guide">
+        <div class="prose">
+          <h2 id="best">Which is the best medical university in Ukraine?</h2>
+          <p>There is no official ranking of Ukrainian medical universities for international applicants, and we do not publish one. The right choice depends on you: the programme you want, your school-leaving qualification, your budget, the teaching language and the country where you plan to work.</p>
+          <h3 id="compare-instead">What to compare instead</h3>
+          <ul>
+            <li>Is your programme open to applicants from your country for your intake, and in which language is it taught? Course guides: <a href="/courses/medicine/">medicine</a>, <a href="/courses/dentistry/">dentistry</a>, <a href="/courses/pharmacy/">pharmacy</a> and <a href="/courses/nursing/">nursing</a>.</li>
+            <li>What qualification title is awarded, and does the regulator where you plan to work accept it?</li>
+            <li>What is the tuition fee, for which academic year, with which payment schedule and other mandatory charges? <a href="/tuition-fees/">How to read a fee schedule</a>.</li>
+            <li>What are the entry requirements and documents? <a href="/admissions/#readiness">How requirements are compared</a>.</li>
+          </ul>
+          <h3 id="no-ranking">Why a ranking can mislead</h3>
+          <p>A league table turns many facts into one order chosen by its publisher, may measure research output rather than teaching, and can be old, unsourced or paid for by universities or agents. Check who publishes a list, what it measures and the year it describes.</p>
+        </div>
+        <div class="prose">
+          <h2 id="official-websites">Check the official website before you send anything</h2>
+          <p>Some third-party websites are made to look like a university's own site, with the university's name in the address or a copy of its logo. Before you send documents, personal details or money, check that the address matches the university's official domain (a verified profile shows it, with the date we checked it) and follow only the admission procedure the university publishes on its own website. <a href="/admissions/#official-sites">Apply through official channels only</a>.</p>
+        </div>
       </div>
       <p class="note">{SITE.disclaimer}</p>
     </div>
@@ -185,8 +216,9 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
 <script>
   // Client-side search and filters over data attributes written by UniversityCard and ResearchPreviewCard.
   // name: src/lib/name-search.mjs (full matches, or near matches under a caution so that separate institutions with
-  // similar names are never presented as one). status: verified | preview | draft. Exact-match keys: city, prep. List
-  // keys: fields, levels, languages, intakes. A not-yet-verified card carries no fact attributes, so a fact filter hides it.
+  // similar names are never presented as one). status: verified | preview | draft. Exact-match keys: type, rcity, city,
+  // prep. List keys: rfields, fields, levels, languages, intakes. A not-yet-verified card carries no verified-fact
+  // attributes, so a verified-fact filter hides it.
   import { searchNames } from '../../lib/name-search.mjs';
   const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], type: ['type', 'exact'], rcity: ['rcity', 'exact'], rfield: ['rfields', 'list'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
   const form = document.querySelector<HTMLFormElement>('[data-filters]');
@@ -239,32 +271,62 @@ const summary = [plural(total, 'university', 'universities'), `${verifiedCount} 
 </Base>
 
 <style>
-  .head-summary { margin-top: .75rem !important; font-weight: 600; color: var(--yellow-400); }
-  .filters { display: grid; gap: 0 1rem; margin-bottom: .25rem; align-items: end; }
-  @media (min-width: 700px) { .filters { grid-template-columns: minmax(0, 2fr) auto; } .filters:has(select[name="status"]) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } .filters:has(select[name="city"]), .filters:has(select[name="rcity"]) { grid-template-columns: repeat(3, 1fr); } .filters:has(select[name="rcity"]) .search { grid-column: 1 / -1; } }
-  .filter-actions { margin: 0 0 1rem; }
-  .filter-actions .btn { min-height: 44px; }
-  .filters[hidden] { display: none; }
-  .filters input::placeholder { color: var(--slate); opacity: 1; }
-  .count { font-size: .9rem; color: var(--slate); margin-top: 0; }
-  .near-note { margin: 0 0 .75rem; max-width: 80ch; }
-  .tier { margin-top: 1.5rem; }
-  .tier[hidden] { display: none; }
-  .tier > h2 { font-size: 1.35rem; margin-bottom: .5rem; }
-  .lead-note { max-width: 80ch; margin: 0 0 .75rem; }
-  .meaning { max-width: 80ch; margin: 0 0 1.25rem; }
-  .meaning summary { cursor: pointer; font-weight: 600; color: var(--navy-900); margin: 0; padding: .65rem 0; min-height: 44px; }
-  .meaning summary:focus-visible { outline-offset: 2px; }
-  .meaning ul { padding-left: 1.25rem; margin: .6rem 0 0; }
-  .meaning li { margin-bottom: .35rem; }
-  .previews { gap: .75rem; }
-  .group { margin-top: 1.5rem; }
-  .group[hidden] { display: none; }
-  .group > h3 { font-size: 1.1rem; margin: 0 0 .25rem; }
-  .group-count { color: var(--slate); font-weight: 500; }
-  .group-note { margin: 0 0 .75rem; color: var(--slate); font-size: .9rem; max-width: 80ch; }
-  .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--blue-600); text-decoration: underline; cursor: pointer; }
-  .cta-inline { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; background: var(--blue-50); border-radius: var(--radius); padding: 1.1rem 1.4rem; margin: 2rem 0 0; }
-  .cta-inline p { margin: 0; max-width: 62ch; }
-</style>
+  /* Hero: compact, with three plain figures (counts of records only). */
+  .dir-head { padding-block: clamp(2rem, 5vw, 3.25rem); }
+  .dir-head p { max-width: 64ch; }
+  .dir-stats { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem 2rem; color: #CFDAEC; font-size: .95rem; }
+  .dir-stats b { display: block; font-family: var(--font-display); font-size: 1.6rem; line-height: 1.1; color: #fff; }
+  .dir-stats-note { align-self: flex-end; color: var(--yellow-400); font-weight: 600; }
 
+  .dir { padding-top: 1.25rem; }
+  /* Finder: one prominent search field, then a row of labelled filters and a reset button. */
+  .finder { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1rem, 3vw, 1.5rem); box-shadow: 0 10px 30px rgba(11, 31, 63, .06); display: grid; gap: 1rem; }
+  .finder[hidden] { display: none; }
+  .finder-search { display: grid; gap: .4rem; }
+  .finder-label { font-weight: 600; color: var(--navy-900); font-size: .95rem; }
+  .finder-box { position: relative; display: block; }
+  .finder-icon { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); color: var(--slate); pointer-events: none; }
+  .finder-box input { width: 100%; font: inherit; font-size: 1.05rem; color: var(--ink); min-height: 54px; padding: .8rem 1rem .8rem 2.85rem; border: 1px solid var(--control-line); border-radius: 999px; background: var(--mist); transition: border-color .15s, box-shadow .15s, background .15s; }
+  .finder-box input:focus { background: #fff; border-color: var(--blue-600); box-shadow: 0 0 0 3px var(--blue-100); }
+  .finder-box input::placeholder { color: var(--slate); opacity: 1; }
+  .finder-filters { display: grid; gap: .75rem 1rem; align-items: end; }
+  .finder-filters .field { margin: 0; color: var(--navy-900); font-weight: 600; }
+  @media (min-width: 640px) { .finder-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .finder-filters { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; } }
+  .finder-reset { min-height: 48px; justify-self: start; }
+  .finder-hint { margin: 0; font-size: .875rem; color: var(--slate); }
+
+  .results-bar { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; margin: 1.75rem 0 .75rem; }
+  .count { margin: 0; font-size: 1rem; color: var(--slate); }
+  .count strong { color: var(--navy-900); font-size: 1.15rem; }
+  .status-note { background: var(--blue-50); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 0 0 1.5rem; max-width: 900px; }
+  .status-note p { margin: 0; color: var(--ink); }
+  .meaning { margin: .75rem 0 0; background: transparent; border: 0; padding: 0; }
+  .meaning summary { margin: 0; padding: .55rem 0; min-height: 44px; display: flex; align-items: center; font-weight: 600; color: var(--blue-600); }
+  .meaning ul { padding-left: 1.25rem; margin: .5rem 0 0; }
+  .meaning li { margin-bottom: .4rem; }
+  .near-note { margin: 0 0 1rem; max-width: 80ch; }
+
+  /* Groups: heading with a count, one short note, then an even card grid (1 / 2 / 3 columns). */
+  .dir-list { display: grid; gap: clamp(2rem, 4vw, 3rem); margin-top: .5rem; }
+  .group[hidden] { display: none; }
+  .group-head { display: flex; align-items: center; gap: .75rem; margin: 0 0 .35rem; }
+  .group-head h2 { font-size: clamp(1.25rem, 2.2vw, 1.5rem); margin: 0; }
+  .group-count { display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; padding: 0 .55rem; border-radius: 999px; background: var(--navy-900); color: #fff; font-weight: 700; font-size: .9rem; font-family: var(--font-display); }
+  .group-note { margin: 0 0 1rem; color: var(--slate); max-width: 72ch; }
+  .cards { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 640px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; } }
+
+  .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--blue-600); text-decoration: underline; cursor: pointer; }
+  .cta-inline { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; background: var(--navy-900); color: #CFDAEC; border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; }
+  .cta-inline > div { max-width: 62ch; }
+  .cta-inline-h { color: #fff; font-size: 1.3rem; margin: 0 0 .35rem; }
+  .cta-inline p { margin: 0; }
+  .cta-inline .btn { background: #fff; color: var(--navy-900); }
+  .cta-inline .btn:hover { background: var(--blue-50); }
+  .cta-inline :focus-visible { outline-color: var(--yellow-400); }
+  .guide { display: grid; gap: 1.5rem 3rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+  @media (min-width: 1000px) { .guide { grid-template-columns: 1.4fr 1fr; } }
+  .guide .prose h2 { margin-top: 0; }
+</style>

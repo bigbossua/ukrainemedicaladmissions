@@ -27,6 +27,24 @@ if (!up) { console.log('FAIL php -S did not start', phpLog); console.log('journe
 
 let checks = 0, failures = 0;
 const ok = (cond, msg) => { checks++; if (!cond) { failures++; console.log('FAIL', msg); } };
+
+// 0. Search engines: robots.txt and both sitemap files are served the same way to Googlebot as to a browser, with a
+// 200, an XML or text type, well-formed content and the production host in every URL (no user-agent rule anywhere).
+for (const ua of ['Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/130.0 Safari/537.36']) {
+  const bot = /Googlebot/.test(ua) ? 'Googlebot' : 'browser';
+  const r = await fetch(base + '/robots.txt', { headers: { 'user-agent': ua }, redirect: 'manual' });
+  const robots = await r.text();
+  ok(r.status === 200 && /text\/plain/.test(r.headers.get('content-type') ?? '') && /^Sitemap: https:\/\/ukrainemedicaladmissions\.com\/sitemap-index\.xml$/m.test(robots) && !/^Disallow: \/$/m.test(robots), `${bot}: robots.txt (${r.status}, ${r.headers.get('content-type')})`);
+  for (const f of ['/sitemap-index.xml', '/sitemap-0.xml']) {
+    const x = await fetch(base + f, { headers: { 'user-agent': ua }, redirect: 'manual' });
+    const xml = await x.text();
+    ok(x.status === 200, `${bot}: ${f} answers ${x.status}`);
+    ok(/^(application|text)\/xml/.test(x.headers.get('content-type') ?? ''), `${bot}: ${f} content-type ${x.headers.get('content-type')}`);
+    ok(/^<\?xml version="1\.0" encoding="UTF-8"\?>/.test(xml) && /<\/(sitemapindex|urlset)>\s*$/.test(xml) && xml.charCodeAt(0) !== 0xfeff, `${bot}: ${f} is not well-formed sitemap XML`);
+    const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    ok(locs.length > 0 && locs.every((u) => u.startsWith('https://ukrainemedicaladmissions.com/')), `${bot}: ${f} lists a URL off the production host`);
+  }
+}
 const browser = await chromium.launch();
 const SLUG = 'kyiv-medical-university';
 for (const [label, ctxOpts] of [['mobile', { ...devices['iPhone 13'] }], ['desktop', { viewport: { width: 1440, height: 900 } }]]) {
@@ -63,6 +81,9 @@ for (const [label, ctxOpts] of [['mobile', { ...devices['iPhone 13'] }], ['deskt
   // 3. Profile → Apply Online with the university pre-selected and said so.
   await page.click('main a[href^="/apply/?university="]');
   await page.waitForURL(`**/apply/?university=${SLUG}`);
+  // The handler treats a form sent less than 3 seconds after the page opened as a bot (enquiry.php MIN_ELAPSED_MS):
+  // keep a human pace so the stored-record checks below are not timing-dependent.
+  const applyOpened = Date.now();
   ok((await page.inputValue('[name="university"]')) === SLUG, `${label}: university not pre-selected on /apply/`);
   ok((await page.inputValue('[name="university2"]')) === '' && (await page.inputValue('[name="university3"]')) === '', `${label}: second or third choice touched`);
   ok(await page.isVisible('[data-prefill-note]'), `${label}: pre-selection note not visible`);
@@ -79,6 +100,8 @@ for (const [label, ctxOpts] of [['mobile', { ...devices['iPhone 13'] }], ['deskt
   ok(!(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)), `${label}: horizontal overflow on the review step`);
 
   // 5. Submit through the real handler → thank-you page.
+  const wait = 3600 - (Date.now() - applyOpened);
+  if (wait > 0) await page.waitForTimeout(wait);
   await Promise.all([page.waitForURL('**/apply/thank-you/**'), page.click('[data-submit]')]);
   const thanks = (await page.textContent('main')) ?? '';
   ok(/received|thank/i.test(thanks), `${label}: thank-you page text`);

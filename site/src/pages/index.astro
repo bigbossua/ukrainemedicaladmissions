@@ -160,7 +160,7 @@ const jsonLd = [{
           <p class="featured-note">{featuredGroup.note} Facts appear once verified on each university's official website.</p>
           <ul class="featured-list" aria-label={`${featuredGroup.title}, as reported, not yet verified`}>
             {featuredGroup.items.map((u) => (
-              <li class="card-link"><a href={`/universities/${u.slug}/`}>{u.shortName}</a>{u.reported?.city && <span class="rcity">{u.reported.city}</span>}<span class="badge badge-pending">Not yet verified</span></li>
+              <li class="card-link"><a href={`/universities/${u.slug}/`}>{u.shortName}</a>{u.reported?.city && <span class="rcity">{u.reported.city}</span>}<span class="fstatus"><span class="fdot" aria-hidden="true"></span>Not yet verified</span></li>
             ))}
           </ul>
         </div>
@@ -223,12 +223,14 @@ const jsonLd = [{
   .featured-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
   @media (min-width: 640px) { .featured-list { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1000px) { .featured-list { grid-template-columns: repeat(3, 1fr); } }
-  .featured-list li { position: relative; display: grid; gap: .25rem; padding: 1rem 1.1rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--yellow-400); border-radius: var(--radius-sm); }
+  .featured-list li { position: relative; display: grid; gap: .2rem; padding: 1rem 1.15rem; min-height: 48px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .2s, box-shadow .2s; }
+  .featured-list li:hover { border-color: var(--blue-100); box-shadow: 0 10px 24px rgba(11, 31, 63, .07); }
+  .fstatus { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; color: var(--slate); margin-top: .2rem; }
+  .fdot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--yellow-400); box-shadow: 0 0 0 3px var(--yellow-100); }
   .featured-list li:focus-within { outline: 3px solid var(--blue-600); outline-offset: 2px; }
   .featured-list a { font-weight: 600; text-decoration: none; color: var(--navy-900); line-height: 1.3; display: inline-flex; align-items: center; min-height: 44px; }
   .featured-list a::after { content: ""; position: absolute; inset: 0; }
   .featured-list a:hover { text-decoration: underline; }
-  .featured-list .badge { justify-self: start; margin-top: .15rem; }
   .rcity { color: var(--slate); font-size: .9rem; }
   .browse { margin-top: 2rem; }
   .browse-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem .75rem; }

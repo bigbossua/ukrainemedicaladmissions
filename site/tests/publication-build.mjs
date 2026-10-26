@@ -167,7 +167,9 @@ try {
         check(!repBlock.includes('Website reported') && !eps.includes('epsilon-refs.fixture.example'), '(b) g epsilon: a website or a research reference on another host is reported');
         check(eps.split('POSCTRL-EPSILON-CITY').length - 1 === 1, '(b) g epsilon: the reported city appears outside the reported block (or not at all)');
         const dirHtml = page(OUT.pass, 'universities');
-        check(dirHtml && /data-slug="fixture-epsilon-preview-university"[^>]*data-rcity="POSCTRL-EPSILON-CITY"/.test(dirHtml) && dirHtml.includes('>Reported</span> POSCTRL-EPSILON-CITY, POSCTRL-EPSILON-REGION'), '(b) g epsilon: the directory card does not carry the reported city under the word Reported');
+        const epsCard = /<article class="pcard[^"]*"[^>]*data-slug="fixture-epsilon-preview-university"[\s\S]*?<\/article>/.exec(dirHtml ?? '')?.[0] ?? '';
+        check(/data-rcity="POSCTRL-EPSILON-CITY"/.test(epsCard) && epsCard.includes('POSCTRL-EPSILON-CITY</p>') && epsCard.includes('Not yet verified'), '(b) g epsilon: the directory card does not carry the reported city with its "Not yet verified" status');
+        check((dirHtml ?? '').includes('as reported in public sources') && (dirHtml ?? '').includes('reported in public sources'), '(b) g epsilon: the directory page does not say that card details are reported in public sources');
         for (const v of ['Research preview', 'Not yet verified', 'https://epsilon.fixture.example/', '2 facts verified so far', '/apply/?university=fixture-epsilon-preview-university', 'does not claim any partnership'])
           check(eps.includes(v), `(b) N25 epsilon: expected "${v}"`);
         check((eps.match(/badge-verified">Verified</g) ?? []).length === 2, `(b) N25 epsilon: ${(eps.match(/badge-verified">Verified</g) ?? []).length} Verified badges; exactly the two verified facts may carry one`);

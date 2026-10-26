@@ -82,6 +82,13 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
       for (const p of previews) if (p.facts.length) fail(`directory: not-yet-verified card "${p.name}" carries fact attributes ${p.facts.join(', ')}`);
       for (const p of previews) if (p.extra.length) fail(`directory: not-yet-verified card "${p.name}" carries unexpected attributes ${p.extra.join(', ')}`);
       for (const p of previews) if (p.reported && !/^Reported/.test(p.reported.trim())) fail(`directory: card "${p.name}" prints a lead without the word Reported: ${p.reported.slice(0, 60)}`);
+      // Every not-yet-verified card says so, has exactly one link (to its own profile), and the page says the card details are reported.
+      const cardChecks = await page.$$eval('[data-list] article[data-status="preview"]', (a) => a.map((el) => ({ slug: el.dataset.slug, status: el.querySelector('.status')?.textContent ?? '', links: [...el.querySelectorAll('a')].map((x) => x.getAttribute('href')) })));
+      for (const c of cardChecks) {
+        if (!/Not yet verified/.test(c.status)) fail(`directory: card ${c.slug} lacks its "Not yet verified" status`);
+        if (c.links.length !== 1 || c.links[0] !== `/universities/${c.slug}/`) fail(`directory: card ${c.slug} links ${JSON.stringify(c.links)} (expected one link to its profile)`);
+      }
+      if (!/as reported in public sources/.test((await page.textContent('[data-filters]')) ?? '')) fail('directory: the finder does not say the filters use reported details');
       // The "as reported" filters narrow the previews and Clear restores them.
       if (previews.length > 1 && (await page.$('select[name="rcity"]'))) {
         const city = await page.$eval('select[name="rcity"] option:nth-child(2)', (o) => o.value);

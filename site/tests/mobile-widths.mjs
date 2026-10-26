@@ -1,5 +1,5 @@
-// Mobile acceptance test (owner brief 2026-10-26) over dist/: twelve page types at 320, 360, 390 and 430 CSS px on a touch
-// viewport. Checks: no horizontal scrolling (and which element overflows), the menu opens and closes on Escape without
+// Mobile and tablet acceptance test (owner briefs 2026-10-26) over dist/: twelve page types at 320, 360, 390, 430, 768 and
+// 1024 CSS px on a touch viewport (the menu checks run below the 900 px desktop navigation). Checks: no horizontal scrolling (and which element overflows), the menu opens and closes on Escape without
 // overflow, form controls at least 16 px (no zoom on focus; hidden honeypot and checkboxes excluded), primary links and
 // buttons at least 44 x 44 px, the h1 at least 24 px, the footer links visible, directory search works, no page errors.
 // Prints "mobile-widths: N pages x 4 widths, M failures". Needs dist/ (npm run build).
@@ -14,7 +14,7 @@ const MIME = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript
 const server = createServer((req, res) => { let p = join(DIST, decodeURIComponent(new URL(req.url, 'http://x').pathname)); if (existsSync(p) && statSync(p).isDirectory()) p = join(p, 'index.html'); if (!existsSync(p)) { res.writeHead(404); return res.end('404'); } res.writeHead(200, { 'content-type': MIME[extname(p)] ?? 'application/octet-stream' }); res.end(readFileSync(p)); }).listen(0);
 const base = `http://127.0.0.1:${server.address().port}`;
 const PAGES = ['/', '/universities/', '/universities/kyiv-medical-university/', '/universities/zaporizhzhia-state-medical-and-pharmaceutical-university/', '/courses/medicine/', '/admissions/', '/tuition-fees/', '/faq/', '/apply/', '/contact/', '/privacy/', '/404.html'];
-const WIDTHS = [320, 360, 390, 430];
+const WIDTHS = [320, 360, 390, 430, 768, 1024];
 let failures = 0; const fail = (m) => { failures++; console.log('FAIL', m); };
 const browser = await chromium.launch();
 for (const width of WIDTHS) {
@@ -36,7 +36,7 @@ for (const width of WIDTHS) {
     if (r.smallTargets.length) fail(`${width} ${p}: targets under 44px: ${r.smallTargets.slice(0, 4).join(', ')}`);
     if (r.h1 < 24) fail(`${width} ${p}: h1 only ${r.h1}px`);
     if (r.footerLinks < 10) fail(`${width} ${p}: only ${r.footerLinks} footer links visible`);
-    if (p === '/') {
+    if (p === '/' && width < 900) {
       await page.click('[data-menu-toggle]');
       if (!(await page.$eval('[data-menu]', (m) => m.hasAttribute('data-open') && m.getBoundingClientRect().height > 100))) fail(`${width}: the mobile menu did not open`);
       if (await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)) fail(`${width}: horizontal overflow with the menu open`);
