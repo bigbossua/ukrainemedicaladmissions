@@ -50,6 +50,8 @@ const path = Astro.url.pathname;
   }
   /* The primary call to action stays in the header on tablets; phones get it inside the menu. */
   @media (max-width: 599px) { .header-cta { display: none; } }
+  /* Below 900px: logo on the left; Apply button (tablets) and menu button together on the right. */
+  @media (max-width: 899px) { .header-cta { margin-left: auto; } nav { order: 2; } }
   .noscript-nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; padding-bottom: .75rem; }
   .noscript-nav a:not(.btn) { color: var(--navy-900); font-weight: 500; display: inline-flex; align-items: center; min-height: 44px; }
   @media (min-width: 900px) { .noscript-nav { display: none; } }
