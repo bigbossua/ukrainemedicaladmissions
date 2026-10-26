@@ -279,3 +279,17 @@ The gaps that remain (exact demand for "pirogov medical university ukraine", the
 **Decision:** demand does not decide what is listed; evidence does. International European University and Luhansk State Medical University (reported base: Rivne) go to the top of the verification queue for the new institutions, because each has demand and an open status question that official or government pages can settle (IEU: current licence and the Malta campus; LSMU: a dated official notice of its current base and a clear distinction from the occupied-territory institution). They stay out of the public directory until then. Kyiv Medical University (licence and branch questions) follows. Sumy State University is listed as a research preview (its search-result leads meet the preview criteria; nothing about it is verified); the low-demand state universities that meet the criteria are listed too, because a complete directory helps applicants who already have a university in mind.
 
 **Cumulative consumption: 6,560 + 150 = 6,710 line-based (6,820 max-reading; 7,290 conservative). Expected balance: 43,290 (43,180; conservative 42,710): ESTIMATE, unverified. Programme 4 headroom: 550 of 1,000.**
+
+## 2026-10-26 — Programme 5 request (100+ URL mandate): refused for lack of API units (0 units)
+
+**Owner's instruction (2026-10-26):** "I have provided SEMrush access. Use it." Research country demand (Nigeria, India, Egypt, Morocco, Azerbaijan, Georgia, Turkey and others the data supports), programme, fee, eligibility, document, visa and university-name clusters, competitors, SERP features and trends; protect the allowance; batch related research. No unit cap was stated; the working cap set here before the first call was 2,000 units, sequential calls only.
+
+| # | Call | Result | `usage.api_units` | Decision |
+|---|---|---|---|---|
+| 1 | `get_report_schema` (`phrase_these`), the zero-cost first step before any metered call | error `no_api_units`: "The user has an active Semrush subscription, but does not have enough API units to complete this request." (trace 2d51201fa99a88bec5e20bb4ab094615) | none reported (no data returned) | No further call. New research is blocked until API units are available on the account; units are never bought from this project (owner rule). |
+
+**Reconciliation.** The ledger's expected balance (43,290 line-based; conservative 42,710) was an unverified estimate. The account now reports that it does not have enough units for even the schema step, so that estimate is withdrawn: the live balance is effectively zero for this connector. The owner's reading of Subscription info → API units is still the only way to record the actual figure.
+
+**Consequence for the 100+ URL mandate.** Every decision in this round is taken from the 46 existing exports (115 distinct keywords; 85 with volume of 20 or more). Markets with no export (Egypt, Morocco, Azerbaijan, Georgia, Turkey, and Nigeria beyond the 10–40 list and name queries) stay **unmeasured**; no page is created for them (CLAUDE.md SEO rule 2 and rule 8). The opportunity register is `KEYWORD_URL_MAP.md` §20.
+
+**Cumulative consumption unchanged: 6,710 line-based (6,820 max-reading; 7,290 conservative).**
