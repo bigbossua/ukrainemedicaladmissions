@@ -17,6 +17,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 REC = ROOT / 'site/src/content/universities'
 EVI = ROOT / 'site/data/evidence'
 OUT = ROOT / 'research/verification/VERIFICATION_STATUS.md'
+DIST = ROOT / 'site/dist'
+SITE = 'https://ukrainemedicaladmissions.com'
+CORE = [('officialName', 'official name'), ('website', 'official website'), ('address', 'address'), ('status', 'operating status'), ('statusStatement', 'current-year statement'), ('teachingFormat', 'teaching format')]
 NOT_SOURCE = re.compile(r'(^|\.)(google|bing|yahoo|yandex|baidu|duckduckgo|facebook|instagram|youtube|tiktok|twitter|linkedin|reddit|telegram|whatsapp|archive)\.')
 TYPES = {'state-medical-university': 'State medical university', 'state-pharmacy-university': 'State pharmacy university', 'relocated-state-medical-university': 'State medical university, reported as relocated', 'multi-faculty-university': 'Multi-faculty university', 'private-university-or-institute': 'Private university or institute', 'communal-medical-academy-or-institute': 'Communal medical academy or institute', 'health-programmes-university': 'University with pharmacy, nursing or allied-health programmes'}
 
@@ -53,7 +56,22 @@ for f in sorted(REC.glob('*.json')):
     else: website = 'no lead'
     dates = sorted({x.get('snippetDate') for x in refs if x.get('snippetDate')})
     fields = sorted({p.get('field') for p in (r.get('programmes') or []) + (r.get('deferredProgrammes') or []) if p.get('field')})
-    rows.append((r['shortName'], r['slug'], TYPES.get(r.get('institutionType'), 'not recorded'), r.get('city') or '', website, dates[-1] if dates else '-', len(verified), len(entries), len(r['verification'].get('openQuestions') or []), ', '.join(fields)))
+    # Profile URL and indexing, read from the BUILT site (site/dist, run `npm run build` first) and its sitemap.
+    url = f"{SITE}/universities/{r['slug']}/"
+    page = DIST / 'universities' / r['slug'] / 'index.html'
+    sm = (DIST / 'sitemap-0.xml').read_text() if (DIST / 'sitemap-0.xml').exists() else ''
+    if page.exists():
+        h = page.read_text()
+        rob = (re.search(r'<meta name="robots" content="([^"]+)"', h) or [None, '?'])[1]
+        can = (re.search(r'<link rel="canonical" href="([^"]+)"', h) or [None, ''])[1]
+        indexable = 'noindex' not in rob and can == url
+    else:
+        rob, can, indexable = 'no page', '', False
+    in_sitemap = f'<loc>{url}</loc>' in sm
+    missing = [label for k, label in CORE if (r.get(k) or {}).get('status') != 'verified']
+    if not any((p.get('internationalAdmission') or {}).get('status') == 'verified' for p in r.get('programmes') or []): missing.append('a programme open to international applicants')
+    reason = '' if in_sitemap else ('research preview (noindex, follow): not verified: ' + ', '.join(missing) if missing else 'not published')
+    rows.append((r['shortName'], r['slug'], TYPES.get(r.get('institutionType'), 'not recorded'), r.get('city') or '', website, dates[-1] if dates else '-', len(verified), len(entries), len(r['verification'].get('openQuestions') or []), ', '.join(fields), url, rob, 'self' if can == url else (can or 'none'), indexable, in_sitemap, reason))
 
 today = datetime.date.today().isoformat()
 n = len(rows); v = sum(1 for x in rows if x[6] > 0); wsites = sum(1 for x in rows if '(' in x[4])
@@ -64,6 +82,13 @@ lines = [f'# Verification status of the university records ({today})', '',
          '| University | Type (reported) | City (reported) | Website (reported) | Latest lead | Verified facts | Evidence entries | Open questions | Programme areas (reported) |', '|---|---|---|---|---|---|---|---|---|']
 for x in rows:
     lines.append(f'| [{x[0]}](../../site/src/content/universities/{x[1]}.json) | {x[2]} | {x[3]} | {x[4]} | {x[5]} | {x[6]} | {x[7]} | {x[8]} | {x[9]} |')
+routes = sum(1 for x in rows if x[11] != 'no page'); idx = sum(1 for x in rows if x[13]); smn = sum(1 for x in rows if x[14])
+sm_total = len(re.findall(r'<loc>', (DIST / 'sitemap-0.xml').read_text())) if (DIST / 'sitemap-0.xml').exists() else 0
+lines += ['', '## Profile URLs and indexing', '',
+          f'Read from the built site (`site/dist`) and its sitemap. Profile routes built: {routes} of {n}. Self-canonical: {sum(1 for x in rows if x[12] == "self")}. Indexable: {idx}. Profile URLs in the sitemap: {smn}. Sitemap URLs in total: {sm_total}. A profile enters the sitemap automatically once its record is published under the publication policy (verified core facts and at least one verified programme); until then it is a research preview: reachable, linked from the directory, `noindex, follow`, outside the sitemap.', '',
+          '| Profile URL | Robots | Canonical | In sitemap | Reason excluded |', '|---|---|---|---|---|']
+for x in rows:
+    lines.append(f'| {x[10]} | {x[11]} | {x[12]} | {"yes" if x[14] else "no"} | {x[15] or "-"} |')
 lines += ['', 'Per-record detail: `research/verification/<slug>/EVIDENCE_REGISTER.md` (pages to capture) and `npm run report:publication` in `site/` (every claim and why it is withheld).', '']
 OUT.write_text('\n'.join(lines))
 print(f'wrote {OUT.relative_to(ROOT)}: {n} records, {v} with a verified fact, {wsites} reporting a website')

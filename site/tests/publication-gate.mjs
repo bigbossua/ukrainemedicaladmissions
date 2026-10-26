@@ -175,6 +175,27 @@ for (const r of previewed) {
   if (!new RegExp(`<option value="${r.slug}"[^>]*>[^<]*\\(not yet verified\\)</option>`).test(appliesPage)) fail(`/apply/: research preview ${r.slug} not offered, labelled "not yet verified"`);
   ok();
 }
+// Profile URL architecture (owner brief 2026-10-26): every real record has one unique, safe slug; every listed record
+// (published or research preview) has a page at /universities/<slug>/ whose canonical is exactly that URL; the
+// directory links each card to its own profile; the sitemap lists exactly the PUBLISHED profiles (a preview is noindex
+// and never listed, and no profile URL is listed twice).
+{
+  const slugs = real.map((r) => r.slug);
+  if (new Set(slugs).size !== slugs.length) fail(`profile URLs: duplicate slugs ${slugs.filter((x, i) => slugs.indexOf(x) !== i).join(', ')}`);
+  for (const sl of slugs) if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(sl) || sl.length > 80) fail(`profile URLs: unsafe slug "${sl}"`);
+  const smProfiles = [...sitemap.matchAll(/<loc>https:\/\/ukrainemedicaladmissions\.com\/universities\/([^/<]+)\/<\/loc>/g)].map((m) => m[1]);
+  if (new Set(smProfiles).size !== smProfiles.length) fail('profile URLs: a profile is listed twice in the sitemap');
+  const publishedSlugs = published.map((x) => x.slug).sort();
+  if (JSON.stringify([...smProfiles].sort()) !== JSON.stringify(publishedSlugs)) fail(`profile URLs: sitemap profiles [${smProfiles.join(', ')}] differ from published profiles [${publishedSlugs.join(', ')}]`);
+  for (const r of [...published, ...previewed]) {
+    const f = join(DIST, 'universities', r.slug, 'index.html');
+    if (!existsSync(f)) { fail(`profile URLs: ${r.slug} has no page`); continue; }
+    const can = /<link rel="canonical" href="([^"]+)"/.exec(readFileSync(f, 'utf8'))?.[1];
+    if (can !== `https://ukrainemedicaladmissions.com/universities/${r.slug}/`) fail(`profile URLs: ${r.slug} canonical is ${can ?? 'missing'}`);
+    if (dirPage && !new RegExp(`<article class="[^"]*"[^>]*data-slug="${r.slug}"[\\s\\S]*?href="/universities/${r.slug}/"[\\s\\S]*?</article>`).test(dirPage.h)) fail(`profile URLs: the directory card for ${r.slug} does not link to its own profile`);
+  }
+  ok();
+}
 // Control for the listed-name exemption: a withheld city in an ordinary sentence is still found, and only inside a name is not.
 {
   const longNamed = previewed.find((x) => listedNames.some((n) => n !== x.shortName && typeof x.city === 'string' && x.city.length >= 4 && n.includes(x.city)));
