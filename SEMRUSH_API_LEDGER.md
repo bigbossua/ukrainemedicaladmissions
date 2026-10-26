@@ -293,3 +293,11 @@ The gaps that remain (exact demand for "pirogov medical university ukraine", the
 **Consequence for the 100+ URL mandate.** Every decision in this round is taken from the 45 existing exports (CSV): 37 carry keyword rows and 8 are SERP-only; together they hold 149 distinct keywords, 122 with a volume of 20 or more in at least one database (exact, broad, question and competitor-ranking rows counted once per keyword, never added). *(Corrected 2026-10-26: the first version of this entry said "46 exports (115 distinct keywords; 85 with volume of 20 or more)"; that count skipped the ten 2026-10-10 files, whose headers are lower-case, and counted the README as an export.)* For Egypt, Morocco, Azerbaijan, Georgia, Turkey, Bangladesh and Ghana only the English head term "study medicine in ukraine" is measured (phrase_all, 2026-10-10: eg, az, ge, bd, gh 0; ma, tr 20); local-language demand is **unmeasured**, and Nigeria is measured only for list and university-name queries; no page is created for them (CLAUDE.md SEO rule 2 and rule 8). The opportunity register is `KEYWORD_URL_MAP.md` §20.
 
 **Cumulative consumption unchanged: 6,710 line-based (6,820 max-reading; 7,290 conservative).**
+
+## 2026-10-26 (evening) — availability check before the launch-readiness audit: refused again (0 units)
+
+| # | Call | Result | `usage.api_units` | Decision |
+|---|---|---|---|---|
+| 1 | `get_report_schema` (`phrase_these`), the zero-cost first step | error `no_api_units` (trace f54801d70b3c9174e0fc8e4a1c773352) | none reported | No further call. The audit uses the 45 existing exports and `KEYWORD_URL_MAP.md` §20. Units are never bought from this project. |
+
+**Cumulative consumption unchanged: 6,710 line-based (6,820 max-reading; 7,290 conservative). Balance: unconfirmed (the account reports too few units for any call).**

@@ -106,4 +106,56 @@ Read from the built site (`site/dist`) and its sitemap. Profile routes built: 45
 | https://ukrainemedicaladmissions.com/universities/zaporizhzhia-state-medical-and-pharmaceutical-university/ | noindex, follow | self | no | research preview (noindex, follow): not verified: official name, official website, address, operating status, current-year statement, teaching format, a programme open to international applicants |
 | https://ukrainemedicaladmissions.com/universities/zhytomyr-medical-institute/ | noindex, follow | self | no | research preview (noindex, follow): not verified: official name, official website, address, operating status, current-year statement, teaching format, a programme open to international applicants |
 
+## Evidence by topic
+
+Counted from each record's programme entries: a topic counts only when its status is *verified* (official page read, URL and date recorded). Anything else is a lead or not published and is never shown as fact. Official-source URLs and the dates they were read go in `site/data/evidence/<slug>.json`; the access column above records the last attempt.
+
+| University | Official website | Current-year statement | Programmes recorded | Open to international applicants (verified) | Teaching language (verified) | Tuition fee (verified) | Entry requirements (verified) | Deadlines (verified) |
+|---|---|---|---|---|---|---|---|---|
+| Bogomolets National Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Bohdan Khmelnytsky National University of Cherkasy | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Bukovinian State Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Cherkasy Medical Academy | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Danylo Halytsky Lviv National Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Dnipro Institute of Medicine and Public Health | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Dnipro Medical Institute | conflicting | not-published | 2 | 0 | 0 | 0 | 0 | 0 |
+| Dnipro State Medical University | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Donetsk National Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| International Academy of Ecology and Medicine | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| International European University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| International Humanitarian University | conflicting | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Ivano-Frankivsk National Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Karazin Kharkiv National University | unverified | not-published | 2 | 0 | 0 | 0 | 0 | 0 |
+| Kharkiv Institute of Medicine and Biomedical Sciences | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Kharkiv International Medical University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Kharkiv National Medical University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Kharkiv Polytechnic Institute | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Kherson State University | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Kyiv International University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Kyiv Medical University | unverified | not-published | 5 | 0 | 0 | 0 | 0 | 0 |
+| Kyiv National University of Technologies and Design | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Lesya Ukrainka Volyn National University | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Luhansk State Medical University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Andrei Krupynskyi Lviv Medical Academy | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Lviv Medical University (private) | not-published | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Lviv Polytechnic National University | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Medical and Natural Sciences University | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| National University of Pharmacy | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Odesa International Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Odesa I. I. Mechnikov National University | unverified | not-published | 2 | 0 | 0 | 0 | 0 | 0 |
+| Odesa National Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Oles Honchar Dnipro National University | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Petro Mohyla Black Sea National University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Poltava State Medical University | unverified | not-published | 2 | 0 | 0 | 0 | 0 | 0 |
+| Rivne Medical Academy | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Sumy State University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Taras Shevchenko National University of Kyiv | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Ternopil National Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Ukrainian State University of Science and Technologies | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Uzhhorod National University | unverified | not-published | 1 | 0 | 0 | 0 | 0 | 0 |
+| Vinnytsia National Pirogov Memorial Medical University | unverified | not-published | 3 | 0 | 0 | 0 | 0 | 0 |
+| Volyn Medical Institute | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+| Zaporizhzhia State Medical and Pharmaceutical University | unverified | not-published | 5 | 0 | 0 | 0 | 0 | 0 |
+| Zhytomyr Medical Institute | unverified | not-published | 0 | 0 | 0 | 0 | 0 | 0 |
+
 Per-record detail: `research/verification/<slug>/EVIDENCE_REGISTER.md` (pages to capture) and `npm run report:publication` in `site/` (every claim and why it is withheld).

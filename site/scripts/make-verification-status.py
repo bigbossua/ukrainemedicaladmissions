@@ -38,6 +38,7 @@ def claims(o, path=''):
     return out
 
 rows = []
+topics = []  # per record: evidence by topic, counted over its programme entries
 for f in sorted(REC.glob('*.json')):
     r = json.loads(f.read_text())
     ev = json.loads((EVI / f.name).read_text()) if (EVI / f.name).exists() else {}
@@ -71,6 +72,9 @@ for f in sorted(REC.glob('*.json')):
     missing = [label for k, label in CORE if (r.get(k) or {}).get('status') != 'verified']
     if not any((p.get('internationalAdmission') or {}).get('status') == 'verified' for p in r.get('programmes') or []): missing.append('a programme open to international applicants')
     reason = '' if in_sitemap else ('research preview (noindex, follow): not verified: ' + ', '.join(missing) if missing else 'not published')
+    progs = r.get('programmes') or []
+    ver = lambda k: sum(1 for p in progs if (p.get(k) or {}).get('status') == 'verified')
+    topics.append((r['shortName'], (r.get('website') or {}).get('status') or 'not recorded', len(progs), ver('internationalAdmission'), ver('language'), ver('tuition'), ver('entryRequirements'), ver('deadlines'), (r.get('statusStatement') or {}).get('status') or 'not recorded'))
     acc = ev.get('access') or {}
     access = f"{acc.get('status', 'not recorded')} ({acc.get('checked', '-')})"
     rows.append((r['shortName'], r['slug'], TYPES.get(r.get('institutionType'), 'not recorded'), r.get('city') or '', website, dates[-1] if dates else '-', len(verified), len(entries), len(r['verification'].get('openQuestions') or []), ', '.join(fields), url, rob, 'self' if can == url else (can or 'none'), indexable, in_sitemap, reason, access))
@@ -91,6 +95,11 @@ lines += ['', '## Profile URLs and indexing', '',
           '| Profile URL | Robots | Canonical | In sitemap | Reason excluded |', '|---|---|---|---|---|']
 for x in rows:
     lines.append(f'| {x[10]} | {x[11]} | {x[12]} | {"yes" if x[14] else "no"} | {x[15] or "-"} |')
+lines += ['', '## Evidence by topic', '',
+          'Counted from each record\'s programme entries: a topic counts only when its status is *verified* (official page read, URL and date recorded). Anything else is a lead or not published and is never shown as fact. Official-source URLs and the dates they were read go in `site/data/evidence/<slug>.json`; the access column above records the last attempt.', '',
+          '| University | Official website | Current-year statement | Programmes recorded | Open to international applicants (verified) | Teaching language (verified) | Tuition fee (verified) | Entry requirements (verified) | Deadlines (verified) |', '|---|---|---|---|---|---|---|---|---|']
+for t in topics:
+    lines.append(f'| {t[0]} | {t[1]} | {t[8]} | {t[2]} | {t[3]} | {t[4]} | {t[5]} | {t[6]} | {t[7]} |')
 lines += ['', 'Per-record detail: `research/verification/<slug>/EVIDENCE_REGISTER.md` (pages to capture) and `npm run report:publication` in `site/` (every claim and why it is withheld).', '']
 OUT.write_text('\n'.join(lines))
 print(f'wrote {OUT.relative_to(ROOT)}: {n} records, {v} with a verified fact, {wsites} reporting a website')
