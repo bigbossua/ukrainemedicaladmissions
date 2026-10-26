@@ -1,8 +1,10 @@
 # Launch readiness and organic growth: action register (26 October 2026)
 
-Status labels: **Confirmed** = checked by me with the evidence named. **Not tested** = this environment cannot reach it, and it is never assumed to work. **Needs you** = your access, decision or professional advice.
+Status labels: **Confirmed** = checked by me with the evidence named. **Confirmed by owner** = checked by you on the live site or in hPanel and reported to me (I cannot see it myself). **Not tested** = this environment cannot reach it, and it is never assumed to work. **Needs you** = your access, decision or professional advice.
 
-This environment's network proxy refuses `ukrainemedicaladmissions.com` (with and without `www`, http and https), Google Search Console, GA4, Google Trends, Hostinger and every official university host (all checked 26 October). SEMrush reports no API units (trace f54801d70b3c9174e0fc8e4a1c773352; ledger updated). Every live statement below is therefore **Not tested**.
+This environment's network proxy refuses `ukrainemedicaladmissions.com` (with and without `www`, http and https), Google Search Console, GA4, Google Trends, Hostinger and every official university host (all checked 26 October). SEMrush reports no API units (trace f54801d70b3c9174e0fc8e4a1c773352; ledger updated). Every live statement below is **Not tested** unless marked **Confirmed by owner**.
+
+**Update, 26 October (owner checks):** the Hostinger deployment is confirmed in hPanel, and the live `/apply/thank-you/` shows the wording released in `053cee0` (the reply address info@ukrainemedicaladmissions.com, the spam-folder instruction, the documents-list link and the statement that nothing is sent to a university automatically). That wording first appears in commit `30f8dea`, so the live site serves this release. Form processing, private-storage protection and email delivery remain **Not tested**.
 
 ## 1. Current status and evidence
 
@@ -11,9 +13,12 @@ This environment's network proxy refuses `ukrainemedicaladmissions.com` (with an
 | Source of the current release | **Confirmed** | `claude/university-profile-pipeline` at `053cee0`; release pointer `publish-production-interim` at `053cee0` |
 | Production branch | **Confirmed** | `production` at `5048eb1` "Build 053cee0", tag `release-20261026-210314`, interim mode (legal pages published as drafts). Its file tree (`a05a56e`) is identical to the build tested locally |
 | CI and release gate | **Confirmed** | Site CI runs 69, 70 and 71 passed; publish run 6 passed the full release gate in interim mode |
-| Hostinger deployment | **Not tested** | Whether Hostinger has pulled `5048eb1` into `public_html` is visible only in hPanel → Git or on the live site |
-| Live pages (home, directory, profiles, FAQ, contact, apply, thank-you) | **Not tested** | Proxy refusal. The same build passed locally: 65 pages × 3 widths, 12 pages × 6 mobile widths, accessibility at 0 violations |
-| Live test enquiry, private storage, email | **Not tested** | No live access and no mail server here. Locally, the real handler stored both journey submissions outside the web root (journey test, 68 checks) and passed 196 handler checks covering validation, errors, rate limits, the honeypot and timing |
+| Hostinger deployment | **Confirmed by owner** (26 October) | Confirmed in hPanel; consistent with the live thank-you wording below |
+| Live thank-you page wording | **Confirmed by owner** (26 October) | Reply address, spam-folder instruction, documents-list link and "no automatic university application" all visible on the live `/apply/thank-you/` |
+| Other live pages (home, directory, profiles, FAQ, contact, apply) | **Not tested** | Proxy refusal. The same build passed locally: 65 pages × 3 widths, 12 pages × 6 mobile widths, accessibility at 0 violations |
+| Live form processing (submit → stored record → thank-you page) | **Not tested** | No live access. Locally, the real handler stored both journey submissions outside the web root (journey test, 68 checks) and passed 196 handler checks covering validation, errors, rate limits, the honeypot and timing. Live check: T3 |
+| Live private-storage protection (`uma-private/` outside `public_html`, never served) | **Not tested** | The rule (`RedirectMatch 404 ^/uma-private`) and the storage location are confirmed in the code only. Live check: T5 |
+| Live email notification | **Not tested** | No mail server here; email is switched off in tests. Live check: T3 |
 | Thank-you page "only after success" | **Confirmed, with two by-design exceptions** | It is shown after a stored submission (303 redirect). It is also shown when the handler silently drops a suspected bot (honeypot filled, or the page open for under 3 seconds), so bots learn nothing. The URL is static, so anyone can open it directly; it is noindex and claims nothing about a specific person. A missing field gives a 422 page, too many submissions a 429, and a storage failure a 500, never the thank-you page |
 | Sitemap and robots | **Confirmed (build)** | 18 URLs, valid XML, one child sitemap, all on the https production host, 0 profiles; `robots.txt` points to the index and disallows `/api/` |
 | Search Console | **Not tested** | No verification file or meta tag in the site, so ownership must be via DNS. You reported the sitemap as "Success, 18 discovered" |
@@ -23,7 +28,7 @@ This environment's network proxy refuses `ukrainemedicaladmissions.com` (with an
 
 ## 2. Critical blockers
 
-1. **No live verification is possible from this environment.** Production may not be serving `5048eb1`, and email delivery is unproven. Action: check hPanel → Git, then send one test enquiry (section 5).
+1. **Form processing, private-storage protection and email delivery are unproven on the live site.** The deployment itself is confirmed (owner, 26 October). Action: T3 and T5 in section 5.
 2. **Legal and ownership details are missing** (36 items, section 4). The privacy notice cannot become final, and the final release gate stays closed.
 3. **No official university source is reachable** (0 of 88 hosts). No profile can be verified, indexed or added to the sitemap.
 4. **No measurement exists.** There is no analytics, and Search Console data has not been shared. Organic performance and conversion are unknown.
@@ -98,10 +103,10 @@ The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal page
 | # | Test | Who | Pass condition |
 |---|---|---|---|
 | T1 | Full suite `npm test`, CI on the release commit, release gate (publish workflow) | Me | All green, as for `053cee0` |
-| T2 | Confirm the live build: open `/apply/thank-you/` and look for "We reply by email from info@ukrainemedicaladmissions.com", or check hPanel → Git for `5048eb1` | You | Text present, or commit shown |
-| T3 | Live test enquiry through Apply Online, named `TEST – please ignore` | You | Thank-you page shown; a new file appears in `uma-private/enquiries/` (not inside `public_html`); notification email received |
+| T2 | Confirm the live build | You | **Done 26 October**: deployment confirmed in hPanel; new thank-you wording visible |
+| T3 | Live test enquiry through Apply Online: name `TEST – please ignore`, your own email address, field of study "Not decided yet", consent ticked | You | Thank-you page shown; a new `.json` file in `uma-private/enquiries/` with today's date in its name; notification email received at info@ (check spam) |
 | T4 | Live error state (the browser blocks an incomplete form, so test the server directly): `curl -i -X POST -d "type=enquiry&name=TEST&email=test@example.com&message=TEST" https://ukrainemedicaladmissions.com/api/enquiry.php` (consent left out) | You | `HTTP 422` with a page naming the missing consent; no new file in `uma-private/enquiries/` |
-| T5 | Private storage is not public: open `https://ukrainemedicaladmissions.com/uma-private/` | You | 404 |
+| T5 | Private storage is not public: in File Manager, `uma-private` sits next to `public_html`, not inside it; in a browser, `/uma-private/` and `/uma-private/enquiries/` both show the 404 page | You | Both true |
 | T6 | Live checks script `node site/scripts/verify-live.mjs https://ukrainemedicaladmissions.com`, run on a machine that can reach the site | You, or Claude on your computer | 0 failures |
 | T7 | Search Console URL Inspection → Test live URL for `/`, `/universities/` and one profile | You | First two indexable; the profile "Excluded by noindex" |
 
