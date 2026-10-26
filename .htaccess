@@ -52,6 +52,10 @@ ErrorDocument 404 /404.html
   Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
 </IfModule>
 
+# Sitemaps and robots.txt (2026-10-26): declared explicitly, served identically to every user agent, cached briefly so
+# a new build's sitemap is picked up quickly. No rule in this file treats Googlebot or any other crawler differently.
+AddType application/xml .xml
+
 # Caching. Files here keep their names when their content changes (fonts, logos, icons, fonts.css), so they get
 # 7 days; the hashed build output in /_astro/ gets one year from its own .htaccess (public/_astro/.htaccess).
 <IfModule mod_expires.c>
@@ -62,4 +66,6 @@ ErrorDocument 404 /404.html
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType application/javascript "access plus 7 days"
   ExpiresByType text/html "access plus 10 minutes"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
 </IfModule>
