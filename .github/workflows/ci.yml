@@ -35,6 +35,8 @@ jobs:
       - run: npm run test:redirects
       - run: npx playwright install --with-deps chromium
       - run: npm run test:ui
+      - name: "Mobile acceptance (320, 360, 390, 430 px: no overflow, menu, controls, tap targets, footer)"
+        run: npm run test:mobile
       - run: npm run test:a11y
       - run: npm run test:perf
       - run: npm run test:release
