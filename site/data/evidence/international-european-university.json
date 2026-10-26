@@ -2,8 +2,8 @@
   "slug": "international-european-university",
   "access": {
     "status": "blocked",
-    "checked": "2026-10-24",
-    "note": "Tested on 2026-10-24 from the build environment with scripts/probe-access.mjs (one HTTPS request to the root address of each host). Hosts: ieu.edu.ua, universities.studyinukraine.gov.ua, mon.gov.ua, registry.edbo.gov.ua, vstup.edbo.gov.ua, naqa.gov.ua, en.naqa.gov.ua. Probe on 2026-10-24T16:30:56Z over the fourth host list (research/verification/ALLOWLIST_P4.txt, 32 hosts): 32 refused at the environment's proxy under its network policy (403 to CONNECT), 0 open. No official page or PDF was opened and no claim was checked. Route to access: the environment's Network access setting (Allowed domains); see OWNER_ACTION_SHEET.md §1. A refused request is an access limitation, never evidence about the institution."
+    "checked": "2026-10-26",
+    "note": "Re-tested on 2026-10-26 from the build environment with the access probe (npm run probe:access -- --list research/verification/ALLOWLIST_ALL.txt; one HTTPS request to the root address of each host through the environment's proxy). Hosts for this record tested: en.naqa.gov.ua, ieu.edu.ua, mon.gov.ua, naqa.gov.ua, registry.edbo.gov.ua, studyinukraine.gov.ua, universities.studyinukraine.gov.ua, www.ieu.edu.ua. Result: 0 open, 8 refused at the proxy under the network policy (\"proxy answered 403 to CONNECT\"; 0 of 88 listed hosts open). Not on the probe list: info.edbo.gov.ua, international.ieu.edu.ua, medicine.ieu.edu.ua. No official page or PDF was opened and no claim was checked. Previous attempts: 2026-10-11, 2026-10-12, 2026-10-24 (same result). Route to access: the owner adds the hosts under the environment's Network access → Allowed domains, or supplies captures. A refused request is an access limitation, never evidence about the university."
   },
   "entries": []
 }

@@ -2,8 +2,8 @@
   "slug": "danylo-halytsky-lviv-national-medical-university",
   "access": {
     "status": "blocked",
-    "checked": "2026-10-12",
-    "note": "Re-tested on 2026-10-12 (08:47 UTC) from the build environment with curl through its proxy (one HTTPS request to the root address of each host). Hosts named in this record's references and website lead: new.meduniv.lviv.ua, universities.studyinukraine.gov.ua. Government and register hosts: mon.gov.ua, info.edbo.gov.ua, registry.edbo.gov.ua, vstup.edbo.gov.ua, naqa.gov.ua, studyinukraine.gov.ua. Every host was refused at the environment's proxy under its network policy (curl: \"CONNECT tunnel failed, response 403\"; HTTP code 000); a control request to example.com was refused the same way, while api.github.com returned HTTP 200. No official page or PDF was opened and no claim was checked. Previous attempt: 2026-10-11 (same result). Route to access: the owner adds the hosts under the environment's Network access → Allowed domains, or supplies captures (research/verification/CAPTURE_REQUEST_2026-10-12.md). A refused request is an access limitation, never evidence about the university."
+    "checked": "2026-10-26",
+    "note": "Re-tested on 2026-10-26 from the build environment with the access probe (npm run probe:access -- --list research/verification/ALLOWLIST_ALL.txt; one HTTPS request to the root address of each host through the environment's proxy). Hosts for this record tested: mon.gov.ua, naqa.gov.ua, new.meduniv.lviv.ua, registry.edbo.gov.ua, studyinukraine.gov.ua, universities.studyinukraine.gov.ua. Result: 0 open, 6 refused at the proxy under the network policy (\"proxy answered 403 to CONNECT\"; 0 of 88 listed hosts open). Not on the probe list: info.edbo.gov.ua. No official page or PDF was opened and no claim was checked. Previous attempts: 2026-10-11, 2026-10-12, 2026-10-24 (same result). Route to access: the owner adds the hosts under the environment's Network access → Allowed domains, or supplies captures. A refused request is an access limitation, never evidence about the university."
   },
   "entries": []
 }
