@@ -197,5 +197,16 @@ Then tick A7 and the "synthetic enquiry arrives" part of the B post-deploy line 
 
 - **Authentication (DNS, owner):** SPF that covers the server sending PHP mail; DKIM enabled for the domain; DMARC starting at `p=none` with reports, tightened only after reports show alignment.
 - **Sender (code, release):** pass `-f no-reply@ukrainemedicaladmissions.com` as the envelope sender so SPF aligns with `From`, or send through authenticated SMTP from a domain mailbox (DKIM-signed). Create `no-reply@` as a mailbox or forwarder so bounces are not lost.
-- **Bots and repeats (code, release):** store but do not email a submission identical to one from the same address within 10 minutes; set `ip_hash_key` so the per-visitor limit applies; consider rejecting direct posts that lack the `ts` field. That last option would also drop people who submit with scripts disabled, which is a trade-off for the owner to decide.
+- **Bots and repeats (code, release):** both real forms always send the hidden fields `ts` and `website`; without scripts they are sent *empty*, not left out (`contact/index.astro`, `apply/index.astro`; `tests/enquiry-php.mjs` accepts an empty `ts`). So a post in which either field is **absent** did not come from our pages. Dropping such posts silently (thank-you page, nothing stored, no email) stops direct-to-endpoint scripts without affecting people who browse with scripts off. This is the smallest code change against automated repeats; the existing test that posts without these fields would be updated. Also: set `ip_hash_key` so the per-visitor limit applies (config only, no release); optionally, do not email a submission identical to one from the same address within 10 minutes.
+
+### 8.4 Access check, 27 October 2026 (what Claude could and could not inspect)
+
+| Item | Access | Result |
+|---|---|---|
+| Repository: handler, forms, tests, documents | yes | Read; findings in 8.1 and 8.3 |
+| Public DNS (SPF, DKIM, DMARC, MX) | **no** | No `dig`/`nslookup`/`host` in the container; DNS-over-HTTPS (Google, Cloudflare) refused by the network policy; the web-fetch tool cannot resolve DNS hosts; a direct UDP query was refused by the permission system and not retried |
+| Mailbox `info@` (headers, Spam, bounce) | **no** | No mail connector installed |
+| hPanel (Emails, DNS, mail logs, File Manager, `uma-private/config.php`) | **no** | Hostinger and the live domain refused by the network policy; no connector |
+
+Nothing was changed. The evidence still needed, and the owner's minimum action for each, is in the report of 27 October and in the reply template in §8.2.
 
