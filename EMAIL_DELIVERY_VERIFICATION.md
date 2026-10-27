@@ -19,7 +19,7 @@ Labels: **REPO** = read in this repository; **UNVERIFIED** = hPanel menu names, 
 | Private directory | `<parent of the document root>/uma-private`. On Hostinger this is the directory that **contains** `public_html` (exact path: checklist A1, `HOSTING_AND_DEPLOYMENT_ASSESSMENT.md` §10). The `UMA_PRIVATE_DIR` environment variable can override it, but shared hosting normally gives no way to set it, so the default applies. |
 | Optional settings file | `uma-private/config.php`, returning an array. Keys: `notify_to`, `from`, `send_mail`, `ip_hash_key`. Without the file the handler still works with its built-in defaults (`notify_to` = `info@ukrainemedicaladmissions.com`, `from` = `no-reply@ukrainemedicaladmissions.com`, `send_mail` = true) but stores **no** IP information, because there is no `ip_hash_key`. |
 | Record | One JSON file per accepted submission in `uma-private/enquiries/`, named `YYYYMMDD-HHMMSS-<16 hex>.json` (UTC). The handler creates `enquiries/` with mode 0700 and sets each file to 0600. Name and message are stored as typed, in UTF-8. `ip_hash` is a 64-character HMAC when `ip_hash_key` is set, otherwise `null`. |
-| E-mail | PHP `mail()` to `notify_to`. Plain text, UTF-8. Headers: `From:` the `from` value, `Reply-To:` the e-mail address typed in the form, `MIME-Version: 1.0`, `Content-Type: text/plain; charset=utf-8`, `Content-Transfer-Encoding: 8bit`. Subject: `[UMA] New application-start from <name>`, always sent as one UTF-8 base64 encoded word (`=?UTF-8?B?…?=`). The last body line is `Record: <id> (stage: enquiry; nothing has been sent to any university)`. No envelope sender is passed to `mail()`, so the `Return-Path` is whatever the host's mail system chooses (UNVERIFIED). |
+| E-mail | PHP `mail()` to `notify_to`. Plain text, UTF-8. Headers: `From:` the `from` value, `Reply-To:` the e-mail address typed in the form, `MIME-Version: 1.0`, `Content-Type: text/plain; charset=utf-8`, `Content-Transfer-Encoding: base64` (the body is base64 in 76-character lines). Subject: `[UMA] New enquiry from <name>` (contact form, and any post that names no type) or `[UMA] New application-start from <name>` (the `/apply/` form), sent as UTF-8 base64 encoded words (`=?UTF-8?B?…?=`) folded at 75 characters. *(Corrected 2026-10-27: the earlier text said 8bit and gave only the application-start subject.)* The last body line is `Record: <id> (stage: enquiry; nothing has been sent to any university)`. No envelope sender is passed to `mail()`, so the `Return-Path` is whatever the host's mail system chooses (UNVERIFIED). |
 | Dropped without storing or mailing | A filled honeypot field (`website`), or a form sent less than 3 seconds after the page opened (`ts` field). Both still show the thank-you page. |
 | Rejected (422 page) | A missing field of study, name, valid e-mail address or consent tick. Nothing stored, nothing sent. |
 | Storage failure | HTTP 500 with "Sorry, we could not record your details…". No e-mail is sent in that case. |
@@ -163,3 +163,39 @@ DNS read <date>: SPF <present|missing|2 records>, DKIM selector <name|not found>
 ```
 
 Then tick A7 and the "synthetic enquiry arrives" part of the B post-deploy line only if the result is PASS, and mark backlog N4 accordingly. A FAIL is recorded the same way, with the §6 row that applies.
+
+## 8. Investigation, 27 October 2026: spam placement, repeated notifications and a bounce
+
+**Owner's observation (27 October):** in `info@`, one notification "[UMA] New enquiry from …" from `no-reply@ukrainemedicaladmissions.com` in the inbox; four UMA notifications in Spam, several repeated for the same sender name; one "Mail Delivery System — Undelivered Mail Returned to Sender" in the inbox. No enquiry content was shared, and none is recorded here.
+
+### 8.1 Confirmed from the code (REPO)
+
+| Item | Fact |
+|---|---|
+| How it sends | One PHP `mail()` call per stored submission, after the record file is written. No retry, no queue, no second recipient, no autoreply to the applicant |
+| Recipient | `notify_to`, default `info@ukrainemedicaladmissions.com` (overridable only in the server's private `config.php`) |
+| Sender | `From:` = `from`, default `no-reply@ukrainemedicaladmissions.com` (matches what the owner sees). **No envelope sender is passed to `mail()`**, so the `Return-Path` (where bounces go, and the domain SPF checks) is chosen by Hostinger's mail system |
+| Reply-To | the e-mail address typed in the form, unverified. Replying to a notification writes to that address |
+| Subject | `[UMA] New <type> from <name as typed>`. "enquiry" means the contact form or a post with no `type` field (the handler defaults to "enquiry") |
+| Duplicate protection | Browser: the submit button is disabled after a valid submit, and the 303 redirect stops a refresh from re-posting. **Server: none.** Each POST that passes validation creates its own record (new ID) and its own email |
+| Bot protection | Honeypot field `website`. The 3-second timing check applies **only when the `ts` field is present**, so a script posting directly to `/api/enquiry.php` without `ts` skips it. Rate limits: 100 stored submissions per hour site-wide; 5 per hour per visitor **only if** `ip_hash_key` is set in `config.php` |
+| Traceability | The last line of every notification is `Record: <id>`, and the record's file name ends in the same id: `YYYYMMDD-HHMMSS-<id>.json` |
+
+### 8.2 Hypotheses (each needs the evidence named)
+
+| # | Hypothesis | Evidence that decides it |
+|---|---|---|
+| H1 | The repeated notifications are separate submissions (a bot or a person re-sending), not duplicated emails | The `Record:` ids on the repeated notifications: **different ids = separate submissions**; the same id twice = the mail system duplicated one email (unlikely: the code sends once) |
+| H2 | The repeated sender is automated form spam that skips the timing check | Several records minutes apart; content unrelated to studying medicine or containing links; an implausible or throwaway email address. Judge this yourself without sharing the content |
+| H3 | Spam placement is driven by content (spam-like submissions) rather than authentication | `Authentication-Results` is the same on the inbox notification and on a Spam one. If both pass, the filter is judging content; if both fail, placement is luck and authentication must be fixed |
+| H4 | Notifications fail DMARC alignment: the `Return-Path` is a Hostinger domain and there is no DKIM signature for ukrainemedicaladmissions.com | `Authentication-Results`: `spf=pass` for a non-UMA domain or `spf=none`/`softfail`, `dkim=none`, `dmarc=fail` |
+| H5 | The bounce is a reply sent from `info@` to an address typed in the form that does not exist | The bounce's original-message headers: `From: info@…`, `Subject: Re: …`, status `5.1.1` (user unknown) or a domain-not-found error |
+| H6 | The bounce is a UMA notification rejected by a receiving server | Original `From: no-reply@…`, `Subject: [UMA] New …`, status `5.7.x` (policy or authentication), or `5.2.2` (mailbox full) |
+| H7 | The bounce is backscatter: someone else sent mail forging an `@ukrainemedicaladmissions.com` address | The original was never sent by you or the site (unknown `Message-ID`, foreign `Received:` servers) |
+
+### 8.3 Possible fixes (none applied; each needs the owner's approval)
+
+- **Authentication (DNS, owner):** SPF that covers the server sending PHP mail; DKIM enabled for the domain; DMARC starting at `p=none` with reports, tightened only after reports show alignment.
+- **Sender (code, release):** pass `-f no-reply@ukrainemedicaladmissions.com` as the envelope sender so SPF aligns with `From`, or send through authenticated SMTP from a domain mailbox (DKIM-signed). Create `no-reply@` as a mailbox or forwarder so bounces are not lost.
+- **Bots and repeats (code, release):** store but do not email a submission identical to one from the same address within 10 minutes; set `ip_hash_key` so the per-visitor limit applies; consider rejecting direct posts that lack the `ts` field. That last option would also drop people who submit with scripts disabled, which is a trade-off for the owner to decide.
+
