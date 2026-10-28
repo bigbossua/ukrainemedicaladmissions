@@ -210,3 +210,17 @@ Then tick A7 and the "synthetic enquiry arrives" part of the B post-deploy line 
 
 Nothing was changed. The evidence still needed, and the owner's minimum action for each, is in the report of 27 October and in the reply template in §8.2.
 
+### 8.5 Owner's observations, 28 October 2026 (observations, not causes)
+
+Sender names are personal data and are not recorded here; senders are labelled A, B and C.
+
+| # | Observation (owner, live `info@` mailbox) | What it shows | What it does **not** show |
+|---|---|---|---|
+| O1 | 1 notification `[UMA] New enquiry from <sender C>` in the Inbox | The live handler stored a record and `mail()` delivered a message to `info@` | Whether it passed SPF, DKIM or DMARC |
+| O2 | 4 notifications `[UMA] New enquiry from …` in Spam: 3 from sender A, 1 from sender B | Delivery works; the receiving filter scored these 4 as spam | Why: content, authentication or both. Whether A's 3 are separate submissions (needs the `Record:` ids, check 1) |
+| O3 | All 5 notifications are `From: no-reply@ukrainemedicaladmissions.com` | The live `from` setting is the handler's default (or `config.php` sets the same value) | Whether `no-reply@` exists as a mailbox or forwarder |
+| O4 | 1 "Mail Delivery System — Undelivered Mail Returned to Sender" in the Inbox | Some message failed to reach a recipient, and the failure report came to `info@` | Which message failed, or why (needs check 2) |
+| O5 | All 5 subjects say "enquiry", none "application-start" | These came from the contact form, or from posts that named no form type (the handler's default) | Which of the two |
+
+**Status:** spam placement, the repeats and the bounce remain **unexplained**. Checks run one at a time: 1 `Record:` ids, 2 bounce status, 3 authentication headers. Then a proposed fix, for approval.
+
