@@ -787,7 +787,7 @@ section('g reported leads');
   const g1 = reportedLeads(r1);
   check(g1.website && g1.website.host === 'unit-test.example' && g1.website.date === '2026-10-20' && g1.website.sources.length === 1, 'g website reported with a same-host reference');
   check(reportedLeads(withRefs({ ...base(), website: U('https://unit-test.example/') }, listing)).website?.sources[0].label === 'Listing: example directory', 'g website reported with a "Website lead" listing, under a generic label');
-  check(g1.website.sources[0].label === 'Official page 1', 'g a same-host source is labelled "Official page N", never with the researcher\'s label');
+  check(g1.website.sources[0].label === 'Reported website, page 1', 'g a same-host source is labelled "Reported website, page N" (never "official" while unverified), never with the researcher\'s label');
   const leadyLabel = withRefs({ ...base(), website: U('https://unit-test.example/') }, [{ label: 'Admission page: MD (6 yrs) CANARY-LABEL', url: 'https://unit-test.example/adm/', purpose: 'CANARY-PURPOSE', snippetDate: '2026-10-20' }]);
   check(!JSON.stringify(reportedLeads(leadyLabel)).includes('CANARY'), 'g a researcher\'s label or purpose never reaches the reported leads');
   const docRefs = [{ label: 'Rules', url: 'https://unit-test.example/uploads/rules-2026.pdf', purpose: 'p', snippetDate: '2026-10-20' }, { label: 'Rules', url: 'https://unit-test.example/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0/', purpose: 'p' }, { label: 'Rules', url: 'https://unit-test.example/правила/', purpose: 'p' }];

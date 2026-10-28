@@ -10,7 +10,7 @@ const openIntl = d.programmes.filter((p: any) => { const v = view(p.internationa
 const english = d.programmes.filter((p: any) => { const v = view(p.language); return v.state === 'verified' && Array.isArray(v.value) && v.value.includes('English'); }).length;
 const name = view(d.officialName);
 // A city or region the publication policy withholds (not found in the verified address, N24 a) is never guessed.
-const place = [d.editorialWithheld?.city ? 'City to be confirmed' : d.city, d.region].filter((x) => typeof x === 'string' && x.trim()).join(', ');
+const place = [...new Set([d.editorialWithheld?.city ? 'City to be confirmed' : d.city, d.region].filter((x) => typeof x === 'string' && x.trim()))].join(', ');
 const initials = d.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
 ---
 <div class="page-head profile-head">

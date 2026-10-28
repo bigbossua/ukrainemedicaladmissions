@@ -50,7 +50,8 @@ const showOverview = typeof d.overview === 'string' && d.overview.trim().length 
 // the heading "Reported in public sources, not yet verified": type, location, programme AREAS and the website address
 // found, each with its source and date. Never a programme name, fee, requirement, deadline, intake, contact or status.
 const rep = d.reported && typeof d.reported === 'object' ? d.reported : null;
-const rPlace = rep?.city ? [rep.city, rep.region].filter(Boolean).join(', ') : '';
+// A city that is its own region (Kyiv) is printed once, never "Kyiv, Kyiv".
+const rPlace = rep?.city ? [...new Set([rep.city, rep.region].filter(Boolean))].join(', ') : '';
 const rType = typeLabel(rep?.institutionType);
 const rFields: string[] = (Array.isArray(rep?.programmeFields) ? rep.programmeFields : []).map((f: string) => (FIELDS as any)[f]?.label ?? f);
 const rWeb = rep?.website && typeof rep.website.value === 'string' ? rep.website : null;

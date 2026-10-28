@@ -21,7 +21,7 @@ const prepState = hasPrep ? 'yes' : typeof u.routesWithheld === 'number' && u.ro
 const initials = u.shortName.split(/\s+/).filter((w: string) => /^[A-Z]/.test(w)).slice(0, 3).map((w: string) => w[0]).join('');
 // A withheld city (N24 a) reads "To be confirmed" in the projection (data-city keeps that value so the city filter matches).
 const cityText = u.editorialWithheld?.city ? 'City to be confirmed' : u.city;
-const place = [cityText, u.region].filter((x) => typeof x === 'string' && x.trim()).join(', ');
+const place = [...new Set([cityText, u.region].filter((x) => typeof x === 'string' && x.trim()))].join(', ');
 const hue = [...u.city].reduce((n: number, ch: string) => n + ch.charCodeAt(0), 0) % 40;
 // Search key for the directory filter. Astro escapes & and " in attributes but not < >, so markup characters are removed
 // (a short name with markup is still shown escaped as text; tests/publication-build.mjs carries such a name).

@@ -877,10 +877,11 @@ export function reportedLeads(record, settings) {
     const plainPage = (/** @type {string} */ u) => /^[\x21-\x7e]+$/.test(u) && !/%[0-9a-f]{2}/i.test(u) && !/\.(pdf|docx?|xlsx?|pptx?)(\?|#|$)/i.test(u);
     const sources = refs.filter((/** @type {any} */ r) => r.url !== officeUrl && plainPage(r.url) && (hostOf(r.url) === host || WEBSITE_LEAD_LABEL.test(String(r.label ?? '')))).slice(0, 3);
     // Source labels are generic by construction (a researcher's label may carry a lead such as a duration or a year):
-    // "Official page N" for the university's own host, otherwise the kind named after "Website lead" in the label.
+    // "Reported website, page N" for the reported host (it is not yet verified as official), otherwise the kind named after
+    // "Website lead" in the label.
     let n = 0;
     const genericLabel = (/** @type {any} */ r) => {
-      if (hostOf(r.url) === host) return `Official page ${++n}`;
+      if (hostOf(r.url) === host) return `Reported website, page ${++n}`;
       const m = /^website lead\s*\(([^)]*)\)/i.exec(String(r.label ?? ''));
       const kind = m ? m[1].replace(/,?\s*discovery only/i, '').trim() : '';
       return kind ? kind.charAt(0).toUpperCase() + kind.slice(1) : 'Public listing';

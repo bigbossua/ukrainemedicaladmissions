@@ -135,7 +135,11 @@ for (const r of previewed) {
     const profileHtml = readFileSync(join(DIST, 'universities', r.slug, 'index.html'), 'utf8');
     if (!new RegExp(`<a href="${esc(rep.website.value)}"[^>]*rel="nofollow noopener noreferrer"[^>]*>${esc(rep.website.host)}</a>`).test(profileHtml)) fail(`preview ${r.slug}: reported website not printed as a nofollow link under its host`);
     if (r.website?.status === 'conflicting') fail(`preview ${r.slug}: a conflicting website is reported`);
+    // Pages of a website that is not verified are never called official (audit 2026-10-28).
+    if (pr.website?.show !== true && /\bOfficial page\b/.test(profileHtml)) fail(`preview ${r.slug}: a page of the unverified website is labelled "Official page"`);
   }
+  // A city that is its own region (Kyiv) is printed once.
+  if (rep.city && rep.region === rep.city && readFileSync(join(DIST, 'universities', r.slug, 'index.html'), 'utf8').includes(`${rep.city}, ${rep.region}`)) fail(`preview ${r.slug}: location printed as "${rep.city}, ${rep.region}"`);
   const office = r.internationalOffice?.value;
   if (office && pr.internationalOffice?.show !== true) { add('unverified office email', office.email); add('unverified office phone', office.phone); add('unverified office url', office.url); add('unverified office host', hostOf(office.url), rep.website && hostOf(office.url) === rep.website.host ? profilePath : null); }
   if (pr.overview === undefined) add('withheld overview', r.overview);
