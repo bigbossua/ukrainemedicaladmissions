@@ -118,7 +118,8 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
 }
 // Finder used before its script runs (slow phone): the directory script is held until after the visitor has typed or
 // chosen, so the check always tests the start-up path; once the script runs, the list matches the controls. A link's
-// ?q= never overwrites what the visitor typed, and on Back the list follows the choices the browser restores.
+// ?q= does not overwrite what the visitor typed before the script ran, and on Back the list follows the select choices
+// the browser restores (the search box has autocomplete off and is not restored).
 const finderState = (page) => page.evaluate(() => {
   const all = [...document.querySelectorAll('[data-list] article')];
   const shown = all.filter((a) => !a.hidden);
@@ -141,6 +142,17 @@ async function heldScript(path) {
   const st = await finderState(h.page);
   ok(st.shown.length > 0 && st.shown.length < st.total && st.shown.every((n) => /odesa|odessa/i.test(n)) && st.count === String(st.shown.length),
     `finder: a search typed before the script ran is not applied (${st.shown.length} of ${st.total} shown, count ${st.count})`);
+  await h.ctx.close();
+}
+{
+  const h = await heldScript('/universities/');
+  const city = await h.page.$$eval('select[data-filter="rcity"] option', (o) => o.map((x) => x.value).filter(Boolean)[0]);
+  await h.page.selectOption('select[data-filter="rcity"]', city);
+  ok(!h.isReleased(), 'finder test set-up: the directory script ran before the visitor chose a city');
+  h.release(); await h.page.waitForLoadState('load'); await h.page.waitForTimeout(300);
+  const st = await finderState(h.page);
+  ok(st.shown.length > 0 && st.shown.length < st.total && st.cities.every((c) => c === city) && st.count === String(st.shown.length),
+    `finder: a city chosen before the script ran is not applied (${city}: ${st.shown.length} of ${st.total} shown, count ${st.count})`);
   await h.ctx.close();
 }
 {

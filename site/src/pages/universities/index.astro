@@ -260,7 +260,9 @@ const stats = [
   // A shared or reloaded link opens with its search and filters applied: /universities/?q=odessa, or the links from the
   // home and course pages, /universities/?type=state-medical-university, ?rfield=medicine, ?rcity=Kyiv. A value that is
   // not one of a select's options is ignored.
-  // A link's values fill only controls the visitor has not already used (the finder works before this script runs).
+  // A link's values fill only controls that are still empty when this script runs, so what a visitor typed or chose
+  // before it ran is kept. On Back the browser restores select choices but not the search box (autocomplete is off),
+  // so a link's ?q= fills the box again then; restored selects are kept and applied on pageshow.
   const params = new URLSearchParams(location.search);
   const initial = params.get('q');
   let preset = false;
