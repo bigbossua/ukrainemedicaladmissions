@@ -2,7 +2,7 @@
 
 **Date:** 2026-10-12 · **Branch:** `claude/university-profile-pipeline` · Not legal advice. Nothing below has been filled in for you.
 
-**Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the release-check items (40 since 29 October) in the order the check lists them, with a reply template, the Search Console steps (domain property now; sitemap submission recommended right after the release) and the release steps in order.
+**Short version: `OWNER_ACTION_SHEET.md`**: the 20 priority hosts to allow (88 in all: `research/verification/ALLOWLIST_ALL.txt`), the release-check items (40 since 29 October; numbered 1–42, with 39–42 added on 29 October), with a reply template, the Search Console steps (domain property now; sitemap submission recommended right after the release) and the release steps in order.
 
 Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **40 blocking items**: 24 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages (36 from 24 to 29 October; 38 before 24 October). Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
 
@@ -36,7 +36,7 @@ Tick a box (`[x]`) when an item is done. Today the release gate refuses to publi
 | [ ] | How long candidate profiles from /apply/ are kept | "up to 12 months after our last contact" | `retention.candidateProfiles` | Yes |
 | [ ] | How long e-mail copies in the mailbox are kept | "the same period as the stored record" | `retention.mailboxCopies` | Yes |
 | [ ] | Whether backups hold form submissions, and how long backups are kept | none | `retention.backups` | Yes |
-| [ ] | How long application records are kept after an application ends | none | `retention.applicationRecords` | Yes |
+| [ ] | How long application records are kept after an application ends (not required today: no documents are accepted; owner decision 2026-10-24) | none | `retention.applicationRecords` | Yes |
 | [ ] | How long complaint records are kept | none | `retention.complaints` | Yes |
 | [ ] | How long WhatsApp conversations are kept | none | `retention.whatsappMessages` | Yes |
 | [ ] | What the host's server, error and mail logs record and how long they are kept (hPanel; `OWNER_ACTION_SHEET.md` H7–H9) | none | `retention.hostLogs` | Yes |
@@ -44,7 +44,7 @@ Tick a box (`[x]`) when an item is done. Today the release gate refuses to publi
 | [ ] | Lawful basis: replying to enquiries | "your consent and steps taken at your request before any contract" | `lawfulBasis.enquiries` (also shown for WhatsApp messages) | Yes |
 | [ ] | Lawful basis: candidate profiles | same as the row above | `lawfulBasis.candidateProfiles` | Yes |
 | [ ] | Lawful basis: keeping the submission time and the keyed IP code to detect abuse | none | `lawfulBasis.abuseDetection` | Yes |
-| [ ] | Lawful basis: application documents (future dashboard, not built yet) | none | `lawfulBasis.applications` | Yes |
+| [ ] | Lawful basis: application documents (future dashboard, not built yet; not required today: no documents are accepted) | none | `lawfulBasis.applications` | Yes |
 | [ ] | Time to acknowledge a complaint | "3 working days" | `complaints.acknowledge` | No |
 | [ ] | Time to give a full reply | "15 working days" | `complaints.reply` | No |
 | [ ] | Who reviews a complaint at the second stage | "the business owner" | `complaints.reviewer` | No |
@@ -65,8 +65,8 @@ Not needed today: `referralDetails` and `paidServices.terms`. They are needed on
 | [ ] | N24 (a): our own text (overview, programme names, city, region) | An overview is shown only after a named editorial review of the exact text. A programme is listed only if its name appears in the quotation that verifies it; otherwise it is not listed. City and region are shown only if a verified address contains them | `site/src/lib/publication-config.mjs`; record the decision in `PUBLICATION_POLICY_DECISIONS.md` |
 | [ ] | N24 (b): which hosts count as a recognition authority | None. The list is empty, so no recognition claim is shown | `RECOGNITION_AUTHORITY_HOSTS`, same file |
 | [ ] | N24 (c): proving the official website | The website counts only when a .gov.ua government page lists exactly the same website. Until then no profile can go live | `WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE`, same file |
-| [ ] | N25: research previews and the label "Not yet verified" | On. The 45 universities (17 at first: the original 12 plus five under N26; 45 since the directory sweep of 25 October) are listed, labelled "Not yet verified", kept out of search results (noindex) and left out of the sitemap | `RESEARCH_PREVIEWS`, same file |
-| [ ] | N26: which newly found universities appear as "Not yet verified" research previews | Five listed under the proposed rule (Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla Mykolaiv, Cherkasy); International European University, Kyiv Medical University, the Luhansk and Donetsk universities (reported as relocated) and the rest stay in the private register | `PUBLICATION_POLICY_DECISIONS.md` (e); `UNIVERSITY_DATA_REGISTER.md` §12 |
+| [ ] | N25: research previews and the label "Not yet verified" | On. The 45 universities (17 at first: the original 12 plus five under N26; 45 since 24 October under decision N27, `PUBLICATION_POLICY_DECISIONS.md` (f)) are listed, labelled "Not yet verified", kept out of search results (noindex) and left out of the sitemap | `RESEARCH_PREVIEWS`, same file |
+| [x] | N26: which newly found universities appear as "Not yet verified" research previews | Superseded on 2026-10-24 by N27: all 45, including International European University, Kyiv Medical University and the Luhansk and Donetsk universities, are now listed as previews. Originally: five listed under the proposed rule (Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla Mykolaiv, Cherkasy); International European University, Kyiv Medical University, the Luhansk and Donetsk universities (reported as relocated) and the rest stay in the private register | `PUBLICATION_POLICY_DECISIONS.md` (e); `UNIVERSITY_DATA_REGISTER.md` §12 |
 | [ ] | Search Console property type | A domain property verified by a DNS TXT record (recommended if you can edit DNS; no release needed), or a URL-prefix property verified by a meta tag the site carries (this needs a release and the token from §1) | `ANALYTICS_AND_SEARCH_CONSOLE.md` §A1 |
 | [ ] | Analytics option | Recommended: Search Console, the host's logs and a first-party event beacon. The beacon uses no cookie, needs no banner and no CSP change, but needs a privacy-notice line and a release. GA4 would need a consent banner, a CSP change and a privacy-notice change | `ANALYTICS_AND_SEARCH_CONSOLE.md` §B |
 | [ ] | Merge `/courses/pharmacy/` into `/courses/` | Kept for now as a thin page. The plan is to merge it if no verified English-taught programme exists by the next review | `KEYWORD_URL_MAP.md`, row 11 |

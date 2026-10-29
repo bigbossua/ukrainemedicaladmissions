@@ -18,6 +18,16 @@ const on = wf.on ?? wf[true];
 const steps = wf.jobs?.publish?.steps ?? [];
 const idx = (pred) => steps.findIndex(pred);
 const runOf = (s) => String(s.run ?? '');
+// git push and fetch in run scripts, one logical line at a time (backslash continuations joined, # comments dropped),
+// with any global options before the subcommand (git -C "dir", -c key="a b", -p, --git-dir=x, --no-pager ...) and any
+// flags after it; the first word after the flags is the remote ("(none)" when there is none). This guard catches
+// accidental changes to the publishing workflow; it cannot stop a deliberate bypass (a script file or an action can push
+// without "git push" in the run text), which is why the actions a step may use are limited to an allowlist below.
+const VAL = String.raw`(?:"[^"]*"|'[^']*'|[^\s"';&|])+`;
+const GIT_NET = new RegExp(String.raw`\bgit((?:[ \t]+-[Cc][ \t]+${VAL}|[ \t]+--(?:git-dir|work-tree|namespace|config-env|exec-path)(?:=|[ \t]+)${VAL}|[ \t]+-{1,2}[A-Za-z][\w-]*(?:=${VAL})?)*)[ \t]+(push|fetch)\b((?:[ \t]+-${VAL})*)(?:[ \t]+(${VAL}))?`, 'g');
+const logicalLines = (text) => text.replace(/\\\n/g, ' ').split('\n').map((l) => l.replace(/(^|\s)#.*$/, '$1'));
+const gitNet = (text) => logicalLines(text).flatMap((l) => [...l.matchAll(GIT_NET)].map((m) => ({ op: m[2], remote: m[4] ?? '(none)' })));
+const pushes = (s) => gitNet(runOf(s)).some((g) => g.op === 'push');
 
 // Triggers and target validation
 check(on?.workflow_call?.inputs?.target?.default === 'verify', 'workflow_call exists and defaults to target verify');
@@ -41,15 +51,15 @@ check((on?.push?.branches ?? []).includes('publish-production-interim'), 'the in
   const ciCos = Object.values(ci.jobs ?? {}).flatMap(checkouts);
   check(ciCos.length > 0 && ciCos.every((s) => s.with?.['persist-credentials'] === false), 'CI: every checkout runs with persist-credentials: false', String(ciCos.length));
   check(Object.keys(wf.jobs ?? {}).join(',') === 'publish', 'publish workflow: a single job (a deploy job split is an owner decision; this guard must then be extended)', Object.keys(wf.jobs ?? {}).join(','));
-  // git push/fetch with any global options in front (git -C dir, git -c key=value, git --no-pager ...) and any flags
-  // after; the first non-flag word is the remote. A push or fetch without a remote counts as a failure.
-  const GIT_NET = /\bgit((?:\s+-[Cc]\s+\S+|\s+--\S+)*)\s+(push|fetch)\b((?:\s+-\S+)*)(?:\s+([^\s;&|]+))?/g;
-  const remotesIn = (text) => [...text.matchAll(GIT_NET)].map((m) => m[4] ?? '(none)');
+  const remotesIn = (text) => gitNet(text).map((g) => g.remote);
   const deploy = steps.find((s) => /Commit the built site onto the deploy branch/.test(String(s.name ?? '')));
   const remotes = remotesIn(runOf(deploy ?? {}));
   check(deploy && remotes.length >= 2 && remotes.every((r) => r === '"$PUSH_URL"'), 'deploy step: every git fetch and push names "$PUSH_URL" as its remote (never origin, a literal URL or none)', remotes.join(' '));
   const allRemotes = Object.values(wf.jobs ?? {}).flatMap((j) => (j.steps ?? []).map(runOf)).flatMap(remotesIn);
   check(allRemotes.every((r) => r === '"$PUSH_URL"'), 'publish workflow: no step in any job fetches or pushes through a remote other than "$PUSH_URL"', allRemotes.join(' '));
+  const ALLOWED_ACTIONS = /^actions\/(checkout|setup-node|upload-artifact|download-artifact)@v\d+$/;
+  const usesList = Object.values(wf.jobs ?? {}).flatMap((j) => (j.steps ?? []).map((st) => st.uses).filter(Boolean));
+  check(usesList.every((u) => ALLOWED_ACTIONS.test(String(u))), 'publish workflow: steps use only checkout, setup-node and artifact actions (no third-party action that could push)', usesList.join(' '));
 }
 // Rollback during the interim period (SECURITY_AND_RELEASE_CHECKLIST.md section D, corrected 2026-10-29): a tag named
 // publish-production-interim-<stamp> must run the interim gate, and a manual run must not, so the documented route works.
@@ -74,12 +84,12 @@ check(existsSync(resolve(ROOT, 'RELEASE_AUTHORISATION.md')) && /^Mode:\s*interim
 const prodGate = idx((s) => /Release gate \(production\)/.test(s.name ?? ''));
 const verifyGate = idx((s) => /Release gate \(verify\)/.test(s.name ?? ''));
 const outcome = idx((s) => /Verify outcome matches/.test(s.name ?? ''));
-const pushIdx = idx((s) => /git push/.test(runOf(s)));
+const pushIdx = idx(pushes);
 check(prodGate >= 0 && /node scripts\/release-gate\.mjs(?![^\n]*--skip-tests)/.test(runOf(steps[prodGate])), 'production runs the full release gate (never --skip-tests)');
 check(prodGate >= 0 && /env\.TARGET == 'production'/.test(String(steps[prodGate].if)), 'production gate is conditional on the production target');
 check(prodGate >= 0 && !steps[prodGate]['continue-on-error'], 'a failing production gate stops the job (no continue-on-error)');
 check(pushIdx > prodGate && prodGate >= 0, 'the push step comes after the production release gate');
-check(steps.filter((s) => /git push/.test(runOf(s))).length === 1, 'exactly one step pushes');
+check(steps.filter(pushes).length === 1, 'exactly one step pushes', String(steps.filter(pushes).length));
 const pushIf = String(steps[pushIdx]?.if ?? '');
 check(/staging/.test(pushIf) && /production/.test(pushIf) && !/verify/.test(pushIf), 'the push step runs only for staging or production, never verify');
 check(verifyGate >= 0 && steps[verifyGate]['continue-on-error'] === true && /node scripts\/release-gate\.mjs(?![^\n]*--skip-tests)/.test(runOf(steps[verifyGate])), 'verify runs the same full gate and records its outcome');

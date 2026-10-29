@@ -4,7 +4,7 @@
 
 | | Today |
 |---|---|
-| Official sources | **Blocked.** All 20 hosts below refused by the network policy (latest probe 10:12 UTC: 403 to CONNECT for all 20) |
+| Official sources | **Blocked.** All 20 hosts below refused by the network policy, and all 88 in `research/verification/ALLOWLIST_ALL.txt` (latest probe 2026-10-29: 403 to CONNECT for every host) |
 | Evidence received | **None.** No captures, no access, no verified fact |
 | Release | **NOT READY:** the 40 items in §2 (36 from 24 to 29 October; 38 before the dashboard paragraph was removed on 2026-10-24), then the release steps in §5 |
 | Google | Nothing verified or submitted by us. Index status unknown (no Search Console access; the live site is public and crawlable) |
@@ -50,7 +50,8 @@ universities.studyinukraine.gov.ua
 **Third list (2026-10-24).** It covers the four previews whose own sites are on neither list above: Danylo Halytsky Lviv, Dnipro, Poltava and Zaporizhzhia.
 - The list is in `research/verification/ALLOWLIST_P3.txt`: 11 hosts, taken from the website leads already recorded in their records.
 - Probe on 2026-10-24: P1 0 of 20 open, P2 0 of 25 open, P3 0 of 11 open. Every request was refused by this environment's network policy.
-- With all three lists allowed, every one of the 17 profiles can be checked.
+- With all three lists allowed, every one of the 17 profiles of that date can be checked.
+- Probe on 2026-10-29: all 88 hosts in `research/verification/ALLOWLIST_ALL.txt` (P1–P4, covering all 45 listed universities) refused, 0 of 88 open (`research/verification/README.md`, "Access history"). The 20 hosts above stay the first step; the full list is what every record's register needs.
 - Instead of adding all 56 hosts one by one, you can choose a broader network access level in the same settings.
 
 **Which profiles each list unlocks:**
@@ -115,7 +116,7 @@ Items 1–38 in the order `node scripts/release-readiness.mjs` listed them on 24
 
 Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal pages built as drafts: banner, placeholder and proposal markers) clear by themselves once 1–34 and 39–42 are in and I rebuild. If item 7 is `true`, the representative's name and address become one more required item.
 
-**A. Facts only you can supply (12).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14 and 20 are marked R in §2.1: your reviewer confirms them.
+**A. Facts and practices only you can supply (16).** Read them from your registration papers, your Hostinger and mailbox accounts and the business phone, or state your own practice; no wording to approve (your reviewer still reads every answer before signing off). Items 6, 14, 16, 20 and 39–41 are marked R in §2.1: your reviewer checks them, as in `LAUNCH_ACTION_REGISTER.md` group B.
 
 | # | Item | Where to find it |
 |---|---|---|
@@ -128,8 +129,12 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 12 | Date the legal pages take effect (`YYYY-MM-DD`; send last) | your choice |
 | 13 | Privacy notice version (for example `1.0`) | your choice |
 | 14 | Whether host backups contain form submissions, and how long backups are kept | Hostinger plan / backup settings |
+| 16 | How long complaint records are kept | your own practice |
 | 19 | Company that provides the info@ mailbox | mailbox account (Hostinger Email, Google Workspace, Zoho …) |
 | 20 | Countries where Hostinger, the mailbox provider, WhatsApp (Meta) and any chat-backup provider store or process data | each provider's data-centre setting or terms |
+| 39 | How long WhatsApp conversations are kept | your own practice on the business phone |
+| 40 | What the host's server, error and mail logs record and how long they are kept | hPanel (H7–H9 in §8) |
+| 41 | How long e-mails sent to us directly (complaints, rights requests) are kept | your own practice in the mailbox |
 | 42 | Which WhatsApp service you use (app on a phone, or the Business Platform through a provider) and where the conversations and any chat backups are kept | the WhatsApp settings on the business phone (Chats → Chat backup) |
 
 **B. Proposed wording to approve or replace (9).** Answer "approved" or give your own value.
@@ -146,7 +151,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 30 | Second-stage reviewer | "the business owner" (if the owner also handles the first stage, the review is not independent: name someone else if you can) |
 | 31 | Second-stage reply within | "a further 10 working days" |
 
-**C. Needs a qualified legal reviewer (15; items 15 and 18 removed with the dashboard paragraph on 2026-10-24; 39–41 added on 2026-10-29).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
+**C. Needs a qualified legal reviewer (11; items 15 and 18 removed with the dashboard paragraph on 2026-10-24).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
 
 | # | Item |
 |---|---|
@@ -155,13 +160,9 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 10 | The data-protection authority people can complain to, with its web address |
 | 11 | The outside complaints body, or `not applicable` |
 | ~~15~~ | Not required: dashboard paragraph removed (owner decision 2026-10-24); returns only if documents are ever accepted |
-| 16 | Retention of complaint records |
 | 17 | Lawful basis for abuse detection (submission time and keyed IP code) |
 | ~~18~~ | Not required: as item 15 |
 | 21 | International transfers (including through WhatsApp or a chat backup) and the safeguard used |
-| 39 | How long WhatsApp conversations are kept (your own practice on the business phone, decided with your reviewer) |
-| 40 | What the host's server, error and mail logs record and how long they are kept (read the facts in hPanel, H7–H9 in §8) |
-| 41 | How long e-mails sent to us directly (complaints, rights requests) are kept |
 | 22 | The rule for applicants under 18 (the forms are built for school-leavers) |
 | 32–34 | Review completed, reviewer's name, review date (set only after the review) |
 
@@ -381,7 +382,7 @@ M1 needs §1 (or captures). It needs no release.
 **Shortest route, 48-hour target (2026-10-24).** The technical work is done: every check except the legal readiness check passes on the branch head. Only §2 stands between the branch and an approvable release commit; the pre-publish steps in M2 step 4 (backup, private config) follow. The legal reviewer is the critical path.
 - **Hour 0:**
   - You send item 3 first, then items 1, 2, 4, 5, 19, 20 and 42 (group A, in the §2.0 order).
-  - You book the reviewer with group C, items 6 and 14 and the reviewer brief (§2.0). Item 3 decides 6–11 together with the reviewer.
+  - You book the reviewer with group C, the R items of group A (6, 14, 16, 20, 39–41) and the reviewer brief (§2.0). Item 3 decides 6–11 together with the reviewer.
   - In parallel, you add the Search Console domain property and its TXT record (§3 steps 1–4; no release needed).
 - **By hour 24:**
   - The reviewer settles items 6–11, 14–18, 20–22 and 39–41, plus 23–27.
