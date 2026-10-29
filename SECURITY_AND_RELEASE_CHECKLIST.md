@@ -119,7 +119,9 @@ Design: `APPLICATION_SYSTEM_SPEC.md` §14. Go-live gates: §11. Test ids (T-…)
 
 ## D. Rollback
 
-1. Actions → Publish deploy branch → "Use workflow from" the previous `release-*` tag → target `production`, confirm `PUBLISH`: adds a fast-forward commit carrying the previous build; Hostinger auto-deploys it.
+1. **While the interim authorisation is in force (legal items open; today):** push a tag whose name starts `publish-production-interim-` at the source commit of the release to return to. Each `release-*` tag points at that source commit (`release-20261026-210314` → `053cee0`). Example: `git tag publish-production-interim-rollback-20261029-1200 release-20261026-210314 && git push origin publish-production-interim-rollback-20261029-1200`. The publish workflow runs the interim release gate on that commit and adds a fast-forward commit carrying its build to `production`; Hostinger auto-deploys it. Never move the `publish-production-interim` branch backwards: that needs a force push. *(Corrected 2026-10-29: the earlier step, "Use workflow from" a `release-*` tag with target `production`, runs the final gate, which refuses while the 36 legal items are open, so it cannot roll back an interim release.)* If the old commit's own gate now fails (for example a date-based review check), fix forward or use step 3.
+   **After the legal review is recorded:** Actions → Publish deploy branch → "Use workflow from" the previous `release-*` tag → target `production`, confirm `PUBLISH`: same effect, under the final gate.
+   Check afterwards: `git log -1 origin/production` reads "Build <previous source commit>", and the live thank-you page or a changed page shows the previous wording.
 2. If the handler misbehaves: rename `api/enquiry.php` → 404s safely; the site stays up.
 3. If the whole deployment is wrong: restore A2 backup into the document root.
 4. Record the incident and cause in `TECHNICAL_REPAIR_BACKLOG.md`.
