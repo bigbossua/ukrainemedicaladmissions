@@ -12,7 +12,7 @@
 | Release pointers | `publish-production-interim` at `45b1926`; `publish-production` (final gate) at `4d4e605` (11 October), not moved since |
 | Research branch `claude/university-profile-pipeline` | `6c77d82`: five commits after `45b1926`, containing tests, scripts, evidence-access records and SEO documents only. No file under `site/src`, `site/public` or the Astro config changed. Its build is identical to production (tree `d0849e8`). Nothing needs deploying, and nothing was deployed. |
 | Indexable URLs | 18, all in the sitemap |
-| University profiles | 45: all `noindex, follow`, none in the sitemap, 0 verified (0 of 88 official hosts reachable on 26 October) |
+| University profiles | 45: all `noindex, follow`, none in the sitemap, 0 verified (0 of 88 official hosts reachable on 26 and 29 October) |
 | Release readiness | Not ready: 36 items block the final gate (owner details for the legal pages and legal review; `LEGAL_COMPLETION_CHECKLIST.md`) |
 | Live site | Not checked: this environment cannot reach the domain |
 

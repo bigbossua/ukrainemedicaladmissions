@@ -16,3 +16,14 @@ A record becomes `publishable: true` only when every row of its register is eith
 Regenerate a register after the record JSON or the evidence file changes (from the repository root): `python3 -I site/scripts/make-evidence-register.py <slug> [<slug> ...]`. With no slug it regenerates the three approved registers.
 
 **Tools.** `site/scripts/capture-intake.py` checks a folder of owner captures kept outside the repository: size and SHA-256 of each file, which section A rows have a capture and which are still missing, and where a phrase appears (file and page), so a quotation can be found and then copied from the capture itself; it writes nothing into the repository. `site/scripts/evidence-entry.mjs` records one evidence entry: it checks the entry against the evidence format, refuses an unknown claim path, gives the next id and shows whether the publication policy would show the claim, and why not; it writes only with `--write`, and `--apply-to-record` updates the record claim from a verified entry with the decision "publish", so record and evidence cannot drift. `UNIVERSITY_EVIDENCE_STANDARD.md` §15 walks through one Vinnytsia tuition claim with both.
+
+**Access history.** Each probe is one HTTPS request to the root address of each host through the environment's proxy (`npm run probe:access`). A refused host is an access limitation, never evidence about a university.
+
+| Date (UTC) | Hosts | Result |
+|---|---|---|
+| 2026-10-11, 2026-10-12 | official hosts of the first records | none reachable (DNS failure, then proxy refusal) |
+| 2026-10-24, 2026-10-26 | `ALLOWLIST_ALL.txt` (88) | 0 open, 88 refused by the proxy (403 to CONNECT) |
+| 2026-10-29 | `ALLOWLIST_ALL.txt` (88) | 0 open, 88 refused by the proxy (403 to CONNECT) |
+| 2026-10-29 | 15 secondary registries that could point to official pages: search.wdoms.org, www.wdoms.org, wfme.org, www.ecfmg.org, www.faimer.org, www.who.int, www.nmc.org.in, en.wikipedia.org, uk.wikipedia.org, www.wikidata.org, ror.org, api.ror.org, api.openalex.org, www.whed.net, www.enic-naric.net | 0 open, 15 refused by the proxy (403 to CONNECT) |
+
+Even when reachable, these registries are secondary: a WDOMS or WHED listing can point to an official page and a dated name, but it never replaces the official source or the EDEBO register for registration, licence or accreditation (`UNIVERSITY_EVIDENCE_STANDARD.md`). They are not on the owner's allowlist request for that reason.
