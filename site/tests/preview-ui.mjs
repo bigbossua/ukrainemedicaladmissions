@@ -3,6 +3,8 @@
 // filters against the cards' own data attributes, the draft banner, and accessibility (WCAG 2.1 A/AA + best-practice;
 // serious/critical violations fail). Screenshots go to tests/output/preview/.
 import { chromium } from 'playwright';
+// Any WhatsApp link other than the business number with a pre-filled text (owner decision 2026-10-29).
+const waBad = (h) => [...h.matchAll(/(?:https?:\/\/(?:wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)\/[^"'\s<>]*|whatsapp:\/\/[^"'\s<>]*)/gi)].map((m) => m[0]).filter((u) => !/^https:\/\/wa\.me\/380633534065\?text=[^&"'\s<>]+$/.test(u.replace(/&amp;/g, '&')));
 import AxeBuilder from '@axe-core/playwright';
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
@@ -37,7 +39,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
     await page.goto(base + path, { waitUntil: 'load' });
     if (errors.filter((e) => !/fonts\.g/.test(e)).length) fail(`${name} ${path} console errors: ${errors.join(' | ')}`);
     const html = await page.content();
-    if (/whatsapp|wa\.me/i.test(html)) fail(`${name} ${path} contains WhatsApp reference`);
+    if (waBad(html).length) fail(`${name} ${path} WhatsApp link other than the business link: ${waBad(html).join(', ')}`);
     if (!(await page.$('[data-draft-banner]'))) fail(`${name} ${path} draft banner missing`);
     if (!(await page.$('header a.btn-primary, header .btn-primary'))) fail(`${name} ${path} header CTA missing`);
     if (await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)) fail(`${name} ${path} horizontal overflow`);

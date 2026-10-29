@@ -32,6 +32,8 @@ const ROUTER = join(SITE_DIR, 'tests', 'fixtures', 'live-router.php');
 const PRODUCTION = 'https://ukrainemedicaladmissions.com';
 const PROD_HOST = 'ukrainemedicaladmissions.com';
 const ALLOWED_EMAIL = 'info@ukrainemedicaladmissions.com';
+// The business WhatsApp number (src/lib/whatsapp.ts): shown on the site since the owner decision of 2026-10-29.
+const BUSINESS_WHATSAPP = '380633534065';
 const args = process.argv.slice(2);
 // --dist <dir> audits another built copy (used to prove the checks on mutated copies); the default is the production dist/.
 const DIST = resolve(args.includes('--dist') ? args[args.indexOf('--dist') + 1] : join(SITE_DIR, 'dist'));
@@ -844,8 +846,9 @@ const EXPOSURE = [
   { id: 'uma-private', re: /uma-private/gi },
   { id: 'test-fixture', re: /tests\/fixtures|dist-fixture|\/fixtures\//g },
   { id: 'email', re: /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, textOnly: true, keep: (m) => m.toLowerCase() !== ALLOWED_EMAIL && !FILE_EXT_TLD.test(m) },
-  { id: 'phone', re: /(?:tel:|sms:)\+?[\d\s().-]{6,}|(?<![\w.#-])\+\d{1,3}[\s.-]?\(?\d{1,4}\)?(?:[\s.-]?\d{2,4}){2,4}(?![\w.])/g, textOnly: true, visibleTextOnly: true },
-  { id: 'whatsapp', re: /whats\s?app|wa\.me\//gi },
+  { id: 'phone', re: /(?:tel:|sms:)\+?[\d\s().-]{6,}|(?<![\w.#-])\+\d{1,3}[\s.-]?\(?\d{1,4}\)?(?:[\s.-]?\d{2,4}){2,4}(?![\w.])/g, textOnly: true, visibleTextOnly: true, keep: (m) => m.replace(/\D/g, '') !== BUSINESS_WHATSAPP },
+  // WhatsApp (owner decision 2026-10-29): the business link is allowed; any other number, host or scheme is an exposure.
+  { id: 'whatsapp', re: /(?:https?:\/\/(?:wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)\/[^"'\s<>]*|whatsapp:\/\/[^"'\s<>]*)/gi, keep: (m) => !new RegExp(`^https://wa\\.me/${BUSINESS_WHATSAPP}\\?text=`).test(m) },
 ];
 const outputFiles = walk(DIST).sort();
 const exposure = { filesScanned: outputFiles.length, hits: [], allowed: [] };

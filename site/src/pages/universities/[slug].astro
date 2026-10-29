@@ -40,7 +40,7 @@ const jsonLd = entry && !draft ? profileJsonLd(d) : [];
   <Base title={title} description={description} noindex={draft} draft={draft} jsonLd={jsonLd} suffix={false}>
     {draft && <DraftBanner kind="unpublished" />}
     <UniversityProfile d={d} publishable={!draft} draft={draft} failures={entry.failures} notListed={entry.notListed} flagged={entry.flagged} crumbs={[{ label: 'Universities', href: '/universities/' }, { label: d.shortName }]} />
-    <CtaBand title={`Ready to apply to ${d.shortName}?`} text="Begin online — it takes a few minutes and nothing is sent to the university until you confirm." />
+    <CtaBand title={`Ready to apply to ${d.shortName}?`} text="Begin online — it takes a few minutes and nothing is sent to the university until you confirm." whatsapp={d.shortName} />
   </Base>
 ) : (
   <Base title={title} description={description} noindex follow suffix={false}>

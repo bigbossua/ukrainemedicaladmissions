@@ -49,7 +49,7 @@ None of these needs a production release; each would wait for your approval to s
 
 ### 4a. The 36 open release items
 
-Grouped (29 October): **1 Owner fact** (11): only you can supply it. **2 Owner approval** (8): a draft value or wording you approve or change. **3 Legal advice** (13): needs a qualified lawyer. **4 Technical** (4): clears automatically once the others are recorded. No value is filled in by Claude, and no item is marked compliant without your input.
+Grouped (29 October): **1 Owner fact** (11): only you can supply it. **2 Owner approval** (9): a draft value or wording you approve or change. **3 Legal advice** (13): needs a qualified lawyer. **4 Technical** (4): clears automatically once the others are recorded. No value is filled in by Claude, and no item is marked compliant without your input.
 
 | # | Item (field in `site/src/lib/legal.mjs`) | Who |
 |---|---|---|
@@ -85,6 +85,7 @@ Grouped (29 October): **1 Owner fact** (11): only you can supply it. **2 Owner a
 | L30 | Legal review recorded as completed (`legalReviewCompleted`) | 3 Qualified legal advice |
 | L31 | Reviewer named (`reviewedBy`) | 3 Qualified legal advice |
 | L32 | Review date (`reviewDate`) | 3 Qualified legal advice |
+| L37 | How long WhatsApp conversations are kept (`retention.whatsappMessages`; added 29 October with the WhatsApp channel) | 2 Owner approval of draft wording or a value |
 | L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | 4 Technical (clears automatically): the build and release gate clear them once L1–L32 are recorded |
 
 The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal pages stay drafts until L30–L32 are genuinely recorded.

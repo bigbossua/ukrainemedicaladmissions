@@ -2,15 +2,18 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { SITE } from '../../lib/site';
+import WhatsAppLink from '../../components/WhatsAppLink.astro';
 ---
-<Base title="Contact us" description="Contact Ukraine Medical Admissions by email or the enquiry form: what to include in your message, and what we can and cannot help with.">
+<Base title="Contact us" description="Contact Ukraine Medical Admissions by email, WhatsApp or the enquiry form: what to include in your message, and what we can and cannot help with.">
   <div class="page-head"><div class="wrap"><span class="eyebrow">Contact</span><h1>Contact us</h1><p>For a general question, use the enquiry form on this page. To apply, use <a style="color:#fff" href={SITE.ctaHref}>{SITE.cta}</a>.</p></div></div>
   <Breadcrumbs items={[{ label: 'Contact' }]} />
   <section style="padding-top:1rem"><div class="wrap grid grid-2" style="align-items:start">
     <div class="prose">
       <h2>Email</h2>
       <p><a class="link-standalone" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
-      <p>We reply by email only, not through messaging apps.</p>
+      <h2>WhatsApp</h2>
+      <p><WhatsAppLink /></p>
+      <p>The link opens WhatsApp with a short message that tells us you found us through this website; you can change it before sending. WhatsApp messages are handled by WhatsApp (Meta) as well as by us; see the <a href="/privacy/">privacy notice</a>.</p>
       <h2>Before you write</h2>
       <p>Most questions about fees, requirements and the process are answered in the <a href="/faq/">FAQ</a>, the <a href="/admissions/">admissions guide</a> and the <a href="/tuition-fees/">fees guide</a>.</p>
       <h2>What to include in your message</h2>
@@ -22,7 +25,7 @@ import { SITE } from '../../lib/site';
         <li>any universities you are already considering;</li>
         <li>your question, in your own words.</li>
       </ul>
-      <p>Please do not attach passport scans, certificates or other documents. We do not need them at this stage, and email is not the place to send them.</p>
+      <p>Please do not attach passport scans, certificates or other documents. We do not need them at this stage, and email and WhatsApp are not the place to send them.</p>
       <h2>What we can and cannot help with</h2>
       <p>We can answer questions about choosing a course, reading a university fee schedule, the entry requirements to check, the documents to start gathering and the stages of an application. Where a university's facts have not yet been verified from its official pages, we tell you so.</p>
       <p>We are an independent service: we are not part of any university or government body, and we cannot guarantee admission, a visa or recognition of a qualification. Admission decisions are made by the university, and recognition by the regulator in the country where you plan to work. See <a href="/services/">what we do</a> and our <a href="/disclosure/">independence and referral disclosure</a>.</p>

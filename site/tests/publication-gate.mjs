@@ -276,7 +276,13 @@ function checkDraftPage(path, label, mustContain = []) {
   if (ldBlocks(h).length) fail(`preview /${path}/: JSON-LD present on a draft page`);
   if (/badge-verified">Verified</.test(h) && !mustContain.includes('allow-verified')) fail(`preview /${path}/: a real draft shows a "Verified" fact badge`);
   for (const m of mustContain.filter((x) => x !== 'allow-verified')) if (!h.includes(m)) fail(`preview /${path}/: expected "${m}"`);
-  if (/whatsapp|wa\.me/i.test(h)) fail(`preview /${path}/: WhatsApp reference`);
+  // WhatsApp (owner decision 2026-10-29): only the business link, whose message names this page's university.
+  for (const m of h.matchAll(/https?:\/\/(?:wa\.me|api\.whatsapp\.com)\/[^"'\s<>]*/gi)) {
+    const u = m[0].replace(/&amp;/g, '&');
+    const t = /^https:\/\/wa\.me\/380633534065\?text=([^&]+)$/.exec(u);
+    if (!t) fail(`preview /${path}/: WhatsApp link other than the business link: ${u}`);
+    else if (!decodeURIComponent(t[1]).includes('ukrainemedicaladmissions.com')) fail(`preview /${path}/: WhatsApp message does not name the website`);
+  }
   ok();
 }
 for (const r of unpublished) checkDraftPage(`universities/${r.slug}`, r.slug, ['Draft record — not published', 'Verification queue', r.shortName, 'data-publication-failures', ...decision.get(r.slug).failures.map((f) => escapeHtml(f.message))]);

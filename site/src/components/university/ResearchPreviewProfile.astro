@@ -10,6 +10,7 @@
  * said once, in the header; the verified section appears only when the policy shows at least one fact.
  */
 import Breadcrumbs from '../Breadcrumbs.astro';
+import WhatsAppLink from '../WhatsAppLink.astro';
 import Fact from '../Fact.astro';
 import ProgrammeCard from './ProgrammeCard.astro';
 import { SITE, formatDate } from '../../lib/site';
@@ -107,6 +108,7 @@ const hasReported = !!(rPlace || rType || rFields.length || rWeb);
       <h2 id="help" style="margin-top:2.25rem">How we can help</h2>
       <p class="prose">Tell us you are interested in {d.shortName} when you start your candidate profile. We reply by email with answers to your questions and the next steps we suggest, and we tell you plainly what has not yet been verified. Starting a profile is free.</p>
       <p><a class="btn btn-primary" href={applyHref}>{SITE.cta}</a></p>
+      <p class="wa-line">Questions first? <WhatsAppLink page={d.shortName} /></p>
 
       {pending.length > 0 && (
         <>
@@ -143,6 +145,7 @@ const hasReported = !!(rPlace || rType || rFields.length || rWeb);
 </section>
 
 <style>
+  .wa-line { margin-top: .25rem; }
   .preview-head .state { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 0 0 .9rem; }
   .preview-head .badge { display: inline-flex; align-items: center; gap: .4rem; }
   .preview-head .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--yellow-400); flex: none; }

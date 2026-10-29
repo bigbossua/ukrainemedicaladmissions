@@ -1,7 +1,10 @@
 // UI smoke test with Playwright against a static preview of dist/.
 // Checks: pages render without console errors, nav + primary CTA present, mobile menu toggles,
-// directory filter works, apply form validates client-side, no WhatsApp anywhere, screenshots at 3 widths.
+// directory filter works, apply form validates client-side, WhatsApp only through the business link (owner decision
+// 2026-10-29; tests/whatsapp.mjs checks the messages), screenshots at 3 widths.
 import { chromium } from 'playwright';
+// Any WhatsApp link other than the business number with a pre-filled text (no other number, scheme or parameter).
+const waBad = (h) => [...h.matchAll(/(?:https?:\/\/(?:wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)\/[^"'\s<>]*|whatsapp:\/\/[^"'\s<>]*)/gi)].map((m) => m[0]).filter((u) => !/^https:\/\/wa\.me\/380633534065\?text=[^&"'\s<>]+$/.test(u.replace(/&amp;/g, '&')));
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve, extname } from 'node:path';
@@ -33,7 +36,7 @@ for (const [name, width] of [['mobile', 390], ['tablet', 820], ['desktop', 1440]
     // Block external font requests silently (offline-safe); they are not under test.
     if (errors.filter((e) => !/fonts\.g/.test(e)).length) fail(`${name} ${path} console errors: ${errors.join(' | ')}`);
     const html = await page.content();
-    if (/whatsapp|wa\.me/i.test(html)) fail(`${name} ${path} contains WhatsApp reference`);
+    if (waBad(html).length) fail(`${name} ${path} WhatsApp link other than the business link: ${waBad(html).join(', ')}`);
     if (!path.includes('404') && !(await page.$('header a.btn-primary, header .btn-primary'))) fail(`${name} ${path} header CTA missing`);
     const hScroll = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     if (hScroll) fail(`${name} ${path} horizontal overflow`);

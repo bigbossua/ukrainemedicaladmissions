@@ -75,7 +75,7 @@ const money = (m: any) => formatMoney(m, { compact: true });
     <p class="note">Before you send documents or money, read <a href="/admissions/#official-sites">how to check you are on the university’s official website</a>.</p>
     {universities.length > 0 && <p class="note">{SITE.disclaimer}</p>}
   </div></section>
-  <CtaBand title={`Planning to study ${lower}?`} text="Tell us your grades and the universities you are considering. It is free to start, and nothing is sent to a university until you confirm." />
+  <CtaBand title={`Planning to study ${lower}?`} text="Tell us your grades and the universities you are considering. It is free to start, and nothing is sent to a university until you confirm." whatsapp={`${c.name} course guide`} />
 </Base>
 
 <style>

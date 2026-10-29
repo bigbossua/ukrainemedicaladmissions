@@ -91,6 +91,9 @@ export const LEGAL = {
     // MISSING: APPLICATION_SYSTEM_SPEC.md §14.12 "Backups … Window TO BE CONFIRMED"; whether the host's own backups
     // include the private storage directory is not recorded (HOSTING_AND_DEPLOYMENT_ASSESSMENT.md §1: plan unverified).
     backups: null,
+    // MISSING: WhatsApp became a contact channel (owner decision 2026-10-29); how long those conversations are kept is the
+    // owner's to state. No value is proposed here.
+    whatsappMessages: null,
     // NOT REQUIRED while facts.documentsAccepted is false. Owner decision 2026-10-24: the privacy notice no longer
     // describes the application dashboard, which is not built. If documents are ever accepted, this period (and a reviewed
     // paragraph on the privacy page) is required again before release.
@@ -219,6 +222,7 @@ export const LEGAL_ITEMS = Object.freeze([
   { path: 'noticeVersion', what: 'the version number of this privacy notice', why: 'Shown on the notice and stored with each consent (backlog N22e).', pages: ['privacy'], review: false },
   { path: 'retention.enquiries', what: 'how long contact-form enquiries are kept', why: 'The privacy notice must state each retention period.', pages: ['privacy'], review: true },
   { path: 'retention.candidateProfiles', what: 'how long candidate profiles from the application form are kept', why: 'The privacy notice must state each retention period.', pages: ['privacy'], review: true },
+  { path: 'retention.whatsappMessages', what: 'how long WhatsApp conversations with applicants are kept', why: 'The site offers WhatsApp as a contact channel (owner decision 2026-10-29); the notice must state each retention period.', pages: ['privacy'], review: true },
   { path: 'retention.mailboxCopies', what: 'how long the e-mail copies in the business mailbox are kept', why: 'Each submission is also e-mailed to the business mailbox.', pages: ['privacy'], review: true },
   { path: 'retention.backups', what: 'whether backups contain form submissions, and how long backups are kept', why: 'Deleted data can remain in backups; the notice must say for how long (APPLICATION_SYSTEM_SPEC.md §14.12).', pages: ['privacy'], review: true },
   { path: 'retention.applicationRecords', what: 'how long application records and documents are kept after an application ends', why: 'Required once documents are accepted (the notice must then describe the document process and give a period).', pages: [], review: true, requiredWhen: (l) => l.facts?.documentsAccepted === true },

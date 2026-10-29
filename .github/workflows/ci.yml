@@ -31,6 +31,8 @@ jobs:
         run: npm run report:publication
       - run: npm run build
       - run: npm run test:links
+      - name: WhatsApp links (business number only, source-identifying message per page, encoding, accessible names)
+        run: npm run test:whatsapp
       - run: npm run test:meta
       - run: npm run test:redirects
       - run: npx playwright install --with-deps chromium

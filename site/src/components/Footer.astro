@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../lib/site';
+import WhatsAppLink from './WhatsAppLink.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -9,6 +10,7 @@ const year = new Date().getFullYear();
         <img src="/brand/uma-logo-horizontal-dark.svg" alt={SITE.name} width="279" height="64" />
         <p>{SITE.disclaimer}</p>
         <p><a class="link-standalone" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><WhatsAppLink tone="dark" /></p>
       </div>
       <div>
         <h2>Explore</h2>
