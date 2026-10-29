@@ -148,10 +148,17 @@ rejected(await post(minimum().filter(([k]) => k !== 'name').concat([['name[]', '
 
 // 4. Bot checks
 dropped(await post(minimum([['website', 'https://spam.example.invalid']]), 'honeypot'), 'honeypot filled');
+dropped(await post(minimum([['website', '0']]), 'honeypot 0'), 'honeypot filled with "0" (PHP treats "0" as empty; the handler must not)');
 dropped(await post(minimum([['ts', '1200']]), 'fast'), 'ts below 3 seconds');
 accepted(await post(minimum([['ts', '3000']]), 'ts 3s'), 'ts of 3 seconds');
 accepted(await post(minimum([['ts', '']]), 'ts empty'), 'ts empty (no script) is not treated as a bot');
-dropped(await post(minimum().filter(([k]) => k !== 'ts'), 'no ts field'), 'ts field missing (direct post, not our form)');
+{
+  const logBefore = phpLog.length;
+  dropped(await post(minimum().filter(([k]) => k !== 'ts'), 'no ts field'), 'ts field missing (direct post, not our form)');
+  await new Promise((r) => setTimeout(r, 150));
+  const logged = phpLog.slice(logBefore);
+  check(/dropped a post without the form's hidden fields/.test(logged) && !logged.includes(EMAIL) && !logged.includes('Synthetic Candidate'), 'missing hidden field: one fixed log line, without the submitted data', logged.slice(0, 200));
+}
 dropped(await post(minimum().filter(([k]) => k !== 'website'), 'no website field'), 'website field missing (direct post, not our form)');
 dropped(await post(minimum([['ts', 'abc']]), 'ts not a number'), 'ts that is not a number');
 dropped(await post(minimum().filter(([k]) => k !== 'ts').concat([['ts[]', '45000']]), 'ts array'), 'ts posted as an array');
@@ -402,14 +409,21 @@ const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email',
     const set = await runWith('bounces@example.invalid');
     check(set.status === 303 && /-fbounces@example\.invalid/.test(set.args), 'envelope: envelope_from is passed as -f', set.args.trim());
     const evil = await runWith('x@example.invalid -X/tmp/uma-log');
-    check(evil.status === 303 && !/-X/.test(evil.args) && !/-f/.test(evil.args), 'envelope: a value with spaces or options is ignored, never passed to sendmail', evil.args.trim());
+    check(evil.status === 303 && /^ARGS:/m.test(evil.args) && !/-X/.test(evil.args) && !/-f/.test(evil.args), 'envelope: a value with spaces or options is ignored (mail still sent, without -f)', evil.args.trim());
+    for (const odd of ['a|b@example.invalid', '-oQ/tmp@example.invalid']) {
+      // FILTER_VALIDATE_EMAIL accepts both; the stricter pattern must still keep them off the command line.
+      const r = await runWith(odd);
+      check(r.status === 303 && /^ARGS:/m.test(r.args) && !/-f/.test(r.args) && !/oQ/.test(r.args), `envelope: ${odd} passes the e-mail filter but is still ignored`, r.args.trim());
+    }
   } finally { rmSync(store5, { recursive: true, force: true }); }
 }
 
 // 15. No config.php at all: the built-in defaults apply; no IP data is stored; the submission is still accepted.
 {
   const store6 = mkdtempSync(join(tmpdir(), 'uma-enquiry-noconfig-'));
-  const srv = await serve(store6, ['sendmail_path=/bin/true']);
+  const fake6 = join(store6, 'sendmail.sh'), mail6 = join(store6, 'mail.txt');
+  writeFileSync(fake6, `#!/bin/sh\ncat > '${mail6}'\n`, { mode: 0o755 });
+  const srv = await serve(store6, [`sendmail_path=${fake6}`]);
   try {
     const res = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
     const dir6 = join(store6, 'enquiries');
@@ -417,7 +431,9 @@ const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email',
     const rec = files.length === 1 ? JSON.parse(readFileSync(join(dir6, files[0]), 'utf8')) : {};
     check(res.status === 303 && files.length === 1, 'no config.php: the submission is stored and the person sees the thank-you page', `${res.status}, ${files.length} records`);
     check(rec.ip_hash === null && !existsSync(join(store6, 'ratelimit')), 'no config.php: no IP code stored and no per-visitor counter kept (the per-visitor limit is off)', JSON.stringify(rec.ip_hash));
-    check(!('notification' in rec), 'no config.php: the default mail path was used and accepted', JSON.stringify(rec.notification));
+    for (let i = 0; i < 20 && !existsSync(mail6); i++) await new Promise((r) => setTimeout(r, 100));
+    const m6 = existsSync(mail6) ? readFileSync(mail6, 'utf8') : '';
+    check(!('notification' in rec) && /^To: info@ukrainemedicaladmissions\.com$/m.test(m6) && /^From: no-reply@ukrainemedicaladmissions\.com$/m.test(m6), 'no config.php: the notification goes to the default address from the default sender', m6.split(/\r?\n\r?\n/)[0].slice(0, 200));
   } finally { srv.stop(); rmSync(store6, { recursive: true, force: true }); }
 }
 
@@ -427,7 +443,9 @@ const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email',
   const base7 = mkdtempSync(join(tmpdir(), 'uma-enquiry-nostore-'));
   const blocker = join(base7, 'not-a-directory');
   writeFileSync(blocker, 'x');
-  const srv = await serve(join(blocker, 'uma-private'), ['sendmail_path=/bin/false']);
+  const sent7 = join(base7, 'sent.txt'), fake7 = join(base7, 'sendmail.sh');
+  writeFileSync(fake7, `#!/bin/sh\ncat > '${sent7}'\n`, { mode: 0o755 });
+  const srv = await serve(join(blocker, 'uma-private'), [`sendmail_path=${fake7}`]);
   try {
     const res = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
     const text = await res.text();
@@ -435,6 +453,7 @@ const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email',
     check(!text.includes(base7) && !/\/tmp|uma-private|Warning|Fatal/i.test(text) && !text.includes('Synthetic'), 'storage failure: no path, PHP diagnostic or submitted data in the response', text.slice(0, 200));
     await new Promise((r) => setTimeout(r, 200));
     check(/cannot write to the private storage directory/.test(srv.out.log) && !srv.out.log.includes(EMAIL) && !srv.out.log.includes('Synthetic question'), 'storage failure: logged without the applicant\'s data', srv.out.log.slice(0, 200));
+    check(!existsSync(sent7), 'storage failure: no notification is sent for a submission that was not stored');
   } finally { srv.stop(); rmSync(base7, { recursive: true, force: true }); }
 }
 

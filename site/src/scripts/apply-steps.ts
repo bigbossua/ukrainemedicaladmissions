@@ -85,7 +85,6 @@ function enhance(form: HTMLFormElement) {
   const review = form.querySelector<HTMLElement>('[data-review-summary]');
   const ts = form.querySelector<HTMLInputElement>('input[name="ts"]');
   const last = steps.length - 1;
-  const started = performance.now();
   let current = 0;
   let returnToReview = false;
 
@@ -183,7 +182,7 @@ function enhance(form: HTMLFormElement) {
       }
     }
     hideSummary(summary);
-    if (ts) ts.value = String(Math.round(performance.now() - started));
+    if (ts) ts.value = String(Math.round(performance.now())); // ms since the page began loading, not since this script ran
     lockSubmit(form);
   });
 

@@ -112,10 +112,41 @@ for (const [label, ctxOpts] of [['mobile', { ...devices['iPhone 13'] }], ['deskt
   ok(errors.length === 0, `${label}: browser errors: ${errors.join(' | ')}`);
   await ctx.close();
 }
+// 6. Every form that posts to the handler sends the hidden fields the handler requires (present, enabled, not inside a
+// disabled fieldset); the contact form works without JavaScript through the real handler.
+for (const path of ['/contact/', '/apply/']) {
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await ctx.newPage();
+  await page.goto(base + path, { waitUntil: 'load' });
+  const forms = await page.$$eval('form', (fs) => fs.filter((f) => f.getAttribute('action') === '/api/enquiry.php').map((f) => ['website', 'ts'].map((n) => {
+    const el = f.querySelector(`input[name="${n}"]`);
+    return !!el && !el.disabled && !el.closest('fieldset[disabled]');
+  })));
+  ok(forms.length === 1 && forms.every((f) => f.every(Boolean)), `${path}: the form posting to the handler lacks an enabled website or ts field: ${JSON.stringify(forms)}`);
+  await ctx.close();
+}
+{
+  const ctx = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  await page.goto(base + '/contact/', { waitUntil: 'load' });
+  const form = 'form[action="/api/enquiry.php"]';
+  await page.fill(`${form} input[name="name"]`, 'Journey Enquirer');
+  await page.fill(`${form} input[name="email"]`, 'journey.enquirer@example.invalid');
+  await page.fill(`${form} textarea[name="message"]`, 'A synthetic question sent without JavaScript.');
+  // Tick consent from the keyboard: the label holds a link to /privacy/, and a pointer click could land on it.
+  await page.focus(`${form} input[name="consent"]`);
+  await page.keyboard.press('Space');
+  ok(await page.isChecked(`${form} input[name="consent"]`), 'contact form without JavaScript: consent box not ticked');
+  // Submit from the keyboard too (a pointer click with scripts off stalls the automation, not the page).
+  await page.focus(`${form} button[type="submit"]`);
+  await Promise.all([page.waitForURL('**/apply/thank-you/**', { waitUntil: 'domcontentloaded' }), page.keyboard.press('Enter')]);
+  ok(/received|thank/i.test((await page.textContent('main')) ?? ''), 'contact form without JavaScript: no thank-you page');
+  await ctx.close();
+}
 await browser.close();
 php.kill();
 
-// 6. Stored records: one per submission, carrying the chosen university; nothing about the IP key; no e-mail sent.
+// 7. Stored records: one per submission, carrying the chosen university; nothing about the IP key; no e-mail sent.
 const files = [];
 (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) walk(p); else if (f.endsWith('.json')) files.push(p); } })(priv);
 const records = files.map((p) => JSON.parse(readFileSync(p, 'utf8'))).filter((r) => r && r.type === 'application-start');
@@ -126,6 +157,9 @@ for (const r of records) {
   ok(!JSON.stringify(r).includes('journey-only-key'), 'stored record leaks the IP hash key');
   ok(r.consent === true || r.consent === 'yes', `stored record consent ${JSON.stringify(r.consent)}`);
 }
+const enquiries = files.map((p) => JSON.parse(readFileSync(p, 'utf8'))).filter((r) => r && r.type === 'enquiry');
+ok(enquiries.length === 1 && enquiries[0].name === 'Journey Enquirer' && enquiries[0].message === 'A synthetic question sent without JavaScript.', `contact form without JavaScript: stored enquiries ${enquiries.length}, expected 1`);
+ok(!/dropped a post without the form's hidden fields/.test(phpLog), 'a real form submission was dropped as missing its hidden fields');
 ok(!/Warning|Fatal|Notice|Deprecated/.test(phpLog), `PHP log: ${phpLog.slice(0, 300)}`);
 rmSync(priv, { recursive: true, force: true });
 console.log(`journey: ${checks} checks, ${failures} failures`);

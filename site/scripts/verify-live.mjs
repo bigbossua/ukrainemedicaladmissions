@@ -420,11 +420,13 @@ const p0 = http(`${BASE}/api/enquiry.php`, { method: 'POST', data: 'website=&ts=
 if (p0.status !== 422) FAIL('enquiry empty POST', p0.url, `HTTP ${p0.status}: ${text(p0).replace(/\s+/g, ' ').slice(0, 160)}`, '422 validation error', 'check handler/PHP version (needs ≥ 8.1)');
 else if (/Warning:|Fatal error|Notice:/.test(text(p0))) FAIL('enquiry PHP notices leak', p0.url, text(p0).slice(0, 160), 'no PHP warnings in output', 'display_errors off; fix the notice');
 else PASS('enquiry empty POST', p0.url, '422');
-// Honeypot POST: proves PHP runs the handler and drops a bot. It stores nothing and sends no mail, so it says NOTHING
-// about mail delivery (EMAIL_DELIVERY_VERIFICATION.md).
+// Honeypot POST: proves PHP runs the handler and drops a post that is not a real submission. It stores nothing and sends
+// no mail, so it says NOTHING about mail delivery (EMAIL_DELIVERY_VERIFICATION.md). It sends no "ts" on purpose: from the
+// 29 October handler that alone drops it, so this live probe can never store a record or send an e-mail even if the
+// honeypot check were broken. The honeypot itself is tested locally (tests/enquiry-php.mjs).
 const hp = http(`${BASE}/api/enquiry.php`, { method: 'POST', contentType: 'application/x-www-form-urlencoded', data: 'website=bot-filled-honeypot&name=Synthetic+Test&email=test%40example.invalid&course=medicine&message=honeypot+verification+do+not+store' });
 if (hp.status !== 303 || !/\/apply\/thank-you\/?$/.test(hp.redirect)) FAIL('enquiry honeypot POST', hp.url, `HTTP ${hp.status} → ${hp.redirect}`, '303 → /apply/thank-you/ (dropped, not stored)', 'check handler');
-else PASS('enquiry honeypot POST', hp.url, `303 → ${hp.redirect} (dropped by design; not a mail-delivery test)`);
+else PASS('enquiry honeypot POST', hp.url, `303 → ${hp.redirect} (dropped by design, nothing stored; not a mail-delivery test)`);
 const ty = http(`${BASE}/apply/thank-you/`);
 if (ty.status !== 200 || !/noindex/.test(text(ty))) FAIL('thank-you page', ty.url, `HTTP ${ty.status}`, '200 with noindex', 'check deployment'); else { PASS('thank-you page', ty.url, '200 noindex'); checkInline(ty.url, text(ty)); }
 

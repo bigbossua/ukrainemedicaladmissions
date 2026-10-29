@@ -105,7 +105,6 @@ export function lockSubmit(form: HTMLFormElement) {
 document.querySelectorAll<HTMLFormElement>('form[data-form]:not([data-steps])').forEach((form) => {
   const summary = form.querySelector<HTMLElement>('[data-form-error]');
   const ts = form.querySelector<HTMLInputElement>('input[name="ts"]');
-  const started = performance.now();
   form.addEventListener('submit', (e) => {
     const problems = validate(rulesIn(form));
     if (problems.length) {
@@ -115,7 +114,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-form]:not([data-steps])').
       return;
     }
     if (summary) summary.hidden = true;
-    if (ts) ts.value = String(Math.round(performance.now() - started));
+    if (ts) ts.value = String(Math.round(performance.now())); // ms since the page began loading, not since this script ran
     lockSubmit(form);
   });
 });

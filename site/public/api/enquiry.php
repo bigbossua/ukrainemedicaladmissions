@@ -101,7 +101,7 @@ function year(mixed $v, int $from, int $to): string
 $P = $_POST;
 
 // ---- Bot checks --------------------------------------------------------
-if (!empty($P['website'])) {                // honeypot filled
+if (($P['website'] ?? '') !== '') {         // honeypot filled (any value, "0" included; arrays too)
     header('Location: /apply/thank-you/', true, 303);
     exit;
 }
@@ -109,6 +109,8 @@ if (!empty($P['website'])) {                // honeypot filled
 // is not a number, was not sent by our pages (for example a script posting here directly). Dropped, not stored.
 $ts = $P['ts'] ?? null;
 if (!array_key_exists('website', $P) || !is_string($ts) || ($ts !== '' && !preg_match('/^\d{1,10}$/', $ts))) {
+    // A fixed line, no submitted data: if one of our own forms ever loses a hidden field, this shows it in the log.
+    error_log("UMA enquiry: dropped a post without the form's hidden fields");
     header('Location: /apply/thank-you/', true, 303);
     exit;
 }
