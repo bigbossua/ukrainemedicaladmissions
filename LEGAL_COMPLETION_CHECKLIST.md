@@ -9,7 +9,7 @@
 - **One file.** Every owner detail the four pages need (`/privacy/`, `/terms/`, `/disclosure/`, `/complaints-policy/`) lives in `site/src/lib/legal.mjs`, in the object `LEGAL`. The pages read it; nobody edits the pages to fill in a detail.
 - **Visible gaps.** A detail that is still empty appears on the page as **"[to be supplied by the owner: …]"** (visible text, read out by screen readers). A proposal appears as its draft wording followed by **"[proposed in the draft, not yet approved by the owner]"**.
 - **The draft banner** ("Draft for legal review") stays on all four pages until every required detail is supplied (no empty value, no proposal) **and** `legalReviewCompleted` is `true` with `reviewedBy` and `reviewDate` set.
-- **The check.** From `site/`, `npm run check:release` (`node scripts/release-readiness.mjs`) lists, in plain words, every missing detail, every unapproved proposal, the review flag, any draft text left in the built pages (`dist/`, so run `npm run build` first) and any university record flagged publishable that fails the publication policy. It exits non-zero until all of that is clear. Today it exits 1 with 40 blocking items (24 missing details, 9 proposals, 3 review fields, 4 draft pages; 38 until 29 October, when the WhatsApp channel and audit F3 added four).
+- **The check.** From `site/`, `npm run check:release` (`node scripts/release-readiness.mjs`) lists, in plain words, every missing detail, every unapproved proposal, the review flag, any draft text left in the built pages (`dist/`, so run `npm run build` first) and any university record flagged publishable that fails the publication policy. It exits non-zero until all of that is clear. Today it exits 1 with 40 blocking items (24 missing details, 9 proposals, 3 review fields, 4 draft pages; 36 from 24 to 29 October, when the WhatsApp channel and audit F3 added four; 38 before 24 October).
 - **To supply a value:** in `legal.mjs`, replace `null` (or the `proposed(...)` call) with the value as plain text; dates as `'YYYY-MM-DD'`; yes/no answers as `true` or `false`. Only items 4 and 12 accept `NOT_APPLICABLE` ("N/A" or "not applicable" count the same). A placeholder such as "TBC", "to be confirmed", "???" or anything in square brackets counts as not supplied, so the draft banner stays.
 
 ## 1. Already documented in the repository (not asked again)
@@ -60,8 +60,8 @@
 | 24 | `lawfulBasis.applications` | Lawful basis for handling application documents | The draft describes the future dashboard with no basis | — (not shown) | NOT REQUIRED while no documents are accepted: the dashboard paragraph was removed from the privacy notice (owner decision 2026-10-24); required again if documents are ever accepted | Yes, if it becomes required |
 | 25 | `processors.mailbox` | The company that provides the business mailbox | It receives a copy of every submission | /privacy/ | MISSING (`APPLICATION_SYSTEM_SPEC.md` §14.2 H6 UNVERIFIED) | No |
 | 25a | `processors.whatsapp` | Which WhatsApp service the business uses (WhatsApp or WhatsApp Business app on a phone, or the WhatsApp Business Platform through a provider) and where the conversations and any chat backups are kept | WhatsApp is a contact channel since 29 October 2026; the notice must name who keeps those messages and where, including any backup provider (review of the WhatsApp change) | /privacy/ | MISSING | No |
-| 26 | `processingLocation` | The countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store the data | The notice must say where data is processed | /privacy/ | MISSING (hosting plan unverified, assessment §1) | Yes |
-| 27 | `internationalTransfers` | Whether personal data goes to other countries, including through WhatsApp (Meta), and the safeguard used | Transfers abroad must be disclosed | /privacy/ | MISSING | Yes |
+| 26 | `processingLocation` | The countries where the hosting provider, the mailbox provider, WhatsApp (Meta) and any chat-backup provider store or process the data | The notice must say where data is processed | /privacy/ | MISSING (hosting plan unverified, assessment §1) | Yes |
+| 27 | `internationalTransfers` | Whether personal data goes to other countries, including through WhatsApp (Meta) or a chat-backup provider, and the safeguard used | Transfers abroad must be disclosed | /privacy/ | MISSING | Yes |
 | 28 | `under18Policy` | The rule for applicants under 18 | Open legal question (§14.12; checklist C11.2; `EXECUTIVE_REPORT.md` §K.8) | /privacy/ | MISSING | Yes |
 | 29 | `complaints.acknowledge` | How quickly a complaint is acknowledged | The policy promises timescales | /complaints-policy/ | PROPOSED: "3 working days" (complaints draft) | No (owner decision) |
 | 30 | `complaints.reply` | How quickly a complaint gets a full reply | As above | /complaints-policy/ | PROPOSED: "15 working days" | No (owner decision) |
@@ -75,11 +75,11 @@ Items 19 and 24 concern the secure application dashboard, which is not built. Th
 
 ## 3. Items that need a qualified legal review
 
-Items 6–12, 15–24, 26–28, 33 and 34, plus the questions below. The reviewer should also read the final text of all four pages before `legalReviewCompleted` is set, including the owner-decision items (1–5, 13, 14, 25, 29–32).
+Items 6–12, 15–24, 26–28, 33 and 34, plus the questions below. The reviewer should also read the final text of all four pages before `legalReviewCompleted` is set, including the owner-decision items (1–5, 13, 14, 25, 25a, 29–32). Items 18a–18c are among the review items 15–24.
 
 Questions for the reviewer that are not values on the pages:
 
-1. Whether written data-processing terms are needed, and in place, with the hosting provider and the mailbox provider.
+1. Whether written data-processing terms are needed, and in place, with the hosting provider, the mailbox provider and, for WhatsApp, Meta or a Business Platform provider and any chat-backup provider (item 25a).
 2. Whether a data protection officer is required.
 3. Whether the consent wording on the forms (`site/src/pages/apply/index.astro`, `site/src/pages/contact/index.astro`, and the `consentText` stored by `enquiry.php`) fits the lawful basis chosen in items 21–23.
 4. Whether the notice must say anything about cookies or device storage (`ANALYTICS_AND_SEARCH_CONSOLE.md` §B marks its legal frame as an ASSUMPTION needing legal review).

@@ -72,8 +72,8 @@ Grouped by the review flags in `site/src/lib/legal.mjs`, by whether a draft valu
 | L15 | Retention period for complaint records (`retention.complaints`); no draft value exists | B Owner value + legal review |
 | L16 | Lawful basis for keeping the submission time and keyed IP code (`lawfulBasis.abuseDetection`) | E Legal advice and sign-off |
 | L17 | Business mailbox provider (`processors.mailbox`) | A Owner fact |
-| L18 | Countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store the data (`processingLocation`) | B Owner value + legal review |
-| L19 | International transfers, including through WhatsApp (Meta), and the safeguard used (`internationalTransfers`) | E Legal advice and sign-off |
+| L18 | Countries where the hosting provider, the mailbox provider, WhatsApp (Meta) and any chat-backup provider store or process the data (`processingLocation`) | B Owner value + legal review |
+| L19 | International transfers, including through WhatsApp (Meta) or a chat-backup provider, and the safeguard used (`internationalTransfers`) | E Legal advice and sign-off |
 | L20 | Rule for applicants under 18 (`under18Policy`) | E Legal advice and sign-off |
 | L21 | Enquiry retention; the draft proposes "up to 12 months after our last contact" (`retention.enquiries`) | C Draft: owner approval + legal review |
 | L22 | Candidate-profile retention; the draft proposes the same (`retention.candidateProfiles`) | C Draft: owner approval + legal review |

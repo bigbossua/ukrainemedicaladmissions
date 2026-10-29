@@ -78,8 +78,9 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
   // Tab through the open menu from the top: each focused link's ring (outline plus offset) stays inside the menu's
   // visible box, so the scrolling menu never clips it.
   await page.focus('[data-menu-toggle]');
-  const clipped = [];
-  for (let i = 0; i < 12; i++) {
+  const clipped = []; let visited = 0;
+  const menuLinks = await page.$$eval('#main-menu a', (a) => a.length);
+  for (let i = 0; i < 20; i++) {
     await page.keyboard.press('Tab');
     const c = await page.evaluate(() => {
       const a = document.activeElement; const menu = document.getElementById('main-menu');
@@ -90,8 +91,10 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
       return { text: a.textContent.trim(), ok: b.top - ring >= top - 0.5 && b.bottom + ring <= bottom + 0.5 };
     });
     if (!c) break;
+    visited++;
     if (!c.ok) clipped.push(c.text);
   }
+  ok(visited === menuLinks && menuLinks > 0, `AX-02 ${width}x${height}: Tab reached ${visited} of ${menuLinks} menu links`);
   ok(clipped.length === 0, `AX-02 ${width}x${height}: focus ring clipped by the scrolling menu on: ${clipped.join(', ')}`);
   await ctx.close();
 }
@@ -113,21 +116,54 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
   }
   await ctx.close();
 }
-// Finder used before its script runs (slow phone): once the script arrives, the list matches what was typed.
+// Finder used before its script runs (slow phone): the directory script is held until after the visitor has typed or
+// chosen, so the check always tests the start-up path; once the script runs, the list matches the controls. A link's
+// ?q= never overwrites what the visitor typed, and on Back the list follows the choices the browser restores.
+const finderState = (page) => page.evaluate(() => {
+  const all = [...document.querySelectorAll('[data-list] article')];
+  const shown = all.filter((a) => !a.hidden);
+  return { total: all.length, shown: shown.map((a) => a.dataset.name ?? ''), cities: shown.map((a) => a.dataset.rcity ?? ''), count: document.querySelector('[data-count]')?.textContent };
+});
+async function heldScript(path) {
+  const ctx = await browser.newContext({ viewport: { width: 412, height: 823 } });
+  const page = await ctx.newPage();
+  let release; const held = new Promise((r) => { release = r; }); let released = false;
+  await page.route('**/_astro/*.js', async (route) => { await held; await route.continue(); });
+  await page.goto(base + path, { waitUntil: 'commit' });
+  await page.waitForSelector('#dir-q', { state: 'visible' });
+  return { ctx, page, release: () => { released = true; release(); }, isReleased: () => released };
+}
+{
+  const h = await heldScript('/universities/');
+  await h.page.fill('#dir-q', 'Odesa');
+  ok(!h.isReleased() && (await h.page.evaluate(() => document.readyState)) !== 'complete', 'finder test set-up: the directory script ran before the visitor typed');
+  h.release(); await h.page.waitForLoadState('load'); await h.page.waitForTimeout(300);
+  const st = await finderState(h.page);
+  ok(st.shown.length > 0 && st.shown.length < st.total && st.shown.every((n) => /odesa|odessa/i.test(n)) && st.count === String(st.shown.length),
+    `finder: a search typed before the script ran is not applied (${st.shown.length} of ${st.total} shown, count ${st.count})`);
+  await h.ctx.close();
+}
+{
+  const h = await heldScript('/universities/?q=kyiv');
+  await h.page.fill('#dir-q', 'Odesa');
+  h.release(); await h.page.waitForLoadState('load'); await h.page.waitForTimeout(300);
+  const typed = await h.page.inputValue('#dir-q'); const st = await finderState(h.page);
+  ok(typed === 'Odesa' && st.shown.length > 0 && st.shown.every((n) => /odesa|odessa/i.test(n)), `finder: the link's ?q= overwrote what the visitor typed (box "${typed}", ${st.shown.length} shown)`);
+  await h.ctx.close();
+}
 {
   const ctx = await browser.newContext({ viewport: { width: 412, height: 823 } });
   const page = await ctx.newPage();
-  await page.route('**/_astro/*.js', async (route) => { await new Promise((r) => setTimeout(r, 1500)); await route.continue(); });
-  await page.goto(base + '/universities/', { waitUntil: 'commit' });
-  await page.waitForSelector('#dir-q', { state: 'visible' });
-  await page.fill('#dir-q', 'Odesa');
-  await page.waitForLoadState('load'); await page.waitForTimeout(300);
-  const st = await page.evaluate(() => {
-    const shown = [...document.querySelectorAll('[data-list] article')].filter((a) => !a.hidden).map((a) => a.dataset.name ?? '');
-    return { total: document.querySelectorAll('[data-list] article').length, shown, count: document.querySelector('[data-count]')?.textContent };
-  });
-  ok(st.shown.length > 0 && st.shown.length < st.total && st.shown.every((n) => /odesa|odessa/i.test(n)) && st.count === String(st.shown.length),
-    `finder: a search typed before the script ran is not applied (${st.shown.length} of ${st.total} shown, count ${st.count})`);
+  await page.goto(base + '/universities/', { waitUntil: 'load' });
+  const city = await page.$$eval('select[data-filter="rcity"] option', (o) => o.map((x) => x.value).filter(Boolean)[0]);
+  await page.selectOption('select[data-filter="rcity"]', city);
+  const before = await finderState(page);
+  await page.goto(base + '/faq/', { waitUntil: 'load' });
+  await page.goBack({ waitUntil: 'load' }); await page.waitForTimeout(500);
+  const restored = await page.inputValue('select[data-filter="rcity"]');
+  const after = await finderState(page);
+  const consistent = restored ? after.shown.length > 0 && after.cities.every((c) => c === restored) && after.count === String(after.shown.length) : after.shown.length === after.total;
+  ok(before.shown.length < before.total && consistent, `finder after Back: the list does not match the restored choice (select "${restored}", ${after.shown.length} of ${after.total} shown, count ${after.count})`);
   await ctx.close();
 }
 // AX-04, AX-05, AX-09 on /contact/.

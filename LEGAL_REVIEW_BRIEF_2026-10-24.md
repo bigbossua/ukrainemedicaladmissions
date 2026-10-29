@@ -110,3 +110,14 @@ Three options, for your choice:
 1. The owner confirms the legal form (3.1), the address route (3.2), the Hostinger entity and region (3.6) and a deletion routine (3.6).
 2. The reviewer settles 3.1–3.8. The owner approves the wording.
 3. I enter all values in one commit just before the release and rebuild. The reviewer reads the built pages and the review is recorded (items 32–34). `npm run check:release` must print READY.
+
+## Addendum (2026-10-29): four items added after this brief
+
+The release check now lists 40 open items (36 when this brief was written). The four new items are on `/privacy/` and are owner values with no draft wording; none is filled in:
+
+- `retention.whatsappMessages`: how long WhatsApp conversations are kept. WhatsApp became a contact channel on 29 October 2026 (owner decision); the privacy draft also shows the `lawfulBasis.enquiries` value for WhatsApp messages.
+- `processors.whatsapp`: which WhatsApp service the business uses (the app on a phone, or the WhatsApp Business Platform through a provider) and where the conversations and any chat backups are kept. The draft says only that WhatsApp (part of Meta) carries the messages under its own terms; whether Meta or a backup provider stores them is not stated until the owner answers. `processingLocation` and `internationalTransfers` now ask about WhatsApp (Meta) and any chat-backup provider too.
+- `retention.hostLogs`: what the host's server, error and mail logs record (IP address, page, time, browser) and how long they are kept (audit F3; the owner reads this in hPanel). The keyed IP code in the form records can be linked to a raw IP address through these logs.
+- `retention.correspondence`: how long e-mails sent to the business directly (complaints, rights requests) are kept (audit F3).
+
+Question for the reviewer: whether data-processing terms are needed with Meta or a WhatsApp Business Platform provider and with any chat-backup provider (`LEGAL_COMPLETION_CHECKLIST.md` §3, question 1).

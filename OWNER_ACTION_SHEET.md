@@ -109,13 +109,13 @@ All but `tnmu.edu.ua` are described in the capture request §1.
 
 ## 2. The items the release check lists (40 since 2026-10-29; numbering kept from the original 38, items 39–42 added on 2026-10-29 for WhatsApp, host logs and correspondence)
 
-In the order `node scripts/release-readiness.mjs` lists them. The check prints bullets and lists only what is still open; the numbers below are this sheet's own. `LEGAL_COMPLETION_CHECKLIST.md` numbers the same fields differently, so always keep the field name next to an answer, as the template does. **R** = a qualified legal reviewer must check the answer.
+Items 1–38 in the order `node scripts/release-readiness.mjs` listed them on 24 October; 39–42 were added on 29 October (the check lists them among the other retention and provider items). The check prints bullets and lists only what is still open; the numbers below are this sheet's own. `LEGAL_COMPLETION_CHECKLIST.md` numbers the same fields differently, so always keep the field name next to an answer, as the template does. **R** = a qualified legal reviewer must check the answer.
 
 ### 2.0 At a glance: the 40 blockers in three groups
 
 Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal pages built as drafts: banner, placeholder and proposal markers) clear by themselves once 1–34 and 39–42 are in and I rebuild. If item 7 is `true`, the representative's name and address become one more required item.
 
-**A. Facts only you can supply (15).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14, 20 and 39–41 are marked R in §2.1: your reviewer confirms them.
+**A. Facts only you can supply (12).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14 and 20 are marked R in §2.1: your reviewer confirms them.
 
 | # | Item | Where to find it |
 |---|---|---|
@@ -129,10 +129,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 13 | Privacy notice version (for example `1.0`) | your choice |
 | 14 | Whether host backups contain form submissions, and how long backups are kept | Hostinger plan / backup settings |
 | 19 | Company that provides the info@ mailbox | mailbox account (Hostinger Email, Google Workspace, Zoho …) |
-| 20 | Countries where Hostinger, the mailbox provider and WhatsApp (Meta) store data | each provider's data-centre setting or terms |
-| 39 | How long WhatsApp conversations are kept | your own practice on the business phone |
-| 40 | What the host's server, error and mail logs record and how long they are kept | hPanel (H7–H9 in §8) |
-| 41 | How long e-mails sent to us directly (complaints, rights requests) are kept | your own practice in the mailbox |
+| 20 | Countries where Hostinger, the mailbox provider, WhatsApp (Meta) and any chat-backup provider store or process data | each provider's data-centre setting or terms |
 | 42 | Which WhatsApp service you use (app on a phone, or the Business Platform through a provider) and where the conversations and any chat backups are kept | the WhatsApp settings on the business phone (Chats → Chat backup) |
 
 **B. Proposed wording to approve or replace (9).** Answer "approved" or give your own value.
@@ -149,7 +146,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 30 | Second-stage reviewer | "the business owner" (if the owner also handles the first stage, the review is not independent: name someone else if you can) |
 | 31 | Second-stage reply within | "a further 10 working days" |
 
-**C. Needs a qualified legal reviewer (12; items 15 and 18 removed with the dashboard paragraph on 2026-10-24).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
+**C. Needs a qualified legal reviewer (15; items 15 and 18 removed with the dashboard paragraph on 2026-10-24; 39–41 added on 2026-10-29).** These are legal determinations, not facts; decide them with your reviewer, then send the agreed answers.
 
 | # | Item |
 |---|---|
@@ -161,7 +158,10 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 16 | Retention of complaint records |
 | 17 | Lawful basis for abuse detection (submission time and keyed IP code) |
 | ~~18~~ | Not required: as item 15 |
-| 21 | International transfers (including through WhatsApp) and the safeguard used |
+| 21 | International transfers (including through WhatsApp or a chat backup) and the safeguard used |
+| 39 | How long WhatsApp conversations are kept (your own practice on the business phone, decided with your reviewer) |
+| 40 | What the host's server, error and mail logs record and how long they are kept (read the facts in hPanel, H7–H9 in §8) |
+| 41 | How long e-mails sent to us directly (complaints, rights requests) are kept |
 | 22 | The rule for applicants under 18 (the forms are built for school-leavers) |
 | 32–34 | Review completed, reviewer's name, review date (set only after the review) |
 
@@ -180,7 +180,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 4. Then 23–31: approve or replace. 23–27 also need the reviewer.
 5. 12–13 last, and 32–34 after the review.
 
-### 2.1 Missing details (26)
+### 2.1 Missing details (24; rows 15 and 18 are not required today)
 
 | # | Field in `legal.mjs` | Send | R |
 |---|---|---|---|
@@ -203,8 +203,8 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 17 | `lawfulBasis.abuseDetection` | Lawful basis for keeping the submission time and the keyed IP code | R |
 | ~~18~~ | `lawfulBasis.applications` | Not required while no documents are accepted (owner decision 2026-10-24) | R |
 | 19 | `processors.mailbox` | Company that provides the info@ mailbox | |
-| 20 | `processingLocation` | Countries where Hostinger, the mailbox provider and WhatsApp (Meta) store data | R |
-| 21 | `internationalTransfers` | Whether personal data goes abroad (including through WhatsApp), and the safeguard used | R |
+| 20 | `processingLocation` | Countries where Hostinger, the mailbox provider, WhatsApp (Meta) and any chat-backup provider store or process data | R |
+| 21 | `internationalTransfers` | Whether personal data goes abroad (including through WhatsApp or a chat backup), and the safeguard used | R |
 | 22 | `under18Policy` | Rule for applicants under 18 | R |
 | 39 | `retention.whatsappMessages` | How long WhatsApp conversations are kept | R |
 | 40 | `retention.hostLogs` | What the host's server, error and mail logs record (IP address, page, time, browser) and how long they are kept | R |
@@ -367,7 +367,7 @@ The only call I would propose comes after a university's first facts are verifie
 M1 needs §1 (or captures). It needs no release.
 
 **M2: release (each step needs the one before).**
-1. Items 1–34 are supplied (§2).
+1. Items 1–34 and 39–42 are supplied (§2).
 2. I rebuild. `npm run check:release` prints READY, and the full `npm run release:gate` passes (all tests, a clean build, the publication report, then that check). READY covers the legal pages and the university records only.
 3. CI is changed to `expect: pass` and is green on that exact commit.
 4. **Before anything is published:**
@@ -380,11 +380,11 @@ M1 needs §1 (or captures). It needs no release.
 
 **Shortest route, 48-hour target (2026-10-24).** The technical work is done: every check except the legal readiness check passes on the branch head. Only §2 stands between the branch and an approvable release commit; the pre-publish steps in M2 step 4 (backup, private config) follow. The legal reviewer is the critical path.
 - **Hour 0:**
-  - You send item 3 first, then items 1, 2, 4, 5, 19 and 20 (group A, in the §2.0 order).
+  - You send item 3 first, then items 1, 2, 4, 5, 19, 20 and 42 (group A, in the §2.0 order).
   - You book the reviewer with group C, items 6 and 14 and the reviewer brief (§2.0). Item 3 decides 6–11 together with the reviewer.
   - In parallel, you add the Search Console domain property and its TXT record (§3 steps 1–4; no release needed).
 - **By hour 24:**
-  - The reviewer settles items 6–11, 14–18 and 21–22, plus 23–27.
+  - The reviewer settles items 6–11, 14–18, 20–22 and 39–41, plus 23–27.
   - You approve or replace items 28–31.
 - **Preview for the reviewer:**
   - I rebuild the four legal pages locally with your answers and send you the private preview copy (§2.3).

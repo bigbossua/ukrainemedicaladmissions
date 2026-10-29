@@ -133,8 +133,8 @@ export const LEGAL = {
     // kept (for example only on the phone, or also in Google Drive or iCloud). Not recorded; nothing is assumed.
     whatsapp: null,
   },
-  // MISSING: the countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store data (not recorded;
-  // plan unverified).
+  // MISSING: the countries where the hosting provider, the mailbox provider, WhatsApp (Meta) and any chat-backup provider
+  // store or process data (not recorded; plan unverified).
   processingLocation: null,
   // MISSING: whether personal data goes to other countries, and the safeguard used (legal review).
   internationalTransfers: null,
@@ -239,14 +239,14 @@ export const LEGAL_ITEMS = Object.freeze([
   { path: 'retention.backups', what: 'whether backups contain form submissions, and how long backups are kept', why: 'Deleted data can remain in backups; the notice must say for how long (APPLICATION_SYSTEM_SPEC.md §14.12).', pages: ['privacy'], review: true },
   { path: 'retention.applicationRecords', what: 'how long application records and documents are kept after an application ends', why: 'Required once documents are accepted (the notice must then describe the document process and give a period).', pages: [], review: true, requiredWhen: (l) => l.facts?.documentsAccepted === true },
   { path: 'retention.complaints', what: 'how long complaint records are kept', why: 'The complaints policy says each complaint is recorded, with no period.', pages: ['complaints-policy'], review: true },
-  { path: 'lawfulBasis.enquiries', what: 'the lawful basis for replying to enquiries', why: 'The privacy notice must give a lawful basis for each purpose.', pages: ['privacy'], review: true },
+  { path: 'lawfulBasis.enquiries', what: 'the lawful basis for replying to enquiries (contact form and WhatsApp messages)', why: 'The privacy notice must give a lawful basis for each purpose.', pages: ['privacy'], review: true },
   { path: 'lawfulBasis.candidateProfiles', what: 'the lawful basis for handling candidate profiles', why: 'The privacy notice must give a lawful basis for each purpose.', pages: ['privacy'], review: true },
   { path: 'lawfulBasis.abuseDetection', what: 'the lawful basis for keeping the submission time and the keyed IP code to detect abuse', why: 'The draft gives no basis for this purpose.', pages: ['privacy'], review: true },
   { path: 'lawfulBasis.applications', what: 'the lawful basis for handling application documents', why: 'Required once documents are accepted (the notice must then give a basis for the document process).', pages: [], review: true, requiredWhen: (l) => l.facts?.documentsAccepted === true },
   { path: 'processors.mailbox', what: 'the company that provides the business mailbox', why: 'Each submission is e-mailed there, so it handles personal data for us.', pages: ['privacy'], review: false },
   { path: 'processors.whatsapp', what: 'which WhatsApp service you use (the WhatsApp or WhatsApp Business app on a phone, or the WhatsApp Business Platform through a provider) and where the conversations and any chat backups are kept (for example only on the phone, or also in Google Drive or iCloud)', why: 'The site offers WhatsApp as a contact channel (owner decision 2026-10-29); the notice must name who keeps those messages and where, including any backup provider.', pages: ['privacy'], review: false },
-  { path: 'processingLocation', what: 'the countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store the data', why: 'The notice must say where data is processed; it lists all three providers.', pages: ['privacy'], review: true },
-  { path: 'internationalTransfers', what: 'whether personal data is sent to other countries, including through WhatsApp (Meta), and the safeguard used', why: 'Transfers abroad must be disclosed with their safeguard; WhatsApp messages are carried by Meta.', pages: ['privacy'], review: true },
+  { path: 'processingLocation', what: 'the countries where the hosting provider, the mailbox provider, WhatsApp (Meta) and any chat-backup provider (for example Google or Apple) store or process the data', why: 'The notice must say where data is processed, for every provider it lists.', pages: ['privacy'], review: true },
+  { path: 'internationalTransfers', what: 'whether personal data is sent to other countries, including through WhatsApp (Meta) or a chat-backup provider, and the safeguard used', why: 'Transfers abroad must be disclosed with their safeguard; WhatsApp messages are carried by Meta and may be backed up by another provider.', pages: ['privacy'], review: true },
   { path: 'under18Policy', what: 'the rule for applicants under 18', why: 'Open legal question (APPLICATION_SYSTEM_SPEC.md §14.12, checklist C11.2); applicants are often under 18.', pages: ['privacy'], review: true },
   { path: 'complaints.acknowledge', what: 'how quickly a complaint is acknowledged', why: 'The complaints policy promises timescales.', pages: ['complaints-policy'], review: false },
   { path: 'complaints.reply', what: 'how quickly a complaint receives a full reply', why: 'The complaints policy promises timescales.', pages: ['complaints-policy'], review: false },

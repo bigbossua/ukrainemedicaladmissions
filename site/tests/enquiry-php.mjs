@@ -508,9 +508,10 @@ if (isset($_SERVER['HTTP_X_TEST_REMOTE_ADDR'])) $_SERVER['REMOTE_ADDR'] = $_SERV
 if (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === '/api/enquiry.php') { require ${JSON.stringify(join(PUBLIC, 'api', 'enquiry.php'))}; return true; }
 return false;
 `);
-  const srv = await serve(store10, [], {}, router);
+  let srv = null;
   const from = async (addr) => (await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual', headers: { 'x-test-remote-addr': addr } })).status;
   try {
+    srv = await serve(store10, [], {}, router);
     const v6 = [await from('2001:db8:1:2::1'), await from('2001:db8:1:2::2'), await from('2001:db8:1:3::1')];
     check(v6.join(',') === '303,429,303', 'IPv6: two addresses in one /64 share the per-visitor limit; another /64 is separate', v6.join(','));
     const mapped = [await from('::ffff:198.51.100.1'), await from('::ffff:203.0.113.9'), await from('::ffff:192.0.2.77')];
@@ -519,7 +520,7 @@ return false;
     check(same.join(',') === '429,429', 'IPv4-mapped and plain forms of one IPv4 address are the same visitor', same.join(','));
     const v4 = [await from('192.0.2.1'), await from('192.0.2.2')];
     check(v4.join(',') === '303,303', 'IPv4: neighbouring addresses are separate visitors', v4.join(','));
-  } finally { srv.stop(); rmSync(store10, { recursive: true, force: true }); }
+  } finally { srv?.stop(); rmSync(store10, { recursive: true, force: true }); }
 }
 
 console.log(`enquiry-php: ${checks} checks, ${failures} failures`);

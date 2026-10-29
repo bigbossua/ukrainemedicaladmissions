@@ -247,9 +247,11 @@ const stats = [
       c.hidden = !ok; if (ok) n++;
     });
     tiers.forEach((t) => { t.hidden = !t.querySelector('article:not([hidden])'); });
-    if (count) count.textContent = String(n);
-    if (noun) noun.textContent = cards.length === 1 ? 'university' : 'universities';
-    if (query) query.textContent = search?.value ?? '';
+    // Written only when the text changes: the count sits in a live region, and an unchanged rewrite can be re-announced.
+    const set = (el: Element | null, text: string) => { if (el && el.textContent !== text) el.textContent = text; };
+    set(count, String(n));
+    set(noun, cards.length === 1 ? 'university' : 'universities');
+    set(query, search?.value ?? '');
     if (noMatch) noMatch.hidden = n > 0 || cards.length === 0;
     if (nearMatch) nearMatch.hidden = n === 0 || !(found.tier === 'near' || found.caution);
   }
@@ -258,14 +260,17 @@ const stats = [
   // A shared or reloaded link opens with its search and filters applied: /universities/?q=odessa, or the links from the
   // home and course pages, /universities/?type=state-medical-university, ?rfield=medicine, ?rcity=Kyiv. A value that is
   // not one of a select's options is ignored.
+  // A link's values fill only controls the visitor has not already used (the finder works before this script runs).
   const params = new URLSearchParams(location.search);
   const initial = params.get('q');
-  if (search && initial) search.value = initial.slice(0, 80);
-  let preset = Boolean(initial);
-  selects.forEach((s) => { const v = params.get(s.dataset.filter ?? ''); if (v && [...s.options].some((o) => o.value === v)) { s.value = v; preset = true; } });
-  // Always applied once at start: the finder is usable before this script runs (it is laid out from the first paint), and
-  // the browser may restore earlier choices on Back, so the list must match whatever the controls already hold.
+  let preset = false;
+  if (search && initial && !search.value) { search.value = initial.slice(0, 80); preset = true; }
+  selects.forEach((s) => { const v = params.get(s.dataset.filter ?? ''); if (v && !s.value && [...s.options].some((o) => o.value === v)) { s.value = v; preset = true; } });
+  // Applied at start, and again whenever the page is shown: the finder is usable before this script runs, and on Back the
+  // browser restores earlier choices after the load event (or from the back-forward cache) without firing change or
+  // input, so the list must follow whatever the controls hold.
   apply();
+  window.addEventListener('pageshow', apply);
   if (preset) document.querySelector<HTMLElement>('[data-list]')?.setAttribute('data-preset', '');
   form?.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
   form?.addEventListener('reset', () => setTimeout(apply, 0));

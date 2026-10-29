@@ -8,7 +8,7 @@ import YAML from 'yaml';
 
 const ROOT = resolve('..');
 let checks = 0, failures = 0;
-const check = (cond, msg) => { checks++; if (!cond) { failures++; console.log('FAIL', msg); } };
+const check = (cond, msg, detail = '') => { checks++; if (!cond) { failures++; console.log('FAIL', msg, detail ? `(${detail})` : ''); } };
 
 const wf = YAML.parse(readFileSync(resolve(ROOT, '.github/workflows/publish-production-branch.yml'), 'utf8'));
 const ci = YAML.parse(readFileSync(resolve(ROOT, '.github/workflows/ci.yml'), 'utf8'));
@@ -34,16 +34,22 @@ check((on?.push?.branches ?? []).includes('publish-production-interim'), 'the in
 // job (a planted git hook or setting would run inside it); that needs a separate deploy job (owner decision, see
 // SECURITY_AND_RELEASE_CHECKLIST.md section B.2).
 {
+  // Every job, not only "publish": a second job with its own checkout or push would bypass the gate.
   const checkouts = (job) => (job?.steps ?? []).filter((s) => String(s.uses ?? '').startsWith('actions/checkout'));
-  const pub = checkouts({ steps });
-  check(pub.length > 0 && pub.every((s) => s.with?.['persist-credentials'] === false), 'publish: every checkout runs with persist-credentials: false', String(pub.length));
+  const pub = Object.values(wf.jobs ?? {}).flatMap(checkouts);
+  check(pub.length > 0 && pub.every((s) => s.with?.['persist-credentials'] === false), 'publish workflow: every checkout in every job runs with persist-credentials: false', String(pub.length));
   const ciCos = Object.values(ci.jobs ?? {}).flatMap(checkouts);
   check(ciCos.length > 0 && ciCos.every((s) => s.with?.['persist-credentials'] === false), 'CI: every checkout runs with persist-credentials: false', String(ciCos.length));
+  check(Object.keys(wf.jobs ?? {}).join(',') === 'publish', 'publish workflow: a single job (a deploy job split is an owner decision; this guard must then be extended)', Object.keys(wf.jobs ?? {}).join(','));
+  // git push/fetch with any global options in front (git -C dir, git -c key=value, git --no-pager ...) and any flags
+  // after; the first non-flag word is the remote. A push or fetch without a remote counts as a failure.
+  const GIT_NET = /\bgit((?:\s+-[Cc]\s+\S+|\s+--\S+)*)\s+(push|fetch)\b((?:\s+-\S+)*)(?:\s+([^\s;&|]+))?/g;
+  const remotesIn = (text) => [...text.matchAll(GIT_NET)].map((m) => m[4] ?? '(none)');
   const deploy = steps.find((s) => /Commit the built site onto the deploy branch/.test(String(s.name ?? '')));
-  const remotes = [...runOf(deploy ?? {}).matchAll(/\bgit\s+(push|fetch)\b((?:\s+-\S+)*)\s+(\S+)/g)].map((m) => m[3]);
-  check(deploy && remotes.length >= 2 && remotes.every((r) => r === '"$PUSH_URL"'), 'deploy step: every git fetch and push names "$PUSH_URL" as its remote (never origin or a literal URL)', remotes.join(' '));
-  const allRuns = steps.map(runOf).join('\n');
-  check(![...allRuns.matchAll(/\bgit\s+(push|fetch)\b((?:\s+-\S+)*)\s+(\S+)/g)].some((m) => m[3] !== '"$PUSH_URL"'), 'publish: no step fetches or pushes through any remote other than "$PUSH_URL"');
+  const remotes = remotesIn(runOf(deploy ?? {}));
+  check(deploy && remotes.length >= 2 && remotes.every((r) => r === '"$PUSH_URL"'), 'deploy step: every git fetch and push names "$PUSH_URL" as its remote (never origin, a literal URL or none)', remotes.join(' '));
+  const allRemotes = Object.values(wf.jobs ?? {}).flatMap((j) => (j.steps ?? []).map(runOf)).flatMap(remotesIn);
+  check(allRemotes.every((r) => r === '"$PUSH_URL"'), 'publish workflow: no step in any job fetches or pushes through a remote other than "$PUSH_URL"', allRemotes.join(' '));
 }
 // Rollback during the interim period (SECURITY_AND_RELEASE_CHECKLIST.md section D, corrected 2026-10-29): a tag named
 // publish-production-interim-<stamp> must run the interim gate, and a manual run must not, so the documented route works.

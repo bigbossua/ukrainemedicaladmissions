@@ -4,7 +4,7 @@
 
 **Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the release-check items (40 since 29 October) in the order the check lists them, with a reply template, the Search Console steps (domain property now; sitemap submission recommended right after the release) and the release steps in order.
 
-Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **40 blocking items**: 24 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages (38 until 29 October). Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
+Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **40 blocking items**: 24 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages (36 from 24 to 29 October; 38 before 24 October). Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
 
 **How to give a legal answer:** in `site/src/lib/legal.mjs`, replace `null` or `proposed(...)` with plain text in quotes. Write dates as `'YYYY-MM-DD'` and yes/no answers as `true` or `false`. "TBC", "???" or anything in square brackets counts as not supplied. Or send the answers and Claude will enter them word for word. **The repository is public:** whatever is entered in `legal.mjs` is readable on GitHub as soon as it is pushed, before any release or review, and stays in its history (every answer except the reviewer's name and date also appears on the legal pages after a release; the reviewer's name and date are stored in the repository). Send only what you are willing to publish now, or make the repository private first (§2, D8).
 
@@ -29,8 +29,8 @@ Tick a box (`[x]`) when an item is done. Today the release gate refuses to publi
 | [ ] | Outside body for complaints you cannot resolve, or `NOT_APPLICABLE` | — | `complaintsBody` | Yes |
 | [ ] | Company that provides the info@ mailbox | — | `processors.mailbox` | No |
 | [ ] | Which WhatsApp service you use (app on a phone, or the Business Platform through a provider) and where the conversations and any chat backups are kept | — | `processors.whatsapp` | No |
-| [ ] | Countries where Hostinger, the mailbox provider and WhatsApp (Meta) store data | — | `processingLocation` | Yes |
-| [ ] | Does personal data go to other countries (including through WhatsApp)? If so, which safeguard is used? | — | `internationalTransfers` | Yes |
+| [ ] | Countries where Hostinger, the mailbox provider, WhatsApp (Meta) and any chat-backup provider store or process data | — | `processingLocation` | Yes |
+| [ ] | Does personal data go to other countries (including through WhatsApp or a chat backup)? If so, which safeguard is used? | — | `internationalTransfers` | Yes |
 | [ ] | Rule for applicants under 18 | — | `under18Policy` | Yes |
 | [ ] | How long enquiries are kept | "up to 12 months after our last contact" | `retention.enquiries` | Yes |
 | [ ] | How long candidate profiles from /apply/ are kept | "up to 12 months after our last contact" | `retention.candidateProfiles` | Yes |
@@ -41,7 +41,7 @@ Tick a box (`[x]`) when an item is done. Today the release gate refuses to publi
 | [ ] | How long WhatsApp conversations are kept | none | `retention.whatsappMessages` | Yes |
 | [ ] | What the host's server, error and mail logs record and how long they are kept (hPanel; `OWNER_ACTION_SHEET.md` H7–H9) | none | `retention.hostLogs` | Yes |
 | [ ] | How long e-mails sent to us directly (complaints, rights requests) are kept | none | `retention.correspondence` | Yes |
-| [ ] | Lawful basis: replying to enquiries | "your consent and steps taken at your request before any contract" | `lawfulBasis.enquiries` | Yes |
+| [ ] | Lawful basis: replying to enquiries | "your consent and steps taken at your request before any contract" | `lawfulBasis.enquiries` (also shown for WhatsApp messages) | Yes |
 | [ ] | Lawful basis: candidate profiles | same as the row above | `lawfulBasis.candidateProfiles` | Yes |
 | [ ] | Lawful basis: keeping the submission time and the keyed IP code to detect abuse | none | `lawfulBasis.abuseDetection` | Yes |
 | [ ] | Lawful basis: application documents (future dashboard, not built yet) | none | `lawfulBasis.applications` | Yes |
@@ -65,7 +65,7 @@ Not needed today: `referralDetails` and `paidServices.terms`. They are needed on
 | [ ] | N24 (a): our own text (overview, programme names, city, region) | An overview is shown only after a named editorial review of the exact text. A programme is listed only if its name appears in the quotation that verifies it; otherwise it is not listed. City and region are shown only if a verified address contains them | `site/src/lib/publication-config.mjs`; record the decision in `PUBLICATION_POLICY_DECISIONS.md` |
 | [ ] | N24 (b): which hosts count as a recognition authority | None. The list is empty, so no recognition claim is shown | `RECOGNITION_AUTHORITY_HOSTS`, same file |
 | [ ] | N24 (c): proving the official website | The website counts only when a .gov.ua government page lists exactly the same website. Until then no profile can go live | `WEBSITE_REQUIRES_GOVERNMENT_EVIDENCE`, same file |
-| [ ] | N25: research previews and the label "Not yet verified" | On. The 17 universities (the original 12 plus five under N26) are listed by name only, labelled "Not yet verified", kept out of search results (noindex) and left out of the sitemap | `RESEARCH_PREVIEWS`, same file |
+| [ ] | N25: research previews and the label "Not yet verified" | On. The 45 universities (17 at first: the original 12 plus five under N26; 45 since the directory sweep of 25 October) are listed, labelled "Not yet verified", kept out of search results (noindex) and left out of the sitemap | `RESEARCH_PREVIEWS`, same file |
 | [ ] | N26: which newly found universities appear as "Not yet verified" research previews | Five listed under the proposed rule (Sumy, National University of Pharmacy, Taras Shevchenko Kyiv, Petro Mohyla Mykolaiv, Cherkasy); International European University, Kyiv Medical University, the Luhansk and Donetsk universities (reported as relocated) and the rest stay in the private register | `PUBLICATION_POLICY_DECISIONS.md` (e); `UNIVERSITY_DATA_REGISTER.md` §12 |
 | [ ] | Search Console property type | A domain property verified by a DNS TXT record (recommended if you can edit DNS; no release needed), or a URL-prefix property verified by a meta tag the site carries (this needs a release and the token from §1) | `ANALYTICS_AND_SEARCH_CONSOLE.md` §A1 |
 | [ ] | Analytics option | Recommended: Search Console, the host's logs and a first-party event beacon. The beacon uses no cookie, needs no banner and no CSP change, but needs a privacy-notice line and a release. GA4 would need a consent banner, a CSP change and a privacy-notice change | `ANALYTICS_AND_SEARCH_CONSOLE.md` §B |
