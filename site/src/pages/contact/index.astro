@@ -38,16 +38,36 @@ import WhatsAppLink from '../../components/WhatsAppLink.astro';
       <input type="hidden" name="ts" value="" />
       <h2 style="font-size:1.25rem">Send an enquiry</h2>
       <input type="hidden" name="type" value="enquiry" />
-      <label class="field">Your name<input name="name" type="text" required maxlength="120" autocomplete="name" /></label>
-      <label class="field">Email<input name="email" type="email" required maxlength="200" autocomplete="email" /></label>
-      <label class="field">Your message<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+      <div class="field">
+        <label for="c-name">Your name <span class="hint">(required)</span></label>
+        <span class="err" id="c-name-error" hidden></span>
+        <input id="c-name" name="name" type="text" required maxlength="120" autocomplete="name" data-msg-required="Enter your name" />
+      </div>
+      <div class="field">
+        <label for="c-email">Email <span class="hint">(required)</span></label>
+        <span class="err" id="c-email-error" hidden></span>
+        <input id="c-email" name="email" type="email" required maxlength="200" autocomplete="email" spellcheck="false" data-msg-required="Enter your email address" data-msg-format="Enter a complete email address, including the part after the @, for example name@example.com" />
+      </div>
+      <div class="field">
+        <label for="c-message">Your message <span class="hint">(required)</span></label>
+        <span class="err" id="c-message-error" hidden></span>
+        <textarea id="c-message" name="message" rows="5" required maxlength="4000" data-msg-required="Write your question or message"></textarea>
+      </div>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
-      <label class="checkbox"><input type="checkbox" name="consent" value="yes" required /> <span>I agree to Ukraine Medical Admissions storing this enquiry and replying by email, as described in the <a href="/privacy/">privacy notice</a>.</span></label>
-      <button class="btn btn-primary" type="submit">Send enquiry</button>
+      <div class="consent">
+        <span class="err" id="c-consent-error" hidden></span>
+        <label class="checkbox"><input id="c-consent" type="checkbox" name="consent" value="yes" required data-msg-required="Tick the box to agree to the privacy notice" /> <span>I agree to Ukraine Medical Admissions storing this enquiry and replying by email, as described in the <a href="/privacy/">privacy notice</a>.</span></label>
+      </div>
+      <button class="btn btn-primary" type="submit" autocomplete="off">Send enquiry</button>
       <p class="err" data-form-error role="alert" hidden style="color:#B91C1C;font-size:.9rem;margin-top:.75rem"></p>
     </form>
   </div></section>
 <script src="../../scripts/form-validate.ts"></script>
 </Base>
-<style>.hp{position:absolute;left:-9999px}</style>
+<style>
+  .hp { position: absolute; left: -9999px; }
+  /* As on /apply/: the consent error sits above its checkbox, and the box is marked with a red bar, not colour alone. */
+  .consent .err { display: block; color: #B91C1C; font-size: .8rem; font-weight: 500; margin-bottom: .35rem; }
+  .checkbox.error { box-shadow: -3px 0 0 #B91C1C; padding-left: .5rem; }
+</style>
 

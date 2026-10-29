@@ -64,8 +64,9 @@ const stats = [
 
   <section class="dir">
     <div class="wrap">
-      {/* Hidden until the directory script runs: without JavaScript every university is listed anyway. */}
-      <form class="finder" data-filters aria-label="Search the directory" role="search" hidden>
+      {/* Laid out from the first paint, so the list below never jumps when the script arrives (audit AX-01); hidden when
+          scripts are off (Base.astro, data-js-only), where every university is listed anyway. */}
+      <form class="finder" data-filters data-js-only aria-label="Search the directory" role="search">
         <label class="finder-search" for="dir-q">
           <span class="finder-label">Search by university name</span>
           <span class="finder-box">
@@ -155,7 +156,7 @@ const stats = [
           <div class="group" role="region" aria-labelledby="verified-h" data-tier>
             <div class="group-head">
               <h2 id="verified-h">{PREVIEW && drafts ? 'Profiles and drafts' : 'Verified profiles'}</h2>
-              <span class="group-count">{universities.length}</span>
+              <span class="group-count"><span aria-hidden="true">{universities.length}</span><span class="visually-hidden">{universities.length} {universities.length === 1 ? 'university' : 'universities'}</span></span>
             </div>
             <div class="cards">{universities.map((u) => <UniversityCard u={u.d} draft={u.draft} />)}</div>
           </div>
@@ -164,7 +165,7 @@ const stats = [
           <div class="group" role="region" aria-labelledby={`group-${g.key}`} data-tier>
             <div class="group-head">
               <h2 id={`group-${g.key}`}>{g.title}</h2>
-              <span class="group-count" aria-label={`${g.items.length} ${g.items.length === 1 ? 'university' : 'universities'}`}>{g.items.length}</span>
+              <span class="group-count"><span aria-hidden="true">{g.items.length}</span><span class="visually-hidden">{g.items.length} {g.items.length === 1 ? 'university' : 'universities'}</span></span>
             </div>
             <p class="group-note">{g.note}</p>
             <div class="cards">{g.items.map((u) => <ResearchPreviewCard u={u} headingLevel="h3" />)}</div>
@@ -222,7 +223,6 @@ const stats = [
   import { searchNames } from '../../lib/name-search.mjs';
   const MAP: Record<string, [string, 'exact' | 'list']> = { status: ['status', 'exact'], type: ['type', 'exact'], rcity: ['rcity', 'exact'], rfield: ['rfields', 'list'], city: ['city', 'exact'], field: ['fields', 'list'], level: ['levels', 'list'], language: ['languages', 'list'], prep: ['prep', 'exact'], intake: ['intakes', 'list'] };
   const form = document.querySelector<HTMLFormElement>('[data-filters]');
-  if (form) form.hidden = false;
   const search = document.querySelector<HTMLInputElement>('[data-search]');
   const selects = document.querySelectorAll<HTMLSelectElement>('[data-filter]');
   const cards = document.querySelectorAll<HTMLElement>('[data-list] article');

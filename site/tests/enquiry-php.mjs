@@ -8,7 +8,7 @@
 // Prints "enquiry-php: N checks, M failures" and exits non-zero on any failure.
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
-import { mkdtempSync, writeFileSync, readdirSync, readFileSync, rmSync, existsSync, utimesSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readdirSync, readFileSync, rmSync, existsSync, utimesSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -455,6 +455,55 @@ const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email',
     check(/cannot write to the private storage directory/.test(srv.out.log) && !srv.out.log.includes(EMAIL) && !srv.out.log.includes('Synthetic question'), 'storage failure: logged without the applicant\'s data', srv.out.log.slice(0, 200));
     check(!existsSync(sent7), 'storage failure: no notification is sent for a submission that was not stored');
   } finally { srv.stop(); rmSync(base7, { recursive: true, force: true }); }
+}
+
+// 17. Rate limits under load and over time (audit SEC-1 and F2, 2026-10-29), and no PHP version header (SEC-4).
+{
+  const store8 = mkdtempSync(join(tmpdir(), 'uma-enquiry-parallel-'));
+  writeFileSync(join(store8, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key', 'per_ip_per_hour' => 5, 'max_per_hour' => 1000];\n");
+  const srv = await serve(store8, ['expose_php=1'], { PHP_CLI_SERVER_WORKERS: '8' });
+  try {
+    const head = await fetch(srv.url, { redirect: 'manual' });
+    check(head.status === 405 && !head.headers.has('x-powered-by'), 'no X-Powered-By header from the handler, even with expose_php on', String(head.headers.get('x-powered-by')));
+    // Warm-up post creates the counter file, then 30 posts at once from the same visitor.
+    await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
+    const res = await Promise.all(Array.from({ length: 30 }, () => fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' }).then((r) => r.status)));
+    const stored = readdirSync(join(store8, 'enquiries')).length;
+    check(stored === 5 && res.filter((x) => x === 429).length === 26, 'per-visitor limit holds under 30 parallel posts (5 stored in total, 26 refused)', `${stored} stored; ${res.join(',')}`);
+  } finally { srv.stop(); rmSync(store8, { recursive: true, force: true }); }
+}
+{
+  const store9 = mkdtempSync(join(tmpdir(), 'uma-enquiry-window-'));
+  writeFileSync(join(store9, 'config.php'), "<?php return ['send_mail' => false, 'max_per_hour' => 3];\n");
+  const dir9 = join(store9, 'enquiries'); mkdirSync(dir9, { recursive: true, mode: 0o700 });
+  const stamp = (secondsAgo) => { const d = new Date(Date.now() - secondsAgo * 1000); const p = (n) => String(n).padStart(2, '0'); return `${d.getUTCFullYear()}${p(d.getUTCMonth() + 1)}${p(d.getUTCDate())}-${p(d.getUTCHours())}${p(d.getUTCMinutes())}${p(d.getUTCSeconds())}`; };
+  for (let i = 0; i < 3; i++) writeFileSync(join(dir9, `${stamp(3700 + i)}-${'a'.repeat(15)}${i}.json`), '{}');
+  const srv = await serve(store9);
+  try {
+    const first = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
+    check(first.status === 303, 'records older than 60 minutes no longer count towards the hourly cap', String(first.status));
+    for (let i = 0; i < 2; i++) writeFileSync(join(dir9, `${stamp(60 + i)}-${'b'.repeat(15)}${i}.json`), '{}');
+    const second = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
+    check(second.status === 429, 'records within the last 60 minutes still count (3 within the hour: refused)', String(second.status));
+  } finally { srv.stop(); rmSync(store9, { recursive: true, force: true }); }
+}
+{
+  // IPv6 visitor: the per-visitor limit applies (the key is built from the /64), when the host can listen on ::1.
+  const store10 = mkdtempSync(join(tmpdir(), 'uma-enquiry-ipv6-'));
+  writeFileSync(join(store10, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key', 'per_ip_per_hour' => 2, 'max_per_hour' => 1000];\n");
+  const port6 = await freePort();
+  const p6 = spawn('php', ['-S', `[::1]:${port6}`, '-t', PUBLIC], { env: { ...process.env, UMA_PRIVATE_DIR: store10 }, stdio: ['ignore', 'ignore', 'ignore'] });
+  const url6 = `http://[::1]:${port6}/api/enquiry.php`;
+  try {
+    let up6 = false;
+    for (let i = 0; i < 30 && !up6; i++) { try { await fetch(url6); up6 = true; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+    if (!up6) console.log('note: IPv6 loopback not available here; the IPv6 rate-limit check was not run');
+    else {
+      const st = [];
+      for (let i = 0; i < 3; i++) st.push((await fetch(url6, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' })).status);
+      check(st.join(',') === '303,303,429', 'IPv6 visitor: the per-visitor limit applies', st.join(','));
+    }
+  } finally { p6.kill(); rmSync(store10, { recursive: true, force: true }); }
 }
 
 console.log(`enquiry-php: ${checks} checks, ${failures} failures`);

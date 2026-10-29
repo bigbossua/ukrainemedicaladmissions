@@ -28,6 +28,31 @@ check(resolveStep && /production\) if \[ "\$CONFIRM" != "PUBLISH" \]/.test(runOf
 // Interim release (RELEASE_AUTHORISATION.md, 2026-10-25): the interim pointer branch maps to the SAME production target and
 // gate, only with UMA_RELEASE_MODE=interim; the gate accepts interim only with the authorisation file and the draft banners.
 check((on?.push?.branches ?? []).includes('publish-production-interim'), 'the interim pointer branch triggers the workflow');
+// No step before the deploy step can push: checkout leaves no token in .git/config (audit SEC-2, 2026-10-29), and the
+// deploy step fetches and pushes only through its own PUSH_URL.
+{
+  const co = steps.find((s) => String(s.uses ?? '').startsWith('actions/checkout'));
+  check(co?.with?.['persist-credentials'] === false, 'publish: checkout runs with persist-credentials: false');
+  const ciCo = (ci.jobs?.['build-and-test']?.steps ?? []).find((s) => String(s.uses ?? '').startsWith('actions/checkout'));
+  check(ciCo?.with?.['persist-credentials'] === false, 'CI: checkout runs with persist-credentials: false');
+  const deploy = steps.find((s) => /Commit the built site onto the deploy branch/.test(String(s.name ?? '')));
+  check(deploy && !/git (fetch|push)(\s+-q)?\s+origin\b/.test(runOf(deploy)) && /git fetch -q "\$PUSH_URL"/.test(runOf(deploy)), 'deploy step fetches and pushes only through PUSH_URL, never the credential-less origin');
+}
+// Rollback during the interim period (SECURITY_AND_RELEASE_CHECKLIST.md section D, corrected 2026-10-29): a tag named
+// publish-production-interim-<stamp> must run the interim gate, and a manual run must not, so the documented route works.
+{
+  const r = runOf(resolveStep);
+  const iInterim = r.indexOf('publish-production-interim|publish-production-interim-*)');
+  const iPlain = r.indexOf('publish-production|publish-production-*)');
+  check((on?.push?.tags ?? []).includes('publish-production-*'), 'tags named publish-production-* trigger the workflow (covers publish-production-interim-<stamp>)');
+  check(iInterim >= 0 && iPlain > iInterim, 'the interim tag pattern is matched before the plain production pattern');
+  check(iInterim >= 0 && /UMA_RELEASE_MODE=interim/.test(r.slice(iInterim, r.indexOf('\n', iInterim))), 'an interim tag sets UMA_RELEASE_MODE=interim');
+  const elseBranch = r.slice(r.lastIndexOf('else'));
+  check(!/UMA_RELEASE_MODE/.test(elseBranch), 'a manual run never sets interim mode (so the checklist must not use it for an interim rollback)');
+  const checklist = readFileSync(resolve(ROOT, 'SECURITY_AND_RELEASE_CHECKLIST.md'), 'utf8');
+  const sectionD = checklist.slice(checklist.indexOf('## D. Rollback'));
+  check(/git tag publish-production-interim-rollback-[\w-]+ release-\d{8}-\d{6} && git push origin publish-production-interim-rollback-/.test(sectionD), 'checklist section D documents the interim rollback by tag');
+}
 check(resolveStep && /publish-production-interim\|publish-production-interim-\*\) TARGET=production; CONFIRM=PUBLISH; echo "UMA_RELEASE_MODE=interim"/.test(runOf(resolveStep)), 'the interim branch is a production publish in interim mode');
 check(/UMA_RELEASE_MODE === 'interim'/.test(gate) && /RELEASE_AUTHORISATION\.md/.test(gate) && /Draft for legal review/.test(gate) && /INTERIM_ALLOWED = \/\^\(missing owner detail\|proposal not approved\|legal review\|built page not final\):\//.test(gate), 'gate: interim mode needs the authorisation file, the draft banners and only open legal-page items');
 check(existsSync(resolve(ROOT, 'RELEASE_AUTHORISATION.md')) && /^Mode:\s*interim$/m.test(readFileSync(resolve(ROOT, 'RELEASE_AUTHORISATION.md'), 'utf8')), 'RELEASE_AUTHORISATION.md exists and states Mode: interim');

@@ -309,7 +309,7 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
         <p data-nojs>Check your answers above. When you are ready, send them to us.</p>
         <p class="intro">Sending creates your candidate profile with us. It is not an application to a university, and nothing is sent to any university.</p>
         <div class="step-nav">
-          <button type="submit" class="btn btn-primary" data-submit>{SITE.cta} <span aria-hidden="true">→</span></button>
+          <button type="submit" class="btn btn-primary" data-submit autocomplete="off">{SITE.cta} <span aria-hidden="true">→</span></button>
           <button type="button" class="btn btn-secondary" data-back data-step-nav hidden>Back</button>
         </div>
         <p class="fineprint">Please do not email scans of your passport or certificates. We do not need documents at this stage.</p>

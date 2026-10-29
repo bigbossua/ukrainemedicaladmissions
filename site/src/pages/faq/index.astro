@@ -40,8 +40,8 @@ const jsonLd = [{
   mainEntity: all.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } })),
 }];
 ---
-<Base title="Student FAQ: cost, duration, recognition" description="Answers for international students on MBBS in Ukraine: cost, duration, NEET, recognition in India and abroad, and how our service works." jsonLd={jsonLd}>
-  <div class="page-head"><div class="wrap"><span class="eyebrow">FAQ</span><h1>Student questions, answered plainly</h1><p>If your question is not here, contact us or start an application and ask within it.</p></div></div>
+<Base title="MBBS in Ukraine FAQ: cost, duration, NEET, recognition" description="Answers for international students on MBBS in Ukraine: cost, duration, NEET, recognition in India and abroad, and how our service works." jsonLd={jsonLd}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">FAQ</span><h1>MBBS in Ukraine: student questions, answered plainly</h1><p>If your question is not here, contact us or start an application and ask within it.</p></div></div>
   <Breadcrumbs items={[{ label: 'FAQ' }]} />
   <section style="padding-top:1rem"><div class="wrap prose">
     {sections.map((s) => (

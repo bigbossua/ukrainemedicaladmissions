@@ -24,12 +24,12 @@ This environment's network proxy refuses `ukrainemedicaladmissions.com` (with an
 | Search Console | **Not tested** | No verification file or meta tag in the site, so ownership must be via DNS. You reported the sitemap as "Success, 18 discovered" |
 | GA4 | **Confirmed: not installed** | No analytics code in the build. The security policy allows scripts from this site only |
 | University profiles | **Confirmed** | 45 research previews, all `noindex, follow`, none in the sitemap, 0 verified facts (`research/verification/VERIFICATION_STATUS.md`) |
-| Legal pages | **Confirmed** | All four show "Draft for legal review"; 36 release items open (section 4) |
+| Legal pages | **Confirmed** | All four show "Draft for legal review"; 39 release items open (section 4; 36 until 29 October) |
 
 ## 2. Critical blockers
 
 1. **Form processing, private-storage protection and email delivery are unproven on the live site.** The deployment itself is confirmed (owner, 26 October). Action: T3 and T5 in section 5.
-2. **Legal and ownership details are missing** (36 items, section 4). The privacy notice cannot become final, and the final release gate stays closed.
+2. **Legal and ownership details are missing** (39 items, section 4). The privacy notice cannot become final, and the final release gate stays closed.
 3. **No official university source is reachable** (0 of 88 hosts). No profile can be verified, indexed or added to the sitemap.
 4. **No measurement exists.** There is no analytics, and Search Console data has not been shared. Organic performance and conversion are unknown.
 
@@ -47,46 +47,50 @@ None of these needs a production release; each would wait for your approval to s
 
 ## 4. Questions and approvals required from you
 
-### 4a. The 36 open release items
+### 4a. The 39 open release items
 
-Grouped (29 October): **1 Owner fact** (11): only you can supply it. **2 Owner approval** (9): a draft value or wording you approve or change. **3 Legal advice** (13): needs a qualified lawyer. **4 Technical** (4): clears automatically once the others are recorded. No value is filled in by Claude, and no item is marked compliant without your input.
+Grouped by the review flags in `site/src/lib/legal.mjs` (corrected 29 October, audit F5): **A Owner fact** (8): only you can supply it, no review needed. **B Owner value + legal review** (7): you supply the value, a lawyer checks it; no draft exists. **C Draft: owner approval + legal review** (3). **D Draft: owner approval** (4). **E Legal advice and sign-off** (13). **F Technical** (4): clears automatically. Total 39 (36 until 29 October; L37 came with WhatsApp, L38–L39 with audit F3).
+
+**Conditional items, not required today:** answering L7 "yes" adds the representative's name and address; accepting documents adds the retention and lawful basis for application records; referral payments add their details; paid services add their terms. No value is filled in by Claude, and no item is marked compliant without your input.
 
 | # | Item (field in `site/src/lib/legal.mjs`) | Who |
 |---|---|---|
-| L1 | Legal name of the person or company running the service (`entity.name`) | 1 Owner fact |
-| L2 | Legal form, e.g. sole trader or limited company (`entity.type`) | 1 Owner fact |
-| L3 | Country of registration or operation (`entity.country`) | 1 Owner fact |
-| L4 | Registration number, or "not applicable" (`entity.registrationNumber`) | 1 Owner fact |
-| L5 | Published postal address for formal requests (`entity.address`) | 1 Owner fact |
-| L6 | Data controller's name (`controller.name`) | 1 Owner fact |
-| L7 | Whether a UK or EU representative is required (`representative.needed`) | 3 Qualified legal advice |
-| L8 | Governing law of the terms (`governingLaw`) | 3 Qualified legal advice |
-| L9 | Courts for disputes (`courts`) | 3 Qualified legal advice |
-| L10 | Data-protection authority people can complain to, with its web address (`privacyAuthority`) | 3 Qualified legal advice |
-| L11 | Outside body for unresolved complaints, or "not applicable" (`complaintsBody`) | 3 Qualified legal advice |
-| L12 | Date the pages take effect (`effectiveDate`) | 1 Owner fact |
-| L13 | Privacy notice version number (`noticeVersion`) | 1 Owner fact |
-| L14 | Whether backups hold form submissions, and for how long (`retention.backups`) | 1 Owner fact |
-| L15 | Retention period for complaint records (`retention.complaints`) | 2 Owner approval of draft wording or a value |
-| L16 | Lawful basis for keeping the submission time and keyed IP code (`lawfulBasis.abuseDetection`) | 3 Qualified legal advice |
-| L17 | Business mailbox provider (`processors.mailbox`) | 1 Owner fact |
-| L18 | Countries where hosting and mailbox data is stored (`processingLocation`) | 1 Owner fact |
-| L19 | International transfers and the safeguard used (`internationalTransfers`) | 3 Qualified legal advice |
-| L20 | Rule for applicants under 18 (`under18Policy`) | 3 Qualified legal advice |
-| L21 | Enquiry retention; the draft proposes "up to 12 months after our last contact" | 2 Owner approval of draft wording or a value |
-| L22 | Candidate-profile retention; the draft proposes the same | 2 Owner approval of draft wording or a value |
-| L23 | Mailbox-copy retention; the draft proposes "the same period as the stored record" | 2 Owner approval of draft wording or a value |
-| L24 | Lawful basis for replying to enquiries; the draft proposes consent plus pre-contract steps | 3 Qualified legal advice |
-| L25 | Lawful basis for candidate profiles; the draft proposes the same | 3 Qualified legal advice |
-| L26 | Complaint acknowledgement time; the draft proposes 3 working days | 2 Owner approval of draft wording or a value |
-| L27 | Full complaint reply time; the draft proposes 15 working days | 2 Owner approval of draft wording or a value |
-| L28 | Complaint reviewer; the draft proposes "the business owner" | 2 Owner approval of draft wording or a value |
-| L29 | Review-stage reply time; the draft proposes a further 10 working days | 2 Owner approval of draft wording or a value |
-| L30 | Legal review recorded as completed (`legalReviewCompleted`) | 3 Qualified legal advice |
-| L31 | Reviewer named (`reviewedBy`) | 3 Qualified legal advice |
-| L32 | Review date (`reviewDate`) | 3 Qualified legal advice |
-| L37 | How long WhatsApp conversations are kept (`retention.whatsappMessages`; added 29 October with the WhatsApp channel) | 2 Owner approval of draft wording or a value |
-| L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | 4 Technical (clears automatically): the build and release gate clear them once L1–L32 are recorded |
+| L1 | Legal name of the person or company running the service (`entity.name`) | A Owner fact |
+| L2 | Legal form, e.g. sole trader or limited company (`entity.type`) | A Owner fact |
+| L3 | Country of registration or operation (`entity.country`) | A Owner fact |
+| L4 | Registration number, or "not applicable" (`entity.registrationNumber`) | A Owner fact |
+| L5 | Published postal address for formal requests (`entity.address`) | A Owner fact |
+| L6 | Data controller's name (`controller.name`) | B Owner value + legal review |
+| L7 | Whether a UK or EU representative is required (`representative.needed`) | E Legal advice and sign-off |
+| L8 | Governing law of the terms (`governingLaw`) | E Legal advice and sign-off |
+| L9 | Courts for disputes (`courts`) | E Legal advice and sign-off |
+| L10 | Data-protection authority people can complain to, with its web address (`privacyAuthority`) | E Legal advice and sign-off |
+| L11 | Outside body for unresolved complaints, or "not applicable" (`complaintsBody`) | E Legal advice and sign-off |
+| L12 | Date the pages take effect (`effectiveDate`) | A Owner fact |
+| L13 | Privacy notice version number (`noticeVersion`) | A Owner fact |
+| L14 | Whether backups hold form submissions, and for how long (`retention.backups`) | B Owner value + legal review |
+| L15 | Retention period for complaint records (`retention.complaints`); no draft value exists | B Owner value + legal review |
+| L16 | Lawful basis for keeping the submission time and keyed IP code (`lawfulBasis.abuseDetection`) | E Legal advice and sign-off |
+| L17 | Business mailbox provider (`processors.mailbox`) | A Owner fact |
+| L18 | Countries where hosting and mailbox data is stored (`processingLocation`) | B Owner value + legal review |
+| L19 | International transfers and the safeguard used (`internationalTransfers`) | E Legal advice and sign-off |
+| L20 | Rule for applicants under 18 (`under18Policy`) | E Legal advice and sign-off |
+| L21 | Enquiry retention; the draft proposes "up to 12 months after our last contact" (`retention.enquiries`) | C Draft: owner approval + legal review |
+| L22 | Candidate-profile retention; the draft proposes the same (`retention.candidateProfiles`) | C Draft: owner approval + legal review |
+| L23 | Mailbox-copy retention; the draft proposes "the same period as the stored record" (`retention.mailboxCopies`) | C Draft: owner approval + legal review |
+| L24 | Lawful basis for replying to enquiries; the draft proposes consent plus pre-contract steps (`lawfulBasis.enquiries`) | E Legal advice and sign-off |
+| L25 | Lawful basis for candidate profiles; the draft proposes the same (`lawfulBasis.candidateProfiles`) | E Legal advice and sign-off |
+| L26 | Complaint acknowledgement time; the draft proposes 3 working days (`complaints.acknowledge`) | D Draft: owner approval |
+| L27 | Full complaint reply time; the draft proposes 15 working days (`complaints.reply`) | D Draft: owner approval |
+| L28 | Complaint reviewer; the draft proposes "the business owner" (`complaints.reviewer`) | D Draft: owner approval |
+| L29 | Review-stage reply time; the draft proposes a further 10 working days (`complaints.review`) | D Draft: owner approval |
+| L30 | Legal review recorded as completed (`legalReviewCompleted`) | E Legal advice and sign-off |
+| L31 | Reviewer named (`reviewedBy`) | E Legal advice and sign-off |
+| L32 | Review date (`reviewDate`) | E Legal advice and sign-off |
+| L37 | How long WhatsApp conversations are kept (`retention.whatsappMessages`; added 29 October with the WhatsApp channel) | B Owner value + legal review |
+| L38 | What the host's server, error and mail logs record and how long they are kept (`retention.hostLogs`; added 29 October, audit F3; read it in hPanel, OWNER_ACTION_SHEET.md H7–H9) | B Owner value + legal review |
+| L39 | How long e-mails sent to us directly are kept, e.g. complaints and rights requests (`retention.correspondence`; added 29 October, audit F3) | B Owner value + legal review |
+| L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | F Technical (clears automatically): the build and the release gate clear them once L1–L32 and L37–L39 are recorded |
 
 The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal pages stay drafts until L30–L32 are genuinely recorded.
 

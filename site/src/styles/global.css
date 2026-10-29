@@ -29,6 +29,7 @@ a:hover { text-decoration-thickness: 2px; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: var(--focus); outline-offset: 2px; }
 /* Dark surfaces: the navy ring would vanish, so the focus ring turns yellow (contrast > 9:1 on navy). */
 :is(.hero, .page-head, .cta-band, .site-footer, .on-dark) :focus-visible { outline-color: var(--focus-on-dark); }
+.hero-card :focus-visible { outline-color: var(--navy-900); } /* white card inside the dark hero (audit AX-03) */
 img, svg { max-width: 100%; height: auto; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--navy-900); color: #fff; padding: .5rem 1rem; border-radius: 8px; z-index: 100; }
 .skip-link:focus { left: 8px; }

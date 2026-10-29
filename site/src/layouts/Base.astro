@@ -70,6 +70,9 @@ const gscToken = !STAGING && typeof SEARCH_CONSOLE_VERIFICATION === 'string' && 
   <link rel="stylesheet" href="/fonts/fonts.css" />
   {/* serializeJsonLd escapes < > & U+2028 U+2029, so no value can close the script element (never plain JSON.stringify here). */}
   {!bare && jsonLd.map((obj) => <script type="application/ld+json" set:html={serializeJsonLd(obj)} />)}
+  {/* Controls that work only with JavaScript are laid out from the first paint (no layout shift) and hidden here when
+      scripts are off (audit AX-01, AX-07). The CSP allows inline styles. */}
+  <noscript><style>[data-js-only]{display:none!important}</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

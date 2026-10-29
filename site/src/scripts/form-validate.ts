@@ -96,6 +96,11 @@ export function hideSummary(summary: HTMLElement | null) {
   summary.querySelector('[data-error-list]')?.replaceChildren();
 }
 
+// Back from an error page (or a bfcache restore) must find the form usable again (audit AX-09).
+window.addEventListener('pageshow', () => {
+  document.querySelectorAll<HTMLButtonElement>('form[data-form] button[type="submit"]').forEach((b) => { b.disabled = false; b.removeAttribute('aria-disabled'); });
+});
+
 /** After a valid submit: disable the submit button so a double click or a repeated Enter cannot post twice. */
 export function lockSubmit(form: HTMLFormElement) {
   form.querySelectorAll<HTMLButtonElement>('button[type="submit"]').forEach((b) => { b.disabled = true; b.setAttribute('aria-disabled', 'true'); });

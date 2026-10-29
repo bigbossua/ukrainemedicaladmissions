@@ -415,6 +415,8 @@ const g = http(`${BASE}/api/enquiry.php`);
 if (g.status !== 405) FAIL('enquiry GET', g.url, `HTTP ${g.status}${/<\?php/.test(text(g)) ? ' — PHP SOURCE RETURNED' : ''}`, '405', /<\?php/.test(text(g)) ? 'PHP is not executing in this directory — check hPanel PHP configuration' : 'check handler deployment');
 else PASS('enquiry GET', g.url, '405 (PHP executes)');
 { const csp = cspProblem(g); if (g.status && csp) (csp.severity === 'FAIL' ? FAIL : WARN)('CSP on handler response', g.url, csp.observed, CSP_EXPECTED, CSP_FIX); }
+// The handler is the only PHP response: it must not advertise the PHP version (enquiry.php removes the header; audit SEC-4).
+if (g.headers['x-powered-by']) WARN('x-powered-by on the handler', g.url, g.headers['x-powered-by'], 'absent', 'enquiry.php calls header_remove("X-Powered-By"); check that the deployed handler is current');
 // An empty form as the site sends it: only the hidden fields, empty. (A post without them is dropped as not ours, 303.)
 const p0 = http(`${BASE}/api/enquiry.php`, { method: 'POST', data: 'website=&ts=', contentType: 'application/x-www-form-urlencoded' });
 if (p0.status !== 422) FAIL('enquiry empty POST', p0.url, `HTTP ${p0.status}: ${text(p0).replace(/\s+/g, ' ').slice(0, 160)}`, '422 validation error', 'check handler/PHP version (needs ≥ 8.1)');

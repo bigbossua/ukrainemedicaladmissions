@@ -8,7 +8,7 @@ const path = Astro.url.pathname;
       <img src="/brand/uma-logo-horizontal-light.svg" alt={SITE.name} width="279" height="64" />
     </a>
     <nav aria-label="Main">
-      <button class="burger" type="button" aria-expanded="false" aria-controls="main-menu" data-menu-toggle>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="main-menu" data-menu-toggle data-js-only>
         <span class="visually-hidden">Menu</span>
         <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
@@ -44,7 +44,7 @@ const path = Astro.url.pathname;
   .menu-cta { display: none; }
   .burger { display: inline-flex; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; align-items: center; justify-content: center; background: #fff; color: var(--navy-900); cursor: pointer; }
   @media (max-width: 899px) {
-    ul[data-open] { display: grid; position: absolute; left: 0; right: 0; top: 72px; background: #fff; border-bottom: 1px solid var(--line); padding: 1rem var(--gutter) 1.25rem; gap: .25rem; }
+    ul[data-open] { display: grid; position: absolute; left: 0; right: 0; top: 72px; background: #fff; border-bottom: 1px solid var(--line); padding: 1rem var(--gutter) 1.25rem; gap: .25rem; max-height: calc(100vh - 72px); max-height: calc(100dvh - 72px); overflow-y: auto; overscroll-behavior: contain; }
     ul[data-open] a:not(.btn) { display: inline-flex; align-items: center; min-height: 44px; }
     ul[data-open] .menu-cta { display: block; }
   }

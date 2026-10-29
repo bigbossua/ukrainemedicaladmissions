@@ -14,6 +14,7 @@ jobs:
       run: { working-directory: site }
     steps:
       - uses: actions/checkout@v4
+        with: { persist-credentials: false }
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
       - run: npm ci
@@ -40,6 +41,8 @@ jobs:
       - name: "Mobile acceptance (320, 360, 390, 430 px: no overflow, menu, controls, tap targets, footer)"
         run: npm run test:mobile
       - run: npm run test:a11y
+      - name: Audit regressions 2026-10-29 (directory layout shift, mobile menu scroll, hero focus ring, contact errors, no-script controls, back-forward cache)
+        run: npm run test:audit
       - run: npm run test:perf
       - run: npm run test:release
       - run: npm run test:staging

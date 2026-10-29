@@ -14,8 +14,8 @@
  *   on both forms). Both forms always send both fields, empty without a script, so a post that leaves either out, or
  *   sends a "ts" that is not a number, did not come from our pages and is dropped. A filled honeypot or a "ts" below
  *   3 seconds is dropped too. Dropped posts get the thank-you redirect; nothing is stored or sent.
- * - Rate limits (429): at most max_per_hour stored submissions in the current and previous clock hour in total
- *   (counted from the record file names; nothing extra is stored), and, only when ip_hash_key is configured, at most
+ * - Rate limits (429): at most max_per_hour stored submissions in total in the last 60 minutes (counted from the
+ *   record file names; nothing extra is stored), and, only when ip_hash_key is configured, at most
  *   per_ip_per_hour per keyed IP code (the code and submission times sit in <storage>/ratelimit; a counter older than an hour is deleted at the next submission).
  * - The notification e-mail is base64-encoded with a folded RFC 2047 subject; when the mail system does not accept
  *   it, the failure is written to error_log and to the stored record ("notification": "failed").
@@ -29,6 +29,7 @@
  * with the UMA_PRIVATE_DIR environment variable. No secrets live in this file.
  */
 declare(strict_types=1);
+header_remove('X-Powered-By'); // never advertise the PHP version, whatever the host's expose_php setting
 ini_set('display_errors', '0'); // never reveal server paths in a response; failures go to error_log
 
 header('X-Robots-Tag: noindex, nofollow');
@@ -223,24 +224,45 @@ $tooMany = static function (): never {
     header('Content-Type: text/plain; charset=utf-8');
     exit('Too many submissions in the last hour. Please try again later, or email info@ukrainemedicaladmissions.com.');
 };
+// The last 60 minutes, not two clock hours: a record counts while its file-name time (UTC) is within the hour.
 $recent = 0;
+$since  = gmdate('Ymd-His', time() - 3600);
 foreach ([gmdate('Ymd-H'), gmdate('Ymd-H', time() - 3600)] as $hourPrefix) {
-    $recent += count(glob($storage . '/enquiries/' . $hourPrefix . '*.json') ?: []);
+    foreach (glob($storage . '/enquiries/' . $hourPrefix . '*.json') ?: [] as $f) {
+        if (strcmp(substr(basename($f), 0, 15), $since) >= 0) $recent++;
+    }
 }
 if ($recent >= (int)$config['max_per_hour']) $tooMany();
-$ipKey = !empty($config['ip_hash_key']) ? hash_hmac('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . date('Y-m'), (string)$config['ip_hash_key']) : null;
+// One IPv6 /64 is normally one household or one server, so it counts as one visitor (otherwise a script could rotate
+// addresses inside it). IPv4 addresses are used whole.
+$ipAddr = (string)($_SERVER['REMOTE_ADDR'] ?? '');
+$ipBin  = @inet_pton($ipAddr);
+if (is_string($ipBin) && strlen($ipBin) === 16) $ipAddr = bin2hex(substr($ipBin, 0, 8)) . '::/64';
+$ipKey = !empty($config['ip_hash_key']) ? hash_hmac('sha256', $ipAddr . date('Y-m'), (string)$config['ip_hash_key']) : null;
 if ($ipKey !== null) {
     $rlDir = $storage . '/ratelimit';
     if (is_dir($rlDir) || @mkdir($rlDir, 0700, true)) {
         // Counters older than an hour are no longer needed for the limit: delete them, so none is kept indefinitely.
         foreach (glob($rlDir . '/*.json') ?: [] as $old) { if ((int)@filemtime($old) < time() - 3600) @unlink($old); }
         $rlFile = $rlDir . '/' . $ipKey . '.json';
-        $times = is_file($rlFile) ? (json_decode((string)file_get_contents($rlFile), true) ?: []) : [];
-        $times = array_values(array_filter(is_array($times) ? $times : [], static fn($t): bool => is_int($t) && $t > time() - 3600));
-        if (count($times) >= (int)$config['per_ip_per_hour']) $tooMany();
-        $times[] = time();
-        @file_put_contents($rlFile, json_encode($times), LOCK_EX);
-        @chmod($rlFile, 0600);
+        // One exclusive lock across read, check and write, so parallel posts from one visitor cannot all read the
+        // counter before any of them has written it (audit SEC-1, 2026-10-29).
+        $fh = @fopen($rlFile, 'c+');
+        if ($fh !== false && flock($fh, LOCK_EX)) {
+            $times = json_decode((string)stream_get_contents($fh), true);
+            $times = array_values(array_filter(is_array($times) ? $times : [], static fn($t): bool => is_int($t) && $t > time() - 3600));
+            if (count($times) >= (int)$config['per_ip_per_hour']) { flock($fh, LOCK_UN); fclose($fh); $tooMany(); }
+            $times[] = time();
+            ftruncate($fh, 0);
+            rewind($fh);
+            fwrite($fh, json_encode($times));
+            fflush($fh);
+            flock($fh, LOCK_UN);
+            fclose($fh);
+            @chmod($rlFile, 0600);
+        } elseif ($fh !== false) {
+            fclose($fh);
+        }
     }
 }
 

@@ -91,7 +91,10 @@ jobs:
           esac
           echo "TARGET=$TARGET" >> "$GITHUB_ENV"
           echo "target=$TARGET (event $GITHUB_EVENT_NAME, ref $GITHUB_REF_NAME)"
+      # No token left in .git/config: npm install scripts and test code that run before the gate must not be able to
+      # push. Only the deploy step below authenticates, through its own PUSH_URL (audit SEC-2, 2026-10-29).
       - uses: actions/checkout@v4
+        with: { persist-credentials: false }
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
       - run: npm ci
@@ -148,7 +151,7 @@ jobs:
           # one commit on top of the branch's current head, so Hostinger's pull is always a fast-forward and
           # history is never rewritten. The tree is written from $OUT with a throw-away index.
           PARENT=""
-          if git fetch -q origin "refs/heads/$TARGET:refs/remotes/origin/$TARGET" 2>/dev/null; then
+          if git fetch -q "$PUSH_URL" "refs/heads/$TARGET:refs/remotes/origin/$TARGET" 2>/dev/null; then
             PARENT=$(git rev-parse "refs/remotes/origin/$TARGET")
           fi
           export GIT_INDEX_FILE="$RUNNER_TEMP/deploy-index"

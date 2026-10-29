@@ -16,6 +16,9 @@ const isPreviewPage = (d) => readFileSync(`dist/universities/${d}/index.html`, '
 const profilePages = [...profileDirs.filter((d) => !isPreviewPage(d)), ...profileDirs.filter(isPreviewPage).slice(0, 1)].map((d) => `/universities/${d}/`);
 const PAGES = ['/', '/universities/', ...profilePages, '/tuition-fees/', '/apply/'];
 const BUDGET = { performance: 0.9, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 };
+// Cumulative Layout Shift: the Core Web Vitals "good" limit. A shift is timing-dependent (the /universities/ finder shifted
+// 0.152 in one run and 0 in the next, audit AX-01), so the noise re-measure never hides it: the worst run counts.
+const CLS_BUDGET = 0.1;
 
 const MIME = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.xml': 'application/xml', '.txt': 'text/plain' };
 const server = createServer((req, res) => {
@@ -41,8 +44,10 @@ async function audit(path) {
 for (const path of PAGES) {
   let lhr = await audit(path);
   let scores = Object.fromEntries(Object.entries(lhr.categories).map(([k, v]) => [k, v.score]));
+  let worstCls = lhr.audits['cumulative-layout-shift']?.numericValue ?? 0;
   if (Object.entries(BUDGET).some(([k, min]) => (scores[k] ?? 0) < min)) {
     const retry = await audit(path);
+    worstCls = Math.max(worstCls, retry.audits['cumulative-layout-shift']?.numericValue ?? 0);
     const retryScores = Object.fromEntries(Object.entries(retry.categories).map(([k, v]) => [k, v.score]));
     if ((retryScores.performance ?? 0) > (scores.performance ?? 0)) { lhr = retry; scores = retryScores; console.log(`     ${path} re-measured (noise check): perf ${Math.round(retryScores.performance * 100)}`); }
   }
@@ -52,6 +57,8 @@ for (const path of PAGES) {
   const html = readFileSync(join(DIST, path, 'index.html'), 'utf8');
   const noindex = /<meta name="robots" content="noindex/.test(html);
   const bad = Object.entries(BUDGET).filter(([k, min]) => !(noindex && k === 'seo') && (scores[k] ?? 0) < min);
+  if (worstCls > CLS_BUDGET) bad.push(['cls', CLS_BUDGET]);
+  metrics.cls = worstCls;
   if (bad.length) failures++;
   summary.push({ path, noindex, scores, metrics, bad: bad.map(([k]) => k) });
   console.log(`${bad.length ? 'FAIL' : 'ok  '} ${path.padEnd(52)} perf ${Math.round(scores.performance * 100)}  a11y ${Math.round(scores.accessibility * 100)}  bp ${Math.round(scores['best-practices'] * 100)}  seo ${Math.round(scores.seo * 100)}  LCP ${Math.round(metrics.lcp)}ms CLS ${metrics.cls?.toFixed(3)} TBT ${Math.round(metrics.tbt)}ms ${Math.round(metrics.bytes / 1024)}KB${noindex ? '  (noindex: seo budget exempt)' : ''}${bad.length ? '  <- below budget: ' + bad.map(([k]) => k).join(',') : ''}`);
