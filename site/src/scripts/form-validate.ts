@@ -31,7 +31,7 @@ export function problemWith(el: Control): string | null {
   if (el.required && !value) return el.dataset.msgRequired ?? 'Complete this field';
   if (!value) return null;
   if (el instanceof HTMLInputElement && el.type === 'email' && !EMAIL.test(value)) {
-    return el.dataset.msgFormat ?? 'Enter a complete email address, including the @ sign';
+    return el.dataset.msgFormat ?? 'Enter a complete email address, including the @ and the part after it (such as gmail.com)';
   }
   if (el instanceof HTMLInputElement && el.pattern && !new RegExp(`^(?:${el.pattern})$`).test(value)) {
     return el.dataset.msgFormat ?? 'Check the format of this answer';
