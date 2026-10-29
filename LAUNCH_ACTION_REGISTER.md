@@ -49,43 +49,43 @@ None of these needs a production release; each would wait for your approval to s
 
 ### 4a. The 36 open release items
 
-*Owner* = a fact only you know. *Legal* = needs professional legal advice. *Both* = your decision, checked by a lawyer.
+Grouped (29 October): **1 Owner fact** (11): only you can supply it. **2 Owner approval** (8): a draft value or wording you approve or change. **3 Legal advice** (13): needs a qualified lawyer. **4 Technical** (4): clears automatically once the others are recorded. No value is filled in by Claude, and no item is marked compliant without your input.
 
 | # | Item (field in `site/src/lib/legal.mjs`) | Who |
 |---|---|---|
-| L1 | Legal name of the person or company running the service (`entity.name`) | Owner |
-| L2 | Legal form, e.g. sole trader or limited company (`entity.type`) | Owner |
-| L3 | Country of registration or operation (`entity.country`) | Owner |
-| L4 | Registration number, or "not applicable" (`entity.registrationNumber`) | Owner |
-| L5 | Published postal address for formal requests (`entity.address`) | Owner |
-| L6 | Data controller's name (`controller.name`) | Both |
-| L7 | Whether a UK or EU representative is required (`representative.needed`) | Legal |
-| L8 | Governing law of the terms (`governingLaw`) | Legal |
-| L9 | Courts for disputes (`courts`) | Legal |
-| L10 | Data-protection authority people can complain to, with its web address (`privacyAuthority`) | Legal |
-| L11 | Outside body for unresolved complaints, or "not applicable" (`complaintsBody`) | Both |
-| L12 | Date the pages take effect (`effectiveDate`) | Owner |
-| L13 | Privacy notice version number (`noticeVersion`) | Owner |
-| L14 | Whether backups hold form submissions, and for how long (`retention.backups`) | Owner (check your Hostinger plan) |
-| L15 | Retention period for complaint records (`retention.complaints`) | Both |
-| L16 | Lawful basis for keeping the submission time and keyed IP code (`lawfulBasis.abuseDetection`) | Legal |
-| L17 | Business mailbox provider (`processors.mailbox`) | Owner |
-| L18 | Countries where hosting and mailbox data is stored (`processingLocation`) | Owner (check provider terms) |
-| L19 | International transfers and the safeguard used (`internationalTransfers`) | Legal |
-| L20 | Rule for applicants under 18 (`under18Policy`) | Legal |
-| L21 | Enquiry retention; the draft proposes "up to 12 months after our last contact" | Both |
-| L22 | Candidate-profile retention; the draft proposes the same | Both |
-| L23 | Mailbox-copy retention; the draft proposes "the same period as the stored record" | Both |
-| L24 | Lawful basis for replying to enquiries; the draft proposes consent plus pre-contract steps | Legal |
-| L25 | Lawful basis for candidate profiles; the draft proposes the same | Legal |
-| L26 | Complaint acknowledgement time; the draft proposes 3 working days | Owner |
-| L27 | Full complaint reply time; the draft proposes 15 working days | Owner |
-| L28 | Complaint reviewer; the draft proposes "the business owner" | Owner |
-| L29 | Review-stage reply time; the draft proposes a further 10 working days | Owner |
-| L30 | Legal review recorded as completed (`legalReviewCompleted`) | Legal |
-| L31 | Reviewer named (`reviewedBy`) | Legal |
-| L32 | Review date (`reviewDate`) | Legal |
-| L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | These clear automatically once L1–L32 are supplied |
+| L1 | Legal name of the person or company running the service (`entity.name`) | 1 Owner fact |
+| L2 | Legal form, e.g. sole trader or limited company (`entity.type`) | 1 Owner fact |
+| L3 | Country of registration or operation (`entity.country`) | 1 Owner fact |
+| L4 | Registration number, or "not applicable" (`entity.registrationNumber`) | 1 Owner fact |
+| L5 | Published postal address for formal requests (`entity.address`) | 1 Owner fact |
+| L6 | Data controller's name (`controller.name`) | 1 Owner fact |
+| L7 | Whether a UK or EU representative is required (`representative.needed`) | 3 Qualified legal advice |
+| L8 | Governing law of the terms (`governingLaw`) | 3 Qualified legal advice |
+| L9 | Courts for disputes (`courts`) | 3 Qualified legal advice |
+| L10 | Data-protection authority people can complain to, with its web address (`privacyAuthority`) | 3 Qualified legal advice |
+| L11 | Outside body for unresolved complaints, or "not applicable" (`complaintsBody`) | 3 Qualified legal advice |
+| L12 | Date the pages take effect (`effectiveDate`) | 1 Owner fact |
+| L13 | Privacy notice version number (`noticeVersion`) | 1 Owner fact |
+| L14 | Whether backups hold form submissions, and for how long (`retention.backups`) | 1 Owner fact |
+| L15 | Retention period for complaint records (`retention.complaints`) | 2 Owner approval of draft wording or a value |
+| L16 | Lawful basis for keeping the submission time and keyed IP code (`lawfulBasis.abuseDetection`) | 3 Qualified legal advice |
+| L17 | Business mailbox provider (`processors.mailbox`) | 1 Owner fact |
+| L18 | Countries where hosting and mailbox data is stored (`processingLocation`) | 1 Owner fact |
+| L19 | International transfers and the safeguard used (`internationalTransfers`) | 3 Qualified legal advice |
+| L20 | Rule for applicants under 18 (`under18Policy`) | 3 Qualified legal advice |
+| L21 | Enquiry retention; the draft proposes "up to 12 months after our last contact" | 2 Owner approval of draft wording or a value |
+| L22 | Candidate-profile retention; the draft proposes the same | 2 Owner approval of draft wording or a value |
+| L23 | Mailbox-copy retention; the draft proposes "the same period as the stored record" | 2 Owner approval of draft wording or a value |
+| L24 | Lawful basis for replying to enquiries; the draft proposes consent plus pre-contract steps | 3 Qualified legal advice |
+| L25 | Lawful basis for candidate profiles; the draft proposes the same | 3 Qualified legal advice |
+| L26 | Complaint acknowledgement time; the draft proposes 3 working days | 2 Owner approval of draft wording or a value |
+| L27 | Full complaint reply time; the draft proposes 15 working days | 2 Owner approval of draft wording or a value |
+| L28 | Complaint reviewer; the draft proposes "the business owner" | 2 Owner approval of draft wording or a value |
+| L29 | Review-stage reply time; the draft proposes a further 10 working days | 2 Owner approval of draft wording or a value |
+| L30 | Legal review recorded as completed (`legalReviewCompleted`) | 3 Qualified legal advice |
+| L31 | Reviewer named (`reviewedBy`) | 3 Qualified legal advice |
+| L32 | Review date (`reviewDate`) | 3 Qualified legal advice |
+| L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | 4 Technical (clears automatically): the build and release gate clear them once L1–L32 are recorded |
 
 The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal pages stay drafts until L30–L32 are genuinely recorded.
 
@@ -105,8 +105,8 @@ The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal page
 | T1 | Full suite `npm test`, CI on the release commit, release gate (publish workflow) | Me | All green, as for `053cee0` |
 | T2 | Confirm the live build | You | **Done 26 October**: deployment confirmed in hPanel; new thank-you wording visible |
 | T3 | Live test enquiry through Apply Online: name `TEST – please ignore`, your own email address, field of study "Not decided yet", consent ticked | You | Thank-you page shown; a new `.json` file in `uma-private/enquiries/` with today's date in its name; notification email received at info@ (check spam) |
-| T4 | Live error state (the browser blocks an incomplete form, so test the server directly): `curl -i -X POST -d "type=enquiry&name=TEST&email=test@example.com&message=TEST" https://ukrainemedicaladmissions.com/api/enquiry.php` (consent left out) | You | `HTTP 422` with a page naming the missing consent; no new file in `uma-private/enquiries/` |
-| T5 | Private storage is not public: in File Manager, `uma-private` sits next to `public_html`, not inside it; in a browser, `/uma-private/` and `/uma-private/enquiries/` both show the 404 page | You | Both true |
+| T4 | Live error state. The browser blocks an incomplete form, so test the server directly, sending the two hidden fields as the real form does: `curl -s -o /dev/null -w "%{http_code}\n" -X POST -d "type=enquiry&name=TEST&email=test@example.com&message=TEST&website=&ts=" https://ukrainemedicaladmissions.com/api/enquiry.php` (consent left out) | You | `422`; no new file in `uma-private/enquiries/`. (Without `website=&ts=` the handler on the branch since 29 October answers 303 and drops the post as not sent by the site.) |
+| T5 | Private storage is not public. (a) File Manager: `uma-private` sits next to `public_html`, not inside it. (b) From any computer, each of these prints `404` (or `403`), never `200`: `for p in uma-private/ uma-private/enquiries/ uma-private/config.php uma-private/ratelimit/; do curl -s -o /dev/null -w "$p %{http_code}\n" "https://ukrainemedicaladmissions.com/$p"; done`. Read-only: it stores and reveals nothing | You | (a) true; (b) 404 or 403 for all four |
 | T6 | Live checks script `node site/scripts/verify-live.mjs https://ukrainemedicaladmissions.com`, run on a machine that can reach the site | You, or Claude on your computer | 0 failures |
 | T7 | Search Console URL Inspection → Test live URL for `/`, `/universities/` and one profile | You | First two indexable; the profile "Excluded by noindex" |
 

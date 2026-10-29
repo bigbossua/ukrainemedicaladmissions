@@ -10,8 +10,10 @@
  *   the mail is text/plain); enumerations are checked against allow-lists and an
  *   unknown value is dropped (stored as an empty string), never stored as typed.
  * - Single-line fields have control characters (CR, LF, tab, NUL ...) removed, so nothing can break a mail header.
- * - Bot checks: honeypot field "website"; optional timing field "ts" (milliseconds the page was open, set by the
- *   page script on both forms). A submission is treated as a bot only when ts is present and below 3 seconds.
+ * - Bot checks: honeypot field "website"; timing field "ts" (milliseconds the page was open, set by the page script
+ *   on both forms). Both forms always send both fields, empty without a script, so a post that leaves either out, or
+ *   sends a "ts" that is not a number, did not come from our pages and is dropped. A filled honeypot or a "ts" below
+ *   3 seconds is dropped too. Dropped posts get the thank-you redirect; nothing is stored or sent.
  * - Rate limits (429): at most max_per_hour stored submissions in the current and previous clock hour in total
  *   (counted from the record file names; nothing extra is stored), and, only when ip_hash_key is configured, at most
  *   per_ip_per_hour per keyed IP code (the code and submission times sit in <storage>/ratelimit; a counter older than an hour is deleted at the next submission).
@@ -23,7 +25,7 @@
  * - Responses: 405 for anything but POST; 422 when a required field is missing; 303 to /apply/thank-you/ otherwise.
  *
  * Configuration: an optional <storage>/config.php (outside the web root) may return an array overriding
- * notify_to, from and send_mail, and setting ip_hash_key (a random secret; without it no IP data is stored). The storage directory defaults to a sibling of the document root and can be set
+ * notify_to, from and send_mail, setting envelope_from (the Return-Path; off unless set), and setting ip_hash_key (a random secret; without it no IP data is stored). The storage directory defaults to a sibling of the document root and can be set
  * with the UMA_PRIVATE_DIR environment variable. No secrets live in this file.
  */
 declare(strict_types=1);
@@ -39,7 +41,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
 // ---- Storage location: a sibling of the document root, not inside it. ----
 $docRoot = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? __DIR__ . '/..'), '/');
 $storage = getenv('UMA_PRIVATE_DIR') ?: dirname($docRoot) . '/uma-private';
-$config  = ['notify_to' => 'info@ukrainemedicaladmissions.com', 'from' => 'no-reply@ukrainemedicaladmissions.com', 'send_mail' => true, 'max_per_hour' => 100, 'per_ip_per_hour' => 5];
+$config  = ['notify_to' => 'info@ukrainemedicaladmissions.com', 'from' => 'no-reply@ukrainemedicaladmissions.com', 'send_mail' => true, 'max_per_hour' => 100, 'per_ip_per_hour' => 5, 'envelope_from' => ''];
 if (is_file($storage . '/config.php')) {
     $override = include $storage . '/config.php';
     if (is_array($override)) $config = array_merge($config, $override);
@@ -103,7 +105,14 @@ if (!empty($P['website'])) {                // honeypot filled
     header('Location: /apply/thank-you/', true, 303);
     exit;
 }
-if (is_string($P['ts'] ?? null) && preg_match('/^\d{1,10}$/', $P['ts']) && (int)$P['ts'] < MIN_ELAPSED_MS) {
+// Both forms send "website" and "ts" even without a script ("ts" is then empty): a post without them, or with a "ts" that
+// is not a number, was not sent by our pages (for example a script posting here directly). Dropped, not stored.
+$ts = $P['ts'] ?? null;
+if (!array_key_exists('website', $P) || !is_string($ts) || ($ts !== '' && !preg_match('/^\d{1,10}$/', $ts))) {
+    header('Location: /apply/thank-you/', true, 303);
+    exit;
+}
+if ($ts !== '' && (int)$ts < MIN_ELAPSED_MS) {
     header('Location: /apply/thank-you/', true, 303);  // completed faster than a person could: dropped, not stored
     exit;
 }
@@ -310,7 +319,14 @@ if (!empty($config['send_mail'])) {
     }
     $subject = implode("\r\n ", array_map(static fn(string $w): string => '=?UTF-8?B?' . base64_encode($w) . '?=', $words));
     $headers = 'From: ' . line((string)$config['from'], 200) . "\r\nReply-To: $email\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: base64";
-    $sent = @mail(line((string)$config['notify_to'], 200), $subject, rtrim(chunk_split(base64_encode(implode("\r\n", $lines)), 76, "\r\n")), $headers);
+    // Envelope sender (Return-Path, the address SPF checks and bounces go to): left to the host unless config.php sets
+    // 'envelope_from' to a plain address; anything else is ignored so nothing reaches the sendmail command line.
+    $envelope = line($config['envelope_from'] ?? '', 200);
+    $params = preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $envelope) && filter_var($envelope, FILTER_VALIDATE_EMAIL) ? '-f' . $envelope : '';
+    $body = rtrim(chunk_split(base64_encode(implode("\r\n", $lines)), 76, "\r\n"));
+    $sent = $params !== ''
+        ? @mail(line((string)$config['notify_to'], 200), $subject, $body, $headers, $params)
+        : @mail(line((string)$config['notify_to'], 200), $subject, $body, $headers);
     if (!$sent) {
         // The record is stored, so the person still sees the thank-you page; the failure must not go unnoticed.
         error_log('UMA enquiry: the notification e-mail for record ' . $record['id'] . ' was not accepted by the mail system');

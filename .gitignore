@@ -1,0 +1,5 @@
+# Applicant data and server secrets never belong in Git (site/.gitignore repeats this for the site folder).
+uma-private/
+private/
+.env
+.env.*

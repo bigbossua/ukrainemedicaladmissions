@@ -1,5 +1,5 @@
 // Read-only live verification of the DEPLOYED site (run from site/ after "npm run build && npm run manifest", so the release
-// manifest exists). Nothing is written to the server; the only POSTs are an empty form (expected 422) and a honeypot-filled
+// manifest exists). Nothing is written to the server; the only POSTs are an empty form with only its hidden fields (expected 422) and a honeypot-filled
 // synthetic form (expected 303, dropped by the handler, never stored, never e-mailed). The honeypot POST proves only that
 // PHP runs the handler: it is NOT a mail-delivery test (EMAIL_DELIVERY_VERIFICATION.md is).
 //
@@ -410,12 +410,13 @@ for (const p of LEGAL_PAGES) {
   else PASS('legal page', url, 'no draft banner or placeholder');
 }
 
-// ---- 6. PHP endpoint (no data stored: GET, empty POST, honeypot POST)
+// ---- 6. PHP endpoint (no data stored: GET, empty form, honeypot POST)
 const g = http(`${BASE}/api/enquiry.php`);
 if (g.status !== 405) FAIL('enquiry GET', g.url, `HTTP ${g.status}${/<\?php/.test(text(g)) ? ' — PHP SOURCE RETURNED' : ''}`, '405', /<\?php/.test(text(g)) ? 'PHP is not executing in this directory — check hPanel PHP configuration' : 'check handler deployment');
 else PASS('enquiry GET', g.url, '405 (PHP executes)');
 { const csp = cspProblem(g); if (g.status && csp) (csp.severity === 'FAIL' ? FAIL : WARN)('CSP on handler response', g.url, csp.observed, CSP_EXPECTED, CSP_FIX); }
-const p0 = http(`${BASE}/api/enquiry.php`, { method: 'POST', data: '', contentType: 'application/x-www-form-urlencoded' });
+// An empty form as the site sends it: only the hidden fields, empty. (A post without them is dropped as not ours, 303.)
+const p0 = http(`${BASE}/api/enquiry.php`, { method: 'POST', data: 'website=&ts=', contentType: 'application/x-www-form-urlencoded' });
 if (p0.status !== 422) FAIL('enquiry empty POST', p0.url, `HTTP ${p0.status}: ${text(p0).replace(/\s+/g, ' ').slice(0, 160)}`, '422 validation error', 'check handler/PHP version (needs ≥ 8.1)');
 else if (/Warning:|Fatal error|Notice:/.test(text(p0))) FAIL('enquiry PHP notices leak', p0.url, text(p0).slice(0, 160), 'no PHP warnings in output', 'display_errors off; fix the notice');
 else PASS('enquiry empty POST', p0.url, '422');

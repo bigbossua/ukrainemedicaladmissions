@@ -2,7 +2,7 @@
 // Starts PHP's built-in server on a free port with UMA_PRIVATE_DIR pointing at a fresh temporary directory
 // (config.php there turns e-mail off), posts synthetic submissions and inspects the JSON records written.
 // Checks: 405 for GET; 303 + exactly one record for valid submissions; 422 + no record when required fields are
-// missing; honeypot and the soft timing check drop silently; enumerations outside the allow-lists are dropped;
+// missing; honeypot, timing check and posts without the forms' hidden fields drop silently; enumerations outside the allow-lists are dropped;
 // arrays are capped; control characters never reach single-line fields; the contact-page enquiry still works;
 // every FIELDS key in src/lib/fields.ts (underscored keys included) plus "undecided" is accepted.
 // Prints "enquiry-php: N checks, M failures" and exits non-zero on any failure.
@@ -72,7 +72,9 @@ const dropped = (r, label) => {
 };
 
 const EMAIL = 'synthetic.candidate@example.invalid';
-const minimum = (extra = []) => [['type', 'application-start'], ['course', 'medicine'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['consent', 'yes'], ...extra];
+// Both real forms always send the hidden fields "website" and "ts" (empty without a script); later pairs override them.
+const HIDDEN = [['website', ''], ['ts', '']];
+const minimum = (extra = []) => [['type', 'application-start'], ['course', 'medicine'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['consent', 'yes'], ...HIDDEN, ...extra];
 
 // 1. Method check
 {
@@ -126,7 +128,8 @@ const minimum = (extra = []) => [['type', 'application-start'], ['course', 'medi
 }
 
 // 3. Required fields
-rejected(await post([], 'empty POST'), 'empty POST');
+dropped(await post([], 'empty POST'), 'empty POST (no hidden fields: not sent by our pages)');
+rejected(await post(HIDDEN, 'hidden fields only'), 'form with only the empty hidden fields');
 rejected(await post(minimum().filter(([k]) => k !== 'course'), 'no course'), 'application-start without course');
 rejected(await post(minimum().filter(([k]) => k !== 'name'), 'no name'), 'application-start without name');
 rejected(await post(minimum().filter(([k]) => k !== 'email'), 'no email'), 'application-start without email');
@@ -148,6 +151,10 @@ dropped(await post(minimum([['website', 'https://spam.example.invalid']]), 'hone
 dropped(await post(minimum([['ts', '1200']]), 'fast'), 'ts below 3 seconds');
 accepted(await post(minimum([['ts', '3000']]), 'ts 3s'), 'ts of 3 seconds');
 accepted(await post(minimum([['ts', '']]), 'ts empty'), 'ts empty (no script) is not treated as a bot');
+dropped(await post(minimum().filter(([k]) => k !== 'ts'), 'no ts field'), 'ts field missing (direct post, not our form)');
+dropped(await post(minimum().filter(([k]) => k !== 'website'), 'no website field'), 'website field missing (direct post, not our form)');
+dropped(await post(minimum([['ts', 'abc']]), 'ts not a number'), 'ts that is not a number');
+dropped(await post(minimum().filter(([k]) => k !== 'ts').concat([['ts[]', '45000']]), 'ts array'), 'ts posted as an array');
 
 // 5. Enumerations outside the allow-lists are dropped
 {
@@ -191,7 +198,7 @@ accepted(await post(minimum([['ts', '']]), 'ts empty'), 'ts empty (no script) is
   const rec = accepted(await post([
     ['type', 'application-start'], ['course', 'dentistry'], ['name', 'Synthetic\r\nBcc: victim@example.invalid\tCandidate'], ['email', EMAIL], ['consent', 'yes'],
     ['residence', 'Example land'], ['qualification', '<b>Certificate</b>\u0000'], ['subjects[0][name]', 'Bio\nlogy'], ['subjects[0][grade]', 'A\r'],
-    ['message', 'Line one\r\nLine two\u0007'], ['university_other', 'x'.repeat(500)],
+    ['message', 'Line one\r\nLine two\u0007'], ['university_other', 'x'.repeat(500)], ...HIDDEN,
   ], 'control chars'), 'control characters');
   const p = rec.profile ?? {};
   check(!/[\r\n\t]/.test(rec.name ?? '') && rec.name === 'Synthetic Bcc: victim@example.invalid Candidate', 'name stored without CR/LF/tab', JSON.stringify(rec.name));
@@ -207,7 +214,7 @@ accepted(await post(minimum([['ts', '']]), 'ts empty'), 'ts empty (no script) is
   const rec = accepted(await post([
     ['type', 'application-start'], ['course', 'medicine'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['consent', 'yes'],
     ['subjects[0][name]', 'Chemistry'], ['subjects[0][grade]', '<50'], ['subjects[0][status]', 'achieved'],
-    ['outstanding', 'Physics 3<4 results pending'], ['message', 'My chemistry score was <80 and biology >90, is that enough?'],
+    ['outstanding', 'Physics 3<4 results pending'], ['message', 'My chemistry score was <80 and biology >90, is that enough?'], ...HIDDEN,
   ], 'less-than values'), 'less-than values');
   const p = rec.profile ?? {};
   check(p.education?.subjects?.[0]?.grade === '<50', 'grade "<50" stored unchanged', JSON.stringify(p.education?.subjects));
@@ -221,11 +228,11 @@ accepted(await post(minimum([['ts', '']]), 'ts empty'), 'ts empty (no script) is
 
 // 8. Contact-page enquiry keeps its behaviour
 {
-  const rec = accepted(await post([['type', 'enquiry'], ['name', 'Synthetic Enquirer'], ['email', EMAIL], ['message', 'A synthetic enquiry.'], ['consent', 'yes'], ['website', '']], 'enquiry'), 'contact enquiry');
+  const rec = accepted(await post([['type', 'enquiry'], ['name', 'Synthetic Enquirer'], ['email', EMAIL], ['message', 'A synthetic enquiry.'], ['consent', 'yes'], ...HIDDEN], 'enquiry'), 'contact enquiry');
   check(rec.type === 'enquiry' && rec.stage === 'enquiry' && rec.version === 2, 'enquiry record: type, stage, version');
   check(rec.message === 'A synthetic enquiry.' && rec.name === 'Synthetic Enquirer' && !('profile' in rec), 'enquiry record: fields stored, no profile object');
-  rejected(await post([['type', 'enquiry'], ['name', 'Synthetic Enquirer'], ['email', EMAIL], ['consent', 'yes']], 'enquiry no message'), 'contact enquiry without a message');
-  accepted(await post([['name', 'Synthetic Enquirer'], ['email', EMAIL], ['message', 'No type field.'], ['consent', 'yes']], 'no type'), 'post without a type is treated as an enquiry');
+  rejected(await post([['type', 'enquiry'], ['name', 'Synthetic Enquirer'], ['email', EMAIL], ['consent', 'yes'], ...HIDDEN], 'enquiry no message'), 'contact enquiry without a message');
+  accepted(await post([['name', 'Synthetic Enquirer'], ['email', EMAIL], ['message', 'No type field.'], ['consent', 'yes'], ...HIDDEN], 'no type'), 'post without a type is treated as an enquiry');
 }
 
 // 9. Every field-of-study key (underscored keys included) and "undecided" is accepted
@@ -260,7 +267,7 @@ cleanup();
   try {
     let ok = false;
     for (let i = 0; i < 50 && !ok; i++) { try { await fetch(url2); ok = true; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-    const body = new URLSearchParams([['type', 'application-start'], ['course', 'medicine'], ['name', 'Synthetic\r\nBcc: victim@example.invalid'], ['email', EMAIL], ['consent', 'yes'], ['subjects[0][name]', 'Biology'], ['subjects[0][grade]', 'B']]);
+    const body = new URLSearchParams([['type', 'application-start'], ['course', 'medicine'], ['name', 'Synthetic\r\nBcc: victim@example.invalid'], ['email', EMAIL], ['consent', 'yes'], ['subjects[0][name]', 'Biology'], ['subjects[0][grade]', 'B'], ['website', ''], ['ts', '']]);
     const res = await fetch(url2, { method: 'POST', body, redirect: 'manual' });
     check(res.status === 303, 'mail: submission accepted with sending on', String(res.status));
     for (let i = 0; i < 20 && !existsSync(mailFile); i++) await new Promise((r) => setTimeout(r, 100));
@@ -280,6 +287,18 @@ cleanup();
     check(bodyRaw.split(/\r?\n/).every((l) => l.length <= 76), 'mail: body lines are at most 76 characters');
     const text = Buffer.from(bodyRaw.replace(/\s+/g, ''), 'base64').toString('utf8');
     check(/Biology: B/.test(text) && /nothing has been sent to any university/.test(text), 'mail: body lists the profile and states nothing was sent to a university', text.slice(0, 200));
+    // Duplicate behaviour (owner decision pending on suppression): sending the same form again is a new submission,
+    // stored with its own id and notified once more. The Record line tells the two notifications apart.
+    const again = await fetch(url2, { method: 'POST', body, redirect: 'manual' });
+    check(again.status === 303, 'duplicate: the same form sent twice is accepted again', String(again.status));
+    await new Promise((r) => setTimeout(r, 300));
+    const all = readFileSync(mailFile, 'utf8');
+    const ids = [...all.matchAll(/^Subject: /gm)].length;
+    const bodies = all.split(/^To: /m).slice(1).map((m) => Buffer.from((m.split(/\r?\n\r?\n/).slice(1).join('')).replace(/\s+/g, ''), 'base64').toString('utf8'));
+    const recIds = bodies.map((t) => (t.match(/Record: ([0-9a-f]{16})/) ?? [])[1]).filter(Boolean);
+    check(ids === 2 && recIds.length === 2 && recIds[0] !== recIds[1], 'duplicate: two notifications, each with its own Record id', `${ids} subjects, ids ${recIds.join(',')}`);
+    const recFiles = readdirSync(join(store2, 'enquiries'));
+    check(recFiles.length === 2 && recIds.every((id) => recFiles.some((f) => f.endsWith(`-${id}.json`))), 'duplicate: each Record id matches one stored file name', recFiles.join(','));
   } finally {
     php2.kill();
     rmSync(store2, { recursive: true, force: true });
@@ -301,7 +320,7 @@ cleanup();
   try {
     let ok = false;
     for (let i = 0; i < 50 && !ok; i++) { try { await fetch(url3); ok = true; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-    const res = await fetch(url3, { method: 'POST', body: new URLSearchParams([['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes']]), redirect: 'manual' });
+    const res = await fetch(url3, { method: 'POST', body: new URLSearchParams([['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes'], ['website', ''], ['ts', '']]), redirect: 'manual' });
     check(res.status === 303, 'mail failure: the submission is still accepted', String(res.status));
     const dir3 = join(store3, 'enquiries');
     const files = existsSync(dir3) ? readdirSync(dir3) : [];
@@ -322,7 +341,7 @@ cleanup();
   const port4 = await freePort();
   const php4 = spawn('php', ['-S', `127.0.0.1:${port4}`, '-t', PUBLIC], { env: { ...process.env, UMA_PRIVATE_DIR: store4 }, stdio: ['ignore', 'ignore', 'ignore'] });
   const url4 = `http://127.0.0.1:${port4}/api/enquiry.php`;
-  const send = () => fetch(url4, { method: 'POST', body: new URLSearchParams([['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes']]), redirect: 'manual' });
+  const send = () => fetch(url4, { method: 'POST', body: new URLSearchParams([['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes'], ['website', ''], ['ts', '']]), redirect: 'manual' });
   const count = () => (existsSync(join(store4, 'enquiries')) ? readdirSync(join(store4, 'enquiries')).length : 0);
   try {
     let ok = false;
@@ -345,6 +364,78 @@ cleanup();
     php4.kill();
     rmSync(store4, { recursive: true, force: true });
   }
+}
+
+/** Start php -S with a private directory and extra -d settings; returns { url, stop, log }. */
+async function serve(store, settings = [], env = {}) {
+  const port = await freePort();
+  const out = { log: '' };
+  const proc = spawn('php', ['-d', 'display_errors=0', '-d', 'log_errors=1', ...settings.flatMap((x) => ['-d', x]), '-S', `127.0.0.1:${port}`, '-t', PUBLIC], {
+    env: { ...process.env, UMA_PRIVATE_DIR: store, ...env }, stdio: ['ignore', 'ignore', 'pipe'],
+  });
+  proc.stderr.on('data', (d) => { out.log += d; });
+  const url = `http://127.0.0.1:${port}/api/enquiry.php`;
+  for (let i = 0; i < 50; i++) { try { await fetch(url); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+  return { url, stop: () => proc.kill(), out };
+}
+const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email', EMAIL], ['message', 'Synthetic question'], ['consent', 'yes'], ['website', ''], ['ts', '']];
+
+// 14. Envelope sender: off unless config.php sets 'envelope_from' to a plain address; anything else never reaches the
+// sendmail command line.
+{
+  const store5 = mkdtempSync(join(tmpdir(), 'uma-enquiry-envelope-'));
+  const fake = join(store5, 'sendmail.sh'), argsFile = join(store5, 'args.txt');
+  writeFileSync(fake, `#!/bin/sh\nprintf 'ARGS:%s\\n' "$*" >> '${argsFile}'\ncat > /dev/null\n`, { mode: 0o755 });
+  const runWith = async (envelope) => {
+    writeFileSync(join(store5, 'config.php'), `<?php return ['send_mail' => true, 'notify_to' => 'team@example.invalid', 'from' => 'no-reply@example.invalid'${envelope === undefined ? '' : `, 'envelope_from' => ${JSON.stringify(envelope).replace(/"/g, "'")}`}];\n`);
+    rmSync(argsFile, { force: true });
+    const srv = await serve(store5, [`sendmail_path=${fake}`]);
+    try {
+      const res = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
+      for (let i = 0; i < 20 && !existsSync(argsFile); i++) await new Promise((r) => setTimeout(r, 100));
+      return { status: res.status, args: existsSync(argsFile) ? readFileSync(argsFile, 'utf8') : '' };
+    } finally { srv.stop(); }
+  };
+  try {
+    const none = await runWith(undefined);
+    check(none.status === 303 && /^ARGS:/m.test(none.args) && !/-f/.test(none.args), 'envelope: not set by default (the host chooses the Return-Path)', none.args.trim());
+    const set = await runWith('bounces@example.invalid');
+    check(set.status === 303 && /-fbounces@example\.invalid/.test(set.args), 'envelope: envelope_from is passed as -f', set.args.trim());
+    const evil = await runWith('x@example.invalid -X/tmp/uma-log');
+    check(evil.status === 303 && !/-X/.test(evil.args) && !/-f/.test(evil.args), 'envelope: a value with spaces or options is ignored, never passed to sendmail', evil.args.trim());
+  } finally { rmSync(store5, { recursive: true, force: true }); }
+}
+
+// 15. No config.php at all: the built-in defaults apply; no IP data is stored; the submission is still accepted.
+{
+  const store6 = mkdtempSync(join(tmpdir(), 'uma-enquiry-noconfig-'));
+  const srv = await serve(store6, ['sendmail_path=/bin/true']);
+  try {
+    const res = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
+    const dir6 = join(store6, 'enquiries');
+    const files = existsSync(dir6) ? readdirSync(dir6) : [];
+    const rec = files.length === 1 ? JSON.parse(readFileSync(join(dir6, files[0]), 'utf8')) : {};
+    check(res.status === 303 && files.length === 1, 'no config.php: the submission is stored and the person sees the thank-you page', `${res.status}, ${files.length} records`);
+    check(rec.ip_hash === null && !existsSync(join(store6, 'ratelimit')), 'no config.php: no IP code stored and no per-visitor counter kept (the per-visitor limit is off)', JSON.stringify(rec.ip_hash));
+    check(!('notification' in rec), 'no config.php: the default mail path was used and accepted', JSON.stringify(rec.notification));
+  } finally { srv.stop(); rmSync(store6, { recursive: true, force: true }); }
+}
+
+// 16. Storage failure: the private directory cannot be created. HTTP 500 with a plain message and the business address;
+// no file-system path, configuration value or submitted data in the response; nothing e-mailed.
+{
+  const base7 = mkdtempSync(join(tmpdir(), 'uma-enquiry-nostore-'));
+  const blocker = join(base7, 'not-a-directory');
+  writeFileSync(blocker, 'x');
+  const srv = await serve(join(blocker, 'uma-private'), ['sendmail_path=/bin/false']);
+  try {
+    const res = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
+    const text = await res.text();
+    check(res.status === 500 && /could not record your details/.test(text) && /info@ukrainemedicaladmissions\.com/.test(text), 'storage failure: 500 with a plain apology and the business address', `${res.status} ${text.slice(0, 120)}`);
+    check(!text.includes(base7) && !/\/tmp|uma-private|Warning|Fatal/i.test(text) && !text.includes('Synthetic'), 'storage failure: no path, PHP diagnostic or submitted data in the response', text.slice(0, 200));
+    await new Promise((r) => setTimeout(r, 200));
+    check(/cannot write to the private storage directory/.test(srv.out.log) && !srv.out.log.includes(EMAIL) && !srv.out.log.includes('Synthetic question'), 'storage failure: logged without the applicant\'s data', srv.out.log.slice(0, 200));
+  } finally { srv.stop(); rmSync(base7, { recursive: true, force: true }); }
 }
 
 console.log(`enquiry-php: ${checks} checks, ${failures} failures`);
