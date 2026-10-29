@@ -6,7 +6,7 @@
 |---|---|
 | Official sources | **Blocked.** All 20 hosts below refused by the network policy (latest probe 10:12 UTC: 403 to CONNECT for all 20) |
 | Evidence received | **None.** No captures, no access, no verified fact |
-| Release | **NOT READY:** the 36 items in §2 (38 before the dashboard paragraph was removed on 2026-10-24), then the release steps in §5 |
+| Release | **NOT READY:** the 40 items in §2 (36 from 24 to 29 October; 38 before the dashboard paragraph was removed on 2026-10-24), then the release steps in §5 |
 | Google | Nothing verified or submitted by us. Index status unknown (no Search Console access; the live site is public and crawlable) |
 
 Background and every other open question: `OWNER_INPUT_NEEDED.md`. Pages to capture if you cannot allow the hosts: `research/verification/CAPTURE_REQUEST_2026-10-12.md` §2–§3.
@@ -107,15 +107,15 @@ All but `tnmu.edu.ua` are described in the capture request §1.
 - **Separate claims:** Ukrainian registration (EDEBO), programme accreditation (NAQA) and recognition abroad (each country's regulator) are never merged.
 - **Visibility:** profiles stay noindex and unpublished until the publication gate passes and you approve a release.
 
-## 2. The items the release check lists (36 since 2026-10-24; numbering kept from the original 38)
+## 2. The items the release check lists (40 since 2026-10-29; numbering kept from the original 38, items 39–42 added on 2026-10-29 for WhatsApp, host logs and correspondence)
 
 In the order `node scripts/release-readiness.mjs` lists them. The check prints bullets and lists only what is still open; the numbers below are this sheet's own. `LEGAL_COMPLETION_CHECKLIST.md` numbers the same fields differently, so always keep the field name next to an answer, as the template does. **R** = a qualified legal reviewer must check the answer.
 
-### 2.0 At a glance: the 38 blockers in three groups
+### 2.0 At a glance: the 40 blockers in three groups
 
-Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal pages built as drafts: banner, placeholder and proposal markers) clear by themselves once 1–34 are in and I rebuild. If item 7 is `true`, the representative's name and address become one more required item.
+Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal pages built as drafts: banner, placeholder and proposal markers) clear by themselves once 1–34 and 39–42 are in and I rebuild. If item 7 is `true`, the representative's name and address become one more required item.
 
-**A. Facts only you can supply (11).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14 and 20 are marked R in §2.1: your reviewer confirms them.
+**A. Facts only you can supply (15).** Read them from your registration papers and your Hostinger and mailbox accounts; no wording to approve and no legal judgement needed to state them (your reviewer still reads every answer before signing off). Items 6, 14, 20 and 39–41 are marked R in §2.1: your reviewer confirms them.
 
 | # | Item | Where to find it |
 |---|---|---|
@@ -129,7 +129,11 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 13 | Privacy notice version (for example `1.0`) | your choice |
 | 14 | Whether host backups contain form submissions, and how long backups are kept | Hostinger plan / backup settings |
 | 19 | Company that provides the info@ mailbox | mailbox account (Hostinger Email, Google Workspace, Zoho …) |
-| 20 | Countries where Hostinger and the mailbox provider store data | each provider's data-centre setting or terms |
+| 20 | Countries where Hostinger, the mailbox provider and WhatsApp (Meta) store data | each provider's data-centre setting or terms |
+| 39 | How long WhatsApp conversations are kept | your own practice on the business phone |
+| 40 | What the host's server, error and mail logs record and how long they are kept | hPanel (H7–H9 in §8) |
+| 41 | How long e-mails sent to us directly (complaints, rights requests) are kept | your own practice in the mailbox |
+| 42 | Which WhatsApp service you use (app on a phone, or the Business Platform through a provider) and where the conversations and any chat backups are kept | the WhatsApp settings on the business phone (Chats → Chat backup) |
 
 **B. Proposed wording to approve or replace (9).** Answer "approved" or give your own value.
 
@@ -138,7 +142,7 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 23 | How long contact-form enquiries are kept | "up to 12 months after our last contact" |
 | 24 | How long candidate profiles are kept | "up to 12 months after our last contact" |
 | 25 | How long the e-mail copies in the mailbox are kept | "the same period as the stored record" |
-| 26 | Lawful basis for replying to enquiries (reviewer to confirm) | "your consent and steps taken at your request before any contract" |
+| 26 | Lawful basis for replying to enquiries, also shown for WhatsApp messages (reviewer to confirm) | "your consent and steps taken at your request before any contract" |
 | 27 | Lawful basis for candidate profiles (reviewer to confirm) | same as 26 |
 | 28 | Complaint acknowledged within | "3 working days" |
 | 29 | Full reply within | "15 working days" |
@@ -157,13 +161,13 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 16 | Retention of complaint records |
 | 17 | Lawful basis for abuse detection (submission time and keyed IP code) |
 | ~~18~~ | Not required: as item 15 |
-| 21 | International transfers and the safeguard used |
+| 21 | International transfers (including through WhatsApp) and the safeguard used |
 | 22 | The rule for applicants under 18 (the forms are built for school-leavers) |
 | 32–34 | Review completed, reviewer's name, review date (set only after the review) |
 
 **Reviewer brief (not gate items, but raised by the 2026-10-16 review, `SITE_GAP_ANALYSIS.md` §6):** the consent wording ("agree to the privacy notice"); rights and authorities for applicants outside the UK and EU (India, Nigeria, Pakistan, UAE); missing rights (objection, portability, whether giving data is required, automated decisions); server and mail logs; the notice's commitments about the unbuilt dashboard; the brevity of the terms.
 
-**The repository is public (your decision, 2026-10-24).** What I enter in `site/src/lib/legal.mjs` is readable on GitHub once pushed, and items 1–31 also appear on the public legal pages after the release. So: I enter all your answers in one commit just before the release, not piecemeal; use a business or correspondence address for item 5 if you prefer your home address not to be public; and for item 33 send a review reference you control (for example "Legal review ref. UMA-LR-01, record held by the owner") instead of the reviewer's name: the gate still refuses an empty or placeholder value, and you keep the signed review record offline. Never send passwords, keys or the contents of `config.php`.
+**The repository is public (your decision, 2026-10-24).** What I enter in `site/src/lib/legal.mjs` is readable on GitHub once pushed, and items 1–31 and 39–42 also appear on the public legal pages after the release. So: I enter all your answers in one commit just before the release, not piecemeal; use a business or correspondence address for item 5 if you prefer your home address not to be public; and for item 33 send a review reference you control (for example "Legal review ref. UMA-LR-01, record held by the owner") instead of the reviewer's name: the gate still refuses an empty or placeholder value, and you keep the signed review record offline. Never send passwords, keys or the contents of `config.php`.
 
 **How to reply.** Fill in what you know in the template (§2.5) and send it. Partial replies are fine: leave a line blank if you do not have the answer yet. Agree the R lines with your reviewer before sending them. I enter the answers word for word. You can also edit `legal.mjs` yourself. "TBC", "???" or anything in square brackets counts as not supplied.
 
@@ -171,12 +175,12 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 
 **Order.**
 1. Item 3 (country) first: with the reviewer, it decides 6–11 and bears on 21.
-2. Then 1–2, 4–5, and 19–20. Read 19–20 from your mailbox and Hostinger accounts, not from your country of registration.
-3. Then the other R items (14–18, 21–22) with your reviewer.
+2. Then 1–2, 4–5, 19–20 and 42. Read 19–20 from your mailbox and Hostinger accounts, not from your country of registration.
+3. Then the other R items (14–18, 21–22, 39–41) with your reviewer.
 4. Then 23–31: approve or replace. 23–27 also need the reviewer.
 5. 12–13 last, and 32–34 after the review.
 
-### 2.1 Missing details (22)
+### 2.1 Missing details (26)
 
 | # | Field in `legal.mjs` | Send | R |
 |---|---|---|---|
@@ -199,9 +203,13 @@ Numbers refer to the tables below (§2.1–2.4). Items 35–38 (the four legal p
 | 17 | `lawfulBasis.abuseDetection` | Lawful basis for keeping the submission time and the keyed IP code | R |
 | ~~18~~ | `lawfulBasis.applications` | Not required while no documents are accepted (owner decision 2026-10-24) | R |
 | 19 | `processors.mailbox` | Company that provides the info@ mailbox | |
-| 20 | `processingLocation` | Countries where Hostinger and the mailbox provider store data | R |
-| 21 | `internationalTransfers` | Whether personal data goes abroad, and the safeguard used | R |
+| 20 | `processingLocation` | Countries where Hostinger, the mailbox provider and WhatsApp (Meta) store data | R |
+| 21 | `internationalTransfers` | Whether personal data goes abroad (including through WhatsApp), and the safeguard used | R |
 | 22 | `under18Policy` | Rule for applicants under 18 | R |
+| 39 | `retention.whatsappMessages` | How long WhatsApp conversations are kept | R |
+| 40 | `retention.hostLogs` | What the host's server, error and mail logs record (IP address, page, time, browser) and how long they are kept | R |
+| 41 | `retention.correspondence` | How long e-mails sent to us directly (complaints, rights requests) are kept | R |
+| 42 | `processors.whatsapp` | Which WhatsApp service you use and where the conversations and any chat backups are kept (for example only on the phone, or also in Google Drive or iCloud) | |
 
 ### 2.2 Draft wording to approve or replace (9)
 
@@ -212,7 +220,7 @@ Write `approve` to adopt the draft wording as your choice, or give your own. Thi
 | 23 | `retention.enquiries` | "up to 12 months after our last contact" | R |
 | 24 | `retention.candidateProfiles` | "up to 12 months after our last contact" | R |
 | 25 | `retention.mailboxCopies` | "the same period as the stored record" | R |
-| 26 | `lawfulBasis.enquiries` | "your consent and steps taken at your request before any contract" | R |
+| 26 | `lawfulBasis.enquiries` | "your consent and steps taken at your request before any contract" (also shown for WhatsApp messages) | R |
 | 27 | `lawfulBasis.candidateProfiles` | "your consent and steps taken at your request before any contract" | R |
 | 28 | `complaints.acknowledge` | "3 working days" | |
 | 29 | `complaints.reply` | "15 working days" | |
@@ -221,7 +229,7 @@ Write `approve` to adopt the draft wording as your choice, or give your own. Thi
 
 ### 2.3 Legal review (3)
 
-When 1–31 are in, I rebuild the four legal pages with your answers and send you a private preview copy for the reviewer. Do not use the live pages for the review: they are the older draft and do not contain your answers.
+When 1–31 and 39–42 are in, I rebuild the four legal pages with your answers and send you a private preview copy for the reviewer. Do not use the live pages for the review: they are the older draft and do not contain your answers.
 
 | # | Field | Send |
 |---|---|---|
@@ -233,7 +241,7 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 
 | # | Page | Clears when |
 |---|---|---|
-| 35 | `/privacy/` | Items 1–34 (plus `representative.details` if 7 is `true`) are supplied in a valid form and the site is rebuilt. The banner, the "[to be supplied by the owner: …]" markers and the word "draft" then go. The live pages change only after a release you approve |
+| 35 | `/privacy/` | Items 1–34 and 39–42 (plus `representative.details` if 7 is `true`) are supplied in a valid form and the site is rebuilt. The banner, the "[to be supplied by the owner: …]" markers and the word "draft" then go. The live pages change only after a release you approve |
 | 36 | `/terms/` | as above |
 | 37 | `/disclosure/` | as above |
 | 38 | `/complaints-policy/` | as above |
@@ -276,6 +284,10 @@ When 1–31 are in, I rebuild the four legal pages with your answers and send yo
 32 legalReviewCompleted:           (true only after the review)
 33 reviewedBy:                     (review reference, e.g. "Legal review ref. UMA-LR-01, record held by the owner")
 34 reviewDate:                     (YYYY-MM-DD)
+39 retention.whatsappMessages:
+40 retention.hostLogs:             (read in hPanel, H7–H9)
+41 retention.correspondence:
+42 processors.whatsapp:            (which WhatsApp service; where conversations and backups are kept)
 ```
 
 ## 3. Google Search Console: domain property first

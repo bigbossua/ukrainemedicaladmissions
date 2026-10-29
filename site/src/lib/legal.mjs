@@ -128,8 +128,13 @@ export const LEGAL = {
     // MISSING: the provider of the business mailbox that receives each submission is not recorded
     // (APPLICATION_SYSTEM_SPEC.md §14.2 H6: "the domain's mail service", UNVERIFIED).
     mailbox: null,
+    // MISSING (review of 2026-10-29): which WhatsApp service the business uses (the WhatsApp or WhatsApp Business app on a
+    // phone, or the WhatsApp Business Platform through a provider) and where the conversations and any chat backups are
+    // kept (for example only on the phone, or also in Google Drive or iCloud). Not recorded; nothing is assumed.
+    whatsapp: null,
   },
-  // MISSING: the countries where the hosting and mailbox providers store data (not recorded; plan unverified).
+  // MISSING: the countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store data (not recorded;
+  // plan unverified).
   processingLocation: null,
   // MISSING: whether personal data goes to other countries, and the safeguard used (legal review).
   internationalTransfers: null,
@@ -239,8 +244,9 @@ export const LEGAL_ITEMS = Object.freeze([
   { path: 'lawfulBasis.abuseDetection', what: 'the lawful basis for keeping the submission time and the keyed IP code to detect abuse', why: 'The draft gives no basis for this purpose.', pages: ['privacy'], review: true },
   { path: 'lawfulBasis.applications', what: 'the lawful basis for handling application documents', why: 'Required once documents are accepted (the notice must then give a basis for the document process).', pages: [], review: true, requiredWhen: (l) => l.facts?.documentsAccepted === true },
   { path: 'processors.mailbox', what: 'the company that provides the business mailbox', why: 'Each submission is e-mailed there, so it handles personal data for us.', pages: ['privacy'], review: false },
-  { path: 'processingLocation', what: 'the countries where the hosting and mailbox providers store the data', why: 'The notice must say where data is processed.', pages: ['privacy'], review: true },
-  { path: 'internationalTransfers', what: 'whether personal data is sent to other countries, and the safeguard used', why: 'Transfers abroad must be disclosed with their safeguard.', pages: ['privacy'], review: true },
+  { path: 'processors.whatsapp', what: 'which WhatsApp service you use (the WhatsApp or WhatsApp Business app on a phone, or the WhatsApp Business Platform through a provider) and where the conversations and any chat backups are kept (for example only on the phone, or also in Google Drive or iCloud)', why: 'The site offers WhatsApp as a contact channel (owner decision 2026-10-29); the notice must name who keeps those messages and where, including any backup provider.', pages: ['privacy'], review: false },
+  { path: 'processingLocation', what: 'the countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store the data', why: 'The notice must say where data is processed; it lists all three providers.', pages: ['privacy'], review: true },
+  { path: 'internationalTransfers', what: 'whether personal data is sent to other countries, including through WhatsApp (Meta), and the safeguard used', why: 'Transfers abroad must be disclosed with their safeguard; WhatsApp messages are carried by Meta.', pages: ['privacy'], review: true },
   { path: 'under18Policy', what: 'the rule for applicants under 18', why: 'Open legal question (APPLICATION_SYSTEM_SPEC.md §14.12, checklist C11.2); applicants are often under 18.', pages: ['privacy'], review: true },
   { path: 'complaints.acknowledge', what: 'how quickly a complaint is acknowledged', why: 'The complaints policy promises timescales.', pages: ['complaints-policy'], review: false },
   { path: 'complaints.reply', what: 'how quickly a complaint receives a full reply', why: 'The complaints policy promises timescales.', pages: ['complaints-policy'], review: false },

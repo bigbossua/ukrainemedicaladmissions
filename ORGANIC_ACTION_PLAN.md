@@ -13,7 +13,7 @@
 | Research branch `claude/university-profile-pipeline` | `6c77d82`: five commits after `45b1926`, containing tests, scripts, evidence-access records and SEO documents only. No file under `site/src`, `site/public` or the Astro config changed. Its build is identical to production (tree `d0849e8`). Nothing needs deploying, and nothing was deployed. |
 | Indexable URLs | 18, all in the sitemap |
 | University profiles | 45: all `noindex, follow`, none in the sitemap, 0 verified (0 of 88 official hosts reachable on 26 and 29 October) |
-| Release readiness | Not ready: 36 items block the final gate (owner details for the legal pages and legal review; `LEGAL_COMPLETION_CHECKLIST.md`) |
+| Release readiness | Not ready: 40 items block the final gate (36 until 29 October; owner details for the legal pages and legal review; `LEGAL_COMPLETION_CHECKLIST.md`) |
 | Live site | Not checked: this environment cannot reach the domain |
 
 ## Actions, ordered by expected organic impact, evidence and effort
@@ -51,5 +51,5 @@ Keep the files private (mode 0600, inside `uma-private/`). Never paste them into
 2. **Live verification.** Open `https://ukrainemedicaladmissions.com/universities/` and confirm it shows 45 universities with "Not yet verified" labels. Confirm that `/sitemap-0.xml` lists 18 URLs. In Search Console, run URL Inspection → Test live URL for `/` and `/universities/`.
 3. **Search Console export:** action 1.
 4. **Official-source access:** action 2.
-5. **Legal review.** Supply the owner details and get a qualified reviewer to sign off the 36 open items (`LEGAL_COMPLETION_CHECKLIST.md`). The four legal pages keep the "Draft for legal review" banner until then. Releases after that use the final gate (`publish-production`).
+5. **Legal review.** Supply the owner details and get a qualified reviewer to sign off the 40 open items (`LEGAL_COMPLETION_CHECKLIST.md`). The four legal pages keep the "Draft for legal review" banner until then. Releases after that use the final gate (`publish-production`).
 6. **SEMrush.** Needed only for action 8: confirm the live unit balance and set a budget first.

@@ -24,12 +24,12 @@ This environment's network proxy refuses `ukrainemedicaladmissions.com` (with an
 | Search Console | **Not tested** | No verification file or meta tag in the site, so ownership must be via DNS. You reported the sitemap as "Success, 18 discovered" |
 | GA4 | **Confirmed: not installed** | No analytics code in the build. The security policy allows scripts from this site only |
 | University profiles | **Confirmed** | 45 research previews, all `noindex, follow`, none in the sitemap, 0 verified facts (`research/verification/VERIFICATION_STATUS.md`) |
-| Legal pages | **Confirmed** | All four show "Draft for legal review"; 39 release items open (section 4; 36 until 29 October) |
+| Legal pages | **Confirmed** | All four show "Draft for legal review"; 40 release items open (section 4; 36 until 29 October) |
 
 ## 2. Critical blockers
 
 1. **Form processing, private-storage protection and email delivery are unproven on the live site.** The deployment itself is confirmed (owner, 26 October). Action: T3 and T5 in section 5.
-2. **Legal and ownership details are missing** (39 items, section 4). The privacy notice cannot become final, and the final release gate stays closed.
+2. **Legal and ownership details are missing** (40 items, section 4). The privacy notice cannot become final, and the final release gate stays closed.
 3. **No official university source is reachable** (0 of 88 hosts). No profile can be verified, indexed or added to the sitemap.
 4. **No measurement exists.** There is no analytics, and Search Console data has not been shared. Organic performance and conversion are unknown.
 
@@ -47,9 +47,9 @@ None of these needs a production release; each would wait for your approval to s
 
 ## 4. Questions and approvals required from you
 
-### 4a. The 39 open release items
+### 4a. The 40 open release items
 
-Grouped by the review flags in `site/src/lib/legal.mjs` (corrected 29 October, audit F5): **A Owner fact** (8): only you can supply it, no review needed. **B Owner value + legal review** (7): you supply the value, a lawyer checks it; no draft exists. **C Draft: owner approval + legal review** (3). **D Draft: owner approval** (4). **E Legal advice and sign-off** (13). **F Technical** (4): clears automatically. Total 39 (36 until 29 October; L37 came with WhatsApp, L38–L39 with audit F3).
+Grouped by the review flags in `site/src/lib/legal.mjs`, by whether a draft value exists, and by whether the value itself is a legal determination (E); the grouping is a judgement, not only the flags (corrected 29 October, audit F5 and review of the fixes): **A Owner fact** (9): only you can supply it, no review flag. **B Owner value + legal review** (7): you supply the value, a lawyer checks it; no draft exists. **C Draft: owner approval + legal review** (5): approve or replace the draft wording, then a lawyer checks it. **D Draft: owner approval** (4). **E Legal advice and sign-off** (11): a legal determination, decided with your reviewer. **F Technical** (4): clears automatically. Total 40 (36 until 29 October; L37 and L40 came with WhatsApp, L38–L39 with audit F3).
 
 **Conditional items, not required today:** answering L7 "yes" adds the representative's name and address; accepting documents adds the retention and lawful basis for application records; referral payments add their details; paid services add their terms. No value is filled in by Claude, and no item is marked compliant without your input.
 
@@ -72,14 +72,14 @@ Grouped by the review flags in `site/src/lib/legal.mjs` (corrected 29 October, a
 | L15 | Retention period for complaint records (`retention.complaints`); no draft value exists | B Owner value + legal review |
 | L16 | Lawful basis for keeping the submission time and keyed IP code (`lawfulBasis.abuseDetection`) | E Legal advice and sign-off |
 | L17 | Business mailbox provider (`processors.mailbox`) | A Owner fact |
-| L18 | Countries where hosting and mailbox data is stored (`processingLocation`) | B Owner value + legal review |
-| L19 | International transfers and the safeguard used (`internationalTransfers`) | E Legal advice and sign-off |
+| L18 | Countries where the hosting provider, the mailbox provider and WhatsApp (Meta) store the data (`processingLocation`) | B Owner value + legal review |
+| L19 | International transfers, including through WhatsApp (Meta), and the safeguard used (`internationalTransfers`) | E Legal advice and sign-off |
 | L20 | Rule for applicants under 18 (`under18Policy`) | E Legal advice and sign-off |
 | L21 | Enquiry retention; the draft proposes "up to 12 months after our last contact" (`retention.enquiries`) | C Draft: owner approval + legal review |
 | L22 | Candidate-profile retention; the draft proposes the same (`retention.candidateProfiles`) | C Draft: owner approval + legal review |
 | L23 | Mailbox-copy retention; the draft proposes "the same period as the stored record" (`retention.mailboxCopies`) | C Draft: owner approval + legal review |
-| L24 | Lawful basis for replying to enquiries; the draft proposes consent plus pre-contract steps (`lawfulBasis.enquiries`) | E Legal advice and sign-off |
-| L25 | Lawful basis for candidate profiles; the draft proposes the same (`lawfulBasis.candidateProfiles`) | E Legal advice and sign-off |
+| L24 | Lawful basis for replying to enquiries; the draft proposes consent plus pre-contract steps (`lawfulBasis.enquiries`; the privacy draft shows the same value for WhatsApp messages) | C Draft: owner approval + legal review |
+| L25 | Lawful basis for candidate profiles; the draft proposes the same (`lawfulBasis.candidateProfiles`) | C Draft: owner approval + legal review |
 | L26 | Complaint acknowledgement time; the draft proposes 3 working days (`complaints.acknowledge`) | D Draft: owner approval |
 | L27 | Full complaint reply time; the draft proposes 15 working days (`complaints.reply`) | D Draft: owner approval |
 | L28 | Complaint reviewer; the draft proposes "the business owner" (`complaints.reviewer`) | D Draft: owner approval |
@@ -90,7 +90,8 @@ Grouped by the review flags in `site/src/lib/legal.mjs` (corrected 29 October, a
 | L37 | How long WhatsApp conversations are kept (`retention.whatsappMessages`; added 29 October with the WhatsApp channel) | B Owner value + legal review |
 | L38 | What the host's server, error and mail logs record and how long they are kept (`retention.hostLogs`; added 29 October, audit F3; read it in hPanel, OWNER_ACTION_SHEET.md H7–H9) | B Owner value + legal review |
 | L39 | How long e-mails sent to us directly are kept, e.g. complaints and rights requests (`retention.correspondence`; added 29 October, audit F3) | B Owner value + legal review |
-| L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | F Technical (clears automatically): the build and the release gate clear them once L1–L32 and L37–L39 are recorded |
+| L40 | Which WhatsApp service you use (WhatsApp or WhatsApp Business app on a phone, or the WhatsApp Business Platform through a provider) and where the conversations and any chat backups are kept, e.g. only on the phone, or also in Google Drive or iCloud (`processors.whatsapp`; added 29 October, review of the WhatsApp change) | A Owner fact |
+| L33–L36 | The draft banner and placeholders on `/privacy/`, `/terms/`, `/disclosure/` and `/complaints-policy/` | F Technical (clears automatically): the build and the release gate clear them once L1–L32 and L37–L40 are recorded |
 
 The order to complete them is in `LEGAL_COMPLETION_CHECKLIST.md`. The legal pages stay drafts until L30–L32 are genuinely recorded.
 

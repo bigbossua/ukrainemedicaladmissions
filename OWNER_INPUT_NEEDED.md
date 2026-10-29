@@ -2,9 +2,9 @@
 
 **Date:** 2026-10-12 · **Branch:** `claude/university-profile-pipeline` · Not legal advice. Nothing below has been filled in for you.
 
-**Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the 38 release-check items in the order the check lists them, with a reply template, the Search Console steps (domain property now; sitemap submission recommended right after the release) and the release steps in order.
+**Short version: `OWNER_ACTION_SHEET.md`**: the 20 hosts to allow, the release-check items (40 since 29 October) in the order the check lists them, with a reply template, the Search Console steps (domain property now; sitemap submission recommended right after the release) and the release steps in order.
 
-Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **38 blocking items**: 22 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages. Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
+Tick a box (`[x]`) when an item is done. Today the release gate refuses to publish because of **40 blocking items**: 24 missing legal details, 9 draft wordings waiting for your approval, 3 review fields and the draft banner on 4 pages (38 until 29 October). Background: `LEGAL_COMPLETION_CHECKLIST.md`, `RELEASE_CANDIDATE.md`.
 
 **How to give a legal answer:** in `site/src/lib/legal.mjs`, replace `null` or `proposed(...)` with plain text in quotes. Write dates as `'YYYY-MM-DD'` and yes/no answers as `true` or `false`. "TBC", "???" or anything in square brackets counts as not supplied. Or send the answers and Claude will enter them word for word. **The repository is public:** whatever is entered in `legal.mjs` is readable on GitHub as soon as it is pushed, before any release or review, and stays in its history (every answer except the reviewer's name and date also appears on the legal pages after a release; the reviewer's name and date are stored in the repository). Send only what you are willing to publish now, or make the repository private first (§2, D8).
 
@@ -28,8 +28,9 @@ Tick a box (`[x]`) when an item is done. Today the release gate refuses to publi
 | [ ] | Data-protection authority people can complain to, with its web address | — | `privacyAuthority` | Yes |
 | [ ] | Outside body for complaints you cannot resolve, or `NOT_APPLICABLE` | — | `complaintsBody` | Yes |
 | [ ] | Company that provides the info@ mailbox | — | `processors.mailbox` | No |
-| [ ] | Countries where Hostinger and the mailbox provider store data | — | `processingLocation` | Yes |
-| [ ] | Does personal data go to other countries? If so, which safeguard is used? | — | `internationalTransfers` | Yes |
+| [ ] | Which WhatsApp service you use (app on a phone, or the Business Platform through a provider) and where the conversations and any chat backups are kept | — | `processors.whatsapp` | No |
+| [ ] | Countries where Hostinger, the mailbox provider and WhatsApp (Meta) store data | — | `processingLocation` | Yes |
+| [ ] | Does personal data go to other countries (including through WhatsApp)? If so, which safeguard is used? | — | `internationalTransfers` | Yes |
 | [ ] | Rule for applicants under 18 | — | `under18Policy` | Yes |
 | [ ] | How long enquiries are kept | "up to 12 months after our last contact" | `retention.enquiries` | Yes |
 | [ ] | How long candidate profiles from /apply/ are kept | "up to 12 months after our last contact" | `retention.candidateProfiles` | Yes |
@@ -37,6 +38,9 @@ Tick a box (`[x]`) when an item is done. Today the release gate refuses to publi
 | [ ] | Whether backups hold form submissions, and how long backups are kept | none | `retention.backups` | Yes |
 | [ ] | How long application records are kept after an application ends | none | `retention.applicationRecords` | Yes |
 | [ ] | How long complaint records are kept | none | `retention.complaints` | Yes |
+| [ ] | How long WhatsApp conversations are kept | none | `retention.whatsappMessages` | Yes |
+| [ ] | What the host's server, error and mail logs record and how long they are kept (hPanel; `OWNER_ACTION_SHEET.md` H7–H9) | none | `retention.hostLogs` | Yes |
+| [ ] | How long e-mails sent to us directly (complaints, rights requests) are kept | none | `retention.correspondence` | Yes |
 | [ ] | Lawful basis: replying to enquiries | "your consent and steps taken at your request before any contract" | `lawfulBasis.enquiries` | Yes |
 | [ ] | Lawful basis: candidate profiles | same as the row above | `lawfulBasis.candidateProfiles` | Yes |
 | [ ] | Lawful basis: keeping the submission time and the keyed IP code to detect abuse | none | `lawfulBasis.abuseDetection` | Yes |

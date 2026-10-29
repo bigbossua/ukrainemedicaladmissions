@@ -68,6 +68,7 @@ import WhatsAppLink from '../../components/WhatsAppLink.astro';
   .hp { position: absolute; left: -9999px; }
   /* As on /apply/: the consent error sits above its checkbox, and the box is marked with a red bar, not colour alone. */
   .consent .err { display: block; color: #B91C1C; font-size: .8rem; font-weight: 500; margin-bottom: .35rem; }
+  .consent .err[hidden] { display: none; }
   .checkbox.error { box-shadow: -3px 0 0 #B91C1C; padding-left: .5rem; }
 </style>
 

@@ -28,15 +28,22 @@ check(resolveStep && /production\) if \[ "\$CONFIRM" != "PUBLISH" \]/.test(runOf
 // Interim release (RELEASE_AUTHORISATION.md, 2026-10-25): the interim pointer branch maps to the SAME production target and
 // gate, only with UMA_RELEASE_MODE=interim; the gate accepts interim only with the authorisation file and the draft banners.
 check((on?.push?.branches ?? []).includes('publish-production-interim'), 'the interim pointer branch triggers the workflow');
-// No step before the deploy step can push: checkout leaves no token in .git/config (audit SEC-2, 2026-10-29), and the
-// deploy step fetches and pushes only through its own PUSH_URL.
+// No token in .git/config (audit SEC-2, 2026-10-29): every checkout runs with persist-credentials: false, so code that
+// runs before the deploy step cannot read the token from the repository configuration, and the deploy step fetches and
+// pushes only through its own PUSH_URL. This does not isolate the deploy step from code that ran earlier in the same
+// job (a planted git hook or setting would run inside it); that needs a separate deploy job (owner decision, see
+// SECURITY_AND_RELEASE_CHECKLIST.md section B.2).
 {
-  const co = steps.find((s) => String(s.uses ?? '').startsWith('actions/checkout'));
-  check(co?.with?.['persist-credentials'] === false, 'publish: checkout runs with persist-credentials: false');
-  const ciCo = (ci.jobs?.['build-and-test']?.steps ?? []).find((s) => String(s.uses ?? '').startsWith('actions/checkout'));
-  check(ciCo?.with?.['persist-credentials'] === false, 'CI: checkout runs with persist-credentials: false');
+  const checkouts = (job) => (job?.steps ?? []).filter((s) => String(s.uses ?? '').startsWith('actions/checkout'));
+  const pub = checkouts({ steps });
+  check(pub.length > 0 && pub.every((s) => s.with?.['persist-credentials'] === false), 'publish: every checkout runs with persist-credentials: false', String(pub.length));
+  const ciCos = Object.values(ci.jobs ?? {}).flatMap(checkouts);
+  check(ciCos.length > 0 && ciCos.every((s) => s.with?.['persist-credentials'] === false), 'CI: every checkout runs with persist-credentials: false', String(ciCos.length));
   const deploy = steps.find((s) => /Commit the built site onto the deploy branch/.test(String(s.name ?? '')));
-  check(deploy && !/git (fetch|push)(\s+-q)?\s+origin\b/.test(runOf(deploy)) && /git fetch -q "\$PUSH_URL"/.test(runOf(deploy)), 'deploy step fetches and pushes only through PUSH_URL, never the credential-less origin');
+  const remotes = [...runOf(deploy ?? {}).matchAll(/\bgit\s+(push|fetch)\b((?:\s+-\S+)*)\s+(\S+)/g)].map((m) => m[3]);
+  check(deploy && remotes.length >= 2 && remotes.every((r) => r === '"$PUSH_URL"'), 'deploy step: every git fetch and push names "$PUSH_URL" as its remote (never origin or a literal URL)', remotes.join(' '));
+  const allRuns = steps.map(runOf).join('\n');
+  check(![...allRuns.matchAll(/\bgit\s+(push|fetch)\b((?:\s+-\S+)*)\s+(\S+)/g)].some((m) => m[3] !== '"$PUSH_URL"'), 'publish: no step fetches or pushes through any remote other than "$PUSH_URL"');
 }
 // Rollback during the interim period (SECURITY_AND_RELEASE_CHECKLIST.md section D, corrected 2026-10-29): a tag named
 // publish-production-interim-<stamp> must run the interim gate, and a manual run must not, so the documented route works.

@@ -263,7 +263,10 @@ const stats = [
   if (search && initial) search.value = initial.slice(0, 80);
   let preset = Boolean(initial);
   selects.forEach((s) => { const v = params.get(s.dataset.filter ?? ''); if (v && [...s.options].some((o) => o.value === v)) { s.value = v; preset = true; } });
-  if (preset) { apply(); document.querySelector<HTMLElement>('[data-list]')?.setAttribute('data-preset', ''); }
+  // Always applied once at start: the finder is usable before this script runs (it is laid out from the first paint), and
+  // the browser may restore earlier choices on Back, so the list must match whatever the controls already hold.
+  apply();
+  if (preset) document.querySelector<HTMLElement>('[data-list]')?.setAttribute('data-preset', '');
   form?.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
   form?.addEventListener('reset', () => setTimeout(apply, 0));
   document.querySelector('[data-reset-link]')?.addEventListener('click', () => { form?.reset(); setTimeout(() => { apply(); search?.focus(); }, 0); });

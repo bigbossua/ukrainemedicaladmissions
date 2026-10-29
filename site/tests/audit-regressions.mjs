@@ -8,6 +8,8 @@
 //   AX-07 no dead menu button with scripts off
 //   AX-08 no aria-label on a span without a role (count badges in the directory)
 //   AX-09 a submit button disabled by a sent form is usable again when the page is shown from the back-forward cache
+// Review of the fixes (2026-10-29): what is typed in the finder before its script runs is applied; the contact consent
+// error slot stays hidden until it has a message; focus rings in the scrolling mobile menu are not clipped.
 // Prints "audit-regressions: N checks, M failures". Needs dist/ (npm run build).
 import { chromium } from 'playwright';
 import { createServer } from 'node:http';
@@ -73,6 +75,24 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
   await page.focus('#main-menu .menu-cta a');
   const r = await page.evaluate(() => { const a = document.querySelector('#main-menu .menu-cta a').getBoundingClientRect(); return { top: a.top, bottom: a.bottom, vh: innerHeight }; });
   ok(r.top >= 0 && r.bottom <= r.vh + 1, `AX-02 ${width}x${height}: focused in-menu Apply Online Now is outside the viewport (${Math.round(r.top)}-${Math.round(r.bottom)} of ${r.vh})`);
+  // Tab through the open menu from the top: each focused link's ring (outline plus offset) stays inside the menu's
+  // visible box, so the scrolling menu never clips it.
+  await page.focus('[data-menu-toggle]');
+  const clipped = [];
+  for (let i = 0; i < 12; i++) {
+    await page.keyboard.press('Tab');
+    const c = await page.evaluate(() => {
+      const a = document.activeElement; const menu = document.getElementById('main-menu');
+      if (!a || !menu?.contains(a)) return null;
+      const cs = getComputedStyle(a); const ring = parseFloat(cs.outlineWidth) + parseFloat(cs.outlineOffset);
+      const b = a.getBoundingClientRect(); const m = menu.getBoundingClientRect();
+      const top = m.top + menu.clientTop, bottom = top + menu.clientHeight;
+      return { text: a.textContent.trim(), ok: b.top - ring >= top - 0.5 && b.bottom + ring <= bottom + 0.5 };
+    });
+    if (!c) break;
+    if (!c.ok) clipped.push(c.text);
+  }
+  ok(clipped.length === 0, `AX-02 ${width}x${height}: focus ring clipped by the scrolling menu on: ${clipped.join(', ')}`);
   await ctx.close();
 }
 // AX-03: the focus ring inside the white hero card is dark enough on white (WCAG 1.4.11, at least 3:1).
@@ -93,6 +113,23 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
   }
   await ctx.close();
 }
+// Finder used before its script runs (slow phone): once the script arrives, the list matches what was typed.
+{
+  const ctx = await browser.newContext({ viewport: { width: 412, height: 823 } });
+  const page = await ctx.newPage();
+  await page.route('**/_astro/*.js', async (route) => { await new Promise((r) => setTimeout(r, 1500)); await route.continue(); });
+  await page.goto(base + '/universities/', { waitUntil: 'commit' });
+  await page.waitForSelector('#dir-q', { state: 'visible' });
+  await page.fill('#dir-q', 'Odesa');
+  await page.waitForLoadState('load'); await page.waitForTimeout(300);
+  const st = await page.evaluate(() => {
+    const shown = [...document.querySelectorAll('[data-list] article')].filter((a) => !a.hidden).map((a) => a.dataset.name ?? '');
+    return { total: document.querySelectorAll('[data-list] article').length, shown, count: document.querySelector('[data-count]')?.textContent };
+  });
+  ok(st.shown.length > 0 && st.shown.length < st.total && st.shown.every((n) => /odesa|odessa/i.test(n)) && st.count === String(st.shown.length),
+    `finder: a search typed before the script ran is not applied (${st.shown.length} of ${st.total} shown, count ${st.count})`);
+  await ctx.close();
+}
 // AX-04, AX-05, AX-09 on /contact/.
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
@@ -104,6 +141,8 @@ for (const [width, height] of [[320, 256], [844, 340]]) {
     return !/\(required\)/.test(label?.textContent ?? '') && el.type !== 'checkbox';
   }).map((el) => el.name));
   ok(unmarked.length === 0, `AX-05 /contact/: required fields without a visible "(required)": ${unmarked.join(', ')}`);
+  const slots = await page.$$eval(`${form} .err[id$="-error"]`, (els) => els.filter((e) => e.hidden && getComputedStyle(e).display !== 'none').map((e) => e.id));
+  ok(slots.length === 0, `/contact/: hidden error slots still take up space: ${slots.join(', ')}`);
   await page.fill(`${form} input[name="name"]`, 'Anna');
   await page.fill(`${form} input[name="email"]`, 'anna@gmail');
   await page.fill(`${form} textarea[name="message"]`, 'A question.');

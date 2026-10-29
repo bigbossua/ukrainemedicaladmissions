@@ -224,35 +224,42 @@ $tooMany = static function (): never {
     header('Content-Type: text/plain; charset=utf-8');
     exit('Too many submissions in the last hour. Please try again later, or email info@ukrainemedicaladmissions.com.');
 };
-// The last 60 minutes, not two clock hours: a record counts while its file-name time (UTC) is within the hour.
+// The last 60 minutes, not two clock hours: a record counts while its file-name time (UTC) is within the hour. The clock
+// is read once, so the two hour prefixes can never be the same hour (a tick across hh:59:59 between two reads).
+$now    = time();
 $recent = 0;
-$since  = gmdate('Ymd-His', time() - 3600);
-foreach ([gmdate('Ymd-H'), gmdate('Ymd-H', time() - 3600)] as $hourPrefix) {
+$since  = gmdate('Ymd-His', $now - 3600);
+foreach ([gmdate('Ymd-H', $now), gmdate('Ymd-H', $now - 3600)] as $hourPrefix) {
     foreach (glob($storage . '/enquiries/' . $hourPrefix . '*.json') ?: [] as $f) {
         if (strcmp(substr(basename($f), 0, 15), $since) >= 0) $recent++;
     }
 }
 if ($recent >= (int)$config['max_per_hour']) $tooMany();
 // One IPv6 /64 is normally one household or one server, so it counts as one visitor (otherwise a script could rotate
-// addresses inside it). IPv4 addresses are used whole.
+// addresses inside it). IPv4 addresses are used whole, including when a dual-stack server reports them IPv4-mapped
+// (::ffff:a.b.c.d): their first 64 bits are all zero, so the /64 rule would put every IPv4 visitor in one bucket.
 $ipAddr = (string)($_SERVER['REMOTE_ADDR'] ?? '');
 $ipBin  = @inet_pton($ipAddr);
-if (is_string($ipBin) && strlen($ipBin) === 16) $ipAddr = bin2hex(substr($ipBin, 0, 8)) . '::/64';
+if (is_string($ipBin) && strlen($ipBin) === 16) {
+    $ipAddr = substr($ipBin, 0, 12) === str_repeat("\0", 10) . "\xff\xff"
+        ? (string)inet_ntop(substr($ipBin, 12))
+        : bin2hex(substr($ipBin, 0, 8)) . '::/64';
+}
 $ipKey = !empty($config['ip_hash_key']) ? hash_hmac('sha256', $ipAddr . date('Y-m'), (string)$config['ip_hash_key']) : null;
 if ($ipKey !== null) {
     $rlDir = $storage . '/ratelimit';
     if (is_dir($rlDir) || @mkdir($rlDir, 0700, true)) {
         // Counters older than an hour are no longer needed for the limit: delete them, so none is kept indefinitely.
-        foreach (glob($rlDir . '/*.json') ?: [] as $old) { if ((int)@filemtime($old) < time() - 3600) @unlink($old); }
+        foreach (glob($rlDir . '/*.json') ?: [] as $old) { if ((int)@filemtime($old) < $now - 3600) @unlink($old); }
         $rlFile = $rlDir . '/' . $ipKey . '.json';
         // One exclusive lock across read, check and write, so parallel posts from one visitor cannot all read the
         // counter before any of them has written it (audit SEC-1, 2026-10-29).
         $fh = @fopen($rlFile, 'c+');
         if ($fh !== false && flock($fh, LOCK_EX)) {
             $times = json_decode((string)stream_get_contents($fh), true);
-            $times = array_values(array_filter(is_array($times) ? $times : [], static fn($t): bool => is_int($t) && $t > time() - 3600));
+            $times = array_values(array_filter(is_array($times) ? $times : [], static fn($t): bool => is_int($t) && $t > $now - 3600));
             if (count($times) >= (int)$config['per_ip_per_hour']) { flock($fh, LOCK_UN); fclose($fh); $tooMany(); }
-            $times[] = time();
+            $times[] = $now;
             ftruncate($fh, 0);
             rewind($fh);
             fwrite($fh, json_encode($times));

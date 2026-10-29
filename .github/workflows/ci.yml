@@ -1,10 +1,12 @@
 name: Site CI
 
 on:
+  # The files tests/publish-workflow.mjs and tests/allowlist.mjs read are listed too, so a change to any of them is tested
+  # when it is pushed, not first when the release gate runs.
   push:
-    paths: ['site/**', '.github/workflows/ci.yml', 'research/verification/ALLOWLIST_P1.txt', 'research/verification/CAPTURE_REQUEST_2026-10-12.md', 'OWNER_ACTION_SHEET.md']
+    paths: ['site/**', '.github/workflows/ci.yml', '.github/workflows/publish-production-branch.yml', 'SECURITY_AND_RELEASE_CHECKLIST.md', 'RELEASE_AUTHORISATION.md', 'research/verification/ALLOWLIST_P1.txt', 'research/verification/CAPTURE_REQUEST_2026-10-12.md', 'OWNER_ACTION_SHEET.md']
   pull_request:
-    paths: ['site/**', 'research/verification/ALLOWLIST_P1.txt', 'research/verification/CAPTURE_REQUEST_2026-10-12.md', 'OWNER_ACTION_SHEET.md']
+    paths: ['site/**', '.github/workflows/ci.yml', '.github/workflows/publish-production-branch.yml', 'SECURITY_AND_RELEASE_CHECKLIST.md', 'RELEASE_AUTHORISATION.md', 'research/verification/ALLOWLIST_P1.txt', 'research/verification/CAPTURE_REQUEST_2026-10-12.md', 'OWNER_ACTION_SHEET.md']
   workflow_dispatch:
 
 jobs:

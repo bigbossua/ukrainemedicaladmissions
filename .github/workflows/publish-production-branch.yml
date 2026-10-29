@@ -91,8 +91,10 @@ jobs:
           esac
           echo "TARGET=$TARGET" >> "$GITHUB_ENV"
           echo "target=$TARGET (event $GITHUB_EVENT_NAME, ref $GITHUB_REF_NAME)"
-      # No token left in .git/config: npm install scripts and test code that run before the gate must not be able to
-      # push. Only the deploy step below authenticates, through its own PUSH_URL (audit SEC-2, 2026-10-29).
+      # No token left in .git/config, so npm install scripts and test code cannot read it from the repository
+      # configuration; only the deploy step below authenticates, through its own PUSH_URL (audit SEC-2, 2026-10-29).
+      # Limit: the deploy step runs in this same job, so code that ran earlier could still plant a git hook or setting
+      # that runs inside it. Full isolation needs a separate deploy job (owner decision; SECURITY_AND_RELEASE_CHECKLIST.md B.2).
       - uses: actions/checkout@v4
         with: { persist-credentials: false }
       - uses: actions/setup-node@v4

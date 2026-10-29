@@ -374,10 +374,10 @@ cleanup();
 }
 
 /** Start php -S with a private directory and extra -d settings; returns { url, stop, log }. */
-async function serve(store, settings = [], env = {}) {
+async function serve(store, settings = [], env = {}, router = null) {
   const port = await freePort();
   const out = { log: '' };
-  const proc = spawn('php', ['-d', 'display_errors=0', '-d', 'log_errors=1', ...settings.flatMap((x) => ['-d', x]), '-S', `127.0.0.1:${port}`, '-t', PUBLIC], {
+  const proc = spawn('php', ['-d', 'display_errors=0', '-d', 'log_errors=1', ...settings.flatMap((x) => ['-d', x]), '-S', `127.0.0.1:${port}`, '-t', PUBLIC, ...(router ? [router] : [])], {
     env: { ...process.env, UMA_PRIVATE_DIR: store, ...env }, stdio: ['ignore', 'ignore', 'pipe'],
   });
   proc.stderr.on('data', (d) => { out.log += d; });
@@ -477,33 +477,49 @@ const ENQUIRY = [['type', 'enquiry'], ['name', 'Synthetic Candidate'], ['email',
   writeFileSync(join(store9, 'config.php'), "<?php return ['send_mail' => false, 'max_per_hour' => 3];\n");
   const dir9 = join(store9, 'enquiries'); mkdirSync(dir9, { recursive: true, mode: 0o700 });
   const stamp = (secondsAgo) => { const d = new Date(Date.now() - secondsAgo * 1000); const p = (n) => String(n).padStart(2, '0'); return `${d.getUTCFullYear()}${p(d.getUTCMonth() + 1)}${p(d.getUTCDate())}-${p(d.getUTCHours())}${p(d.getUTCMinutes())}${p(d.getUTCSeconds())}`; };
-  for (let i = 0; i < 3; i++) writeFileSync(join(dir9, `${stamp(3700 + i)}-${'a'.repeat(15)}${i}.json`), '{}');
+  // The old records must sit in the previous clock hour (which the earlier two-clock-hour rule counted) and still be
+  // more than 60 minutes old: stamped 3601-3603 s ago, at least 10 s after the hour began.
+  const intoHour = Math.floor(Date.now() / 1000) % 3600;
+  if (intoHour < 10) await new Promise((r) => setTimeout(r, (10 - intoHour) * 1000));
+  for (let i = 0; i < 3; i++) writeFileSync(join(dir9, `${stamp(3601 + i)}-${'a'.repeat(15)}${i}.json`), '{}');
+  const prevHour = stamp(3600).slice(0, 11);
+  check(readdirSync(dir9).every((f) => f.startsWith(prevHour)), 'test set-up: the old records are in the previous clock hour', readdirSync(dir9).join(','));
   const srv = await serve(store9);
+  const post = async () => (await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' })).status;
   try {
-    const first = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
-    check(first.status === 303, 'records older than 60 minutes no longer count towards the hourly cap', String(first.status));
-    for (let i = 0; i < 2; i++) writeFileSync(join(dir9, `${stamp(60 + i)}-${'b'.repeat(15)}${i}.json`), '{}');
-    const second = await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' });
-    check(second.status === 429, 'records within the last 60 minutes still count (3 within the hour: refused)', String(second.status));
+    const first = await post();
+    check(first === 303, 'records older than 60 minutes no longer count towards the hourly cap, even in the previous clock hour', String(first));
+    // A record 59 min 50 s old still counts: with it and the two new posts, the third post is the fourth in the hour.
+    writeFileSync(join(dir9, `${stamp(3590)}-${'b'.repeat(16)}.json`), '{}');
+    const second = await post();
+    const third = await post();
+    check(second === 303 && third === 429, 'records within the last 60 minutes still count (a record 3590 s old, then 3 within the hour: refused)', `${second},${third}`);
   } finally { srv.stop(); rmSync(store9, { recursive: true, force: true }); }
 }
 {
-  // IPv6 visitor: the per-visitor limit applies (the key is built from the /64), when the host can listen on ::1.
-  const store10 = mkdtempSync(join(tmpdir(), 'uma-enquiry-ipv6-'));
-  writeFileSync(join(store10, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key', 'per_ip_per_hour' => 2, 'max_per_hour' => 1000];\n");
-  const port6 = await freePort();
-  const p6 = spawn('php', ['-S', `[::1]:${port6}`, '-t', PUBLIC], { env: { ...process.env, UMA_PRIVATE_DIR: store10 }, stdio: ['ignore', 'ignore', 'ignore'] });
-  const url6 = `http://[::1]:${port6}/api/enquiry.php`;
+  // Visitor keys: an IPv6 /64 is one visitor; IPv4 is used whole, also when the server reports it IPv4-mapped
+  // (::ffff:a.b.c.d). The address is set through a test-only router kept in the temporary store (never in public/), so
+  // the check runs on any host, with or without IPv6 loopback.
+  const store10 = mkdtempSync(join(tmpdir(), 'uma-enquiry-addr-'));
+  writeFileSync(join(store10, 'config.php'), "<?php return ['send_mail' => false, 'ip_hash_key' => 'test-only-key', 'per_ip_per_hour' => 1, 'max_per_hour' => 1000];\n");
+  const router = join(store10, 'addr-router.php');
+  writeFileSync(router, `<?php
+if (isset($_SERVER['HTTP_X_TEST_REMOTE_ADDR'])) $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_TEST_REMOTE_ADDR'];
+if (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === '/api/enquiry.php') { require ${JSON.stringify(join(PUBLIC, 'api', 'enquiry.php'))}; return true; }
+return false;
+`);
+  const srv = await serve(store10, [], {}, router);
+  const from = async (addr) => (await fetch(srv.url, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual', headers: { 'x-test-remote-addr': addr } })).status;
   try {
-    let up6 = false;
-    for (let i = 0; i < 30 && !up6; i++) { try { await fetch(url6); up6 = true; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-    if (!up6) console.log('note: IPv6 loopback not available here; the IPv6 rate-limit check was not run');
-    else {
-      const st = [];
-      for (let i = 0; i < 3; i++) st.push((await fetch(url6, { method: 'POST', body: new URLSearchParams(ENQUIRY), redirect: 'manual' })).status);
-      check(st.join(',') === '303,303,429', 'IPv6 visitor: the per-visitor limit applies', st.join(','));
-    }
-  } finally { p6.kill(); rmSync(store10, { recursive: true, force: true }); }
+    const v6 = [await from('2001:db8:1:2::1'), await from('2001:db8:1:2::2'), await from('2001:db8:1:3::1')];
+    check(v6.join(',') === '303,429,303', 'IPv6: two addresses in one /64 share the per-visitor limit; another /64 is separate', v6.join(','));
+    const mapped = [await from('::ffff:198.51.100.1'), await from('::ffff:203.0.113.9'), await from('::ffff:192.0.2.77')];
+    check(mapped.join(',') === '303,303,303', 'IPv4-mapped addresses: different IPv4 visitors are separate (not one shared bucket)', mapped.join(','));
+    const same = [await from('::ffff:198.51.100.1'), await from('198.51.100.1')];
+    check(same.join(',') === '429,429', 'IPv4-mapped and plain forms of one IPv4 address are the same visitor', same.join(','));
+    const v4 = [await from('192.0.2.1'), await from('192.0.2.2')];
+    check(v4.join(',') === '303,303', 'IPv4: neighbouring addresses are separate visitors', v4.join(','));
+  } finally { srv.stop(); rmSync(store10, { recursive: true, force: true }); }
 }
 
 console.log(`enquiry-php: ${checks} checks, ${failures} failures`);

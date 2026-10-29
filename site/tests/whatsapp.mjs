@@ -31,9 +31,16 @@ const unescape = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace
 const textOf = (s) => unescape(s.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 let total = 0;
+const seen = new Set();
 for (const f of files) {
   const r = route(f);
   const html = readFileSync(f, 'utf8');
+  // The one page-specific message this route may carry: its PAGES name, or a university page's own heading. Every
+  // other WhatsApp link on the page must be the general default message.
+  const isUni = /^\/universities\/[a-z0-9-]+\/$/.test(r);
+  const h1 = isUni ? textOf((/<h1[^>]*>([\s\S]*?)<\/h1>/.exec(html) ?? [])[1] ?? '') : '';
+  const expected = PAGES[r] ? forPage(PAGES[r]) : isUni && h1 ? forPage(h1) : null;
+  if (PAGES[r]) seen.add(r);
   // Any WhatsApp destination at all, in any attribute or text: it must be the business link.
   for (const m of html.matchAll(/(?:https?:\/\/(?:wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)\/[^"'\s<>]*|whatsapp:\/\/[^"'\s<>]*)/gi)) {
     check(new RegExp(`^https://wa\\.me/${NUMBER}\\?text=`).test(unescape(m[0])), `${r}: WhatsApp destination other than the business link`, m[0].slice(0, 80));
@@ -54,6 +61,7 @@ for (const f of files) {
     check(msg.includes('ukrainemedicaladmissions.com'), `${r}: WhatsApp message names ukrainemedicaladmissions.com`, msg);
     check(!/\bappl(?:ied|ication (?:was |has been )?submitted)\b|\bsubmitted\b/i.test(msg), `${r}: WhatsApp message never claims an application or submission`, msg);
     check(msg.length < 300, `${r}: WhatsApp message stays short`, String(msg.length));
+    check(msg === DEFAULT || (expected !== null && msg === expected), `${r}: WhatsApp message is the default or names this page`, msg);
     check(l.text === `WhatsApp: ${DISPLAY}`, `${r}: visible link text is "WhatsApp: ${DISPLAY}"`, l.text);
     check(l.label.startsWith('Contact Ukraine Medical Admissions on ') && l.label.includes(l.text), `${r}: accessible name names the business and contains the visible text`, l.label);
     check(/\bnoopener\b/.test(l.rel) && /\bnoreferrer\b/.test(l.rel) && l.target === '_blank', `${r}: rel noopener noreferrer, new tab`, `${l.rel} ${l.target}`);
@@ -65,11 +73,9 @@ for (const f of files) {
   if (r === '/contact/') check(messages.filter((x) => x === DEFAULT).length >= 2, '/contact/: the contact section offers the general WhatsApp message (besides the footer)');
   if (r === '/apply/thank-you/' || r === '/404.html') check(messages.every((x) => x === DEFAULT), `${r}: only the general WhatsApp link`);
   // University pages: the link names the university shown in the page heading.
-  if (/^\/universities\/[a-z0-9-]+\/$/.test(r)) {
-    const h1 = textOf((/<h1[^>]*>([\s\S]*?)<\/h1>/.exec(html) ?? [])[1] ?? '');
-    check(!!h1 && messages.includes(forPage(h1)), `${r}: a WhatsApp link names this university ("${h1} page")`, messages.join(' | ').slice(0, 200));
-  }
+  if (isUni) check(!!h1 && messages.includes(forPage(h1)), `${r}: a WhatsApp link names this university ("${h1} page")`, messages.join(' | ').slice(0, 200));
 }
+for (const k of Object.keys(PAGES)) check(seen.has(k), `${k}: page with a named WhatsApp link was built`);
 check(total > files.length, `WhatsApp links found (${total} on ${files.length} pages)`);
 console.log(`whatsapp: ${checks} checks, ${failures} failures`);
 process.exit(failures ? 1 : 0);
