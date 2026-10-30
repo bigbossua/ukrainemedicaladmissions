@@ -3,6 +3,8 @@
 // names ukrainemedicaladmissions.com, an accessible name containing the visible text, rel noopener noreferrer, a new tab.
 // The general message is exactly the owner's default text (footer and contact page); page links name their own page, and
 // every university page names its own university. No other WhatsApp number, host, scheme or parameter anywhere.
+// The floating action group (FloatingActions.astro, owner decision 2026-10-30) adds exactly one "WhatsApp Us" link per
+// page with the default message; its accessible name starts with its visible text and names the number.
 // Run after `npm run build`. Prints "whatsapp: N checks, M failures" and exits non-zero on any failure.
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
@@ -47,7 +49,7 @@ for (const f of files) {
   }
   const links = [...html.matchAll(/<a\b([^>]*\bhref="https:\/\/wa\.me\/[^"]*"[^>]*)>([\s\S]*?)<\/a>/g)].map((m) => {
     const attrs = m[1]; const get = (n) => unescape((new RegExp(`\\b${n}="([^"]*)"`).exec(attrs) ?? [])[1] ?? '');
-    return { href: get('href'), label: get('aria-label'), rel: get('rel'), target: get('target'), text: textOf(m[2]) };
+    return { href: get('href'), label: get('aria-label'), rel: get('rel'), target: get('target'), text: textOf(m[2]), floating: /\bdata-float-wa\b/.test(attrs) };
   });
   const messages = [];
   for (const l of links) {
@@ -62,11 +64,17 @@ for (const f of files) {
     check(!/\bappl(?:ied|ication (?:was |has been )?submitted)\b|\bsubmitted\b/i.test(msg), `${r}: WhatsApp message never claims an application or submission`, msg);
     check(msg.length < 300, `${r}: WhatsApp message stays short`, String(msg.length));
     check(msg === DEFAULT || (expected !== null && msg === expected), `${r}: WhatsApp message is the default or names this page`, msg);
-    check(l.text === `WhatsApp: ${DISPLAY}`, `${r}: visible link text is "WhatsApp: ${DISPLAY}"`, l.text);
-    check(l.label.startsWith('Contact Ukraine Medical Admissions on ') && l.label.includes(l.text), `${r}: accessible name names the business and contains the visible text`, l.label);
+    if (l.floating) {
+      check(l.text === 'WhatsApp Us' && msg === DEFAULT, `${r}: the floating link reads "WhatsApp Us" and uses the default message`, `${l.text} | ${msg.slice(0, 60)}`);
+      check(l.label.startsWith('WhatsApp Us') && l.label.includes('Ukraine Medical Admissions') && l.label.includes(DISPLAY), `${r}: floating link's accessible name starts with its visible text and names the business and number`, l.label);
+    } else {
+      check(l.text === `WhatsApp: ${DISPLAY}`, `${r}: visible link text is "WhatsApp: ${DISPLAY}"`, l.text);
+      check(l.label.startsWith('Contact Ukraine Medical Admissions on ') && l.label.includes(l.text), `${r}: accessible name names the business and contains the visible text`, l.label);
+    }
     check(/\bnoopener\b/.test(l.rel) && /\bnoreferrer\b/.test(l.rel) && l.target === '_blank', `${r}: rel noopener noreferrer, new tab`, `${l.rel} ${l.target}`);
-    messages.push(msg);
+    if (!l.floating) messages.push(msg); // the checks below are about the in-page links; the floating one is checked above
   }
+  check(links.filter((l) => l.floating).length === 1, `${r}: exactly one floating WhatsApp link`, String(links.filter((l) => l.floating).length));
   // Every page carries the footer's general link, with the owner's default text exactly.
   check(messages.includes(DEFAULT), `${r}: the general WhatsApp link (footer) uses the default message exactly`);
   if (PAGES[r]) check(messages.includes(forPage(PAGES[r])), `${r}: a WhatsApp link names this page ("${PAGES[r]} page")`, messages.join(' | ').slice(0, 200));

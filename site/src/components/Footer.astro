@@ -47,7 +47,7 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
-  .site-footer { background: var(--navy-900); color: #CFDAEC; padding: 3rem 0 2rem; font-size: .9rem; }
+  .site-footer { background: var(--navy-900); color: #CFDAEC; padding: 3rem 0 calc(2rem + var(--float-space, 0px)); font-size: .9rem; } /* room for the floating actions */
   .cols { display: grid; gap: 2rem; }
   @media (min-width: 800px) { .cols { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
   h2 { color: #fff; font-size: 1rem; margin: 0 0 .75rem; }

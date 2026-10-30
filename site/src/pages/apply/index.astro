@@ -79,7 +79,7 @@ const stepCount = (i: number) => `Step ${i + 1} of ${STEPS.length}`;
   <div class="page-head"><div class="wrap"><span class="eyebrow">Apply online</span><h1>Start your application</h1><p>Stage 1 of 4: your candidate profile. There are five short steps. You need to give your field of study, name and email, and agree to the privacy notice. Everything else is optional. It is free, and nothing is sent to any university.</p></div></div>
   <Breadcrumbs items={[{ label: 'Apply' }]} />
   <section class="apply-section"><div class="wrap layout">
-    <form class="card apply-form" method="post" action="/api/enquiry.php" data-form data-prefill data-steps novalidate>
+    <form class="card apply-form" id="apply-form" method="post" action="/api/enquiry.php" data-form data-prefill data-steps novalidate>
       <input type="hidden" name="type" value="application-start" />
       <input type="hidden" name="ts" value="" />
 

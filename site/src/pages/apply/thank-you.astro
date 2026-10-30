@@ -10,7 +10,7 @@ import { SITE } from '../../lib/site';
     <h2>What happens next</h2>
     <ol>
       <li>We read what you sent us.</li>
-      <li>We reply by email from <strong>{SITE.email}</strong> with answers to your questions and the next steps we suggest. Where a university's requirements have not yet been verified from its official pages, we say so plainly. Please add this address to your contacts and check your spam or junk folder.</li>
+      <li>We reply by email from <strong class="addr">{SITE.email}</strong> with answers to your questions and the next steps we suggest. Where a university's requirements have not yet been verified from its official pages, we say so plainly. Please add this address to your contacts and check your spam or junk folder.</li>
       <li>If we need more information, such as your school results or the intake you are aiming for, we ask in that email. To correct something you sent, reply to our email.</li>
       <li>An application goes to a university only after you confirm it, and only through the university's own procedure.</li>
     </ol>
@@ -20,3 +20,7 @@ import { SITE } from '../../lib/site';
     <p>If you did not send this, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
   </div></section>
 </Base>
+
+<style>
+  .addr { overflow-wrap: anywhere; } /* the address is wider than a 320 px screen */
+</style>

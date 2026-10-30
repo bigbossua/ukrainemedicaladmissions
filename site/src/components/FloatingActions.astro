@@ -1,0 +1,40 @@
+---
+import { SITE } from '../lib/site';
+import { WHATSAPP, whatsappHref } from '../lib/whatsapp';
+// Floating action group (owner decision 2026-10-30): Apply Now, the primary action, and WhatsApp Us on every public page.
+// Fixed at the bottom-right on wider screens and as a bottom bar on phones. Plain links: they work without JavaScript,
+// set no cookie and carry no tracking parameter. The space the group takes is reserved below the footer and as scroll
+// padding (--float-space), so it never permanently covers content, form buttons or the open mobile menu.
+// On /apply/ itself, Apply Now moves to the form instead of reloading the page, which would lose answers in progress.
+// tests/floating-cta.mjs checks every page type at desktop and phone widths.
+const onApply = /^\/apply\/?$/.test(Astro.url.pathname);
+const applyHref = onApply ? '#apply-form' : SITE.ctaHref;
+---
+<nav class="float-cta" aria-label="Apply or contact us" data-floating-cta>
+  <a class="fc fc-wa" href={whatsappHref()} target="_blank" rel="noopener noreferrer"
+    aria-label={`WhatsApp Us: chat with Ukraine Medical Admissions on ${WHATSAPP.display} (opens in WhatsApp)`} data-whatsapp data-float-wa>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M12 5.2a6.8 6.8 0 0 0-5.85 10.27L5.2 18.8l3.4-.9A6.8 6.8 0 1 0 12 5.2Zm0 12.4a5.6 5.6 0 0 1-2.86-.78l-.2-.12-2.03.53.54-1.97-.13-.21A5.6 5.6 0 1 1 12 17.6Zm3.07-4.15c-.17-.08-1-.5-1.15-.55s-.27-.08-.38.08-.44.55-.54.67-.2.13-.37.04a4.6 4.6 0 0 1-2.25-1.97c-.17-.29.17-.27.48-.9.05-.11.03-.2-.01-.28l-.52-1.24c-.13-.33-.27-.28-.38-.29h-.32a.62.62 0 0 0-.45.21 1.9 1.9 0 0 0-.6 1.42 3.3 3.3 0 0 0 .7 1.76 7.6 7.6 0 0 0 2.9 2.56c1.08.47 1.5.5 2.04.43a1.75 1.75 0 0 0 1.15-.81 1.42 1.42 0 0 0 .1-.81c-.04-.07-.15-.11-.32-.2Z"/></svg>
+    <span>WhatsApp Us</span>
+  </a>
+  <a class="fc fc-apply" href={applyHref} data-float-apply>Apply Now <span aria-hidden="true">→</span></a>
+</nav>
+<style>
+  /* Space the group needs at the bottom of the viewport: 48 px buttons plus their offset (desktop) or the bar (phones). */
+  :global(:root) { --float-space: 88px; }
+  :global(html) { scroll-padding-bottom: var(--float-space); }
+  .float-cta { position: fixed; z-index: 30; right: max(20px, env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: .6rem; }
+  .fc { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; padding: .7rem 1.25rem; border-radius: 999px; font-weight: 700; font-size: 1rem; line-height: 1.2; text-decoration: none; white-space: nowrap; box-shadow: 0 6px 18px rgba(11, 31, 63, .22); }
+  .fc svg { flex: none; }
+  .fc-wa { background: #fff; color: var(--navy-900); border: 1px solid var(--line); }
+  .fc-wa:hover { background: var(--mist); }
+  .fc-apply { background: var(--blue-600); color: #fff; border: 1px solid var(--blue-600); }
+  .fc-apply:hover { background: var(--navy-700); border-color: var(--navy-700); }
+  /* Two-tone ring: navy on light pages, a white halo keeps it visible over the navy footer. */
+  .fc:focus-visible { outline: 3px solid var(--navy-900); outline-offset: 2px; box-shadow: 0 0 0 7px #fff; }
+  @media (max-width: 639px) {
+    :global(:root) { --float-space: calc(68px + env(safe-area-inset-bottom, 0px)); }
+    .float-cta { left: 0; right: 0; bottom: 0; gap: .5rem; padding: .6rem max(12px, env(safe-area-inset-right, 0px)) calc(.6rem + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); background: rgba(255, 255, 255, .97); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(11, 31, 63, .10); }
+    .fc { flex: 1 1 0; min-width: 0; padding: .7rem .6rem; font-size: .95rem; box-shadow: none; }
+  }
+  @media print { .float-cta { display: none; } }
+</style>

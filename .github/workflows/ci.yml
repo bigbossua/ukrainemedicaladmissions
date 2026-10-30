@@ -45,6 +45,8 @@ jobs:
       - run: npm run test:a11y
       - name: Audit regressions 2026-10-29 (directory layout shift, mobile menu scroll, hero focus ring, contact errors, no-script controls, back-forward cache)
         run: npm run test:audit
+      - name: Floating actions (WhatsApp Us and Apply Now visible and uncovered on every page type, desktop and 320-430 px phones, no JavaScript)
+        run: npm run test:floating
       - run: npm run test:perf
       - run: npm run test:release
       - run: npm run test:staging
