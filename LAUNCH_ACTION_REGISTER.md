@@ -49,6 +49,8 @@ None of these needs a production release; each would wait for your approval to s
 
 ### 4a. The 40 open release items
 
+**To answer them:** `OWNER_RESPONSE_FORM.md` (30 October) asks for them as facts, wording approvals, decisions and solicitor questions, with the whole register cross-checked against `legal.mjs`.
+
 Grouped by the review flags in `site/src/lib/legal.mjs`, by whether a draft value exists, and by whether the value itself is a legal determination (E); the grouping is a judgement, not only the flags (corrected 29 October, audit F5 and review of the fixes): **A Owner fact** (9): only you can supply it, no review flag. **B Owner value + legal review** (7): you supply the value, a lawyer checks it; no draft exists. **C Draft: owner approval + legal review** (5): approve or replace the draft wording, then a lawyer checks it. **D Draft: owner approval** (4). **E Legal advice and sign-off** (11): a legal determination, decided with your reviewer. **F Technical** (4): clears automatically. Total 40 (36 until 29 October; L37 and L40 came with WhatsApp, L38–L39 with audit F3).
 
 **Conditional items, not required today:** answering L7 "yes" adds the representative's name and address; accepting documents adds the retention and lawful basis for application records; referral payments add their details; paid services add their terms. No value is filled in by Claude, and no item is marked compliant without your input.
