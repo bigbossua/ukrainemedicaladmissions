@@ -1,0 +1,57 @@
+name: Live verification (read-only)
+
+# Checks the DEPLOYED site from a GitHub runner (the development environment cannot reach the live domain).
+# Read-only: GET requests and a browser that opens pages and the mobile menu; no form is submitted and no POST is sent
+# (owner instruction 2026-10-30: no synthetic live submission). Runs on demand, or when .github/live-verify-request.txt
+# changes on the working branch.
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/university-profile-pipeline]
+    paths: ['.github/live-verify-request.txt']
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    defaults:
+      run: { working-directory: site }
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: site/package-lock.json }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Release manifest of this commit (the build the release gate published)
+        run: npm run build && npm run manifest
+      - name: Public DNS records (for the record; nothing is changed)
+        run: |
+          for t in A AAAA MX TXT; do echo "== $t ukrainemedicaladmissions.com"; dig +short "$t" ukrainemedicaladmissions.com; done
+          echo "== CNAME www"; dig +short CNAME www.ukrainemedicaladmissions.com; dig +short A www.ukrainemedicaladmissions.com
+      - name: Deployed files match the release manifest (hash every built file over HTTPS)
+        if: always()
+        run: |
+          node -e '
+            const m = require("./tests/output/release-manifest.json"); const crypto = require("crypto");
+            const skip = (p) => /^(api\/|\.htaccess$|_astro\/\.htaccess$)/.test(p); // PHP runs and .htaccess is never served
+            (async () => { let same = 0, diff = [];
+              for (const f of m.files.filter((f) => !skip(f.path))) {
+                const url = "https://ukrainemedicaladmissions.com/" + f.path.replace(/(^|\/)index\.html$/, "$1");
+                const r = await fetch(url); const b = Buffer.from(await r.arrayBuffer());
+                const h = crypto.createHash("sha256").update(b).digest("hex");
+                if (r.status === 200 && h === f.sha256) same++; else diff.push(`${f.path} (HTTP ${r.status})`);
+              }
+              console.log(`deployed files identical to the manifest: ${same}; different or missing: ${diff.length}`); diff.slice(0, 40).forEach((d) => console.log("  " + d));
+              if (diff.length) process.exit(1); })();'
+      - name: Live checks (headers, CSP, pages, redirects, private paths, handler GET; no POST)
+        if: always()
+        run: node scripts/verify-live.mjs https://ukrainemedicaladmissions.com --no-post --out tests/output/live
+      - name: Live floating actions (WhatsApp Us and Apply Now, desktop and 320-430 px phones, no form submitted)
+        if: always()
+        run: node tests/floating-cta.mjs --base https://ukrainemedicaladmissions.com
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: live-verification, path: site/tests/output, retention-days: 30 }

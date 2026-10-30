@@ -9,12 +9,16 @@
 //   Without JavaScript the group is shown and both links are plain links. Clicking Apply Now opens the real /apply/ form;
 //   clicking WhatsApp Us opens https://wa.me/380633534065?text=... in a new tab (answered locally: no request leaves).
 // Screenshots: tests/output/floating-cta/. Prints "floating-cta: N checks, M failures". Needs dist/ (npm run build).
+// Live mode: --base https://ukrainemedicaladmissions.com checks the deployed site instead of a local copy of dist/ (the
+// static part then reads each page type's live HTML; screenshots are prefixed live-). Nothing is submitted.
 import { chromium } from 'playwright';
 import { createServer } from 'node:http';
 import { readFileSync, readdirSync, existsSync, statSync, mkdirSync } from 'node:fs';
 import { join, resolve, extname, relative, sep } from 'node:path';
 
-const DIST = resolve(process.argv[2] ?? 'dist');
+const ARGS = process.argv.slice(2);
+const LIVE = ARGS.includes('--base') ? ARGS[ARGS.indexOf('--base') + 1].replace(/\/+$/, '') : null;
+const DIST = resolve(ARGS.find((a, i) => !a.startsWith('--') && ARGS[i - 1] !== '--base') ?? 'dist');
 const OUT = resolve('tests/output/floating-cta'); mkdirSync(OUT, { recursive: true });
 if (!existsSync(join(DIST, 'index.html'))) { console.log('floating-cta: dist/ missing (run npm run build first)'); process.exit(1); }
 const NUMBER = '380633534065';
@@ -27,8 +31,11 @@ const ok = (cond, msg) => { checks++; if (!cond) { failures++; console.log('FAIL
 const files = [];
 (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : f.endsWith('.html') && files.push(p); } })(DIST);
 const routeOf = (f) => { const r = '/' + relative(DIST, f).split(sep).join('/'); return r.endsWith('/index.html') ? r.slice(0, -'index.html'.length) : r; };
-for (const f of files) {
-  const r = routeOf(f); const html = readFileSync(f, 'utf8');
+const profile = readdirSync(join(DIST, 'universities')).find((d) => existsSync(join(DIST, 'universities', d, 'index.html')));
+const PAGES = ['/', '/universities/', `/universities/${profile}/`, '/courses/', '/courses/medicine/', '/admissions/', '/services/', '/tuition-fees/', '/faq/', '/about/', '/contact/', '/apply/', '/apply/thank-you/', '/privacy/', '/404.html'];
+const sources = LIVE ? await Promise.all(PAGES.map(async (r) => [r, await fetch(LIVE + r).then((x) => x.text()).catch((e) => `FETCH FAILED ${e.message}`)]))
+  : files.map((f) => [routeOf(f), readFileSync(f, 'utf8')]);
+for (const [r, html] of sources) {
   const groups = html.match(/<nav\b[^>]*data-floating-cta[^>]*>[\s\S]*?<\/nav>/g) ?? [];
   ok(groups.length === 1, `${r}: exactly one floating action group (found ${groups.length})`);
   const g = groups[0] ?? '';
@@ -37,20 +44,20 @@ for (const f of files) {
   ok(!!wa && attr(wa[1], 'href') === WA_HREF && /WhatsApp Us/.test(wa[2]), `${r}: floating WhatsApp Us link to the business number with the default message`);
   ok(!!ap && /Apply Now/.test(ap[2]) && attr(ap[1], 'href') === (r === '/apply/' ? '#apply-form' : '/apply/'), `${r}: floating Apply Now link to ${r === '/apply/' ? '#apply-form' : '/apply/'} (${ap ? attr(ap[1], 'href') : 'missing'})`);
 }
-const applyHtml = readFileSync(join(DIST, 'apply/index.html'), 'utf8');
+const applyHtml = sources.find(([r]) => r === '/apply/')?.[1] ?? '';
 ok(/<form\b[^>]*id="apply-form"[^>]*action="\/api\/enquiry\.php"/.test(applyHtml), '/apply/: the application form (id apply-form) posts to /api/enquiry.php');
 
 // ---- Browser ----
 const MIME = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json' };
-const server = createServer((req, res) => {
+const server = LIVE ? null : createServer((req, res) => {
   let p = join(DIST, decodeURIComponent(new URL(req.url, 'http://x').pathname));
   if (existsSync(p) && statSync(p).isDirectory()) p = join(p, 'index.html');
   if (!existsSync(p)) { res.writeHead(404, { 'content-type': 'text/html' }); return res.end(existsSync(join(DIST, '404.html')) ? readFileSync(join(DIST, '404.html')) : ''); }
   res.writeHead(200, { 'content-type': MIME[extname(p)] ?? 'application/octet-stream' }); res.end(readFileSync(p));
-}).listen(0);
-const base = `http://127.0.0.1:${server.address().port}`;
-const profile = readdirSync(join(DIST, 'universities')).find((d) => existsSync(join(DIST, 'universities', d, 'index.html')));
-const PAGES = ['/', '/universities/', `/universities/${profile}/`, '/courses/', '/courses/medicine/', '/admissions/', '/services/', '/tuition-fees/', '/faq/', '/about/', '/contact/', '/apply/', '/apply/thank-you/', '/privacy/', '/404.html'];
+});
+server?.listen(0);
+const base = LIVE ?? `http://127.0.0.1:${server.address().port}`;
+const SHOT_PREFIX = LIVE ? 'live-' : '';
 const VIEWPORTS = [[1440, 900], [1280, 800], [768, 1024], [430, 932], [414, 896], [390, 844], [375, 812], [360, 780], [320, 740], [320, 568]];
 const SHOTS = new Set(['1280:/', '1280:/universities/', `1280:/universities/${profile}/`, '1280:/apply/', '390:/', '390:/apply/', '320:/', `430:/universities/${profile}/`, '360:/contact/']);
 
@@ -135,7 +142,7 @@ for (const [w, h] of VIEWPORTS) {
     }
     if (SHOTS.has(`${w}:${path}`)) {
       await scrollToFraction(page, 0.35); await settle(page);
-      await page.screenshot({ path: join(OUT, `${w}x${h}${path.replace(/\/$/, '').replace(/\//g, '_') || '_home'}.png`) });
+      await page.screenshot({ path: join(OUT, `${SHOT_PREFIX}${w}x${h}${path.replace(/\/$/, '').replace(/\//g, '_') || '_home'}.png`) });
     }
     await page.close();
   }
@@ -170,9 +177,9 @@ for (const [w, h] of [[390, 844], [1280, 800]]) {
   await page.goto(base + '/universities/', { waitUntil: 'load' });
   const m = await page.evaluate(measure);
   ok(!m.missing && m.display !== 'none' && (m.links ?? []).every((l) => l && l.topmost && l.bottom <= m.vh + 0.5), `${w}x${h} without JavaScript: group not shown or covered`);
-  if (w === 390) await page.screenshot({ path: join(OUT, '390x844_no-js_universities.png') });
+  if (w === 390) await page.screenshot({ path: join(OUT, `${SHOT_PREFIX}390x844_no-js_universities.png`) });
   await ctx.close();
 }
-await browser.close(); server.close();
-console.log(`floating-cta: ${checks} checks, ${failures} failures (screenshots in tests/output/floating-cta/)`);
+await browser.close(); server?.close();
+console.log(`floating-cta${LIVE ? ` (live: ${LIVE})` : ''}: ${checks} checks, ${failures} failures (screenshots in tests/output/floating-cta/)`);
 process.exit(failures ? 1 : 0);

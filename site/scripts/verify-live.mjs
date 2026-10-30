@@ -3,7 +3,7 @@
 // synthetic form (expected 303, dropped by the handler, never stored, never e-mailed). The honeypot POST proves only that
 // PHP runs the handler: it is NOT a mail-delivery test (EMAIL_DELIVERY_VERIFICATION.md is).
 //
-// Usage: node scripts/verify-live.mjs [base-url] [out-dir] [--site <url>] [--manifest <file>] [--out <dir>] [--no-browser]
+// Usage: node scripts/verify-live.mjs [base-url] [out-dir] [--site <url>] [--manifest <file>] [--out <dir>] [--no-browser] [--no-post]
 //   base-url    where pages are fetched from (default https://ukrainemedicaladmissions.com)
 //   --site      the production origin that canonical, robots and sitemap URLs must use (default
 //               https://ukrainemedicaladmissions.com). When it differs from base-url, sitemap URLs are fetched from base-url
@@ -12,6 +12,8 @@
 //   --manifest  release manifest (default tests/output/release-manifest.json, written by "npm run manifest"); its file list
 //               says which university profiles the release publishes. Without it the profile checks assume none (fail closed).
 //   --no-browser  skip the Playwright pass (console errors, failed requests, overflow, mobile menu, axe).
+//   --no-post     send no POST at all to the live handler (owner instruction 2026-10-30: no synthetic live submission);
+//                 GET /api/enquiry.php (405) still shows that PHP runs the handler.
 // Release checks (2026-10-12): the old Ternopil profile URL answers 302 to /universities/ (never 200) unless the release
 // publishes it; /universities/ shows no draft card and, with no profile in the manifest, the empty-state sentence; no
 // sitemap URL or page link names a profile the manifest does not contain; the CSP header carries script-src 'self' on
@@ -31,6 +33,7 @@ const argv = process.argv.slice(2), positional = [], flags = {};
 for (let i = 0; i < argv.length; i++) {
   const a = argv[i];
   if (a === '--no-browser') flags.noBrowser = true;
+  else if (a === '--no-post') flags.noPost = true;
   else if (['--site', '--manifest', '--out'].includes(a)) { if (!argv[i + 1]) { console.error(`verify-live: ${a} needs a value`); process.exit(2); } flags[a.slice(2)] = argv[++i]; }
   else if (a.startsWith('--')) { console.error(`verify-live: unknown option ${a}`); process.exit(2); }
   else positional.push(a);
@@ -418,16 +421,19 @@ else PASS('enquiry GET', g.url, '405 (PHP executes)');
 // The handler is the only PHP response: it must not advertise the PHP version (enquiry.php removes the header; audit SEC-4).
 if (g.headers['x-powered-by']) WARN('x-powered-by on the handler', g.url, g.headers['x-powered-by'], 'absent', 'enquiry.php calls header_remove("X-Powered-By"); check that the deployed handler is current');
 // An empty form as the site sends it: only the hidden fields, empty. (A post without them is dropped as not ours, 303.)
-const p0 = http(`${BASE}/api/enquiry.php`, { method: 'POST', data: 'website=&ts=', contentType: 'application/x-www-form-urlencoded' });
-if (p0.status !== 422) FAIL('enquiry empty POST', p0.url, `HTTP ${p0.status}: ${text(p0).replace(/\s+/g, ' ').slice(0, 160)}`, '422 validation error', 'check handler/PHP version (needs ≥ 8.1)');
+if (flags.noPost) SKIP('enquiry POST probes', `${BASE}/api/enquiry.php`, '--no-post given: no empty-form and no honeypot POST sent; GET above shows PHP runs the handler');
+const p0 = flags.noPost ? null : http(`${BASE}/api/enquiry.php`, { method: 'POST', data: 'website=&ts=', contentType: 'application/x-www-form-urlencoded' });
+if (!p0) { /* skipped */ }
+else if (p0.status !== 422) FAIL('enquiry empty POST', p0.url, `HTTP ${p0.status}: ${text(p0).replace(/\s+/g, ' ').slice(0, 160)}`, '422 validation error', 'check handler/PHP version (needs ≥ 8.1)');
 else if (/Warning:|Fatal error|Notice:/.test(text(p0))) FAIL('enquiry PHP notices leak', p0.url, text(p0).slice(0, 160), 'no PHP warnings in output', 'display_errors off; fix the notice');
 else PASS('enquiry empty POST', p0.url, '422');
 // Honeypot POST: proves PHP runs the handler and drops a post that is not a real submission. It stores nothing and sends
 // no mail, so it says NOTHING about mail delivery (EMAIL_DELIVERY_VERIFICATION.md). It sends no "ts" on purpose: from the
 // 29 October handler that alone drops it, so this live probe can never store a record or send an e-mail even if the
 // honeypot check were broken. The honeypot itself is tested locally (tests/enquiry-php.mjs).
-const hp = http(`${BASE}/api/enquiry.php`, { method: 'POST', contentType: 'application/x-www-form-urlencoded', data: 'website=bot-filled-honeypot&name=Synthetic+Test&email=test%40example.invalid&course=medicine&message=honeypot+verification+do+not+store' });
-if (hp.status !== 303 || !/\/apply\/thank-you\/?$/.test(hp.redirect)) FAIL('enquiry honeypot POST', hp.url, `HTTP ${hp.status} → ${hp.redirect}`, '303 → /apply/thank-you/ (dropped, not stored)', 'check handler');
+const hp = flags.noPost ? null : http(`${BASE}/api/enquiry.php`, { method: 'POST', contentType: 'application/x-www-form-urlencoded', data: 'website=bot-filled-honeypot&name=Synthetic+Test&email=test%40example.invalid&course=medicine&message=honeypot+verification+do+not+store' });
+if (!hp) { /* skipped */ }
+else if (hp.status !== 303 || !/\/apply\/thank-you\/?$/.test(hp.redirect)) FAIL('enquiry honeypot POST', hp.url, `HTTP ${hp.status} → ${hp.redirect}`, '303 → /apply/thank-you/ (dropped, not stored)', 'check handler');
 else PASS('enquiry honeypot POST', hp.url, `303 → ${hp.redirect} (dropped by design, nothing stored; not a mail-delivery test)`);
 const ty = http(`${BASE}/apply/thank-you/`);
 if (ty.status !== 200 || !/noindex/.test(text(ty))) FAIL('thank-you page', ty.url, `HTTP ${ty.status}`, '200 with noindex', 'check deployment'); else { PASS('thank-you page', ty.url, '200 noindex'); checkInline(ty.url, text(ty)); }
