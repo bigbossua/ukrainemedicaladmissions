@@ -111,6 +111,7 @@ Reading: measured English-language demand for the head term is **very small in e
 | `/courses/nursing/` | Bring to parity with dentistry once a nursing programme is verified | uk: study nursing 20 = mbbs 20 > dentistry 10 | Pending verification |
 | `/universities/<slug>/` | Order revised 2026-10-11 (§8; `UNIVERSITY_DATA_REGISTER.md` §9): Bukovinian → Vinnytsia → Odesa → Bogomolets → Ivano-Frankivsk → Uzhhorod → Ternopil (indexed once verified); Kharkiv gated | named-university rows | Pending official access |
 | `/faq/`, `/admissions/`, `/about/`, `/contact/`, `/courses/{dentistry,pharmacy}/`, `/privacy/`, `/terms/` | No keyword-driven change | conversion/trust pages | No change |
+| `/faq/` (title and H1 only, 29 October 2026, audit SEO-A3) | in: "mbbs in ukraine" 260, KD 18 (§ Medicine row); "is neet required for mbbs in ukraine" 20 (`research/semrush/2026-10-11-P3-phrase_questions-in-mbbs-in-ukraine.csv`); O14 maps the Indian-applicant cluster partly to `/faq/` | informational | Title "MBBS in Ukraine FAQ: cost, duration, NEET, recognition"; H1 "MBBS in Ukraine: student questions, answered plainly". The page already answers the NEET question (pointing to the NMC, stating none of its rules). No SEMrush units used (existing exports). |
 | Future `/for-indian-students/` | **Not built.** Trigger: Search Console India impressions on `/tuition-fees/`, regulator requirements from an official document, ≥1 verified fee schedule, admissions feasibility confirmed | — | Trigger recorded |
 
 ## 5. Continuous workflow (once access exists)
