@@ -1,0 +1,3 @@
+Live verification request (read-only; no POST).
+Requested: 2026-10-30T05:54:16Z
+Deployed: production 137e5a5 = build of 302fde3 (release-20261030-054715), previous production 5048eb1 (rollback reference release-20261026-210314 = 053cee0).
